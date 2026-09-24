@@ -2,6 +2,7 @@
 import hashlib
 import json
 from pathlib import Path
+import shutil
 import subprocess
 import sys
 from types import SimpleNamespace
@@ -25,7 +26,7 @@ def source_case(tmp_path, ffmpeg, *, frames=None, status="decoded_unmapped", vid
     root.mkdir()
     recorder = AttemptRecorder(
         SimpleNamespace(root=root / "release-test", release_id="release-test", hashes={"queue.jsonl": "a" * 64}),
-        SimpleNamespace(cell_id="N3-LAT-P01-D-POS"), "attempt-001",
+        SimpleNamespace(cell_id="N3-LAT-P02-D-POS"), "attempt-001",
     )
     recorder.path.mkdir(parents=True)
     outcome = {"status": "technical_invalid", "technical_cause": "synthetic CPU codec fixture"}
@@ -56,7 +57,7 @@ def source_case(tmp_path, ffmpeg, *, frames=None, status="decoded_unmapped", vid
     return {
         "root": root, "manifest_path": manifest.relative_to(root).as_posix(),
         "manifest_sha256": hashlib.sha256(manifest.read_bytes()).hexdigest(),
-        "artifact": artifact, "output": "viewing/attempts/N3-LAT-P01-D-POS/attempt-001/copy.mp4",
+        "artifact": artifact, "output": "viewing/attempts/N3-LAT-P02-D-POS/attempt-001/copy.mp4",
         "reserve_bytes": 0, "ffmpeg": ffmpeg,
         **({} if video else {"request_record": "predictions/request-0000.json", "playback_fps": "15"}),
     }
@@ -85,17 +86,21 @@ def test_real_array_roundtrip_and_downloader_compatibility(tmp_path, ffmpeg, pac
     assert json.loads(sidecar.read_bytes()) == entry
     assert not list(root.rglob("*.partial"))
     value = package["value"]
+    shutil.copytree(package["root"], root, dirs_exist_ok=True)
     completion = json.loads((package["root"] / value["completion_receipt"]["path"]).read_bytes())
     value["completion_receipt"] = save_json(root, "delivery/completion.json", completion)
-    value["attempt_manifests"] = [record(manifest, args["manifest_path"])]
-    value["videos"] = [entry]
+    value["attempt_manifests"].append(record(manifest, args["manifest_path"]))
+    value["videos"].append(entry)
+    value["predictions"].append({
+        "manifest_path": args["manifest_path"], "request_path": args["request_record"], "status": "encoded",
+    })
     index = save_json(root, "delivery/videos.json", value)
     report = downloader.archive(
         index=root / index["path"], index_sha256=index["sha256"], metadata_root=root,
         destination=tmp_path / "archive", source=downloader.Source("local", str(root)), reserve_bytes=0,
     )
     assert report["index_coverage_complete"]
-    assert report["files"][0]["category"] == "technical"
+    assert report["files"][-1]["category"] == "technical"
     with pytest.raises(FileExistsError, match="overwrite"):
         encoder.encode(**args, codec=codec)
     assert before == (manifest.read_bytes(), original.read_bytes())
@@ -137,7 +142,7 @@ def test_unsupported_latent_dtype_shape_rejected(tmp_path, ffmpeg, frames):
 @pytest.mark.parametrize("status", ["not_exposed", "decode_error", "latent_only_retained"])
 def test_unavailable_predictions_are_not_encoded(tmp_path, ffmpeg, status):
     args = source_case(tmp_path, ffmpeg, status=status)
-    with pytest.raises(ValueError, match="did not expose"):
+    with pytest.raises(ValueError, match="did not expose|contradicts"):
         encoder.encode(**args)
     assert not list(args["root"].rglob("*.partial"))
 

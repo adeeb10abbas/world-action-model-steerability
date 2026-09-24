@@ -20,10 +20,13 @@ import uuid
 
 
 INDEX_SCHEMA = "sgw-01-video-download-index-v1"
+STUDY_EPISODES = 1566
 VIDEO_SUFFIXES = {".mp4", ".m4v", ".mov", ".mkv", ".webm", ".avi"}
 KINDS = {"valid_success": "study", "valid_model_failure": "study",
          "technical_invalid": "technical", "censored": "censored"}
 RESERVE_BYTES = 1024**3
+EXPOSED_FUTURES = {"decoded_unmapped", "exposed_and_retained"}
+UNAVAILABLE_FUTURES = {"not_exposed", "decode_error", "latent_only_retained"}
 
 # The same read-only, bounded reader runs locally in tests and in the source Pod.
 # No shell, model imports, file writes, globbing, or remote temporary files.
@@ -182,6 +185,142 @@ def encoding_metadata(value: object, metadata_root: Path) -> None:
         metadata(metadata_root, physical.get("receipt", {}))
 
 
+def completed_attempts(completion: dict, manifests: dict, records: dict) -> set[tuple[str, str]]:
+    """Match compiler-verified identities only; never read or rescore results."""
+    def absolute(value: object) -> PurePosixPath:
+        if not isinstance(value, str):
+            raise ValueError("compiler provenance path must be absolute")
+        path = PurePosixPath(value)
+        if not path.is_absolute() or str(path) != value or ".." in path.parts:
+            raise ValueError("compiler provenance path must be canonical and absolute")
+        return path
+
+    cohort = absolute(completion.get("cohort_root"))
+    ledger_rows = completion.get("ledger")
+    if not isinstance(ledger_rows, list):
+        raise ValueError("compiler report lacks completed ledger identities")
+    ledger = {}
+    for row in ledger_rows:
+        if not isinstance(row, dict) or row.get("analysis_status") != "complete":
+            raise ValueError("compiler ledger includes an unresolved identity")
+        cell = relative_path(row.get("cell_id"))
+        if cell in ledger:
+            raise ValueError("duplicate completed ledger identity")
+        ledger[cell] = row
+    cells = set()
+    required = set()
+    for release in completion["releases"]:
+        if not isinstance(release, dict):
+            raise ValueError("compiler release provenance must be an object")
+        artifact_root = absolute(release.get("artifact_root"))
+        if not artifact_root.is_relative_to(cohort):
+            raise ValueError("compiler artifact root escapes cohort")
+        pointers = release.get("completion_pointers")
+        if not isinstance(pointers, list):
+            raise ValueError("compiler report lacks completed attempt identities")
+        for pointer in pointers:
+            if not isinstance(pointer, dict):
+                raise ValueError("compiler completion identity must be an object")
+            cell = relative_path(pointer.get("cell_id"))
+            if "/" in cell or cell in cells:
+                raise ValueError("duplicate/invalid completed cell identity")
+            cells.add(cell)
+            source = absolute(pointer.get("manifest_path"))
+            if not source.is_relative_to(artifact_root / "attempts" / cell):
+                raise ValueError("completed manifest lies outside owning cell")
+            path = relative_path(source.relative_to(cohort).as_posix())
+            manifest, record = manifests.get(path), records.get(path)
+            if manifest is None or record is None:
+                raise ValueError(f"delivery index omits completed study attempt: {path}")
+            if (record["sha256"] != pointer.get("manifest_sha256") or manifest["cell_id"] != cell
+                    or manifest["release_id"] != release.get("release_id")
+                    or manifest["release_hashes"] != release.get("hashes")
+                    or ledger.get(cell, {}).get("release_id") != manifest["release_id"]
+                    or ledger.get(cell, {}).get("attempt_id") != manifest["attempt_id"]
+                    or ledger.get(cell, {}).get("status") != manifest["result"]["status"]
+                    or source != artifact_root / "attempts" / cell / manifest["attempt_id"] / "manifest.json"):
+                raise ValueError(f"completed attempt provenance differs from compiler: {path}")
+            if "videos/viewport.mp4" not in manifest["artifacts"]:
+                raise ValueError(f"completed attempt lacks required viewport: {path}")
+            required.add((path, "videos/viewport.mp4"))
+    if len(cells) != STUDY_EPISODES or cells != set(ledger):
+        raise ValueError(f"compiler report must identify exactly {STUDY_EPISODES} completed attempts")
+    return required
+
+
+def decoded_future(request: object) -> dict | None:
+    if not isinstance(request, dict) or not isinstance(request.get("raw_response"), dict):
+        raise ValueError("prediction request lacks raw response provenance")
+    response = request["raw_response"]
+    trace = response.get("native_trace")
+    future = response.get("future")
+    if future is None and isinstance(trace, dict):
+        future = trace.get("future")
+    status = request.get("future_status")
+    if status in EXPOSED_FUTURES:
+        if not isinstance(future, dict):
+            raise ValueError("exposed prediction lacks retained decoded array identity")
+        return future
+    if status not in UNAVAILABLE_FUTURES or future is not None:
+        raise ValueError("prediction availability contradicts recorder metadata")
+    return None
+
+
+def prediction_coverage(value: dict, manifests: dict, metadata_root: Path,
+                        entries: list[dict]) -> list[dict]:
+    represented = {(entry["manifest_path"], entry["original"]["path"]): entry for entry in entries}
+    dispositions = value.get("predictions", [])
+    if not isinstance(dispositions, list):
+        raise ValueError("prediction dispositions must be an explicit list")
+    declared = {}
+    for row in dispositions:
+        if not isinstance(row, dict):
+            raise ValueError("prediction disposition must be an object")
+        key = (relative_path(row.get("manifest_path")), relative_path(row.get("request_path")))
+        if key in declared:
+            raise ValueError(f"duplicate prediction disposition: {key}")
+        declared[key] = row
+    checked = []
+    exposed = set()
+    for path, manifest in manifests.items():
+        artifacts = manifest["artifacts"]
+        requests = {name for name in artifacts if re.fullmatch(r"predictions/request-\d+\.json", name)}
+        for name in artifacts:
+            match = re.match(r"(predictions/request-\d+)-arrays/", name)
+            if match and match[1] + ".json" not in requests:
+                raise ValueError(f"prediction arrays lack recorder request metadata: {path}: {name}")
+        for request_path in sorted(requests):
+            row = declared.pop((path, request_path), None)
+            if row is None:
+                raise ValueError(f"prediction delivery disposition is missing: {path}: {request_path}")
+            request_identity = {"path": str(PurePosixPath(path).parent / request_path),
+                                **identity(artifacts[request_path])}
+            request = metadata(metadata_root, request_identity)
+            future = decoded_future(request)
+            if future is None:
+                if row.get("status") != request["future_status"]:
+                    raise ValueError("declared unavailable prediction differs from recorder status")
+            else:
+                original = relative_path(future.get("path"))
+                if (original not in artifacts or future.get("sha256") != identity(artifacts[original])["sha256"]
+                        or not original.startswith("predictions/") or not original.endswith(".npy")):
+                    raise ValueError("exposed prediction identity differs from recorder manifest")
+                if row.get("status") != "encoded" or (path, original) not in represented:
+                    raise ValueError(f"exposed prediction lacks its registered viewing derivative: {path}: {original}")
+                source = represented[(path, original)]["encoding"]["source"]
+                if (future.get("dtype") != "uint8"
+                        or future.get("shape") != [source["frame_count"], source["height"], source["width"], 3]):
+                    raise ValueError("prediction viewing copy source geometry/dtype differs from recorder")
+                exposed.add((path, original))
+            checked.append({**row, "request_record": request_identity, "recorded_status": request["future_status"]})
+    if declared:
+        raise ValueError(f"prediction dispositions reference unknown recorder requests: {sorted(declared)}")
+    if any(original.startswith("predictions/") and original.endswith(".npy") and (path, original) not in exposed
+           for path, original in represented):
+        raise ValueError("a viewing derivative claims an unexposed or noncanonical prediction array")
+    return checked
+
+
 def load_index(index: Path, expected_sha256: str, metadata_root: Path) -> tuple[dict, list[dict]]:
     raw = index.read_bytes()
     if hashlib.sha256(raw).hexdigest() != expected_sha256:
@@ -190,8 +329,8 @@ def load_index(index: Path, expected_sha256: str, metadata_root: Path) -> tuple[
     if not isinstance(value, dict) or value.get("schema_version") != INDEX_SCHEMA:
         raise ValueError(f"expected {INDEX_SCHEMA}")
     if (value.get("study_id") != "SGW-01" or value.get("study_status") != "completed"
-            or type(value.get("expected_episodes")) is not int or value["expected_episodes"] != 1566
-            or type(value.get("completed_episodes")) is not int or value["completed_episodes"] != 1566):
+            or type(value.get("expected_episodes")) is not int or value["expected_episodes"] != STUDY_EPISODES
+            or type(value.get("completed_episodes")) is not int or value["completed_episodes"] != STUDY_EPISODES):
         raise ValueError("final completed-study gate is not satisfied; no downloads permitted")
     completion = metadata(metadata_root, value.get("completion_receipt", {}))
     if (not isinstance(completion, dict) or completion.get("schema_version") != "sgw-01-cohort-analysis-v1"
@@ -203,7 +342,7 @@ def load_index(index: Path, expected_sha256: str, metadata_root: Path) -> tuple[
             or completion.get("planned_queue_sha256") != value["planned_queue_sha256"]):
         raise ValueError("compiler completion receipt is incomplete or cohort/queue identity differs")
     coverage = completion.get("coverage")
-    required_coverage = {"expected": 1566, "observed": 1566, "completed": 1566,
+    required_coverage = {"expected": STUDY_EPISODES, "observed": STUDY_EPISODES, "completed": STUDY_EPISODES,
                          "missing": 0, "duplicate": 0, "technical_invalid": 0}
     if not isinstance(coverage, dict) or any(
             type(coverage.get(key)) is not int or coverage[key] != count for key, count in required_coverage.items()):
@@ -238,7 +377,7 @@ def load_index(index: Path, expected_sha256: str, metadata_root: Path) -> tuple[
             raise ValueError(f"unfinished attempt manifest: {path}")
         cell = relative_path(manifest.get("cell_id"))
         attempt = relative_path(manifest.get("attempt_id"))
-        if "/" in cell or "/" in attempt or path != f"attempts/{cell}/{attempt}/manifest.json":
+        if "/" in cell or "/" in attempt or PurePosixPath(path).parts[-4:] != ("attempts", cell, attempt, "manifest.json"):
             raise ValueError(f"manifest path disagrees with recorder identity: {path}")
         if (not isinstance(manifest.get("release_id"), str) or not manifest["release_id"]
                 or not isinstance(manifest.get("release_hashes"), dict) or not manifest["release_hashes"]
@@ -252,6 +391,7 @@ def load_index(index: Path, expected_sha256: str, metadata_root: Path) -> tuple[
                 identity(info)
                 expected_videos.add((path, artifact))
         manifests[path] = manifest
+    expected_videos.update(completed_attempts(completion, manifests, {row["path"]: row for row in records}))
     videos = value.get("videos")
     if not isinstance(videos, list) or not videos:
         raise ValueError("final viewing-copy index has no videos")
@@ -293,6 +433,7 @@ def load_index(index: Path, expected_sha256: str, metadata_root: Path) -> tuple[
         })
     if expected_videos - represented:
         raise ValueError(f"final index omits recorded videos: {sorted(expected_videos - represented)}")
+    value["predictions"] = prediction_coverage(value, manifests, metadata_root, entries)
     return value, entries
 
 
@@ -368,6 +509,7 @@ def archive(*, index: Path, index_sha256: str, metadata_root: Path, destination:
                     "study_id", "study_status", "cohort_id", "planned_queue_sha256",
                     "expected_episodes", "completed_episodes", "completion_receipt")},
                 "attempt_manifests": manifest["attempt_manifests"],
+                "predictions": manifest["predictions"],
                 "scope": "supplied index only; video counts are not study episode counts",
                 "mode": "verify" if verify_only else "download", "files": entries, "errors": [],
             }
