@@ -8,7 +8,8 @@ import pytest
 BOOTSTRAP = Path("tools/cluster_policy_bootstrap.sh").resolve()
 
 
-def run_bootstrap(tmp_path, *, model="N3", check_only=False, import_code=0, missing_library=False):
+def run_bootstrap(tmp_path, *, model="N3", check_only=False, import_code=0, missing_library=False,
+                  cache_dir=None, tool_dir=None):
     library = tmp_path / "lib"
     library.mkdir()
     fake_python = tmp_path / "python"
@@ -25,6 +26,8 @@ def run_bootstrap(tmp_path, *, model="N3", check_only=False, import_code=0, miss
     uvx.chmod(0o755)
     env = {**os.environ, "CALL_LOG": str(log), "IMPORT_CODE": str(import_code),
            "SGW01_NATIVE_LIBRARY_DIRS": str(library / "absent" if missing_library else library),
+           "UV_CACHE_DIR": str(tmp_path / "uv-cache") if cache_dir is None else cache_dir,
+           "UV_TOOL_DIR": "" if tool_dir is None else tool_dir,
            "LD_LIBRARY_PATH": "/inherited"}
     args = ["bash", str(BOOTSTRAP), *(["--check-only"] if check_only else []),
             model, str(fake_python), "-m", "owned.runtime"]
@@ -46,6 +49,23 @@ def test_check_only_never_constructs_model(tmp_path):
     assert result.returncode == 0
     assert "retinaface.data" in log
     assert "model-command-executed" not in log
+    assert (tmp_path / "uv-cache" / "tools").is_dir()
+
+
+@pytest.mark.parametrize("cache_dir", ["", "/", "relative/cache"])
+def test_unbound_or_invalid_cache_stops_before_imports(tmp_path, cache_dir):
+    result, log = run_bootstrap(tmp_path, cache_dir=cache_dir)
+    assert result.returncode == 66
+    assert "UV_CACHE_DIR must bind" in result.stderr
+    assert not log
+
+
+@pytest.mark.parametrize("tool_dir", ["/", "relative/tools"])
+def test_invalid_tool_directory_stops_before_imports(tmp_path, tool_dir):
+    result, log = run_bootstrap(tmp_path, tool_dir=tool_dir)
+    assert result.returncode == 66
+    assert "UV_TOOL_DIR must bind" in result.stderr
+    assert not log
 
 
 def test_failed_import_stops_before_model_command(tmp_path):

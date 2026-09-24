@@ -67,9 +67,35 @@ native shared libraries, not alternate model packages. No guardrail is
 disabled. No Python environment or upstream source was modified to fix these
 two failures.
 
+Also bind `UV_CACHE_DIR` to
+`/data/users/ali/sgw-01/current-20260924a/cache/uv`. The subsequent CPU-only
+resolver check found that a numeric-UID staging process otherwise selected
+unwritable `/.cache/uv` and `/.local/share/uv/tools`. The bootstrap now requires
+an explicit absolute, writable cache before a Cosmos command and places
+`UV_TOOL_DIR` under that cache unless explicitly bound elsewhere; it never
+relies on those root-home defaults.
+
+With both paths bound, the pinned `GUARDRAIL1_CHECKPOINT.download()` resolver
+passed on CPU against its existing offline snapshot
+`d6d4bfa899a71454a700907664f3e88f503950cf`; no guardrail weights were downloaded,
+no guardrail was disabled, and no model was constructed. `uvx` installed its
+pinned `hf@1.16.4` helper into the writable tool cache.
+
+The new Edge source `cf5d68c00d97ccd2480a2320ed652b92dec63102` and checkpoint
+`a7c7288f9b6ac1684e993007b0f9703dd26e58ef` are staged separately under this
+cohort's `external/cosmos-cf5d68c` and `checkpoints/cosmos3-edge-a7c7288`.
+`verify_identity("E3")` passed for these fresh files; the older
+`vla_wam/checkpoints/cosmos3_edge_policy_droid` did not match the new
+`transformer/config.json` identity and was not changed. The FLUX policy and
+base snapshots in `checkpoint_integrations.json` also passed full registered
+file verification. Its isolated `envs/flux-e2dd1d8` environment has Python
+3.12.13, Torch 2.10.0+cu128, NATTEN 0.21.6+torch2100cu128, and the study's
+recording dependencies. These are CPU staging results, not runtime qualification.
+
 The following **CPU-only** startup check passed in the approved container:
 
 ```sh
+UV_CACHE_DIR=/data/users/ali/sgw-01/current-20260924a/cache/uv \
 bash tools/cluster_policy_bootstrap.sh --check-only N3 \
   /data/users/ali/vla_wam/envs/cosmos-nano-411d25b-v3-exact/bin/python
 ```
@@ -79,6 +105,7 @@ OpenCV is `4.13.0`. A normal invocation runs that same startup check and then
 executes the supplied command:
 
 ```sh
+UV_CACHE_DIR=/data/users/ali/sgw-01/current-20260924a/cache/uv \
 bash tools/cluster_policy_bootstrap.sh N3 \
   /data/users/ali/vla_wam/envs/cosmos-nano-411d25b-v3-exact/bin/python \
   -m experiments.workshops.spatial_grounding_v1.nano_fixed_input \

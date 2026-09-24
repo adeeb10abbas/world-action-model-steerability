@@ -35,6 +35,20 @@ export LD_LIBRARY_PATH="$native_dirs${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}"
 
 # Check the actual dependency that failed before any model construction.
 if [[ "$model" == N3 || "$model" == E3 ]]; then
+    if [[ "${UV_CACHE_DIR:-}" != /* || "$UV_CACHE_DIR" == / ]]; then
+        echo "UV_CACHE_DIR must bind an absolute writable runtime cache, not the filesystem root" >&2
+        exit 66
+    fi
+    export UV_TOOL_DIR="${UV_TOOL_DIR:-$UV_CACHE_DIR/tools}"
+    if [[ "$UV_TOOL_DIR" != /* || "$UV_TOOL_DIR" == / ]]; then
+        echo "UV_TOOL_DIR must bind an absolute writable runtime tool directory" >&2
+        exit 66
+    fi
+    mkdir -p "$UV_CACHE_DIR" "$UV_TOOL_DIR"
+    if [[ ! -w "$UV_CACHE_DIR" || ! -w "$UV_TOOL_DIR" ]]; then
+        echo "UV_CACHE_DIR or UV_TOOL_DIR is not writable" >&2
+        exit 66
+    fi
     if [[ ! -x "$python_bin/uvx" ]]; then
         echo "required Cosmos checkpoint helper is unavailable: $python_bin/uvx" >&2
         exit 66
