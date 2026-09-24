@@ -23,6 +23,7 @@ if __package__ in (None, ''):
 
 from experiments.workshops.spatial_grounding_v1.build_asset_manifest import referenced_usd_assets
 from experiments.workshops.spatial_grounding_v1.fixtures import FixtureCandidate
+from experiments.workshops.spatial_grounding_v1.camera_configuration import camera_configuration_identity
 from experiments.workshops.spatial_grounding_v1.runtime import D1_ROBOLAB_CLIENT_COMMIT
 from experiments.workshops.spatial_grounding_v1.scene_design import write_scene
 from tools.build_scene_package import FAMILIES, _duplicate, _inspect, _require, _resolve
@@ -35,6 +36,8 @@ AUTHORING_SOURCES = (
     Path('tools/materialize_scene_handoff.py'), Path('tools/build_scene_package.py'),
     Path('experiments/workshops/spatial_grounding_v1/scene_design.py'),
     Path('experiments/workshops/spatial_grounding_v1/prospective_family_scene.py'),
+    Path('experiments/workshops/spatial_grounding_v1/camera_configuration.py'),
+    Path('experiments/workshops/spatial_grounding_v1/close_cameras.json'),
 )
 STATUS = 'physical_qualified_runtime_pending'
 
@@ -267,14 +270,14 @@ def materialize(*, registry: Path, source_roots: Mapping[str, Path | str], works
                     'candidate_path': layout['candidate']['path'], 'candidate_file_sha256': layout['candidate']['sha256'],
                     'native_scene_files': [layout['native_scene']]}
                 stream.write(json.dumps({**row, 'fixture_sha256': layout['fixture_sha256']}, sort_keys=True)+'\n')
-        binding = {'schema_version': 'sgw-jointpos-environment-binding-v1', 'status': STATUS,
+        binding = {'camera_configuration': camera_configuration_identity(), 'schema_version': 'sgw-jointpos-environment-binding-v1', 'status': STATUS,
             'source_root': str(source), 'source_commit': source_commit, 'robolab_root': str(robolab),
             'robolab_commit': PINNED_ROBOLAB_COMMIT, 'assets_manifest': str(output/'assets.json'),
             'assets_manifest_sha256': assets_hash, 'cells': cells, 'runtime_qualified': False,
             'learned_policy_launch_authorized': False}
         _write(staging/'environment-binding.json', binding)
         shutil.copyfile(registry, staging/'selection-registry.json')
-        result = {'schema_version': 'sgw-offline-scene-handoff-v1', 'status': STATUS,
+        result = {'camera_configuration': camera_configuration_identity(), 'schema_version': 'sgw-offline-scene-handoff-v1', 'status': STATUS,
             'layout_count': len(layouts), 'cell_count': len(cells), 'runtime_qualified': False,
             'learned_policy_launch_authorized': False, 'model_requests': 0, 'native_runs': 0,
             'selection_registry': _record(registry), 'source_roots': {k: str(v) for k,v in roots.items()},

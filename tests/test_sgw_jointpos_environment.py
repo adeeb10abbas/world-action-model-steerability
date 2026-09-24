@@ -251,6 +251,7 @@ def test_jointpos_binding_checks_actual_assets_candidate_and_release(monkeypatch
            "environment_seed": "0"}
     binding_file = tmp_path / "binding.json"
     binding_file.write_text(json.dumps({
+        "camera_configuration": jointpos.camera_configuration_identity(),
         "source_root": str(tmp_path), "robolab_root": str(tmp_path),
         "source_commit": "c" * 40, "robolab_commit": jointpos.D1_ROBOLAB_CLIENT_COMMIT,
         "assets_manifest": str(assets), "assets_manifest_sha256": jointpos._sha256(assets),

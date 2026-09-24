@@ -74,6 +74,9 @@ def main():
         auto_register_droid_envs(task=[str(args.study_root / 'experiments/workshops/spatial_grounding_v1/sgw_jointpos_task.py')], cameras=WRIST_LEFT_RIGHT_HEAD)
         cfg = parse_env_cfg('SGWJointPositionTask', device=args.device, seed=record['scene_seed'], num_envs=1)
         configure_clean_appearance(cfg, candidate)
+        from experiments.workshops.spatial_grounding_v1.camera_configuration import configure_study_cameras, camera_configuration_identity
+        configure_study_cameras(cfg, candidate)
+        receipt['camera_configuration'] = camera_configuration_identity()
         env, _ = create_env(cfg, device=args.device, seed=record['scene_seed'], num_envs=1,
                             instruction_type='default', policy='camera_diagnostic_no_model', renderer='realtime', rendering_mode='balanced')
         wrapper = JointPositionEnvironment(env, candidate=candidate, cell_id='camera-check:'+args.layout, evidence_root=args.output / 'reset-evidence')

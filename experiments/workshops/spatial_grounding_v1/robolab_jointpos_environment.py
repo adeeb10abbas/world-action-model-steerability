@@ -22,6 +22,7 @@ from .fixtures import (
     RESET_POSITION_TOLERANCE_M, pose_error,
 )
 from .policy_observations import native_policy_observation
+from .camera_configuration import camera_configuration_identity, configure_study_cameras
 from .robolab_lat_qualification import RoboLabLatEnvironment
 from .runtime import D1_ROBOLAB_CLIENT_COMMIT, _required_env, _verify_git_checkout
 from .scoring import relation_m
@@ -49,6 +50,8 @@ class JointPositionBinding:
         if not path.is_file() or _sha256(path) != _required_env("SGW01_ENV_BINDING_SHA256"):
             raise AdapterError("joint-position environment binding is absent or hash-mismatched")
         value = json.loads(path.read_text())
+        if value.get("camera_configuration") != camera_configuration_identity():
+            raise AdapterError("Environment binding lacks the current close camera revision; rematerialize it")
         source_root = Path(value["source_root"]).resolve()
         robolab_root = Path(value["robolab_root"]).resolve()
         _verify_git_checkout(source_root, value["source_commit"], "SGW simulator")
@@ -246,6 +249,7 @@ def create_environment(*, cell: Any, evidence_root: Path) -> JointPositionEnviro
     scene_config = parse_env_cfg('SGWJointPositionTask', device=_required_env('SGW01_SIMULATOR_DEVICE'),
                                  seed=record['scene_seed'], num_envs=1)
     configure_clean_appearance(scene_config, candidate)
+    configure_study_cameras(scene_config, candidate)
     env, _ = create_env(
         scene_config, device=_required_env("SGW01_SIMULATOR_DEVICE"),
         seed=record["scene_seed"], num_envs=1, instruction_type="default",
