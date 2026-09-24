@@ -5,8 +5,10 @@ import importlib
 import json
 from dataclasses import asdict
 from pathlib import Path
+import shlex
 import shutil
 import subprocess
+import sys
 
 import pytest
 
@@ -53,7 +55,8 @@ def inputs(tmp_path, monkeypatch):
     payload.write_text('#usda 1.0\ndef Xform "cube" {}\n')
     scene.parent.mkdir(parents=True)
     scene.write_text('#usda 1.0\n(subLayers = [@../objects/cube.usda@])\n')
-    (robolab/'.gitignore').write_text('assets/objects/\n')
+    (robolab/'assets/unused.bin').write_bytes(b'unused asset')
+    (robolab/'controller.py').write_text('speed = 1\n')
     robolab_commit = git_snapshot(robolab)
     if module:
         monkeypatch.setattr(module, 'PINNED_ROBOLAB_COMMIT', robolab_commit)
@@ -175,6 +178,45 @@ def test_changed_asset_payload_is_rejected_even_with_same_file_size(inputs):
     with pytest.raises(ValueError, match='asset payload'):
         api().materialize(**inputs)
     assert not inputs['output'].exists()
+
+
+def test_unused_robolab_asset_change_is_not_read_or_blocking(inputs, tmp_path):
+    robolab = inputs['robolab_root']
+    marker = tmp_path/'asset-filter-ran'
+    probe = tmp_path/'asset-filter.py'
+    probe.write_text('from pathlib import Path\nimport sys\n'
+                     f'Path({str(marker)!r}).write_text("asset bytes scanned")\n'
+                     'sys.stdout.buffer.write(sys.stdin.buffer.read())\n')
+    (robolab/'.git/info/attributes').write_text('assets/** filter=assetprobe\n')
+    subprocess.run(['git', '-C', str(robolab), 'config', 'filter.assetprobe.clean',
+                    shlex.join([sys.executable, str(probe)])], check=True)
+    (robolab/'assets/unused.bin').write_bytes(b'edited asset')
+    result = api().materialize(**inputs)
+    assert result['layout_count'] == 87
+    assert not marker.exists(), 'Git must not read/filter unused asset payloads'
+
+
+@pytest.mark.parametrize('staged', [False, True])
+def test_robolab_tracked_code_change_is_rejected(inputs, staged):
+    robolab = inputs['robolab_root']
+    (robolab/'controller.py').write_text('speed = 2\n')
+    if staged:
+        subprocess.run(['git', '-C', str(robolab), 'add', 'controller.py'], check=True)
+    with pytest.raises(ValueError, match='dirty'):
+        api().materialize(**inputs)
+    assert not inputs['output'].exists()
+
+
+@pytest.mark.parametrize('change', ['tracked_asset', 'untracked'])
+def test_study_checkout_still_requires_all_files_clean(tmp_path, change):
+    source = tmp_path/'study'
+    (source/'assets').mkdir(parents=True)
+    (source/'assets/tracked.txt').write_text('original')
+    commit = git_snapshot(source)
+    changed = source/('assets/tracked.txt' if change == 'tracked_asset' else 'untracked.txt')
+    changed.write_text('changed')
+    with pytest.raises(ValueError, match='dirty'):
+        api()._verify_checkout(source, commit, untracked=True)
 
 
 def test_changed_workspace_or_design_does_not_reuse_qualification(inputs):

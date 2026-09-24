@@ -1,6 +1,6 @@
 # SGW-01: clean WAM study coverage
 
-**Research plan, 24 September 2026.** The clean LAT, HEIGHT and DIST scene generators are implemented. LAT and DIST use a flat tabletop; only HEIGHT uses raised supports. Physical qualification is running, including flat-table DIST prototype trials whose outcomes are not reported here; the final 87-layout set is not complete. This plan reports no learned-policy findings and does not authorize the 1,044-cell study.
+**Research plan, 24 September 2026.** The clean LAT, HEIGHT and DIST scene generators are implemented. LAT and DIST use a flat tabletop; only HEIGHT uses raised supports. The paper's three illustrative examples each have six independently verified passing scripted trials. Qualification of the final 87-layout set is still running and is not complete. This plan reports no learned-policy findings and does not authorize the 1,044-cell study.
 
 The paper asks whether equivalent descriptions preserve a WAM's spatial goal, and whether its generated future accurately describes the motion that its actions produce. Prediction must be compared with both execution and a persistence baseline at the same physical time. The study uses **Cosmos3 Nano Policy DROID (N3)** and **DreamZero's official conditional-action path (D1)**.
 

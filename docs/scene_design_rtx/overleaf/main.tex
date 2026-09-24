@@ -1,6 +1,7 @@
 \documentclass[11pt]{article}
 \usepackage[margin=1in]{geometry}
 \usepackage[T1]{fontenc}
+\usepackage{graphicx}
 \usepackage{lmodern,microtype,amsmath,amssymb,booktabs,tabularx,longtable,array,enumitem,xcolor,needspace}
 \usepackage[hidelinks]{hyperref}
 \definecolor{ink}{RGB}{24,65,80}
@@ -55,10 +56,27 @@ LAT and DIST use a flat tabletop: the cube and reference objects rest directly o
 
 Removing DIST pedestals is scene cleanup, not a measured support ablation. Support presence is not a study factor. The families differ in references, geometry and placement requirements, so their comparison cannot identify a pure causal effect of spatial axis or relation type.
 
+\begin{figure}[htbp]
+\centering
+\begin{minipage}[t]{0.32\linewidth}
+\centering\includegraphics[width=\linewidth]{figures/lat-flat-right.png}
+\par\small\textbf{(a) LAT: flat tabletop}
+\end{minipage}\hfill
+\begin{minipage}[t]{0.32\linewidth}
+\centering\includegraphics[width=\linewidth]{figures/height-upper-right.png}
+\par\small\textbf{(b) HEIGHT: raised supports}
+\end{minipage}\hfill
+\begin{minipage}[t]{0.32\linewidth}
+\centering\includegraphics[width=\linewidth]{figures/dist-flat-right.png}
+\par\small\textbf{(c) DIST: flat tabletop}
+\end{minipage}
+\caption{Unmodified initial left-shoulder camera captures from three illustrative clean layouts: robot-right LAT approach, upper-right HEIGHT support, and bowl-right flat DIST. Each example independently passed both scripted goals across three resets (6/6). Geometry differs by task; wording comparisons within a layout reuse identical initial scenes. These examples do not establish completion of the 87-layout set or learned-policy performance.}
+\end{figure}
+
 Initial states must satisfy $|r(0)|\leq5$ mm, so neither requested relation is already satisfied. Success requires $q r\geq30$ mm for physical goal sign $q\in\{-1,+1\}$, a recorded pickup, detached release, and stable supported placement during the final 0.5 simulated seconds. Pickup requires a cube-center rise of at least 30 mm for three recorded steps. Final cube speed must be below 0.02 m/s and angular speed below 0.2 rad/s. If any reference center moves more than 5 mm from its initial position at any recorded step, success is zero; the trial and measured margins remain in the analysis. Simulator state is used for reset qualification and scoring, not language coaching or additional policy input.
 
 \subsection{Fixtures, models, and sample}
-All trials use clean tabletop scenes in DROID/RoboLab. Before selection, each candidate must pass both physical goals across three scripted resets, satisfy reset agreement within 3 mm and 2 degrees, and retain measured object, support, camera and asset identities. Scripted success establishes fixture feasibility only. Finite candidate lists and their seeded selection order are declared before their outcomes; candidates are never selected by policy success. Each family requires 29 distinct qualifying layouts: one pilot on the seeded side, two development layouts per side and 12 confirmation layouts per side. LAT balances the cube's starting approach side relative to the fixed robot frame; HEIGHT balances the upper-support side; DIST balances bowl versus plate side. Side assignments are checked from measured geometry. Both models use the same accepted layouts. The three generators are implemented, while qualification and the final 87-layout registry remain incomplete. Flat-table DIST prototype trials are underway; no outcomes from those trials are reported here.
+All trials use clean tabletop scenes in DROID/RoboLab. Before selection, each candidate must pass both physical goals across three scripted resets, satisfy reset agreement within 3 mm and 2 degrees, and retain measured object, support, camera and asset identities. Scripted success establishes fixture feasibility only. Finite candidate lists and their seeded selection order are declared before their outcomes; candidates are never selected by policy success. Each family requires 29 distinct qualifying layouts: one pilot on the seeded side, two development layouts per side and 12 confirmation layouts per side. LAT balances the cube's starting approach side relative to the fixed robot frame; HEIGHT balances the upper-support side; DIST balances bowl versus plate side. Side assignments are checked from measured geometry. Both models use the same accepted layouts. The three generators and illustrative qualified examples are available, while qualification of the full 87-layout registry remains incomplete.
 
 The two primary configurations are Cosmos3 Nano Policy DROID with guidance 3 (N3) and DreamZero DROID's official conditional-action path (D1). Nano uses the pinned four-step, shift-5, history-1 configuration and executes up to 32 actions per request. D1 uses video guidance 5, 16 configured inference steps with actual cache behavior recorded, and eight executed actions per request. Its effective noise seed remains 1140. Exact checkpoint revisions, runtime identities and the unchanged prompt registry are in the study specification~\cite{study}.
 

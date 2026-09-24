@@ -54,7 +54,7 @@ class JointPositionBinding:
         _verify_git_checkout(source_root, value["source_commit"], "SGW simulator")
         if value["robolab_commit"] != D1_ROBOLAB_CLIENT_COMMIT:
             raise AdapterError("joint-position RoboLab revision differs from measured runtime")
-        _verify_git_checkout(robolab_root, D1_ROBOLAB_CLIENT_COMMIT, "RoboLab simulator")
+        _verify_git_checkout(robolab_root, D1_ROBOLAB_CLIENT_COMMIT, "RoboLab simulator", exclude_assets=True)
         manifest = Path(value["assets_manifest"]).resolve()
         expected = value["assets_manifest_sha256"]
         if not manifest.is_file() or _sha256(manifest) != expected:

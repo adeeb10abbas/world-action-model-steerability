@@ -64,7 +64,7 @@ def _verify_dreamzero_identity() -> dict[str, str]:
         source_root, DREAMZERO_CONFIG["source_commit"], "DreamZero server"
     )
     client_source = _verify_git_checkout(
-        client_source_root, D1_ROBOLAB_CLIENT_COMMIT, "RoboLab client"
+        client_source_root, D1_ROBOLAB_CLIENT_COMMIT, "RoboLab client", exclude_assets=True
     )
     if source != DREAMZERO_CONFIG["source_commit"]:
         raise AdapterError("DreamZero source checkout is not the pinned commit")
@@ -109,7 +109,14 @@ def _verify_dreamzero_identity() -> dict[str, str]:
     }
 
 
-def _verify_git_checkout(root: Path, expected: str, label: str) -> str:
+def _verify_git_checkout(root: Path, expected: str, label: str, *, exclude_assets: bool = False) -> str:
+    """Verify pinned tracked source; RoboLab callers validate used assets separately.
+
+    Its materialized LFS assets are covered by the simulator's exact asset
+    manifest. Excluding only assets/** avoids scanning that entire collection;
+    study and model/server checkouts retain the full tracked-file check.
+    """
+    paths = [".", ":(exclude)assets/**"] if exclude_assets else []
     try:
         revision = subprocess.run(
             ["git", "-C", str(root), "rev-parse", "HEAD"],
@@ -118,7 +125,7 @@ def _verify_git_checkout(root: Path, expected: str, label: str) -> str:
             text=True,
         ).stdout.strip()
         subprocess.run(
-            ["git", "-C", str(root), "diff", "--quiet", "HEAD", "--"],
+            ["git", "-C", str(root), "diff", "--quiet", "HEAD", "--", *paths],
             check=True,
             capture_output=True,
             text=True,

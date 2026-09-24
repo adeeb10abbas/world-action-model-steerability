@@ -28,9 +28,17 @@ aliases. The compact original workstation asset manifest is tracked, with
 SHA-256 `eb5507f84044f7206f5822c7ef18595272f45022fcd166cfdb3a12ef88a09ec1`.
 Its external asset payloads are not redistributed.
 
+The study checkout must match its supplied commit and have no tracked changes
+or untracked files. RoboLab must match its pinned commit and have no tracked
+changes outside `assets/`, including staged code changes. The RoboLab code
+check excludes `assets/**` before Git examines payloads, so unrelated Git-LFS
+assets neither block the handoff nor incur a whole asset-checkout scan.
+
 The materializer verifies the recorded six-trial receipts, distinct layouts,
 side quotas, declared selection order, frozen prompts and intact six-condition
-blocks. Every native asset must retain its recorded byte size and SHA-256.
+blocks. Every asset in the exact used base-scene dependency closure must retain
+its recorded byte size and SHA-256; missing, changed or extra manifest entries
+fail. Excluding assets from the Git code check does not relax these checks.
 Manifest relocation changes only its root and asset paths. Each overlay is
 regenerated from the exact design/workspace; substituting its old base-scene
 path must recover the recorded overlay SHA-256. A geometry, material or other

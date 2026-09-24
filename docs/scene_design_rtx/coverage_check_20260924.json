@@ -1,6 +1,6 @@
 {
   "status": "clean_wam_research_plan_not_experimental_results",
-  "checked_at_utc": "2026-09-24T03:29:45.317022+00:00",
+  "checked_at_utc": "2026-09-24T04:05:11.668189+00:00",
   "scope": "D/C/I x LAT/HEIGHT/DIST x N3/D1 in clean tabletop scenes",
   "repository": "https://github.com/adeeb10abbas/world-action-model-steerability",
   "cells": 1044,
@@ -29,7 +29,7 @@
       "HEIGHT": "raised supports",
       "DIST": "flat tabletop"
     },
-    "flat_dist_prototype_trials": "underway; no outcomes reported in this research plan",
+    "flat_dist_prototype_trials": "Illustrated bowl-right prototype independently passed 6/6 scripted checks; full cohort qualification remains incomplete",
     "dist_pedestal_removal": "scene cleanup; not a measured support ablation",
     "support_presence_is_study_factor": false
   },
@@ -49,44 +49,57 @@
     "missing_includes": [],
     "bibliography": "inline thebibliography; no external .bib file",
     "unresolved_citation_keys": [],
-    "coverage_copies_identical": true
+    "coverage_copies_identical": true,
+    "images": [
+      "overleaf/figures/lat-flat-right.png",
+      "overleaf/figures/height-upper-right.png",
+      "overleaf/figures/dist-flat-right.png"
+    ]
   },
   "local_compile": {
-    "engine": "pdflatex",
-    "passes": 1,
-    "prior_auxiliary_files_reused": true,
+    "build_directory": "/var/folders/ng/tlbwxyys5mjb1lzyjhgs6kc80000gn/T/sgw-three-panel-paper-13oblpfr",
     "exit_code": 0,
+    "engine": "latexmk -pdf",
+    "build_invocations": 1,
+    "pdflatex_passes": 2,
     "errors": 0,
     "warnings": 0,
     "typesetting_warnings": 0,
     "pages": 10,
-    "pdf_sha256": "a157fd153a0ad9a7465af796084d48c9b21f694531cf2d05f7af398739d3f011"
+    "pdf_sha256": "1cd47934cf7bf92ddab63b161ddc35f9bf9057cd33dc632b868e26c9b516d583"
   },
   "overleaf": {
     "project_url": "https://www.overleaf.com/project/6ab2bdb39b30df4bbc98a15e",
     "project_title": "steering wams",
     "synced_this_revision": true,
-    "checked_at_utc": "2026-09-24T03:33:52.542546+00:00",
+    "checked_at_utc": "2026-09-24T04:05:11.668189+00:00",
     "method": "Authenticated Chrome UI file upload; full sources read before replacement",
-    "preupload_review": "Earlier historical draft; no conflicting user edits identified outside the authorized cleanup",
+    "preupload_review": "Both full saved TeX sources matched the previous synchronized revision before replacement; no intervening user edits were present",
     "saved_source_readback_matches": true,
     "readback_check": "Full editor clipboard text character count and FNV-1a 64-bit fingerprint matched each uploaded local source",
     "uploaded_source_sha256": {
-      "main.tex": "94183f519c62a4e6c7e10aac230f5e0afdda6831e7d1efe169f41d1b336920dc",
-      "ablation_coverage_20260924.tex": "ec218f6e5c6e3ef6fbe0c77714f9fca4a668fb22f30433ad63c14dbdeb042124"
+      "main.tex": "fcdc6b5035b87224820fe3f8900239209462204dc2b91509d9a8730c1afc9194",
+      "ablation_coverage_20260924.tex": "6d46bcb5edb91fac568fb725e043373cd51a4cfbf47556d938338f5fb3272589",
+      "figures/lat-flat-right.png": "ac35e263b4ae4b966cd6c0938500c08fd75ec3d6c2f32185e71a218b4c054dab",
+      "figures/height-upper-right.png": "6673f7e0036a5a3ba4b44fa1f7ecd37a811d7973806f24e785c576dad1ab7f03",
+      "figures/dist-flat-right.png": "78b45a35a3bcd5d4193de78f1182f37fccb059de97318de135cf5dbcbb1c5a9e"
     },
     "compile_checked_remotely": true,
     "compile_errors": 0,
     "compile_warnings": 0,
     "pdf_pages": 10,
-    "compile_build": "1a0d179568e-4d56efa426d05118",
-    "other_project_files_changed": false
+    "compile_build": "1a0d193c946-1b2662b17bf23d89",
+    "other_project_files_changed": false,
+    "image_upload_verification": "All three files present in figures folder and rendered in the compiled page 3; no remote PNG download/hash check performed"
   },
   "delivery_hashes": {
-    "ABLATION_COVERAGE.md": "1022e2f21a65b89a41f487fdd2508fb332c944e5de0e0f21f3c608049b4ad855",
-    "ablation_coverage_20260924.tex": "ec218f6e5c6e3ef6fbe0c77714f9fca4a668fb22f30433ad63c14dbdeb042124",
-    "overleaf/main.tex": "94183f519c62a4e6c7e10aac230f5e0afdda6831e7d1efe169f41d1b336920dc",
-    "overleaf/ablation_coverage_20260924.tex": "ec218f6e5c6e3ef6fbe0c77714f9fca4a668fb22f30433ad63c14dbdeb042124"
+    "ABLATION_COVERAGE.md": "d0e1f541b9edfc959459929ad77f9a10c0e760417f92dad1bc89685ad41dbba0",
+    "ablation_coverage_20260924.tex": "6d46bcb5edb91fac568fb725e043373cd51a4cfbf47556d938338f5fb3272589",
+    "overleaf/main.tex": "fcdc6b5035b87224820fe3f8900239209462204dc2b91509d9a8730c1afc9194",
+    "overleaf/ablation_coverage_20260924.tex": "6d46bcb5edb91fac568fb725e043373cd51a4cfbf47556d938338f5fb3272589",
+    "overleaf/figures/lat-flat-right.png": "ac35e263b4ae4b966cd6c0938500c08fd75ec3d6c2f32185e71a218b4c054dab",
+    "overleaf/figures/height-upper-right.png": "6673f7e0036a5a3ba4b44fa1f7ecd37a811d7973806f24e785c576dad1ab7f03",
+    "overleaf/figures/dist-flat-right.png": "78b45a35a3bcd5d4193de78f1182f37fccb059de97318de135cf5dbcbb1c5a9e"
   },
   "matched_ablation": {
     "primary": "I minus C",
@@ -97,5 +110,47 @@
       "initial scene state"
     ],
     "cross_family_pure_axis_causal_claim": false
+  },
+  "illustrative_figure": {
+    "camera": "over_shoulder_left_camera",
+    "panels": [
+      {
+        "paper_path": "overleaf/figures/lat-flat-right.png",
+        "source_path": "artifacts/workshops/spatial_grounding_v1/workstation_receipts_20260924/prototype-06-a/over_shoulder_left_camera.png",
+        "sha256": "ac35e263b4ae4b966cd6c0938500c08fd75ec3d6c2f32185e71a218b4c054dab",
+        "bytes": 434491,
+        "pixels_modified": false,
+        "verification_path": "artifacts/workshops/spatial_grounding_v1/workstation_receipts_20260924/prototype-06-a/verification.json",
+        "verification_sha256": "6beda70e7ba8a67dc80f18d6ea241202e5dfff0c20888f2bf772cee31f77be57",
+        "passed_scripted_checks": 6
+      },
+      {
+        "paper_path": "overleaf/figures/height-upper-right.png",
+        "source_path": "artifacts/workshops/spatial_grounding_v1/workstation_receipts_20260924/prototype-05-a/over_shoulder_left_camera.png",
+        "sha256": "6673f7e0036a5a3ba4b44fa1f7ecd37a811d7973806f24e785c576dad1ab7f03",
+        "bytes": 446937,
+        "pixels_modified": false,
+        "verification_path": "artifacts/workshops/spatial_grounding_v1/workstation_receipts_20260924/prototype-05-a/verification.json",
+        "verification_sha256": "6d2ed8a30d6f403220b6bf63ac611cea31e3f38a3adb2f3f01464b708b62991b",
+        "passed_scripted_checks": 6
+      },
+      {
+        "paper_path": "overleaf/figures/dist-flat-right.png",
+        "source_path": "artifacts/workshops/spatial_grounding_v1/workstation_receipts_20260924/SGW-FLAT-DIST-PROTOTYPES-20260924-HEADLESS-A2/SGW-FLAT-DIST-RIGHT-000/over_shoulder_left_camera.png",
+        "sha256": "78b45a35a3bcd5d4193de78f1182f37fccb059de97318de135cf5dbcbb1c5a9e",
+        "bytes": 437748,
+        "pixels_modified": false,
+        "verification_path": "artifacts/workshops/spatial_grounding_v1/workstation_receipts_20260924/SGW-FLAT-DIST-PROTOTYPES-20260924-HEADLESS-A2/SGW-FLAT-DIST-RIGHT-000/verification.json",
+        "verification_sha256": "1e87caf2271cd89c94a2013dd244adac90e98646f102e923e707b02f4679f49b",
+        "passed_scripted_checks": 6
+      }
+    ],
+    "meaning": "Three qualified examples; not full cohort completion or learned-policy results",
+    "visual_qa": {
+      "page": 3,
+      "local_pdf": "Three complete uncropped camera images with readable labels and caption, no overlap",
+      "overleaf_pdf": "All three panels, labels and caption visibly present in compiled PDF page 3",
+      "pixel_edits": false
+    }
   }
 }

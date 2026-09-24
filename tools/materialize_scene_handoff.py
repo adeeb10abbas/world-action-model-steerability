@@ -61,14 +61,18 @@ def _record(path: Path) -> dict:
     return {'path': str(path.resolve()), 'sha256': _sha(path), 'bytes': path.stat().st_size}
 
 
-def _verify_checkout(root: Path, commit: str, *, untracked: bool) -> None:
+def _verify_checkout(root: Path, commit: str, *, untracked: bool, exclude_assets: bool = False) -> None:
+    _require(not (untracked and exclude_assets), 'Full source verification cannot exclude assets')
     try:
         actual = subprocess.check_output(['git', '-C', str(root), 'rev-parse', 'HEAD'], text=True, stderr=subprocess.PIPE).strip()
-        dirty = subprocess.check_output(['git', '-C', str(root), 'status', '--porcelain',
-                                         '--untracked-files=' + ('normal' if untracked else 'no')], text=True)
+        _require(len(commit) == 40 and actual == commit, f'Source commit mismatch: {root}')
+        # RoboLab payloads are checked against the exact used dependency manifest
+        # below. Avoid refreshing/hashing its unrelated Git-LFS assets here.
+        check = (['diff', '--name-only', 'HEAD', '--', '.', ':(exclude)assets/**'] if exclude_assets else
+                 ['status', '--porcelain', '--untracked-files=' + ('normal' if untracked else 'no')])
+        dirty = subprocess.check_output(['git', '-C', str(root), *check], text=True)
     except (OSError, subprocess.CalledProcessError) as error:
         raise ValueError(f'Missing committed source checkout: {root}') from error
-    _require(len(commit) == 40 and actual == commit, f'Source commit mismatch: {root}')
     _require(not dirty, f'Source checkout is dirty: {root}')
 
 
@@ -190,7 +194,7 @@ def materialize(*, registry: Path, source_roots: Mapping[str, Path | str], works
     package = _json(registry)
     selected = _selected(package, roots)
     _verify_checkout(source, source_commit, untracked=True)
-    _verify_checkout(robolab, PINNED_ROBOLAB_COMMIT, untracked=False)
+    _verify_checkout(robolab, PINNED_ROBOLAB_COMMIT, untracked=False, exclude_assets=True)
     for relative in AUTHORING_SOURCES:
         _require(_sha(source / relative) == _sha(SOURCE / relative), f'Executing authoring source differs from pinned checkout: {relative}')
     assets, relocation = _relocated_assets(assets_manifest, robolab)

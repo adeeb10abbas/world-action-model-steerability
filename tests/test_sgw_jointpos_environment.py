@@ -259,7 +259,7 @@ def test_jointpos_binding_checks_actual_assets_candidate_and_release(monkeypatch
     }))
     monkeypatch.setenv("SGW01_ENV_BINDING", str(binding_file))
     monkeypatch.setenv("SGW01_ENV_BINDING_SHA256", jointpos._sha256(binding_file))
-    monkeypatch.setattr(jointpos, "_verify_git_checkout", lambda *args: None)
+    monkeypatch.setattr(jointpos, "_verify_git_checkout", lambda *args, **kwargs: None)
     binding = jointpos.JointPositionBinding.load()
     assert binding.cell(row)[0]["scene_seed"] == 0
     with pytest.raises(AdapterError, match="prompt"):
