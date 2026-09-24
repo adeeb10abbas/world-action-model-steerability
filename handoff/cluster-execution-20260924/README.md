@@ -16,12 +16,26 @@ The [latest user instruction](completion-instruction.json) extends the
 objective through all 1,566 unique study outcomes and verified video/raw
 manifests, not merely launch. Keep every actual recording on the PVC and push
 compact indexes, hashes, provenance and derived results. Do not add video
-blobs to Git or Git LFS. The latest delivery choice is to download all study
-viewport and exposed prediction videos incrementally to
+blobs to Git or Git LFS. Retain full-quality originals, including original
+resolution, frame counts and timestamps. Create separate H.264 MP4 viewing
+derivatives with their own hashes and master references. **Only after all
+1,566 episodes and required outputs are finished/accounted**, download the
+study viewport and exposed prediction derivatives to
 `/Users/SZ5VJY/Downloads/world-action-model-steerability-videos`, with a
 manifest-driven, checksum-verified local receipt. Preserve the PVC originals,
 safe hierarchy and resumable partial files; do not overwrite unrelated files
-or delete other user data for space.
+or delete other user data for space. Check total derivative bytes against
+fresh laptop headroom before transfer. If insufficient, report the exact
+capacity needed for the user's external drive; do not start partial delivery
+before full-study accounting.
+
+Once the study is actually healthy and running, use one light receipt/scoped
+Job-state check about every 15 minutes, with nonempty evidence commits about
+hourly or at completed-partition milestones. No full raw-data rehashing or
+inference for monitoring. Switch immediately to focused diagnosis on failure
+or abnormal lack of progress, then return to sparse monitoring after recovery.
+Do not arm that monitor before launch or make cluster progression depend on
+the monitor, laptop, or app remaining open.
 
 The sole resource/output coordinator is session
 `5ed7dc81-68d8-493f-a8c4-81a4b6cb59f6`, acting on the user's instruction relayed
@@ -230,8 +244,8 @@ NATTEN builds recorded in the inventory. Driver 580.95.05 was demonstrated.
 Torch architecture flags alone do not qualify all NATTEN/native kernel paths.
 No peak VRAM was recorded, so no lower-memory fit or minimum VRAM is claimed.
 
-The next useful plan is up to three policy lanes on node0061 and separate
-A40 simulator lanes on nodes191/192/193. The snapshot showed no
+The initial bounded placement used up to three policy lanes on node0061 and
+separate A40 simulator lanes on nodes191/192/193. The snapshot showed no
 namespace-visible GPU reservations on those candidate nodes, but each new
 useful Job must still pass fresh actual-device checks. Invoke
 `gpu_idle_probe --expected-name "NVIDIA A100-SXM4-80GB"` for policy lanes and
@@ -242,13 +256,63 @@ construction. Preserve actual blocked receipts rather than trying other
 placements in a loop. Extra hardware does not waive one worker per model,
 whole partitions, P -> D -> C, or the protected node exclusion.
 
+## Live admission and owned-terminal reconciliation
+
+The six submitted `jobs/live-*-a.json` Jobs used exact deployed source
+`8ac48581eec62143dbd8be7d4cd77cce6de10887` and
+[fresh source/path materialization](live-materialization.json). That CPU
+materialization preserves all 87 layouts, 1,566 bindings and the unchanged
+camera hash; it is not another native scene campaign.
+
+[Actual admission evidence](live-admission-a.json) records all three simulator
+Pods and the F3 policy Pod rejected before container startup:
+`UnexpectedAdmissionError`, requested `nvidia.com/gpu: 1`, available `0`.
+N3/E3 obtained two idle A10080 devices, but their 180-second identity waits
+expired with exit 1 and zero restarts. The
+[PVC pre-execution snapshot](live-pre-execution-state-a.json) confirms no
+simulator identity, mailbox or model-evidence directory for any model.
+**This batch produced zero live model requests, physical actions, or study
+episodes.** It is an infrastructure failure, not a model score.
+
+The user then authorized one bounded owned-terminal allocation reconciliation.
+[Eight exact terminal Jobs](terminal-reconciliation-before.json) were checked:
+the six failed live-A Jobs, the completed current destination check, and
+the completed historical simulator
+`sgw01-ali-main-p-20260923dn-simulator-02`, Job UID
+`3c020853-eca6-4fa4-a96b-510e4ea7b9ef`, Pod UID
+`4062ded0-056f-4673-9858-7ee2ed30e1a7`. Their complete pre-cleanup Kubernetes
+snapshots and output-owner/log hashes were
+[preserved on PVC](terminal-reconciliation-preservation.json) before deleting
+only these terminal Kubernetes objects. All matching Pods were then absent.
+No PVC claim, raw output, old result, unrelated workload or protected training
+allocation was changed. Historical results were not reanalyzed or imported.
+
+A single new useful Nano simulator-B admission on the **same node191**
+subsequently succeeded. Its actual Job UID is
+`52fc58f5-9c87-48a3-9ae6-0dd6c0f158d8`, Pod UID
+`91ff3894-b12a-4820-831f-2f906e976bce`; the identity was bound before creating
+its policy counterpart. Attempt B uses the distinct
+`/data/users/ali/sgw-01/current-20260924a/closed-loop-N3-b` output, not cleared
+or reused attempt-A paths. Admission alone does not establish live inference.
+Prefer sequential documented model checks on this one compatible
+A10080/A40 pair, not a speculative multi-node placement loop.
+
+The [renderer](../../tools/render_runtime_closed_loop_jobs.py) reproduces the
+submitted A manifests exactly. An explicit `--attempt-suffix` gives a distinct
+Job/output identity, and `--simulator-node` can select one of the three
+registered A40 candidate nodes for sequential use; type/idle/UUID/model locks,
+finite deadlines and no automatic retries remain unchanged. Registration and
+actual UID binding are still separate required steps. Do not resubmit any
+recorded attempt or treat an old idle snapshot as current admission.
+
 ## Remaining gates and resume
 
 Do not repeat the completed fixed-input construction/inference checks or
 capture parity. Establish the live physical action-prefix/camera/time
 correspondence with the separately bounded closed-loop technical check.
-Its implementation and CPU contracts are now present; native execution is
-not yet claimed. Follow the
+Its implementation and CPU contracts are present; the first native admission
+failed before execution and the reconciled Nano attempt is separately bound.
+Native check success is not yet claimed. Follow the
 [two-phase registration instructions](../../docs/STANDALONE_RUNTIME.md#bounded-live-model-to-simulator-check)
 to preserve planned-cell status and actual simulator Job/Pod identity.
 Preserve unavailable forecasts explicitly. Complete guarded runtime/fixture
@@ -259,6 +323,9 @@ There is currently **no release to resume**. Once released, the existing
 --family <family> --stage <stage> --resume --max-valid-episodes <6|24|144>`
 is the resume interface, using the same runtime binding and shared cohort
 completion pointers. Keep P -> D -> C and all six conditions in each block.
+This per-release command is not itself a durable 27-partition supervisor.
+Full-study progression must run on Kubernetes independently of the app,
+retain real finite deadlines/resumption, and honor shared locks and stage gates.
 Never substitute a diagnostic registration or `bound-cells.jsonl` for its
 released `queue.jsonl`. Retain all raw arrays/videos/request traces on the
 PVC and commit only compact evidence and hashes.

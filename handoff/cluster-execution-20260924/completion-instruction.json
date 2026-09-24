@@ -4,7 +4,7 @@
   "status": "approved",
   "relay_session_id": "c230f3cd-3fe9-4f1f-9ee4-e8b857151a60",
   "coordinator_session_id": "5ed7dc81-68d8-493f-a8c4-81a4b6cb59f6",
-  "instruction": "Continue autonomously through the results of all 1566 study episodes, not merely integration or launch. Persist all actual videos and raw outputs on cluster storage. Push compact results, provenance, complete video indexes and hashes. The latest user instruction replaces Git LFS packaging with verified incremental downloads of all study viewport and exposed prediction videos to the work laptop.",
+  "instruction": "Continue autonomously through the results of all 1566 study episodes, not merely integration or launch. Persist full-quality original videos and raw outputs on cluster storage. Create separate H.264 viewing derivatives without overwriting masters. Download the derivatives to the work laptop only after the entire study and its required outputs are finished and accounted. Push compact results, provenance, complete master/derivative indexes and hashes; never add video blobs to Git or Git LFS.",
   "base_launch_instruction": {
     "path": "handoff/cluster-execution-20260924/launch-instruction.json",
     "sha256": "cffa0423119dbe631a1ddb08f91232ac0eb54d256ce3c1ecf1de194450608867"
@@ -24,6 +24,12 @@
   "local_video_delivery": {
     "destination": "/Users/SZ5VJY/Downloads/world-action-model-steerability-videos",
     "retain_pvc_originals": true,
+    "retain_original_resolution_frames_and_timestamps": true,
+    "transfer_only_after_complete_study_and_output_accounting": true,
+    "transfer_format": "separate_h264_mp4_viewing_derivatives",
+    "derivatives_reference_master_hashes": true,
+    "fresh_local_free_space_check_before_transfer": true,
+    "insufficient_space_action": "report exact required capacity; user supplies external drive",
     "all_study_viewports_and_exposed_predictions": true,
     "manifest_driven_resumable_partial_transfers": true,
     "size_and_sha256_verified_before_atomic_finalize": true,
@@ -31,6 +37,17 @@
     "overwrite_mismatched_unrelated_files": false,
     "delete_other_user_files_for_space": false,
     "local_receipt_required": true
+  },
+  "healthy_study_monitoring": {
+    "arm_only_after_actual_study_launch": true,
+    "single_coordinator_monitor": true,
+    "light_check_interval_minutes": 15,
+    "nonempty_commit_interval_minutes": 60,
+    "also_commit_at_completed_partition_milestones": true,
+    "read_new_completion_result_video_index_receipts_and_scoped_job_state": true,
+    "repeat_full_raw_hashing_or_inference_for_monitoring": false,
+    "on_failure": "immediate focused diagnosis, preserve partials, fix and safely resume, then return to sparse cadence",
+    "worker_progression_independent_of_monitor_and_app": true
   },
   "bulk_video_git_or_lfs_addition_authorized_now": false,
   "future_lfs_question_requested": false,

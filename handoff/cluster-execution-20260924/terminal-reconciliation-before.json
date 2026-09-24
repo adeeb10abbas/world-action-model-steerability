@@ -1,0 +1,255 @@
+{
+  "terminal_jobs": [
+    {
+      "name": "sgw01-ali-current-destination-20260924a",
+      "uid": "7cce2f63-ed3a-4785-844f-c02c1e46f52a",
+      "status": {
+        "completionTime": "2026-09-24T18:50:06Z",
+        "conditions": [
+          {
+            "lastProbeTime": "2026-09-24T18:50:06Z",
+            "lastTransitionTime": "2026-09-24T18:50:06Z",
+            "status": "True",
+            "type": "Complete"
+          }
+        ],
+        "ready": 0,
+        "startTime": "2026-09-24T18:48:25Z",
+        "succeeded": 1,
+        "terminating": 0,
+        "uncountedTerminatedPods": {}
+      },
+      "output_env": {
+        "SOURCE": "/data/users/ali/sgw-01/current-20260924a/source",
+        "OUT": "/data/users/ali/sgw-01/current-20260924a/destination-check"
+      }
+    },
+    {
+      "name": "sgw01-ali-main-p-20260923dn-simulator-02",
+      "uid": "3c020853-eca6-4fa4-a96b-510e4ea7b9ef",
+      "status": {
+        "completionTime": "2026-09-24T00:31:13Z",
+        "conditions": [
+          {
+            "lastProbeTime": "2026-09-24T00:31:13Z",
+            "lastTransitionTime": "2026-09-24T00:31:13Z",
+            "status": "True",
+            "type": "Complete"
+          }
+        ],
+        "ready": 0,
+        "startTime": "2026-09-23T23:54:39Z",
+        "succeeded": 1,
+        "terminating": 0,
+        "uncountedTerminatedPods": {}
+      },
+      "output_env": {
+        "ROOT": "/data/users/ali/sgw-01/main/n3-lat-p-20260923dn",
+        "SOURCE": "/data/users/ali/sgw-01/source/main-p-20260923dn",
+        "SOURCE_COMMIT": "77cdac5a402dc076b12fd2c65ee1da602510c871"
+      }
+    },
+    {
+      "name": "sgw01-ali-live-n3-simulator-20260924a",
+      "uid": "f98dd31d-fbf0-4b79-ae6e-eba125897899",
+      "status": {
+        "conditions": [
+          {
+            "lastProbeTime": "2026-09-24T20:18:26Z",
+            "lastTransitionTime": "2026-09-24T20:18:26Z",
+            "message": "Job has reached the specified backoff limit",
+            "reason": "BackoffLimitExceeded",
+            "status": "True",
+            "type": "Failed"
+          }
+        ],
+        "failed": 1,
+        "ready": 0,
+        "startTime": "2026-09-24T20:18:24Z",
+        "terminating": 0,
+        "uncountedTerminatedPods": {}
+      },
+      "output_env": {
+        "SOURCE": "/data/users/ali/sgw-01/current-20260924a/source-8ac4858",
+        "OUT": "/data/users/ali/sgw-01/current-20260924a/closed-loop-N3-a/simulator"
+      }
+    },
+    {
+      "name": "sgw01-ali-live-n3-policy-20260924a",
+      "uid": "c5844567-c6c8-4630-8d8e-67d46c0acc10",
+      "status": {
+        "conditions": [
+          {
+            "lastProbeTime": "2026-09-24T20:21:30Z",
+            "lastTransitionTime": "2026-09-24T20:21:30Z",
+            "message": "Job has reached the specified backoff limit",
+            "reason": "BackoffLimitExceeded",
+            "status": "True",
+            "type": "Failed"
+          }
+        ],
+        "failed": 1,
+        "ready": 0,
+        "startTime": "2026-09-24T20:18:25Z",
+        "terminating": 0,
+        "uncountedTerminatedPods": {}
+      },
+      "output_env": {
+        "SOURCE": "/data/users/ali/sgw-01/current-20260924a/source-8ac4858",
+        "OUT": "/data/users/ali/sgw-01/current-20260924a/closed-loop-N3-a/policy"
+      }
+    },
+    {
+      "name": "sgw01-ali-live-e3-simulator-20260924a",
+      "uid": "31006fb4-bfce-4697-9a34-40dea310bb9d",
+      "status": {
+        "conditions": [
+          {
+            "lastProbeTime": "2026-09-24T20:18:26Z",
+            "lastTransitionTime": "2026-09-24T20:18:26Z",
+            "message": "Job has reached the specified backoff limit",
+            "reason": "BackoffLimitExceeded",
+            "status": "True",
+            "type": "Failed"
+          }
+        ],
+        "failed": 1,
+        "ready": 0,
+        "startTime": "2026-09-24T20:18:25Z",
+        "terminating": 0,
+        "uncountedTerminatedPods": {}
+      },
+      "output_env": {
+        "SOURCE": "/data/users/ali/sgw-01/current-20260924a/source-8ac4858",
+        "OUT": "/data/users/ali/sgw-01/current-20260924a/closed-loop-E3-a/simulator"
+      }
+    },
+    {
+      "name": "sgw01-ali-live-e3-policy-20260924a",
+      "uid": "28db20df-7505-4fa1-927c-8ed8490ca463",
+      "status": {
+        "conditions": [
+          {
+            "lastProbeTime": "2026-09-24T20:21:31Z",
+            "lastTransitionTime": "2026-09-24T20:21:31Z",
+            "message": "Job has reached the specified backoff limit",
+            "reason": "BackoffLimitExceeded",
+            "status": "True",
+            "type": "Failed"
+          }
+        ],
+        "failed": 1,
+        "ready": 0,
+        "startTime": "2026-09-24T20:18:25Z",
+        "terminating": 0,
+        "uncountedTerminatedPods": {}
+      },
+      "output_env": {
+        "SOURCE": "/data/users/ali/sgw-01/current-20260924a/source-8ac4858",
+        "OUT": "/data/users/ali/sgw-01/current-20260924a/closed-loop-E3-a/policy"
+      }
+    },
+    {
+      "name": "sgw01-ali-live-f3-simulator-20260924a",
+      "uid": "16d97132-bd19-4043-b5c0-3ed465e2275a",
+      "status": {
+        "conditions": [
+          {
+            "lastProbeTime": "2026-09-24T20:18:26Z",
+            "lastTransitionTime": "2026-09-24T20:18:26Z",
+            "message": "Job has reached the specified backoff limit",
+            "reason": "BackoffLimitExceeded",
+            "status": "True",
+            "type": "Failed"
+          }
+        ],
+        "failed": 1,
+        "ready": 0,
+        "startTime": "2026-09-24T20:18:25Z",
+        "terminating": 0,
+        "uncountedTerminatedPods": {}
+      },
+      "output_env": {
+        "SOURCE": "/data/users/ali/sgw-01/current-20260924a/source-8ac4858",
+        "OUT": "/data/users/ali/sgw-01/current-20260924a/closed-loop-F3-a/simulator"
+      }
+    },
+    {
+      "name": "sgw01-ali-live-f3-policy-20260924a",
+      "uid": "5b079fbb-4512-41bf-b376-23e743df47ef",
+      "status": {
+        "conditions": [
+          {
+            "lastProbeTime": "2026-09-24T20:18:26Z",
+            "lastTransitionTime": "2026-09-24T20:18:26Z",
+            "message": "Job has reached the specified backoff limit",
+            "reason": "BackoffLimitExceeded",
+            "status": "True",
+            "type": "Failed"
+          }
+        ],
+        "failed": 1,
+        "ready": 0,
+        "startTime": "2026-09-24T20:18:25Z",
+        "terminating": 0,
+        "uncountedTerminatedPods": {}
+      },
+      "output_env": {
+        "SOURCE": "/data/users/ali/sgw-01/current-20260924a/source-8ac4858",
+        "OUT": "/data/users/ali/sgw-01/current-20260924a/closed-loop-F3-a/policy"
+      }
+    }
+  ],
+  "completed_simulators": [
+    {
+      "name": "sgw01-ali-current-destination-20260924a-fbj8x",
+      "uid": "e0e8725c-59f8-4d46-80f9-66eb715f9cc4",
+      "owner": [
+        {
+          "apiVersion": "batch/v1",
+          "blockOwnerDeletion": true,
+          "controller": true,
+          "kind": "Job",
+          "name": "sgw01-ali-current-destination-20260924a",
+          "uid": "7cce2f63-ed3a-4785-844f-c02c1e46f52a"
+        }
+      ],
+      "node": "dcwipphhgc191.edc.nam.gm.com",
+      "status": "Succeeded",
+      "termination": {
+        "terminated": {
+          "containerID": "containerd://3f6f74b7d5ab79240212d892b843bda5ad4ded3641377296609ea06872baeb01",
+          "exitCode": 0,
+          "finishedAt": "2026-09-24T18:50:03Z",
+          "reason": "Completed",
+          "startedAt": "2026-09-24T18:48:26Z"
+        }
+      }
+    },
+    {
+      "name": "sgw01-ali-main-p-20260923dn-simulator-02-np9dl",
+      "uid": "4062ded0-056f-4673-9858-7ee2ed30e1a7",
+      "owner": [
+        {
+          "apiVersion": "batch/v1",
+          "blockOwnerDeletion": true,
+          "controller": true,
+          "kind": "Job",
+          "name": "sgw01-ali-main-p-20260923dn-simulator-02",
+          "uid": "3c020853-eca6-4fa4-a96b-510e4ea7b9ef"
+        }
+      ],
+      "node": "dcwipphhgc191.edc.nam.gm.com",
+      "status": "Succeeded",
+      "termination": {
+        "terminated": {
+          "containerID": "containerd://c41254d649245436ca5a2800d52ee2d73fd958a2a11db61eb9766390cdaecf52",
+          "exitCode": 0,
+          "finishedAt": "2026-09-24T00:31:10Z",
+          "reason": "Completed",
+          "startedAt": "2026-09-23T23:54:40Z"
+        }
+      }
+    }
+  ]
+}

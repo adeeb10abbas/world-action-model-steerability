@@ -1,0 +1,78 @@
+{
+  "raw_kubernetes_snapshots": [
+    {
+      "path": "/data/users/ali/sgw-01/current-20260924a/admission-reconciliation-20260924a/terminal-reconciliation-jobs-before.json",
+      "sha256": "41ae6126e99c2525e25089b5b748c711873b973e553b87c365090ead61462771",
+      "bytes": 134142
+    },
+    {
+      "path": "/data/users/ali/sgw-01/current-20260924a/admission-reconciliation-20260924a/terminal-reconciliation-simulator-pods-before.json",
+      "sha256": "a6e3f6a252fe5a4f91fec51ca4ee9217aa204109d696cd50cacd12c506248314",
+      "bytes": 34101
+    }
+  ],
+  "untouched_output_evidence": [
+    {
+      "path": "/data/users/ali/sgw-01/main/n3-lat-p-20260923dn/claims/simulator/owner.json",
+      "sha256": "8d42ff43258c3a4a87d740da892be853ffe75573bf4505b6fcfb16110b9e7ac8",
+      "bytes": 1099,
+      "owner": {
+        "automatic_retries": 0,
+        "free_bytes": 155362355314688,
+        "idle": {
+          "compute_occupied_uuids": [],
+          "expected_visible_gpu_count": 1,
+          "gpus": [
+            {
+              "index": 0,
+              "memory_free_mib": 45489,
+              "memory_used_mib": 0,
+              "name": "NVIDIA A40",
+              "utilization_percent": 0,
+              "uuid": "GPU-8773b1c9-df29-a37a-e165-8f68986cdb88"
+            }
+          ],
+          "model_requests": 0,
+          "observed_at_unix": 1790207682.3867567,
+          "selected_gpu": {
+            "index": 0,
+            "memory_free_mib": 45489,
+            "memory_used_mib": 0,
+            "name": "NVIDIA A40",
+            "utilization_percent": 0,
+            "uuid": "GPU-8773b1c9-df29-a37a-e165-8f68986cdb88"
+          },
+          "status": "passed_idle_snapshot_only",
+          "study_id": "SGW-01"
+        },
+        "job_uid": "3c020853-eca6-4fa4-a96b-510e4ea7b9ef",
+        "pod": "sgw01-ali-main-p-20260923dn-simulator-02-np9dl",
+        "pod_uid": "4062ded0-056f-4673-9858-7ee2ed30e1a7",
+        "role": "simulator",
+        "scope": "six original MAIN N3 LAT P cells only",
+        "source_commit": "77cdac5a402dc076b12fd2c65ee1da602510c871",
+        "started_at_unix": 1790207683.2578337
+      }
+    },
+    {
+      "path": "/data/users/ali/sgw-01/main/n3-lat-p-20260923dn/admissions/simulator-2/idle.json",
+      "sha256": "8e500acf90f4639e230e92f526945cdefeaacdfc31205839ff5f1d70d8bdaf77",
+      "bytes": 632
+    },
+    {
+      "path": "/data/users/ali/sgw-01/main/n3-lat-p-20260923dn/admissions/simulator-2/worker.log",
+      "sha256": "3d719fafa497dfaf069c1152b458e4045c907c9a74a918fa93c29bd6e61f1524",
+      "bytes": 66761
+    },
+    {
+      "path": "/data/users/ali/sgw-01/current-20260924a/destination-check/gpu-idle.json",
+      "sha256": "3e82b8e85df3113d1fbe379610c49ce1d22fd166f9cbd5800104db875f922c06",
+      "bytes": 632
+    },
+    {
+      "path": "/data/users/ali/sgw-01/current-20260924a/destination-check/job.log",
+      "sha256": "d4f85f28e5a7d77235dac2d899c06a432f276edf09b0a5b8fa27520cb50e645c",
+      "bytes": 21520
+    }
+  ]
+}

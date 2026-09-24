@@ -1,0 +1,82 @@
+{
+  "authoring_source_sha256": {
+    "experiments/workshops/spatial_grounding_v1/camera_configuration.py": "eeaaf97674b93e697b7d63689ad74b16cf30a172518d4ab5caac80fb122b30e1",
+    "experiments/workshops/spatial_grounding_v1/close_cameras.json": "a7413451f7339c698fb4842bdb2007a59fb4f4bb8a8ebd97bf09355cbdc6d0f8",
+    "experiments/workshops/spatial_grounding_v1/prospective_family_scene.py": "15ad70278c9b3af5ecc8439e656f35617d0d013edc8fe03e8d61ba4dd5dd3345",
+    "experiments/workshops/spatial_grounding_v1/scene_design.py": "85dbd999c6ce449dce8f93996cb80bd7d580f380c52656418132ba845155630a",
+    "tools/build_scene_package.py": "d7681bc14f7819228f84fa4bf2608ae0e6211406e1f960970f7e52ee46853aa5",
+    "tools/materialize_scene_handoff.py": "cea169eedce5bb5783ff67f003db79c5805c5b6b6de6176daa15ac82a8c2d40e"
+  },
+  "camera_configuration": {
+    "revision": "close-oblique-v3-full-objects-20260924",
+    "sha256": "a7413451f7339c698fb4842bdb2007a59fb4f4bb8a8ebd97bf09355cbdc6d0f8"
+  },
+  "cell_count": 1566,
+  "files": {
+    "asset-relocation.json": {
+      "path": "/data/users/ali/sgw-01/current-20260924a/materialization-8ac4858/asset-relocation.json",
+      "sha256": "5964561d9dda4c1250bd9b892bc3ddfbae01b8806cea4349155e9c0d7dd28a76"
+    },
+    "assets.json": {
+      "path": "/data/users/ali/sgw-01/current-20260924a/materialization-8ac4858/assets.json",
+      "sha256": "3a9b8ceeff333aa3a060dad97707b5f2a50e7c4db1423c84350bf4d8a19b0806"
+    },
+    "bound-cells.jsonl": {
+      "path": "/data/users/ali/sgw-01/current-20260924a/materialization-8ac4858/bound-cells.jsonl",
+      "sha256": "e5fbd9bb96e73e0fb86e5da81fca6d52187e335da2b64cb214d179b8a991a9aa"
+    },
+    "environment-binding.json": {
+      "path": "/data/users/ali/sgw-01/current-20260924a/materialization-8ac4858/environment-binding.json",
+      "sha256": "bbde4bd301be8db7420f87255d0e7b4f5022a4cb66791605bdb54ce5cf97cc0f"
+    },
+    "physical-fixtures.json": {
+      "path": "/data/users/ali/sgw-01/current-20260924a/materialization-8ac4858/physical-fixtures.json",
+      "sha256": "07f0f7a10779818275d810bfd643e91f09916a14ea1b99fa965b3ad9e88bdadc"
+    },
+    "selection-registry.json": {
+      "path": "/data/users/ali/sgw-01/current-20260924a/materialization-8ac4858/selection-registry.json",
+      "sha256": "20733d7f74a42c8aa6f67b66834c7c4296567c77d59cfb19e92367c706e3fe75"
+    }
+  },
+  "frozen_sources": {
+    "planned_cells.csv": {
+      "bytes": 406175,
+      "path": "/data/users/ali/sgw-01/current-20260924a/source-8ac4858/experiments/workshops/spatial_grounding_v1/spec/planned_cells.csv",
+      "sha256": "07a2bd6c1893e7662db0c12c01843c20d743bfeb4cb1b506f238a37ae19e068a"
+    },
+    "prompts.json": {
+      "bytes": 5308,
+      "path": "/data/users/ali/sgw-01/current-20260924a/source-8ac4858/experiments/workshops/spatial_grounding_v1/spec/prompts.json",
+      "sha256": "f07dbda34feb915472fc329be203ec526a7589007485eeb8f237c19c8708b979"
+    },
+    "protocol.json": {
+      "bytes": 6622,
+      "path": "/data/users/ali/sgw-01/current-20260924a/source-8ac4858/experiments/workshops/spatial_grounding_v1/spec/protocol.json",
+      "sha256": "4b420512939f8eba75fc31a91bd562812b6e8c1acd328b5ed7e268bbccb37bde"
+    }
+  },
+  "layout_count": 87,
+  "learned_policy_launch_authorized": false,
+  "model_requests": 0,
+  "native_runs": 0,
+  "remaining_gates": [
+    "destination native reset and rendering checks",
+    "N3/E3/F3 runtime qualification",
+    "verified physical time and camera maps",
+    "explicit learned-study release authorization"
+  ],
+  "runtime_qualified": false,
+  "schema_version": "sgw-offline-scene-handoff-v1",
+  "selection_registry": {
+    "bytes": 499725,
+    "path": "/data/users/ali/sgw-01/current-20260924a/source-8ac4858/artifacts/workshops/spatial_grounding_v1/scene_package_20260924/scene-registry.json",
+    "sha256": "20733d7f74a42c8aa6f67b66834c7c4296567c77d59cfb19e92367c706e3fe75"
+  },
+  "source_commit": "8ac48581eec62143dbd8be7d4cd77cce6de10887",
+  "source_root": "/data/users/ali/sgw-01/current-20260924a/source-8ac4858",
+  "source_roots": {
+    "evidence": "/data/users/ali/sgw-01/current-20260924a/source-8ac4858/artifacts/workshops/spatial_grounding_v1/workstation_receipts_20260924",
+    "repo": "/data/users/ali/sgw-01/current-20260924a/source-8ac4858"
+  },
+  "status": "physical_qualified_runtime_pending"
+}

@@ -1,0 +1,103 @@
+{
+  "context": "prod-dcwi-warrenq1-vmkub007",
+  "namespace": "211247-prod",
+  "observed_at_utc": "2026-09-24T20:22:10.210815+00:00",
+  "pods": [
+    {
+      "containers": [
+        {
+          "image_id": "artifactory-ci.gm.com/docker-approved/devcontainers/base@sha256:03f5ce7d090fbd378070a8216d0aedfc6e473c52da99b40b0cf53918612a297c",
+          "name": "policy",
+          "restart_count": 0,
+          "state": {
+            "terminated": {
+              "containerID": "containerd://51a9846d8891eaa7227f6e5e03e40b0f3dbb57764f03a302b8365360e8122060",
+              "exitCode": 1,
+              "finishedAt": "2026-09-24T20:21:28Z",
+              "reason": "Error",
+              "startedAt": "2026-09-24T20:18:26Z"
+            }
+          }
+        }
+      ],
+      "job": "sgw01-ali-live-e3-policy-20260924a",
+      "job_uid": "28db20df-7505-4fa1-927c-8ed8490ca463",
+      "message": null,
+      "node": "dcwipphai0061.edc.nam.gm.com",
+      "phase": "Failed",
+      "pod": "sgw01-ali-live-e3-policy-20260924a-x6ncb",
+      "pod_uid": "802d2d97-4c3b-48ae-ade2-3fe6345967b4",
+      "reason": null
+    },
+    {
+      "containers": [],
+      "job": "sgw01-ali-live-e3-simulator-20260924a",
+      "job_uid": "31006fb4-bfce-4697-9a34-40dea310bb9d",
+      "message": "Pod was rejected: Allocate failed due to requested number of devices unavailable for nvidia.com/gpu. Requested: 1, Available: 0, which is unexpected",
+      "node": "dcwipphhgc192.edc.nam.gm.com",
+      "phase": "Failed",
+      "pod": "sgw01-ali-live-e3-simulator-20260924a-phl82",
+      "pod_uid": "1729d94b-c84a-466e-985c-c5a2bcf20bf4",
+      "reason": "UnexpectedAdmissionError"
+    },
+    {
+      "containers": [],
+      "job": "sgw01-ali-live-f3-policy-20260924a",
+      "job_uid": "5b079fbb-4512-41bf-b376-23e743df47ef",
+      "message": "Pod was rejected: Allocate failed due to requested number of devices unavailable for nvidia.com/gpu. Requested: 1, Available: 0, which is unexpected",
+      "node": "dcwipphai0061.edc.nam.gm.com",
+      "phase": "Failed",
+      "pod": "sgw01-ali-live-f3-policy-20260924a-w2shq",
+      "pod_uid": "fe88ac63-e949-4368-80b5-428d3c8de6c5",
+      "reason": "UnexpectedAdmissionError"
+    },
+    {
+      "containers": [],
+      "job": "sgw01-ali-live-f3-simulator-20260924a",
+      "job_uid": "16d97132-bd19-4043-b5c0-3ed465e2275a",
+      "message": "Pod was rejected: Allocate failed due to requested number of devices unavailable for nvidia.com/gpu. Requested: 1, Available: 0, which is unexpected",
+      "node": "dcwipphhgc193.edc.nam.gm.com",
+      "phase": "Failed",
+      "pod": "sgw01-ali-live-f3-simulator-20260924a-gz89x",
+      "pod_uid": "b3351d32-756b-4b1a-86c9-0797cc43e26a",
+      "reason": "UnexpectedAdmissionError"
+    },
+    {
+      "containers": [
+        {
+          "image_id": "artifactory-ci.gm.com/docker-approved/devcontainers/base@sha256:03f5ce7d090fbd378070a8216d0aedfc6e473c52da99b40b0cf53918612a297c",
+          "name": "policy",
+          "restart_count": 0,
+          "state": {
+            "terminated": {
+              "containerID": "containerd://f109545c9ad62979fba4805bb7cd517f5978568a50e8bc5fd11eae75ba5c850e",
+              "exitCode": 1,
+              "finishedAt": "2026-09-24T20:21:27Z",
+              "reason": "Error",
+              "startedAt": "2026-09-24T20:18:26Z"
+            }
+          }
+        }
+      ],
+      "job": "sgw01-ali-live-n3-policy-20260924a",
+      "job_uid": "c5844567-c6c8-4630-8d8e-67d46c0acc10",
+      "message": null,
+      "node": "dcwipphai0061.edc.nam.gm.com",
+      "phase": "Failed",
+      "pod": "sgw01-ali-live-n3-policy-20260924a-dprzg",
+      "pod_uid": "50ee63fb-c3bc-4422-967b-0ee76a9adee0",
+      "reason": null
+    },
+    {
+      "containers": [],
+      "job": "sgw01-ali-live-n3-simulator-20260924a",
+      "job_uid": "f98dd31d-fbf0-4b79-ae6e-eba125897899",
+      "message": "Pod was rejected: Allocate failed due to requested number of devices unavailable for nvidia.com/gpu. Requested: 1, Available: 0, which is unexpected",
+      "node": "dcwipphhgc191.edc.nam.gm.com",
+      "phase": "Failed",
+      "pod": "sgw01-ali-live-n3-simulator-20260924a-lgrzx",
+      "pod_uid": "d910e0d0-2460-4292-80f2-f1dffed700a7",
+      "reason": "UnexpectedAdmissionError"
+    }
+  ]
+}
