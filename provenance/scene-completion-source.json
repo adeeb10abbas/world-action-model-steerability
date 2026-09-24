@@ -1,0 +1,24 @@
+{
+  "hash_scope": "Source snapshot at initial extraction from the stated commit. Later flat-table and coordinator changes have separate campaign source hashes; these are not hashes of the current working files.",
+  "files": {
+    "artifacts/workshops/spatial_grounding_v1/completion_prototypes_20260924/SGW-COMPLETE-20260924-DIST-LEFT-000.json": "3febba79aa167d3397f006f07ab050302603c4bad165a2a5e86e1d9cbf013694",
+    "artifacts/workshops/spatial_grounding_v1/completion_prototypes_20260924/SGW-COMPLETE-20260924-DIST-RIGHT-000.json": "38940a689eaae14e96d2e31e16f13ab0513572d3701bc885d08eeb32286fd2a9",
+    "artifacts/workshops/spatial_grounding_v1/completion_prototypes_20260924/SGW-COMPLETE-20260924-LAT-LEFT-000.json": "b077f82255972dadce5ef388e0f84d0a59211cffe7efc75ed8c1a4c5b72e1131",
+    "artifacts/workshops/spatial_grounding_v1/completion_prototypes_20260924/plan.json": "9720fe03d777f3bcfe65e2a165e98b66e2ac0eb24afb4004bfd3ca73b167a478",
+    "docs/scene_design_rtx/COMPLETION_PLAN.md": "b198d37b07c6e981f359e82802d9fb08d8096061a9ecce60cb54a34a8fff275a",
+    "docs/scene_design_rtx/run-completion-scene.sh": "73b1f0b6eea5c25a372fc2cd838742e592468f49f515d96ad056aacd2c7cc3ce",
+    "experiments/workshops/spatial_grounding_v1/scene_completion_batch.py": "75377444136c81af5c27eed4a277f3e308c8758835323ad68fdf14436080c21f",
+    "experiments/workshops/spatial_grounding_v1/scene_completion_contract.py": "844891e2b5afbbbbf69241b242d1edde3977237ff73ba2cd6b963a7fab1fffd3",
+    "experiments/workshops/spatial_grounding_v1/scene_completion_dist.py": "c9931fcf6d70c0a2841a9a8c94b5a0830ce0918dd22c4da7d5c3b6c5e78cf747",
+    "experiments/workshops/spatial_grounding_v1/scene_completion_lat.py": "c1728698e59ed772918182e056b82dea80842ee803b84bffede875cb272c3831",
+    "experiments/workshops/spatial_grounding_v1/scene_completion_runner.py": "a89f2e6269eafdf9b327c38838fb88430d627c884e91647c7388deb333769c8d",
+    "experiments/workshops/spatial_grounding_v1/scene_completion_verify.py": "7cf78ef78f78e7fafa512c3bba7aebe8112fc353ad6939e79fe3a1847e764118",
+    "tests/test_sgw_scene_completion_contract.py": "ff0f60f6b77e6fea496f14ceff808c79c8dabfcaed10a6e88c07167410fce134",
+    "tests/test_sgw_scene_completion_dist.py": "55d3b38590e722a584efd798cd58aa00a827a810092b7a0bc55f0f4b37f4f69b",
+    "tests/test_sgw_scene_completion_lat.py": "315d7cabc314cdf20d336d57902819f0e8c6697b662009ea6edd58656a3ed68e"
+  },
+  "model_requests": 0,
+  "source_commit": "a7c69afb0fc0e636bd14ebf92ea6b4de65c3705c",
+  "source_repository": "https://github.com/adeeb10abbas/steerable",
+  "state": "implemented and CPU checked; native prototype qualification in progress"
+}

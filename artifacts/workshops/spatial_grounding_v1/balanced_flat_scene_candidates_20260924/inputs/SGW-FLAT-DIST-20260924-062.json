@@ -1,0 +1,220 @@
+{
+  "anchor_object_names": [
+    "bowl",
+    "plate"
+  ],
+  "authored_bounds": {
+    "banana": {
+      "max": [
+        0.8546849966049195,
+        0.47932001143693925,
+        0.08893656730651855
+      ],
+      "min": [
+        0.7453150033950806,
+        0.3006799885630608,
+        0.05000072345137596
+      ]
+    },
+    "bowl": {
+      "max": [
+        0.7507566940784455,
+        -0.24942331194877626,
+        0.10509411990642548
+      ],
+      "min": [
+        0.5892433059215546,
+        -0.41057668805122377,
+        0.05000072345137596
+      ]
+    },
+    "plate": {
+      "max": [
+        0.78,
+        0.18,
+        0.06200072345137596
+      ],
+      "min": [
+        0.56,
+        -0.039999999999999994,
+        0.05000072345137596
+      ]
+    },
+    "rubiks_cube": {
+      "max": [
+        0.4792079746723175,
+        -0.10039346288736445,
+        0.10818994045257568
+      ],
+      "min": [
+        0.4207920551300049,
+        -0.158279124608594,
+        0.05000072345137596
+      ]
+    }
+  },
+  "centers": {
+    "banana": [
+      0.8,
+      0.39,
+      0.06946864724159241
+    ],
+    "bowl": [
+      0.67,
+      -0.33,
+      0.07754742354154587
+    ],
+    "plate": [
+      0.67,
+      0.07,
+      0.05600072345137596
+    ],
+    "rubiks_cube": [
+      0.45,
+      -0.12933629374797923,
+      0.07909533381462097
+    ]
+  },
+  "design_id": "SGW-FLAT-DIST-20260924-062",
+  "family": "DIST",
+  "geometry_guard_support_ids": [],
+  "goal_support_names": {
+    "near_bowl": "table",
+    "near_plate": "table"
+  },
+  "model_requests": 0,
+  "neutral_geometry": {
+    "anchor_midpoint_y_m": -0.13,
+    "cube_y_correction_m": 0.0006637062520207655,
+    "relation_m": -5.551115123125783e-17,
+    "table_top_z_m": 0.05000072345137596
+  },
+  "object_names": [
+    "rubiks_cube",
+    "bowl",
+    "banana",
+    "table",
+    "plate"
+  ],
+  "ordinal": 62,
+  "orientations": {
+    "banana": [
+      0.9999781250953674,
+      -0.0026648887433111668,
+      -0.006051987875252962,
+      0.0001454032608307898
+    ],
+    "bowl": [
+      0.9999999403953552,
+      -5.8753543271450326e-05,
+      -0.00032362030469812453,
+      -0.00010501052747713402
+    ],
+    "rubiks_cube": [
+      0.9999990463256836,
+      -0.0009071399690583348,
+      0.001037940033711493,
+      8.44117093947716e-05
+    ]
+  },
+  "plate_category_caveat": "Existing simplified off-white disc; policy-sized recognition still requires visual review.",
+  "qualification_requirements": {
+    "action_cap": 450,
+    "goal_signs": [
+      1,
+      -1
+    ],
+    "initial_neutral_tolerance_m": 0.005,
+    "reference_motion_limit_m": 0.005,
+    "relation_margin_m": 0.03,
+    "released_supported_stable_cube": true,
+    "reset_indices": [
+      0,
+      1,
+      2
+    ]
+  },
+  "roots": {
+    "banana": [
+      0.8,
+      0.39,
+      0.06946864724159241
+    ],
+    "bowl": [
+      0.67,
+      -0.33,
+      0.07754742354154587
+    ],
+    "rubiks_cube": [
+      0.46016965508461,
+      -0.15825894098575694,
+      0.08153069764375687
+    ]
+  },
+  "scored_object_names": [
+    "rubiks_cube",
+    "bowl",
+    "plate"
+  ],
+  "seed": 20260923,
+  "side": "right",
+  "source_provenance": {
+    "measured_workspace_receipt_sha256": "a14ade5dd34b9f12cd64ed9787ab2cbb5381c5c9a38477e4d0035ece4fb0b67b",
+    "plate_implementation": "prospective_family_scene._disc",
+    "qualification_inheritance": false
+  },
+  "status": "authored_unqualified",
+  "support_mode": "flat-table",
+  "support_names": [
+    "table"
+  ],
+  "supports": [
+    {
+      "center_m": [
+        0.67,
+        0.07,
+        0.05600072345137596
+      ],
+      "display_color_rgb": [
+        0.94,
+        0.94,
+        0.9
+      ],
+      "name": "plate",
+      "radius_m": 0.11,
+      "rigid_body": true,
+      "shape": "cylinder",
+      "thickness_m": 0.012
+    }
+  ],
+  "targets": {
+    "-1": [
+      0.45,
+      0.030663706252020778,
+      0.07909533381462097
+    ],
+    "1": [
+      0.45,
+      -0.2893362937479792,
+      0.07909533381462097
+    ]
+  },
+  "transfer_bounds": {
+    "max": [
+      0.4792079746723175,
+      0.059606537112635555,
+      0.10818994045257568
+    ],
+    "min": [
+      0.4207920551300049,
+      -0.318279124608594,
+      0.05000072345137596
+    ]
+  },
+  "translation_xy_m": [
+    -0.01,
+    -0.03
+  ],
+  "variant": "flat-table-v1",
+  "visual_style": "clean-studio-v1"
+}

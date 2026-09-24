@@ -1,0 +1,113 @@
+{
+  "recorded_at_utc": "2026-09-24T03:31:38.386722+00:00",
+  "status": "original_loops_replaced_candidate_receipts_retained",
+  "reason": "The old LAT and HEIGHT loops were paused while their current native children finished. LAT088 and HEIGHT082 were independently verified and archived. When resumed, the old loops attempted duplicate raw-array verification after lossless archiving and exited with raw trial inventory differs. This is an orchestration error, not a physical rejection. Candidate verification and archive receipts remain authoritative. No candidates are rerun because of the duplicate verification error. The new finite coordinator reuses completed receipts.",
+  "candidates": [
+    {
+      "candidate_id": "SGW-CLEAN-20260924-LAT-004",
+      "family": "LAT",
+      "status": "verified_all_six_pass",
+      "passed_checks": 6,
+      "verification_sha256": "5ff90e3a54dfcfa416133566cdeb3e9acfac69877be1c05bbb1bd59d8ffc92c6",
+      "archive_sha256": "5de4d3272716416d0fa2511a6b80c9dc08be030769c89309695181e1c01a74c0"
+    },
+    {
+      "candidate_id": "SGW-CLEAN-20260924-LAT-018",
+      "family": "LAT",
+      "status": "verified_all_six_pass",
+      "passed_checks": 6,
+      "verification_sha256": "89c9da263f40555e4fc25dbdef1234966f5d19135323cb8446175835d3ad066d",
+      "archive_sha256": "8ae8bee8e248d0c17d87eca4ee5e75bf5edc389d5e9a264b816e7cbe52a11704"
+    },
+    {
+      "candidate_id": "SGW-CLEAN-20260924-LAT-039",
+      "family": "LAT",
+      "status": "verified_all_six_pass",
+      "passed_checks": 6,
+      "verification_sha256": "7630864c1d3d8e507a5d45cc176a9e535da926eb2e114ed47e8f6bcf98f43c29",
+      "archive_sha256": "9b042f2961401bed74a5698d8c71ed23e29d8016005d2bd0d686f0ecdce7687d"
+    },
+    {
+      "candidate_id": "SGW-CLEAN-20260924-LAT-057",
+      "family": "LAT",
+      "status": "verified_physical_rejection",
+      "passed_checks": 5,
+      "verification_sha256": "40612b752e0285c8b8dca1e2905124be37686cde0a66f71ce56fabf16231017e",
+      "archive_sha256": "7b8f76b304297e4cc41f07dfb38f831cd4d8c6c5d3cea4381e72ec1ad68022f8"
+    },
+    {
+      "candidate_id": "SGW-CLEAN-20260924-LAT-061",
+      "family": "LAT",
+      "status": "verified_all_six_pass",
+      "passed_checks": 6,
+      "verification_sha256": "e4885a822f6996ddcab49257dddf75dd2e2e06d3c4d824d64e5cc954800ea527",
+      "archive_sha256": "2ed74b591436fa71c881906e974a84da230572cfc97c533c75b829d640a87c22"
+    },
+    {
+      "candidate_id": "SGW-CLEAN-20260924-LAT-082",
+      "family": "LAT",
+      "status": "verified_physical_rejection",
+      "passed_checks": 5,
+      "verification_sha256": "7b4a519379628d07af749ded0ff47100c952c91f801a45d0116a6a023b1746d0",
+      "archive_sha256": "b26bc623d3b377348bcb6ce5468c4f27f25192c3e60308d417e71d3303e2f400"
+    },
+    {
+      "candidate_id": "SGW-CLEAN-20260924-LAT-088",
+      "family": "LAT",
+      "status": "verified_all_six_pass",
+      "passed_checks": 6,
+      "verification_sha256": "87b38fd94e13e0ac66b9d22dafedc26a8f704c30796ca992bf54b3f8a5a6de9b",
+      "archive_sha256": "8f4358ba76e969b5f7cddb32206df9b604a45d136a84c37c8cd36c49f149cc6b"
+    },
+    {
+      "candidate_id": "SGW-CLEAN-20260924-HEIGHT-050",
+      "family": "HEIGHT",
+      "status": "verified_all_six_pass",
+      "passed_checks": 6,
+      "verification_sha256": "e6bc7a76470531e1201eb48da9bb3aaee0eb9536a3fe76098991232f9f80475a",
+      "archive_sha256": "5b95e88ca6a0ed58052b6860f6f5707f9352c4cf4ae3b63bd02affda9891cd5d"
+    },
+    {
+      "candidate_id": "SGW-CLEAN-20260924-HEIGHT-069",
+      "family": "HEIGHT",
+      "status": "verified_all_six_pass",
+      "passed_checks": 6,
+      "verification_sha256": "b5d98b04c252f54419a4c75747ab908ea9a67ab52f864006071796ea843e04d3",
+      "archive_sha256": "085316953f92014114a5bfca480a81a88b3d0c3639bfc8baedd1e6ffaab9ec07"
+    },
+    {
+      "candidate_id": "SGW-CLEAN-20260924-HEIGHT-074",
+      "family": "HEIGHT",
+      "status": "verified_all_six_pass",
+      "passed_checks": 6,
+      "verification_sha256": "99b5a61dc24c059ce317e21104f9829ecbd7bae89bdd9f31e925167030d62e14",
+      "archive_sha256": "dbe3971cbcc547d9cb04d22c905ab4cc12182aef53e6e941d1c632323654fef6"
+    },
+    {
+      "candidate_id": "SGW-CLEAN-20260924-HEIGHT-082",
+      "family": "HEIGHT",
+      "status": "verified_all_six_pass",
+      "passed_checks": 6,
+      "verification_sha256": "efb85b5fec34252805e78f14442b3f7bd1620f1f8c6cf6b07d3cd2df9b6397c1",
+      "archive_sha256": "3b34c16afda0f80cf92953822a373d32610ed3bcd9e98b3f23d5185b68064143"
+    },
+    {
+      "candidate_id": "SGW-CLEAN-20260924-HEIGHT-093",
+      "family": "HEIGHT",
+      "status": "verified_all_six_pass",
+      "passed_checks": 6,
+      "verification_sha256": "d26a35cf595e115cacb78bd15311615733e574cbb07d3f9f655a8038b113a121",
+      "archive_sha256": "e755df1d22006012f50f5e437ac29ac7b3bf9df8308062fc40d3c0b48508406a"
+    },
+    {
+      "candidate_id": "SGW-CLEAN-20260924-HEIGHT-097",
+      "family": "HEIGHT",
+      "status": "verified_all_six_pass",
+      "passed_checks": 6,
+      "verification_sha256": "744d3733697deeb39e89d74fe4f100de970971c258af827dcecdbb2489100de6",
+      "archive_sha256": "04df4c02bd3fafadbdc730211c57ee05e04596c498c64f21a007b9fcf0b947a4"
+    }
+  ],
+  "model_requests": 0,
+  "behavioral_episodes": 0
+}

@@ -1,0 +1,241 @@
+{
+  "dependency_assessment": "Static imports and literal module/path references across retained experiments, tools, tests, and current runtime plans show no remaining execution dependency on the removed set. Default pytest paths and their helpers, REQUIRED_SOURCES, native model/runtime entrypoints, dynamic task files, and frozen scientific inputs are retained.",
+  "documentation_updates": [
+    "experiments/workshops/spatial_grounding_v1/README.md",
+    "tests/README.md"
+  ],
+  "historical_prototype_source_manifests": {
+    "current_runtime_binding": "Use the reviewed current scene-completion runtime plan and its REQUIRED_SOURCES/current source hashes. Do not treat historical broad source inventories as instructions to restore excluded modules or launch prior work.",
+    "meaning": "The preserved completion prototype plans contain broad source inventories from the original steerable source lineage identified by the original_source_commit and scene_completion_source_commit above. They are historical provenance records, not current runtime manifests. Their source files remain available in the original source repository/checkout; this clean extraction intentionally omits the listed legacy modules.",
+    "preserved_plans": [
+      {
+        "path": "artifacts/workshops/spatial_grounding_v1/completion_prototypes_20260924/plan.json",
+        "sha256": "9720fe03d777f3bcfe65e2a165e98b66e2ac0eb24afb4004bfd3ca73b167a478"
+      },
+      {
+        "path": "artifacts/workshops/spatial_grounding_v1/completion_prototypes_20260924/parallel-plan.json",
+        "sha256": "e5fbc471bb0fd91f1bdae543716edbfac3256617285a9b0bbfc95e4d28b3bd27"
+      }
+    ],
+    "registered_plan_bytes_changed": false
+  },
+  "launch_authorized": false,
+  "mixed_current_tests_unchanged": [
+    "tests/test_sgw_release.py",
+    "tests/test_sgw_paper_engineering.py",
+    "tests/test_sgw_paper_informed_geometry.py"
+  ],
+  "model_requests": 0,
+  "original_source_checkout_untouched": true,
+  "original_source_commit": "62ad0101d5fc26c6461aff47f611cab21219748a",
+  "original_source_repository": "https://github.com/adeeb10abbas/steerable",
+  "recorded_at_utc": "2026-09-24T03:45:23.655361+00:00",
+  "removed_bytes": 299319,
+  "removed_count": 38,
+  "removed_counts_by_directory": {
+    "experiments": 10,
+    "tests": 18,
+    "tools": 10
+  },
+  "removed_files": [
+    {
+      "bytes": 5245,
+      "path": "experiments/workshops/spatial_grounding_v1/historical_layout_coverage.py",
+      "sha256": "d3b559b6262b871408231bdb7bd41dfdc589f8ff04089c6855276b31cb74ea2b"
+    },
+    {
+      "bytes": 16899,
+      "path": "experiments/workshops/spatial_grounding_v1/historical_layout_coverage_manifest.py",
+      "sha256": "7201c92bfd60e1733db83933838b554ae633d0d1ce9f9891025238391ee82dfc"
+    },
+    {
+      "bytes": 7476,
+      "path": "experiments/workshops/spatial_grounding_v1/historical_layout_dedup.py",
+      "sha256": "f097c12f8f73b182773b6687025efe45c6e2d2b1ce8a7f62b64218a63b588336"
+    },
+    {
+      "bytes": 25673,
+      "path": "experiments/workshops/spatial_grounding_v1/historical_layout_evidence.py",
+      "sha256": "ac5fd4f9db24c984a74188b253db58b13c5bdc34f311d714d1cd82de9dd6ff13"
+    },
+    {
+      "bytes": 10826,
+      "path": "experiments/workshops/spatial_grounding_v1/historical_layout_inventory.py",
+      "sha256": "1eb948babee01633a422b017071fc4085908b2f79b5ec212cc6475b4a11e20a1"
+    },
+    {
+      "bytes": 13725,
+      "path": "experiments/workshops/spatial_grounding_v1/historical_layout_streaming.py",
+      "sha256": "e877f932a69079a9c67bad612972afd1d82129b59eeb719ce519e74cba5e7ce2"
+    },
+    {
+      "bytes": 2646,
+      "path": "experiments/workshops/spatial_grounding_v1/historical_root_bounds.py",
+      "sha256": "67dc73939fa2d43d11419f00beb8f52d7165794768e0fc01a1b2e3286999de04"
+    },
+    {
+      "bytes": 4362,
+      "path": "experiments/workshops/spatial_grounding_v1/historical_root_separation.py",
+      "sha256": "bb81f4b96076ad72acb89bf8073024a2b99c34b3309e87574dcbd36457ed815e"
+    },
+    {
+      "bytes": 17795,
+      "path": "experiments/workshops/spatial_grounding_v1/main_p_execution.py",
+      "sha256": "90a9b25d90bdc0128d5e0e2e73958078bcbd800a1bf3e11fd77e9a919fe2f10c"
+    },
+    {
+      "bytes": 8112,
+      "path": "experiments/workshops/spatial_grounding_v1/main_p_fixture_assignment.py",
+      "sha256": "fa5ed3134f398a5dfc988950e93a2d8c8e1d05d265ed124564df6702ee290955"
+    },
+    {
+      "bytes": 2761,
+      "path": "tests/test_sgw_groot_reset_population.py",
+      "sha256": "0bdccd58b32bd00098fd4b8d0b3a6c3ba3ea2a311e41bbb609e697c24e9d7b5b"
+    },
+    {
+      "bytes": 3616,
+      "path": "tests/test_sgw_historical_dedup.py",
+      "sha256": "a4aa8aa777b0ca5786646c9c50c1e0992d9bf70e6e7294f86bc50964c87517cc"
+    },
+    {
+      "bytes": 1686,
+      "path": "tests/test_sgw_historical_inventory.py",
+      "sha256": "137a8ad71cd141f4600c667650563d0691fa737b522fbc0d9a4b4941a28736ce"
+    },
+    {
+      "bytes": 920,
+      "path": "tests/test_sgw_historical_layout_coverage.py",
+      "sha256": "6fff400716e63d080406992c14af583e4897be208463c2f1c1f73fc84b3ffda7"
+    },
+    {
+      "bytes": 4845,
+      "path": "tests/test_sgw_historical_layout_coverage_manifest.py",
+      "sha256": "c33eb0ae5a70d8c1f1be33890b62a0ef5f0aeb562d795b75a7846ef4d43d695d"
+    },
+    {
+      "bytes": 5517,
+      "path": "tests/test_sgw_historical_layout_evidence.py",
+      "sha256": "2a1ce7f96b339cb93eb55887c1f39248b5581502bf263704dfbbe585b7bf1e93"
+    },
+    {
+      "bytes": 16126,
+      "path": "tests/test_sgw_historical_layout_streaming.py",
+      "sha256": "76b3fe5138ca8ee9235ad841eefb6fde119ae5ba4479523a15cd79a61a757865"
+    },
+    {
+      "bytes": 7112,
+      "path": "tests/test_sgw_historical_lineage_audit.py",
+      "sha256": "25940ba72c2398fca38c8d4a5eca862b7043eb341951d4a09481a4686b5c86b9"
+    },
+    {
+      "bytes": 4382,
+      "path": "tests/test_sgw_historical_object_inventory.py",
+      "sha256": "6ceb0199f3e362337e8b1d532c79c9546d9af5813cfed0f3e389d49a459dd92b"
+    },
+    {
+      "bytes": 3312,
+      "path": "tests/test_sgw_historical_reset_bound_proof.py",
+      "sha256": "b85734c23c0684fea785d574ff53cd286bd623f4ccc6acfe998d80065463b24f"
+    },
+    {
+      "bytes": 3136,
+      "path": "tests/test_sgw_historical_root_bounds.py",
+      "sha256": "fe2431460075b315afa5623c4401d1481c96082df6b8425f170df3b3b4cd8ef2"
+    },
+    {
+      "bytes": 3719,
+      "path": "tests/test_sgw_historical_root_separation.py",
+      "sha256": "863f6f9c6bbd6f3125699020d3e794e4bee8343d85ef1b8d97f2f6717dd0595f"
+    },
+    {
+      "bytes": 4575,
+      "path": "tests/test_sgw_main_p_execution.py",
+      "sha256": "38252044c7a7e3907395c9ffe54ef07a85c4cd2cae8e22e74be4d4a98faffbd8"
+    },
+    {
+      "bytes": 5177,
+      "path": "tests/test_sgw_main_p_fixture_assignment.py",
+      "sha256": "2829899ee08761c1c69b03ecffab70658edf26b0d4fef45b255f365bb85e8479"
+    },
+    {
+      "bytes": 3143,
+      "path": "tests/test_sgw_pi05_phase_a_roots.py",
+      "sha256": "618e192c355b15442baf85e5ae47e49a96518eb7aaf4ac00b8b920ffc3900ffc"
+    },
+    {
+      "bytes": 2388,
+      "path": "tests/test_sgw_pi05_reset_population.py",
+      "sha256": "d282c7dd8b50dfa70317712718cf1730a2bffd8b2d6e3d129cdceb66ec430297"
+    },
+    {
+      "bytes": 5402,
+      "path": "tests/test_sgw_pi05_root_separation.py",
+      "sha256": "3a19bda56613c9fb7a99902b65fde60b58e5998a359e0a0d1423e94047925d03"
+    },
+    {
+      "bytes": 2480,
+      "path": "tests/test_sgw_pi05_stochastic_resets.py",
+      "sha256": "49bab539ef800c61fd28c62c98cca6fe03738ef0b235ff5abeed87ef8d779921"
+    },
+    {
+      "bytes": 8412,
+      "path": "tools/audit_sgw_groot_reset_population.py",
+      "sha256": "dffcea94deb4269470727c6759c3b7f1768b8bc38429e23059f780f95cd4582f"
+    },
+    {
+      "bytes": 8271,
+      "path": "tools/audit_sgw_historical_lineage.py",
+      "sha256": "af752860f4df6af7561bebd817c9f0ff8b1081c7eaac09a18528eab8bd378108"
+    },
+    {
+      "bytes": 11917,
+      "path": "tools/audit_sgw_historical_population.py",
+      "sha256": "120a1b6774d0479f3388a863990773f76b513e01643d2aec2aa422e69475ce84"
+    },
+    {
+      "bytes": 11273,
+      "path": "tools/audit_sgw_pi05_reset_population.py",
+      "sha256": "69e96268f3c04c186a7cdc4c9d63aad6d424e2101ef35cbbc50de769dd932321"
+    },
+    {
+      "bytes": 10498,
+      "path": "tools/audit_sgw_pi05_stochastic_resets.py",
+      "sha256": "e19a6faa17bea3d9763f08baa74442f70044d68973e0bd22a7d8dd8bcc8777af"
+    },
+    {
+      "bytes": 9943,
+      "path": "tools/audit_sgw_r005_object_inventory.py",
+      "sha256": "4dbfd548da8b3e7c4e9f246b06c1e251f52d2cdd3541410b9d6e5655801b5f02"
+    },
+    {
+      "bytes": 7926,
+      "path": "tools/prove_sgw_observed_root_nonmatches.py",
+      "sha256": "1b2e8e7a598ac107bc641f48ae99c8e2b621f5a633fd712c807fb08a13f2a56c"
+    },
+    {
+      "bytes": 12933,
+      "path": "tools/prove_sgw_pi05_phase_a_roots.py",
+      "sha256": "1b4a1ab56bb5cdc1fd1a690e5e4b390ab5edd204f1d53b65426d92765c53e346"
+    },
+    {
+      "bytes": 10442,
+      "path": "tools/prove_sgw_pi05_root_separation.py",
+      "sha256": "cc19da64e89ae3ee885037c154cd793f37e62fe324f0ff927e255d49e0cde026"
+    },
+    {
+      "bytes": 14648,
+      "path": "tools/prove_sgw_r005_reset_bounds.py",
+      "sha256": "9a2b4acd752b84143a0699db9582b6107759cc5c76fd708203636f916eef3b97"
+    }
+  ],
+  "retained_shared_geometry_helper": {
+    "path": "experiments/workshops/spatial_grounding_v1/historical_root_nonmatch.py",
+    "reason": "paper_informed_geometry.py imports _validated_position; its focused test remains."
+  },
+  "scene_completion_source_commit": "a7c69afb0fc0e636bd14ebf92ea6b4de65c3705c",
+  "schema_version": "sgw-legacy-source-exclusion-v1",
+  "scope": "Remove only the approved disconnected historical audit and MAIN-P source/tool/test set from the clean WAM workshop repository.",
+  "simulator_trials": 0,
+  "tests_run": false
+}

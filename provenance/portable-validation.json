@@ -1,0 +1,32 @@
+{
+  "status": "portable_planning_checks_passed_not_runtime_release",
+  "prompts": 18,
+  "planned_cells": 1044,
+  "matched_blocks": 174,
+  "stage_counts": {
+    "P": 36,
+    "D": 144,
+    "C": 864
+  },
+  "imported_modules": [
+    "contract",
+    "scoring",
+    "adapters",
+    "recorder",
+    "compile",
+    "fixtures",
+    "scene_design",
+    "prospective_family_scene",
+    "policy_observations",
+    "producer",
+    "nano_backend",
+    "dreamzero_backend",
+    "runtime",
+    "worker",
+    "simulator_mailbox",
+    "native_worker_entrypoint"
+  ],
+  "model_requests": 0,
+  "simulator_trials": 0,
+  "learned_policy_launch_authorized": false
+}

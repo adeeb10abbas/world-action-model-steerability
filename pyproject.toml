@@ -1,0 +1,64 @@
+[build-system]
+requires = ["hatchling>=1.27"]
+build-backend = "hatchling.build"
+
+[project]
+name = "world-action-model-steerability"
+version = "0.1.0"
+description = "SGW-01 spatial-language steerability study under construction"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+  "numpy>=1.26",
+  "imageio>=2.37",
+  "imageio-ffmpeg>=0.6",
+  "Pillow>=10",
+  "msgpack>=1.0",
+  "ijson==3.5.1",
+]
+
+[project.optional-dependencies]
+test = ["pytest>=8", "PyYAML>=6.0", "usd-core>=25.5"]
+
+[tool.hatch.build.targets.wheel]
+packages = ["experiments", "tools"]
+
+# Existing wrappers resolve these manifests relative to the experiments tree.
+# Full native workflows use an editable repository checkout and external assets.
+[tool.hatch.build.targets.wheel.force-include]
+"artifacts/vla_wam_shared_v2/pilot/expansion/cosmos3_nano_policy_droid_v2a011_registry.json" = "artifacts/vla_wam_shared_v2/pilot/expansion/cosmos3_nano_policy_droid_v2a011_registry.json"
+"artifacts/vla_wam_shared_v2/pilot/expansion/dreamzero_official_source_checkpoint_manifest.json" = "artifacts/vla_wam_shared_v2/pilot/expansion/dreamzero_official_source_checkpoint_manifest.json"
+
+[tool.hatch.build.targets.sdist]
+include = ["experiments/", "tools/", "tests/", "artifacts/", "docs/", "handoff/", "provenance/", "README.md", "AGENTS.md", "REPOSITORY_STATUS.json", "LICENSE_NOTICE.md", "pyproject.toml", "uv.lock"]
+
+[tool.pytest.ini_options]
+addopts = "-ra"
+pythonpath = [".", "tests"]
+testpaths = [
+  "tests/test_sgw_contract.py",
+  "tests/test_sgw_scoring.py",
+  "tests/test_sgw_adapters.py",
+  "tests/test_sgw_clean_runtime_binding.py",
+  "tests/test_sgw_jointpos_environment.py",
+  "tests/test_sgw_recorder.py",
+  "tests/test_sgw_annotations.py",
+  "tests/test_sgw_compile.py",
+  "tests/test_sgw_fixtures.py",
+  "tests/test_sgw_lat_proposals.py",
+  "tests/test_sgw_height_dist_proposals.py",
+  "tests/test_sgw_prospective_family_scene.py",
+  "tests/test_sgw_prospective_family_designs.py",
+  "tests/test_sgw_scene_design.py",
+  "tests/test_sgw_scene_batch.py",
+  "tests/test_sgw_scene_completion_contract.py",
+  "tests/test_sgw_scene_completion_dist.py",
+  "tests/test_sgw_scene_completion_dist_flat.py",
+  "tests/test_sgw_scene_completion_lat.py",
+  "tests/test_sgw_scene_completion_parallel.py",
+  "tests/test_sgw_compile_physical_separation.py",
+  "tests/test_build_scene_package.py",
+  "tests/test_materialize_scene_handoff.py",
+  "tests/test_cluster_handoff.py",
+  "tests/test_sgw_production_e2e.py",
+]

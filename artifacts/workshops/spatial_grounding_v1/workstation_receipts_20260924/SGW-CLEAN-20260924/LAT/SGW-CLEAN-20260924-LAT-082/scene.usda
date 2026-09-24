@@ -1,0 +1,58 @@
+#usda 1.0
+(
+    defaultPrim = "World"
+    subLayers = [@/home/ali/sgw-scene-design-20260923/RoboLab/assets/scenes/rubiks_cube_banana_bowl.usda@]
+)
+
+over "World" {
+    over "banana" {
+        double3 xformOp:translate = (0.7710409744230666, -0.1779909351295365, 0.0684281587600708)
+        quatf xformOp:orient = (0.9999781250953674, -0.0026648887433111668, -0.006051987875252962, 0.0001454032608307898)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+    }
+    over "bowl" {
+        double3 xformOp:translate = (0.6102115793672958, -0.19882823465527427, 0.07732785493135452)
+        quatf xformOp:orient = (0.9999999403953552, -5.8753543271450326e-05, -0.00032362030469812453, -0.00010501052747713402)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+    }
+    over "rubiks_cube" {
+        double3 xformOp:translate = (0.4904165847746291, -0.22775088189305198, 0.08113233000040054)
+        quatf xformOp:orient = (0.9999990463256836, -0.0009071399690583348, 0.001037940033711493, 8.44117093947716e-05)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+    }
+
+
+    def Scope "SGWMaterials" {
+        def Material "MatteTable" {
+            token outputs:surface.connect = </World/SGWMaterials/MatteTable/Surface.outputs:surface>
+            def Shader "Surface" {
+                uniform token info:id = "UsdPreviewSurface"
+                color3f inputs:diffuseColor = (0.24, 0.28, 0.32)
+                float inputs:roughness = 0.9
+                float inputs:metallic = 0
+                token outputs:surface
+            }
+        }
+        def Material "MatteFloor" {
+            token outputs:surface.connect = </World/SGWMaterials/MatteFloor/Surface.outputs:surface>
+            def Shader "Surface" {
+                uniform token info:id = "UsdPreviewSurface"
+                color3f inputs:diffuseColor = (0.62, 0.64, 0.67)
+                float inputs:roughness = 1
+                float inputs:metallic = 0
+                token outputs:surface
+            }
+        }
+    }
+    over "table" (prepend apiSchemas = ["MaterialBindingAPI"]) {
+        rel material:binding = </World/SGWMaterials/MatteTable> (
+            bindMaterialAs = "strongerThanDescendants"
+        )
+    }
+    over "GroundPlane" (prepend apiSchemas = ["MaterialBindingAPI"]) {
+        token visibility = "inherited"
+        rel material:binding = </World/SGWMaterials/MatteFloor> (
+            bindMaterialAs = "strongerThanDescendants"
+        )
+    }
+}

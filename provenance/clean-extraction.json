@@ -1,0 +1,37 @@
+{
+  "schema": "sgw-clean-only-extraction-v1",
+  "scope": "Clean LAT/HEIGHT/DIST scene preparation and WAM workshop study only. No learned-policy launch.",
+  "original_source_repository": "https://github.com/adeeb10abbas/steerable",
+  "original_source_commit": "62ad0101d5fc26c6461aff47f611cab21219748a",
+  "scene_completion_source_commit": "a7c69afb0fc0e636bd14ebf92ea6b4de65c3705c",
+  "recorded_at_utc": "2026-09-24T03:07:21.005087+00:00",
+  "original_source_checkout_untouched": true,
+  "supersedes": "Broad 1470-file extraction manifest removed because its scope no longer describes this clean-only repository.",
+  "retained_scopes": [
+    "SGW clean scene source and frozen 1044-cell protocol/prompt/queue template",
+    "Two required N3/D1 checkpoint identity manifests",
+    "Measured a40-20260922z workspace and lat-closed-pad calibration",
+    "Clean prototypes 03/04/05/06 and their valid failures and successes",
+    "SGW-CLEAN-20260924, completion prototypes, balanced candidate inputs, and clean workstation receipts",
+    "Current workshop paper/ablation materials and resource-neutral cluster planning"
+  ],
+  "removed_scopes": [
+    "Office prototypes 00/01/02 and their receipts",
+    "Old MAIN pilot/recovery/fixed-input behavioral records and operational authorization artifacts",
+    "Historical layout audits, previous family campaign probes/results and source-staging artifacts",
+    "Old handoff/k8s launch manifests",
+    "Office illustration handoff and old broad packaging/extraction receipts"
+  ],
+  "removed_file_count": 1288,
+  "removed_bytes": 62836228,
+  "immutable_clean_inputs_preserved_count": 349,
+  "registered_input_and_plan_bytes_changed": false,
+  "native_source_changed_by_cleanup": false,
+  "scientific_dependency_files": {
+    "artifacts/workshops/spatial_grounding_v1/infrastructure/a40-20260922z-workspace.json": "4490b1a7ba6cb3fb9174798bd6559a188edb01f609a7041ee88447c8e3314f45",
+    "artifacts/workshops/spatial_grounding_v1/controller_calibrations/lat-closed-pad-20260923.json": "107442ccca01c4ac44ec6e1cb9674d51dbcd8663288a851dc54fa91a124f93d7"
+  },
+  "model_requests": 0,
+  "simulator_trials": 0,
+  "launch_authorized": false
+}

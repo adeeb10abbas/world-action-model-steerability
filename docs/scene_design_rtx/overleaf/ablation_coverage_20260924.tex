@@ -1,0 +1,53 @@
+\section{Study coverage and remaining measurements}
+\label{sec:coverage-update}
+\textbf{Clean study status, 24 September 2026.}
+The LAT, HEIGHT and DIST scene generators are implemented, and physical qualification is underway. LAT and DIST use a flat tabletop; only HEIGHT uses raised supports. Flat-table DIST prototype trials are running, with no outcomes reported here. The final 87-layout set is not complete. The 18 frozen prompts and 1,044-cell queue specify the intended experiment; this document reports no clean learned-policy results.
+
+\begin{table}[ht]
+\centering\small
+\begin{tabularx}{\linewidth}{@{}>{\raggedright\arraybackslash}p{0.24\linewidth}>{\raggedright\arraybackslash}X>{\raggedright\arraybackslash}p{0.22\linewidth}@{}}
+\toprule
+Question & Controlled comparison & Required result \\
+\midrule
+Opposite goals & Positive versus negative goal within D, C and I & Physical separation and per-goal success \\
+Sentence construction & C minus D at the same physical goal & Paired success and margin effects \\
+Equivalent relation & I minus C at the same physical goal & Primary success and margin effects \\
+Spatial task & Each comparison within LAT, HEIGHT and DIST for N3 and D1 & Six model-family reports \\
+Prediction accuracy & Generated future versus persistence, same view and physical time & Relative-position error, skill and coverage \\
+Prediction--execution disagreement & Predicted and executed relation at the same horizon & Four agreement categories and unknown cases \\
+Failure stage & Pickup, transport, placement, release and final stability & Stage timelines and reference motion \\
+\bottomrule
+\end{tabularx}
+\caption{Required outputs from the core queue and its recordings. Scripted scene qualification and offline annotation are separate from learned-policy episode counts.}
+\end{table}
+
+The primary matched ablation, I--C, changes instruction wording while holding the physical goal and initial scene state identical. C--D uses the same matching rule and measures the specified construction change, including ``Put'' versus ``Place \ldots so that,'' rather than syntax or length in isolation. LAT and DIST require released placements directly on the table. HEIGHT alone uses raised supports for higher/lower placement; DIST compares full three-dimensional Euclidean distance to the bowl and plate.
+
+Removing DIST pedestals is scene cleanup, not a measured support ablation. Support presence is not a study factor. Differences in references, geometry and placement requirements preclude a pure-axis causal claim across families; cross-family success differences are descriptive.
+
+\subsection{Scene qualification and matched cohorts}
+Each family needs 29 distinct qualified layouts: one pilot on the seeded side, two development layouts per side and twelve confirmation layouts per side. LAT side is measured from the cube's starting $y$ coordinate relative to the fixed robot frame; HEIGHT side from the upper versus lower support; DIST side from bowl versus plate. Opposite-goal checks and initial-side balance are separate controls.
+
+Both goals must pass across three resets with the unchanged 450-action scripted controller. Independent receipts bind the original design, measured geometry, six trials and observed outcome. The scene registry retains rejected and pending candidates and remains partial until all quotas and selection-order requirements hold. The two models share the same frozen layouts. Physical feasibility does not establish model success or authorize the model study.
+
+\subsection{Prediction measurement}
+Before scoring fidelity, establish each generated frame's physical target time and view inside the prefix actually executed before replanning. Record actual model-input arrays and their crop/packing transforms. A presentation frame rate or an available camera is insufficient. Freeze the positive horizon $H$ on development, separately for N3 and D1, and select requests at indices $\lfloor0.25(n-1)\rfloor$ and $\lfloor0.75(n-1)\rfloor$, deduplicating when necessary.
+
+For each normalized target--anchor relative image coordinate $u$, report
+\begin{align}
+E_{\mathrm{prediction}} &= \lVert u_{\mathrm{pred}}(H)-u_{\mathrm{actual}}(H)\rVert_2,\\
+E_{\mathrm{persistence}} &= \lVert u_{\mathrm{current}}-u_{\mathrm{actual}}(H)\rVert_2,\\
+\mathrm{skill} &= E_{\mathrm{persistence}}-E_{\mathrm{prediction}}.
+\end{align}
+Two blinded raters localize cube and anchor centers; discrepancies above 0.02 image diagonals require adjudication. DIST includes both anchors. Localization, adjudication and persistence exports remain to be completed; categorical labels alone are insufficient.
+
+Validate semantic labels with 50 offline images per family: 20 balanced unambiguous development states, 20 balanced unambiguous held-out states, and 10 ambiguous/occluded variants. Require at least 19/20 correct held-out signs and no forced labels on ambiguous states. World height and Euclidean distance cannot be inferred automatically from pixel coordinates. At matching $H$, report both consistent, prediction-only consistent, execution-only consistent, both inconsistent and unknown. Preserve coverage and missingness bounds; a failed prediction measurement does not erase valid execution evidence.
+
+\subsection{Analysis completion}
+The compiler now distinguishes physical separation $r(+)-r(-)=M(+)+M(-)$ in metres from success asymmetry $S(+)-S(-)$. Observed manipulation failures retain their continuous endpoints; missing or censored endpoints have unavailable separation. The final export must combine the I--C and C--D effects, per-goal transitions, physical separation, stage diagnostics, prediction skill and coverage, exposing complete layouts out of 24 for every model-family branch.
+
+Retain the registered 20,000 layout bootstrap draws, 100,000 paired sign flips, six-test Holm correction, censoring rules and two-endpoint equivalence criteria. Nonsignificance is not equivalence. Freeze stationary/moving handling at 0.02 image diagonals and declare first/later-request and alternative-supported-$H$ sensitivity analyses before confirmation. End-to-end outputs and the prediction-annotation workflow still require validation with labeled engineering fixtures; those checks are not experimental results.
+
+The detailed measurement plan is in
+\href{https://github.com/adeeb10abbas/world-action-model-steerability/blob/main/docs/scene_design_rtx/ABLATION_COVERAGE.md}{\texttt{ABLATION\_COVERAGE.md}}.
+The scope remains D/C/I $\times$ LAT/HEIGHT/DIST $\times$ N3/D1. The workshop contribution depends on showing what physically aligned generated futures reveal beyond execution scores, including the possibility that their added diagnostic value is limited.

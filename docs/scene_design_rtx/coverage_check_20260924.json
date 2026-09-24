@@ -1,0 +1,101 @@
+{
+  "status": "clean_wam_research_plan_not_experimental_results",
+  "checked_at_utc": "2026-09-24T03:29:45.317022+00:00",
+  "scope": "D/C/I x LAT/HEIGHT/DIST x N3/D1 in clean tabletop scenes",
+  "repository": "https://github.com/adeeb10abbas/world-action-model-steerability",
+  "cells": 1044,
+  "blocks": 174,
+  "prompts": 18,
+  "stages": {
+    "P": 36,
+    "D": 144,
+    "C": 864
+  },
+  "six_forms_goals_per_block": true,
+  "prompt_hashes_match": true,
+  "paper_prompts_match_exact_strings": true,
+  "frozen_protocol_prompts_and_queue_changed": false,
+  "source_hashes": {
+    "protocol.json": "47981c57b61dc44ad0a9590c2cafbadd498481ce97ea79637833baea90ffcbc6",
+    "prompts.json": "f07dbda34feb915472fc329be203ec526a7589007485eeb8f237c19c8708b979",
+    "planned_cells.csv": "b5137427c6a35f8fe84d9add7ff6e559b4bebdb4173306891781d3ba0cc7ebf6"
+  },
+  "scene_status": {
+    "all_three_clean_generators_implemented": true,
+    "physical_qualification": "underway",
+    "complete_87_layout_set_claimed": false,
+    "surface_by_family": {
+      "LAT": "flat tabletop",
+      "HEIGHT": "raised supports",
+      "DIST": "flat tabletop"
+    },
+    "flat_dist_prototype_trials": "underway; no outcomes reported in this research plan",
+    "dist_pedestal_removal": "scene cleanup; not a measured support ablation",
+    "support_presence_is_study_factor": false
+  },
+  "learned_policy_launch_authorized": false,
+  "physical_separation": "r(+) - r(-) = M(+) + M(-), in metres; implemented separately from binary success asymmetry",
+  "open_work": [
+    "complete physical scene qualification and side quotas",
+    "qualify N3/D1 runtime and physical time/camera mappings",
+    "coordinate localization and adjudication exports",
+    "persistence skill and semantic-label validation",
+    "complete coverage, censoring and equivalence outputs"
+  ],
+  "tex_dependencies": {
+    "includes": [
+      "overleaf/ablation_coverage_20260924.tex"
+    ],
+    "missing_includes": [],
+    "bibliography": "inline thebibliography; no external .bib file",
+    "unresolved_citation_keys": [],
+    "coverage_copies_identical": true
+  },
+  "local_compile": {
+    "engine": "pdflatex",
+    "passes": 1,
+    "prior_auxiliary_files_reused": true,
+    "exit_code": 0,
+    "errors": 0,
+    "warnings": 0,
+    "typesetting_warnings": 0,
+    "pages": 10,
+    "pdf_sha256": "a157fd153a0ad9a7465af796084d48c9b21f694531cf2d05f7af398739d3f011"
+  },
+  "overleaf": {
+    "project_url": "https://www.overleaf.com/project/6ab2bdb39b30df4bbc98a15e",
+    "project_title": "steering wams",
+    "synced_this_revision": true,
+    "checked_at_utc": "2026-09-24T03:33:52.542546+00:00",
+    "method": "Authenticated Chrome UI file upload; full sources read before replacement",
+    "preupload_review": "Earlier historical draft; no conflicting user edits identified outside the authorized cleanup",
+    "saved_source_readback_matches": true,
+    "readback_check": "Full editor clipboard text character count and FNV-1a 64-bit fingerprint matched each uploaded local source",
+    "uploaded_source_sha256": {
+      "main.tex": "94183f519c62a4e6c7e10aac230f5e0afdda6831e7d1efe169f41d1b336920dc",
+      "ablation_coverage_20260924.tex": "ec218f6e5c6e3ef6fbe0c77714f9fca4a668fb22f30433ad63c14dbdeb042124"
+    },
+    "compile_checked_remotely": true,
+    "compile_errors": 0,
+    "compile_warnings": 0,
+    "pdf_pages": 10,
+    "compile_build": "1a0d179568e-4d56efa426d05118",
+    "other_project_files_changed": false
+  },
+  "delivery_hashes": {
+    "ABLATION_COVERAGE.md": "1022e2f21a65b89a41f487fdd2508fb332c944e5de0e0f21f3c608049b4ad855",
+    "ablation_coverage_20260924.tex": "ec218f6e5c6e3ef6fbe0c77714f9fca4a668fb22f30433ad63c14dbdeb042124",
+    "overleaf/main.tex": "94183f519c62a4e6c7e10aac230f5e0afdda6831e7d1efe169f41d1b336920dc",
+    "overleaf/ablation_coverage_20260924.tex": "ec218f6e5c6e3ef6fbe0c77714f9fca4a668fb22f30433ad63c14dbdeb042124"
+  },
+  "matched_ablation": {
+    "primary": "I minus C",
+    "secondary": "C minus D",
+    "changed_factor": "instruction wording",
+    "held_identical": [
+      "physical goal",
+      "initial scene state"
+    ],
+    "cross_family_pure_axis_causal_claim": false
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "study_id": "SGW-01",
+  "status": "UNDER_CONSTRUCTION_NOT_READY",
+  "learned_policy_launch_authorized": false,
+  "planned_behavioral_cells": 1044,
+  "prompt_count": 18,
+  "future_learned_policy_execution_location": "cluster_only",
+  "current_scope": "Repository preparation and explicitly authorized scene completion; no learned-policy study launch.",
+  "extraction_source_commit": "62ad0101d5fc26c6461aff47f611cab21219748a",
+  "pending_integration": "Scene generators and CPU tools integrated; scripted physical qualification remains in progress. No learned-policy study launch.",
+  "historical_authorizations_are_not_new_launch_permission": true,
+  "scene_families_implemented": [
+    "LAT",
+    "HEIGHT",
+    "DIST"
+  ],
+  "physical_scene_package_complete": false,
+  "active_geometry": {
+    "LAT": "flat tabletop",
+    "HEIGHT": "raised supports",
+    "DIST": "flat tabletop; pedestal revision excluded"
+  },
+  "scripted_qualification_snapshot": {
+    "recorded_at_utc": "2026-09-24T03:49:08.999214+00:00",
+    "eligible_passed_layouts": {
+      "LAT": 6,
+      "HEIGHT": 6,
+      "DIST": 2
+    },
+    "target_layouts_per_family": 29,
+    "flat_dist_prototypes": "Both orientations independently verified: six of six trials passed each.",
+    "learned_policy_episodes": 0
+  }
+}
