@@ -1,0 +1,74 @@
+{
+  "schema": "sgw-01-prospective-policy-hardware-amendment-v1",
+  "status": "approved_before_study",
+  "decision_at_utc": "2026-09-24T23:16:00Z",
+  "authorization": {
+    "kind": "orchestrator_relay_of_standing_user_authority",
+    "session": "c230f3cd-3fe9-4f1f-9ee4-e8b857151a60",
+    "message": "ORCHESTRATOR DECISION (23:16Z): run ALL THREE policy families on NVIDIA A40",
+    "coordinator": "5ed7dc81-68d8-493f-a8c4-81a4b6cb59f6"
+  },
+  "reason": "All proposed A100 allocations have live user-owned ablation-v3 queues. The user is unavailable to release them. Do not stop, race, co-run with, or modify those queues.",
+  "recorded_a100_conflicts": {
+    "211247-alia100e-a100-4gpu": {
+      "train_queue_pids": [55996],
+      "eval_worker_pids": [57451, 57452, 57453],
+      "also_observed": "11 live train_grasp.py workers"
+    },
+    "211247-alia100f-a100-4gpu": {
+      "train_queue_pids": [92944],
+      "eval_worker_pids": [94586, 94587, 94588]
+    },
+    "211247-alia100g-a100-4gpu": {
+      "train_queue_pids": [87865],
+      "eval_worker_pids": [89438, 89439, 89440]
+    },
+    "p1": {"eval_worker_pids": [1630]},
+    "p2": {"train_queue_pids": [53271], "eval_worker_pids": [54153]},
+    "p3": {"eval_worker_pids": [27116]}
+  },
+  "source_commit": "14027a3fe5e3e262e788579461844b4adaebe1dc",
+  "study_releases_at_decision": 0,
+  "study_requests_at_decision": 0,
+  "study_episodes_at_decision": 0,
+  "hardware": {
+    "policy_gpu_name": "NVIDIA A40",
+    "policy_compute_capability": "8.6",
+    "simulator_gpu_name": "NVIDIA A40",
+    "policy_pod_counts": [1, 2],
+    "maximum_policy_lanes": 7,
+    "maximum_simulator_lanes": 7,
+    "spare_gpus": 1,
+    "initial_model_lane_counts": {"N3": 2, "E3": 2, "F3": 3},
+    "single_gpu_pod_memory_limit": "32Gi",
+    "two_gpu_pod_memory_limit": "64Gi",
+    "fresh_per_uuid_idle_and_process_ownership_check_required": true
+  },
+  "constancy": {
+    "models": ["N3", "E3", "F3"],
+    "all_confirmation_cohorts_policy_gpu_name": "NVIDIA A40",
+    "mid_cohort_return_to_A100_allowed": false,
+    "runtime_versions_settings_prompts_scoring_queue_unchanged": true,
+    "specification": "experiments/workshops/spatial_grounding_v1/spec/EXPERIMENT_SPEC.md section 3",
+    "new_immutable_binding_and_releases_required": true
+  },
+  "evidence_boundary": {
+    "prior_A100_qualification_identity_preserved": true,
+    "A40_policy_compatibility_previously_demonstrated": false,
+    "first_real_study_request_per_model_is_compatibility_observation": true,
+    "additional_fixed_input_campaign_allowed": false,
+    "synthetic_results_are_not_model_results": true,
+    "forecast_physical_mapping": "unavailable"
+  },
+  "failure_policy": {
+    "OOM_kernel_NATTEN_or_host_RAM_failure": "infrastructure failure; no model score; retain request, logs and partial recordings",
+    "on_first_model_compatibility_failure": "stop only that model and notify the orchestrator; no automatic replay",
+    "additional_lanes": "start after that model's first genuine A40 request succeeds",
+    "lane_reassignment": "only after all nine partitions of the original model complete; A40 class remains unchanged"
+  },
+  "frozen_hashes": {
+    "planned_cells.csv": "07a2bd6c1893e7662db0c12c01843c20d743bfeb4cb1b506f238a37ae19e068a",
+    "protocol.json": "4b420512939f8eba75fc31a91bd562812b6e8c1acd328b5ed7e268bbccb37bde",
+    "prompts.json": "f07dbda34feb915472fc329be203ec526a7589007485eeb8f237c19c8708b979"
+  }
+}

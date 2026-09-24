@@ -34,7 +34,8 @@
     "sha256": "cffa0423119dbe631a1ddb08f91232ac0eb54d256ce3c1ecf1de194450608867"
   },
   "model_roster_amendment": "docs/MODEL_ROSTER_AMENDMENT_20260924.md",
-  "pending_integration": "All3 models consumed6 fixed-input and2 live requests each:24 native requests,192 receiver-confirmed live actions,6 live resets. Nano's separate external witness passed while preserving its original cleanup failure; Edge-B and FLUX-C both completed with clean shutdown and terminal Complete Jobs. Forecast physical pixel/time alignment remains unavailable. Dedicated bare-Pod ownership, durable controller and guarded release integration are underway. Zero study episodes; no video transfers; no qualification replay.",
+  "pending_integration": "All3 models consumed6 fixed-input and2 live requests each on A100:24 native requests,192 receiver-confirmed live actions,6 live resets. Prior failures and actual A100 identities remain preserved. Controller14027a3fe5e3e262e788579461844b4adaebe1dc is deployed with87/1566 CPU-materialized bindings. A prospective amendment authorizes all3 policy confirmation cohorts on A40 because live user-owned queues occupy all proposed A100s. First genuine A40 study requests, not another qualification campaign, must establish compatibility. Forecast physical mapping remains unavailable. Zero study episodes at amendment; no video transfers.",
+  "policy_hardware_amendment": "handoff/cluster-execution-20260924/a40-policy-amendment.json",
   "three_model_lane_plan": "handoff/cluster-execution-20260924/three-lane-plan.json",
   "edge_live_qualification": "handoff/cluster-execution-20260924/e3-live-result.json",
   "nano_external_live_witness": "handoff/cluster-execution-20260924/n3-live-external-witness.json",
@@ -140,6 +141,6 @@
     "unused_registered_candidates": 205,
     "valid_physical_rejections": 8
   },
-  "status": "PINNED_RUNTIME_CHECKS_COMPLETE_STUDY_NOT_STARTED",
+  "status": "A100_RUNTIME_CHECKS_COMPLETE_A40_STUDY_AMENDMENT_APPROVED_NOT_STARTED",
   "study_id": "SGW-01"
 }

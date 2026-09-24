@@ -25,15 +25,31 @@ that `app.close()` returned. **Totals: 24 native requests, 192 live actions,
 six live resets, zero study episodes.** No qualification request may be
 replayed to improve these receipts. Forecasts remain `decoded_unmapped`.
 
-The latest user direction supplies dedicated existing A100 policy Pods:
-`211247-alia100e-a100-4gpu` (N3), `211247-alia100f-a100-4gpu` (E3), and
-`211247-alia100g-a100-4gpu` (F3). One read-only pass confirmed the correct PVC,
-UID/GID, pinned environment/source/checkpoint paths, and 12 idle A100-40GB
-devices. These bare Pods have no Job UID: the durable controller must bind
-actual Pod and finite supervisor identities rather than fabricate Job owners.
-The first actual study attempt, not another diagnostic, will establish 40GB
-fit. Preserve OOM as infrastructure failure; use only explicitly authorized
-A100-80GB fallback capacity.
+**Prospective A40 policy amendment, 23:16 UTC:** every proposed A100 Pod
+(e/f/g and p1/p2/p3) has a live user-owned ablation queue, including sleeping
+workers behind zero-utilization GPU snapshots. None was stopped or shared.
+The orchestrator has approved [all three policy cohorts on A40](a40-policy-amendment.json),
+using seven policy/simulator pairs and one spare device. All confirmation
+data remain on A40 even if A100 capacity later becomes idle. Existing A100
+qualification receipts retain their actual hardware identity; they are not
+A40 compatibility evidence. The first genuine study request per model is
+the A40 compatibility observation, with no new fixed-input campaign.
+Kernel/NATTEN, device-memory or host-memory failures remain infrastructure
+failures with no model score; stop only the affected model and preserve evidence.
+
+The finite existing-Pod controller is pushed and deployed at
+`14027a3fe5e3e262e788579461844b4adaebe1dc`, in
+`/data/users/ali/sgw-01/current-20260924a/source-14027a3`.
+Its CPU materialization at `materialization-14027a3` binds all 87 layouts and
+1,566 cells; environment-binding SHA-256 is
+`230982e7fb555255d001bff913bd578144c483aa5c2e01a5da978debc0278fcd`.
+Observed-clock fixtures were derived from the already consumed native logs,
+without new model or physics requests. Prepared A100 inputs remain
+unlaunched historical plans, not current allocation authority. New A40 inputs
+must use a separate immutable binding and the amendment receipt.
+These bare Pods have no Job UID: bind actual Pod and finite supervisor
+identities rather than fabricate Job owners. At amendment time there were
+zero study releases, requests and episodes.
 
 The screenshot's A40 names were abbreviated: actual names end in
 `-a40-2gpu`. Read-only telemetry found live `lerobot-train` in A40a/b/c/d
