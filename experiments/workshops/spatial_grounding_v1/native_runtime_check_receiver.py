@@ -14,6 +14,9 @@ import math
 import os
 from pathlib import Path
 import platform
+import signal
+import subprocess
+import sys
 import time
 import traceback
 from typing import Any
@@ -160,21 +163,16 @@ def verify_authority(registration: Registration, identity: dict[str, str]) -> No
     binding.qualification_cell(registration_path=registration.path, registration_sha256=registration.sha256)
 
 
-def verify_completion(root: Path, identity: dict[str, str], refresh: Any,
-                      deadline: float, expected_actions: int, *, expected_resets: int = 2) -> dict[str, Any]:
-    if expected_resets not in (0, 2) or (expected_resets == 0 and expected_actions != 0):
+def verify_data_completion(root: Path, identity: dict[str, str], expected_actions: int,
+                           *, expected_resets: int = 2) -> dict[str, Any]:
+    """Check immutable receiver data independently of process-exit witnessing."""
+    if (type(expected_actions) is not int or not 0 <= expected_actions <= 64
+            or type(expected_resets) is not int or expected_resets not in (0, 2)
+            or (expected_resets == 0 and expected_actions != 0)):
         raise MailboxError("only two-reset completion or zero-physics abort can be acknowledged")
-    while not (root / "receiver_shutdown.json").is_file():
-        remaining(deadline, 1)
-        refresh(root)
-        if (root / "receiver_failure.json").is_file():
-            raise MailboxError("technical receiver failed; preserve its partial evidence")
-        time.sleep(.01)
-    shutdown = _read(root / "receiver_shutdown.json")
     receipt = _read(root / "receiver_complete.json")
-    if (shutdown.get("identity") != identity or shutdown.get("cleanup_errors") != []
-            or shutdown.get("environment_closed") is not True or shutdown.get("app_closed") is not True
-            or any((root / "faults").glob("*.json")) or (root / "receiver_failure.json").exists()
+    if (any((root / "faults").glob("*.json")) or (root / "receiver_failure.json").exists()
+            or (root / "receiver_supervisor_failure.json").exists()
             or receipt.get("schema") != COMPLETION_SCHEMA or receipt.get("attempt_scope") != SCOPE
             or receipt.get("identity") != identity or receipt.get("release_permitted") is not False
             or receipt.get("behavioral_episodes") != 0 or receipt.get("physical_resets_completed") != expected_resets
@@ -195,8 +193,25 @@ def verify_completion(root: Path, identity: dict[str, str], refresh: Any,
     return receipt
 
 
+def verify_completion(root: Path, identity: dict[str, str], refresh: Any,
+                      deadline: float, expected_actions: int, *, expected_resets: int = 2) -> dict[str, Any]:
+    while not (root / "receiver_shutdown.json").is_file():
+        remaining(deadline, 1)
+        refresh(root)
+        if any((root / name).is_file() for name in
+               ("receiver_failure.json", "receiver_supervisor_failure.json")):
+            raise MailboxError("technical receiver failed; preserve its partial evidence")
+        time.sleep(.01)
+    shutdown = _read(root / "receiver_shutdown.json")
+    if (shutdown.get("identity") != identity or shutdown.get("cleanup_errors") != []
+            or shutdown.get("environment_closed") is not True or shutdown.get("app_closed") is not True):
+        raise MailboxError("technical receiver cleanup identity differs")
+    return verify_data_completion(root, identity, expected_actions, expected_resets=expected_resets)
+
+
 def run(registration_path: Path, registration_sha256: str, identity_path: Path, identity_sha256: str,
-        *, metadata_refresh: Any = None, app_factory: Any = None, environment_factory: Any = None) -> dict[str, Any]:
+        *, metadata_refresh: Any = None, app_factory: Any = None, environment_factory: Any = None,
+        supervised: bool = False) -> dict[str, Any]:
     """Callbacks are CPU-test seams only; the CLI exposes no factory injection."""
     registration = load_registration(registration_path, registration_sha256)
     deadline = time.monotonic() + registration.value["deadline_seconds"]
@@ -262,13 +277,20 @@ def run(registration_path: Path, registration_sha256: str, identity_path: Path, 
                 environment_closed = True
         except BaseException:
             cleanup_errors.append(traceback.format_exc())
+        _write(root / "receiver_cleanup_started.json", {
+            **DISCLAIMER, "identity": identity, "native_pid": os.getpid(),
+            "environment_closed": environment_closed, "cleanup_errors": cleanup_errors,
+            "app_close_started": app is not None,
+            "counts": bounded.counts() if bounded else None,
+        })
         try:
             if app is not None:
                 app.close()
                 app_closed = True
         except BaseException:
             cleanup_errors.append(traceback.format_exc())
-        _write(root / "receiver_shutdown.json", {
+        shutdown_name = "receiver_child_shutdown.json" if supervised else "receiver_shutdown.json"
+        _write(root / shutdown_name, {
             **DISCLAIMER, "identity": identity, "environment_closed": environment_closed,
             "app_closed": app_closed, "cleanup_errors": cleanup_errors,
             "counts": bounded.counts() if bounded else None,
@@ -278,14 +300,109 @@ def run(registration_path: Path, registration_sha256: str, identity_path: Path, 
     return _read(root / "receiver_complete.json")
 
 
+def witness_owned_exit(root: Path, identity: dict[str, str], *, native_pid: int,
+                       exit_code: int, started_at: float, timed_out: bool = False,
+                       interrupted: bool = False) -> None:
+    """Survive Isaac's normal fast-shutdown exit; exit zero alone is insufficient."""
+    _write(root / "receiver_process_exit.json", {
+        **DISCLAIMER, "identity": identity, "supervisor_pid": os.getpid(),
+        "native_pid": native_pid, "exit_code": exit_code, "timed_out": timed_out,
+        "interrupted": interrupted,
+        "started_at_unix_s": started_at, "finished_at_unix_s": time.time(),
+    })
+    try:
+        started = _read(root / "receiver_cleanup_started.json")
+        counts = started.get("counts")
+        if (exit_code != 0 or timed_out or interrupted or started.get("identity") != identity
+                or started.get("native_pid") != native_pid or started.get("cleanup_errors") != []
+                or started.get("environment_closed") is not True or started.get("app_close_started") is not True
+                or not isinstance(counts, dict)):
+            raise MailboxError("native exit lacks clean identity-bound pre-close evidence")
+        receipt = verify_data_completion(root, identity, counts.get("executed_action_count"),
+                                         expected_resets=counts.get("physical_resets_completed"))
+        child_shutdown = root / "receiver_child_shutdown.json"
+        if child_shutdown.exists():
+            shutdown = _read(child_shutdown)
+            if (shutdown.get("identity") != identity or shutdown.get("cleanup_errors") != []
+                    or shutdown.get("environment_closed") is not True or shutdown.get("app_closed") is not True):
+                raise MailboxError("native post-close receipt contradicts clean process exit")
+        _write(root / "receiver_shutdown.json", {
+            **DISCLAIMER, "identity": identity, "environment_closed": True, "app_closed": True,
+            "cleanup_errors": [], "counts": counts,
+            "witness": "owned_native_subprocess_exit_after_complete_data_and_pre_close_evidence",
+            "app_close_return_observed": child_shutdown.exists(),
+            "receiver_complete_sha256": _digest(root / "receiver_complete.json"),
+            "receiver_cleanup_started_sha256": _digest(root / "receiver_cleanup_started.json"),
+            "receiver_process_exit_sha256": _digest(root / "receiver_process_exit.json"),
+            "command_count": receipt["command_count"],
+        })
+    except BaseException:
+        _write(root / "receiver_supervisor_failure.json", {
+            **DISCLAIMER, "identity": identity, "traceback": traceback.format_exc(),
+            "native_pid": native_pid, "exit_code": exit_code,
+        })
+        raise
+
+
+def _stop_owned_child(child: subprocess.Popen) -> int:
+    if child.poll() is None:
+        try:
+            os.killpg(child.pid, signal.SIGTERM)
+        except ProcessLookupError:
+            return child.wait()
+        try:
+            return child.wait(timeout=30)
+        except subprocess.TimeoutExpired:
+            os.killpg(child.pid, signal.SIGKILL)
+    return child.wait()
+
+
+def supervise(registration_path: Path, registration_sha256: str,
+              identity_path: Path, identity_sha256: str) -> None:
+    registration = load_registration(registration_path, registration_sha256)
+    identity = load_identity(identity_path, identity_sha256, registration)
+    verify_authority(registration, identity)
+    if registration.root.exists():
+        raise MailboxError("native supervisor requires a new mailbox; attempts cannot be replayed")
+    command = [
+        sys.executable, "-m", "experiments.workshops.spatial_grounding_v1.native_runtime_check_receiver",
+        "--native-child",
+        "--registration", str(registration_path), "--registration-sha256", registration_sha256,
+        "--identity", str(identity_path), "--identity-sha256", identity_sha256,
+    ]
+    started_at = time.time()
+    child = subprocess.Popen(command, start_new_session=True)
+    timed_out = False
+    try:
+        exit_code = child.wait(timeout=registration.value["deadline_seconds"] + 120)
+    except subprocess.TimeoutExpired:
+        timed_out = True
+        exit_code = _stop_owned_child(child)
+    except BaseException:
+        exit_code = _stop_owned_child(child)
+        witness_owned_exit(registration.root, identity, native_pid=child.pid, exit_code=exit_code,
+                           started_at=started_at, interrupted=True)
+        raise
+    witness_owned_exit(registration.root, identity, native_pid=child.pid, exit_code=exit_code,
+                       started_at=started_at, timed_out=timed_out)
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__, allow_abbrev=False)
     parser.add_argument("--registration", type=Path, required=True)
     parser.add_argument("--registration-sha256", required=True)
     parser.add_argument("--identity", type=Path, required=True)
     parser.add_argument("--identity-sha256", required=True)
+    parser.add_argument("--native-child", action="store_true", help=argparse.SUPPRESS)
     args = parser.parse_args()
-    run(args.registration, args.registration_sha256, args.identity, args.identity_sha256)
+    if args.native_child:
+        run(args.registration, args.registration_sha256, args.identity, args.identity_sha256, supervised=True)
+    else:
+        def interrupted(signum: int, _frame: Any) -> None:
+            raise InterruptedError(f"native supervisor received signal {signum}")
+
+        signal.signal(signal.SIGTERM, interrupted)
+        supervise(args.registration, args.registration_sha256, args.identity, args.identity_sha256)
 
 
 if __name__ == "__main__":

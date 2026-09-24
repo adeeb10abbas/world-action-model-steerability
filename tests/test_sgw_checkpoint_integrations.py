@@ -277,12 +277,27 @@ def test_flux_same_request_capture_is_passive_and_reset_clears_caches():
     assert backend.service.last_obs["prompt"] == "literal instruction"
     assert result["future_status"] == "decoded_unmapped"
     assert result["future_metadata"]["sampling_calls"] == 1
+    metadata = result["future_metadata"]
+    assert metadata["source"] == "same_request_official_sample_prepared"
+    assert metadata["conditioning_frame_included"] is True
+    assert metadata["conditioning_fps"] == 15
+    assert metadata["sampling_seed"] == 8300
+    assert metadata["camera_order"] == ["wrist", "left", "right"]
+    assert metadata["canvas_hw"] == metadata["input_padded_canvas_hw"] == [544, 736]
+    assert metadata["canvas_hw_semantics"] == "input_padded_canvas_hw"
+    assert metadata["decoded_output_shape"] == [5, 2, 2, 3]
+    assert metadata["decoded_output_hw"] == [2, 2]
+    assert metadata["decoded_layout_status"] == "unavailable_unexpected_decoded_shape"
+    assert all(region["decoded_bounds_yxyx"] is None for region in metadata["camera_regions"])
     assert result["future_latent"].shape == (1, 1, 2, 1, 1)
     backend.capture_future = False
     disabled = backend.predict(obs, "literal instruction", 8300)
     assert policy.calls == 2
     np.testing.assert_array_equal(result["action"], disabled["action"])
     assert disabled["future_status"] == "not_exposed"
+    assert disabled["future_metadata"]["decoded_output_shape"] is None
+    assert disabled["future_metadata"]["decoded_layout_status"] == "unavailable_no_decoded_output"
+    assert "future" not in disabled and "future_latent" not in disabled
     policy._ctx_cache["old"] = 1
     policy._prepared_text_cache["old"] = 1
     policy._action_queue.append(1)
@@ -301,8 +316,40 @@ def test_flux_decoder_failure_keeps_actions_and_same_sample_latents():
     assert result["action"].shape == (32, 8)
     assert result["future_status"] == "decode_error"
     assert "synthetic decode failure" in result["future_metadata"]["decode_error"]
+    assert result["future_metadata"]["decoded_output_hw"] is None
+    assert result["future_metadata"]["decoded_layout_status"] == "unavailable_no_decoded_output"
+    assert result["future_metadata"]["camera_alignment"] == "unqualified"
     assert "future_latent" in result and "future" not in result
     assert backend.service.policy.calls == 1
+
+
+def test_flux_labels_actual_decoded_canvas_without_resizing_or_changing_capture_parity():
+    torch = pytest.importorskip("torch")
+    backend, obs = _flux_fixture()
+    calls = []
+
+    def decode(latents):
+        calls.append(latents.clone())
+        return torch.zeros((1, 3, 1, 544, 640))
+
+    backend.service.policy.video_vae.decode = decode
+    result = backend.predict(obs, "unaltered", 0)
+    metadata = result["future_metadata"]
+    assert result["future"].shape == (1, 544, 640, 3)
+    assert np.all(result["future"] == 127)
+    assert metadata["decoded_output_shape"] == [1, 544, 640, 3]
+    assert metadata["decoded_output_hw"] != metadata["canvas_hw"]
+    assert [region["decoded_bounds_yxyx"] for region in metadata["camera_regions"]] == [
+        [0, 0, 360, 640], [360, 0, 540, 320], [360, 320, 540, 640],
+    ]
+    assert metadata["non_camera_regions"] == [
+        {"kind": "reflection_padding", "decoded_bounds_yxyx": [540, 0, 544, 640]}
+    ]
+    assert metadata["physical_time_alignment"] == metadata["camera_alignment"] == "unqualified"
+    backend.capture_future = False
+    disabled = backend.predict(obs, "unaltered", 0)
+    assert len(calls) == 1 and backend.service.policy.calls == 2
+    np.testing.assert_array_equal(result["action"], disabled["action"])
 
 
 def test_flux_factory_uses_root_bf16_local_encoders_and_no_warmup(monkeypatch):

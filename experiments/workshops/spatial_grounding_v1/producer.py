@@ -146,6 +146,87 @@ def derive_nano_attestation(
     }
 
 
+def composite_future_metadata(
+    config: Mapping[str, Any], future: Any = None
+) -> dict[str, Any]:
+    """Describe source-defined composite regions, never qualify physical alignment.
+
+    Rectangles use half-open [y0, x0, y1, x1] pixel bounds. Unexpected decoded
+    sizes retain their actual shape but get no guessed output rectangles.
+    """
+    model = config["model"]
+    if model == "F3":
+        repository = "black-forest-labs/flux-action"
+        references = (
+            "src/flux_action/serving/robolab.py#L46-L86",
+            "src/flux_action/processing/packing.py#L94-L106",
+            "src/flux_action/processing/packing.py#L184-L240",
+            "src/flux_action/processing/packing.py#L268-L289",
+        )
+        expected_hw = [544, 640]
+    elif model in {"N3", "E3"}:
+        repository = "NVIDIA/cosmos-framework"
+        references = (
+            "cosmos_framework/scripts/action_policy_server_robolab.py#L211-L231",
+            "cosmos_framework/data/vfm/action/transforms.py#L160-L200",
+            "cosmos_framework/model/vfm/omni_mot_model.py#L2026-L2052",
+        ) if model == "N3" else (
+            "cosmos_framework/scripts/action_policy_server_robolab.py#L226-L246",
+            "cosmos_framework/data/generator/action/utils/transforms.py#L187-L227",
+            "cosmos_framework/model/generator/omni_mot_model.py#L3363-L3389",
+        )
+        expected_hw = [528, 640]
+    else:
+        raise AdapterError("composite future layout requires a registered N3/E3/F3 model")
+    shape = list(np.shape(future)) if future is not None else None
+    hw = shape[1:3] if shape and len(shape) == 4 and shape[-1] == 3 and all(shape) else None
+    known_layout = hw == expected_hw
+    regions = []
+    for view, camera, bounds in (
+        ("wrist", "wrist_cam", [0, 0, 360, 640]),
+        ("left", "over_shoulder_left_camera", [360, 0, 540, 320]),
+        ("right", "over_shoulder_right_camera", [360, 320, 540, 640]),
+    ):
+        regions.append({
+            "view": view,
+            "camera_name": camera,
+            "input_content_bounds_yxyx": bounds,
+            "decoded_bounds_yxyx": (
+                [bounds[0], bounds[1], min(bounds[2], hw[0]), bounds[3]]
+                if known_layout else None
+            ),
+        })
+    return {
+        "camera_layout": "wrist_above_left_right_composite",
+        "layout_provenance": {
+            "model": model,
+            "source_commit": config["source_commit"],
+            "checkpoint_revision": config["revision"],
+            "source_urls": [
+                f"https://github.com/{repository}/blob/{config['source_commit']}/{path}"
+                for path in references
+            ],
+        },
+        "input_content_hw": [540, 640],
+        "input_padded_canvas_hw": [544, 736],
+        "decoded_output_shape": shape,
+        "decoded_output_hw": hw,
+        "decoded_layout_status": (
+            "source_defined_unqualified" if known_layout else
+            "unavailable_no_decoded_output" if future is None else
+            "unavailable_unexpected_decoded_shape"
+        ),
+        "region_bounds_convention": "half_open_y0_x0_y1_x1",
+        "decoded_to_input_content": "top_left_no_rescale" if known_layout else None,
+        "camera_regions": regions,
+        "non_camera_regions": [
+            {"kind": "reflection_padding", "decoded_bounds_yxyx": [540, 0, 544, 640]}
+        ] if known_layout and model == "F3" else [],
+        "physical_time_alignment": "unqualified",
+        "camera_alignment": "unqualified",
+    }
+
+
 class NanoEvidenceProducer:
     """Own SGW request/reset identity and write append-only native evidence."""
 
@@ -265,6 +346,7 @@ class NanoEvidenceProducer:
             "wrapper_reset_id": self._wrapper_reset_id,
             "camera_name": camera_name,
             "camera_id": packet.get("camera_id", camera_name),
+            "camera_attribution_scope": "physical_reset_primary_camera_not_future_layout",
             "registered_cell_id": packet_cell_id,
             "reset_fingerprint": packet_fingerprint,
             "sampling_seed": sampling_seed,
@@ -282,7 +364,7 @@ class NanoEvidenceProducer:
             if self.model != "N3":
                 record["model"] = self.model
                 record["effective_sampling_seed"] = sampling_seed
-                record["future_metadata"] = backend_packet.get("future_metadata", {})
+            record["future_metadata"] = backend_packet.get("future_metadata", {})
             for key in ("request_id", "registered_cell_id", "reset_fingerprint"):
                 if not isinstance(record[key], str) or not record[key]:
                     raise AdapterError(f"SGW Nano packet lacks {key}")
@@ -326,6 +408,8 @@ class NanoEvidenceProducer:
                 "action": actions,
                 "request_id": record["request_id"],
                 "future_status": record["future_status"],
+                "future_metadata": record["future_metadata"],
+                "camera_attribution_scope": record["camera_attribution_scope"],
                 "provenance": "sgw_wrapper_generated",
             }
 

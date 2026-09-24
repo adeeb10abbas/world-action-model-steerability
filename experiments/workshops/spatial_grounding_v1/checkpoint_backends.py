@@ -19,7 +19,7 @@ import numpy as np
 
 from .adapters import AdapterError, EDGE_CONFIG, FLUX_CONFIG, _integer_seed
 from .nano_backend import CosmosNanoBackend
-from .producer import _git_revision, _proc_start_identity
+from .producer import _git_revision, _proc_start_identity, composite_future_metadata
 
 
 IDENTITIES = Path(__file__).with_name("checkpoint_integrations.json")
@@ -136,8 +136,6 @@ class CosmosEdgeBackend(CosmosNanoBackend):
     def predict(self, observation: Mapping[str, Any], prompt: str, sampling_seed: int) -> Mapping[str, Any]:
         _integer_seed(sampling_seed, "sampling_seed")
         result = dict(super().predict(observation, prompt, sampling_seed))
-        if "future" in result:
-            result["future_status"] = "decoded_unmapped"
         return result
 
 
@@ -260,6 +258,7 @@ class FluxBackend:
             result["action"] = actions
             if not self.capture_future:
                 result["future_status"] = "not_exposed"
+                result["future_metadata"] = composite_future_metadata(self.resolved_config)
                 return result
             if len(captured) != 1:
                 raise AdapterError("FLUX did not expose exactly one same-request joint sample")
@@ -269,8 +268,10 @@ class FluxBackend:
             latents = torch.cat((cond.float(), predicted.float()), dim=2)
             result["future_latent"] = latents.cpu().numpy()
             result["future_metadata"] = {
+                **composite_future_metadata(self.resolved_config),
                 "sampling_calls": 1, "source": "same_request_official_sample_prepared",
                 "latent_layout": "B,C,T,H,W", "canvas_hw": [544, 736],
+                "canvas_hw_semantics": "input_padded_canvas_hw",
                 "camera_order": ["wrist", "left", "right"],
                 "conditioning_frame_included": True, "conditioning_fps": 15,
                 "physical_time_alignment": "unqualified", "camera_alignment": "unqualified",
@@ -284,6 +285,7 @@ class FluxBackend:
                     ((decoded[0].clamp(-1, 1) + 1) * 127.5).to(torch.uint8)
                     .permute(1, 2, 3, 0).cpu().numpy()
                 )
+                result["future_metadata"].update(composite_future_metadata(self.resolved_config, result["future"]))
                 result["future_status"] = "decoded_unmapped"
             except Exception as exc:
                 # A decoder failure cannot erase the already valid behavior response.

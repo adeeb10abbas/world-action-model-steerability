@@ -26,6 +26,7 @@ class _Backend:
         return {
             "action": np.zeros((32, 8), dtype=np.float32),
             "future": np.ones((33, 2, 2, 3), dtype=np.uint8),
+            "future_metadata": {"synthetic": True},
         }
 
 
@@ -125,6 +126,10 @@ def test_nano_evidence_producer_writes_wrapper_trace_and_future(
     assert record["wrapper_reset_id"].startswith("sgw-reset-")
     assert record["provenance"] == "sgw_wrapper_generated"
     assert record["future_status"] == "exposed_and_retained"
+    assert record["future_metadata"] == result["future_metadata"] == {"synthetic": True}
+    assert record["camera_name"] == "wrist"
+    assert record["camera_id"] == "camera-0"
+    assert record["camera_attribution_scope"] == "physical_reset_primary_camera_not_future_layout"
     future_path = Path(record["future_path"])
     assert future_path.is_file()
     assert record["future_sha256"] == producer._sha256_bytes(future_path.read_bytes())
@@ -209,6 +214,8 @@ def test_nano_http_wrapper_routes_reset_and_predict(
         )
         assert len(result["action"]) == 32
         assert result["provenance"] == "sgw_wrapper_generated"
+        assert result["future_metadata"] == {"synthetic": True}
+        assert result["camera_attribution_scope"] == "physical_reset_primary_camera_not_future_layout"
     finally:
         server.shutdown()
         server.server_close()

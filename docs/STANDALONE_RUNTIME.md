@@ -192,3 +192,58 @@ replays. Safety truncation and partial failures are retained. The model is
 genuinely owned in-process behind the attested HTTP producer; this check does
 not claim qualification of the production subprocess owner. Forecast
 alignment and study readiness are not inferred from its technical status.
+
+The native CLI now runs its one Isaac child under an outer Python supervisor.
+Pinned Isaac 5.0 defaults `fast_shutdown` to true: `app.close()` can terminate
+the process with exit zero before subsequent Python statements execute.
+The receiver therefore writes identity-bound complete-command and pre-close
+evidence first. The outer owner waits for that exact child to terminate,
+retains its PID/exit/timing receipt, rejects failure/fault/cleanup receipts and
+incomplete command evidence even after exit zero, and only then publishes the
+shutdown witness. A normal child post-close return is separately distinguished
+from process-observed fast exit. Timeout or interruption drains only that
+owned child group and cannot become a successful witness. There are no retries
+or extra AppLauncher/model calls.
+
+Earlier attempts that lack this supervisor must remain unchanged. Any recovery
+requires a separate external observation binding the original receiver data
+to the actual terminal Kubernetes Job/Pod/container identity; do not fabricate
+an in-process post-close marker or replay consumed native requests.
+
+## Composite forecast metadata is not physical qualification
+
+Prospective native traces retain `camera_name`/`camera_id` as the physical
+reset's primary-camera identity. They now explicitly mark
+`camera_attribution_scope: physical_reset_primary_camera_not_future_layout`.
+Never label a whole generated future as the left-camera view. Each model's
+`future_metadata` separately describes the wrist-above-left/right composite,
+source/checkpoint pins and source URLs, input content/padded dimensions,
+**actual** decoded shape, and half-open camera-region bounds. Unexpected
+decoded sizes retain their actual shape with unavailable decoded bounds.
+No recorded fixed-input or previous live artifact is rewritten.
+
+The common content is 540 by 640 pixels; padded input is 544 by 736.
+The observed N3/E3 decoded output is 528 by 640, a top-left crop that omits
+the bottom 12 content rows, not a resized 540-row picture. F3 output is
+544 by 640: all 540 content rows plus four non-camera reflection-padding
+rows. Its existing `canvas_hw` field describes padded **input**, not decoded
+output; `canvas_hw_semantics` makes that distinction explicit. Metadata
+lists wrist, left and right regions separately. Actual cameras, transforms,
+model settings and action generation are unchanged.
+
+The pinned source defines nominal sequence timing: frame zero is conditioning
+time, and returned action index zero transitions into frame one, continuing
+at the configured 15 Hz. Source references:
+
+- [N3 initial-state packing and action slicing](https://github.com/NVIDIA/cosmos-framework/blob/411d25b2e35bc441126f48c44a4b93e1c0564274/cosmos_framework/scripts/action_policy_server_robolab.py#L490-L599).
+- [E3 non-conditioning action/frame correspondence](https://github.com/NVIDIA/cosmos-framework/blob/cf5d68c00d97ccd2480a2320ed652b92dec63102/cosmos_framework/data/generator/action/utils/transforms.py#L340-L399).
+- [F3 action-to-next-frame packing contract](https://github.com/black-forest-labs/flux-action/blob/e2dd1d8dbc5977b54315d61f7548c63c043d6d4f/src/flux_action/processing/packing.py#L325-L377).
+
+This is source-defined sequence geometry, not measured simulator exposure
+alignment or predicted-pixel correctness. Both `physical_time_alignment`
+and `camera_alignment` remain `unqualified`, and decoded futures remain
+`decoded_unmapped` until a separate verified mapping is bound. Frame zero
+need not be a byte-identical copy of the input. Match each request's own
+conditioning timestamp and only its receiver-acknowledged executed prefix;
+unexecuted/safety-truncated counterparts and cropped-away regions remain
+unavailable, never scored zeros.

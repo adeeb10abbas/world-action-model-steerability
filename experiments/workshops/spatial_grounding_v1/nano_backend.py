@@ -12,7 +12,7 @@ from typing import Any, Mapping
 import numpy as np
 
 from .adapters import AdapterError, NANO_CONFIG
-from .producer import _checkpoint_identity, _git_revision
+from .producer import _checkpoint_identity, _git_revision, composite_future_metadata
 
 
 NATIVE_MODULE = "cosmos_framework.scripts.action_policy_server_robolab"
@@ -70,6 +70,8 @@ class CosmosNanoBackend:
         output: dict[str, Any] = {"action": action}
         if "video" in result:
             output["future"] = result["video"]
+        output["future_metadata"] = composite_future_metadata(self.resolved_config, output.get("future"))
+        output["future_status"] = "decoded_unmapped" if output.get("future") is not None else "not_exposed"
         return output
 
 
