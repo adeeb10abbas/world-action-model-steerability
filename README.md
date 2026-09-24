@@ -14,6 +14,7 @@ The study compares Cosmos3 Nano Policy DROID (N3) and DreamZero DROID (D1) on le
 | [Experiment specification](experiments/workshops/spatial_grounding_v1/spec/README.md) | Fixed protocol, 18 prompts and 1,044 planned cells |
 | [Paper and analysis plan](docs/scene_design_rtx/overleaf/main.tex) | Research question, comparisons and remaining measurements |
 | [Cluster handoff](docs/CLUSTER_HANDOFF.md) | 18 supported partitions containing 174 intact six-cell blocks |
+| [Agent work split](docs/AGENT_TASKS.md) | Separate scene transfer, model integration, execution and analysis responsibilities |
 | [Scene materialization](docs/SCENE_MATERIALIZATION.md) | Rebuild selected scenes and cell bindings at the cluster's actual paths |
 | [Runtime setup](docs/STANDALONE_RUNTIME.md) | Simulator, model and checkpoint identities |
 | [Source attribution](provenance/clean-extraction.json) | Origin and clean-only extraction scope |
