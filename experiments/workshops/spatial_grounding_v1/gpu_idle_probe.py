@@ -36,6 +36,7 @@ def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--expected-count", type=int, required=True)
     parser.add_argument("--expected-name", help="Exact qualified GPU name, not a capacity/compatibility guess")
+    parser.add_argument("--select-uuid", help="Require this particular idle device; never select a substitute")
     parser.add_argument("--output", type=Path, required=True)
     args = parser.parse_args()
     if args.output.exists():
@@ -63,6 +64,11 @@ def main() -> None:
         receipt["expected_gpu_name"] = args.expected_name
     try:
         selected = select_idle(gpus, occupied, args.expected_count, expected_name=args.expected_name)
+        if args.select_uuid is not None:
+            selected = select_idle(
+                [gpu for gpu in gpus if gpu["uuid"] == args.select_uuid],
+                occupied, 1, expected_name=args.expected_name,
+            )
     except (ValueError, RuntimeError) as exc:
         receipt.update({"status": "blocked", "reason": str(exc)})
         with args.output.open("x") as stream:

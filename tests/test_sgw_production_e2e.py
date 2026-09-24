@@ -5,6 +5,7 @@ import hashlib
 from pathlib import Path
 
 import numpy as np
+import pytest
 
 from experiments.workshops.spatial_grounding_v1.adapters import NanoPolicyAdapter, ProductionAdapter
 from experiments.workshops.spatial_grounding_v1.compile import compile_manifests
@@ -85,10 +86,20 @@ def test_production_adapter_recorder_scorer_wrong_side_publishes_real_evidence(t
         cell = Cell(row)
         recorder = AttemptRecorder(release, cell, "attempt-001")
         recorder.begin()
+        finished = []
+
+        class RemoteEnvironment(SyntheticEnvironment):
+            def finish_episode(self):
+                assert self.step_index == 450
+                assert not (recorder.path / "manifest.json").exists()
+                assert (recorder.path / "videos" / "viewport.mp4").is_file()
+                finished.append(True)
+
         adapter = ProductionAdapter(NanoPolicyAdapter, transport=_transport, transport_factory=lambda **_: _transport,
-                                    environment_factory=lambda **_: SyntheticEnvironment())
+                                    environment_factory=lambda **_: RemoteEnvironment())
         reset = adapter.reset(cell, recorder)
         raw = adapter.run_episode(cell, recorder, reset)
+        assert finished == [True]
         outcome = _canonical_outcome({**raw, "attempt_id": recorder.attempt_id}, cell, _load_scorer())
         assert outcome["status"] == "valid_model_failure"
         assert outcome["terminal_step"] == 450
@@ -116,3 +127,24 @@ def test_production_adapter_recorder_scorer_wrong_side_publishes_real_evidence(t
                          max_attempts=3, worker_id="resume", adapter=MustNotRun(),
                          scorer=_load_scorer()) == 0
     assert TRANSPORT_CALLS == 90
+
+
+def test_remote_finish_failure_cannot_publish_completion(tmp_path: Path) -> None:
+    release = load_release(make_release(tmp_path))
+    cell = Cell({**release.cells[0].row, "effective_policy_seed": 2026092401})
+    recorder = AttemptRecorder(release, cell, "attempt-001")
+    recorder.begin()
+
+    class BrokenRemote(SyntheticEnvironment):
+        def finish_episode(self):
+            raise OSError("remote child termination not verified")
+
+    adapter = ProductionAdapter(
+        NanoPolicyAdapter, transport=_transport, transport_factory=lambda **_: _transport,
+        environment_factory=lambda **_: BrokenRemote(),
+    )
+    reset = adapter.reset(cell, recorder)
+    with pytest.raises(OSError, match="termination not verified"):
+        adapter.run_episode(cell, recorder, reset)
+    assert not (release.root.parent / "cells" / f"{cell.cell_id}.complete.json").exists()
+    assert not (recorder.path / "manifest.json").exists()

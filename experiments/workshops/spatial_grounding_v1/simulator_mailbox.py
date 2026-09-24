@@ -11,6 +11,7 @@ import hashlib
 import json
 import os
 from pathlib import Path
+import re
 import time
 from typing import Any, Callable, Mapping
 from types import SimpleNamespace
@@ -24,6 +25,54 @@ from .adapters import AdapterError
 
 class MailboxError(AdapterError):
     pass
+
+
+POD_IDENTITY_SCHEMA = "sgw-01-simulator-mailbox-identity-v2"
+LEGACY_IDENTITY_FIELDS = ("release_id", "cell_id", "attempt_id", "channel_nonce", "candidate_sha256",
+                          "binding_sha256", "simulator_job_uid", "simulator_pod_uid")
+
+
+def normalize_identity(value: Mapping[str, Any]) -> dict[str, Any]:
+    """Canonicalize explicit Pod ownership, never infer a Job from a Pod UID."""
+    identity = dict(value)
+    if identity.get("identity_schema") != POD_IDENTITY_SCHEMA:
+        if "identity_schema" in identity or identity.get("simulator_owner_kind") == "Pod":
+            raise MailboxError("bare simulator Pod requires the explicit v2 mailbox identity")
+        return identity
+    strings = set(LEGACY_IDENTITY_FIELDS) - {"simulator_job_uid"} | {
+        "identity_schema", "simulator_owner_kind", "simulator_pod_name", "simulator_gpu_uuid",
+    }
+    references = {"simulator_supervisor_identity_receipt", "simulator_supervisor_entrypoint"}
+    graphics = {"simulator_renderer_gpu_index", "simulator_multi_gpu"}
+    required = strings | references | graphics
+    if (not required.issubset(identity)
+            or not set(identity).issubset(required | {"simulator_job_uid", "simulator_job_name"})
+            or any(not isinstance(identity[key], str) or not identity[key] for key in strings)
+            or identity["simulator_owner_kind"] != "Pod"
+            or type(identity.get("simulator_renderer_gpu_index")) is not int
+            or identity["simulator_renderer_gpu_index"] != 0 or identity.get("simulator_multi_gpu") is not False
+            or identity.get("simulator_job_uid") is not None or identity.get("simulator_job_name") is not None):
+        raise MailboxError("bare simulator identity requires Pod ownership and explicit single-renderer index zero")
+    try:
+        pod_uid, gpu = identity["simulator_pod_uid"], identity["simulator_gpu_uuid"]
+        if (str(uuid.UUID(pod_uid)) != pod_uid or not gpu.startswith("GPU-")
+                or str(uuid.UUID(gpu[4:])) != gpu[4:]
+                or re.fullmatch(r"[a-z0-9](?:[a-z0-9.-]{0,251}[a-z0-9])?", identity["simulator_pod_name"]) is None
+                or re.fullmatch("[0-9a-f]{32}", identity["channel_nonce"]) is None):
+            raise ValueError("Pod/GPU/nonce identity is malformed")
+        for key in ("candidate_sha256", "binding_sha256"):
+            if re.fullmatch("[0-9a-f]{64}", identity[key]) is None:
+                raise ValueError("native candidate/binding hash is malformed")
+        for key in references:
+            ref = identity[key]
+            if (not isinstance(ref, Mapping) or set(ref) != {"path", "sha256"}
+                    or not isinstance(ref["path"], str) or not Path(ref["path"]).is_absolute()
+                    or Path(ref["path"]) != Path(ref["path"]).resolve()
+                    or not isinstance(ref["sha256"], str) or re.fullmatch("[0-9a-f]{64}", ref["sha256"]) is None):
+                raise ValueError("simulator supervisor reference is not canonical/hash-bound")
+    except (ValueError, TypeError) as exc:
+        raise MailboxError(f"invalid bare simulator identity: {exc}") from exc
+    return {key: identity[key] for key in sorted(required)}
 
 
 def _bytes(value: Any) -> bytes:
@@ -115,12 +164,13 @@ def _decode_tree(root: Path, value: Any) -> Any:
 
 
 class MailboxClient:
-    def __init__(self, *, root: Path, identity: Mapping[str, str], timeout_s: float = 30,
+    def __init__(self, *, root: Path, identity: Mapping[str, Any], timeout_s: float = 30,
                  metadata_refresh: Callable[[Path], None] | None = None) -> None:
-        self.root, self.identity, self.timeout_s = Path(root), dict(identity), timeout_s
+        self.root, self.identity, self.timeout_s = Path(root), normalize_identity(identity), timeout_s
         self.metadata_refresh = metadata_refresh
         self.command = 0; self._cache: dict[str, Any] | None = None; self._closed = False
-        if (not self.root.is_dir() or not all(isinstance(v, str) and v for v in self.identity.values())
+        if (not self.root.is_dir() or (self.identity.get("identity_schema") != POD_IDENTITY_SCHEMA
+                and not all(isinstance(v, str) and v for v in self.identity.values()))
                 or isinstance(timeout_s, bool) or not isinstance(timeout_s, (int, float))
                 or not math.isfinite(timeout_s) or timeout_s <= 0):
             raise MailboxError("mailbox root or immutable identity is invalid")
@@ -206,13 +256,13 @@ def create_mailbox_environment(*, cell: Any, evidence_root: Path) -> MailboxClie
     expected = os.environ.get("SGW01_SIMULATOR_MAILBOX_IDENTITY_SHA256", "")
     if not root.is_dir() or not identity_path.is_file() or _digest(identity_path) != expected:
         raise MailboxError("mailbox factory requires a hash-bound prospective simulator identity")
-    identity = _read(identity_path)
+    identity = normalize_identity(_read(identity_path))
     row = getattr(cell, "row", cell)
     if not isinstance(row, Mapping) or identity.get("cell_id") != row.get("cell_id"):
         raise MailboxError("mailbox identity does not bind the released cell")
-    required = ("release_id", "cell_id", "attempt_id", "channel_nonce", "candidate_sha256",
-                "binding_sha256", "simulator_job_uid", "simulator_pod_uid")
-    if any(not isinstance(identity.get(key), str) or not identity[key] for key in required):
+    required = (tuple(identity) if identity.get("identity_schema") == POD_IDENTITY_SCHEMA else LEGACY_IDENTITY_FIELDS)
+    if identity.get("identity_schema") != POD_IDENTITY_SCHEMA and any(
+            not isinstance(identity.get(key), str) or not identity[key] for key in required):
         raise MailboxError("mailbox identity is incomplete")
     for key in ("candidate_sha256", "binding_sha256"):
         released = row.get(key)
@@ -236,8 +286,8 @@ def _decode_response(root: Path, response: Mapping[str, Any]) -> dict[str, Any]:
 
 class MailboxReceiver:
     """One finite receiver; caller supplies an already-created native environment."""
-    def __init__(self, *, root: Path, identity: Mapping[str, str], environment: Any) -> None:
-        self.root, self.identity, self.environment = Path(root), dict(identity), environment
+    def __init__(self, *, root: Path, identity: Mapping[str, Any], environment: Any) -> None:
+        self.root, self.identity, self.environment = Path(root), normalize_identity(identity), environment
         self.last = 0; self.closed = False
         self.environment_close_attempted = False
 

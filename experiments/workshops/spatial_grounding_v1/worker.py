@@ -1,23 +1,35 @@
-"""Finite, durable SGW-01 partition worker; production adapters are fail-closed."""
+"""Finite, durable SGW-01 partition worker; production adapters are fail-closed.
+
+Bare-Pod v2 admission requires allow_parallel_existing_pod_lanes and an exact
+existing_pod_supervisor_entrypoint in the immutable runtime binding. Its shared
+study-root locks cover one physical GPU UUID and one model/family/stage partition.
+An optional declared GPU-name/count pool allows fresh operational admission
+without changing the release; model_gpu_counts retains its worst-case Pod sizes.
+"""
 
 from __future__ import annotations
 
 import argparse
-from contextlib import contextmanager
+from contextlib import ExitStack, contextmanager
 from datetime import datetime, timedelta, timezone
 import fcntl
+import errno
 import hashlib
 import importlib
 import json
 import math
 import os
 from pathlib import Path
+import re
 import shutil
 import signal
+import subprocess
 import sys
 import threading
 import time
+import traceback
 from typing import Any, Callable, Mapping, Protocol
+import uuid
 
 from .contract import Cell, ContractError, Release, load_release, validate_stage_authorizations, verify_completion_pointer
 from .gpu_idle_probe import select_idle
@@ -28,6 +40,8 @@ SOURCE_QUEUE_EPISODE_COUNT = 1566
 MAX_IDLE_PROBE_AGE_SECONDS = 300
 STOP_REQUESTED = False
 STOP_GRACE_EXPIRED = False
+POD_ADMISSION_SCHEMA = "sgw-01-run-admission-v2"
+POD_ALLOCATION_SCHEMA = "sgw-01-external-allocation-v2"
 
 
 class DeadlineExceeded(RuntimeError):
@@ -127,7 +141,160 @@ def _receipt(value: Any, label: str) -> Mapping[str, Any]:
         raise ResourceBlocked(f"{label} receipt is unreadable or malformed: {exc}") from exc
 
 
-def _run_admission(release: Release) -> Mapping[str, Any] | None:
+def _canonical_uuid(value: Any) -> bool:
+    try:
+        return isinstance(value, str) and str(uuid.UUID(value)) == value
+    except ValueError:
+        return False
+
+
+def _gpu_uuid(value: Any) -> bool:
+    return isinstance(value, str) and value.startswith("GPU-") and _canonical_uuid(value[4:])
+
+
+def _pod_owner(value: Mapping[str, Any]) -> None:
+    name = value.get("pod_name")
+    if (value.get("owner_kind") != "Pod" or not _canonical_uuid(value.get("pod_uid"))
+            or not isinstance(name, str) or re.fullmatch(r"[a-z0-9](?:[a-z0-9.-]{0,251}[a-z0-9])?", name) is None
+            or name != os.environ.get("POD_NAME") or value["pod_uid"] != os.environ.get("POD_UID")
+            or any(value.get(key) is not None or os.environ.get(key.upper()) not in {None, ""}
+                   for key in ("job_uid", "job_name"))):
+        raise ResourceBlocked("existing Pod admission requires actual Pod name/UID and no Job identity")
+
+
+def _pod_hardware_policy(binding: Mapping[str, Any], model: str) -> tuple[list[int], list[str]]:
+    count_policy = binding.get("existing_pod_gpu_counts")
+    name_policy = binding.get("existing_pod_gpu_names")
+    declared_pool = "existing_pod_gpu_counts" in binding or "existing_pod_gpu_names" in binding
+    if declared_pool:
+        if not isinstance(count_policy, Mapping) or not isinstance(name_policy, Mapping):
+            raise ResourceBlocked("existing Pod hardware pool requires both model-indexed count and name policies")
+        counts, names = count_policy.get(model), name_policy.get(model)
+    else:
+        counts = [binding["model_gpu_counts"].get(model)]
+        configured_names = binding.get("model_gpu_names")
+        names = [configured_names.get(model)] if isinstance(configured_names, Mapping) else []
+    if (not isinstance(counts, list) or not counts
+            or any(type(count) is not int or count not in {1, 2, 4} for count in counts)
+            or len(set(counts)) != len(counts)
+            or not isinstance(names, list) or not names
+            or any(not isinstance(name, str) or not name.strip() or name != name.strip()
+                   or any(character in name for character in "*?[]") for name in names)
+            or len(set(names)) != len(names)):
+        raise ResourceBlocked("existing Pod hardware policy requires unique counts from 1/2/4 and exact GPU names")
+    ceiling = binding["model_gpu_counts"].get(model)
+    if type(ceiling) is not int or ceiling != max(counts):
+        raise ResourceBlocked("model_gpu_counts must retain the declared maximum Pod size for conservative budgeting")
+    return counts, names
+
+
+def _pod_hardware_check(release: Release, model: str, value: Mapping[str, Any]) -> None:
+    counts, names = _pod_hardware_policy(release.binding, model)
+    if (type(value.get("allocated_gpu_count")) is not int or value["allocated_gpu_count"] not in counts
+            or not isinstance(value.get("gpu_name"), str) or value["gpu_name"] not in names):
+        raise ResourceBlocked("actual Pod GPU name/count is outside the immutable declared hardware policy")
+
+
+def _study_root(release: Release) -> str:
+    binding = release.binding
+    if binding.get("allow_parallel_existing_pod_lanes") is not True:
+        return binding["source_root"]
+    value, mount_value = binding.get("persistent_study_root"), binding.get("pvc_mount_path")
+    if (not isinstance(value, str) or not isinstance(mount_value, str)
+            or not Path(value).is_absolute() or not Path(mount_value).is_absolute()):
+        raise ResourceBlocked("existing Pod lanes require an absolute persistent_study_root and PVC mount")
+    root, mount = Path(value), Path(mount_value)
+    if (value != str(root) or mount_value != str(mount)
+            or root != root.resolve() or mount != mount.resolve() or root == mount
+            or not root.is_relative_to(mount) or root != release.root.parent.resolve()
+            or binding.get("source_root") != str(Path(__file__).resolve().parents[3])):
+        raise ResourceBlocked("persistent_study_root must be the release parent below PVC; source_root must be the code checkout")
+    return str(root)
+
+
+def _supervisor_process(pid: int, proc: Path = Path("/proc")) -> dict[str, Any]:
+    """Read actual Linux process identity; no model/GPU probe."""
+    root = proc / str(pid)
+    fields = (root / "stat").read_text().rsplit(") ", 1)[1].split()
+    boot = next(int(line.split()[1]) for line in (proc / "stat").read_text().splitlines() if line.startswith("btime "))
+    return {"ppid": int(fields[1]), "process_start_identity": fields[19],
+            "started_at_unix": boot + int(fields[19]) / os.sysconf("SC_CLK_TCK"),
+            "command": (root / "cmdline").read_bytes().rstrip(b"\0").decode().split("\0"),
+            "cwd": str((root / "cwd").resolve(strict=True))}
+
+
+def _supervisor_check(release: Release, reference: Any) -> Mapping[str, Any]:
+    return verify_existing_pod_supervisor(
+        reference, source_commit=release.binding["source_commit"],
+        entrypoint=release.binding.get("existing_pod_supervisor_entrypoint"),
+    )
+
+
+def verify_existing_pod_supervisor(reference: Any, *, source_commit: str, entrypoint: Any,
+                                   environ: Mapping[str, str] | None = None) -> Mapping[str, Any]:
+    """Verify a real local ancestor; shared by policy and simulator Pod lanes."""
+    env = os.environ if environ is None else environ
+    value = _receipt(reference, "existing Pod supervisor")
+    source = Path(__file__).resolve().parents[3]
+    entry = value.get("entrypoint")
+    if (value.get("schema") != "sgw-01-existing-pod-supervisor-v1"
+            or not _canonical_uuid(value.get("supervisor_id"))
+            or value.get("pod_uid") != env.get("POD_UID") or value.get("pod_name") != env.get("POD_NAME")
+            or not _gpu_uuid(value.get("gpu_uuid")) or value["gpu_uuid"] != env.get("CUDA_VISIBLE_DEVICES")
+            or type(value.get("pid")) is not int or value["pid"] <= 1 or value["pid"] == os.getpid()
+            or value.get("source_root") != str(source) or value.get("source_commit") != source_commit
+            or not isinstance(entry, Mapping) or entry != entrypoint):
+        raise ResourceBlocked("existing Pod supervisor identity/source differs from explicit binding")
+    try:
+        path = Path(entry["path"])
+        relative = path.relative_to(source)
+        from .producer import _git_revision
+        if (path != path.resolve() or path.suffix != ".py"
+                or _git_revision(str(source)) != value["source_commit"]
+                or hashlib.sha256(path.read_bytes()).hexdigest() != entry["sha256"]):
+            raise ValueError("supervisor entrypoint/source differs")
+        committed = subprocess.run(["git", "-C", str(source), "show", f"{value['source_commit']}:{relative.as_posix()}"],
+                                   check=True, capture_output=True, timeout=10).stdout
+        if hashlib.sha256(committed).hexdigest() != entry["sha256"]:
+            raise ValueError("supervisor is not the checked-in entrypoint")
+        pid = os.getppid()
+        for _ in range(64):
+            process = _supervisor_process(pid)
+            if pid == value["pid"]:
+                break
+            pid = process["ppid"]
+            if pid <= 1:
+                raise ValueError("supervisor is not an actual ancestor")
+        else:
+            raise ValueError("supervisor ancestry unavailable")
+        command = process["command"]
+        module = ".".join(relative.with_suffix("").parts)
+        arguments = command[1:]
+        while arguments and arguments[0] in {"-u", "-B"}:
+            arguments = arguments[1:]
+        executes_entrypoint = (arguments[:2] == ["-m", module] or
+                              bool(arguments and not arguments[0].startswith("-")
+                                   and (source / arguments[0]).resolve() == path))
+        if (process["process_start_identity"] != value.get("process_start_identity")
+                or command != value.get("command") or process["cwd"] != str(source)
+                or not executes_entrypoint):
+            raise ValueError("actual supervisor PID/start/command differs")
+        start = datetime.fromisoformat(value["started_at_utc"].replace("Z", "+00:00"))
+        deadline = datetime.fromisoformat(value["deadline_utc"].replace("Z", "+00:00"))
+        seconds = value["deadline_seconds"]
+        if (start.tzinfo is None or deadline.tzinfo is None or type(seconds) is not int or seconds <= 0
+                or abs(start.timestamp() - process["started_at_unix"]) > 2
+                or start > datetime.now(timezone.utc) or deadline != start + timedelta(seconds=seconds)
+                or deadline <= datetime.now(timezone.utc)):
+            raise ValueError("supervisor finite lifetime differs from actual process start")
+    except (OSError, ValueError, KeyError, IndexError, TypeError, AttributeError, RuntimeError,
+            StopIteration, subprocess.SubprocessError) as exc:
+        raise ResourceBlocked(f"existing Pod supervisor cannot be verified: {exc}") from exc
+    return value
+
+
+def _run_admission(release: Release, *, model: str | None = None, family: str | None = None,
+                   stage: str | None = None) -> Mapping[str, Any] | None:
     """Refresh expiring operational evidence without rewriting a scientific release."""
     path = os.environ.get("SGW01_RUN_ADMISSION")
     digest = os.environ.get("SGW01_RUN_ADMISSION_SHA256")
@@ -141,17 +308,34 @@ def _run_admission(release: Release) -> Mapping[str, Any] | None:
     stages = {cell.stage for cell in release.cells}
     job_uid, pod_uid = os.environ.get("JOB_UID"), os.environ.get("POD_UID")
     authorization = release.binding.get("operational_authorization_receipt")
-    if (value.get("schema") != "sgw-01-run-admission-v1"
+    pod_lane = value.get("schema") == POD_ADMISSION_SCHEMA
+    if (value.get("schema") not in {"sgw-01-run-admission-v1", POD_ADMISSION_SCHEMA}
             or value.get("status") != "approved"
             or value.get("release_id") != release.release_id
             or value.get("release_hashes") != dict(release.hashes)
             or not isinstance(value.get("model"), str)
             or models != {value["model"]} or len(stages) != 1
-            or not job_uid or not pod_uid
-            or value.get("job_uid") != job_uid or value.get("pod_uid") != pod_uid
+            or (not pod_lane and (not job_uid or not pod_uid
+                or value.get("job_uid") != job_uid or value.get("pod_uid") != pod_uid))
             or value.get("resource_owner") != release.binding.get("resource_owner")
             or value.get("operational_authorization_receipt") != authorization):
         raise ResourceBlocked("run admission differs from the immutable release, owner, or current Job/Pod")
+    if pod_lane:
+        if (release.binding.get("allow_parallel_existing_pod_lanes") is not True
+                or not isinstance(value.get("family"), str) or not isinstance(value.get("stage"), str)
+                or value["family"] not in {cell.family for cell in release.cells}
+                or value.get("stage") not in stages
+                or any(expected is not None and value.get(key) != expected
+                       for key, expected in (("model", model), ("family", family), ("stage", stage)))
+                or not _gpu_uuid(value.get("selected_gpu_uuid"))
+                or os.environ.get("CUDA_VISIBLE_DEVICES") != value["selected_gpu_uuid"]):
+            raise ResourceBlocked("existing Pod lane lacks opt-in or exact partition/physical GPU UUID")
+        _study_root(release)
+        _pod_owner(value)
+        _pod_hardware_check(release, value["model"], value)
+        _supervisor_check(release, value.get("supervisor_identity_receipt"))
+    elif release.binding.get("allow_parallel_existing_pod_lanes") is True:
+        raise ResourceBlocked("existing Pod lane opt-in requires v2 admission, never a substituted Job")
     receipts = value.get("receipts")
     allowed = {"external_allocation_receipt", "resource_budget_receipt", "storage_budget_receipt"}
     required = {"external_allocation_receipt", "resource_budget_receipt"}
@@ -163,6 +347,37 @@ def _run_admission(release: Release) -> Mapping[str, Any] | None:
     for key, reference in receipts.items():
         _receipt(reference, key)
     return value
+
+
+@contextmanager
+def partition_lock(release: Release, model: str, family: str, stage: str):
+    if release.binding.get("allow_parallel_existing_pod_lanes") is not True:
+        with model_lock(release, model):
+            yield
+        return
+    admission = _run_admission(release, model=model, family=family, stage=stage)
+    if admission is None:
+        raise ResourceBlocked("existing Pod lane requires a hash-bound v2 admission before claiming")
+    root = Path(_study_root(release)) / "locks" / "existing-pod-lanes"
+    if root != root.resolve():
+        raise ResourceBlocked("existing Pod lane lock directory must remain below the canonical persistent_study_root")
+    if model not in {"N3", "E3", "F3"} or family not in {"LAT", "HEIGHT", "DIST"} or stage not in {"P", "D", "C"}:
+        raise ResourceBlocked("invalid existing Pod partition lock identity")
+    root.mkdir(parents=True, exist_ok=True)
+    with ExitStack() as stack:
+        for name in (f"gpu-{admission['selected_gpu_uuid']}", f"partition-{model}-{family}-{stage}"):
+            stream = stack.enter_context((root / f"{name}.lock").open("a+"))
+            try:
+                fcntl.flock(stream.fileno(), fcntl.LOCK_EX | fcntl.LOCK_NB)
+            except BlockingIOError as exc:
+                raise ResourceBlocked(f"existing Pod lane lock held: {name}") from exc
+            stream.write(json.dumps({"release_id": release.release_id, "pid": os.getpid(),
+                                     "pod_uid": admission["pod_uid"], "selected_gpu_uuid": admission["selected_gpu_uuid"],
+                                     "supervisor_identity_receipt": admission["supervisor_identity_receipt"],
+                                     "started_at_utc": utc_now()}) + "\n")
+            stream.flush()
+            os.fsync(stream.fileno())
+        yield
 
 
 def _operational_reference(release: Release, field: str) -> Any:
@@ -196,8 +411,11 @@ def _source_queue_hash(release: Release) -> str:
 
 
 def _runtime_identity_sha256(release: Release) -> str:
+    return runtime_identity_sha256(release.binding)
+
+
+def runtime_identity_sha256(binding: Mapping[str, Any]) -> str:
     """Hash the execution identity without receipt references, avoiding a hash cycle."""
-    binding = release.binding
     identity = {
         "worker_image_digest": binding["worker_image_digest"],
         "source_commit": binding["source_commit"],
@@ -217,7 +435,7 @@ def _receipt_identity(release: Release, receipt: Mapping[str, Any], label: str) 
         "source_queue_episode_count": SOURCE_QUEUE_EPISODE_COUNT,
         "pvc_name": binding["pvc_name"],
         "pvc_mount_path": binding["pvc_mount_path"],
-        "study_root": binding["source_root"],
+        "study_root": _study_root(release),
         "runtime_identity_sha256": _runtime_identity_sha256(release),
     }
     if any(receipt.get(field) != value for field, value in expected.items()):
@@ -261,7 +479,7 @@ def _authorization_check(release: Release, *, model: str) -> str:
             or scope.get("context") != release.binding["context"]
             or scope.get("namespace") != release.binding["namespace"]
             or scope.get("pvc") != release.binding["pvc_name"]
-            or scope.get("persistent_study_root") != release.binding["source_root"]
+            or scope.get("persistent_study_root") != _study_root(release)
             or not isinstance(models, list) or model not in models
             or scope.get("maximum_registered_behavioral_episodes") != SOURCE_QUEUE_EPISODE_COUNT
             or scope.get("maximum_attempts_per_behavioral_cell") != 3
@@ -284,39 +502,87 @@ def _authorization_check(release: Release, *, model: str) -> str:
 
 def _allocation_check(release: Release, *, model: str, minimum_runtime_seconds: int,
                       verify_idle_probe: bool = True) -> int:
-    """Validate the coordinator-owned Job reservation; this is not a local ledger."""
+    """Validate a Job reservation or explicit bare-Pod lane, not a local ledger."""
     receipt = _receipt(_operational_reference(release, "external_allocation_receipt"), "external allocation")
-    if receipt.get("schema") != "sgw-01-external-allocation-v1" or receipt.get("status") != "approved":
+    pod_lane = receipt.get("schema") == POD_ALLOCATION_SCHEMA
+    if receipt.get("schema") not in {"sgw-01-external-allocation-v1", POD_ALLOCATION_SCHEMA} or receipt.get("status") != "approved":
         raise ResourceBlocked("external allocation receipt is not approved")
     mode = _authorization_check(release, model=model)
     _receipt_identity(release, receipt, "external allocation")
-    required_strings = ("owner_approval_reference", "reservation_id", "context", "namespace", "job_name", "job_uid", "pod_uid", "model")
+    required_strings = ("owner_approval_reference", "reservation_id", "context", "namespace", "pod_uid", "model")
+    if not pod_lane:
+        required_strings += ("job_name", "job_uid")
     if any(not isinstance(receipt.get(field), str) or not receipt[field] for field in required_strings):
         raise ResourceBlocked("external allocation receipt lacks concrete reservation identity")
     if receipt["context"] != release.binding["context"] or receipt["namespace"] != release.binding["namespace"]:
         raise ResourceBlocked("external allocation receipt has a different Kubernetes scope")
-    if receipt["model"] != model or receipt["job_uid"] != os.environ.get("JOB_UID") or receipt["pod_uid"] != os.environ.get("POD_UID"):
+    if (receipt["model"] != model or receipt["pod_uid"] != os.environ.get("POD_UID")
+            or (not pod_lane and receipt["job_uid"] != os.environ.get("JOB_UID"))):
         raise ResourceBlocked("external allocation receipt does not bind this Job UID, pod UID, and model")
+    if pod_lane:
+        admission = _run_admission(release)
+        if (release.binding.get("allow_parallel_existing_pod_lanes") is not True or admission is None
+                or admission.get("schema") != POD_ADMISSION_SCHEMA
+                or any(receipt.get(key) != admission.get(key) for key in (
+                    "owner_kind", "pod_name", "pod_uid", "selected_gpu_uuid", "supervisor_identity_receipt",
+                    "gpu_name", "allocated_gpu_count",
+                ))
+                or receipt.get("lane_gpu_count") != 1 or type(receipt["lane_gpu_count"]) is not int
+                or receipt.get("reservation_scope") != "whole_pod"
+                or any(key in receipt for key in ("activeDeadlineSeconds", "startTime"))):
+            raise ResourceBlocked("existing Pod allocation differs from its explicit single-GPU lane admission")
+        _pod_owner(receipt)
+        pod = _receipt(receipt.get("pod_snapshot"), "actual bare Pod")
+        try:
+            def quantity(raw: Any) -> int:
+                if type(raw) is int and raw >= 0:
+                    return raw
+                if isinstance(raw, str) and re.fullmatch(r"0|[1-9][0-9]*", raw):
+                    return int(raw)
+                raise ValueError("GPU resource quantities must be nonnegative integers")
+
+            metadata = pod["metadata"]
+            counts = [(quantity(c["resources"].get("requests", {}).get("nvidia.com/gpu", 0)),
+                       quantity(c["resources"].get("limits", {}).get("nvidia.com/gpu", 0))) for c in pod["spec"]["containers"]]
+            if (pod.get("kind") != "Pod" or pod.get("apiVersion") != "v1"
+                    or metadata.get("name") != receipt["pod_name"] or metadata.get("uid") != receipt["pod_uid"]
+                    or metadata.get("namespace") != receipt["namespace"] or metadata.get("ownerReferences")
+                    or pod.get("status", {}).get("phase") != "Running"
+                    or any(request != limit or request < 0 for request, limit in counts)
+                    or sum(limit for _, limit in counts) != receipt["allocated_gpu_count"]):
+                raise ValueError("actual bare Pod identity/resources differ")
+        except (KeyError, TypeError, ValueError) as exc:
+            raise ResourceBlocked(f"invalid bare Pod snapshot: {exc}") from exc
+        supervisor = _supervisor_check(release, receipt["supervisor_identity_receipt"])
+        active = supervisor["deadline_seconds"]
+        start_value, deadline_value = supervisor["started_at_utc"], supervisor["deadline_utc"]
+        if (receipt.get("deadline_utc", deadline_value) != deadline_value
+                or not _positive_finite_number(receipt.get("lane_gpu_hours"))
+                or abs(receipt["lane_gpu_hours"] - active / 3600) > 1e-9):
+            raise ResourceBlocked("existing Pod lane GPU-hour accounting differs from supervisor lifetime")
+    else:
+        if release.binding.get("allow_parallel_existing_pod_lanes") is True:
+            raise ResourceBlocked("existing Pod lane cannot substitute a legacy Job allocation")
+        active = receipt.get("activeDeadlineSeconds")
+        start_value, deadline_value = receipt.get("startTime"), receipt.get("deadline_utc")
     gpu_count = receipt.get("allocated_gpu_count")
-    active = receipt.get("activeDeadlineSeconds")
-    if type(gpu_count) is not int or gpu_count != release.binding["model_gpu_counts"].get(model) or type(active) is not int or active <= 0:
+    if (type(gpu_count) is not int or (not pod_lane and gpu_count != release.binding["model_gpu_counts"].get(model))
+            or type(active) is not int or active <= 0):
         raise ResourceBlocked("external allocation receipt lacks the exact GPU allocation/deadline")
-    start_value = receipt.get("startTime")
-    deadline_value = receipt.get("deadline_utc")
     if not isinstance(start_value, str) or not isinstance(deadline_value, str):
-        raise ResourceBlocked("external allocation receipt lacks Job timing")
+        raise ResourceBlocked("external allocation receipt lacks owner timing")
     try:
         start = datetime.fromisoformat(start_value.replace("Z", "+00:00"))
         deadline = datetime.fromisoformat(deadline_value.replace("Z", "+00:00"))
     except ValueError as exc:
-        raise ResourceBlocked("external allocation receipt has invalid Job timing") from exc
+        raise ResourceBlocked("external allocation receipt has invalid owner timing") from exc
     if (start.tzinfo is None or deadline.tzinfo is None or start > datetime.now(timezone.utc)
             or deadline != start + timedelta(seconds=active)):
-        raise ResourceBlocked("external allocation receipt has invalid Job timing")
+        raise ResourceBlocked("external allocation receipt has invalid owner timing")
     reservation = receipt.get("reservation_gpu_hours")
     expected = gpu_count * active / 3600
     if receipt.get("budget_mode") != mode or not _positive_finite_number(reservation) or abs(reservation - expected) > 1e-9:
-        raise ResourceBlocked("external allocation receipt has invalid per-Job worst-case GPU-hour accounting")
+        raise ResourceBlocked("external allocation receipt has invalid whole-owner worst-case GPU-hour accounting")
     if mode == "numeric_global_gpu_hour_cap":
         approved = receipt.get("approved_global_gpu_hours")
         reserved = receipt.get("globally_reserved_gpu_hours")
@@ -327,8 +593,8 @@ def _allocation_check(release: Release, *, model: str, minimum_runtime_seconds: 
             raise ResourceBlocked("external allocation receipt has invalid capped global reservation accounting")
     if verify_idle_probe:
         gpu_names = release.binding.get("model_gpu_names")
-        expected_gpu_name = None
-        if gpu_names is not None:
+        expected_gpu_name = receipt["gpu_name"] if pod_lane else None
+        if not pod_lane and gpu_names is not None:
             if (not isinstance(gpu_names, Mapping) or not isinstance(gpu_names.get(model), str)
                     or not gpu_names[model].strip()):
                 raise ResourceBlocked("runtime binding lacks the selected model's exact qualified GPU name")
@@ -358,7 +624,9 @@ def _allocation_check(release: Release, *, model: str, minimum_runtime_seconds: 
                 or selected.get("uuid") not in allocated
                 or set(allocated) != {item["uuid"] for item in gpus}
                 or selected not in gpus
-                or set(allocated) & set(occupied)
+                or (not pod_lane and set(allocated) & set(occupied))
+                or (pod_lane and (selected.get("uuid") != receipt["selected_gpu_uuid"]
+                    or not all(_gpu_uuid(item) for item in allocated)))
         ):
             raise ResourceBlocked("GPU idle probe does not prove this exact pre-launch allocation")
         for gpu in gpus:
@@ -366,10 +634,14 @@ def _allocation_check(release: Release, *, model: str, minimum_runtime_seconds: 
                 "index", "memory_used_mib", "memory_free_mib", "utilization_percent",
             )):
                 raise ResourceBlocked("GPU idle probe has malformed device measurements")
-            try:
-                select_idle([gpu], set(occupied), 1, expected_name=expected_gpu_name)
-            except (ValueError, RuntimeError) as exc:
-                raise ResourceBlocked(f"allocated GPU failed its idle/qualified-hardware guard: {exc}") from exc
+            if pod_lane and gpu.get("name") != expected_gpu_name:
+                raise ResourceBlocked("full allocated GPU inventory differs from the admitted hardware name")
+            if not pod_lane or gpu["uuid"] == receipt["selected_gpu_uuid"]:
+                try:
+                    select_idle([gpu], set(occupied), 1, expected_name=expected_gpu_name)
+                except (ValueError, RuntimeError) as exc:
+                    kind = "declared" if pod_lane else "qualified"
+                    raise ResourceBlocked(f"allocated GPU failed its idle/{kind}-hardware guard: {exc}") from exc
     remaining = int((deadline - datetime.now(timezone.utc)).total_seconds())
     if remaining < minimum_runtime_seconds:
         raise ResourceBlocked("external allocation expires before one bounded operation can finish")
@@ -549,6 +821,12 @@ def _canonical_outcome(outcome: Mapping[str, Any], cell: Cell, scorer: ScoreFn |
     return value
 
 
+def _out_of_memory(value: Any) -> bool:
+    text = f"{type(value).__name__}: {value}".lower()
+    return (isinstance(value, MemoryError) or getattr(value, "errno", None) == errno.ENOMEM
+            or "out of memory" in text or "outofmemory" in text or re.search(r"\boom\b", text) is not None)
+
+
 def run_partition(release: Release, *, model: str, family: str, stage: str, max_valid: int,
                   max_attempts: int, worker_id: str, adapter: Adapter | None = None,
                   heartbeat_seconds: int = 60, scorer: ScoreFn | None = None) -> int:
@@ -556,14 +834,19 @@ def run_partition(release: Release, *, model: str, family: str, stage: str, max_
     if max_valid != len(cells) or max_attempts != 3:
         raise ContractError("partition limits must equal the frozen stage ceiling and three total attempts")
     _stage_authorized(release, stage)
+    if release.binding.get("allow_parallel_existing_pod_lanes") is True and all(_completion(release, cell) for cell in cells):
+        _status(release, worker_id, state="complete", valid=len(cells), expected=len(cells))
+        return 0
     request_deadline = int(release.binding.get("request_deadline_seconds", 300))
     episode_deadline = int(release.binding.get("episode_deadline_seconds", 900))
     bounded_operation_seconds = request_deadline + episode_deadline
     valid = 0
     heartbeat = _Heartbeat(release, worker_id, heartbeat_seconds)
     heartbeat.start()
+    close_registered = False
     try:
-        with model_lock(release, model):
+        with ExitStack() as lifetime:
+            lifetime.enter_context(partition_lock(release, model, family, stage))
             pending = [cell for cell in cells if not _completion(release, cell)]
             if not pending:
                 _status(release, worker_id, state="complete", valid=len(cells), expected=len(cells))
@@ -577,7 +860,16 @@ def run_partition(release: Release, *, model: str, family: str, stage: str, max_
                 return EXIT_STORAGE_BUDGET_BLOCKED
             # The global lock must cover model-server/factory construction, not
             # merely requests, so a duplicate Job cannot load a second policy.
-            adapter = adapter or load_adapter(model)
+            try:
+                adapter = adapter or load_adapter(model)
+            except Exception as exc:
+                _status(release, worker_id, state="technical_invalid", phase="model_construction",
+                        reason=f"{type(exc).__name__}: {exc}", traceback=traceback.format_exc(), valid=valid)
+                raise ContractError("model construction failed; partition aborted without replay") from exc
+            close = getattr(adapter, "close", None)
+            if callable(close):
+                lifetime.callback(close)
+                close_registered = True
             for cell in cells:
                 heartbeat.current_cell = cell.cell_id
                 heartbeat.valid = valid
@@ -623,6 +915,8 @@ def run_partition(release: Release, *, model: str, family: str, stage: str, max_
                         outcome = {**outcome, "attempt_id": recorder.attempt_id}
                         outcome = _canonical_outcome(outcome, cell, scorer)
                         published = recorder.complete(outcome)
+                        if outcome.get("status") == "technical_invalid" and _out_of_memory(outcome.get("technical_cause")):
+                            raise ContractError("policy memory exhaustion; partition aborted without replay")
                     except DeadlineExceeded as exc:
                         heartbeat.last_error = f"{type(exc).__name__}: {exc}"
                         recorder.event("technical_invalid", error_type=type(exc).__name__, error=str(exc))
@@ -633,7 +927,22 @@ def run_partition(release: Release, *, model: str, family: str, stage: str, max_
                         heartbeat.last_error = f"{type(exc).__name__}: {exc}"
                         recorder.event("technical_invalid", error_type=type(exc).__name__, error=str(exc))
                         published = recorder.complete({"status": "technical_invalid", "technical_cause": heartbeat.last_error})
+                        if _out_of_memory(exc):
+                            raise ContractError("policy memory exhaustion; partition aborted without replay") from exc
                     except Exception as exc:
+                        from .adapters import AdapterError
+                        if isinstance(exc, AdapterError) or _out_of_memory(exc):
+                            cause = f"{type(exc).__name__}: {exc}"
+                            heartbeat.last_error = cause
+                            recorder.event("technical_invalid", error_type=type(exc).__name__, error=str(exc),
+                                           traceback=traceback.format_exc())
+                            recorder.complete({"status": "technical_invalid", "technical_cause": cause})
+                            _status(release, worker_id, state="technical_invalid", phase="adapter_execution",
+                                    current_cell=cell.cell_id, reason=cause, valid=valid, attempts=number)
+                            # A disconnected response alone cannot identify the native server's failure.
+                            reason = ("adapter request/reset failed" if isinstance(exc, AdapterError)
+                                      else "policy memory exhaustion")
+                            raise ContractError(f"{reason}; partition aborted without replay") from exc
                         recorder.event("fatal_unclassified_error", error_type=type(exc).__name__, error=str(exc))
                         raise ContractError(f"unclassified adapter failure; attempt preserved: {type(exc).__name__}") from exc
                     _status(release, worker_id, state="running", current_cell=cell.cell_id, valid=valid,
@@ -646,9 +955,12 @@ def run_partition(release: Release, *, model: str, family: str, stage: str, max_
                     return EXIT_ATTEMPTS_EXHAUSTED
         _status(release, worker_id, state="complete", valid=valid, expected=len(cells))
         return 0
+    except ResourceBlocked as exc:
+        _status(release, worker_id, state="blocked", reason=str(exc), valid=valid)
+        return EXIT_STORAGE_BUDGET_BLOCKED
     finally:
         heartbeat.close()
-        close = getattr(adapter, "close", None) if adapter is not None else None
+        close = getattr(adapter, "close", None) if adapter is not None and not close_registered else None
         if callable(close):
             close()
 

@@ -301,6 +301,7 @@ def test_native_cleanup_failure_is_preserved_and_never_retried(tmp_path: Path, m
 
     environment = Environment()
     app_closes = []
+    launcher_arguments = []
 
     def close_app():
         app_closes.append(True)
@@ -314,7 +315,10 @@ def test_native_cleanup_failure_is_preserved_and_never_retried(tmp_path: Path, m
         return environment
 
     module = types.ModuleType("isaaclab.app")
-    module.AppLauncher = lambda _: SimpleNamespace(app=SimpleNamespace(close=close_app))
+    def launcher(arguments):
+        launcher_arguments.append(dict(arguments))
+        return SimpleNamespace(app=SimpleNamespace(close=close_app))
+    module.AppLauncher = launcher
     monkeypatch.setitem(sys.modules, "isaaclab.app", module)
     monkeypatch.setattr(robolab_jointpos_environment, "create_environment", create_environment)
     monkeypatch.setattr(native_mailbox_receiver, "_load_identity", lambda *_: IDENTITY)
@@ -327,6 +331,7 @@ def test_native_cleanup_failure_is_preserved_and_never_retried(tmp_path: Path, m
     with pytest.raises(RuntimeError, match=f"{failed_cleanup} cleanup failed"):
         native_mailbox_receiver.main()
     assert environment.close_count == 1 and app_closes == [True]
+    assert launcher_arguments == [{"headless": True, "enable_cameras": True, "device": "cuda:0", "multi_gpu": False}]
     name = "receiver_failure.json" if failed_cleanup == "environment" else "receiver_app_cleanup_failure.json"
     receipt = json.loads((root / name).read_text())
     assert receipt["identity"] == IDENTITY and f"{failed_cleanup} cleanup failed" in receipt["traceback"]

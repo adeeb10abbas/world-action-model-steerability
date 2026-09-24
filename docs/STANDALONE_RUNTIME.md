@@ -210,6 +210,67 @@ requires a separate external observation binding the original receiver data
 to the actual terminal Kubernetes Job/Pod/container identity; do not fabricate
 an in-process post-close marker or replay consumed native requests.
 
+## Durable existing-Pod study lanes
+
+The separately authorized dedicated fleet uses persistent **bare Pods**, not
+Jobs. Never invent a Job UID for them. `study_supervisor` launches a detached,
+finite process tree from the exact pushed source, records the actual Linux
+PID/start identity and inspected Pod identity, and retains heartbeats, child
+logs and terminal evidence on the PVC. It is a Linux subreaper so native
+servers that create their own sessions remain owned and bounded. No local
+`kubectl exec` connection is the worker's lifeline.
+
+The hash-bound `sgw-01-study-lane-plan-v1` policy plan contains the source and
+cohort roots, model/lane identifiers, whole partition assignments such as
+`LAT-P`, actual Pod snapshot, selected GPU UUID and complete allocated UUID
+inventory, pinned model interpreter, loopback policy port, explicit runtime
+environment, and hash-bound protocol/prompts/queue/fixtures/binding/allocation
+inputs. The controller uses only the concrete native runtime and remote
+environment factories, not arbitrary transport factories. A simulator plan
+supplies a pinned identity template. After recording its real process identity,
+the simulator supervisor publishes the complete lane identity with that
+receipt's hash. Only then is the policy plan bound to the resulting identity.
+This ordering avoids a circular plan/identity/supervisor hash dependency.
+
+Launch each policy supervisor through `tools/cluster_policy_bootstrap.sh` with
+its pinned interpreter, so all descendants inherit the established library,
+PATH and writable offline-cache environment. The owned policy server itself
+uses a direct Python argv: placing a shell that later `exec`s Python in that
+argv would contradict the existing server-command identity check.
+
+The binding opts into `allow_parallel_existing_pod_lanes` and
+`allow_operational_receipt_refresh`. The existing-Pod v2 admission binds a
+real finite supervisor, actual Pod, exact selected physical GPU and complete
+model/family/stage partition. GPU and partition locks prevent overlap before
+model construction; legacy Job/model-lock behavior remains unchanged. Keep
+the actual code `source_root` separate from `persistent_study_root`. All
+releases share the latter's attempt, completion-pointer and lock directories.
+
+`study_lane` progresses complete partitions in frozen queue order, with all
+54 pilot completions and measured storage/runtime budgets before development,
+and all 216 development completions before confirmation. These are completion
+and technical-budget gates, never success-rate gates. Nonzero worker exit
+stops that lane without an automatic retry. An explicit resume retains the
+release hashes, completion pointers and three-total-attempt ceiling. The
+remote simulator publishes its final process-exit evidence **before** the
+adapter permits immutable attempt-manifest publication.
+
+The CPU-only `tools/prepare_study_clock_fixtures.py` derives observed
+execution-clock receipts from the already-consumed native checks. It does not
+issue model or physics requests. Its time maps cover measured 15 Hz executed
+actions and observed frames only. Forecast camera/time mappings remain null,
+prediction scoring remains disallowed, and the original Nano cleanup failure
+stays preserved beside its external witness. No such receipt qualifies
+generated future pixels.
+
+The first real study attempt on an A100-40GB is its memory-fit observation;
+there is no extra qualification campaign. Preserve OOM as an infrastructure
+failure and use only explicitly approved A100-80GB fallback allocations.
+Initial bare-Pod simulators use GPU0 with multi-GPU rendering disabled.
+Do not assume a CUDA-visible UUID alone isolates Vulkan GPU1; any separately
+authorized second-GPU placement verification follows genuine initial study
+completions and must establish actual process/device placement.
+
 ## Composite forecast metadata is not physical qualification
 
 Prospective native traces retain `camera_name`/`camera_id` as the physical

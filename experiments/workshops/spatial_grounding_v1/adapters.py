@@ -566,6 +566,9 @@ class ProductionAdapter:
         viewport_artifact = recorder.finalize_viewport()
         if not isinstance(viewport_artifact, Mapping):
             raise AdapterError("recorder.finalize_viewport() must return an artifact record")
+        finish_episode = getattr(self.environment, "finish_episode", None)
+        if callable(finish_episode):
+            finish_episode()
         return {
             "status": "censored" if safety_reason is not None else "valid_model_failure",
             "termination_reason": safety_reason or "action_cap",
