@@ -157,3 +157,38 @@ Every newly started attempt retains `run-admission.json`. Completed cells
 remain skipped under the same immutable release, and technical attempt
 counts do not reset. Without opt-in and an explicit admission, the original
 receipt behavior is unchanged.
+
+## Bounded live model-to-simulator check
+
+`runtime_closed_loop_check.py` and `native_runtime_check_receiver.py` provide
+the separately authorized technical path: two live, static direct-positive
+LAT-P01 requests, at most 64 absolute joint actions, and two physical resets.
+The cell remains `PLANNED_NOT_RELEASED`; production `binding.cell()` and
+`create_environment()` still reject it. The explicit qualification factory
+checks the new registration, immutable scene binding and original reset
+tolerances rather than fabricating a released row.
+
+From the clean destination source, prepare each model's new input directory:
+
+```sh
+python tools/register_runtime_closed_loop.py prepare \
+  --model N3 --materialized /persistent/current-materialization \
+  --output /persistent/authorized-cohort/new-n3-technical-check \
+  --authorization handoff/cluster-execution-20260924/launch-instruction.json
+```
+
+After creating its finite simulator Job, read the actual Job/Pod UIDs and use
+the helper's `bind-identity` command with the returned registration path/hash,
+new `--identity` path and `--simulator-job-uid`/`--simulator-pod-uid`. It
+atomically publishes the identity, then its `.sha256` readiness file. Both
+native entrypoints require the registration and identity paths/hashes; the
+model entrypoint additionally requires an exclusive `--output`. The receiver
+verifies actual Downward API UIDs before AppLauncher. Enforce finite Job
+deadlines and exact A100/A40 roles externally.
+
+All physical observations, actions, timestamps and request evidence remain
+on the PVC. The transport uses read-only `STATX_FORCE_SYNC`, not command
+replays. Safety truncation and partial failures are retained. The model is
+genuinely owned in-process behind the attested HTTP producer; this check does
+not claim qualification of the production subprocess owner. Forecast
+alignment and study readiness are not inferred from its technical status.

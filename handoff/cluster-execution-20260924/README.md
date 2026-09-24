@@ -12,6 +12,17 @@ This is verified native inference, not merely a Running Pod. Closed-loop
 execution and physical forecast mapping remain unqualified. These requests
 are consumed; do not rerun them to finish downstream evidence.
 
+The [latest user instruction](completion-instruction.json) extends the
+objective through all 1,566 unique study outcomes and verified video/raw
+manifests, not merely launch. Keep every actual recording on the PVC and push
+compact indexes, hashes, provenance and derived results. Do not add video
+blobs to Git or Git LFS. The latest delivery choice is to download all study
+viewport and exposed prediction videos incrementally to
+`/Users/SZ5VJY/Downloads/world-action-model-steerability-videos`, with a
+manifest-driven, checksum-verified local receipt. Preserve the PVC originals,
+safe hierarchy and resumable partial files; do not overwrite unrelated files
+or delete other user data for space.
+
 The sole resource/output coordinator is session
 `5ed7dc81-68d8-493f-a8c4-81a4b6cb59f6`, acting on the user's instruction relayed
 by `c230f3cd-3fe9-4f1f-9ee4-e8b857151a60`. The current instruction permits
@@ -236,6 +247,10 @@ whole partitions, P -> D -> C, or the protected node exclusion.
 Do not repeat the completed fixed-input construction/inference checks or
 capture parity. Establish the live physical action-prefix/camera/time
 correspondence with the separately bounded closed-loop technical check.
+Its implementation and CPU contracts are now present; native execution is
+not yet claimed. Follow the
+[two-phase registration instructions](../../docs/STANDALONE_RUNTIME.md#bounded-live-model-to-simulator-check)
+to preserve planned-cell status and actual simulator Job/Pod identity.
 Preserve unavailable forecasts explicitly. Complete guarded runtime/fixture
 receipts before creating any full model/family/stage release.
 

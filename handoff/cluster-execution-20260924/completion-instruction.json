@@ -1,0 +1,38 @@
+{
+  "schema_version": "sgw-current-study-completion-instruction-v1",
+  "authorization_source": "current_user_instruction",
+  "status": "approved",
+  "relay_session_id": "c230f3cd-3fe9-4f1f-9ee4-e8b857151a60",
+  "coordinator_session_id": "5ed7dc81-68d8-493f-a8c4-81a4b6cb59f6",
+  "instruction": "Continue autonomously through the results of all 1566 study episodes, not merely integration or launch. Persist all actual videos and raw outputs on cluster storage. Push compact results, provenance, complete video indexes and hashes. The latest user instruction replaces Git LFS packaging with verified incremental downloads of all study viewport and exposed prediction videos to the work laptop.",
+  "base_launch_instruction": {
+    "path": "handoff/cluster-execution-20260924/launch-instruction.json",
+    "sha256": "cffa0423119dbe631a1ddb08f91232ac0eb54d256ce3c1ecf1de194450608867"
+  },
+  "source_queue_sha256": "07a2bd6c1893e7662db0c12c01843c20d743bfeb4cb1b506f238a37ae19e068a",
+  "source_protocol_sha256": "4b420512939f8eba75fc31a91bd562812b6e8c1acd328b5ed7e268bbccb37bde",
+  "required_unique_study_cells": 1566,
+  "required_whole_partitions": 27,
+  "technical_checks_count_as_study_episodes": false,
+  "valid_model_failures_remain_outcomes": true,
+  "infrastructure_partials_remain_distinct": true,
+  "completed_ids_must_not_be_replayed": true,
+  "laptop_must_not_be_sole_orchestrator": true,
+  "retain_all_actual_viewport_videos": true,
+  "retain_exposed_prediction_videos": true,
+  "video_hash_and_decodability_validation_required": true,
+  "local_video_delivery": {
+    "destination": "/Users/SZ5VJY/Downloads/world-action-model-steerability-videos",
+    "retain_pvc_originals": true,
+    "all_study_viewports_and_exposed_predictions": true,
+    "manifest_driven_resumable_partial_transfers": true,
+    "size_and_sha256_verified_before_atomic_finalize": true,
+    "skip_already_checksum_matching_files": true,
+    "overwrite_mismatched_unrelated_files": false,
+    "delete_other_user_files_for_space": false,
+    "local_receipt_required": true
+  },
+  "bulk_video_git_or_lfs_addition_authorized_now": false,
+  "future_lfs_question_requested": false,
+  "runtime_qualification_or_study_completion_claimed": false
+}

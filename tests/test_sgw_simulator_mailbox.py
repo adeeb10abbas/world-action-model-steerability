@@ -122,7 +122,7 @@ def test_production_adapter_recorder_and_strict_scorer_over_mailbox(tmp_path: Pa
     process = multiprocessing.Process(target=_receiver, args=(str(root),)); process.start()
     release = load_release(make_release(tmp_path))
     row = dict(release.partition("N3", "LAT", "P")[0].row)
-    row.update({"sampling_seed": 7, "physical_goal_sign": 1, "form": "D"})
+    row.update({"effective_policy_seed": 7, "physical_goal_sign": 1, "form": "D"})
     cell = Cell(row)
     recorder = AttemptRecorder(release, cell, "attempt-001"); recorder.begin()
     def transport(request):
@@ -132,15 +132,23 @@ def test_production_adapter_recorder_and_strict_scorer_over_mailbox(tmp_path: Pa
                 "reset_fingerprint": request["reset_fingerprint"], "actions": np.zeros((32, 8), dtype=np.float32)}
     adapter = ProductionAdapter(NanoPolicyAdapter, transport=transport, transport_factory=lambda **_: transport,
                                 environment_factory=lambda **_: MailboxClient(root=root, identity=IDENTITY, timeout_s=2))
-    reset = adapter.reset(cell, recorder)
-    raw = adapter.run_episode(cell, recorder, reset)
-    outcome = _canonical_outcome({**raw, "attempt_id": recorder.attempt_id}, cell, _load_scorer())
-    assert outcome["status"] == "valid_model_failure" and outcome["terminal_step"] == 450
-    assert recorder.complete(outcome)
-    adapter.close(); process.join(3); assert process.exitcode == 0
-    assert len(list((recorder.path / "actions").glob("*.npy"))) == 450
-    assert (root / "receiver_complete.json").is_file()
-    assert verify_receiver_completion(root, IDENTITY)["command_count"] == 452
+    try:
+        reset = adapter.reset(cell, recorder)
+        raw = adapter.run_episode(cell, recorder, reset)
+        outcome = _canonical_outcome({**raw, "attempt_id": recorder.attempt_id}, cell, _load_scorer())
+        assert outcome["status"] == "valid_model_failure" and outcome["terminal_step"] == 450
+        assert recorder.complete(outcome)
+        adapter.close(); process.join(3); assert process.exitcode == 0
+        assert len(list((recorder.path / "actions").glob("*.npy"))) == 450
+        assert (root / "receiver_complete.json").is_file()
+        assert verify_receiver_completion(root, IDENTITY)["command_count"] == 452
+    finally:
+        try:
+            adapter.close()
+        finally:
+            if process.is_alive():
+                process.terminate()
+            process.join(3)
 
 
 def test_explicit_factory_requires_hash_bound_identity(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:

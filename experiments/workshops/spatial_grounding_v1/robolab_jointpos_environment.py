@@ -77,6 +77,27 @@ class JointPositionBinding:
         record = self.cells.get(row["cell_id"])
         if not isinstance(record, Mapping) or row.get("status") != "RELEASED":
             raise AdapterError("cell has no released joint-position environment binding")
+        return self._checked_cell(row)
+
+    def qualification_cell(
+        self, *, registration_path: Path, registration_sha256: str,
+    ) -> tuple[Mapping[str, Any], FixtureCandidate]:
+        """Explicit technical-only authority; never changes a planned row's status."""
+        from .runtime_closed_loop_check import load_registration
+
+        registration = load_registration(registration_path, registration_sha256)
+        if (
+            Path(_required_env("SGW01_ENV_BINDING")).resolve() != registration.binding_path
+            or _required_env("SGW01_ENV_BINDING_SHA256") != registration.value["environment_binding"]["sha256"]
+            or self.cells.get(registration.cell["cell_id"]) != registration.binding_record
+        ):
+            raise AdapterError("technical qualification differs from the actual environment binding")
+        return self._checked_cell(registration.cell)
+
+    def _checked_cell(self, row: Mapping[str, Any]) -> tuple[Mapping[str, Any], FixtureCandidate]:
+        record = self.cells.get(row["cell_id"])
+        if not isinstance(record, Mapping):
+            raise AdapterError("cell has no joint-position environment binding")
         for key in ("family", "layout_id", "fixture_sha256", "prompt_sha256"):
             if not record.get(key) or record[key] != row.get(key):
                 raise AdapterError(f"joint-position cell binding differs for {key}")
@@ -221,6 +242,27 @@ def create_environment(*, cell: Any, evidence_root: Path) -> JointPositionEnviro
     """Simulator-process factory; call only after AppLauncher and release gates."""
     binding = JointPositionBinding.load()
     record, candidate = binding.cell(cell)
+    return _create_bound_environment(binding, getattr(cell, "row", cell), record, candidate, evidence_root)
+
+
+def create_qualification_environment(
+    *, registration_path: Path, registration_sha256: str, evidence_root: Path,
+) -> JointPositionEnvironment:
+    """Native technical check only; production creation retains its release guard."""
+    from .runtime_closed_loop_check import load_registration
+
+    registration = load_registration(registration_path, registration_sha256)
+    binding = JointPositionBinding.load()
+    record, candidate = binding.qualification_cell(
+        registration_path=registration_path, registration_sha256=registration_sha256,
+    )
+    return _create_bound_environment(binding, registration.cell, record, candidate, evidence_root)
+
+
+def _create_bound_environment(
+    binding: JointPositionBinding, row: Mapping[str, Any], record: Mapping[str, Any],
+    candidate: FixtureCandidate, evidence_root: Path,
+) -> JointPositionEnvironment:
     if not Path(__file__).resolve().is_relative_to(binding.source_root):
         raise AdapterError("joint-position factory import is outside the bound study checkout")
     import robolab
@@ -233,7 +275,6 @@ def create_environment(*, cell: Any, evidence_root: Path) -> JointPositionEnviro
 
     if not Path(robolab.__file__).resolve().is_relative_to(binding.robolab_root):
         raise AdapterError("effective RoboLab import is outside the bound native checkout")
-    row = getattr(cell, "row", cell)
     payload = {"candidate": candidate.task_payload(), "prompt": row["prompt"]}
     raw = json.dumps(payload, sort_keys=True, allow_nan=False)
     os.environ["SGW01_JOINTPOS_CELL_JSON"] = raw
