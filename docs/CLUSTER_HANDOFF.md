@@ -1,9 +1,11 @@
-# Cluster handoff: prepared queue, no study launch
+# Cluster handoff: completed scenes, no study launch
 
 **No learned-policy study launch is authorized.** This handoff prepares the
 existing 1,044-cell study for a later cluster agent. It does not allocate
-resources, release cells, run models, or certify native readiness. Scene
+resources, release cells, run models, or certify model-runtime readiness. Scene
 construction and qualification are separate from learned-policy execution.
+
+The [final scene registry](../artifacts/workshops/spatial_grounding_v1/scene_package_20260924/scene-registry.json) is ready: 87 layouts, 29 per family, and 522 passing scripted trials. The [completion receipt](../handoff/physical-scene-completion.json) records the checks. Use these selected designs and assignments; no further scene search is needed. [Recording locations](SCENE_RECORDS.md) include the eight rejected candidates. The model interfaces and physical time/camera mappings still need cluster qualification.
 
 The frozen 1,044-cell queue is a **template for a separately named clean-scene
 release**, as proposed in [CLEAN_SCENE_COHORT.md](CLEAN_SCENE_COHORT.md).

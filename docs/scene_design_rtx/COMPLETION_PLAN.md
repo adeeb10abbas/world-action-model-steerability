@@ -1,5 +1,7 @@
 # Complete the SGW scene package
 
+**Completed 24 September 2026, 12:29 UTC.** The [final registry](../../artifacts/workshops/spatial_grounding_v1/scene_package_20260924/scene-registry.json) selects 87 layouts with 522 passing scripted trials and the required family/side/stage balance. Eight rejected candidates remain recorded. The finite batch stopped with no model requests or learned-policy episodes. The plan below is retained as the record of the authorized work; it is not a request to rerun it.
+
 User direction, 24 September 2026 UTC: finish every scene family before cluster handoff; create a dedicated repository; avoid redundant checking. Latest instruction: do everything EXCEPT launching the 1,044-episode study. Learned-policy execution belongs on the cluster and is not authorized in this task.
 
 ## Acceptance

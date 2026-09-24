@@ -2,13 +2,15 @@
 
 Do equivalent descriptions of a spatial goal produce the same predicted and executed behavior? This repository contains the clean-scene study for the [CoRL 2026 world-model workshop](https://do-robots-need-world-models.github.io/).
 
-**Scene generators are implemented; physical validation is running. The 1,044-episode learned-policy study has not started and will run on the cluster.**
+**All 87 required scenes are physically validated: 29 LAT, 29 HEIGHT and 29 flat DIST layouts. Each passed both goals across three resets (522 selected scripted trials). The 1,044-episode learned-policy study has not started.**
 
 The study compares Cosmos3 Nano Policy DROID (N3) and DreamZero DROID (D1) on left/right, higher/lower, and closer/farther placement. Each physical goal has direct, subject-first, and reference-inverted descriptions. Both models use the same clean layouts, robot, cameras, prompts and scoring rules. There are 29 layout slots per family: one pilot, four development and 24 confirmation layouts.
 
 | Start here | Contents |
 | --- | --- |
+| [Completed scene registry](artifacts/workshops/spatial_grounding_v1/scene_package_20260924/scene-registry.json) | 87 selected layouts, exact inputs and verification receipts |
 | [Clean scene examples](docs/CLEAN_SCENES.md) | Actual shoulder and wrist camera captures |
+| [Scripted recordings](docs/SCENE_RECORDS.md) | Locations and verified identities of raw arrays, videos and state records |
 | [Scene construction](docs/scene_design_rtx/README.md) | Geometry, counterbalancing and scripted checks |
 | [Candidate inputs](artifacts/workshops/spatial_grounding_v1/balanced_flat_scene_candidates_20260924/) | Recorded layouts and selection order |
 | [Experiment specification](experiments/workshops/spatial_grounding_v1/spec/README.md) | Fixed protocol, 18 prompts and 1,044 planned cells |
@@ -19,7 +21,7 @@ The study compares Cosmos3 Nano Policy DROID (N3) and DreamZero DROID (D1) on le
 | [Runtime setup](docs/STANDALONE_RUNTIME.md) | Simulator, model and checkpoint identities |
 | [Source attribution](provenance/clean-extraction.json) | Origin and clean-only extraction scope |
 
-Every selected layout must pass both physical goals across three resets with the scripted controller. Valid failures remain in the clean-scene records. These checks establish feasibility, not learned-model performance. The complete scene package requires 87 qualified layouts; authored inputs alone do not establish that result.
+The final registry is ready: each family has 14 left and 15 right arrangements, comprising one seeded pilot, four development and 24 confirmation layouts. Eight rejected candidates remain recorded. The 205 unused registered candidates were not run after the quotas were met. These scripted checks establish physical feasibility; model/runtime qualification and learned-policy outcomes remain cluster work.
 
 ## CPU setup
 

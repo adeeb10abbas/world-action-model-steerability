@@ -1,9 +1,9 @@
 # Repository scope
 
-This is the private SGW-01 world-action-model steerability repository, currently **UNDER CONSTRUCTION / NOT READY**.
+This is the private SGW-01 world-action-model steerability repository. **The 87-layout physical scene package is complete; model/runtime qualification and the learned-policy study remain unstarted.**
 
 - Read the root README and REPOSITORY_STATUS.json for current scope. Copied historical receipts and authorizations do not grant permission to launch new work.
-- Current work is repository preparation and explicitly authorized scene completion. **Do not launch learned policies or the 1,044-cell study.** Any future learned-policy study runs on the cluster only after explicit user direction.
+- Use the completed scene registry and existing qualification evidence; do not restart scene design or repeat completed scripted trials. **Do not launch learned policies or the 1,044-cell study without new explicit user direction.** Future learned-policy execution belongs on the cluster.
 - Preserve the frozen 18 prompts, 1,044 planned cells, scoring thresholds, and matched comparison rules. Disclose new scene/appearance revisions prospectively; never rewrite recorded outcomes or hashes to make a check pass.
 - Keep physical scene qualification, synthetic engineering tests, and learned-policy outcomes distinct. Preserve valid failures and partial attempts. Missing or unmapped future evidence is unavailable, never a scored zero.
 - Use the pinned external runtime and asset identities. Keep weights, raw arrays/videos, credentials, and third-party environments outside Git.

@@ -11,8 +11,7 @@ launch; running learned policies requires the user's separate instruction.
 
 Owner: one agent for both model branches.
 
-1. Check `REPOSITORY_STATUS.json` and the final scene registry. Continue only
-   when the physical package has 87 selected layouts and `ready: true`.
+1. Use `REPOSITORY_STATUS.json` and the [completed scene registry](../artifacts/workshops/spatial_grounding_v1/scene_package_20260924/scene-registry.json). It contains 87 selected layouts with `ready: true`; preserve those assignments.
 2. Install the pinned RoboLab checkout and exact asset bytes. Use
    [scene materialization](SCENE_MATERIALIZATION.md) to regenerate overlays
    at the cluster's real paths and produce the per-cell environment binding.

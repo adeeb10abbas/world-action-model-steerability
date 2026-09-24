@@ -15,14 +15,14 @@ because their objects and necessary geometry also differ.
 
 ## Scene completion
 
-The target is 29 distinct layouts per family: one pilot, four development,
+The [completed registry](../artifacts/workshops/spatial_grounding_v1/scene_package_20260924/scene-registry.json) contains 29 distinct layouts per family: one pilot, four development,
 and 24 confirmation layouts. Development uses two layouts per counterbalance
 side; confirmation uses twelve per side. The pilot side is declared separately.
 Sides mean robot approach side for LAT, upper-support side for HEIGHT, and bowl
 side for DIST. Goal sign keeps its physical meaning under either arrangement.
 
-Every selected layout needs six complete scripted trials: both goals across
-three resets each. A valid failed trial disqualifies that candidate from the
+Every selected layout passed six complete scripted trials: both goals across
+three resets each, for 522 passing trials across the selected set. A valid failed trial disqualifies that candidate from the
 selected set and remains in the clean rejection inventory. These trials show
 physical feasibility and provide no learned-policy success rate. Source geometry
 and controller calibration may be reused; new candidate placements still need

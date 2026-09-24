@@ -1,6 +1,6 @@
 # SGW-01: Equivalent spatial instructions in world–action models
 
-This directory preserves the fixed scientific contract for the clean WAM steerability study. The scene generators, scorer, recorder, release builder and production worker are implemented. Scripted physical qualification remains in progress; native model/runtime and prediction-time qualification are separate prerequisites. **The 1,044-cell learned-policy study has not started and no launch is authorized.** Read the [current repository status](../../../../REPOSITORY_STATUS.json) for the latest preparation state.
+This directory preserves the fixed scientific contract for the clean WAM steerability study. The scene generators, scorer, recorder, release builder and production worker are implemented. The complete 87-layout physical registry is qualified, with 522 passing scripted trials; native model/runtime and prediction-time qualification remain separate prerequisites. **The 1,044-cell learned-policy study has not started and no launch is authorized.** Read the [current repository status](../../../../REPOSITORY_STATUS.json) for the latest preparation state.
 
 The study asks whether equivalent spatial descriptions preserve a physical goal, and whether each WAM's generated futures reliably describe its executed movement. It compares direct (D), subject-first (C) and reference-inverted (I) wording on clean lateral, height and relative-distance scenes. The paper and evidence scope contains this clean cohort only.
 

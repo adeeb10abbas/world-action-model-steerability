@@ -7,7 +7,8 @@ __pycache__/
 .coverage
 htmlcov/
 *.egg-info/
-dist/
+# Anchor package output so case-insensitive filesystems retain DIST evidence.
+/dist/
 build/
 .DS_Store
 .env

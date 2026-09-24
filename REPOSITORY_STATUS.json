@@ -1,40 +1,41 @@
 {
   "study_id": "SGW-01",
-  "status": "UNDER_CONSTRUCTION_NOT_READY",
+  "status": "PHYSICAL_SCENES_COMPLETE_RUNTIME_PENDING",
   "learned_policy_launch_authorized": false,
   "planned_behavioral_cells": 1044,
   "prompt_count": 18,
   "future_learned_policy_execution_location": "cluster_only",
   "current_scope": "Repository preparation and explicitly authorized scene completion; no learned-policy study launch.",
   "extraction_source_commit": "62ad0101d5fc26c6461aff47f611cab21219748a",
-  "pending_integration": "Scene generators and CPU tools integrated; scripted physical qualification remains in progress. No learned-policy study launch.",
+  "pending_integration": "All 87 physical layouts are selected and verified. Cluster model/runtime and prediction time/camera qualification remain; no learned-policy study launch.",
   "historical_authorizations_are_not_new_launch_permission": true,
   "scene_families_implemented": [
     "LAT",
     "HEIGHT",
     "DIST"
   ],
-  "physical_scene_package_complete": false,
+  "physical_scene_package_complete": true,
   "active_geometry": {
     "LAT": "flat tabletop",
     "HEIGHT": "raised supports",
     "DIST": "flat tabletop; pedestal revision excluded"
   },
   "scripted_qualification_snapshot": {
-    "recorded_at_utc": "2026-09-24T09:50:55.389395+00:00",
+    "recorded_at_utc": "2026-09-24T12:29:07.058571+00:00",
     "eligible_passed_layouts": {
-      "DIST": 3,
+      "LAT": 29,
       "HEIGHT": 29,
-      "LAT": 29
+      "DIST": 29
     },
     "target_layouts_per_family": 29,
     "flat_dist_prototypes": "Both orientations independently verified: six of six trials passed each.",
     "learned_policy_episodes": 0,
     "valid_physical_rejections": 8,
-    "campaign_phase": "running",
+    "campaign_phase": "completed",
     "complete_families": [
       "LAT",
-      "HEIGHT"
+      "HEIGHT",
+      "DIST"
     ],
     "LAT_package_check": {
       "selected_layouts": 29,
@@ -55,6 +56,25 @@
       "confirmation": 24,
       "selection_order_resolved": true,
       "invalid_evidence": 0
+    },
+    "selected_scripted_trials": 522,
+    "unused_registered_candidates": 205,
+    "DIST_package_check": {
+      "selected_layouts": 29,
+      "left": 14,
+      "right": 15,
+      "pilot": 1,
+      "development": 4,
+      "confirmation": 24,
+      "selection_order_resolved": true,
+      "invalid_evidence": 0
     }
+  },
+  "scene_registry": "artifacts/workshops/spatial_grounding_v1/scene_package_20260924/scene-registry.json",
+  "physical_completion_receipt": "handoff/physical-scene-completion.json",
+  "recording_index": "handoff/scene-records.json",
+  "scene_materialization": {
+    "status": "full_87_layout_destination_check_pending",
+    "models_or_simulators_required": false
   }
 }

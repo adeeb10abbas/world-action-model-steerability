@@ -1,0 +1,82 @@
+{
+  "behavioral_episodes": 0,
+  "candidate_outcomes": {
+    "pending_evidence": 205,
+    "physical_rejection": 8,
+    "qualified": 87
+  },
+  "companion_bytes": 1144690004,
+  "completion_utc": "2026-09-24T12:29:07.058571+00:00",
+  "families": {
+    "DIST": {
+      "declared_count": 100,
+      "missing_counts": {
+        "left": 0,
+        "right": 0
+      },
+      "pending_count": 71,
+      "qualified_counts": {
+        "left": 14,
+        "right": 15
+      },
+      "ready": true,
+      "required_counts": {
+        "left": 14,
+        "right": 15
+      },
+      "selected_count": 29,
+      "selection_order_resolved": true
+    },
+    "HEIGHT": {
+      "declared_count": 100,
+      "missing_counts": {
+        "left": 0,
+        "right": 0
+      },
+      "pending_count": 71,
+      "qualified_counts": {
+        "left": 14,
+        "right": 15
+      },
+      "ready": true,
+      "required_counts": {
+        "left": 14,
+        "right": 15
+      },
+      "selected_count": 29,
+      "selection_order_resolved": true
+    },
+    "LAT": {
+      "declared_count": 100,
+      "missing_counts": {
+        "left": 0,
+        "right": 0
+      },
+      "pending_count": 63,
+      "qualified_counts": {
+        "left": 14,
+        "right": 15
+      },
+      "ready": true,
+      "required_counts": {
+        "left": 14,
+        "right": 15
+      },
+      "selected_count": 29,
+      "selection_order_resolved": true
+    }
+  },
+  "git_packaging_check": {
+    "distance_receipts_included": true,
+    "missing_from_git_index": 0,
+    "note": "Root package dist ignore is anchored so DIST scientific records remain tracked on case-insensitive filesystems.",
+    "selected_registry_references": 609
+  },
+  "model_requests": 0,
+  "native_phase": "completed",
+  "raw_bytes": 148666063525,
+  "registry_sha256": "20733d7f74a42c8aa6f67b66834c7c4296567c77d59cfb19e92367c706e3fe75",
+  "selected_layouts": 87,
+  "selected_scripted_trials": 522,
+  "status": "ready"
+}

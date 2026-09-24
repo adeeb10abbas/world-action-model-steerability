@@ -1,7 +1,7 @@
 \section{Study coverage and remaining measurements}
 \label{sec:coverage-update}
 \textbf{Clean study status, 24 September 2026.}
-The LAT, HEIGHT and DIST scene generators are implemented, and physical qualification is underway. LAT and DIST use a flat tabletop; only HEIGHT uses raised supports. The illustrated examples each have six independently verified passing scripted trials; they do not establish a complete cohort. The final 87-layout set is not complete. The 18 frozen prompts and 1,044-cell queue specify the intended experiment; this document reports no clean learned-policy results.
+Physical qualification of the selected 87-layout set is complete: all 522 selected scripted trials passed. LAT and DIST use a flat tabletop; only HEIGHT uses raised supports. Model requests and learned-policy episodes are both zero. The 18 frozen prompts and 1,044-cell queue specify the intended experiment; model/runtime qualification, physical time maps and analysis remain pending. This document is a research plan with completed fixture qualification, not model findings.
 
 \begin{table}[ht]
 \centering\small
@@ -26,9 +26,11 @@ The primary matched ablation, I--C, changes instruction wording while holding th
 Removing DIST pedestals is scene cleanup, not a measured support ablation. Support presence is not a study factor. Differences in references, geometry and placement requirements preclude a pure-axis causal claim across families; cross-family success differences are descriptive.
 
 \subsection{Scene qualification and matched cohorts}
-Each family needs 29 distinct qualified layouts: one pilot on the seeded side, two development layouts per side and twelve confirmation layouts per side. LAT side is measured from the cube's starting $y$ coordinate relative to the fixed robot frame; HEIGHT side from the upper versus lower support; DIST side from bowl versus plate. Opposite-goal checks and initial-side balance are separate controls.
+Each family has 29 distinct qualified layouts: one pilot on the seeded right side, two development layouts per side and twelve confirmation layouts per side, totaling 14 left and 15 right layouts. LAT side is measured from the cube's starting $y$ coordinate relative to the fixed robot frame; HEIGHT side from the upper versus lower support; DIST side from bowl versus plate. Opposite-goal checks and initial-side balance are separate controls.
 
-Both goals must pass across three resets with the unchanged 450-action scripted controller. Independent receipts bind the original design, measured geometry, six trials and observed outcome. The scene registry retains rejected and pending candidates and remains partial until all quotas and selection-order requirements hold. The two models share the same frozen layouts. Physical feasibility does not establish model success or authorize the model study.
+Both goals passed across three resets for every selected layout with the unchanged 450-action scripted controller. Independent receipts bind the original design, measured geometry, six trials and observed outcome. The registry reached ready status on 24 September 2026 at 12:29 UTC, with all quotas and selection-order requirements met. Eight rejected candidates remain recorded; 205 unused registered candidates were deliberately left unrun. The two models will share the same frozen layouts. Physical feasibility does not establish model success or authorize the model study.
+
+The final campaign explicitly reused 14 passing and two rejected candidates from prior clean scripted checks. Those outcomes were known when the final execution plan was recorded. New candidate designs and order were recorded before their new trials; selection followed the declared order and physical checks, never learned-policy success.
 
 \subsection{Prediction measurement}
 Before scoring fidelity, establish each generated frame's physical target time and view inside the prefix actually executed before replanning. Record actual model-input arrays and their crop/packing transforms. A presentation frame rate or an available camera is insufficient. Freeze the positive horizon $H$ on development, separately for N3 and D1, and select requests at indices $\lfloor0.25(n-1)\rfloor$ and $\lfloor0.75(n-1)\rfloor$, deduplicating when necessary.
@@ -46,7 +48,7 @@ Validate semantic labels with 50 offline images per family: 20 balanced unambigu
 \subsection{Analysis completion}
 The compiler now distinguishes physical separation $r(+)-r(-)=M(+)+M(-)$ in metres from success asymmetry $S(+)-S(-)$. Observed manipulation failures retain their continuous endpoints; missing or censored endpoints have unavailable separation. The final export must combine the I--C and C--D effects, per-goal transitions, physical separation, stage diagnostics, prediction skill and coverage, exposing complete layouts out of 24 for every model-family branch.
 
-Retain the registered 20,000 layout bootstrap draws, 100,000 paired sign flips, six-test Holm correction, censoring rules and two-endpoint equivalence criteria. Nonsignificance is not equivalence. Freeze stationary/moving handling at 0.02 image diagonals and declare first/later-request and alternative-supported-$H$ sensitivity analyses before confirmation. End-to-end outputs and the prediction-annotation workflow still require validation with labeled engineering fixtures; those checks are not experimental results.
+Retain the registered 20,000 layout bootstrap draws, 100,000 paired sign flips, six-test Holm correction, censoring rules and two-endpoint equivalence criteria. Nonsignificance is not equivalence. Descriptive bootstrap intervals alone cannot support a positive equivalence claim; all-zero or otherwise zero-variance layout contrasts are inconclusive pending a valid finite-sample procedure fixed before confirmation. Freeze stationary/moving handling at 0.02 image diagonals and declare first/later-request and alternative-supported-$H$ sensitivity analyses before confirmation. End-to-end outputs and the prediction-annotation workflow still require validation with labeled engineering fixtures; those checks are not experimental results.
 
 The detailed measurement plan is in
 \href{https://github.com/adeeb10abbas/world-action-model-steerability/blob/main/docs/scene_design_rtx/ABLATION_COVERAGE.md}{\texttt{ABLATION\_COVERAGE.md}}.

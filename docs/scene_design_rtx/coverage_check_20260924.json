@@ -1,6 +1,6 @@
 {
-  "status": "clean_wam_research_plan_not_experimental_results",
-  "checked_at_utc": "2026-09-24T04:29:42.855741+00:00",
+  "status": "clean_wam_research_plan_with_completed_physical_qualification",
+  "checked_at_utc": "2026-09-24T12:37:19.057187+00:00",
   "scope": "D/C/I x LAT/HEIGHT/DIST x N3/D1 in clean tabletop scenes",
   "repository": "https://github.com/adeeb10abbas/world-action-model-steerability",
   "cells": 1044,
@@ -22,21 +22,49 @@
   },
   "scene_status": {
     "all_three_clean_generators_implemented": true,
-    "physical_qualification": "underway",
-    "complete_87_layout_set_claimed": false,
+    "physical_qualification": "complete",
+    "complete_87_layout_set_claimed": true,
     "surface_by_family": {
       "LAT": "flat tabletop",
       "HEIGHT": "raised supports",
       "DIST": "flat tabletop"
     },
-    "flat_dist_prototype_trials": "Illustrated bowl-right prototype independently passed 6/6 scripted checks; full cohort qualification remains incomplete",
+    "flat_dist_prototype_trials": "Illustrated bowl-right prototype independently passed 6/6 scripted checks; all 29 selected DIST layouts are now physically qualified",
     "dist_pedestal_removal": "scene cleanup; not a measured support ablation",
-    "support_presence_is_study_factor": false
+    "support_presence_is_study_factor": false,
+    "selected_layouts": 87,
+    "selected_scripted_trials": 522,
+    "selected_scripted_trials_passed": 522,
+    "rejected_candidates_retained": 8,
+    "unused_registered_candidates_deliberately_unrun": 205,
+    "completion_utc": "2026-09-24T12:29:07.058571+00:00",
+    "per_family": {
+      "layouts": 29,
+      "left": 14,
+      "right": 15,
+      "P": 1,
+      "D": 4,
+      "C": 24
+    },
+    "reuse": {
+      "passing": 14,
+      "rejected": 2,
+      "known_before_final_execution_plan": true,
+      "new_candidate_plans_recorded_before_new_trials": true
+    },
+    "model_requests": 0,
+    "learned_policy_episodes": 0,
+    "evidence": {
+      "artifacts/workshops/spatial_grounding_v1/scene_package_20260924/scene-registry.json": "20733d7f74a42c8aa6f67b66834c7c4296567c77d59cfb19e92367c706e3fe75",
+      "handoff/physical-scene-completion.json": "f74ced8848bde1aae3dac6796c2a80c448390f42f6650947499236393b80d83a",
+      "handoff/scene-records.json": "0a0406f5dc840f4de57fd9fac3ffc38c2ec662142884fb462ecc0961dd93c5a2",
+      "artifacts/workshops/spatial_grounding_v1/balanced_flat_scene_candidates_20260924/runtime-plan.json": "03f4a83640b84686f40e925ab6d5f2869c5be58458743d74d87feafe6f694673"
+    }
   },
   "learned_policy_launch_authorized": false,
   "physical_separation": "r(+) - r(-) = M(+) + M(-), in metres; implemented separately from binary success asymmetry",
   "open_work": [
-    "complete physical scene qualification and side quotas",
+    "verify destination scene regeneration and runtime readiness",
     "qualify N3/D1 runtime and physical time/camera mappings",
     "coordinate localization and adjudication exports",
     "persistence skill and semantic-label validation",
@@ -69,7 +97,7 @@
     "pdf_sha256": "1cd47934cf7bf92ddab63b161ddc35f9bf9057cd33dc632b868e26c9b516d583",
     "source_main_sha256": "fcdc6b5035b87224820fe3f8900239209462204dc2b91509d9a8730c1afc9194",
     "checked_this_revision": false,
-    "note": "Retained prior local figure-build receipt; this scope-only revision was compiled once in Overleaf."
+    "note": "Retained prior local figure-build receipt; it does not attest the current manuscript revision."
   },
   "overleaf": {
     "project_url": "https://www.overleaf.com/project/6ab2bdb39b30df4bbc98a15e",
@@ -111,13 +139,13 @@
     },
     "compile_invocations_this_revision": 1,
     "checked_this_revision": false,
-    "revision_note": "Retained verified prior Overleaf build. The subsequent local equivalence safeguard is pending synchronization and compilation with the final scene-status update."
+    "revision_note": "Retained verified prior remote build; physical-completion update and prospective equivalence safeguard await this revision sync."
   },
   "delivery_hashes": {
-    "ABLATION_COVERAGE.md": "d0e1f541b9edfc959459929ad77f9a10c0e760417f92dad1bc89685ad41dbba0",
-    "ablation_coverage_20260924.tex": "6d46bcb5edb91fac568fb725e043373cd51a4cfbf47556d938338f5fb3272589",
-    "overleaf/main.tex": "7ebdf9cdeeb71e59bcd46892755153d95dbdfc1fa8583b2df1d8c11a04d55508",
-    "overleaf/ablation_coverage_20260924.tex": "6d46bcb5edb91fac568fb725e043373cd51a4cfbf47556d938338f5fb3272589",
+    "ABLATION_COVERAGE.md": "10fa5d2e70d6565ccdb26dbd6c6a8810fd526a7ba3268a198f6c34986b637db8",
+    "ablation_coverage_20260924.tex": "deefe6b7a2f7a46989a9a3c3c1f018f84d7c6b87c9b33ad82743a29e2408b69d",
+    "overleaf/main.tex": "455e7af08f40ab771eefe92adca49c3e4b2044c6d3cf35126b266972b8dcb3bd",
+    "overleaf/ablation_coverage_20260924.tex": "deefe6b7a2f7a46989a9a3c3c1f018f84d7c6b87c9b33ad82743a29e2408b69d",
     "overleaf/figures/lat-flat-right.png": "ac35e263b4ae4b966cd6c0938500c08fd75ec3d6c2f32185e71a218b4c054dab",
     "overleaf/figures/height-upper-right.png": "6673f7e0036a5a3ba4b44fa1f7ecd37a811d7973806f24e785c576dad1ab7f03",
     "overleaf/figures/dist-flat-right.png": "78b45a35a3bcd5d4193de78f1182f37fccb059de97318de135cf5dbcbb1c5a9e"
@@ -166,7 +194,7 @@
         "passed_scripted_checks": 6
       }
     ],
-    "meaning": "Three qualified examples; not full cohort completion or learned-policy results",
+    "meaning": "Three illustrative qualified examples; full 87-layout completion is supported by the separate ready registry, not learned-policy results",
     "visual_qa": {
       "page": 3,
       "local_pdf": "Three complete uncropped camera images with readable labels and caption, no overlap",
@@ -176,8 +204,9 @@
   },
   "scope_clarification": "LAT uses robot-frame scoring while frozen prompts leave viewpoint unspecified; consistent reversal can reflect frame choice or relation grounding, which this experiment does not separate.",
   "local_revision_pending_sync": {
-    "recorded_at_utc": "2026-09-24T09:42:00.950275+00:00",
-    "main_tex_sha256": "7ebdf9cdeeb71e59bcd46892755153d95dbdfc1fa8583b2df1d8c11a04d55508",
-    "change": "Prospective equivalence safeguard; no learned-policy outcomes, additional episodes, or frozen registry changes."
+    "recorded_at_utc": "2026-09-24T12:37:19.057187+00:00",
+    "main_tex_sha256": "455e7af08f40ab771eefe92adca49c3e4b2044c6d3cf35126b266972b8dcb3bd",
+    "coverage_tex_sha256": "deefe6b7a2f7a46989a9a3c3c1f018f84d7c6b87c9b33ad82743a29e2408b69d",
+    "change": "Complete physical scene qualification, precise prior-outcome reuse, retained prospective equivalence safeguard; no learned-policy outcomes or frozen input changes."
   }
 }

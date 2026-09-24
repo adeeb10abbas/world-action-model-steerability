@@ -1,6 +1,8 @@
 # Clean LAT, HEIGHT and DIST scene package
 
-**UNDER CONSTRUCTION. No learned-policy study launch is authorized.**
+**Complete: 87 selected layouts, 29 per family, and 522 passing scripted trials. No learned-policy study launch is authorized.**
+
+Use the [final registry](../../artifacts/workshops/spatial_grounding_v1/scene_package_20260924/scene-registry.json) and [completion receipt](../../handoff/physical-scene-completion.json). All three family quotas and their selection order are verified. Eight candidate rejections are retained; unused candidates need no further runs.
 
 This directory documents the clean scenes for the WAM steerability workshop
 paper. The scene package keeps the DROID robot, registered cameras, controller
@@ -42,7 +44,7 @@ performance or proof that a complete family has been selected.
   contains the prospective candidate inputs and selection plan for the balanced
   scene package. Authored rows are not qualified layouts.
 
-The target is 29 distinct layouts per family: one pilot, four development and
+The completed set has 29 distinct layouts per family: one pilot, four development and
 24 confirmation. LAT approach side, HEIGHT upper-support side and DIST bowl
 side have explicit quotas: two per side for development and twelve per side
 for confirmation, plus the declared pilot side. Each selected layout requires
