@@ -105,3 +105,26 @@ as infrastructure failure. Errors preserve partial evidence with no automatic
 retry; existing output paths cannot be reused. Successful completion alone
 does not qualify physical prediction timing, closed-loop behavior, other
 checkpoints, or a study release.
+
+## Current-scene Edge and FLUX fixed-input checks
+
+`checkpoint_fixed_input.py` reuses only the current registration's verified
+physical input, deriving the selected E3/F3 seed from that model's frozen
+LAT-P01 block. It does not transfer Nano qualification to another checkpoint.
+Run it through the cluster bootstrap in the selected pinned model environment:
+
+```sh
+python -m experiments.workshops.spatial_grounding_v1.checkpoint_fixed_input \
+  --model E3 --registration /persistent/current-n3-registration.json \
+  --output /persistent/new-edge-check --request-timeout 900
+```
+
+Use `--model F3` for FLUX. Both checks retain six maximum actual requests with
+full resets, loopback transport traces, actions, input/config identities and
+available same-request futures/latents; they execute no actions. FLUX enables
+future capture for the first direct-positive/repeat/opposite triple and
+disables it for the second identical triple, retaining action parity results
+without replacing genuine differences. Output directories are exclusive;
+technical failure preserves the partial attempt and never triggers an
+automatic retry. Success is only a fixed-input contract result, not physical
+time/camera mapping, closed-loop qualification or a study release.

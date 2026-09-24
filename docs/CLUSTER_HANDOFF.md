@@ -1,9 +1,12 @@
-# Cluster handoff: completed scenes, no study launch
+# Cluster handoff: completed scenes, runtime integration
 
-**No learned-policy study launch is authorized.** This handoff prepares the
-existing 1,566-cell study for a later cluster agent. It does not allocate
-resources, release cells, run models, or certify model-runtime readiness. Scene
-construction and qualification are separate from learned-policy execution.
+**The current user instruction authorizes runtime integration and subsequent
+gated study launch.** See the
+[current continuation](../handoff/cluster-execution-20260924/README.md) for its
+hash-bound instruction, actual cluster paths and zero-request failures. No
+behavioral release exists yet. The original scene-planning handoff below is
+resource-neutral; its historical absence of launch authority does not revoke
+the new instruction. Scene qualification is not model-runtime readiness.
 
 The [final scene registry](../artifacts/workshops/spatial_grounding_v1/scene_package_20260924/scene-registry.json) is ready: 87 layouts, 29 per family, and 522 passing scripted trials. The [completion receipt](../handoff/physical-scene-completion.json) records the checks. Use these selected designs and assignments; no further scene search is needed. [Recording locations](SCENE_RECORDS.md) include the eight rejected candidates. The model interfaces and physical time/camera mappings still need cluster qualification.
 
@@ -168,10 +171,11 @@ The production path needs qualified per-layout fixtures, the native
 AppLauncher startup. The owned runtime also needs its real model endpoint,
 `SGW01_SERVER_ARGV`, runtime receipt and the concrete trace reader. These
 values come from the working native environment; this tool does not guess
-them. E3/F3 adapters, source/checkpoint pins and reset behavior are pending;
-active runtime factories reject them until implemented. D1 is retired.
-FLUX needs same-request video capture and decoding. Prove physical timing and action
-prefix alignment for each model before scoring predictions.
+them. E3/F3 adapters and immutable source/checkpoint pins are now implemented;
+their actual runtime, reset and image-processing qualification remains
+pending. D1 is retired. FLUX same-request latent/video capture is implemented
+but not yet natively qualified. Prove physical timing and action prefix
+alignment for each model before scoring predictions.
 
 `release.create_release` already combines the full frozen source queue with
 qualified fixture/time-map records and the actual runtime binding, selecting

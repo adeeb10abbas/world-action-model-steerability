@@ -92,6 +92,17 @@ file verification. Its isolated `envs/flux-e2dd1d8` environment has Python
 3.12.13, Torch 2.10.0+cu128, NATTEN 0.21.6+torch2100cu128, and the study's
 recording dependencies. These are CPU staging results, not runtime qualification.
 
+The corrected Nano Job is retained as `jobs/n3-check-c.json`, using source
+`4c39c450b1dace8470edc7d907fb4e86a88bd0e3` and new output `n3-check-c`.
+It passed the fresh idle allocation check on
+`GPU-9b784824-3fad-dcf1-8e3e-abee22db4a8e` (A100-SXM4-80GB) and entered model
+initialization. This observation is not a completed inference receipt.
+
+For Edge/FLUX, use the new bounded `checkpoint_fixed_input.py` entrypoint
+documented in `docs/STANDALONE_RUNTIME.md`. Its CPU tests exercise fake
+backends only. Neither those tests, imports, weight hashing nor a Running Pod
+qualifies a model or starts a behavioral episode.
+
 The following **CPU-only** startup check passed in the approved container:
 
 ```sh
