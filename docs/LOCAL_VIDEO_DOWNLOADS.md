@@ -34,6 +34,8 @@ encoder/version, argument list (including quality settings), measured source
 and output dimensions/frame counts, and source identity. Publish the closed,
 verified derivatives in a separate `viewing/` tree. **Never append derivatives
 to or rewrite a completed scientific attempt manifest.**
+Use the bounded offline helper described below to produce each derivative
+and its separate source-linked entry.
 
 The original recorder schema is `sgw-01-attempt-manifest-v1`: `complete: true`,
 release/cell/attempt identity, `release_hashes`, `result.status`, and an
@@ -117,6 +119,101 @@ attempt or a never-exported prediction. Video count is never episode count.
 Native diagnostic outputs with a different manifest schema are not silently
 accepted as study attempts; keep their independent archive/index separate.
 
+## Offline CPU encoding
+
+`tools/encode_study_video.py` converts **one finalized artifact** per invocation.
+The existing recorder's `encode_viewport_video` handles only a list of
+per-frame arrays, writes directly to its target, and lacks derivative
+provenance/atomic publication. The offline helper instead reuses the
+downloader's path, identity and publication helpers. It never alters that
+recorder or completed scientific manifests.
+
+The execution owner runs this later on CPU against existing persistent files,
+after study completion under the current delivery instruction. This is not a
+cluster launcher or permission to use another workload's resources.
+Use the shared cohort parent as `COHORT_ROOT` and the authoritative manifest
+SHA as `MANIFEST_SHA256`:
+
+```sh
+python -m tools.encode_study_video \
+  --root "$COHORT_ROOT" \
+  --manifest "attempts/$CELL/$ATTEMPT/manifest.json" \
+  --manifest-sha256 "$MANIFEST_SHA256" \
+  --artifact videos/viewport.mp4 \
+  --output "viewing/attempts/$CELL/$ATTEMPT/videos/viewport.mp4"
+```
+
+For an exposed decoded prediction array, select the exact array path
+referenced by `raw_response.future` or `raw_response.native_trace.future` in
+its retained request record; do not guess from array filenames:
+
+```sh
+python -m tools.encode_study_video \
+  --root "$COHORT_ROOT" \
+  --manifest "attempts/$CELL/$ATTEMPT/manifest.json" \
+  --manifest-sha256 "$MANIFEST_SHA256" \
+  --artifact predictions/request-0000-arrays/array-00001.npy \
+  --request-record predictions/request-0000.json \
+  --playback-fps 15 \
+  --output "viewing/attempts/$CELL/$ATTEMPT/predictions/request-0000.mp4"
+```
+
+The array number above is illustrative; the request record selects the real
+one. Only nonempty **THWC uint8 RGB** arrays whose shape/dtype/hash match the
+request are supported. The retained future status must be
+`decoded_unmapped` or `exposed_and_retained`. Latents, floating-point tensors,
+RGBA, ambiguous layouts, missing/decode-error futures and raw action arrays
+are rejected, not converted or regenerated. Arrays have null source FPS;
+`--playback-fps` is mandatory and labeled `playback_only`, even when retained
+metadata mentions a conditioning FPS. Existing videos reject playback-rate
+overrides and use their measured presentation clock.
+
+Defaults are software `libx264`, `-crf 18`, `-preset medium`, one encoder
+thread, and a 600-second timeout per ffmpeg operation. `--codec h265` selects
+software `libx265` with a single-thread pool. No hardware decoder/encoder is
+used. Even dimensions use `yuv420p`; odd dimensions use `yuv444p` rather than
+resizing (some viewing players may not support that pixel format). Explicit
+`--crf`, `--preset`, `--timeout`, `--reserve-bytes` and `--ffmpeg` are available.
+The installed `ffmpeg` is preferred; otherwise the existing declared
+`imageio-ffmpeg` package supplies its binary. NumPy is needed only for array
+inputs. No ffprobe, renderer, model environment or new dependency is required.
+
+The helper fully decodes input videos and outputs using ffmpeg `showinfo`,
+checking every frame's dimensions, count, codec and rational presentation
+timestamps. It cross-checks recorded viewport frame count/FPS when present,
+retains that metadata, and rejects variable/discontinuous timing rather than
+dropping or duplicating frames. Recorded request/future metadata is preserved.
+Physical mapping remains explicitly unavailable: compression is not physical
+qualification. Original files are hash-checked before encoding and again
+before publication.
+
+Before encoding, it reserves twice the uncompressed RGB byte count plus
+1 MiB, plus the requested free-space headroom (default 1 GiB), and applies
+that output size cap. A truncated/capped output fails decoded-frame validation.
+Conversion occurs in an exclusive `.partial`; codec, timeout, shape, timing
+or size failures never publish an entry. Errors identify the retained partial.
+After verification, publication uses no-overwrite hard links and writes
+`<output>.entry.json` last. Neither an existing video nor an existing entry
+is overwritten. If interrupted between those two publications, treat a video
+without its entry as an orphan: inspect it and use a new explicit output path,
+not an invented receipt or overwrite. Remove only specifically identified
+owned partials if necessary.
+
+Stdout and `<output>.entry.json` contain one complete `videos[]` entry in the
+delivery-index shape above, including both hashes/lengths, encoder version,
+actual argument vector, measured geometry/count/timing, and pinned original
+manifest/request identities. Argument vectors use inherited `/dev/fd/`
+endpoints for safe I/O; `encoding.source_path` and `encoding.output_path`
+identify their stable cohort-relative files. These ephemeral descriptor
+numbers are not reusable path names.
+
+Run once for each item in the owner's finalized source list; stop on failures.
+Collect **only successfully published entry sidecars** into the final delivery
+index's `videos` list, together with the final compiler report and original
+attempt-manifest identities. The helper does not infer which attempts or
+predictions belong in that list, assert study completion, or start downloads.
+No original manifests or release/completion pointers are modified.
+
 ## Download and verify
 
 Run from this repository with Python 3.11+; the helper uses only the standard
@@ -197,10 +294,12 @@ into successful study episodes.
 Focused validation, with the repository's test environment:
 
 ```sh
-python -m pytest -q tests/test_download_study_videos.py
+python -m pytest -q tests/test_download_study_videos.py tests/test_encode_study_video.py
 ```
 
-These tests use synthetic bytes and local/mock transports, not real media,
-encoders, simulators, models or cluster resources. Add this explicit test path
+Downloader tests use synthetic bytes and local/mock transports. Encoder tests
+also perform tiny actual CPU H.264/H.265 roundtrips on synthetic fixtures and
+feed the emitted entries through the downloader. Neither suite accesses study
+media, simulators, models or cluster resources. Add both explicit test paths
 to broader CI selection when integrating; the repository currently enumerates
 default test paths in `pyproject.toml`.
