@@ -1,0 +1,570 @@
+{
+  "observed_at_utc": "2026-09-24T21:40:42.776129+00:00",
+  "scope": "exact_user_named_reservations_metadata_not_idle_attestation",
+  "pods": [
+    {
+      "name": "211247-ali-b200-1gpu",
+      "uid": "b58e8416-9412-4db5-921b-110420433480",
+      "node": "dcwipphhgc225.edc.nam.gm.com",
+      "phase": "Running",
+      "owner_references": [],
+      "labels": {
+        "user": "ali"
+      },
+      "security_context": {
+        "fsGroup": 2518800,
+        "seccompProfile": {
+          "type": "RuntimeDefault"
+        },
+        "supplementalGroups": [
+          2518800
+        ]
+      },
+      "volumes": [
+        {
+          "name": "workspace",
+          "persistentVolumeClaim": {
+            "claimName": "211247-prod-pvc"
+          }
+        }
+      ],
+      "containers": [
+        {
+          "name": "211247-ali-b200-1gpu",
+          "image": "artifactory-ci.gm.com/docker-approved/devcontainers/base:ubuntu22.04",
+          "resources": {
+            "limits": {
+              "cpu": "48",
+              "memory": "256Gi",
+              "nvidia.com/gpu": "1"
+            },
+            "requests": {
+              "cpu": "24",
+              "memory": "128Gi",
+              "nvidia.com/gpu": "1"
+            }
+          },
+          "security_context": {
+            "allowPrivilegeEscalation": false,
+            "capabilities": {
+              "drop": [
+                "ALL"
+              ]
+            },
+            "readOnlyRootFilesystem": false,
+            "runAsGroup": 2518800,
+            "runAsNonRoot": true,
+            "runAsUser": 816149040
+          },
+          "volume_mounts": [
+            {
+              "name": "workspace",
+              "mount_path": "/data"
+            },
+            {
+              "name": "dshm",
+              "mount_path": "/dev/shm"
+            },
+            {
+              "name": "tmp",
+              "mount_path": "/tmp"
+            },
+            {
+              "name": "vartmp",
+              "mount_path": "/var/tmp"
+            },
+            {
+              "name": "home",
+              "mount_path": "/home/ali"
+            },
+            {
+              "name": "userdb",
+              "mount_path": "/etc/passwd"
+            },
+            {
+              "name": "userdb",
+              "mount_path": "/etc/group"
+            },
+            {
+              "name": "kube-api-access-prxg5",
+              "mount_path": "/var/run/secrets/kubernetes.io/serviceaccount"
+            }
+          ],
+          "entrypoint": [
+            "sh"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "211247-aligroot-b200-1gpu",
+      "uid": "cd2af22d-d684-4c73-9777-1e12272e6f39",
+      "node": "dcwipphhgc225.edc.nam.gm.com",
+      "phase": "Running",
+      "owner_references": [],
+      "labels": {
+        "user": "aligroot"
+      },
+      "security_context": {
+        "fsGroup": 2518800,
+        "seccompProfile": {
+          "type": "RuntimeDefault"
+        },
+        "supplementalGroups": [
+          2518800
+        ]
+      },
+      "volumes": [
+        {
+          "name": "workspace",
+          "persistentVolumeClaim": {
+            "claimName": "211247-prod-pvc"
+          }
+        }
+      ],
+      "containers": [
+        {
+          "name": "211247-aligroot-b200-1gpu",
+          "image": "artifactory-ci.gm.com/docker-approved/devcontainers/base:ubuntu22.04",
+          "resources": {
+            "limits": {
+              "cpu": "48",
+              "memory": "256Gi",
+              "nvidia.com/gpu": "1"
+            },
+            "requests": {
+              "cpu": "24",
+              "memory": "128Gi",
+              "nvidia.com/gpu": "1"
+            }
+          },
+          "security_context": {
+            "allowPrivilegeEscalation": false,
+            "capabilities": {
+              "drop": [
+                "ALL"
+              ]
+            },
+            "readOnlyRootFilesystem": false,
+            "runAsGroup": 2518800,
+            "runAsNonRoot": true,
+            "runAsUser": 816149040
+          },
+          "volume_mounts": [
+            {
+              "name": "workspace",
+              "mount_path": "/data"
+            },
+            {
+              "name": "dshm",
+              "mount_path": "/dev/shm"
+            },
+            {
+              "name": "tmp",
+              "mount_path": "/tmp"
+            },
+            {
+              "name": "vartmp",
+              "mount_path": "/var/tmp"
+            },
+            {
+              "name": "home",
+              "mount_path": "/home/aligroot"
+            },
+            {
+              "name": "userdb",
+              "mount_path": "/etc/passwd"
+            },
+            {
+              "name": "userdb",
+              "mount_path": "/etc/group"
+            },
+            {
+              "name": "kube-api-access-njmmf",
+              "mount_path": "/var/run/secrets/kubernetes.io/serviceaccount"
+            }
+          ],
+          "entrypoint": [
+            "sh"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "211247-alieval-b200-1gpu",
+      "uid": "a7592355-01ac-4fc9-9e33-365d68e40b34",
+      "node": "dcwipphhgc227.edc.nam.gm.com",
+      "phase": "Running",
+      "owner_references": [],
+      "labels": {
+        "user": "alieval"
+      },
+      "security_context": {
+        "fsGroup": 2518800,
+        "seccompProfile": {
+          "type": "RuntimeDefault"
+        },
+        "supplementalGroups": [
+          2518800
+        ]
+      },
+      "volumes": [
+        {
+          "name": "workspace",
+          "persistentVolumeClaim": {
+            "claimName": "211247-prod-pvc"
+          }
+        }
+      ],
+      "containers": [
+        {
+          "name": "211247-alieval-b200-1gpu",
+          "image": "artifactory-ci.gm.com/docker-approved/devcontainers/base:ubuntu22.04",
+          "resources": {
+            "limits": {
+              "cpu": "48",
+              "memory": "256Gi",
+              "nvidia.com/gpu": "1"
+            },
+            "requests": {
+              "cpu": "24",
+              "memory": "128Gi",
+              "nvidia.com/gpu": "1"
+            }
+          },
+          "security_context": {
+            "allowPrivilegeEscalation": false,
+            "capabilities": {
+              "drop": [
+                "ALL"
+              ]
+            },
+            "readOnlyRootFilesystem": false,
+            "runAsGroup": 2518800,
+            "runAsNonRoot": true,
+            "runAsUser": 816149040
+          },
+          "volume_mounts": [
+            {
+              "name": "workspace",
+              "mount_path": "/data"
+            },
+            {
+              "name": "dshm",
+              "mount_path": "/dev/shm"
+            },
+            {
+              "name": "tmp",
+              "mount_path": "/tmp"
+            },
+            {
+              "name": "vartmp",
+              "mount_path": "/var/tmp"
+            },
+            {
+              "name": "home",
+              "mount_path": "/home/alieval"
+            },
+            {
+              "name": "userdb",
+              "mount_path": "/etc/passwd"
+            },
+            {
+              "name": "userdb",
+              "mount_path": "/etc/group"
+            },
+            {
+              "name": "kube-api-access-x8t9g",
+              "mount_path": "/var/run/secrets/kubernetes.io/serviceaccount"
+            }
+          ],
+          "entrypoint": [
+            "sh"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "211247-aliv100-v100-1gpu",
+      "uid": "9640b041-803e-46ad-9e13-49f7a9a08e0d",
+      "node": "dcwipphhgc161.edc.nam.gm.com",
+      "phase": "Running",
+      "owner_references": [],
+      "labels": {
+        "user": "aliv100"
+      },
+      "security_context": {
+        "fsGroup": 2518800,
+        "seccompProfile": {
+          "type": "RuntimeDefault"
+        },
+        "supplementalGroups": [
+          2518800
+        ]
+      },
+      "volumes": [
+        {
+          "name": "workspace",
+          "persistentVolumeClaim": {
+            "claimName": "211247-prod-pvc"
+          }
+        }
+      ],
+      "containers": [
+        {
+          "name": "211247-aliv100-v100-1gpu",
+          "image": "artifactory-ci.gm.com/docker-approved/devcontainers/base:ubuntu22.04",
+          "resources": {
+            "limits": {
+              "cpu": "32",
+              "memory": "32Gi",
+              "nvidia.com/gpu": "1"
+            },
+            "requests": {
+              "cpu": "16",
+              "memory": "16Gi",
+              "nvidia.com/gpu": "1"
+            }
+          },
+          "security_context": {
+            "allowPrivilegeEscalation": false,
+            "capabilities": {
+              "drop": [
+                "ALL"
+              ]
+            },
+            "readOnlyRootFilesystem": false,
+            "runAsGroup": 2518800,
+            "runAsNonRoot": true,
+            "runAsUser": 816149040
+          },
+          "volume_mounts": [
+            {
+              "name": "workspace",
+              "mount_path": "/data"
+            },
+            {
+              "name": "dshm",
+              "mount_path": "/dev/shm"
+            },
+            {
+              "name": "tmp",
+              "mount_path": "/tmp"
+            },
+            {
+              "name": "vartmp",
+              "mount_path": "/var/tmp"
+            },
+            {
+              "name": "home",
+              "mount_path": "/home/aliv100"
+            },
+            {
+              "name": "userdb",
+              "mount_path": "/etc/passwd"
+            },
+            {
+              "name": "userdb",
+              "mount_path": "/etc/group"
+            },
+            {
+              "name": "kube-api-access-f8wpm",
+              "mount_path": "/var/run/secrets/kubernetes.io/serviceaccount"
+            }
+          ],
+          "entrypoint": [
+            "sh"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "211247-aliv100b-v100-1gpu",
+      "uid": "28605b6e-1289-42b2-9259-1fdd877df2dc",
+      "node": "dcwipphhgc160.edc.nam.gm.com",
+      "phase": "Running",
+      "owner_references": [],
+      "labels": {
+        "user": "aliv100b"
+      },
+      "security_context": {
+        "fsGroup": 2518800,
+        "seccompProfile": {
+          "type": "RuntimeDefault"
+        },
+        "supplementalGroups": [
+          2518800
+        ]
+      },
+      "volumes": [
+        {
+          "name": "workspace",
+          "persistentVolumeClaim": {
+            "claimName": "211247-prod-pvc"
+          }
+        }
+      ],
+      "containers": [
+        {
+          "name": "211247-aliv100b-v100-1gpu",
+          "image": "artifactory-ci.gm.com/docker-approved/devcontainers/base:ubuntu22.04",
+          "resources": {
+            "limits": {
+              "cpu": "32",
+              "memory": "32Gi",
+              "nvidia.com/gpu": "1"
+            },
+            "requests": {
+              "cpu": "16",
+              "memory": "16Gi",
+              "nvidia.com/gpu": "1"
+            }
+          },
+          "security_context": {
+            "allowPrivilegeEscalation": false,
+            "capabilities": {
+              "drop": [
+                "ALL"
+              ]
+            },
+            "readOnlyRootFilesystem": false,
+            "runAsGroup": 2518800,
+            "runAsNonRoot": true,
+            "runAsUser": 816149040
+          },
+          "volume_mounts": [
+            {
+              "name": "workspace",
+              "mount_path": "/data"
+            },
+            {
+              "name": "dshm",
+              "mount_path": "/dev/shm"
+            },
+            {
+              "name": "tmp",
+              "mount_path": "/tmp"
+            },
+            {
+              "name": "vartmp",
+              "mount_path": "/var/tmp"
+            },
+            {
+              "name": "home",
+              "mount_path": "/home/aliv100b"
+            },
+            {
+              "name": "userdb",
+              "mount_path": "/etc/passwd"
+            },
+            {
+              "name": "userdb",
+              "mount_path": "/etc/group"
+            },
+            {
+              "name": "kube-api-access-vd5bg",
+              "mount_path": "/var/run/secrets/kubernetes.io/serviceaccount"
+            }
+          ],
+          "entrypoint": [
+            "sh"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "211247-aliv100c-v100-1gpu",
+      "uid": "7a35ab82-6dec-40c0-ae56-e025dbabb426",
+      "node": "dcwipphhgc160.edc.nam.gm.com",
+      "phase": "Running",
+      "owner_references": [],
+      "labels": {
+        "user": "aliv100c"
+      },
+      "security_context": {
+        "fsGroup": 2518800,
+        "seccompProfile": {
+          "type": "RuntimeDefault"
+        },
+        "supplementalGroups": [
+          2518800
+        ]
+      },
+      "volumes": [
+        {
+          "name": "workspace",
+          "persistentVolumeClaim": {
+            "claimName": "211247-prod-pvc"
+          }
+        }
+      ],
+      "containers": [
+        {
+          "name": "211247-aliv100c-v100-1gpu",
+          "image": "artifactory-ci.gm.com/docker-approved/devcontainers/base:ubuntu22.04",
+          "resources": {
+            "limits": {
+              "cpu": "32",
+              "memory": "32Gi",
+              "nvidia.com/gpu": "1"
+            },
+            "requests": {
+              "cpu": "16",
+              "memory": "16Gi",
+              "nvidia.com/gpu": "1"
+            }
+          },
+          "security_context": {
+            "allowPrivilegeEscalation": false,
+            "capabilities": {
+              "drop": [
+                "ALL"
+              ]
+            },
+            "readOnlyRootFilesystem": false,
+            "runAsGroup": 2518800,
+            "runAsNonRoot": true,
+            "runAsUser": 816149040
+          },
+          "volume_mounts": [
+            {
+              "name": "workspace",
+              "mount_path": "/data"
+            },
+            {
+              "name": "dshm",
+              "mount_path": "/dev/shm"
+            },
+            {
+              "name": "tmp",
+              "mount_path": "/tmp"
+            },
+            {
+              "name": "vartmp",
+              "mount_path": "/var/tmp"
+            },
+            {
+              "name": "home",
+              "mount_path": "/home/aliv100c"
+            },
+            {
+              "name": "userdb",
+              "mount_path": "/etc/passwd"
+            },
+            {
+              "name": "userdb",
+              "mount_path": "/etc/group"
+            },
+            {
+              "name": "kube-api-access-xkpxk",
+              "mount_path": "/var/run/secrets/kubernetes.io/serviceaccount"
+            }
+          ],
+          "entrypoint": [
+            "sh"
+          ]
+        }
+      ]
+    }
+  ]
+}

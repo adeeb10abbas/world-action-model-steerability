@@ -8,17 +8,43 @@ or the destination check below with qualified model inference.
 
 **All three actual pinned runtimes have now completed six fixed-input
 requests each (18 total), with zero executed actions or study episodes.**
-This is verified native inference, not merely a Running Pod. Closed-loop
-execution and physical forecast mapping remain unqualified. These requests
+This is verified native inference, not merely a Running Pod. Physical forecast
+mapping remains unavailable. These requests
 are consumed; do not rerun them to finish downstream evidence.
 
-**Subsequent live evidence:** Nano-B and Edge-B each consumed two additional
-real requests and executed 64 acknowledged physical actions with two resets.
-Edge's [final technical result](e3-live-result.json) is receiver-confirmed and
-completed with clean owned HTTP shutdown. Nano's original missing post-close
-marker/cleanup failure remains preserved and requires a separate external
-lifecycle witness; no Nano replay is allowed. These are still **zero study
-episodes**, and do not make forecasts physically scored evidence.
+**Subsequent live evidence:** Nano-B, Edge-B and FLUX-C each consumed two
+additional real requests and executed 64 receiver-confirmed physical actions
+with two resets. [Edge](e3-live-result.json) and [FLUX](f3-live-result.json)
+completed cleanly; FLUX's actual terminal Jobs/Pods and lifecycle/log/result
+hashes are [preserved on the PVC](f3-live-c-preservation.json). Nano's original
+missing post-close marker/cleanup failure remains unchanged. Its separate
+[external lifecycle witness](n3-live-external-witness.json), SHA-256
+`09fcc4da523af38e0565977f7c96b4de26876629ddb5a134cbff158007bf72a3`,
+verified 712 retained artifacts and actual native termination without claiming
+that `app.close()` returned. **Totals: 24 native requests, 192 live actions,
+six live resets, zero study episodes.** No qualification request may be
+replayed to improve these receipts. Forecasts remain `decoded_unmapped`.
+
+The latest user direction supplies dedicated existing A100 policy Pods:
+`211247-alia100e-a100-4gpu` (N3), `211247-alia100f-a100-4gpu` (E3), and
+`211247-alia100g-a100-4gpu` (F3). One read-only pass confirmed the correct PVC,
+UID/GID, pinned environment/source/checkpoint paths, and 12 idle A100-40GB
+devices. These bare Pods have no Job UID: the durable controller must bind
+actual Pod and finite supervisor identities rather than fabricate Job owners.
+The first actual study attempt, not another diagnostic, will establish 40GB
+fit. Preserve OOM as infrastructure failure; use only explicitly authorized
+A100-80GB fallback capacity.
+
+The screenshot's A40 names were abbreviated: actual names end in
+`-a40-2gpu`. Read-only telemetry found live `lerobot-train` in A40a/b/c/d
+(PIDs 1604, 965, 979, 979 respectively), with 11.2-11.4 GiB occupied and
+resident data workers. Leave those Pods and their second GPUs untouched.
+A40e/f on nodes188/201 had only PID1 `sleep`, no compute processes, and four
+idle A40 GPUs. Their [actual allocation metadata](user-a40-reservation-metadata.json)
+is retained. The initial exact-name-only [reservation read](user-named-reservations.json)
+did not match abbreviated A40 aliases; it is not evidence that these allocations
+were absent. Simulator lanes, not the number of reserved A100s, limit useful
+parallelism. All B200/V100 and unrelated user workloads remain excluded.
 
 The [latest user instruction](completion-instruction.json) extends the
 objective through all 1,566 unique study outcomes and verified video/raw
@@ -38,7 +64,7 @@ capacity needed for the user's external drive; do not start partial delivery
 before full-study accounting.
 
 Once the study is actually healthy and running, use one light receipt/scoped
-Job-state check about every 15 minutes, with nonempty evidence commits about
+Pod-state check about every 30-60 minutes, with nonempty evidence commits about
 hourly or at completed-partition milestones. No full raw-data rehashing or
 inference for monitoring. Switch immediately to focused diagnosis on failure
 or abnormal lack of progress, then return to sparse monitoring after recovery.

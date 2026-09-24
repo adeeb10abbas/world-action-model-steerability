@@ -1,0 +1,500 @@
+[
+  {
+    "name": "211247-alia40a-a40-2gpu",
+    "uid": "769baf38-a26c-4724-90de-9fcc313e913f",
+    "node": "dcwipphhgc189.edc.nam.gm.com",
+    "phase": "Running",
+    "owners": [],
+    "labels": {
+      "app": "211247-alia40a-a40-2gpu",
+      "environment": "production",
+      "gpu": "nvidia-a40",
+      "site": "warren",
+      "user": "alia40a"
+    },
+    "securityContext": {
+      "fsGroup": 2518800,
+      "seccompProfile": {
+        "type": "RuntimeDefault"
+      },
+      "supplementalGroups": [
+        2518800
+      ]
+    },
+    "pvc_volumes": [
+      {
+        "name": "workspace",
+        "persistentVolumeClaim": {
+          "claimName": "211247-prod-pvc"
+        }
+      }
+    ],
+    "containers": [
+      {
+        "name": "211247-alia40a-a40-2gpu",
+        "image": "artifactory-ci.gm.com/docker-approved/devcontainers/base:ubuntu22.04",
+        "resources": {
+          "limits": {
+            "cpu": "64",
+            "memory": "64Gi",
+            "nvidia.com/gpu": "2"
+          },
+          "requests": {
+            "cpu": "32",
+            "memory": "32Gi",
+            "nvidia.com/gpu": "2"
+          }
+        },
+        "mounts": [
+          {
+            "name": "workspace",
+            "path": "/data"
+          },
+          {
+            "name": "dshm",
+            "path": "/dev/shm"
+          },
+          {
+            "name": "tmp",
+            "path": "/tmp"
+          },
+          {
+            "name": "vartmp",
+            "path": "/var/tmp"
+          },
+          {
+            "name": "home",
+            "path": "/home/alia40a"
+          },
+          {
+            "name": "userdb",
+            "path": "/etc/passwd"
+          },
+          {
+            "name": "userdb",
+            "path": "/etc/group"
+          },
+          {
+            "name": "kube-api-access-4j5xk",
+            "path": "/var/run/secrets/kubernetes.io/serviceaccount"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "211247-alia40b-a40-2gpu",
+    "uid": "4e37f6e4-3af5-42e3-b7b1-b96ed5aa0d3f",
+    "node": "dcwipphhgc192.edc.nam.gm.com",
+    "phase": "Running",
+    "owners": [],
+    "labels": {
+      "app": "211247-alia40b-a40-2gpu",
+      "environment": "production",
+      "gpu": "nvidia-a40",
+      "site": "warren",
+      "user": "alia40b"
+    },
+    "securityContext": {
+      "fsGroup": 2518800,
+      "seccompProfile": {
+        "type": "RuntimeDefault"
+      },
+      "supplementalGroups": [
+        2518800
+      ]
+    },
+    "pvc_volumes": [
+      {
+        "name": "workspace",
+        "persistentVolumeClaim": {
+          "claimName": "211247-prod-pvc"
+        }
+      }
+    ],
+    "containers": [
+      {
+        "name": "211247-alia40b-a40-2gpu",
+        "image": "artifactory-ci.gm.com/docker-approved/devcontainers/base:ubuntu22.04",
+        "resources": {
+          "limits": {
+            "cpu": "64",
+            "memory": "64Gi",
+            "nvidia.com/gpu": "2"
+          },
+          "requests": {
+            "cpu": "32",
+            "memory": "32Gi",
+            "nvidia.com/gpu": "2"
+          }
+        },
+        "mounts": [
+          {
+            "name": "workspace",
+            "path": "/data"
+          },
+          {
+            "name": "dshm",
+            "path": "/dev/shm"
+          },
+          {
+            "name": "tmp",
+            "path": "/tmp"
+          },
+          {
+            "name": "vartmp",
+            "path": "/var/tmp"
+          },
+          {
+            "name": "home",
+            "path": "/home/alia40b"
+          },
+          {
+            "name": "userdb",
+            "path": "/etc/passwd"
+          },
+          {
+            "name": "userdb",
+            "path": "/etc/group"
+          },
+          {
+            "name": "kube-api-access-ffh28",
+            "path": "/var/run/secrets/kubernetes.io/serviceaccount"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "211247-alia40c-a40-2gpu",
+    "uid": "f4a03864-d3e5-4711-a57f-6bf38969e531",
+    "node": "dcwipphhgc195.edc.nam.gm.com",
+    "phase": "Running",
+    "owners": [],
+    "labels": {
+      "app": "211247-alia40c-a40-2gpu",
+      "environment": "production",
+      "gpu": "nvidia-a40",
+      "site": "warren",
+      "user": "alia40c"
+    },
+    "securityContext": {
+      "fsGroup": 2518800,
+      "seccompProfile": {
+        "type": "RuntimeDefault"
+      },
+      "supplementalGroups": [
+        2518800
+      ]
+    },
+    "pvc_volumes": [
+      {
+        "name": "workspace",
+        "persistentVolumeClaim": {
+          "claimName": "211247-prod-pvc"
+        }
+      }
+    ],
+    "containers": [
+      {
+        "name": "211247-alia40c-a40-2gpu",
+        "image": "artifactory-ci.gm.com/docker-approved/devcontainers/base:ubuntu22.04",
+        "resources": {
+          "limits": {
+            "cpu": "64",
+            "memory": "64Gi",
+            "nvidia.com/gpu": "2"
+          },
+          "requests": {
+            "cpu": "32",
+            "memory": "32Gi",
+            "nvidia.com/gpu": "2"
+          }
+        },
+        "mounts": [
+          {
+            "name": "workspace",
+            "path": "/data"
+          },
+          {
+            "name": "dshm",
+            "path": "/dev/shm"
+          },
+          {
+            "name": "tmp",
+            "path": "/tmp"
+          },
+          {
+            "name": "vartmp",
+            "path": "/var/tmp"
+          },
+          {
+            "name": "home",
+            "path": "/home/alia40c"
+          },
+          {
+            "name": "userdb",
+            "path": "/etc/passwd"
+          },
+          {
+            "name": "userdb",
+            "path": "/etc/group"
+          },
+          {
+            "name": "kube-api-access-nqqsl",
+            "path": "/var/run/secrets/kubernetes.io/serviceaccount"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "211247-alia40d-a40-2gpu",
+    "uid": "b604a089-3f5c-48a4-afcd-5616350f660c",
+    "node": "dcwipphhgc197.edc.nam.gm.com",
+    "phase": "Running",
+    "owners": [],
+    "labels": {
+      "app": "211247-alia40d-a40-2gpu",
+      "environment": "production",
+      "gpu": "nvidia-a40",
+      "site": "warren",
+      "user": "alia40d"
+    },
+    "securityContext": {
+      "fsGroup": 2518800,
+      "seccompProfile": {
+        "type": "RuntimeDefault"
+      },
+      "supplementalGroups": [
+        2518800
+      ]
+    },
+    "pvc_volumes": [
+      {
+        "name": "workspace",
+        "persistentVolumeClaim": {
+          "claimName": "211247-prod-pvc"
+        }
+      }
+    ],
+    "containers": [
+      {
+        "name": "211247-alia40d-a40-2gpu",
+        "image": "artifactory-ci.gm.com/docker-approved/devcontainers/base:ubuntu22.04",
+        "resources": {
+          "limits": {
+            "cpu": "64",
+            "memory": "64Gi",
+            "nvidia.com/gpu": "2"
+          },
+          "requests": {
+            "cpu": "32",
+            "memory": "32Gi",
+            "nvidia.com/gpu": "2"
+          }
+        },
+        "mounts": [
+          {
+            "name": "workspace",
+            "path": "/data"
+          },
+          {
+            "name": "dshm",
+            "path": "/dev/shm"
+          },
+          {
+            "name": "tmp",
+            "path": "/tmp"
+          },
+          {
+            "name": "vartmp",
+            "path": "/var/tmp"
+          },
+          {
+            "name": "home",
+            "path": "/home/alia40d"
+          },
+          {
+            "name": "userdb",
+            "path": "/etc/passwd"
+          },
+          {
+            "name": "userdb",
+            "path": "/etc/group"
+          },
+          {
+            "name": "kube-api-access-wqfxp",
+            "path": "/var/run/secrets/kubernetes.io/serviceaccount"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "211247-alia40e-a40-2gpu",
+    "uid": "36fcbfe9-f9e1-407a-afb8-0b8ce0b85d41",
+    "node": "dcwipphhgc188.edc.nam.gm.com",
+    "phase": "Running",
+    "owners": [],
+    "labels": {
+      "app": "211247-alia40e-a40-2gpu",
+      "environment": "production",
+      "gpu": "nvidia-a40",
+      "site": "warren",
+      "user": "alia40e"
+    },
+    "securityContext": {
+      "fsGroup": 2518800,
+      "seccompProfile": {
+        "type": "RuntimeDefault"
+      },
+      "supplementalGroups": [
+        2518800
+      ]
+    },
+    "pvc_volumes": [
+      {
+        "name": "workspace",
+        "persistentVolumeClaim": {
+          "claimName": "211247-prod-pvc"
+        }
+      }
+    ],
+    "containers": [
+      {
+        "name": "211247-alia40e-a40-2gpu",
+        "image": "artifactory-ci.gm.com/docker-approved/devcontainers/base:ubuntu22.04",
+        "resources": {
+          "limits": {
+            "cpu": "64",
+            "memory": "64Gi",
+            "nvidia.com/gpu": "2"
+          },
+          "requests": {
+            "cpu": "32",
+            "memory": "32Gi",
+            "nvidia.com/gpu": "2"
+          }
+        },
+        "mounts": [
+          {
+            "name": "workspace",
+            "path": "/data"
+          },
+          {
+            "name": "dshm",
+            "path": "/dev/shm"
+          },
+          {
+            "name": "tmp",
+            "path": "/tmp"
+          },
+          {
+            "name": "vartmp",
+            "path": "/var/tmp"
+          },
+          {
+            "name": "home",
+            "path": "/home/alia40e"
+          },
+          {
+            "name": "userdb",
+            "path": "/etc/passwd"
+          },
+          {
+            "name": "userdb",
+            "path": "/etc/group"
+          },
+          {
+            "name": "kube-api-access-bpflf",
+            "path": "/var/run/secrets/kubernetes.io/serviceaccount"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "211247-alia40f-a40-2gpu",
+    "uid": "2e950931-ede4-4ad9-9da1-7cd0613ce516",
+    "node": "dcwipphhgc201.edc.nam.gm.com",
+    "phase": "Running",
+    "owners": [],
+    "labels": {
+      "app": "211247-alia40f-a40-2gpu",
+      "environment": "production",
+      "gpu": "nvidia-a40",
+      "site": "warren",
+      "user": "alia40f"
+    },
+    "securityContext": {
+      "fsGroup": 2518800,
+      "seccompProfile": {
+        "type": "RuntimeDefault"
+      },
+      "supplementalGroups": [
+        2518800
+      ]
+    },
+    "pvc_volumes": [
+      {
+        "name": "workspace",
+        "persistentVolumeClaim": {
+          "claimName": "211247-prod-pvc"
+        }
+      }
+    ],
+    "containers": [
+      {
+        "name": "211247-alia40f-a40-2gpu",
+        "image": "artifactory-ci.gm.com/docker-approved/devcontainers/base:ubuntu22.04",
+        "resources": {
+          "limits": {
+            "cpu": "64",
+            "memory": "64Gi",
+            "nvidia.com/gpu": "2"
+          },
+          "requests": {
+            "cpu": "32",
+            "memory": "32Gi",
+            "nvidia.com/gpu": "2"
+          }
+        },
+        "mounts": [
+          {
+            "name": "workspace",
+            "path": "/data"
+          },
+          {
+            "name": "dshm",
+            "path": "/dev/shm"
+          },
+          {
+            "name": "tmp",
+            "path": "/tmp"
+          },
+          {
+            "name": "vartmp",
+            "path": "/var/tmp"
+          },
+          {
+            "name": "home",
+            "path": "/home/alia40f"
+          },
+          {
+            "name": "userdb",
+            "path": "/etc/passwd"
+          },
+          {
+            "name": "userdb",
+            "path": "/etc/group"
+          },
+          {
+            "name": "kube-api-access-kppwf",
+            "path": "/var/run/secrets/kubernetes.io/serviceaccount"
+          }
+        ]
+      }
+    ]
+  }
+]

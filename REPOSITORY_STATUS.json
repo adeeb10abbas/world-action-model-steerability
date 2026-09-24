@@ -34,9 +34,12 @@
     "sha256": "cffa0423119dbe631a1ddb08f91232ac0eb54d256ce3c1ecf1de194450608867"
   },
   "model_roster_amendment": "docs/MODEL_ROSTER_AMENDMENT_20260924.md",
-  "pending_integration": "All3 models completed6 fixed-input requests each. Nano live-B consumed2 requests/64 actions/2 resets but retained a missing post-close marker failure; external witness pending, no replay. Edge live-B technically passed2 requests/64 actions/2 resets with outer shutdown witness. FLUX live-B's independent A40 admission failed before execution; fresh live-C is admitted on the proven0061/191 pair after preserved terminal-object cleanup. Model-dependent time/camera mapping, guarded releases and durable27-partition progression remain. Zero study episodes; no video transfers.",
+  "pending_integration": "All3 models consumed6 fixed-input and2 live requests each:24 native requests,192 receiver-confirmed live actions,6 live resets. Nano's separate external witness passed while preserving its original cleanup failure; Edge-B and FLUX-C both completed with clean shutdown and terminal Complete Jobs. Forecast physical pixel/time alignment remains unavailable. Dedicated bare-Pod ownership, durable controller and guarded release integration are underway. Zero study episodes; no video transfers; no qualification replay.",
   "three_model_lane_plan": "handoff/cluster-execution-20260924/three-lane-plan.json",
   "edge_live_qualification": "handoff/cluster-execution-20260924/e3-live-result.json",
+  "nano_external_live_witness": "handoff/cluster-execution-20260924/n3-live-external-witness.json",
+  "flux_live_qualification": "handoff/cluster-execution-20260924/f3-live-result.json",
+  "flux_live_terminal_preservation": "handoff/cluster-execution-20260924/f3-live-c-preservation.json",
   "fixed_input_qualification": {
     "N3": "handoff/cluster-execution-20260924/n3-fixed-input-result.json",
     "E3": "handoff/cluster-execution-20260924/e3-fixed-input-result.json",
@@ -137,6 +140,6 @@
     "unused_registered_candidates": 205,
     "valid_physical_rejections": 8
   },
-  "status": "PHYSICAL_SCENES_COMPLETE_RUNTIME_PENDING",
+  "status": "PINNED_RUNTIME_CHECKS_COMPLETE_STUDY_NOT_STARTED",
   "study_id": "SGW-01"
 }
