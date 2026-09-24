@@ -1,0 +1,116 @@
+{
+  "candidate_plans_changed": false,
+  "excluded_files": [
+    {
+      "bytes": 24646,
+      "original_copy_byte_identical": true,
+      "original_copy_sha256": "556bc0ab60fc622fa37d74f6877c91f38a6c9738fe27b8d903b93bd8dd2ac138",
+      "path": "experiments/workshops/spatial_grounding_v1/spec/paper/main.tex",
+      "preserved_original_copy": "/Users/ali-adeeb/Downloads/astra_creative_director/sgw_scene_design/experiments/workshops/spatial_grounding_v1/spec/paper/main.tex",
+      "sha256": "556bc0ab60fc622fa37d74f6877c91f38a6c9738fe27b8d903b93bd8dd2ac138"
+    },
+    {
+      "bytes": 315092,
+      "original_copy_byte_identical": true,
+      "original_copy_sha256": "b4853b42754ce02af4099c2e9b60e59c5e3ec77302dd40520133fb65adb003b3",
+      "path": "experiments/workshops/spatial_grounding_v1/spec/paper/research_plan.pdf",
+      "preserved_original_copy": "/Users/ali-adeeb/Downloads/astra_creative_director/sgw_scene_design/experiments/workshops/spatial_grounding_v1/spec/paper/research_plan.pdf",
+      "sha256": "b4853b42754ce02af4099c2e9b60e59c5e3ec77302dd40520133fb65adb003b3"
+    }
+  ],
+  "exclusion_rationale": "The excluded manuscript/PDF mixed a prior cohort and numerical results with the research plan. They are not clean-study evidence. Original copies and prior index bytes remain explicitly identified as provenance; the current package links only the canonical clean manuscript and current handoff.",
+  "execution_sources_changed": false,
+  "frozen_files_preserved": {
+    "build_registry.py": "df80315cceac5943ba8862c932af28cbf127698ebb64ef3fb75d8b89549e0b2c",
+    "planned_cells.csv": "b5137427c6a35f8fe84d9add7ff6e559b4bebdb4173306891781d3ba0cc7ebf6",
+    "prompts.json": "f07dbda34feb915472fc329be203ec526a7589007485eeb8f237c19c8708b979",
+    "protocol.json": "47981c57b61dc44ad0a9590c2cafbadd498481ce97ea79637833baea90ffcbc6",
+    "registry_validation.json": "32b680bba1dc48170b054cc026d215def5297f2971220cfa80e606763968e653"
+  },
+  "launch_authorized": false,
+  "model_requests": 0,
+  "original_delivery_checks": {
+    "bytes": 1354,
+    "exact_original_text": "{\n  \"study_id\": \"SGW-01\",\n  \"date\": \"2026-09-22\",\n  \"status\": \"SPECIFICATION_VALIDATED_NOT_RUNTIME_QUALIFIED\",\n  \"checks\": {\n    \"planning_registry_reproducible\": true,\n    \"unique_prompts\": 18,\n    \"unique_cells\": 1044,\n    \"six_cell_blocks\": 174,\n    \"stage_counts\": {\n      \"P\": 36,\n      \"D\": 144,\n      \"C\": 864\n    },\n    \"all_cells_unreleased\": true,\n    \"all_18_prompt_strings_in_paper\": true,\n    \"pdf_pages\": 8,\n    \"latex_errors\": 0,\n    \"latex_overflow\": 0,\n    \"all_pdf_pages_visually_reviewed\": true,\n    \"overleaf_saved_source_characters\": 24646,\n    \"overleaf_saved_source_fnv1a32\": \"3990384d\",\n    \"overleaf_compile_errors\": 0,\n    \"overleaf_compile_warnings\": 0,\n    \"overleaf_compile_info\": 0,\n    \"main_text_excludes_historical_pi05_numbers\": true,\n    \"scientific_queue_unchanged_from_v1_0\": true,\n    \"optional_pi05_queued\": false,\n    \"workshop_requirements_verified_on\": \"2026-09-22\"\n  },\n  \"not_tested\": [\n    \"model inference\",\n    \"robot/simulator fixtures\",\n    \"Kubernetes worker (not implemented)\",\n    \"cluster binding or available allocation\",\n    \"crash/restart recovery\",\n    \"physical prediction-time mapping\",\n    \"statistical power\"\n  ],\n  \"cluster_contacted\": false,\n  \"new_experiments_launched\": false,\n  \"overleaf_project\": \"https://www.overleaf.com/project/6ab2bdb39b30df4bbc98a15e\",\n  \"package_version\": \"1.1\"\n}\n",
+    "original_path": "experiments/workshops/spatial_grounding_v1/spec/DELIVERY_CHECKS.json",
+    "sha256": "df29df3ce7212e693d3ecba5088c4a0e946c66c5a4f7860d7b33bd4b5bc225aa",
+    "status": "ORIGINAL_EXTRACTION_PROVENANCE_ONLY_NOT_CURRENT_VALIDATION"
+  },
+  "original_package_manifest": {
+    "bytes": 2399,
+    "exact_original_text": "{\n  \"study_id\": \"SGW-01\",\n  \"package_version\": \"1.1\",\n  \"purpose\": \"Workshop-focused specification and agent handoff; unchanged WAM queue, optional VLA baseline unqueued\",\n  \"files\": {\n    \".gitattributes\": {\n      \"bytes\": 130,\n      \"sha256\": \"28f9aa9f869eb7d98461694d59402e8c60403215584547b5816194ef9a3fc36f\"\n    },\n    \".gitignore\": {\n      \"bytes\": 26,\n      \"sha256\": \"42a3301403fb1c9efd7105ed32eaf6779098896b7270b4d029cdc7be5af32ea6\"\n    },\n    \"AGENT_HANDOFF.md\": {\n      \"bytes\": 4842,\n      \"sha256\": \"dfd2a3e7fa0016089740efbda3e05a1d1c97812f715e5a2bb5d39d29219b303e\"\n    },\n    \"CLUSTER_RUNBOOK.md\": {\n      \"bytes\": 15158,\n      \"sha256\": \"0a3ffe22e0250d0fcf41afea017147ffe52d4aca5dce75e0b702a36603849946\"\n    },\n    \"DELIVERY_CHECKS.json\": {\n      \"bytes\": 1354,\n      \"sha256\": \"df29df3ce7212e693d3ecba5088c4a0e946c66c5a4f7860d7b33bd4b5bc225aa\"\n    },\n    \"EXPERIMENT_SPEC.md\": {\n      \"bytes\": 26321,\n      \"sha256\": \"40f3a6c86af16fd4845df9367792a63b60177ebd1d849212c988bf7eacd84577\"\n    },\n    \"README.md\": {\n      \"bytes\": 3495,\n      \"sha256\": \"3cb62ba5742a13a928d871355c745e9e437fdf7c1022a39a34825b0134ff9e9d\"\n    },\n    \"WORKSHOP_FIT.md\": {\n      \"bytes\": 5346,\n      \"sha256\": \"5ece173520164d29bcd6a41e184daaa2e420cfe936c95e5d02c322d21a51129a\"\n    },\n    \"build_registry.py\": {\n      \"bytes\": 10797,\n      \"sha256\": \"df80315cceac5943ba8862c932af28cbf127698ebb64ef3fb75d8b89549e0b2c\"\n    },\n    \"kubernetes/worker-job.yaml.in\": {\n      \"bytes\": 2073,\n      \"sha256\": \"4058549c4f04b8c00bd57f4080ed70920e8303d0512ad1ed9f56c3188aff9e91\"\n    },\n    \"paper/main.tex\": {\n      \"bytes\": 24646,\n      \"sha256\": \"556bc0ab60fc622fa37d74f6877c91f38a6c9738fe27b8d903b93bd8dd2ac138\"\n    },\n    \"paper/research_plan.pdf\": {\n      \"bytes\": 315092,\n      \"sha256\": \"b4853b42754ce02af4099c2e9b60e59c5e3ec77302dd40520133fb65adb003b3\"\n    },\n    \"planned_cells.csv\": {\n      \"bytes\": 267729,\n      \"sha256\": \"b5137427c6a35f8fe84d9add7ff6e559b4bebdb4173306891781d3ba0cc7ebf6\"\n    },\n    \"prompts.json\": {\n      \"bytes\": 5308,\n      \"sha256\": \"f07dbda34feb915472fc329be203ec526a7589007485eeb8f237c19c8708b979\"\n    },\n    \"protocol.json\": {\n      \"bytes\": 6244,\n      \"sha256\": \"47981c57b61dc44ad0a9590c2cafbadd498481ce97ea79637833baea90ffcbc6\"\n    },\n    \"registry_validation.json\": {\n      \"bytes\": 811,\n      \"sha256\": \"32b680bba1dc48170b054cc026d215def5297f2971220cfa80e606763968e653\"\n    }\n  }\n}\n",
+    "original_path": "experiments/workshops/spatial_grounding_v1/spec/PACKAGE_MANIFEST.json",
+    "sha256": "7941e8522ff95149071200ffa57f3ef930821c77bd14029b36dc13ef924bcd05",
+    "status": "ORIGINAL_EXTRACTION_PROVENANCE_ONLY_NOT_CURRENT_PACKAGE_INDEX"
+  },
+  "original_source_checkout_untouched": true,
+  "original_source_commit": "62ad0101d5fc26c6461aff47f611cab21219748a",
+  "original_source_repository": "https://github.com/adeeb10abbas/steerable",
+  "recorded_at_utc": "2026-09-24T04:26:32.956438+00:00",
+  "schema_version": "sgw-legacy-spec-paper-exclusion-v1",
+  "scope": "Remove duplicate source-era paper from the clean repository and refresh only specification prose/index files. The canonical clean paper and all frozen registry bytes remain unchanged by this cleanup.",
+  "simulator_trials": 0,
+  "tests_run": false,
+  "updated_prose": {
+    "AGENT_HANDOFF.md": {
+      "after": {
+        "bytes": 3016,
+        "path": "experiments/workshops/spatial_grounding_v1/spec/AGENT_HANDOFF.md",
+        "sha256": "1165b199507c159efdc4f872fef4b285d2e6354a258f450337547530b54346b5"
+      },
+      "before": {
+        "bytes": 4842,
+        "path": "experiments/workshops/spatial_grounding_v1/spec/AGENT_HANDOFF.md",
+        "sha256": "dfd2a3e7fa0016089740efbda3e05a1d1c97812f715e5a2bb5d39d29219b303e"
+      }
+    },
+    "CLUSTER_RUNBOOK.md": {
+      "after": {
+        "bytes": 1110,
+        "path": "experiments/workshops/spatial_grounding_v1/spec/CLUSTER_RUNBOOK.md",
+        "sha256": "29778dbf2c81b502055335f58b888901abb2d0f943b3e4ed00779b142db927fc"
+      },
+      "before": {
+        "bytes": 15158,
+        "path": "experiments/workshops/spatial_grounding_v1/spec/CLUSTER_RUNBOOK.md",
+        "sha256": "0a3ffe22e0250d0fcf41afea017147ffe52d4aca5dce75e0b702a36603849946"
+      }
+    },
+    "EXPERIMENT_SPEC.md": {
+      "after": {
+        "bytes": 25742,
+        "path": "experiments/workshops/spatial_grounding_v1/spec/EXPERIMENT_SPEC.md",
+        "sha256": "293bd313f852ff273a3e142c953abb3736329b4cefe893aa5f766dcd96efce1a"
+      },
+      "before": {
+        "bytes": 26321,
+        "path": "experiments/workshops/spatial_grounding_v1/spec/EXPERIMENT_SPEC.md",
+        "sha256": "40f3a6c86af16fd4845df9367792a63b60177ebd1d849212c988bf7eacd84577"
+      }
+    },
+    "README.md": {
+      "after": {
+        "bytes": 3762,
+        "path": "experiments/workshops/spatial_grounding_v1/spec/README.md",
+        "sha256": "5830b4713f6fea08cb8b70b7146329e3e9963fc7a33737b202c1f0dfa000c07a"
+      },
+      "before": {
+        "bytes": 3495,
+        "path": "experiments/workshops/spatial_grounding_v1/spec/README.md",
+        "sha256": "3cb62ba5742a13a928d871355c745e9e437fdf7c1022a39a34825b0134ff9e9d"
+      }
+    },
+    "WORKSHOP_FIT.md": {
+      "after": {
+        "bytes": 3416,
+        "path": "experiments/workshops/spatial_grounding_v1/spec/WORKSHOP_FIT.md",
+        "sha256": "9cee946bdffdb4ee906c1fe8d369485216a6de8ae5b9817eede3dd45b45e352a"
+      },
+      "before": {
+        "bytes": 5346,
+        "path": "experiments/workshops/spatial_grounding_v1/spec/WORKSHOP_FIT.md",
+        "sha256": "5ece173520164d29bcd6a41e184daaa2e420cfe936c95e5d02c322d21a51129a"
+      }
+    }
+  }
+}

@@ -1,40 +1,24 @@
-# Workshop focus and the role of π0.5
+# Workshop framing for the clean WAM study
 
-SGW-01, version 1.1. Framing revision, 22 September 2026. The 1,044-cell WAM queue and all scientific thresholds are unchanged. No π0.5 cells are queued.
+The fixed study compares N3 and D1 on the clean LAT, HEIGHT and DIST fixtures. Its 1,044 planned cells and scientific thresholds are unchanged. The maintained paper is [docs/scene_design_rtx/overleaf/main.tex](../../../../docs/scene_design_rtx/overleaf/main.tex); this file explains its research framing.
 
-## The paper's question
+## The question
 
-**When instructions change, do a world–action model's generated futures remain a reliable account of what its robot actually does?**
+When spatial instructions change, do a world–action model's generated futures remain a reliable account of what its robot actually does? Controlled changes in goals and equivalent descriptions let the study measure execution and prediction together. Wording sensitivity alone would not establish the WAM contribution.
 
-Spatial language supplies controlled changes in goals and descriptions. The paper measures goal preservation in execution and the reliability of the model's accompanying predictions. A wording-sensitivity table by itself would leave the world-model contribution unclear.
+The intended workshop framing is benchmark design, with a narrower connection to prediction reliability for evaluation. The study inspects each WAM's own joint predictions and actions. It does not test arbitrary alternative policies, policy rankings, deployment safety or a causal benefit from predictive training. Submission requirements should be checked against the workshop's current call when preparing the actual submission; this specification is not a submission receipt.
 
-Our proposed fit is primarily Motion 6 (benchmark design), with a narrower connection to Motion 4 (reliability of model-based evaluation). This is our interpretation of the [workshop's six motions](https://do-robots-need-world-models.github.io/), checked September 22. We test a WAM's own joint predictions and actions, not its ability to simulate arbitrary alternative policies, preserve policy rankings, or ensure safe deployment.
+## Measurements that support the contribution
 
-## What makes this a world-model paper
+1. **Executed outcome:** D/C/I wording is compared for the same physical goal and scene; the opposite goal checks directional responsiveness. I−C is the principal language contrast, with C−D as a construction control.
+2. **Prediction fidelity:** compare decoded futures with actual movement at verified matching physical times within the executed action prefix. Persistence is the required equal-input baseline; report available coverage and missingness.
+3. **Prediction–execution disagreement:** report both outputs correct, both wrong, prediction correct/execution wrong, the reverse, and unobservable cases at the same horizon.
+4. **Additional information from forecasts:** compare these observations with the execution-only pickup, transport and release account. Show what discrepancy becomes observable without claiming an internal semantic mechanism or an untested failure detector.
 
-1. **Executed outcome:** use the same scenes and opposite goals to measure whether D/C/I wording preserves the intended placement.
-2. **Prediction fidelity:** compare each model's decoded future with actual motion at the same physical time, within the executed action prefix; require the persistence baseline and report missingness.
-3. **Prediction–execution disagreement:** make the existing same-horizon agreement/disagreement table central. A predicted relation can look appropriate while the executed relation differs, or an executed relation can be appropriate while the forecast is wrong. Report both and unobservable cases.
-4. **What the forecast adds:** juxtapose these observations with the execution-only pickup/transport/release account. Establish the additional observable discrepancy; do not infer internal semantics or advertise an untested failure detector.
+A short-horizon generated relation is not a prediction of final success after later replanning. A generated video need not cause its jointly produced actions. If aligned prediction measurements remain unavailable, the intended WAM-specific contribution remains incomplete. Differences between model branches do not establish that world models are necessary or causally better than another policy architecture.
 
-A generated short-horizon relation is not a forecast of final success after later replanning. We do not claim that the model's video causes its actions, that WAMs beat VLAs, or that world models are necessary. If the recordings cannot support aligned prediction measurements, the intended WAM-specific contribution remains incomplete; a large language effect does not repair that omission.
+## Paper structure and scope
 
-## π0.5 decision
+Use the clean D/C/I setup, a main execution-effect figure, an aligned prediction–execution figure/table with coverage and persistence skill, and a focused account of what remains unresolved. Report layout-level uncertainty, physical separation in metres, binary outcomes and technical missingness distinctly. Preserve negative findings and any result that forecasts add little diagnostic information.
 
-**Keep the core paper WAM-only.** Move historical π0.5 numbers out of the abstract and main evidence table. Preserve them in the research-plan appendix and evidence inventory as background; omit them from the four-page submission unless one short contextual sentence is necessary.
-
-| Candidate use | Decision | What it would establish |
-| --- | --- | --- |
-| Existing π0.5 inversion cohort | Historical context only | The phenomenon motivated our study in a different cohort. It is not a matched SGW-01 control. |
-| Fresh π0.5 on matched SGW-01 fixtures | Optional behavioral baseline, not queued | Whether the same within-model wording effect also appears in an action-output policy. It has no decoded-future comparison. |
-| π0.5 versus WAM as a causal test of world modeling | Unsupported | Training data, architectures, objectives and inference budgets are not controlled by this comparison. |
-
-If a fresh baseline is later commissioned, first use the LAT branch: the same 1 pilot + 4 development + 24 confirmation layouts, three exact forms and both goals = 174 additional episodes (6/24/144). Use the same cameras, physical resets, goal predicates, stopping rule and controller timing where supported; record all interface and compute differences. Pin the exact checkpoint and wrapper and qualify them independently. Compare the I−C and C−D effects within each model on paired layouts, with uncertainty. Do not equate matching seed integers with matching random draws across architectures. Register the comparison and any multiplicity changes before examining its confirmation outcomes. The expanded total would be 1,218, only after a separate scope and resource decision. It must not delay or silently alter the existing WAM queue.
-
-A causal world-model ablation would require a deliberately matched training comparison that controls data, architecture/capacity and compute as far as possible while changing predictive training/use. That is outside SGW-01.
-
-## Submission shape
-
-Target the research-paper track. The current [call](https://do-robots-need-world-models.github.io/) lists up to four pages in the CoRL template and an October 12, 2026 submission deadline. It welcomes unfinished and negative findings but excludes already-published work or work accepted to the CoRL 2026 main conference. OpenReview and archival details are still TBD. Do not assume references or appendices are exempt from the page limit.
-
-Use a short motivation and setup, one main execution-effect figure, one aligned prediction–execution figure/table with aggregate coverage and persistence skill, and a focused discussion of what prediction inspection does and does not reveal. Full prompts, implementation details and historical π0.5 analyses remain in the working package; external supplementary material depends on the final submission rules. Keep all observed failures, including a finding that the predictions add little useful diagnostic information.
+Only the clean cohort supplies numerical study evidence. Scene qualification is scripted feasibility evidence; CPU checks are engineering evidence. Neither is learned-model performance. Full prompts remain in the frozen registry, while current implementation and handoff details live in [AGENT_TASKS.md](../../../../docs/AGENT_TASKS.md) and [CLUSTER_HANDOFF.md](../../../../docs/CLUSTER_HANDOFF.md). No extra model or behavioral baseline is part of the scope.

@@ -1,7 +1,18 @@
 {
-  "study_id": "SGW-01",
-  "package_version": "1.1",
-  "purpose": "Workshop-focused specification and agent handoff; unchanged WAM queue, optional VLA baseline unqueued",
+  "canonical_documents": {
+    "docs/AGENT_TASKS.md": {
+      "bytes": 4068,
+      "sha256": "b0875a6263f90258335f87f81cfe70a4a66229cdab1b8cf690f9106d26ff5021"
+    },
+    "docs/CLUSTER_HANDOFF.md": {
+      "bytes": 10720,
+      "sha256": "1b280b6265e262606c5d87b63b7ff6065d3ca98c850cecfa595d2a84e6cdb70c"
+    },
+    "docs/scene_design_rtx/overleaf/main.tex": {
+      "bytes": 23422,
+      "sha256": "86cf377883cc7924faaaabfe1a979504335c84855ecd6eaae11001c634e41b2f"
+    }
+  },
   "files": {
     ".gitattributes": {
       "bytes": 130,
@@ -12,28 +23,28 @@
       "sha256": "42a3301403fb1c9efd7105ed32eaf6779098896b7270b4d029cdc7be5af32ea6"
     },
     "AGENT_HANDOFF.md": {
-      "bytes": 4842,
-      "sha256": "dfd2a3e7fa0016089740efbda3e05a1d1c97812f715e5a2bb5d39d29219b303e"
+      "bytes": 3016,
+      "sha256": "1165b199507c159efdc4f872fef4b285d2e6354a258f450337547530b54346b5"
     },
     "CLUSTER_RUNBOOK.md": {
-      "bytes": 15158,
-      "sha256": "0a3ffe22e0250d0fcf41afea017147ffe52d4aca5dce75e0b702a36603849946"
+      "bytes": 1110,
+      "sha256": "29778dbf2c81b502055335f58b888901abb2d0f943b3e4ed00779b142db927fc"
     },
     "DELIVERY_CHECKS.json": {
-      "bytes": 1354,
-      "sha256": "df29df3ce7212e693d3ecba5088c4a0e946c66c5a4f7860d7b33bd4b5bc225aa"
+      "bytes": 1833,
+      "sha256": "cfd3b40dc1f68e88814d19477a960e41e3c2b438165db8b19a1886642402473e"
     },
     "EXPERIMENT_SPEC.md": {
-      "bytes": 26321,
-      "sha256": "40f3a6c86af16fd4845df9367792a63b60177ebd1d849212c988bf7eacd84577"
+      "bytes": 25742,
+      "sha256": "293bd313f852ff273a3e142c953abb3736329b4cefe893aa5f766dcd96efce1a"
     },
     "README.md": {
-      "bytes": 3495,
-      "sha256": "3cb62ba5742a13a928d871355c745e9e437fdf7c1022a39a34825b0134ff9e9d"
+      "bytes": 3762,
+      "sha256": "5830b4713f6fea08cb8b70b7146329e3e9963fc7a33737b202c1f0dfa000c07a"
     },
     "WORKSHOP_FIT.md": {
-      "bytes": 5346,
-      "sha256": "5ece173520164d29bcd6a41e184daaa2e420cfe936c95e5d02c322d21a51129a"
+      "bytes": 3416,
+      "sha256": "9cee946bdffdb4ee906c1fe8d369485216a6de8ae5b9817eede3dd45b45e352a"
     },
     "build_registry.py": {
       "bytes": 10797,
@@ -42,14 +53,6 @@
     "kubernetes/worker-job.yaml.in": {
       "bytes": 2073,
       "sha256": "4058549c4f04b8c00bd57f4080ed70920e8303d0512ad1ed9f56c3188aff9e91"
-    },
-    "paper/main.tex": {
-      "bytes": 24646,
-      "sha256": "556bc0ab60fc622fa37d74f6877c91f38a6c9738fe27b8d903b93bd8dd2ac138"
-    },
-    "paper/research_plan.pdf": {
-      "bytes": 315092,
-      "sha256": "b4853b42754ce02af4099c2e9b60e59c5e3ec77302dd40520133fb65adb003b3"
     },
     "planned_cells.csv": {
       "bytes": 267729,
@@ -67,5 +70,12 @@
       "bytes": 811,
       "sha256": "32b680bba1dc48170b054cc026d215def5297f2971220cfa80e606763968e653"
     }
-  }
+  },
+  "learned_policy_launch_authorized": false,
+  "original_package_manifest": "provenance/legacy-spec-paper-exclusion.json#/original_package_manifest",
+  "path_base": "experiments/workshops/spatial_grounding_v1/spec",
+  "purpose": "Current clean WAM specification index; frozen registry retained byte-identically and one canonical manuscript outside this directory.",
+  "recorded_at_utc": "2026-09-24T04:26:32.956438+00:00",
+  "schema_version": "sgw-clean-spec-package-index-v1",
+  "study_id": "SGW-01"
 }

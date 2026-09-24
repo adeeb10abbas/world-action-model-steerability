@@ -1,43 +1,23 @@
-# Start here: SGW-01 spatial grounding study
+# Start here: clean SGW-01 handoff
 
-You are implementing and running the experiment in `EXPERIMENT_SPEC.md` on Ali's authorized Kubernetes resources. Read that document, `WORKSHOP_FIT.md`, and `CLUSTER_RUNBOOK.md` fully. The package contains a planned queue, not a working inference runner or proof that fixtures have qualified.
+**Prepare the clean study; no learned-policy launch is authorized.** Read the [repository overview](../../../../README.md), [current status](../../../../REPOSITORY_STATUS.json), [agent work split](../../../../docs/AGENT_TASKS.md) and [cluster handoff](../../../../docs/CLUSTER_HANDOFF.md). Those documents describe the current implemented path and remaining native prerequisites.
 
-## Research objective
+## Scientific contract
 
-Measure whether world–action models preserve a physical goal across direct wording, a longer subject-first clause, and an equivalent reference-inverted clause. Test lateral position, relative height, and relative distance. Center the paper on prediction reliability: compare execution with aligned generated futures and persistence, while separating observable failure patterns from claims about internal understanding. Workshop fit: primarily Motion 6; a limited connection to Motion 4.
+Read [EXPERIMENT_SPEC.md](EXPERIMENT_SPEC.md) for the D/C/I comparison, fixed physical scorer, aligned forecast/persistence analyses and missingness rules. [WORKSHOP_FIT.md](WORKSHOP_FIT.md) explains the WAM contribution. Use only the clean cohort in the [canonical paper](../../../../docs/scene_design_rtx/overleaf/main.tex).
 
-## Existing facts to retain
+Preserve the 18 exact prompt strings, 1,044 planned cell identities, seeds and within-block order. A layout/model block contains all six conditions. Pilot/development/confirmation totals remain 36/144/864. The existing production release/worker path supports 18 model × family × stage partitions, with intact matched blocks.
 
-- Historical π0.5 inversion is background only: keep it out of the main WAM results. A fresh matched π0.5 LAT baseline is optional, not queued, and not a causal world-model ablation.
-- Nano/Edge already show exploratory wording effects. Do not call these reference-inversion replications.
-- DreamZero historical s2 guidance is custom. The new D1 branch uses the qualified official conditional path.
-- The previous stable-grasp construction failed; zero stage-localization model episodes exist.
-- The September 12 232-episode forecast-only matrix is historical planning. Do not combine it with SGW-01 or terminate a different agent's running job.
+## Implemented and pending
 
-## Work allocation for a team
+Scene generators, the scorer, recorder, wrappers, release builder and production worker exist. Continue qualification and integration through those entrypoints. Do not reimplement the worker or launch a second scene search because older planning records describe implementation as unverified.
 
-1. **Coordinator:** verify current repository and cluster ownership, freeze the new namespace and resource binding, track receipts/queue/status. Own released manifests and avoid overlapping writer ownership.
-2. **Fixture implementer:** create model-blind LAT/DIST/HEIGHT candidates and acceptance receipts. Exact poses must be tested, not invented. Never look at confirmation model outcomes to choose scenes.
-3. **Runtime/recorder implementer:** adapt pinned Nano and official DreamZero, implement full resets, physical-time maps, persistent queue execution, retry and recovery behavior. Own the new worker package and its tests.
-4. **Analysis/reviewer:** validate goal semantics, scorer cases, synthetic recovery/missingness cases and bootstrap units. Freeze analysis before confirmation; validate independent prediction annotations and final regenerated tables.
+The shared scene package needs 87 qualified selected layouts. Use the active bounded candidate registration and preserve its first-100-per-family eligibility and existing clean receipts. Then follow [scene materialization](../../../../docs/SCENE_MATERIALIZATION.md) to regenerate path-bound overlays against the cluster's pinned assets. Native model reset/action behavior, decoded-future camera/time mapping, ownership, image and persistent-storage bindings require real receipts before a later authorized release.
 
-These are roles for the receiving team, not agents already dispatched by this handoff. If only one agent is available, perform them sequentially. Use isolated branches/worktrees for concurrent code edits; only the coordinator publishes the integrated release.
+The task roles and their concrete deliverables are maintained in [AGENT_TASKS.md](../../../../docs/AGENT_TASKS.md). Preparing this handoff does not dispatch agents, allocate resources, issue inference or apply a Job. Future study execution requires the user's separate instruction and a fresh clean release namespace; prior completion pointers cannot fill it.
 
-## Execute in order
+## Handoff evidence
 
-- [ ] Read current repository instructions and historical continuation state; preserve existing workloads and all V2/V3 evidence.
-- [ ] Reproduce `build_registry.py`; require 18 prompts, 1,044 unique cells, 174 six-cell blocks, 36/144/864 stage counts, and a valid package receipt.
-- [ ] Implement the package and CLI specified in the runbook. Commands naming that package are not executable until it exists and passes its checks.
-- [ ] Resolve cluster/PVC/image/runtime/budget from live user-owned resources; write `runtime_binding.json`.
-- [ ] Qualify fixtures without model outcomes, then recording pilot P. If one family is blocked, continue independent qualified families.
-- [ ] Complete development D; freeze fixtures, cameras, time mappings, deadlines, scoring, release hashes and annotation rules.
-- [ ] Render and verify concrete Kubernetes Jobs. Test crash/restart, duplicate worker, missing artifact and exhausted retry behavior.
-- [ ] Release confirmation C and keep consuming the finite queue. Do not ask for permission for every next valid cell. Stop only at a documented blocking condition or scope/budget boundary.
-- [ ] Record failures as results. Keep infrastructure invalidity separate and retry at most twice after the original attempt.
-- [ ] Finish with validated raw manifests, compact results, paper tables/figures, media selection rules, and `STATUS.md`. Clearly identify branches that did not run.
+Report current qualified scene counts and remaining gaps, exact source/input/runtime hashes, the materialized package location, model/time-map qualification and any blocked branch. After a future authorized run, report accounted-for cells, valid failures, technical attempts, censoring, prediction coverage and raw storage location. A process or pod existing is not proof of model progress, and a scripted pass is not a policy result.
 
-## Acceptance at handoff back to Ali
-
-Report exactly: which model/family branches qualified; valid episodes versus planned; any partial/invalid attempts and censored trials; verified PVC location; Job/pod IDs; source/runtime/release hashes; prediction coverage; figures and estimates; and the exact next action if blocked. Never say “running” merely because a pod exists or a background process was started. Verify recent request progress and durable artifacts.
-
-Do not publish, submit, contact collaborators, change project sharing, add training jobs, or add models/conditions. Updates to the designated Overleaf draft should distinguish existing evidence, planned analyses, and new validated findings.
+Do not change prompts, thresholds or scenes in response to policy failure. Keep valid failures, missingness and partial records. The frozen source registry remains unchanged; current package documentation and status do not grant launch or publication permission.
