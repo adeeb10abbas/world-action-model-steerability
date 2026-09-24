@@ -35,7 +35,7 @@ def prepare_partitions() -> dict:
         rows = list(csv.DictReader(stream))
     partitions = []
     for stage, expected_count in STAGE_COUNTS.items():
-        for model in ("N3", "D1"):
+        for model in ("N3", "E3", "F3"):
             for family in ("LAT", "HEIGHT", "DIST"):
                 selected = [r for r in rows if (r["stage"], r["model"], r["family"]) == (stage, model, family)]
                 require(len(selected) == expected_count, "Partition differs from native worker ceiling")
@@ -76,7 +76,7 @@ def prepare_partitions() -> dict:
         "queue_path": str((SPEC / "planned_cells.csv").relative_to(ROOT)),
         "queue_sha256": hashlib.sha256((SPEC / "planned_cells.csv").read_bytes()).hexdigest(),
         "prompt_sha256": hashlib.sha256((SPEC / "prompts.json").read_bytes()).hexdigest(),
-        "total_cells": len(rows), "total_matched_blocks": 174, "partition_count": len(partitions),
+        "total_cells": len(rows), "total_matched_blocks": 261, "partition_count": len(partitions),
         "stage_cell_counts": dict(Counter(r["stage"] for r in rows)),
         "partition_unit": "one complete model/family/stage selection; no arbitrary subpartition support",
         "concurrency": "Existing shared-parent worker locks permit one active worker per model. Partition count is not simultaneous worker count.",
@@ -146,7 +146,7 @@ def write_handoff(output: Path, reviewed_job: Path | None = None) -> dict:
         job, identity = disabled_job(json.loads(reviewed_job.read_text()), partitions)
     summary = {
         "status": "PLANNING_ONLY_NO_LAUNCH_AUTHORIZED", "model_requests": 0, "simulator_trials": 0,
-        "planned_cells": 1044, "matched_blocks": 174, "partitions": 18,
+        "planned_cells": 1566, "matched_blocks": 261, "partitions": 27,
         "suspended_job_generated": job is not None,
         "job_note": ("Supplied concrete manifest copied with suspend=true and parallelism=0; no native qualification asserted."
                      if job is not None else "No concrete reviewed image/PVC/namespace/runtime Job was supplied; no executable or placeholder Job generated."),

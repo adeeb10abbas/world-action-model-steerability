@@ -1,0 +1,490 @@
+{
+  "status": "clean_wam_research_plan_with_inherited_geometry_qualification_and_close_camera_diagnostics",
+  "checked_at_utc": "2026-09-24T14:26:34.873508+00:00",
+  "scope": "D/C/I x LAT/HEIGHT/DIST x N3/D1 in clean tabletop scenes",
+  "repository": "https://github.com/adeeb10abbas/world-action-model-steerability",
+  "cells": 1044,
+  "blocks": 174,
+  "prompts": 18,
+  "stages": {
+    "P": 36,
+    "D": 144,
+    "C": 864
+  },
+  "six_forms_goals_per_block": true,
+  "prompt_hashes_match": true,
+  "paper_prompts_match_exact_strings": true,
+  "frozen_protocol_prompts_and_queue_changed": false,
+  "source_hashes": {
+    "protocol.json": "47981c57b61dc44ad0a9590c2cafbadd498481ce97ea79637833baea90ffcbc6",
+    "prompts.json": "f07dbda34feb915472fc329be203ec526a7589007485eeb8f237c19c8708b979",
+    "planned_cells.csv": "b5137427c6a35f8fe84d9add7ff6e559b4bebdb4173306891781d3ba0cc7ebf6"
+  },
+  "scene_status": {
+    "all_three_clean_generators_implemented": true,
+    "physical_qualification": "complete_for_original_geometry_inherited_without_goal_trial_repetition",
+    "complete_87_layout_set_claimed": true,
+    "surface_by_family": {
+      "LAT": "flat tabletop",
+      "HEIGHT": "raised supports",
+      "DIST": "flat tabletop"
+    },
+    "flat_dist_prototype_trials": "Illustrated bowl-right prototype independently passed 6/6 scripted checks; all 29 selected DIST layouts are now physically qualified",
+    "dist_pedestal_removal": "scene cleanup; not a measured support ablation",
+    "support_presence_is_study_factor": false,
+    "selected_layouts": 87,
+    "selected_scripted_trials": 522,
+    "selected_scripted_trials_passed": 522,
+    "rejected_candidates_retained": 8,
+    "unused_registered_candidates_deliberately_unrun": 205,
+    "completion_utc": "2026-09-24T12:29:07.058571+00:00",
+    "per_family": {
+      "layouts": 29,
+      "left": 14,
+      "right": 15,
+      "P": 1,
+      "D": 4,
+      "C": 24
+    },
+    "reuse": {
+      "passing": 14,
+      "rejected": 2,
+      "known_before_final_execution_plan": true,
+      "new_candidate_plans_recorded_before_new_trials": true
+    },
+    "model_requests": 0,
+    "learned_policy_episodes": 0,
+    "evidence": {
+      "artifacts/workshops/spatial_grounding_v1/scene_package_20260924/scene-registry.json": "20733d7f74a42c8aa6f67b66834c7c4296567c77d59cfb19e92367c706e3fe75",
+      "handoff/physical-scene-completion.json": "f74ced8848bde1aae3dac6796c2a80c448390f42f6650947499236393b80d83a",
+      "handoff/scene-records.json": "0a0406f5dc840f4de57fd9fac3ffc38c2ec662142884fb462ecc0961dd93c5a2",
+      "artifacts/workshops/spatial_grounding_v1/balanced_flat_scene_candidates_20260924/runtime-plan.json": "03f4a83640b84686f40e925ab6d5f2869c5be58458743d74d87feafe6f694673"
+    },
+    "qualification_before_camera_revision": true,
+    "repeated_goal_trials_after_camera_revision": 0
+  },
+  "learned_policy_launch_authorized": false,
+  "physical_separation": "r(+) - r(-) = M(+) + M(-), in metres; implemented separately from binary success asymmetry",
+  "open_work": [
+    "qualify cluster destination resets/rendering; workstation offline scene regeneration is complete",
+    "qualify N3/D1 runtime and physical time/camera mappings",
+    "coordinate localization and adjudication exports",
+    "persistence skill and semantic-label validation",
+    "complete coverage, censoring and equivalence outputs"
+  ],
+  "tex_dependencies": {
+    "includes": [
+      "overleaf/ablation_coverage_20260924.tex"
+    ],
+    "missing_includes": [],
+    "bibliography": "inline thebibliography; no external .bib file",
+    "unresolved_citation_keys": [],
+    "coverage_copies_identical": true,
+    "images": [
+      "overleaf/figures/lat-flat-right.png",
+      "overleaf/figures/height-upper-right.png",
+      "overleaf/figures/dist-flat-right.png"
+    ]
+  },
+  "local_compile": {
+    "build_directory": "/var/folders/ng/tlbwxyys5mjb1lzyjhgs6kc80000gn/T/sgw-three-panel-paper-13oblpfr",
+    "exit_code": 0,
+    "engine": "latexmk -pdf",
+    "build_invocations": 1,
+    "pdflatex_passes": 2,
+    "errors": 0,
+    "warnings": 0,
+    "typesetting_warnings": 0,
+    "pages": 10,
+    "pdf_sha256": "1cd47934cf7bf92ddab63b161ddc35f9bf9057cd33dc632b868e26c9b516d583",
+    "source_main_sha256": "fcdc6b5035b87224820fe3f8900239209462204dc2b91509d9a8730c1afc9194",
+    "checked_this_revision": false,
+    "note": "Retained prior local figure-build receipt; it does not attest the current manuscript revision."
+  },
+  "overleaf": {
+    "project_url": "https://www.overleaf.com/project/6ab2bdb39b30df4bbc98a15e",
+    "project_title": "steering wams",
+    "synced_this_revision": true,
+    "checked_this_revision": true,
+    "preupload_review": "Full saved main and coverage sources matched the last synchronized character counts and FNV-1a 64-bit fingerprints; no intervening edits",
+    "compile_invocations_this_revision": 1,
+    "local_pdf_retained": false,
+    "other_project_files_changed": false,
+    "checked_at_utc": "2026-09-24T14:26:34.873508+00:00",
+    "method": "Authenticated Chrome UI upload; full sources read before overwrite and read back after upload",
+    "saved_source_readback_matches": true,
+    "readback_check": "Full saved editor clipboard text matched local character count and FNV-1a 64-bit fingerprint for both TeX sources",
+    "compile_checked_remotely": true,
+    "compile_errors": 0,
+    "compile_warnings": 0,
+    "compile_info": 0,
+    "pdf_pages": 12,
+    "compile_build": "1a0d3ce44bb-b053b605417d3f39",
+    "synced_files_this_revision": [
+      "main.tex",
+      "ablation_coverage_20260924.tex",
+      "figures/lat-flat-right.png",
+      "figures/height-upper-right.png",
+      "figures/dist-flat-right.png"
+    ],
+    "image_upload_verification": "Three replacement PNG uploads completed; revised raw frames visibly present with labels and complete caption in compiled page 3. No remote PNG hash retrieval.",
+    "source_fingerprints": {
+      "main.tex": {
+        "before": {
+          "sha256": "455e7af08f40ab771eefe92adca49c3e4b2044c6d3cf35126b266972b8dcb3bd",
+          "chars": 24300,
+          "fnv1a64": "66b73cca53912bb9"
+        },
+        "after": {
+          "sha256": "46636f7e0db3e540b04d65f405ecb86630626cc7c6e98e8dfdca7a92ad5903c8",
+          "chars": 26876,
+          "fnv1a64": "a047d6d87e86ae77"
+        }
+      },
+      "ablation_coverage_20260924.tex": {
+        "before": {
+          "sha256": "deefe6b7a2f7a46989a9a3c3c1f018f84d7c6b87c9b33ad82743a29e2408b69d",
+          "chars": 7500,
+          "fnv1a64": "ce1d70ff9cd62711"
+        },
+        "after": {
+          "sha256": "b99da280dddb6996d600689e632a266e47476b405b80ac8a0751224cd0a1da97",
+          "chars": 9469,
+          "fnv1a64": "06be35464597897d"
+        }
+      }
+    },
+    "uploaded_source_sha256": {
+      "main.tex": "46636f7e0db3e540b04d65f405ecb86630626cc7c6e98e8dfdca7a92ad5903c8",
+      "ablation_coverage_20260924.tex": "b99da280dddb6996d600689e632a266e47476b405b80ac8a0751224cd0a1da97",
+      "figures/lat-flat-right.png": "8a30d1f23f83f248248251fd143839f81dc3143c23c4b5d444bcbf9b8c638ff2",
+      "figures/height-upper-right.png": "9758d489a4e37568c3b84e528dcb82682ef821f02597b1b4546446dd00239cec",
+      "figures/dist-flat-right.png": "18f4cd867b1983dc933ff4e310952d11babe4bf0c9287598d5d9e00f24deec56"
+    },
+    "revision_note": "Prospective close-camera v2 framing and bounded diagnostic evidence; geometry qualification inherited without repeated goal trials; no learned-policy outcomes.",
+    "pdf_retention_note": "No download attempted; the verified compiled 12-page PDF remains available in Overleaf."
+  },
+  "delivery_hashes": {
+    "ABLATION_COVERAGE.md": "230384d5aeadd84bfc880ae84b1fc026168957c01fb486c52e4c50b871d6175d",
+    "ablation_coverage_20260924.tex": "b99da280dddb6996d600689e632a266e47476b405b80ac8a0751224cd0a1da97",
+    "overleaf/main.tex": "46636f7e0db3e540b04d65f405ecb86630626cc7c6e98e8dfdca7a92ad5903c8",
+    "overleaf/ablation_coverage_20260924.tex": "b99da280dddb6996d600689e632a266e47476b405b80ac8a0751224cd0a1da97",
+    "overleaf/figures/lat-flat-right.png": "8a30d1f23f83f248248251fd143839f81dc3143c23c4b5d444bcbf9b8c638ff2",
+    "overleaf/figures/height-upper-right.png": "9758d489a4e37568c3b84e528dcb82682ef821f02597b1b4546446dd00239cec",
+    "overleaf/figures/dist-flat-right.png": "18f4cd867b1983dc933ff4e310952d11babe4bf0c9287598d5d9e00f24deec56"
+  },
+  "matched_ablation": {
+    "primary": "I minus C",
+    "secondary": "C minus D",
+    "changed_factor": "instruction wording",
+    "held_identical": [
+      "physical goal",
+      "initial scene state"
+    ],
+    "cross_family_pure_axis_causal_claim": false
+  },
+  "illustrative_figure": {
+    "camera": "over_shoulder_left_camera",
+    "camera_revision": "close-oblique-v2-20260924",
+    "panels": [
+      {
+        "layout_id": "LAT-P01",
+        "paper_path": "overleaf/figures/lat-flat-right.png",
+        "source_path": "/Users/ali-adeeb/Downloads/astra_creative_director/sgw_close_camera_v2_20260924/LAT-P01/reset-1/over_shoulder_left_camera.png",
+        "sha256": "8a30d1f23f83f248248251fd143839f81dc3143c23c4b5d444bcbf9b8c638ff2",
+        "bytes": 571498,
+        "pixels_modified": false,
+        "diagnostic_overlay": false,
+        "new_goal_qualification_trials": 0
+      },
+      {
+        "layout_id": "HEIGHT-P01",
+        "paper_path": "overleaf/figures/height-upper-right.png",
+        "source_path": "/Users/ali-adeeb/Downloads/astra_creative_director/sgw_close_camera_v2_20260924/HEIGHT-P01/reset-1/over_shoulder_left_camera.png",
+        "sha256": "9758d489a4e37568c3b84e528dcb82682ef821f02597b1b4546446dd00239cec",
+        "bytes": 534230,
+        "pixels_modified": false,
+        "diagnostic_overlay": false,
+        "new_goal_qualification_trials": 0
+      },
+      {
+        "layout_id": "DIST-P01",
+        "paper_path": "overleaf/figures/dist-flat-right.png",
+        "source_path": "/Users/ali-adeeb/Downloads/astra_creative_director/sgw_close_camera_v2_20260924/DIST-P01/reset-1/over_shoulder_left_camera.png",
+        "sha256": "18f4cd867b1983dc933ff4e310952d11babe4bf0c9287598d5d9e00f24deec56",
+        "bytes": 466961,
+        "pixels_modified": false,
+        "diagnostic_overlay": false,
+        "new_goal_qualification_trials": 0
+      }
+    ],
+    "meaning": "Unmodified native reset images of P01 layouts with revised camera; prior geometry qualification inherited, no repeated goal trials or learned policies",
+    "visual_qa": {
+      "raw_native_frames_inspected": true,
+      "pixels_modified": false,
+      "diagnostic_overlays": false,
+      "compiled_page_checked_this_revision": true,
+      "page": 3,
+      "overleaf_pdf": "Three complete raw camera panels with labels and full caption visible on page 3; no overlap; matching revised tabletop framing",
+      "pdf_pages": 12
+    }
+  },
+  "scope_clarification": "LAT uses robot-frame scoring while frozen prompts leave viewpoint unspecified; consistent reversal can reflect frame choice or relation grounding, which this experiment does not separate.",
+  "last_synced_local_revision": {
+    "recorded_at_utc": "2026-09-24T14:26:34.873508+00:00",
+    "main_tex_sha256": "46636f7e0db3e540b04d65f405ecb86630626cc7c6e98e8dfdca7a92ad5903c8",
+    "coverage_tex_sha256": "b99da280dddb6996d600689e632a266e47476b405b80ac8a0751224cd0a1da97",
+    "change": "Closer exterior cameras, unmodified native P01 figures, TRI Figure 10 framing attribution, camera/frame limitations and bounded diagnostic evidence; all frozen study inputs preserved",
+    "synced_at_utc": "2026-09-24T14:26:34.873508+00:00",
+    "current_camera_revision_synced": true
+  },
+  "offline_materialization": {
+    "camera_configuration": {
+      "revision": "close-oblique-v2-20260924",
+      "sha256": "33a02f7f75f10efe109550867dd5e00d149a832917c0d3a056e6e2a5d7c45d56"
+    },
+    "cell_count": 1044,
+    "layout_count": 87,
+    "model_requests": 0,
+    "native_runs": 0,
+    "remaining_gates": [
+      "destination native reset and rendering checks",
+      "N3/D1 runtime qualification",
+      "verified physical time and camera maps",
+      "explicit learned-study release authorization"
+    ],
+    "runtime_qualified": false,
+    "source_commit": "ba8da02cd4c2252b9bcc108b70520dd1a85724a7",
+    "status": "physical_qualified_runtime_pending",
+    "receipt_path": "/Users/ali-adeeb/Downloads/astra_creative_director/sgw_close_camera_v2_20260924/materialization.json",
+    "receipt_sha256": "5e66ca105ceccc45355ce312cbf21c06914956ca6cdf0ef8b481df3ce06333fa",
+    "basis": "New close-camera offline materialization; separate six-layout native camera diagnostic does not qualify model runtime",
+    "repository_receipt_path": "handoff/close-camera-materialization.json"
+  },
+  "prior_camera_revision_record": {
+    "illustrative_figure": {
+      "camera": "over_shoulder_left_camera",
+      "panels": [
+        {
+          "paper_path": "overleaf/figures/lat-flat-right.png",
+          "source_path": "artifacts/workshops/spatial_grounding_v1/workstation_receipts_20260924/prototype-06-a/over_shoulder_left_camera.png",
+          "sha256": "ac35e263b4ae4b966cd6c0938500c08fd75ec3d6c2f32185e71a218b4c054dab",
+          "bytes": 434491,
+          "pixels_modified": false,
+          "verification_path": "artifacts/workshops/spatial_grounding_v1/workstation_receipts_20260924/prototype-06-a/verification.json",
+          "verification_sha256": "6beda70e7ba8a67dc80f18d6ea241202e5dfff0c20888f2bf772cee31f77be57",
+          "passed_scripted_checks": 6
+        },
+        {
+          "paper_path": "overleaf/figures/height-upper-right.png",
+          "source_path": "artifacts/workshops/spatial_grounding_v1/workstation_receipts_20260924/prototype-05-a/over_shoulder_left_camera.png",
+          "sha256": "6673f7e0036a5a3ba4b44fa1f7ecd37a811d7973806f24e785c576dad1ab7f03",
+          "bytes": 446937,
+          "pixels_modified": false,
+          "verification_path": "artifacts/workshops/spatial_grounding_v1/workstation_receipts_20260924/prototype-05-a/verification.json",
+          "verification_sha256": "6d2ed8a30d6f403220b6bf63ac611cea31e3f38a3adb2f3f01464b708b62991b",
+          "passed_scripted_checks": 6
+        },
+        {
+          "paper_path": "overleaf/figures/dist-flat-right.png",
+          "source_path": "artifacts/workshops/spatial_grounding_v1/workstation_receipts_20260924/SGW-FLAT-DIST-PROTOTYPES-20260924-HEADLESS-A2/SGW-FLAT-DIST-RIGHT-000/over_shoulder_left_camera.png",
+          "sha256": "78b45a35a3bcd5d4193de78f1182f37fccb059de97318de135cf5dbcbb1c5a9e",
+          "bytes": 437748,
+          "pixels_modified": false,
+          "verification_path": "artifacts/workshops/spatial_grounding_v1/workstation_receipts_20260924/SGW-FLAT-DIST-PROTOTYPES-20260924-HEADLESS-A2/SGW-FLAT-DIST-RIGHT-000/verification.json",
+          "verification_sha256": "1e87caf2271cd89c94a2013dd244adac90e98646f102e923e707b02f4679f49b",
+          "passed_scripted_checks": 6
+        }
+      ],
+      "meaning": "Three illustrative qualified examples; full 87-layout completion is supported by the separate ready registry, not learned-policy results",
+      "visual_qa": {
+        "page": 3,
+        "local_pdf": "Three complete uncropped camera images with readable labels and caption, no overlap",
+        "overleaf_pdf": "All three panels, labels and caption visibly present in compiled PDF page 3",
+        "pixel_edits": false
+      }
+    },
+    "overleaf": {
+      "project_url": "https://www.overleaf.com/project/6ab2bdb39b30df4bbc98a15e",
+      "project_title": "steering wams",
+      "synced_this_revision": true,
+      "checked_at_utc": "2026-09-24T12:41:30.586888+00:00",
+      "method": "Authenticated Chrome UI file upload; full sources read before replacement",
+      "preupload_review": "Both full saved sources exactly matched the last verified synchronized revision before replacement; no intervening user edits were present",
+      "saved_source_readback_matches": true,
+      "readback_check": "Full editor clipboard text for both saved TeX sources matched each local character count and FNV-1a 64-bit fingerprint",
+      "uploaded_source_sha256": {
+        "main.tex": "455e7af08f40ab771eefe92adca49c3e4b2044c6d3cf35126b266972b8dcb3bd",
+        "ablation_coverage_20260924.tex": "deefe6b7a2f7a46989a9a3c3c1f018f84d7c6b87c9b33ad82743a29e2408b69d",
+        "figures/lat-flat-right.png": "ac35e263b4ae4b966cd6c0938500c08fd75ec3d6c2f32185e71a218b4c054dab",
+        "figures/height-upper-right.png": "6673f7e0036a5a3ba4b44fa1f7ecd37a811d7973806f24e785c576dad1ab7f03",
+        "figures/dist-flat-right.png": "78b45a35a3bcd5d4193de78f1182f37fccb059de97318de135cf5dbcbb1c5a9e"
+      },
+      "compile_checked_remotely": true,
+      "compile_errors": 0,
+      "compile_warnings": 0,
+      "pdf_pages": 11,
+      "compile_build": "1a0d36cd51f-cde3d7943177bde0",
+      "other_project_files_changed": false,
+      "image_upload_verification": "All three files present in figures folder and rendered in the compiled page 3; no remote PNG download/hash check performed",
+      "synced_files_this_revision": [
+        "main.tex",
+        "ablation_coverage_20260924.tex"
+      ],
+      "main_source_fingerprints": {
+        "before": {
+          "sha256": "86cf377883cc7924faaaabfe1a979504335c84855ecd6eaae11001c634e41b2f",
+          "chars": 23422,
+          "fnv1a64": "e8d0f66fd7ea70ae"
+        },
+        "after": {
+          "sha256": "455e7af08f40ab771eefe92adca49c3e4b2044c6d3cf35126b266972b8dcb3bd",
+          "chars": 24300,
+          "fnv1a64": "66b73cca53912bb9"
+        }
+      },
+      "compile_invocations_this_revision": 1,
+      "checked_this_revision": true,
+      "revision_note": "Final physical-completion status and preserved prospective equivalence safeguard synchronized and compiled; no learned-policy results.",
+      "source_fingerprints": {
+        "main.tex": {
+          "before": {
+            "sha256": "86cf377883cc7924faaaabfe1a979504335c84855ecd6eaae11001c634e41b2f",
+            "chars": 23422,
+            "fnv1a64": "e8d0f66fd7ea70ae"
+          },
+          "after": {
+            "sha256": "455e7af08f40ab771eefe92adca49c3e4b2044c6d3cf35126b266972b8dcb3bd",
+            "chars": 24300,
+            "fnv1a64": "66b73cca53912bb9"
+          }
+        },
+        "ablation_coverage_20260924.tex": {
+          "before": {
+            "sha256": "6d46bcb5edb91fac568fb725e043373cd51a4cfbf47556d938338f5fb3272589",
+            "chars": 6764,
+            "fnv1a64": "1e2905551771f6bc"
+          },
+          "after": {
+            "sha256": "deefe6b7a2f7a46989a9a3c3c1f018f84d7c6b87c9b33ad82743a29e2408b69d",
+            "chars": 7500,
+            "fnv1a64": "ce1d70ff9cd62711"
+          }
+        }
+      },
+      "local_pdf_retained": false,
+      "pdf_retention_note": "No completed local PDF was obtained: the browser download event timed out, and native save UI could not be inspected because the Mac was locked. The compiled 11-page PDF remains available in Overleaf; no second compilation was performed."
+    },
+    "last_synced_local_revision": {
+      "recorded_at_utc": "2026-09-24T12:37:19.057187+00:00",
+      "main_tex_sha256": "455e7af08f40ab771eefe92adca49c3e4b2044c6d3cf35126b266972b8dcb3bd",
+      "coverage_tex_sha256": "deefe6b7a2f7a46989a9a3c3c1f018f84d7c6b87c9b33ad82743a29e2408b69d",
+      "change": "Complete physical scene qualification, precise prior-outcome reuse, retained prospective equivalence safeguard; no learned-policy outcomes or frozen input changes.",
+      "synced_at_utc": "2026-09-24T12:41:30.586888+00:00"
+    },
+    "offline_materialization": {
+      "status": "physical_qualified_runtime_pending",
+      "layout_count": 87,
+      "cell_count": 1044,
+      "runtime_qualified": false,
+      "native_runs": 0,
+      "model_requests": 0,
+      "source_commit": "b4ad6145423e98b3b5f7524b3294b2de27e2953c",
+      "remaining_gates": [
+        "destination native reset and rendering checks",
+        "N3/D1 runtime qualification",
+        "verified physical time and camera maps",
+        "explicit learned-study release authorization"
+      ],
+      "receipt_path": "handoff/workstation-materialization.json",
+      "receipt_sha256": "bc029192fb1f575ebd886bbaaf00c0e3d4c371208ce2172786d429d1ff27fca9",
+      "basis": "Recorded actual-workstation offline materialization receipt; no native trials or model requests",
+      "manuscript_recompiled_for_this_addendum": false
+    }
+  },
+  "camera_revision": {
+    "revision": "close-oblique-v2-20260924",
+    "configuration_path": "experiments/workshops/spatial_grounding_v1/close_cameras.json",
+    "configuration_sha256": "33a02f7f75f10efe109550867dd5e00d149a832917c0d3a056e6e2a5d7c45d56",
+    "layout_count": 87,
+    "changed": [
+      "both exterior camera poses",
+      "both exterior focal lengths"
+    ],
+    "unchanged": [
+      "robot",
+      "wrist camera",
+      "objects",
+      "supports",
+      "scoring",
+      "18 frozen prompts",
+      "1044 cells"
+    ],
+    "matched_conditions": "Both models and all six wording/goal conditions within a layout use identical registered cameras",
+    "qualitative_reference": {
+      "title": "A Careful Examination of Large Behavior Models for Multitask Dexterous Manipulation",
+      "authors": "TRI LBM Team et al.",
+      "url": "https://arxiv.org/pdf/2507.05331",
+      "figure": 10,
+      "pdf_page": 14,
+      "scope": "Elevated tabletop framing only; no hardware or calibration replication"
+    },
+    "viewpoint_caveat": "Far-side views look back toward robot; screen-left is not robot-left. LAT uses robot-frame scoring with viewpoint-unspecified frozen prompts.",
+    "cross_family_magnification_is_concept_effect": false,
+    "first_close_prototype": {
+      "status": "rejected_for_arm_occlusion",
+      "historical_evidence_retained": true
+    },
+    "native_diagnostics": {
+      "layouts": [
+        "LAT-P01",
+        "LAT-D01",
+        "HEIGHT-P01",
+        "HEIGHT-D01",
+        "DIST-P01",
+        "DIST-D01"
+      ],
+      "reset_count": 12,
+      "hold_steps": 18,
+      "camera_observation_samples": 90,
+      "exact_observation_sensor_rgb": true,
+      "synchronized_hz": 15,
+      "reset_pose_agreement": true,
+      "sensor_timestamps_reset_to_zero": true,
+      "reset_pixels_byte_identical": false,
+      "geometry_report_path": "/Users/ali-adeeb/Downloads/astra_creative_director/sgw_close_camera_v2_20260924/geometry-report.json",
+      "geometry_report_sha256": "9f896f10ef4cb0e516dd84f0f99adddc85a22d86721f75f11b5677d63d2e9e37",
+      "model_requests": 0,
+      "repeated_goal_trials": 0,
+      "full_model_runtime_qualified": false,
+      "geometry_report_repository_path": "artifacts/workshops/spatial_grounding_v1/camera_checks_20260924/close-v2/geometry-report.json"
+    },
+    "geometric_framing": {
+      "registered_layouts": 87,
+      "exterior_views": 174,
+      "native_boundary_margin_min_px": 38.97883951723157,
+      "lift_envelope_m": 0.12,
+      "source_path": "/Users/ali-adeeb/Downloads/astra_creative_director/sgw_close_camera_20260924/framing-report.json",
+      "source_sha256": "64e284c046ec096d191bd2793183a6eca4f74f0c92e2c4a84ceb5f7ea62e0c98",
+      "occlusion_proof": false
+    },
+    "remaining_limits": [
+      "unchanged wrist clips HEIGHT/DIST references",
+      "arbitrary-motion occlusion unqualified",
+      "actual model inputs and decoded-future time maps require model-runtime qualification",
+      "revised-view semantic-label validation pending"
+    ],
+    "offline_preprocessing": {
+      "status": "passed",
+      "native_inputs": 6,
+      "synthetic_inputs": 1,
+      "model_requests": 0,
+      "full_live_model_transforms_exercised": false,
+      "generated_future_timing_exercised": false,
+      "local_receipt_path": "/Users/ali-adeeb/Downloads/astra_creative_director/sgw_close_camera_v2_20260924/preprocessing.json",
+      "receipt_sha256": "d0bdcfc4c1ea3bf8a54bdbcf09921e3ceaf7d279dd617c7eafc94ec22cd5726d",
+      "repository_evidence_directory": "artifacts/workshops/spatial_grounding_v1/camera_checks_20260924/close-v2/"
+    },
+    "documentation": "docs/CAMERA_ALIGNMENT.md"
+  }
+}

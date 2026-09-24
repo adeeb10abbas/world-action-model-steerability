@@ -18,7 +18,8 @@ SIGNFLIP_DRAWS = 100_000
 SIGNFLIP_SEED = 2_0260_923
 PRIMARY_TEST_NAMES = (
     "N3-LAT", "N3-HEIGHT", "N3-DIST",
-    "D1-LAT", "D1-HEIGHT", "D1-DIST",
+    "E3-LAT", "E3-HEIGHT", "E3-DIST",
+    "F3-LAT", "F3-HEIGHT", "F3-DIST",
 )
 
 
@@ -293,7 +294,7 @@ def cluster_bootstrap_mean(
 def compile_primary_statistics(compiled: RegisteredCompilation) -> tuple[Mapping[str, Any], ...]:
     """Summarize only complete C-layout clusters; missing families stay unavailable."""
     result: list[Mapping[str, Any]] = []
-    for model in ("N3", "D1"):
+    for model in ("N3", "E3", "F3"):
         for family in ("LAT", "HEIGHT", "DIST"):
             values = [
                 float(row["delta_I_C"])
@@ -346,7 +347,7 @@ def holm_adjust(p_values: Mapping[str, float]) -> dict[str, float]:
 
 
 def holm_adjust_primary(p_values: Mapping[str, float]) -> dict[str, float]:
-    """Adjust all six prespecified model-family tests, filling absent tests as 1."""
+    """Adjust all nine prespecified model-family tests, filling absent tests as 1."""
     complete = {name: float(p_values.get(name, 1.0)) for name in PRIMARY_TEST_NAMES}
     return holm_adjust(complete)
 

@@ -160,14 +160,14 @@ def _planned_cells(source: Path) -> tuple[list, dict]:
     _require(len(prompts) == len(lookup) == 18, 'Expected frozen 18-prompt registry')
     with (source / SPEC / 'planned_cells.csv').open(newline='') as stream:
         rows = list(csv.DictReader(stream))
-    _require(len(rows) == 1044 and len({row['cell_id'] for row in rows}) == 1044, 'Expected 1044 unique frozen cells')
+    _require(len(rows) == 1566 and len({row['cell_id'] for row in rows}) == 1566, 'Expected 1566 unique frozen cells')
     groups, seeds = {}, {}
     for row in rows:
         p = lookup[row['prompt_id']]
         _require(row['status'] == 'PLANNED_NOT_RELEASED' and row['action_cap'] == '450' and
                  not any(row[key] for key in ('fixture_sha256', 'runtime_sha256', 'time_map_sha256')),
                  'Source queue must remain frozen and unreleased')
-        _require(row['model'] in ('N3', 'D1') and row['family'] in FAMILIES and
+        _require(row['model'] in ('N3', 'E3', 'F3') and row['family'] in FAMILIES and
                  row['layout_id'].startswith(row['family']+'-'+row['stage']), 'Cell layout/family mismatch')
         goal = int(row['physical_goal_sign'])
         _require((row['family'], row['form'], goal, row['prompt'], row['prompt_sha256']) ==
@@ -180,7 +180,7 @@ def _planned_cells(source: Path) -> tuple[list, dict]:
         seeds.setdefault(row['layout_id'], set()).add(seed)
         groups.setdefault((row['layout_id'], row['model']), []).append((row['form'], goal))
     conditions = Counter((form, goal) for form in ('D', 'C', 'I') for goal in (1, -1))
-    _require(len(groups) == 174 and all(Counter(group) == conditions for group in groups.values()) and
+    _require(len(groups) == 261 and all(Counter(group) == conditions for group in groups.values()) and
              all(len(values) == 1 for values in seeds.values()), 'Cells lack intact matched six-condition blocks')
     return rows, {name: _record(source / SPEC / name) for name in ('protocol.json', 'prompts.json', 'planned_cells.csv')}
 
@@ -286,7 +286,7 @@ def materialize(*, registry: Path, source_roots: Mapping[str, Path | str], works
             'files': {name: {'path': str(output/name), 'sha256': _sha(staging/name)} for name in
                 ('assets.json', 'asset-relocation.json', 'physical-fixtures.json', 'environment-binding.json',
                  'bound-cells.jsonl', 'selection-registry.json')},
-            'remaining_gates': ['destination native reset and rendering checks', 'N3/D1 runtime qualification',
+            'remaining_gates': ['destination native reset and rendering checks', 'N3/E3/F3 runtime qualification',
                                 'verified physical time and camera maps', 'explicit learned-study release authorization']}
         _write(staging/'handoff.json', result)
         _require(not output.exists(), 'Handoff output appeared during materialization')

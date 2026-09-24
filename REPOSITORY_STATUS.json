@@ -4,6 +4,11 @@
     "HEIGHT": "raised supports",
     "LAT": "flat tabletop"
   },
+  "active_models": [
+    "N3",
+    "E3",
+    "F3"
+  ],
   "camera_configuration": {
     "documentation": "docs/CAMERA_ALIGNMENT.md",
     "geometry_layouts": 87,
@@ -19,12 +24,17 @@
   "future_learned_policy_execution_location": "cluster_only",
   "historical_authorizations_are_not_new_launch_permission": true,
   "learned_policy_launch_authorized": false,
-  "pending_integration": "All 87 physical layouts are selected. Closer-camera geometry, six-layout native diagnostics and offline input preprocessing passed. Cluster model/runtime and decoded prediction time/camera qualification remain; no learned-policy study launch.",
+  "model_roster_amendment": "docs/MODEL_ROSTER_AMENDMENT_20260924.md",
+  "pending_integration": "N3/E3/F3 planning queue is current; D1 execution is retired. E3/F3 adapters and immutable identities are pending. All models require cluster runtime and prediction time/camera qualification. Scene geometry and camera qualification evidence are retained; no model study launched.",
   "physical_completion_receipt": "handoff/physical-scene-completion.json",
   "physical_scene_package_complete": true,
-  "planned_behavioral_cells": 1044,
+  "planned_behavioral_cells": 1566,
   "prompt_count": 18,
+  "protocol_version": "1.2",
   "recording_index": "handoff/scene-records.json",
+  "retired_models": [
+    "D1"
+  ],
   "scene_families_implemented": [
     "LAT",
     "HEIGHT",
@@ -47,6 +57,7 @@
       "revision": "close-oblique-v3-full-objects-20260924",
       "sha256": "a7413451f7339c698fb4842bdb2007a59fb4f4bb8a8ebd97bf09355cbdc6d0f8"
     },
+    "roster_binding_status": "Historical 1044-cell N3/D1 binding; rematerialize the current 1566-cell queue before release. This receipt is not rewritten.",
     "runtime_qualified": false,
     "source_commit": "ba8da02cd4c2252b9bcc108b70520dd1a85724a7",
     "status": "passed_offline_destination_check",

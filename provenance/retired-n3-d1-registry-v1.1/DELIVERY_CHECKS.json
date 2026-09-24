@@ -1,0 +1,40 @@
+{
+  "checks": {
+    "active_spec_prose_contains_no_legacy_numerical_results_or_extra_baseline_scope": true,
+    "canonical_paper_reference": "docs/scene_design_rtx/overleaf/main.tex",
+    "duplicate_legacy_paper_removed": true,
+    "excluded_paper_original_copies_byte_identical": true,
+    "frozen_files_byte_identical": {
+      "build_registry.py": "df80315cceac5943ba8862c932af28cbf127698ebb64ef3fb75d8b89549e0b2c",
+      "planned_cells.csv": "b5137427c6a35f8fe84d9add7ff6e559b4bebdb4173306891781d3ba0cc7ebf6",
+      "prompts.json": "f07dbda34feb915472fc329be203ec526a7589007485eeb8f237c19c8708b979",
+      "protocol.json": "47981c57b61dc44ad0a9590c2cafbadd498481ce97ea79637833baea90ffcbc6",
+      "registry_validation.json": "32b680bba1dc48170b054cc026d215def5297f2971220cfa80e606763968e653"
+    },
+    "six_cell_blocks": 174,
+    "stage_counts": {
+      "C": 864,
+      "D": 144,
+      "P": 36
+    },
+    "unique_cells": 1044,
+    "unique_prompts": 18
+  },
+  "implementation_boundary": "Scene and production code is implemented; complete clean physical selection and actual native model/runtime/time-map receipts remain separate.",
+  "learned_policy_launch_authorized": false,
+  "not_performed": [
+    "registry regeneration",
+    "CPU test suite",
+    "native physical qualification",
+    "model inference",
+    "cluster operations",
+    "paper compilation",
+    "Overleaf synchronization"
+  ],
+  "original_delivery_record": "provenance/legacy-spec-paper-exclusion.json#/original_delivery_checks",
+  "recorded_at_utc": "2026-09-24T04:26:32.956438+00:00",
+  "schema_version": "sgw-clean-spec-documentation-checks-v1",
+  "scope": "Documentation-only cleanup; no registry generation, test suite, simulator, model or cluster execution.",
+  "status": "CLEAN_DOCUMENTATION_INDEXED_NOT_NATIVE_QUALIFICATION",
+  "study_id": "SGW-01"
+}

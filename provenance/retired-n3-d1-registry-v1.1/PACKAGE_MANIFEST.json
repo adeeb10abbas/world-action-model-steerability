@@ -1,0 +1,90 @@
+{
+  "canonical_documents": {
+    "docs/AGENT_TASKS.md": {
+      "bytes": 5193,
+      "sha256": "1d17bc5f56f4e49dda360d15680d282922c43114398f4628e3431fb88b52d650"
+    },
+    "docs/CAMERA_ALIGNMENT.md": {
+      "bytes": 7825,
+      "sha256": "8062505ea5c3b3b4006911819b9f6b1ef93aeb8d6da264fe477ffc0594ac0c93"
+    },
+    "docs/CLUSTER_HANDOFF.md": {
+      "bytes": 12266,
+      "sha256": "bda396dbb2cce24d31a467f4a87b8bf5045b35950968ad43f1c53d6243ed6a4d"
+    },
+    "docs/EQUIVALENCE_ANALYSIS_NOTE.md": {
+      "bytes": 2214,
+      "sha256": "1913db5eabd1f2613349638e3404bee343948639133d03eb452f6b250345e2e9"
+    },
+    "docs/scene_design_rtx/overleaf/main.tex": {
+      "bytes": 26876,
+      "sha256": "46636f7e0db3e540b04d65f405ecb86630626cc7c6e98e8dfdca7a92ad5903c8"
+    }
+  },
+  "files": {
+    ".gitattributes": {
+      "bytes": 130,
+      "sha256": "28f9aa9f869eb7d98461694d59402e8c60403215584547b5816194ef9a3fc36f"
+    },
+    ".gitignore": {
+      "bytes": 26,
+      "sha256": "42a3301403fb1c9efd7105ed32eaf6779098896b7270b4d029cdc7be5af32ea6"
+    },
+    "AGENT_HANDOFF.md": {
+      "bytes": 3016,
+      "sha256": "1165b199507c159efdc4f872fef4b285d2e6354a258f450337547530b54346b5"
+    },
+    "CLUSTER_RUNBOOK.md": {
+      "bytes": 1110,
+      "sha256": "29778dbf2c81b502055335f58b888901abb2d0f943b3e4ed00779b142db927fc"
+    },
+    "DELIVERY_CHECKS.json": {
+      "bytes": 1833,
+      "sha256": "cfd3b40dc1f68e88814d19477a960e41e3c2b438165db8b19a1886642402473e"
+    },
+    "EXPERIMENT_SPEC.md": {
+      "bytes": 26781,
+      "sha256": "e118603ad30f8d5867047380e45d4c02f299117bb36e31f99ec322e41a88add4"
+    },
+    "README.md": {
+      "bytes": 3801,
+      "sha256": "018b01fb4bba027953bdbe4b0eeca53523b3ad2006579af8019ca7c169635325"
+    },
+    "WORKSHOP_FIT.md": {
+      "bytes": 3416,
+      "sha256": "9cee946bdffdb4ee906c1fe8d369485216a6de8ae5b9817eede3dd45b45e352a"
+    },
+    "build_registry.py": {
+      "bytes": 10797,
+      "sha256": "df80315cceac5943ba8862c932af28cbf127698ebb64ef3fb75d8b89549e0b2c"
+    },
+    "kubernetes/worker-job.yaml.in": {
+      "bytes": 2073,
+      "sha256": "4058549c4f04b8c00bd57f4080ed70920e8303d0512ad1ed9f56c3188aff9e91"
+    },
+    "planned_cells.csv": {
+      "bytes": 267729,
+      "sha256": "b5137427c6a35f8fe84d9add7ff6e559b4bebdb4173306891781d3ba0cc7ebf6"
+    },
+    "prompts.json": {
+      "bytes": 5308,
+      "sha256": "f07dbda34feb915472fc329be203ec526a7589007485eeb8f237c19c8708b979"
+    },
+    "protocol.json": {
+      "bytes": 6244,
+      "sha256": "47981c57b61dc44ad0a9590c2cafbadd498481ce97ea79637833baea90ffcbc6"
+    },
+    "registry_validation.json": {
+      "bytes": 811,
+      "sha256": "32b680bba1dc48170b054cc026d215def5297f2971220cfa80e606763968e653"
+    }
+  },
+  "learned_policy_launch_authorized": false,
+  "original_package_manifest": "provenance/legacy-spec-paper-exclusion.json#/original_package_manifest",
+  "path_base": "experiments/workshops/spatial_grounding_v1/spec",
+  "physical_completion_receipt": "handoff/physical-scene-completion.json",
+  "purpose": "Current clean WAM specification index; frozen registry retained byte-identically and one canonical manuscript outside this directory.",
+  "recorded_at_utc": "2026-09-24T14:28:20.461265+00:00",
+  "schema_version": "sgw-clean-spec-package-index-v1",
+  "study_id": "SGW-01"
+}

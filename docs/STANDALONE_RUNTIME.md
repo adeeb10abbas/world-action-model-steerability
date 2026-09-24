@@ -1,7 +1,7 @@
 # Runtime for the clean workshop study
 
 **Construction only. No learned-policy launch is authorized.** The planned
-1,044-cell clean study is cluster-only and is not currently released.
+1,566-cell clean study is cluster-only and is not currently released.
 
 ## External pins
 
@@ -10,17 +10,17 @@
 | [RoboLab](https://github.com/NVlabs/RoboLab) | `0aef241fb088ca21bb4ebd24448940ed56620d17` |
 | Cosmos source | `411d25b2e35bc441126f48c44a4b93e1c0564274`; native entry point `cosmos_framework.scripts.action_policy_server_robolab.RobolabPolicyService` |
 | [N3 checkpoint](https://huggingface.co/nvidia/Cosmos3-Nano-Policy-DROID) | `6706d7680581c255ff61e0f3bb49d90eac55c79e` |
-| [DreamZero server](https://github.com/dreamzero0/dreamzero) | `ab790c198fbce33503358efbbd4187ce9a89adf3` |
-| [D1 checkpoint](https://huggingface.co/GEAR-Dreams/DreamZero-DROID) | `96ad344138c66e82536422432ad742f015784942` |
+| [E3 checkpoint](https://huggingface.co/nvidia/Cosmos3-Edge-Policy-DROID) | Source/checkpoint pins and runtime integration pending |
+| [F3 checkpoint](https://huggingface.co/black-forest-labs/flux-3-action-droid) | Root BF16 package; source/checkpoint pins, runtime and predicted-video export pending |
 
 The documented scene runtime uses Python 3.11, Isaac Sim 5.0.0.0, Isaac Lab
 2.2.0 and Torch 2.7.0+cu126. This records the source runtime identity; it is
 not a claim that a new cluster environment has already been qualified.
 
-Two checkpoint manifests retain their required paths under
-`artifacts/vla_wam_shared_v2/pilot/expansion/`. Current SGW wrappers read them
-to verify model file hashes. These files are scientific dependencies, not
-behavioral results included in this clean study. Keep all model weights and
+The Nano checkpoint manifest retains its path under
+`artifacts/vla_wam_shared_v2/pilot/expansion/`. DreamZero metadata and legacy
+code remain historical references only; D1 is rejected by active runtime
+entry points. No E3/F3 runtime or checkpoint pin has been qualified yet. Keep all model weights and
 required auxiliary snapshots outside Git.
 
 ## Assets and path binding

@@ -1,4 +1,4 @@
-"""CPU regressions for the real frozen queue and qualified clean appearance."""
+"""CPU regressions for active and archived queues and qualified clean appearance."""
 import copy
 import csv
 import hashlib
@@ -21,7 +21,10 @@ QUEUE = Path(__file__).resolve().parents[1] / 'experiments/workshops/spatial_gro
 
 
 def queue_block(model):
-    with QUEUE.open() as stream:
+    # Retained legacy adapter coverage uses the immutable retired registry.
+    queue = (QUEUE.parents[4] / 'provenance/retired-n3-d1-registry-v1.1/planned_cells.csv'
+             if model == 'D1' else QUEUE)
+    with queue.open() as stream:
         return [r for r in csv.DictReader(stream) if r['model'] == model and r['layout_id'] == 'LAT-C01']
 
 

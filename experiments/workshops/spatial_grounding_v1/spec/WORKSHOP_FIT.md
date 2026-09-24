@@ -1,6 +1,6 @@
 # Workshop framing for the clean WAM study
 
-The fixed study compares N3 and D1 on the clean LAT, HEIGHT and DIST fixtures. Its 1,044 planned cells and scientific thresholds are unchanged. The maintained paper is [docs/scene_design_rtx/overleaf/main.tex](../../../../docs/scene_design_rtx/overleaf/main.tex); this file explains its research framing.
+The fixed study compares N3, E3 and F3 on the clean LAT, HEIGHT and DIST fixtures. Its revised queue has 1,566 planned cells; prompts and scoring thresholds are unchanged. The maintained paper is [docs/scene_design_rtx/overleaf/main.tex](../../../../docs/scene_design_rtx/overleaf/main.tex); this file explains its research framing.
 
 ## The question
 

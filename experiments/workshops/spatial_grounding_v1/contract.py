@@ -141,7 +141,7 @@ def _load_cells(path: Path, release_id: str) -> tuple[Cell, ...]:
             raise ContractError(f"queue line {number} lacks immutable cell fields")
         if row["release_id"] != release_id or row.get("status") != "RELEASED":
             raise ContractError(f"queue line {number} is not released for this release")
-        if row["stage"] not in STAGE_EPISODES or row["model"] not in {"N3", "D1"}:
+        if row["stage"] not in STAGE_EPISODES or row["model"] not in {"N3", "E3", "F3"}:
             raise ContractError(f"queue line {number} has invalid model/stage")
         if row["family"] not in {"LAT", "HEIGHT", "DIST"} or not all(row[key] for key in ("fixture_sha256", "runtime_sha256", "time_map_sha256")):
             raise ContractError(f"queue line {number} lacks qualified runtime or fixture binding")

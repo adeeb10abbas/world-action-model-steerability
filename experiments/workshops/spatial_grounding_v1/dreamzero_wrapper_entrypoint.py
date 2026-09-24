@@ -132,6 +132,10 @@ def run_native_rank_worker() -> None:
 
 
 def main() -> None:
+    raise RuntimeError("DreamZero (D1) is retired from the active SGW-01 study")
+
+
+def _retired_main() -> None:
     if "--rank-worker" in sys.argv:
         run_native_rank_worker()
         return

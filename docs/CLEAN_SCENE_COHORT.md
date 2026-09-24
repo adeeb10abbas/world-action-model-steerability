@@ -30,16 +30,16 @@ their own physical qualification.
 
 ## The planned learned-policy cohort
 
-The frozen 1,044-cell registry provides the condition and ordering template
+The frozen 1,566-cell registry provides the condition and ordering template
 for the separately named clean release proposed as
 `SGW-CLEAN-STUDY-20260924`. It retains the original cell IDs inside the new
 release namespace; the full identity is `(release_id, cell_id)`. Final
 registration must bind selected clean fixtures, exact code/runtime identities,
 output storage and completion pointers. No release is created here.
 
-The clean study budget is 36 pilot + 144 development + 864 confirmation
-episodes across two models and three families. Use the same selected layouts
-for both models. Prior-cohort outcomes and completion pointers do not populate
+The clean study budget is 54 pilot + 216 development + 1,296 confirmation
+episodes across three checkpoints and three families. Use the same selected layouts
+for all three checkpoints. Prior-cohort outcomes and completion pointers do not populate
 this clean queue; no additional episodes are hidden in a completed release.
 The original source repositories and their evidence remain untouched.
 
@@ -57,5 +57,5 @@ technical missingness separately. Compare generated futures with execution
 only where a verified physical time map and matching view exist; otherwise
 that forecast score is unavailable.
 
-**Prepare the scene package and handoff only. The 1,044 learned-policy episodes
+**Prepare the scene package and handoff only. The 1,566 learned-policy episodes
 are cluster-only and are not authorized to start.**

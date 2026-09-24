@@ -55,7 +55,7 @@ def create_release(*, output: Path, release_id: str, protocol: Path, prompts: Pa
         raise ContractError("release output must be a new directory")
     if stage not in STAGE_EPISODES:
         raise ContractError("release stage must be P, D, or C")
-    if model not in {"N3", "D1"} or family not in {"LAT", "HEIGHT", "DIST"}:
+    if model not in {"N3", "E3", "F3"} or family not in {"LAT", "HEIGHT", "DIST"}:
         raise ContractError("release must select one registered model/family branch")
     binding = load_json(runtime_binding, "runtime binding")
     missing = REQUIRED_BINDING_FIELDS - set(binding)
@@ -70,8 +70,8 @@ def create_release(*, output: Path, release_id: str, protocol: Path, prompts: Pa
     authorizations = binding.get("stage_authorizations")
     validate_stage_authorizations(authorizations, stage)
     rows = _queue_rows(planned_queue)
-    if len(rows) != 1044:
-        raise ContractError("only the frozen 1044-cell queue can be released")
+    if len(rows) != 1566:
+        raise ContractError("only the frozen 1566-cell queue can be released")
     output.mkdir(parents=True)
     for source, name in ((protocol, "protocol.json"), (prompts, "prompts.json"), (fixtures, "fixtures.json"), (runtime_binding, "runtime_binding.json")):
         shutil.copyfile(source, output / name)
@@ -112,7 +112,7 @@ def render_job(*, release: Path, template: Path, output: Path, model: str, famil
     loaded = load_release(release)
     loaded.partition(model, family, stage)
     binding = loaded.binding
-    if model not in {"N3", "D1"} or family not in {"LAT", "HEIGHT", "DIST"} or stage not in STAGE_EPISODES:
+    if model not in {"N3", "E3", "F3"} or family not in {"LAT", "HEIGHT", "DIST"} or stage not in STAGE_EPISODES:
         raise ContractError("invalid Job partition")
     limits = binding.get("cpu_memory_limits")
     if not isinstance(limits, dict) or not {"cpu_request", "memory_request", "cpu_limit", "memory_limit"}.issubset(limits):
@@ -159,7 +159,7 @@ def main() -> None:
     create.add_argument("--planned-queue", type=Path, required=True); create.add_argument("--fixtures", type=Path, required=True)
     create.add_argument("--runtime-binding", type=Path, required=True); create.add_argument("--resource-owner", required=True)
     create.add_argument("--stage", choices=("P", "D", "C"), required=True)
-    create.add_argument("--model", choices=("N3", "D1"), required=True)
+    create.add_argument("--model", choices=("N3", "E3", "F3"), required=True)
     create.add_argument("--family", choices=("LAT", "HEIGHT", "DIST"), required=True)
     render = commands.add_parser("render-job")
     render.add_argument("--release", type=Path, required=True); render.add_argument("--template", type=Path, required=True)

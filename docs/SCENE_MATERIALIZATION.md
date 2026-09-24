@@ -1,25 +1,22 @@
 # Offline scene handoff
 
 `tools/materialize_scene_handoff.py` turns a **ready, complete 87-layout scene
-registry** into destination-specific scene overlays and 1,044 planned cell
+registry** into destination-specific scene overlays and 1,566 planned cell
 bindings. It runs no simulator, model, network request or release operation.
 
-The [complete registry](../artifacts/workshops/spatial_grounding_v1/scene_package_20260924/scene-registry.json)
-has passed the full materializer against the workstation's pinned RoboLab
-assets using study commit `ba8da02cd4c2252b9bcc108b70520dd1a85724a7` and
-Python 3.11.14. The [current receipt](../handoff/close-camera-materialization.json)
-records 87 rebuilt layouts, 1,044 bound planned cells, zero native runs and
-zero model requests. The output remains `physical_qualified_runtime_pending`.
+Use the [complete registry](../artifacts/workshops/spatial_grounding_v1/scene_package_20260924/scene-registry.json),
+the current N3/E3/F3 queue and camera revision
+`close-oblique-v3-full-objects-20260924`. The [delivery index](../handoff/delivery.json)
+records the latest checked materialization and its exact source commit,
+workstation output path and camera identity. Regenerate the output at the
+cluster's actual paths; workstation paths are not portable.
 
-The actual destination-bound output is at
-`/home/ali/sgw-scene-design-20260923/evidence/SGW-CLOSE-HANDOFF-20260924`
-on the workstation. The receipt binds camera revision
-`close-oblique-v2-20260924`; see [camera checks](CAMERA_ALIGNMENT.md).
-Regenerate the output at the cluster's actual paths using the instructions below.
-
-The [earlier receipt](../handoff/workstation-materialization.json) and
-`SGW-FINAL-HANDOFF-20260924` output are retained as history. Their binding lacks
-the current camera identity and is rejected by the current environment.
+The earlier `workstation-materialization.json`, `close-camera-materialization.json`
+and `full-object-camera-materialization.json` receipts remain historical.
+They describe the former 1,044-cell queue; the first two also predate the
+current camera revision. Do not use them as the current runtime binding.
+All materializations remain physical fixtures pending model/runtime
+qualification, never learned-policy releases.
 
 Run it from the clean committed study checkout at the destination where the
 pinned RoboLab checkout and asset payloads already exist. The output must be a
@@ -72,7 +69,7 @@ Outputs:
   physical fixture hashes. `fixture_sha256` hashes that layout's
   `physical-fixture.json` bytes.
 - `environment-binding.json` has the fields consumed by `JointPositionBinding`,
-  with the current camera revision/hash and 1,044 explicit cells. Loading a
+  with the current camera revision/hash and 1,566 explicit cells. Loading a
   binding with a missing or different camera identity fails. Each cell uses
   `scene_seed=int(environment_seed)` from
   the frozen queue, not the candidate-generation seed. Both models and all six
@@ -85,7 +82,7 @@ Outputs:
 These are **physical fixtures pending runtime qualification**. The fixture
 export has `runtime_qualified=false`, `status=physical_qualified_runtime_pending`
 and `time_maps={}`. `release.create_release` deliberately rejects it. A future
-authorized integration must validate destination resets/rendering and N3/D1
+authorized integration must validate destination resets/rendering and N3/E3/F3
 runtimes, provide real time/camera-map evidence, and create a separate qualified
 fixture receipt that preserves these physical layout hashes. Use the original
 frozen `planned_cells.csv` as the eventual release source. Put future clean

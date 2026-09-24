@@ -1,16 +1,16 @@
 # Spatial instructions in world–action models: experiment specification
 
-Study **SGW-01**, clean-scene documentation, 24 September 2026. Owner: Ali-Adeeb Abbas. The frozen registry bytes and scientific comparisons are unchanged.
+Study **SGW-01**, clean-scene documentation, 24 September 2026. Owner: Ali-Adeeb Abbas. Protocol revision 1.2 adopts N3/E3/F3. Prompt bytes, physical scenes, scoring and within-layout comparisons are unchanged; the old registry is archived.
 
 **Purpose:** Give execution agents a finite, resumable study of when spatial language changes predicted and executed behavior, and when equivalent descriptions fail to preserve the same goal.
 
-**Current status:** Scene generation, physical scoring, recording, release construction and the production worker are implemented. All 87 selected layouts passed their six scripted checks, and the final registry verifies their identities, side balance and stage assignments. Target-runtime assets, native N3/D1 reset/action behavior and forecast time/camera mappings still require their actual cluster qualification receipts. No clean learned-policy results are available and no study launch is authorized. See [current status](../../../../REPOSITORY_STATUS.json).
+**Current status:** Scene generation, physical scoring, recording, release construction and the production worker are implemented. All 87 selected layouts passed their six scripted checks, and the final registry verifies their identities, side balance and stage assignments. Target-runtime assets, native N3/E3/F3 reset/action behavior and forecast time/camera mappings still require their actual cluster qualification receipts. No clean learned-policy results are available and no study launch is authorized. See [current status](../../../../REPOSITORY_STATUS.json).
 
 **Deliverables:** the frozen protocol/prompt/queue files; this scientific specification; the [canonical manuscript](../../../../docs/scene_design_rtx/overleaf/main.tex); and the current [cluster handoff](../../../../docs/CLUSTER_HANDOFF.md) and [agent tasks](../../../../docs/AGENT_TASKS.md). The manuscript reports planned analyses until clean model outcomes exist.
 
 ## Workshop focus
 
-The paper is WAM-only and uses the clean cohort. Its question is whether generated futures remain reliable under spatial instruction changes. [WORKSHOP_FIT.md](WORKSHOP_FIT.md) explains the benchmark-design and prediction-reliability framing. The fixed study contains only N3 and D1; there is no additional behavioral baseline branch.
+The paper is WAM-only and uses the clean cohort. Its question is whether generated futures remain reliable under spatial instruction changes. [WORKSHOP_FIT.md](WORKSHOP_FIT.md) explains the benchmark-design and prediction-reliability framing. The fixed study contains N3, E3 and F3; there is no additional behavioral baseline branch.
 
 ## 1. Question and contribution
 
@@ -38,9 +38,10 @@ Only the separately registered clean study contributes model outcomes to this pa
 | ID | Configuration | Required identity |
 | --- | --- | --- |
 | N3 | Cosmos3 Nano Policy DROID, guidance 3 | `nvidia/Cosmos3-Nano-Policy-DROID`, revision `6706d7680581c255ff61e0f3bb49d90eac55c79e`; four denoising steps, shift 5, history length 1, conditioning FPS 15, resolution setting 480; joint-position interface; up to 32 actions executed per request. |
-| D1 | DreamZero DROID, official conditional-action path | Checkpoint revision `96ad344138c66e82536422432ad742f015784942`; video guidance 5; 16 configured inference steps with actual evaluated/cache steps recorded; execute eight returned actions per replan; effective noise 1140. Resolve the official asset identifier from the pinned provenance before download. |
+| E3 | Cosmos3 Edge Policy DROID | `nvidia/Cosmos3-Edge-Policy-DROID`; immutable pins, official settings and runtime integration pending. |
+| F3 | FLUX 3 Action DROID | `black-forest-labs/flux-3-action-droid`, root BF16 package; immutable pins, runtime integration and same-request decoded-future export pending. |
 
-For D1, do not silently substitute the custom s2 action-guidance patch. A patched scale-1 path is acceptable only if identical-input actions and generated latents match the official conditional path. If not, label it as another configuration and do not run it in D1 cells.
+D1 is retired and rejected by active execution paths. The study has three checkpoints from two model families. Nano versus Edge is not a controlled model-size ablation. E3/F3 inference remains disabled until their adapters and identities are implemented. FLUX currently returns actions only: qualify same-request latent capture, decoding, camera mapping and physical-time alignment before including its forecasts; otherwise explicitly limit the forecast analysis to supported models.
 
 Record model code commit, checkpoint hash, simulator/bridge commits, image digest, dependency versions, inference settings, returned/executed horizons, and effective randomness. These remain constant within each model's confirmation cohort. No cross-model ranking or causal claim about the benefit of world modeling is planned.
 
@@ -88,20 +89,20 @@ The exact workspace bounds, camera/time maps, and asset identities are measured 
 
 | Stage | New layouts / family | Families | Models | Goals × forms | Episodes |
 | --- | ---: | ---: | ---: | ---: | ---: |
-| P: recording pilot | 1 | 3 | 2 | 2 × 3 | 36 |
-| D: development | 4 | 3 | 2 | 2 × 3 | 144 |
-| C: confirmation | 24 | 3 | 2 | 2 × 3 | 864 |
-| Maximum core | 29 | 3 | 2 | 6 | **1,044** |
+| P: recording pilot | 1 | 3 | 3 | 2 × 3 | 54 |
+| D: development | 4 | 3 | 3 | 2 × 3 | 216 |
+| C: confirmation | 24 | 3 | 3 | 2 × 3 | 1,296 |
+| Maximum core | 29 | 3 | 3 | 6 | **1,566** |
 
-Each family alone is 348 episodes; confirmation is 288/family. A model-family branch is 174 episodes. There are 174 six-episode blocks in total. P and D never enter confirmation estimates. Candidate fixtures are shared across models; the independent sampling unit is the layout, not a frame, action request, or repeated condition. Twenty-four layouts/family is a bounded first study designed to estimate large effects, not a power claim for small equivalence margins.
+Each family alone is 522 episodes; confirmation is 432/family. A model-family branch is 174 episodes. There are 261 six-episode blocks in total. P and D never enter confirmation estimates. Candidate fixtures are shared across models; the independent sampling unit is the layout, not a frame, action request, or repeated condition. Twenty-four layouts/family is a bounded first study designed to estimate large effects, not a power claim for small equivalence margins.
 
-`planned_cells.csv` freezes identifiers, prompts, seeds, and within-block order. Confirmation uses four six-block Latin cycles so each condition occupies each execution position four times per family/model. Both models use the same order for a layout. The queue environment seed initializes reset/simulator randomness after loading the separately qualified fixture; record the fixture-generation seed in its fixture manifest. It does not replace qualification or force a candidate pose. Check proposed seeds against existing run ledgers and runtime integer limits before release; DreamZero block labels are never described as independent noise draws.
+`planned_cells.csv` freezes identifiers, prompts, seeds, and within-block order. Confirmation uses four six-block Latin cycles so each condition occupies each execution position four times per family/model. All three checkpoints use the same order for a layout. The queue environment seed initializes reset/simulator randomness after loading the separately qualified fixture; record the fixture-generation seed in its fixture manifest. It does not replace qualification or force a candidate pose. Check proposed seeds against existing run ledgers and runtime integer limits before release; planned seeds for E3/F3 require verification of effective runtime seed handling.
 
 After explicit learned-policy authorization, follow the current cluster handoff: qualify each model/family branch and advance its pilot, development and confirmation in order; within a qualified model, finish intact six-cell blocks before changing family. P→D→C advancement depends on recorder/scorer/runtime correctness, not favorable success rates. After authorization, development freeze and all required receipts, the existing worker consumes the finite released confirmation queue through its persistent completion mechanism. This specification itself grants no launch permission. No automatic sample expansion, rerun of valid failures, extra model, or training job.
 
 **Execution:** 450 controller actions per episode with goal-triggered termination disabled. Log every success event but continue observing and controlling to action 450. Keep within-model control timing constant. Report simulated duration; 450 actions need not equal the same duration across models. A simulator safety termination is an observed censored model outcome, not a retry. Preserve full traces; never carry a censored endpoint forward to action 450.
 
-Nonbehavioral recording checks: six fixed-input requests/model (same-input D+ twice and D− once, each with and without additional output decoding), giving **12 requests**. If decoding is mandatory, re-decode retained latents offline instead of changing inference. Add three official-reference requests only if qualifying a patched D1 scale-1 path. Record nondeterminism rather than pretending seeds control it. These calls are separate from 1,044 episodes. Scripted fixture checks are also counted separately.
+Nonbehavioral recording checks: six fixed-input requests/model (same-input D+ twice and D− once, each with and without additional output decoding), giving **18 requests**. If decoding is mandatory, re-decode retained latents offline instead of changing inference. Record nondeterminism rather than pretending seeds control it. These calls are separate from 1,566 episodes. Scripted fixture checks are also counted separately.
 
 ## 7. Recordings and prediction measurements
 
@@ -111,7 +112,7 @@ For every prediction frame record its intended physical target time and mapping 
 
 Select two requests per episode at normalized request-index positions 0.25 and 0.75 (floor of fraction×(n−1), deduplicate for short episodes). Selection uses metadata only, includes failures, and never replaces an ambiguous request with an easier one. Preserve first requests additionally for matched-input comparisons. Later requests see diverged states; do not describe their differences as a prompt-only intervention.
 
-Within each model choose H on development data as the largest documented exposed positive forecast time inside its unchanged executed prefix; freeze it before confirmation. Use the same H across forms and families for that model. If some family cannot be measured at H, record the limitation rather than change H after inspecting outcomes. Two blinded annotators localize target/reference centers in current, predicted and actual images; adjudicate disagreements >0.02 image diagonals. At most 1,728 selected confirmation requests and 10,368 initial frame judgments (two raters × three images), before adjudication. This is an annotation budget, not new inference.
+Within each model choose H on development data as the largest documented exposed positive forecast time inside its unchanged executed prefix; freeze it before confirmation. Use the same H across forms and families for that model. If some family cannot be measured at H, record the limitation rather than change H after inspecting outcomes. Two blinded annotators localize target/reference centers in current, predicted and actual images; adjudicate disagreements >0.02 image diagonals. At most 2,592 selected confirmation requests and 15,552 initial frame judgments (two raters × three images), before adjudication. This is an annotation budget, not new inference.
 
 **Primary prediction-fidelity measure:** for each identifiable object pair, relative 2D position error at matched H, normalized by image diagonal, compared with persistence. Positive skill = actual change from current minus prediction error. Keep families/models separate; score target and reference positions separately as a check against spurious reference motion. For DIST also track the plate. Persistence is the required equal-input baseline; constant velocity is secondary and uses extra history relative to Nano's history-1 input.
 
@@ -154,7 +155,7 @@ Do not conclude equivalence from a nonsignificant effect. Any equivalence claim 
 
 A failure-stage label describes when an observed criterion failed. It does not by itself identify why. “The model ignored language” requires evidence beyond low task success or small action differences.
 
-The scope remains the fixed clean N3/D1 study. Additional models, prompts, scene interventions, training comparisons or samples require a separate scientific registration and explicit authorization. If a new hypothesis follows from confirmation outcomes, use existing recordings for exploratory analysis and a separately registered cohort for new confirmation.
+The scope remains the fixed clean N3/E3/F3 study. Additional models, prompts, scene interventions, training comparisons or samples require a separate scientific registration and explicit authorization. If a new hypothesis follows from confirmation outcomes, use existing recordings for exploratory analysis and a separately registered cohort for new confirmation.
 
 ## 10. Paper and stop conditions
 
@@ -162,4 +163,4 @@ The [canonical manuscript](../../../../docs/scene_design_rtx/overleaf/main.tex) 
 
 Prioritize two main results: (1) per-family D/C/I completion and directional margins; (2) aggregate same-horizon prediction–execution agreement/disagreement, persistence skill and unknown coverage, illustrated by aligned cases. Use the three-instruction schematic as setup and failure-stage/object trajectories as diagnostic detail. A short-horizon forecast is not scored as a prediction of eventual task success. Never choose the most dramatic clips without also giving the selection rule and aggregate denominator.
 
-The finite study ends at 1,044 valid model episodes or a documented blocked/reduced branch. Valid poor performance is a result and never triggers retry or automatic extra training. Cluster agents stop for exhausted retry limits, provenance drift, unsafe fixture/renderer behavior, exhausted storage, or resource budget. They keep other independent qualified branches progressing where safe. See the [current cluster handoff](../../../../docs/CLUSTER_HANDOFF.md) for supported partitions, persistent completion and remaining native qualification.
+The finite study ends at 1,566 valid model episodes or a documented blocked/reduced branch. Valid poor performance is a result and never triggers retry or automatic extra training. Cluster agents stop for exhausted retry limits, provenance drift, unsafe fixture/renderer behavior, exhausted storage, or resource budget. They keep other independent qualified branches progressing where safe. See the [current cluster handoff](../../../../docs/CLUSTER_HANDOFF.md) for supported partitions, persistent completion and remaining native qualification.

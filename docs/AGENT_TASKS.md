@@ -1,15 +1,15 @@
 # Work split for the cluster agents
 
-This study has one shared scene package and two model branches. Scene design
+This study has one shared scene package and three model branches. Scene design
 belongs to this repository. The cluster agents should use its selected scenes,
 not invent another environment or restart the scene search.
 
-The 1,044-episode study has not been started. The work below prepares a future
+The 1,566-episode study has not been started. The work below prepares a future
 launch; running learned policies requires the user's separate instruction.
 
 ## 1. Shared scene transfer
 
-Owner: one agent for both model branches.
+Owner: one agent for all three model branches.
 
 1. Use `REPOSITORY_STATUS.json` and the [completed scene registry](../artifacts/workshops/spatial_grounding_v1/scene_package_20260924/scene-registry.json). It contains 87 selected layouts with `ready: true`; preserve those assignments.
 2. Install the pinned RoboLab checkout and exact asset bytes. Use
@@ -22,24 +22,25 @@ Owner: one agent for both model branches.
    Reuse the completed scripted geometry evidence; its old exterior images
    are historical. Regenerate the current camera binding at destination paths.
 4. Record the actual image, storage, source commit and asset paths. Give the
-   same physical fixture hashes and environment binding to both model owners.
+   same physical fixture hashes and environment binding to all three model owners.
 
 Deliverable: the materialized physical package and its exact location. This
 does not create a runtime release or establish model/time-map qualification.
 
 ## 2. Model integration
 
-Owners: one N3 agent and one D1 agent, working independently.
+Owners: model integration for N3, E3 and F3. D1 is retired; do not allocate a worker to it. E3/F3 runtime factories deliberately reject launch until implemented.
 
-Use the official pinned model configuration and the existing wrapper. Bind
+Retain N3's pinned configuration. Implement E3/F3 integrations and pin their official configurations separately; do not reuse D1 wrappers or identities. Bind
 the actual policy endpoint, GPU ownership, reset/session behavior, action
 interface and model-input cameras. Use `effective_policy_seed` from the frozen
 queue; the environment uses its separate `environment_seed`.
 
-The offline N3/D1 image extraction, slot mapping and input resize already
-passed on six real camera inputs and an asymmetric synthetic image. Reuse
-those checks with their exact pinned sources. Cluster server behavior, later
-model transforms and decoded-future timing still need actual runtime evidence.
+Historical offline N3 and retired-D1 image checks passed on six real camera
+inputs and an asymmetric synthetic image. They do not qualify E3/F3 inputs.
+Cluster server behavior, each new model's image transforms and decoded-future
+timing need actual evidence. FLUX currently returns actions only; add
+same-request future capture/decoding before scoring its forecasts.
 
 Generated futures need an evidenced camera and physical-time mapping to the
 actions that were actually executed. If that mapping or decoded output is
@@ -52,18 +53,18 @@ learned-policy requests until the user authorizes that work.
 
 ## 3. Execution after authorization
 
-Use the [18 existing model/family/stage partitions](CLUSTER_HANDOFF.md), with
+Use the [27 model/family/stage partitions](CLUSTER_HANDOFF.md), with
 P, then D, then C. Keep each six-condition block intact and in its frozen
-order. All 18 releases belong under one **fresh clean-study parent**, separate
+order. All 27 releases belong under one **fresh clean-study parent**, separate
 from earlier completion and attempt records. Respect the existing model locks.
 
 Do not change scenes or prompts in response to model failures. Valid failures
 are results. Technical interruptions retain their original records and use
 the existing attempt/resume mechanism. Do not repeat completed cells.
 
-Deliverables: 1,044 accounted-for planned cells, their completion/missingness
+Deliverables: 1,566 accounted-for planned cells, their completion/missingness
 records, raw observations and generated outputs, and the recorded time maps.
-The budget is 36 pilot, 144 development and 864 confirmation episodes.
+The budget is 54 pilot, 216 development and 1,296 confirmation episodes.
 
 ## 4. Analysis and paper
 

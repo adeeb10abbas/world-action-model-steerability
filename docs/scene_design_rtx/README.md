@@ -79,6 +79,6 @@ ordinary Git. A portable input package does not establish target-runtime
 qualification.
 
 The intended learned-policy cohort is clean-only and separately named, with
-1,044 planned cells. See [CLEAN_SCENE_COHORT.md](../CLEAN_SCENE_COHORT.md) and
+1,566 planned cells. See [CLEAN_SCENE_COHORT.md](../CLEAN_SCENE_COHORT.md) and
 [CLUSTER_HANDOFF.md](../CLUSTER_HANDOFF.md). The learned-policy study remains
 unlaunched by this repository preparation.

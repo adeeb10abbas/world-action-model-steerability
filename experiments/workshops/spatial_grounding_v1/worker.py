@@ -24,7 +24,7 @@ from .gpu_idle_probe import select_idle
 from .recorder import AttemptRecorder, atomic_json, next_attempt_number, utc_now
 
 EXIT_RELEASE_INVALID, EXIT_ATTEMPTS_EXHAUSTED, EXIT_STORAGE_BUDGET_BLOCKED = 42, 43, 44
-SOURCE_QUEUE_EPISODE_COUNT = 1044
+SOURCE_QUEUE_EPISODE_COUNT = 1566
 MAX_IDLE_PROBE_AGE_SECONDS = 300
 STOP_REQUESTED = False
 STOP_GRACE_EXPIRED = False
@@ -603,7 +603,7 @@ def run_partition(release: Release, *, model: str, family: str, stage: str, max_
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--release", type=Path, required=True)
-    parser.add_argument("--model", choices=("N3", "D1"), required=True)
+    parser.add_argument("--model", choices=("N3", "E3", "F3"), required=True)
     parser.add_argument("--family", choices=("LAT", "HEIGHT", "DIST"), required=True)
     parser.add_argument("--stage", choices=("P", "D", "C"), required=True)
     parser.add_argument("--resume", action="store_true")

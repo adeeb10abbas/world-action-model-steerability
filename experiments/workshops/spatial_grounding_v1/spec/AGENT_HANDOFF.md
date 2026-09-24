@@ -6,7 +6,7 @@
 
 Read [EXPERIMENT_SPEC.md](EXPERIMENT_SPEC.md) for the D/C/I comparison, fixed physical scorer, aligned forecast/persistence analyses and missingness rules. [WORKSHOP_FIT.md](WORKSHOP_FIT.md) explains the WAM contribution. Use only the clean cohort in the [canonical paper](../../../../docs/scene_design_rtx/overleaf/main.tex).
 
-Preserve the 18 exact prompt strings, 1,044 planned cell identities, seeds and within-block order. A layout/model block contains all six conditions. Pilot/development/confirmation totals remain 36/144/864. The existing production release/worker path supports 18 model × family × stage partitions, with intact matched blocks.
+Preserve the 18 exact prompt strings and revised 1,566 planned cell identities, seeds and within-block order. A layout/model block contains all six conditions. Pilot/development/confirmation totals remain 54/216/1296. The existing production release/worker path supports 27 model × family × stage partitions, with intact matched blocks.
 
 ## Implemented and pending
 

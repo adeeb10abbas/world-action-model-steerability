@@ -9,10 +9,10 @@ from tools.prepare_cluster_handoff import ENTRYPOINT, disabled_job, prepare_part
 
 def test_partition_export_keeps_every_frozen_cell_and_matched_block_once():
     value = prepare_partitions()
-    assert value["stage_cell_counts"] == {"P": 36, "D": 144, "C": 864}
-    assert value["partition_count"] == 18
+    assert value["stage_cell_counts"] == {"P": 54, "D": 216, "C": 1296}
+    assert value["partition_count"] == 27
     cells = [c for p in value["partitions"] for b in p["blocks"] for c in b["cells"]]
-    assert len(cells) == len({c["cell_id"] for c in cells}) == 1044
+    assert len(cells) == len({c["cell_id"] for c in cells}) == 1566
     for partition in value["partitions"]:
         assert partition["episode_count"] == {"P": 6, "D": 24, "C": 144}[partition["stage"]]
         for block in partition["blocks"]:

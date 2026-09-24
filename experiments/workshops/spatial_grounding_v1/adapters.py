@@ -576,14 +576,21 @@ class DreamZeroPolicyAdapter(_BaseAdapter):
             raise AdapterError("D1 response uses custom action guidance")
 
 
-def make_adapter(model: str, **kwargs: Any) -> NanoPolicyAdapter | DreamZeroPolicyAdapter:
-    """Construct only one of the two released SGW-01 adapters."""
-
-    if model == "N3":
-        return NanoPolicyAdapter(**kwargs)
+def require_implemented_model(model: str) -> None:
+    """Reject retired and unfinished runtimes before loading any resources."""
     if model == "D1":
-        return DreamZeroPolicyAdapter(**kwargs)
-    raise AdapterError(f"unsupported SGW-01 model: {model}")
+        raise AdapterError("DreamZero (D1) is retired from the active SGW-01 study")
+    if model in {"E3", "F3"}:
+        raise AdapterError(f"{model} runtime is pending integration; no fallback is permitted")
+    if model != "N3":
+        raise AdapterError(f"unsupported SGW-01 model: {model}")
+
+
+def make_adapter(model: str, **kwargs: Any) -> NanoPolicyAdapter:
+    """Construct an implemented adapter from the active study roster."""
+
+    require_implemented_model(model)
+    return NanoPolicyAdapter(**kwargs)
 
 
 def _load_transport_factory() -> Callable[..., Transport]:
@@ -606,10 +613,9 @@ def _load_transport_factory() -> Callable[..., Transport]:
 def load_production_adapter(model: str) -> ProductionAdapter:
     """Load a real pinned runtime adapter; never returns a fake/test transport."""
 
-    if model not in {"N3", "D1"}:
-        raise AdapterError(f"unsupported SGW-01 model: {model}")
+    require_implemented_model(model)
     factory = _load_transport_factory()
-    config = dict(NANO_CONFIG if model == "N3" else DREAMZERO_CONFIG)
+    config = dict(NANO_CONFIG)
     try:
         runtime = factory(model=model, config=config)
     except TypeError as exc:
@@ -618,9 +624,8 @@ def load_production_adapter(model: str) -> ProductionAdapter:
     transport = getattr(runtime, "transport", runtime)
     if not callable(transport):
         raise AdapterError("pinned runtime factory did not return a callable transport")
-    policy_type = NanoPolicyAdapter if model == "N3" else DreamZeroPolicyAdapter
     return ProductionAdapter(
-        policy_type,
+        NanoPolicyAdapter,
         transport=transport,
         transport_factory=factory,
         environment_factory=environment_factory,

@@ -129,7 +129,7 @@ def test_materializes_one_candidate_per_layout_and_consumable_cell_bindings(inpu
     root = inputs['output']
     assert result['status'] == 'physical_qualified_runtime_pending'
     assert result['learned_policy_launch_authorized'] is False
-    assert result['layout_count'] == 87 and result['cell_count'] == 1044
+    assert result['layout_count'] == 87 and result['cell_count'] == 1566
     assert len(list((root/'layouts').glob('*/candidate.json'))) == 87
     assert len(list((root/'layouts').glob('*/scene.usda'))) == 87
     assert original.read_bytes() == original_bytes
@@ -137,11 +137,11 @@ def test_materializes_one_candidate_per_layout_and_consumable_cell_bindings(inpu
     binding = json.loads((root/'environment-binding.json').read_text())
     assert fixtures['status'] == 'physical_qualified_runtime_pending' and fixtures['time_maps'] == {}
     assert fixtures['runtime_qualified'] is False
-    assert len(binding['cells']) == 1044
+    assert len(binding['cells']) == 1566
     rows = [json.loads(line) for line in (root/'bound-cells.jsonl').read_text().splitlines()]
     assert {row['status'] for row in rows} == {'PLANNED_NOT_RELEASED'}
     assert all(row['time_map_sha256'] == row['runtime_sha256'] == '' for row in rows)
-    row = next(row for row in rows if row['cell_id'] == 'DIST-C24-D1-I-NEG')
+    row = next(row for row in rows if row['cell_id'] == 'DIST-C24-F3-I-NEG')
     record = binding['cells'][row['cell_id']]
     assert record['scene_seed'] == 20282946  # frozen queue, not candidate generation seed
     assert record['candidate_id'] == registry['layouts']['DIST-C24']['candidate_id']

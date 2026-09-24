@@ -27,7 +27,6 @@ packages = ["experiments", "tools"]
 # Full native workflows use an editable repository checkout and external assets.
 [tool.hatch.build.targets.wheel.force-include]
 "artifacts/vla_wam_shared_v2/pilot/expansion/cosmos3_nano_policy_droid_v2a011_registry.json" = "artifacts/vla_wam_shared_v2/pilot/expansion/cosmos3_nano_policy_droid_v2a011_registry.json"
-"artifacts/vla_wam_shared_v2/pilot/expansion/dreamzero_official_source_checkpoint_manifest.json" = "artifacts/vla_wam_shared_v2/pilot/expansion/dreamzero_official_source_checkpoint_manifest.json"
 
 [tool.hatch.build.targets.sdist]
 include = ["experiments/", "tools/", "tests/", "artifacts/", "docs/", "handoff/", "provenance/", "README.md", "AGENTS.md", "REPOSITORY_STATUS.json", "LICENSE_NOTICE.md", "pyproject.toml", "uv.lock"]
@@ -36,6 +35,7 @@ include = ["experiments/", "tools/", "tests/", "artifacts/", "docs/", "handoff/"
 addopts = "-ra"
 pythonpath = [".", "tests"]
 testpaths = [
+  "tests/test_sgw_model_retirement.py",
   "tests/test_sgw_contract.py",
   "tests/test_sgw_scoring.py",
   "tests/test_sgw_adapters.py",

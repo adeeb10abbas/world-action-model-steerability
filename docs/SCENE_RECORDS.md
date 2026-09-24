@@ -54,4 +54,4 @@ The compact records and scene inputs in Git are sufficient for the
 is needed only when inspecting or reprocessing the scripted trajectories.
 Destination-specific overlays must still be regenerated against the pinned
 RoboLab installation. None of these archives contains a learned-policy run
-from the planned 1,044-episode study.
+from the planned 1,566-episode study.

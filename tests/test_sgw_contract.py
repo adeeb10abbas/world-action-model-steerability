@@ -28,7 +28,7 @@ def make_release(tmp_path: Path) -> Path:
         "context": "ali", "namespace": "ali-ns", "resource_owner": "ali",
         "worker_image_digest": "registry.example/worker@sha256:" + "a" * 64,
         "pvc_name": "pvc", "pvc_mount_path": str(tmp_path), "pvc_access_mode": "RWX",
-        "lock_test_receipt": "passed", "model_gpu_counts": {"N3": 1, "D1": 2},
+        "lock_test_receipt": "passed", "model_gpu_counts": {"N3": 1},
         "cpu_memory_limits": {}, "node_gpu_type": "B200", "cluster_version": "v1",
         "source_commit": "a" * 40, "model_code_commits": {}, "simulator_commit": "b" * 40,
         "renderer_receipt": "passed", "persistent_write_receipt": "passed", "checkpoint_hashes": {},
@@ -47,7 +47,7 @@ def make_release(tmp_path: Path) -> Path:
     budget_receipt = tmp_path / "budget.json"
     _write(budget_receipt, {
         "status": "approved", "release_id": "r1", "source_queue_sha256": source_queue_sha,
-        "source_queue_episode_count": 1044, "pvc_name": binding["pvc_name"],
+        "source_queue_episode_count": 1566, "pvc_name": binding["pvc_name"],
         "pvc_mount_path": binding["pvc_mount_path"], "study_root": binding["source_root"],
         "runtime_identity_sha256": runtime_identity, "model": "all_models",
         "approved_gpu_hours": 20.0, "estimated_remaining_gpu_hours": 10.0,
@@ -59,7 +59,7 @@ def make_release(tmp_path: Path) -> Path:
     _write(root / "protocol.json", {"study_id": "SGW-01"})
     authorization_receipt = tmp_path / "operational_authorization.json"
     receipt_identity = {
-        "release_id": "r1", "source_queue_sha256": source_queue_sha, "source_queue_episode_count": 1044,
+        "release_id": "r1", "source_queue_sha256": source_queue_sha, "source_queue_episode_count": 1566,
         "pvc_name": binding["pvc_name"], "pvc_mount_path": binding["pvc_mount_path"],
         "study_root": binding["source_root"], "runtime_identity_sha256": runtime_identity,
     }
@@ -71,7 +71,7 @@ def make_release(tmp_path: Path) -> Path:
         "scope": {
             "context": binding["context"], "namespace": binding["namespace"], "pvc": binding["pvc_name"],
             "persistent_study_root": binding["source_root"], "models": ["N3"],
-            "maximum_registered_behavioral_episodes": 1044, "maximum_attempts_per_behavioral_cell": 3,
+            "maximum_registered_behavioral_episodes": 1566, "maximum_attempts_per_behavioral_cell": 3,
         },
         "constraints": {
             "max_concurrent_model_workers": 2, "max_total_allocated_gpus": 4,

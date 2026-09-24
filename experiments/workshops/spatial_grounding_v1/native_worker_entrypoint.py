@@ -18,7 +18,7 @@ from typing import Any
 def _parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(description=__doc__, allow_abbrev=False)
     parser.add_argument("--release", type=Path, required=True)
-    parser.add_argument("--model", choices=("N3", "D1"), required=True)
+    parser.add_argument("--model", choices=("N3", "E3", "F3"), required=True)
     parser.add_argument("--family", choices=("LAT", "HEIGHT", "DIST"), required=True)
     parser.add_argument("--stage", choices=("P", "D", "C"), required=True)
     parser.add_argument("--resume", action="store_true")

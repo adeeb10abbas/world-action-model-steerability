@@ -1,15 +1,15 @@
 # Cluster handoff: completed scenes, no study launch
 
 **No learned-policy study launch is authorized.** This handoff prepares the
-existing 1,044-cell study for a later cluster agent. It does not allocate
+existing 1,566-cell study for a later cluster agent. It does not allocate
 resources, release cells, run models, or certify model-runtime readiness. Scene
 construction and qualification are separate from learned-policy execution.
 
 The [final scene registry](../artifacts/workshops/spatial_grounding_v1/scene_package_20260924/scene-registry.json) is ready: 87 layouts, 29 per family, and 522 passing scripted trials. The [completion receipt](../handoff/physical-scene-completion.json) records the checks. Use these selected designs and assignments; no further scene search is needed. [Recording locations](SCENE_RECORDS.md) include the eight rejected candidates. The model interfaces and physical time/camera mappings still need cluster qualification.
 
-The frozen 1,044-cell queue is a **template for a separately named clean-scene
+The revised N3/E3/F3 1,566-cell queue is a **template for a separately named clean-scene
 release**, as proposed in [CLEAN_SCENE_COHORT.md](CLEAN_SCENE_COHORT.md).
-Preserve its original cell IDs inside that new release namespace, with selected
+The former N3/D1 registry is archived under `provenance/retired-n3-d1-registry-v1.1/`. Preserve the revised cell IDs inside that new release namespace, with selected
 clean fixtures and the same model/family/stage/condition counts. No clean
 release is created here. This repository and paper include only the clean
 cohort. Its output namespace and completion pointers must be independent of
@@ -19,27 +19,27 @@ prior experiments, which remain outside this package.
 
 | Stage | Layouts per family | Cells per model/family partition | Partitions | Total cells |
 | --- | ---: | ---: | ---: | ---: |
-| Pilot P | 1 | 6 | 6 | 36 |
-| Development D | 4 | 24 | 6 | 144 |
-| Confirmation C | 24 | 144 | 6 | 864 |
-| Total | 29 | 174 across stages | 18 across stages | 1,044 |
+| Pilot P | 1 | 6 | 9 | 54 |
+| Development D | 4 | 24 | 9 | 216 |
+| Confirmation C | 24 | 144 | 9 | 1,296 |
+| Total | 29 | 174 across stages | 27 across stages | 1,566 |
 
-Each family (LAT, HEIGHT, DIST) uses the same selected layouts for both models
-(N3, D1). Each layout/model block contains all six conditions: D/C/I wording
+Each family (LAT, HEIGHT, DIST) uses the same selected layouts for all three checkpoints
+(N3, E3, F3). Each layout/model block contains all six conditions: D/C/I wording
 forms crossed with positive/negative goals. There are **87 distinct layout
-slots, 174 matched six-cell blocks, and 18 unique prompts**. Preserve the
+slots, 261 matched six-cell blocks, and 18 unique prompts**. Preserve the
 frozen queue order and each block's `within_block_order`.
 
 The current `Release.partition` and `native_worker_entrypoint` accept one
 complete **model × family × stage** selection. They require exactly 6, 24, or
 144 cells. They do not support arbitrary layout ranges, cell-index shards,
-or one Job per confirmation block. Split across the six model/family branches
+or one Job per confirmation block. Split across the nine model/family branches
 at each stage without splitting their matched blocks. Follow P → D → C using
 the existing technical readiness receipts; model failures remain results and
 must not be retried away.
 
 Partition count is not a concurrency allocation. The existing worker takes a
-shared-parent `locks/N3.lock` or `locks/D1.lock` before constructing a model.
+shared-parent `locks/N3.lock`, `locks/E3.lock`, or `locks/F3.lock` before constructing a model.
 With releases under one shared study parent, it permits one worker per model
 at a time. Keep that locking intact; do not create separate parents to evade
 ownership. Use actual available resources when a launch is later authorized.
@@ -79,21 +79,22 @@ contains no dated cluster launch manifests and invokes no V2/V3 validators.
 
 Use [the offline materializer](SCENE_MATERIALIZATION.md) with the final ready
 scene registry. It regenerates path-bound overlays, preserves the qualified
-geometry and appearance, and writes the 87-layout and 1,044-cell mappings.
+geometry and appearance, and writes the 87-layout and 1,566-cell mappings.
 Its physical-only output intentionally lacks model/runtime qualification.
 
-Use camera revision `close-oblique-v2-20260924`, documented in
-[CAMERA_ALIGNMENT.md](CAMERA_ALIGNMENT.md). The current workstation
-materialization is [the close-camera handoff](../handoff/close-camera-materialization.json).
-The original `SGW-FINAL-HANDOFF-20260924` binding predates this camera revision;
-the current environment rejects it. Rematerialize at cluster paths rather
-than copying or manually patching an old binding. Original scene geometry,
-layout assignments and all 522 scripted physical passes remain unchanged.
+Use camera revision `close-oblique-v3-full-objects-20260924`, documented in
+[CAMERA_ALIGNMENT.md](CAMERA_ALIGNMENT.md). The current input set is the
+1,566-cell N3/E3/F3 queue and all 87 selected geometries. The
+[delivery index](../handoff/delivery.json) identifies the latest checked
+materialization. Regenerate it at cluster paths; do not copy a workstation
+binding or patch an old binding by hand. Earlier 1,044-cell and v2-camera
+receipts remain historical evidence. Original geometry, assignments and all
+522 scripted physical passes remain unchanged.
 
 Transfer the selected **input JSON, family assignments, calibration, asset
 manifests, source hashes and qualification receipts** together. Preserve each
 selected layout ID, its appearance, support orientation, and measured object
-geometry. Use the same physical scene for all six conditions and both model
+geometry. Use the same physical scene for all six conditions and all three model
 branches. Keep P/D/C layout assignments distinct; multiple prompts or resets
 of one layout are not new independent layouts.
 
@@ -121,15 +122,15 @@ layout. The original hashed scene registrations remain unchanged.
 
 - **Seeds and prompts:** use each exported row's original `environment_seed`,
   `effective_policy_seed`, prompt text and SHA-256. N3's sampling seed varies
-  by registered layout; D1's effective native seed is 1140. Never replace
+  by registered layout; E3/F3 effective seed handling remains to be qualified. Never replace
   seeds with worker IDs. Prompts remain static for the full episode.
 - **Cameras and state:** retain the unchanged wrist and registered close
   exterior cameras. The historical sensor names remain for slot compatibility;
   their exterior positions now look down from the far side of the table.
   `policy_observations.py` uses
   `wrist_cam`, `over_shoulder_left_camera`, and `over_shoulder_right_camera`.
-  N3 maps exterior cameras to official one-based slots; D1 uses its official
-  extraction path. Policy input contains RGB and arm/gripper proprioception.
+  N3 maps exterior cameras to official one-based slots. E3/F3 camera packing
+  and image transforms must be qualified independently. Policy input contains RGB and arm/gripper proprioception.
   Object coordinates and scoring state are for measurement only.
   Both goal destinations and a 0.12 m lift envelope determine framing before
   any model outcomes; the view stays fixed across all six conditions.
@@ -139,8 +140,8 @@ layout. The original hashed scene registrations remain unchanged.
 - **Resets and actions:** perform a full physical reset and clear model
   session/cache for every cell. Verify reset positions within 3 mm and
   orientations within 2 degrees. Use the official absolute joint-position
-  action interface; N3 executes 32 actions per returned chunk and D1 executes
-  the official eight-action prefix. Stop at 450 actions, with no success-based
+  action interface; N3 executes up to 32 actions per returned chunk. Pin
+  E3/F3 returned and executed horizons during integration. Stop at 450 actions, with no success-based
   early termination; preserve explicit physical safety truncation separately.
 - **Physical outcomes:** keep the frozen 30 mm relation margin, 5 mm initial
   neutrality/reference-motion limits, 30 mm pickup held for three samples,
@@ -167,8 +168,9 @@ The production path needs qualified per-layout fixtures, the native
 AppLauncher startup. The owned runtime also needs its real model endpoint,
 `SGW01_SERVER_ARGV`, runtime receipt and the concrete trace reader. These
 values come from the working native environment; this tool does not guess
-them. D1 additionally needs its pinned client/server, bounded rank startup
-and reset/session behavior. Prove decoded-future physical timing and action
+them. E3/F3 adapters, source/checkpoint pins and reset behavior are pending;
+active runtime factories reject them until implemented. D1 is retired.
+FLUX needs same-request video capture and decoding. Prove physical timing and action
 prefix alignment for each model before scoring predictions.
 
 `release.create_release` already combines the full frozen source queue with
@@ -186,7 +188,7 @@ execution, measure pilot bytes and runtime using retained records: the current
 worker requires a 100 GiB free-space floor and at least 1.5 × measured pilot
 P95 episode bytes × the storage receipt's global episode count. Its current
 implementation conservatively requires that count to cover at least all
-1,044 cells; do not call it a shrinking remaining-count estimate. Bind actual
+1,566 cells; do not call it a shrinking remaining-count estimate. Bind actual
 GPU ownership, finite Job deadlines and storage estimates to the runtime.
 
 Resume through existing completion pointers. Preserve valid failures, safety

@@ -828,8 +828,11 @@ class NativeRuntime:
 def create_runtime(*, model: str, config: Mapping[str, Any]) -> NativeRuntime:
     """Construct the real native client and simulator binding for one model."""
 
-    expected = NANO_CONFIG if model == "N3" else DREAMZERO_CONFIG if model == "D1" else None
-    if expected is None or dict(config) != dict(expected):
+    from .adapters import require_implemented_model
+
+    require_implemented_model(model)
+    expected = NANO_CONFIG
+    if dict(config) != dict(expected):
         raise AdapterError("runtime config does not match the exact SGW-01 model identity")
     host = _required_env(f"SGW01_{model}_HOST")
     try:
@@ -883,11 +886,8 @@ def create_runtime(*, model: str, config: Mapping[str, Any]) -> NativeRuntime:
             or receipt.get("source_commit") != expected["source_commit"]
         ):
             raise AdapterError("runtime receipt model/config/source identity mismatch")
-        client = (
-            _NanoHttpTransport(host, port, read_trace_sidecar, receipt)
-            if model == "N3"
-            else _OfficialDreamZeroClient(host, port, read_trace_sidecar)
-        )
+        # E3/F3 must gain explicit implementations; there is no retired-model fallback.
+        client = _NanoHttpTransport(host, port, read_trace_sidecar, receipt)
         return NativeRuntime(
             transport=client,
             environment_factory=environment_factory,

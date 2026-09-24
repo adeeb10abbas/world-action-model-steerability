@@ -32,7 +32,7 @@ selected candidate IDs. Its SHA-256 is
   destinations and a 0.12 m cube-lift envelope, with at least 36 native pixels
   of geometric margin. No wording, selected goal or model outcome selects a view.
 - Both exterior sensors remain 1280 x 720 RGB. The registered view is fixed
-  across all six wording/goal conditions and both models within a layout.
+  across all six wording/goal conditions and all registered checkpoints within a layout.
 - Sensor keys remain `over_shoulder_left_camera` and
   `over_shoulder_right_camera` for official slot compatibility. The names do
   not describe their new mounting positions. `wrist_cam` is unchanged.

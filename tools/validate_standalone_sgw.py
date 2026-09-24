@@ -16,7 +16,7 @@ SPEC = ROOT / "experiments/workshops/spatial_grounding_v1/spec"
 CORE_MODULES = (
     "contract", "scoring", "adapters", "recorder", "compile", "fixtures",
     "scene_design", "prospective_family_scene", "policy_observations",
-    "producer", "nano_backend", "dreamzero_backend", "runtime", "worker",
+    "producer", "nano_backend", "runtime", "worker",
     "simulator_mailbox", "native_worker_entrypoint",
 )
 
@@ -37,9 +37,9 @@ def validate(check_imports: bool = False) -> dict:
         cells = list(csv.DictReader(stream))
     require(len(prompts) == 18 and len({p["prompt_id"] for p in prompts}) == 18,
             "Expected 18 unique frozen prompts")
-    require(len(cells) == 1044 and len({c["cell_id"] for c in cells}) == 1044,
-            "Expected 1,044 unique planned cells")
-    require(Counter(c["stage"] for c in cells) == {"P": 36, "D": 144, "C": 864},
+    require(len(cells) == 1566 and len({c["cell_id"] for c in cells}) == 1566,
+            "Expected 1,566 unique planned cells")
+    require(Counter(c["stage"] for c in cells) == {"P": 54, "D": 216, "C": 1296},
             "Frozen stage totals differ")
     require(set(c["status"] for c in cells) == {"PLANNED_NOT_RELEASED"},
             "Planning registry must not claim runtime release")
@@ -52,9 +52,9 @@ def validate(check_imports: bool = False) -> dict:
                 f"Prompt binding differs: {cell['cell_id']}")
         require(int(cell["action_cap"]) == 450, "Frozen action cap differs")
         blocks[cell["block_id"]].append(cell)
-    require(len(blocks) == 174 and all(len(b) == 6 for b in blocks.values()),
-            "Expected 174 six-cell blocks")
-    require(protocol["episodes"]["total"] == 1044, "Protocol episode total differs")
+    require(len(blocks) == 261 and all(len(b) == 6 for b in blocks.values()),
+            "Expected 261 six-cell blocks")
+    require(protocol["episodes"]["total"] == 1566, "Protocol episode total differs")
     for block in blocks.values():
         require({int(c["within_block_order"]) for c in block} == set(range(1, 7)),
                 "Matched block order differs")
