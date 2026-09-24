@@ -31,7 +31,7 @@ def build(repo):
         pts=np.array(pts);focus=(pts.min(0)+pts.max(0))/2
         views={};limit=[]
         for name,sign in [('over_shoulder_left_camera',1),('over_shoulder_right_camera',-1)]:
-            pos=focus+[-.30,sign*.12,.60]
+            pos=focus+[.25,sign*.18,.50]
             forward=focus-pos;forward/=np.linalg.norm(forward)
             right=np.cross(forward,[0,0,1]);right/=np.linalg.norm(right)
             down=np.cross(forward,right);ros=np.stack([right,down,forward],axis=1)
@@ -45,7 +45,7 @@ def build(repo):
                                          resolution_hw=[720,1280])
         result[item['candidate_id']]={'layout_id':key,'family':item['family'],'side':item['side'],'views':views,
             'framing_bounds_min_m':pts.min(0).tolist(),'framing_bounds_max_m':pts.max(0).tolist()}
-    return {'schema':'sgw-close-cameras-v1','revision':'close-oblique-v1-20260924',
+    return {'schema':'sgw-close-cameras-v1','revision':'close-oblique-v2-20260924',
         'basis_registry_sha256':hashlib.sha256(regpath.read_bytes()).hexdigest(),
         'method':'Layout-centered symmetric elevated oblique views; include scored objects, supports, both cube destinations, and 0.12 m lift envelope. Fit shared focal length for both exterior views with >=36 px boundary margin. Wrist unchanged.',
         'requested_by_user':'Move scene cameras closer, from the side or top, before learned-policy study.',
