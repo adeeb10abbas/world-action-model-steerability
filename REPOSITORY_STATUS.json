@@ -21,10 +21,10 @@
     "DIST": "flat tabletop; pedestal revision excluded"
   },
   "scripted_qualification_snapshot": {
-    "recorded_at_utc": "2026-09-24T06:54:25.410891+00:00",
+    "recorded_at_utc": "2026-09-24T09:50:55.389395+00:00",
     "eligible_passed_layouts": {
-      "DIST": 2,
-      "HEIGHT": 6,
+      "DIST": 3,
+      "HEIGHT": 29,
       "LAT": 29
     },
     "target_layouts_per_family": 29,
@@ -33,9 +33,20 @@
     "valid_physical_rejections": 8,
     "campaign_phase": "running",
     "complete_families": [
-      "LAT"
+      "LAT",
+      "HEIGHT"
     ],
     "LAT_package_check": {
+      "selected_layouts": 29,
+      "left": 14,
+      "right": 15,
+      "pilot": 1,
+      "development": 4,
+      "confirmation": 24,
+      "selection_order_resolved": true,
+      "invalid_evidence": 0
+    },
+    "HEIGHT_package_check": {
       "selected_layouts": 29,
       "left": 14,
       "right": 15,
