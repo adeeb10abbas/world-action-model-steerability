@@ -163,13 +163,49 @@ def compile_registered_queue(
     for cell_id in missing:
         ledger[cell_id]["analysis_status"] = "not_run"
     rows = tuple(ledger[cell_id] for cell_id in planned_by_id)
-    confirmation = _confirmation_estimates(rows)
+    return registered_compilation_from_rows(rows)
+
+
+def registered_compilation_from_rows(rows: Iterable[Mapping[str, Any]]) -> RegisteredCompilation:
+    """Assemble already validated ledger rows without changing scoring or order."""
+    normalized: list[Mapping[str, Any]] = []
+    seen: set[str] = set()
+    for source in rows:
+        row = dict(source)
+        cell_id = row.get("cell_id")
+        if not isinstance(cell_id, str) or not cell_id or cell_id in seen:
+            raise ValueError(f"invalid or duplicate ledger cell_id: {cell_id}")
+        seen.add(cell_id)
+        sign = row.get("physical_goal_sign")
+        if type(sign) is int and sign in {-1, 1}:
+            pass
+        elif type(sign) is str and sign in {"-1", "1"}:
+            row["physical_goal_sign"] = int(sign)
+        else:
+            raise ValueError(f"invalid physical_goal_sign for cell: {cell_id}")
+        if row.get("analysis_status") not in {"complete", "incomplete", "not_run"}:
+            raise ValueError(f"invalid analysis_status for cell: {cell_id}")
+        if "S" in row and row["S"] is not None:
+            if not isinstance(row["S"], (bool, int, float)) or row["S"] not in (0, 1):
+                raise ValueError(f"invalid S for cell: {cell_id}")
+        if "requested_success" in row:
+            success = row["requested_success"]
+            if success is not None and type(success) is not bool:
+                raise ValueError(f"invalid requested_success for cell: {cell_id}")
+            score = None if success is None else int(success)
+            if "S" in row and row["S"] != score:
+                raise ValueError(f"conflicting S and requested_success for cell: {cell_id}")
+            row["S"] = score
+        normalized.append(row)
+    if not normalized:
+        raise ValueError("ledger is empty")
+    ledger = tuple(normalized)
+    missing = tuple(sorted(row["cell_id"] for row in ledger if row["analysis_status"] == "not_run"))
     return RegisteredCompilation(
-        ledger=rows,
-        confirmation_estimates=confirmation,
-        complete=not missing and not duplicate and not any(row["analysis_status"] == "incomplete" for row in rows),
+        ledger=ledger,
+        confirmation_estimates=_confirmation_estimates(ledger),
+        complete=all(row["analysis_status"] == "complete" for row in ledger),
         missing_cell_ids=missing,
-        duplicate_cell_ids=tuple(sorted(duplicate)),
     )
 
 
