@@ -7,10 +7,11 @@
   "camera_configuration": {
     "documentation": "docs/CAMERA_ALIGNMENT.md",
     "geometry_layouts": 87,
+    "includes_banana": true,
     "native_checked_layouts": 6,
     "receipt": "handoff/camera-alignment.json",
-    "revision": "close-oblique-v2-20260924",
-    "sha256": "33a02f7f75f10efe109550867dd5e00d149a832917c0d3a056e6e2a5d7c45d56",
+    "revision": "close-oblique-v3-full-objects-20260924",
+    "sha256": "a7413451f7339c698fb4842bdb2007a59fb4f4bb8a8ebd97bf09355cbdc6d0f8",
     "wrist_changed": false
   },
   "current_scope": "Repository preparation and explicitly authorized scene completion; no learned-policy study launch.",
@@ -31,6 +32,7 @@
   ],
   "scene_materialization": {
     "bound_planned_cells": 1044,
+    "camera_binding_current": false,
     "camera_configuration": {
       "revision": "close-oblique-v2-20260924",
       "sha256": "33a02f7f75f10efe109550867dd5e00d149a832917c0d3a056e6e2a5d7c45d56"
@@ -41,6 +43,10 @@
     "native_runs": 0,
     "python": "3.11.14",
     "receipt": "handoff/close-camera-materialization.json",
+    "required_camera_configuration": {
+      "revision": "close-oblique-v3-full-objects-20260924",
+      "sha256": "a7413451f7339c698fb4842bdb2007a59fb4f4bb8a8ebd97bf09355cbdc6d0f8"
+    },
     "runtime_qualified": false,
     "source_commit": "ba8da02cd4c2252b9bcc108b70520dd1a85724a7",
     "status": "passed_offline_destination_check",

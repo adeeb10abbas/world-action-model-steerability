@@ -2,10 +2,11 @@
   "camera_checks": {
     "documentation": "docs/CAMERA_ALIGNMENT.md",
     "geometry_layouts": 87,
+    "includes_banana": true,
     "native_checked_layouts": 6,
     "receipt": "handoff/camera-alignment.json",
-    "revision": "close-oblique-v2-20260924",
-    "sha256": "33a02f7f75f10efe109550867dd5e00d149a832917c0d3a056e6e2a5d7c45d56",
+    "revision": "close-oblique-v3-full-objects-20260924",
+    "sha256": "a7413451f7339c698fb4842bdb2007a59fb4f4bb8a8ebd97bf09355cbdc6d0f8",
     "wrist_changed": false
   },
   "family_layouts": {
@@ -18,13 +19,21 @@
       "bytes": 499725,
       "sha256": "20733d7f74a42c8aa6f67b66834c7c4296567c77d59cfb19e92367c706e3fe75"
     },
-    "handoff/camera-alignment.json": {
+    "handoff/camera-alignment-v2.json": {
       "bytes": 14725,
       "sha256": "5e71e7cb11a9b1c68998f653236a2a2a0b81b7c619a20c445de1a0c199a4c21b"
+    },
+    "handoff/camera-alignment.json": {
+      "bytes": 16018,
+      "sha256": "ed0465a709e88a9163881b88e11096e64f6c750b61540ecc94d75fc6ec643b13"
     },
     "handoff/close-camera-materialization.json": {
       "bytes": 4419,
       "sha256": "5e66ca105ceccc45355ce312cbf21c06914956ca6cdf0ef8b481df3ce06333fa"
+    },
+    "handoff/full-object-camera-materialization.json": {
+      "bytes": 4468,
+      "sha256": "9770131d6d0c6238e94dad0f14d7ebe01f6fe5af7892b3093e837e903b3daf98"
     },
     "handoff/physical-scene-completion.json": {
       "bytes": 1949,
@@ -47,6 +56,7 @@
   "learned_policy_launch_authorized": false,
   "offline_materialization": {
     "bound_planned_cells": 1044,
+    "camera_binding_current": false,
     "camera_configuration": {
       "revision": "close-oblique-v2-20260924",
       "sha256": "33a02f7f75f10efe109550867dd5e00d149a832917c0d3a056e6e2a5d7c45d56"
@@ -57,6 +67,10 @@
     "native_runs": 0,
     "python": "3.11.14",
     "receipt": "handoff/close-camera-materialization.json",
+    "required_camera_configuration": {
+      "revision": "close-oblique-v3-full-objects-20260924",
+      "sha256": "a7413451f7339c698fb4842bdb2007a59fb4f4bb8a8ebd97bf09355cbdc6d0f8"
+    },
     "runtime_qualified": false,
     "source_commit": "ba8da02cd4c2252b9bcc108b70520dd1a85724a7",
     "status": "passed_offline_destination_check",

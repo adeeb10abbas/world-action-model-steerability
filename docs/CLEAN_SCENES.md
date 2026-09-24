@@ -5,7 +5,7 @@ layouts retain their completed physical geometry qualification. Camera-only
 diagnostics passed on six representative layouts; see
 [CAMERA_ALIGNMENT.md](CAMERA_ALIGNMENT.md) for scope and evidence.
 
-![Original and current exterior framing](../artifacts/workshops/spatial_grounding_v1/camera_checks_20260924/close-v2/before-after.jpg)
+![Both complete scene-camera frames and the wrist view](../artifacts/workshops/spatial_grounding_v1/camera_checks_20260924/close-v3-full-objects/all-three-families.jpg)
 
 ## Historical qualification images
 
