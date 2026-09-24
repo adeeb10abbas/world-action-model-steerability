@@ -59,3 +59,41 @@ Native operation requires Linux, CUDA, Isaac/Omniverse and matching shared
 libraries. Process identity, locks and NFS metadata refresh have platform
 requirements. The CPU package setup installs none of the model or simulator
 runtimes and performs no native qualification.
+
+## Current-scene Nano fixed-input check
+
+`nano_fixed_input.py` accepts `sgw-01-n3-current-fixed-input-registration-v2`
+for a separately authorized cluster runtime check. Unlike its historical v1
+registration, this input binds the current 87-layout/1,566-cell materialization
+and a destination `tools/camera_checks/capture.py` receipt for **LAT-P01**.
+It does not require or rerun the historical `SGW-ENG-008-LAT-057` experiment.
+
+The v2 registration retains the existing six-request order (direct positive,
+repeat positive, direct negative, twice), unchanged N3 inference settings and
+native video decoding. Its sampling seed must equal the frozen LAT-P01 N3
+block's effective policy seed, not the historical fixed-input seed. In addition
+to the v1 capture/source/prompt references, bind `materialization`,
+`environment_binding`, `bound_cells`, and the capture's
+`reset-1/observation.npz` as `observation`, each with path, byte count and
+SHA-256. Set `layout_id` to `LAT-P01`; omit `engineering_verification`.
+The capture, binding and materialization must agree on source, candidate and
+current camera identity. Each NPZ image must exactly match its hash-bound
+captured sensor PNG. Proprioception is passed through the native observation
+helper unchanged; measurement state is never sent to the policy.
+
+Run from the pinned study source in the pinned Nano environment:
+
+```sh
+python -m experiments.workshops.spatial_grounding_v1.nano_fixed_input \
+  --registration /persistent/current-n3-registration.json \
+  --output /persistent/new-current-n3-check
+```
+
+This makes at most six actual inference requests and **executes no actions**.
+It retains request intents, returned actions, same-request decoded futures,
+native latents, repeated-input comparisons and three offline redecodes.
+Identical outputs for opposite prompts are recorded, not retried or treated
+as infrastructure failure. Errors preserve partial evidence with no automatic
+retry; existing output paths cannot be reused. Successful completion alone
+does not qualify physical prediction timing, closed-loop behavior, other
+checkpoints, or a study release.

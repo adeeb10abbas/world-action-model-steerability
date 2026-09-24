@@ -1,4 +1,6 @@
 import json
+import csv
+import hashlib
 from dataclasses import dataclass
 from pathlib import Path
 
@@ -58,6 +60,116 @@ def registration(tmp_path):
     }
 
 
+def current_registration(tmp_path):
+    from PIL import Image
+
+    def write(name, payload):
+        path = tmp_path / name
+        path.write_text(json.dumps(payload))
+        return record(path)
+
+    with Path("experiments/workshops/spatial_grounding_v1/spec/planned_cells.csv").open() as stream:
+        rows = list(csv.DictReader(stream))
+    selected = [row for row in rows if row["model"] == "N3" and row["layout_id"] == "LAT-P01"]
+    cameras = fixed.camera_configuration_identity()
+    folder = tmp_path / "reset-1"
+    folder.mkdir()
+    image = np.arange(8 * 12 * 3, dtype=np.uint8).reshape(8, 12, 3)
+    arrays = {name: (image + index)[None] for index, name in enumerate(fixed.CAMERAS)}
+    arrays.update({"arm_joint_pos": np.arange(7, dtype=np.float32)[None],
+                   "gripper_pos": np.array([[0.5]], dtype=np.float32)})
+    observation = folder / "observation.npz"
+    np.savez_compressed(observation, **arrays)
+    snapshot = {"label": "reset-1", "camera": {}}
+    for name in fixed.CAMERAS:
+        path = folder / (name + ".png")
+        Image.fromarray(arrays[name][0]).save(path)
+        snapshot["camera"][name] = {
+            "image_sha256": hashlib.sha256(path.read_bytes()).hexdigest(),
+            "shape": list(image.shape), "observation_equals_sensor_rgb": True,
+        }
+    capture_ref = write("receipt.json", {
+        "source_commit": "a" * 40, "camera_configuration": cameras,
+        "candidate_sha256": "b" * 64, "layout_id": "LAT-P01",
+        "status": "captured", "model_requests": 0, "physical_qualification_trials": 0,
+        "learned_policy_episodes": 0, "snapshots": [snapshot],
+    })
+    binding = write("environment-binding.json", {
+        "source_commit": "a" * 40, "camera_configuration": cameras,
+        "cells": {row["cell_id"]: {"candidate_file_sha256": "b" * 64} for row in selected},
+    })
+    queue = tmp_path / "bound-cells.jsonl"
+    queue.write_text("".join(json.dumps(row) + "\n" for row in rows))
+    prompts = record(Path("experiments/workshops/spatial_grounding_v1/spec/prompts.json"))
+    handoff = write("handoff.json", {
+        "source_commit": "a" * 40, "camera_configuration": cameras,
+        "status": "physical_qualified_runtime_pending", "runtime_qualified": False,
+        "layout_count": 87, "cell_count": 1566,
+        "files": {"environment-binding.json": binding, "bound-cells.jsonl": record(queue)},
+        "frozen_sources": {"prompts.json": prompts},
+    })
+    value = registration(tmp_path)
+    value.update({
+        "schema_version": fixed.CURRENT_SCHEMA, "layout_id": "LAT-P01",
+        "capture": capture_ref, "environment_binding": binding,
+        "bound_cells": record(queue), "materialization": handoff,
+        "observation": record(observation), "prompts": prompts,
+        "sampling_seed": int(selected[0]["effective_policy_seed"]),
+    })
+    value.pop("engineering_verification")
+    return value
+
+
+def test_current_registration_uses_native_input_and_frozen_seed_without_historical_gate(tmp_path):
+    spec = current_registration(tmp_path)
+    path = tmp_path / "registration.json"
+    path.write_text(json.dumps(spec))
+    assert fixed.load_registration(path) == spec
+    observation = fixed.current_observation(spec)
+    assert spec["sampling_seed"] != 1140
+    assert len(observation) == 5
+    np.testing.assert_array_equal(observation["observation/joint_position"], np.arange(7, dtype=np.float32))
+    np.testing.assert_array_equal(observation["observation/gripper_position"], np.array([0.5], dtype=np.float32))
+
+
+@pytest.mark.parametrize("key,value", [
+    ("sampling_seed", 1140), ("sampling_seed", True), ("layout_id", "LAT-D01"),
+])
+def test_current_registration_rejects_other_layout_or_seed(tmp_path, key, value):
+    spec = current_registration(tmp_path)
+    spec[key] = value
+    path = tmp_path / "registration.json"
+    path.write_text(json.dumps(spec))
+    with pytest.raises(ValueError, match="current fixed input"):
+        fixed.load_registration(path)
+
+
+@pytest.mark.parametrize("field", ["camera_configuration", "candidate_sha256", "source_commit"])
+def test_current_registration_rejects_superseded_or_unbound_capture(tmp_path, field):
+    spec = current_registration(tmp_path)
+    capture_path = Path(spec["capture"]["path"])
+    captured = json.loads(capture_path.read_text())
+    captured[field] = "superseded"
+    capture_path.write_text(json.dumps(captured))
+    spec["capture"] = record(capture_path)
+    path = tmp_path / "registration.json"
+    path.write_text(json.dumps(spec))
+    with pytest.raises(ValueError, match="current fixed input"):
+        fixed.load_registration(path)
+
+
+def test_current_observation_rejects_image_substitution_even_with_new_npz_hash(tmp_path):
+    spec = current_registration(tmp_path)
+    observation_path = Path(spec["observation"]["path"])
+    with np.load(observation_path, allow_pickle=False) as old:
+        arrays = dict(old)
+    arrays[fixed.CAMERAS[0]] = arrays[fixed.CAMERAS[0]][:, ::-1].copy()
+    np.savez_compressed(observation_path, **arrays)
+    spec["observation"] = record(observation_path)
+    with pytest.raises(ValueError, match="captured sensor RGB"):
+        fixed.current_observation(spec)
+
+
 @pytest.mark.parametrize("key,value", [
     ("maximum_model_requests", 7), ("behavioral_episodes", 6), ("executed_actions", 32),
     ("sampling_seed", 42), ("native_decode_video", False), ("release_permitted", True),
@@ -104,16 +216,18 @@ def test_arrays_and_runtime_output_are_exclusive(tmp_path):
 
 
 @pytest.mark.parametrize("fail_index", [None, 2])
-def test_six_real_http_boundaries_with_fake_model_and_no_retry(tmp_path, monkeypatch, fail_index):
+@pytest.mark.parametrize("current", [False, True])
+def test_six_real_http_boundaries_with_fake_model_and_no_retry(tmp_path, monkeypatch, fail_index, current):
     import torch
     from experiments.workshops.spatial_grounding_v1 import nano_backend, producer
     from experiments.workshops.spatial_grounding_v1.adapters import AdapterError
 
     source = tmp_path / "capture.json"
     source.write_text(json.dumps(capture(tmp_path)))
-    spec = registration(tmp_path)
+    spec = current_registration(tmp_path) if current else registration(tmp_path)
     spec["registration_id"] = "unit-test-not-scientific-evidence"
-    spec["capture"] = record(source)
+    if not current:
+        spec["capture"] = record(source)
     spec["prompts"] = record(Path("experiments/workshops/spatial_grounding_v1/spec/prompts.json"))
     spec_path = tmp_path / "registration.json"
     spec_path.write_text(json.dumps(spec))

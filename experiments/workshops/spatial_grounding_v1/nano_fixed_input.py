@@ -16,12 +16,14 @@ import urllib.request
 import numpy as np
 
 from .adapters import NANO_CONFIG
+from .camera_configuration import camera_configuration_identity
 from .family_campaign_executor import _fsync_json
 from .paper_engineering import bound_file, record
 from .policy_observations import CAMERAS, nano_observation
 from .producer import NanoEvidenceProducer, make_nano_http_server
 
 SCHEMA = "sgw-01-n3-fixed-input-registration-v1"
+CURRENT_SCHEMA = "sgw-01-n3-current-fixed-input-registration-v2"
 ORDER = ["LAT-D-POS", "LAT-D-POS", "LAT-D-NEG"] * 2
 
 
@@ -34,19 +36,80 @@ def save_array(path: Path, array: np.ndarray) -> None:
 
 def load_registration(path: Path) -> dict[str, Any]:
     value = json.loads(path.read_bytes())
-    if (value.get("schema_version") != SCHEMA or value.get("model_config") != NANO_CONFIG
+    if (value.get("schema_version") not in (SCHEMA, CURRENT_SCHEMA) or value.get("model_config") != NANO_CONFIG
             or value.get("request_prompt_ids") != ORDER or value.get("maximum_model_requests") != 6
             or value.get("behavioral_episodes") != 0 or value.get("executed_actions") != 0
-            or value.get("sampling_seed") != 1140
             or value.get("native_decode_video") is not True
             or value.get("release_permitted") is not False):
         raise ValueError("not the bounded six-request nonbehavioral N3 registration")
-    for key in ("capture", "native_proprio_source", "native_server_source", "prompts", "engineering_verification"):
+    for key in ("capture", "native_proprio_source", "native_server_source", "prompts"):
         bound_file(value[key])
+    if value["schema_version"] == CURRENT_SCHEMA:
+        _validate_current_registration(value)
+        return value
+    if value.get("sampling_seed") != 1140:
+        raise ValueError("not the bounded six-request nonbehavioral N3 registration")
     verified = json.loads(bound_file(value["engineering_verification"]).read_bytes())
     if verified["candidate_id"] != "SGW-ENG-008-LAT-057" or verified["status"] != "verified_all_six_pass":
         raise ValueError("fixed observation lacks its registered engineering qualification")
     return value
+
+
+def _validate_current_registration(value: dict[str, Any]) -> None:
+    handoff = json.loads(bound_file(value["materialization"]).read_bytes())
+    binding = json.loads(bound_file(value["environment_binding"]).read_bytes())
+    capture = json.loads(bound_file(value["capture"]).read_bytes())
+    cells_path = bound_file(value["bound_cells"])
+    observation = bound_file(value["observation"])
+    cameras = camera_configuration_identity()
+    if (handoff.get("status") != "physical_qualified_runtime_pending"
+            or handoff.get("runtime_qualified") is not False
+            or handoff.get("layout_count") != 87 or handoff.get("cell_count") != 1566
+            or any(item.get("camera_configuration") != cameras for item in (handoff, binding, capture))
+            or binding.get("source_commit") != handoff.get("source_commit")
+            or capture.get("source_commit") != handoff.get("source_commit")
+            or value["environment_binding"]["sha256"] != handoff["files"]["environment-binding.json"]["sha256"]
+            or value["bound_cells"]["sha256"] != handoff["files"]["bound-cells.jsonl"]["sha256"]
+            or value["prompts"]["sha256"] != handoff["frozen_sources"]["prompts.json"]["sha256"]
+            or value.get("layout_id") != "LAT-P01" or capture.get("layout_id") != "LAT-P01"
+            or capture.get("status") != "captured" or capture.get("model_requests") != 0
+            or capture.get("physical_qualification_trials") != 0 or capture.get("learned_policy_episodes") != 0
+            or observation != bound_file(value["capture"]).parent / "reset-1" / "observation.npz"):
+        raise ValueError("current fixed input must bind the current materialization and native LAT-P01 capture")
+    rows = [json.loads(line) for line in cells_path.read_text().splitlines() if line]
+    selected = [row for row in rows if row["layout_id"] == "LAT-P01" and row["model"] == "N3"]
+    if (len(rows) != 1566 or len({row["cell_id"] for row in rows}) != 1566 or len(selected) != 6
+            or {(row["form"], int(row["physical_goal_sign"])) for row in selected}
+            != {(form, goal) for form in ("D", "C", "I") for goal in (-1, 1)}
+            or type(value.get("sampling_seed")) is not int
+            or any(row["status"] != "PLANNED_NOT_RELEASED"
+                   or int(row["effective_policy_seed"]) != value["sampling_seed"] for row in selected)
+            or any(binding["cells"][row["cell_id"]]["candidate_file_sha256"] != capture.get("candidate_sha256")
+                   for row in selected)):
+        raise ValueError("current fixed input differs from the frozen six-cell block or effective policy seed")
+
+
+def current_observation(registration: dict[str, Any]) -> dict[str, Any]:
+    """Load the captured native batch without reconstructing or changing proprioception."""
+    from PIL import Image
+
+    capture_path = bound_file(registration["capture"])
+    capture = json.loads(capture_path.read_bytes())
+    snapshot = next(item for item in capture["snapshots"] if item["label"] == "reset-1")
+    with np.load(bound_file(registration["observation"]), allow_pickle=False) as arrays:
+        if set(arrays.files) != {*CAMERAS, "arm_joint_pos", "gripper_pos"}:
+            raise ValueError("current input must contain exactly the native cameras and proprioception")
+        images = {name: arrays[name] for name in CAMERAS}
+        proprio = {name: arrays[name] for name in ("arm_joint_pos", "gripper_pos")}
+    for name, image in images.items():
+        path = capture_path.parent / "reset-1" / (name + ".png")
+        camera = snapshot["camera"][name]
+        if (hashlib.sha256(path.read_bytes()).hexdigest() != camera["image_sha256"]
+                or camera.get("observation_equals_sensor_rgb") is not True
+                or image.shape != (1, *camera["shape"])
+                or not np.array_equal(image[0], np.asarray(Image.open(path)))):
+            raise ValueError("current policy input differs from the captured sensor RGB")
+    return nano_observation({"image_obs": images, "proprio_obs": proprio})
 
 
 def native_observation(capture: dict[str, Any]) -> dict[str, Any]:
@@ -105,8 +168,11 @@ def run(registration_path: Path, output: Path) -> dict[str, Any]:
         import torch
         from .nano_backend import build_pinned_nano_backend
 
-        capture = json.loads(bound_file(registration["capture"]).read_bytes())
-        observation = native_observation(capture)
+        if registration["schema_version"] == CURRENT_SCHEMA:
+            observation = current_observation(registration)
+        else:
+            capture = json.loads(bound_file(registration["capture"]).read_bytes())
+            observation = native_observation(capture)
         inputs = output / "inputs"
         inputs.mkdir()
         input_records = {}
