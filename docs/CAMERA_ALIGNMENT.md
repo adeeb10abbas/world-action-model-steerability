@@ -47,7 +47,7 @@ selected candidate IDs. Its SHA-256 is
 | Wrist attachment | The relative mount position stays within 0.1 mm of its configured offset; maximum observed error is about 0.016 mm. This is a held-position check, not a moving-arm sweep. |
 | Official N3 input path | Hash-checked pure image helpers from the pinned service compose wrist above the two exteriors, then resize to 540 x 640. Each exterior occupies 180 x 320 pixels. Six native inputs and one asymmetric synthetic input pass slot and pixel checks. |
 | Historical D1 input path | Pinned extraction, packing and `pad` resize pass for all three slots at 180 x 320. Asymmetric corner markers check orientation and slot order. No client/server or model was initialized. |
-| Offline scene materialization | Camera source b7a5628 regenerates all 87 layouts and the earlier 1,044-cell queue with the new camera identity. This is a source-specific historical queue check; rematerialize the active model roster at current cluster paths. No simulator or model is run by the materializer. |
+| Offline scene materialization | Current source 76295b7 regenerates all 87 layouts and 1,566 N3/E3/F3 cell bindings with this camera identity; see handoff/current-materialization.json. Rematerialize at actual cluster paths. No simulator or model is run by the materializer. |
 | Software | 21 focused camera, environment-binding and materializer tests passed on the isolated camera source. New model-roster changes are outside that test receipt. |
 
 Projected initial cube widths at the 320 x 180 exterior input scale are:
@@ -105,9 +105,9 @@ HEIGHT cube. Native transform rounding exceeded an initial 10-micrometre
 wrist diagnostic tolerance; the original analysis-revision receipt records
 the change to 0.1 mm and the measured residual. No scene was altered to pass it.
 
-The current [materialization receipt](../handoff/full-object-camera-materialization.json)
-uses source `b7a56286c3f794c91d59e901c66515aa3f01f221` and writes
-`/home/ali/sgw-scene-design-20260923/evidence/SGW-FULL-OBJECT-HANDOFF-20260924`.
+The current [materialization receipt](../handoff/current-materialization.json)
+uses source `76295b732a20adf5421bdce76fb1002e6910a5f8` and writes
+`/home/ali/sgw-scene-design-20260923/evidence/SGW-CURRENT-HANDOFF-20260924`.
 Rematerialize at cluster paths using [SCENE_MATERIALIZATION.md](SCENE_MATERIALIZATION.md).
 Bindings without the current camera revision/hash are rejected. Preserve the
 original physical qualification, but do not use its superseded camera binding.

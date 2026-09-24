@@ -72,7 +72,7 @@ Outputs:
   with the current camera revision/hash and 1,566 explicit cells. Loading a
   binding with a missing or different camera identity fails. Each cell uses
   `scene_seed=int(environment_seed)` from
-  the frozen queue, not the candidate-generation seed. Both models and all six
+  the frozen queue, not the candidate-generation seed. All three checkpoints and all six
   conditions for a layout share its one candidate and overlay.
 - `bound-cells.jsonl` retains `PLANNED_NOT_RELEASED`, empty runtime/time-map
   hashes and the original queue fields, adding the physical fixture hash.

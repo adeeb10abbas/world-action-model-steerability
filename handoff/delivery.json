@@ -1,4 +1,9 @@
 {
+  "active_models": [
+    "N3",
+    "E3",
+    "F3"
+  ],
   "camera_checks": {
     "documentation": "docs/CAMERA_ALIGNMENT.md",
     "geometry_layouts": 87,
@@ -19,6 +24,10 @@
       "bytes": 499725,
       "sha256": "20733d7f74a42c8aa6f67b66834c7c4296567c77d59cfb19e92367c706e3fe75"
     },
+    "handoff/README.md": {
+      "bytes": 4571,
+      "sha256": "c5457786d0fd2372afa5ce0cdb381670418c9867c7ff14c1ee9e02f6690a1420"
+    },
     "handoff/camera-alignment-v2.json": {
       "bytes": 14725,
       "sha256": "5e71e7cb11a9b1c68998f653236a2a2a0b81b7c619a20c445de1a0c199a4c21b"
@@ -30,6 +39,10 @@
     "handoff/close-camera-materialization.json": {
       "bytes": 4419,
       "sha256": "5e66ca105ceccc45355ce312cbf21c06914956ca6cdf0ef8b481df3ce06333fa"
+    },
+    "handoff/current-materialization.json": {
+      "bytes": 4447,
+      "sha256": "3b688ccb35755344f2d9f9a60290572adfb10e4804ddc42fe99e20392e6a0591"
     },
     "handoff/full-object-camera-materialization.json": {
       "bytes": 4468,
@@ -47,45 +60,60 @@
       "bytes": 457,
       "sha256": "4532127e6348d33a12b49fa310e6929115e12f57057dbafd7a380484e934514d"
     },
+    "handoff/software-check-final-20260924.json": {
+      "bytes": 542,
+      "sha256": "393e03442eb772a1d40d3c1c4685e5bd30c52b8cdc526d578cbabd2666501132"
+    },
     "handoff/workstation-materialization.json": {
       "bytes": 3835,
       "sha256": "bc029192fb1f575ebd886bbaaf00c0e3d4c371208ce2172786d429d1ff27fca9"
     }
   },
+  "handoff_entrypoint": "handoff/README.md",
   "learned_policy_episodes": 0,
   "learned_policy_launch_authorized": false,
+  "matched_blocks": 261,
   "offline_materialization": {
-    "bound_planned_cells": 1044,
-    "camera_binding_current": false,
+    "active_models": [
+      "N3",
+      "E3",
+      "F3"
+    ],
+    "bound_planned_cells": 1566,
+    "camera_binding_current": true,
     "camera_configuration": {
-      "revision": "close-oblique-v2-20260924",
-      "sha256": "33a02f7f75f10efe109550867dd5e00d149a832917c0d3a056e6e2a5d7c45d56"
-    },
-    "layout_count": 87,
-    "local_receipt_copy": "/Users/ali-adeeb/Downloads/astra_creative_director/sgw_close_camera_v2_20260924/materialization.json",
-    "model_requests": 0,
-    "native_runs": 0,
-    "python": "3.11.14",
-    "receipt": "handoff/close-camera-materialization.json",
-    "required_camera_configuration": {
       "revision": "close-oblique-v3-full-objects-20260924",
       "sha256": "a7413451f7339c698fb4842bdb2007a59fb4f4bb8a8ebd97bf09355cbdc6d0f8"
     },
+    "cluster_note": "Regenerate the same current source/queue/cameras at the cluster actual paths. Model runtime qualification remains.",
+    "layout_count": 87,
+    "model_requests": 0,
+    "native_runs": 0,
+    "python": "3.11.14",
+    "receipt": "handoff/current-materialization.json",
+    "roster_binding_current": true,
     "runtime_qualified": false,
-    "source_commit": "ba8da02cd4c2252b9bcc108b70520dd1a85724a7",
+    "source_commit": "76295b732a20adf5421bdce76fb1002e6910a5f8",
     "status": "passed_offline_destination_check",
-    "workstation_output": "/home/ali/sgw-scene-design-20260923/evidence/SGW-CLOSE-HANDOFF-20260924"
+    "workstation_output": "/home/ali/sgw-scene-design-20260923/evidence/SGW-CURRENT-HANDOFF-20260924"
   },
+  "partition_count": 27,
   "physical_scene_package_complete": true,
-  "recorded_at_utc": "2026-09-24T14:28:20.461265+00:00",
+  "planned_behavioral_cells": 1566,
+  "recorded_at_utc": "2026-09-24T15:27:59.319348+00:00",
   "remaining_cluster_work": [
-    "destination runtime/assets and model interface qualification",
-    "actual server/model input transformations and decoded prediction time/camera mapping",
+    "regenerate current bindings at cluster paths",
+    "implement and pin E3/F3 adapters; D1 retired",
+    "qualify all active model interfaces and prediction time/camera mappings",
+    "qualify F3 same-request forecast export or report unavailable forecasts",
     "separately authorized pilot, development and confirmation execution"
   ],
   "retained_campaign_rejections": 8,
+  "retired_models": [
+    "D1"
+  ],
   "selected_layouts": 87,
   "selected_scripted_trials": 522,
-  "status": "SCENE_PACKAGE_COMPLETE_STUDY_NOT_STARTED",
+  "status": "SCENES_CAMERAS_QUEUE_COMPLETE_RUNTIME_PENDING",
   "unused_registered_candidates": 205
 }

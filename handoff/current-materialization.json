@@ -1,0 +1,82 @@
+{
+  "authoring_source_sha256": {
+    "experiments/workshops/spatial_grounding_v1/camera_configuration.py": "eeaaf97674b93e697b7d63689ad74b16cf30a172518d4ab5caac80fb122b30e1",
+    "experiments/workshops/spatial_grounding_v1/close_cameras.json": "a7413451f7339c698fb4842bdb2007a59fb4f4bb8a8ebd97bf09355cbdc6d0f8",
+    "experiments/workshops/spatial_grounding_v1/prospective_family_scene.py": "15ad70278c9b3af5ecc8439e656f35617d0d013edc8fe03e8d61ba4dd5dd3345",
+    "experiments/workshops/spatial_grounding_v1/scene_design.py": "85dbd999c6ce449dce8f93996cb80bd7d580f380c52656418132ba845155630a",
+    "tools/build_scene_package.py": "d7681bc14f7819228f84fa4bf2608ae0e6211406e1f960970f7e52ee46853aa5",
+    "tools/materialize_scene_handoff.py": "cea169eedce5bb5783ff67f003db79c5805c5b6b6de6176daa15ac82a8c2d40e"
+  },
+  "camera_configuration": {
+    "revision": "close-oblique-v3-full-objects-20260924",
+    "sha256": "a7413451f7339c698fb4842bdb2007a59fb4f4bb8a8ebd97bf09355cbdc6d0f8"
+  },
+  "cell_count": 1566,
+  "files": {
+    "asset-relocation.json": {
+      "path": "/home/ali/sgw-scene-design-20260923/evidence/SGW-CURRENT-HANDOFF-20260924/asset-relocation.json",
+      "sha256": "e3975f33c537f2f3d6a4feea7819668cef4ac9e9d67ed389b376bd082474baed"
+    },
+    "assets.json": {
+      "path": "/home/ali/sgw-scene-design-20260923/evidence/SGW-CURRENT-HANDOFF-20260924/assets.json",
+      "sha256": "eb5507f84044f7206f5822c7ef18595272f45022fcd166cfdb3a12ef88a09ec1"
+    },
+    "bound-cells.jsonl": {
+      "path": "/home/ali/sgw-scene-design-20260923/evidence/SGW-CURRENT-HANDOFF-20260924/bound-cells.jsonl",
+      "sha256": "966465c17d576d624719412f23beb1501c11c0647a7fdb9cf96529d3c8e74ba4"
+    },
+    "environment-binding.json": {
+      "path": "/home/ali/sgw-scene-design-20260923/evidence/SGW-CURRENT-HANDOFF-20260924/environment-binding.json",
+      "sha256": "0fc75013aab07edbff67d1b05ea1eccbdac91074a2afe14a93f7d6e107aaccd7"
+    },
+    "physical-fixtures.json": {
+      "path": "/home/ali/sgw-scene-design-20260923/evidence/SGW-CURRENT-HANDOFF-20260924/physical-fixtures.json",
+      "sha256": "6d26700cccfdfb4345f001ce0b73cac4bd13d70db49b36d3431c2fd3abfa9bae"
+    },
+    "selection-registry.json": {
+      "path": "/home/ali/sgw-scene-design-20260923/evidence/SGW-CURRENT-HANDOFF-20260924/selection-registry.json",
+      "sha256": "20733d7f74a42c8aa6f67b66834c7c4296567c77d59cfb19e92367c706e3fe75"
+    }
+  },
+  "frozen_sources": {
+    "planned_cells.csv": {
+      "bytes": 406175,
+      "path": "/home/ali/sgw-scene-design-20260923/current-handoff-code-20260924/experiments/workshops/spatial_grounding_v1/spec/planned_cells.csv",
+      "sha256": "07a2bd6c1893e7662db0c12c01843c20d743bfeb4cb1b506f238a37ae19e068a"
+    },
+    "prompts.json": {
+      "bytes": 5308,
+      "path": "/home/ali/sgw-scene-design-20260923/current-handoff-code-20260924/experiments/workshops/spatial_grounding_v1/spec/prompts.json",
+      "sha256": "f07dbda34feb915472fc329be203ec526a7589007485eeb8f237c19c8708b979"
+    },
+    "protocol.json": {
+      "bytes": 6622,
+      "path": "/home/ali/sgw-scene-design-20260923/current-handoff-code-20260924/experiments/workshops/spatial_grounding_v1/spec/protocol.json",
+      "sha256": "4b420512939f8eba75fc31a91bd562812b6e8c1acd328b5ed7e268bbccb37bde"
+    }
+  },
+  "layout_count": 87,
+  "learned_policy_launch_authorized": false,
+  "model_requests": 0,
+  "native_runs": 0,
+  "remaining_gates": [
+    "destination native reset and rendering checks",
+    "N3/E3/F3 runtime qualification",
+    "verified physical time and camera maps",
+    "explicit learned-study release authorization"
+  ],
+  "runtime_qualified": false,
+  "schema_version": "sgw-offline-scene-handoff-v1",
+  "selection_registry": {
+    "bytes": 499725,
+    "path": "/home/ali/sgw-scene-design-20260923/current-handoff-code-20260924/artifacts/workshops/spatial_grounding_v1/scene_package_20260924/scene-registry.json",
+    "sha256": "20733d7f74a42c8aa6f67b66834c7c4296567c77d59cfb19e92367c706e3fe75"
+  },
+  "source_commit": "76295b732a20adf5421bdce76fb1002e6910a5f8",
+  "source_root": "/home/ali/sgw-scene-design-20260923/current-handoff-code-20260924",
+  "source_roots": {
+    "evidence": "/home/ali/sgw-scene-design-20260923/current-handoff-code-20260924/artifacts/workshops/spatial_grounding_v1/workstation_receipts_20260924",
+    "repo": "/home/ali/sgw-scene-design-20260923/current-handoff-code-20260924"
+  },
+  "status": "physical_qualified_runtime_pending"
+}

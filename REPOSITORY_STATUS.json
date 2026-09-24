@@ -22,6 +22,7 @@
   "current_scope": "Repository preparation and explicitly authorized scene completion; no learned-policy study launch.",
   "extraction_source_commit": "62ad0101d5fc26c6461aff47f611cab21219748a",
   "future_learned_policy_execution_location": "cluster_only",
+  "handoff_entrypoint": "handoff/README.md",
   "historical_authorizations_are_not_new_launch_permission": true,
   "learned_policy_launch_authorized": false,
   "model_roster_amendment": "docs/MODEL_ROSTER_AMENDMENT_20260924.md",
@@ -41,27 +42,28 @@
     "DIST"
   ],
   "scene_materialization": {
-    "bound_planned_cells": 1044,
-    "camera_binding_current": false,
+    "active_models": [
+      "N3",
+      "E3",
+      "F3"
+    ],
+    "bound_planned_cells": 1566,
+    "camera_binding_current": true,
     "camera_configuration": {
-      "revision": "close-oblique-v2-20260924",
-      "sha256": "33a02f7f75f10efe109550867dd5e00d149a832917c0d3a056e6e2a5d7c45d56"
-    },
-    "layout_count": 87,
-    "local_receipt_copy": "/Users/ali-adeeb/Downloads/astra_creative_director/sgw_close_camera_v2_20260924/materialization.json",
-    "model_requests": 0,
-    "native_runs": 0,
-    "python": "3.11.14",
-    "receipt": "handoff/close-camera-materialization.json",
-    "required_camera_configuration": {
       "revision": "close-oblique-v3-full-objects-20260924",
       "sha256": "a7413451f7339c698fb4842bdb2007a59fb4f4bb8a8ebd97bf09355cbdc6d0f8"
     },
-    "roster_binding_status": "Historical 1044-cell N3/D1 binding; rematerialize the current 1566-cell queue before release. This receipt is not rewritten.",
+    "cluster_note": "Regenerate the same current source/queue/cameras at the cluster actual paths. Model runtime qualification remains.",
+    "layout_count": 87,
+    "model_requests": 0,
+    "native_runs": 0,
+    "python": "3.11.14",
+    "receipt": "handoff/current-materialization.json",
+    "roster_binding_current": true,
     "runtime_qualified": false,
-    "source_commit": "ba8da02cd4c2252b9bcc108b70520dd1a85724a7",
+    "source_commit": "76295b732a20adf5421bdce76fb1002e6910a5f8",
     "status": "passed_offline_destination_check",
-    "workstation_output": "/home/ali/sgw-scene-design-20260923/evidence/SGW-CLOSE-HANDOFF-20260924"
+    "workstation_output": "/home/ali/sgw-scene-design-20260923/evidence/SGW-CURRENT-HANDOFF-20260924"
   },
   "scene_registry": "artifacts/workshops/spatial_grounding_v1/scene_package_20260924/scene-registry.json",
   "scripted_qualification_snapshot": {

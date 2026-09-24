@@ -1,45 +1,35 @@
 {
-  "schema_version": "sgw-model-roster-migration-checks-v1",
-  "study_id": "SGW-01",
-  "protocol_version": "1.2",
-  "recorded_at_utc": "2026-09-24T14:39:45.959433+00:00",
-  "status": "ROSTER_MIGRATED_NEW_RUNTIME_INTEGRATION_PENDING",
   "active_models": [
     "N3",
     "E3",
     "F3"
   ],
-  "retired_models": [
-    "D1"
-  ],
   "checks": {
-    "unique_cells": 1566,
-    "unique_prompts": 18,
-    "six_cell_blocks": 261,
-    "partitions": 27,
-    "stage_counts": {
-      "P": 54,
-      "D": 216,
-      "C": 1296
-    },
-    "original_prompt_bytes_preserved": true,
+    "cpu_suite_passed": 227,
     "original_N3_rows_preserved": true,
+    "original_prompt_bytes_preserved": true,
+    "partitions": 27,
+    "planning_import_check_passed": true,
     "retired_registry_archive_hashes_verified": true,
     "retired_runtime_and_queue_rejection_tests_passed": true,
-    "cpu_suite_passed": 227,
-    "planning_import_check_passed": true
+    "six_cell_blocks": 261,
+    "stage_counts": {
+      "C": 1296,
+      "D": 216,
+      "P": 54
+    },
+    "unique_cells": 1566,
+    "unique_prompts": 18
+  },
+  "current_handoff_check": {
+    "camera_revision": "close-oblique-v3-full-objects-20260924",
+    "materialization": "handoff/current-materialization.json",
+    "recorded_at_utc": "2026-09-24T15:27:59.319348+00:00",
+    "software": "handoff/software-check-final-20260924.json"
   },
   "historical_registry": "provenance/retired-n3-d1-registry-v1.1/",
-  "pending": [
-    "E3/F3 source and checkpoint pins",
-    "E3/F3 runtime adapters",
-    "F3 same-request predicted-video export",
-    "current-roster destination bindings",
-    "native runtime and prediction time/camera qualification"
-  ],
   "learned_policy_launch_authorized": false,
   "model_requests": 0,
-  "simulator_trials": 0,
   "not_performed": [
     "model downloads",
     "model inference",
@@ -47,5 +37,21 @@
     "native physical qualification",
     "paper compilation",
     "Overleaf synchronization"
-  ]
+  ],
+  "pending": [
+    "E3/F3 source and checkpoint pins",
+    "E3/F3 runtime adapters",
+    "F3 same-request predicted-video export",
+    "cluster-path bindings; current-roster workstation materialization passed",
+    "native runtime and prediction time/camera qualification"
+  ],
+  "protocol_version": "1.2",
+  "recorded_at_utc": "2026-09-24T14:39:45.959433+00:00",
+  "retired_models": [
+    "D1"
+  ],
+  "schema_version": "sgw-model-roster-migration-checks-v1",
+  "simulator_trials": 0,
+  "status": "ROSTER_MIGRATED_NEW_RUNTIME_INTEGRATION_PENDING",
+  "study_id": "SGW-01"
 }
