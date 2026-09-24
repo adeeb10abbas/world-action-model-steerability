@@ -139,6 +139,8 @@ Report mean delta_S with 95% layout-cluster bootstrap intervals (20,000 resample
 
 Do not conclude equivalence from a nonsignificant effect. Any equivalence claim requires both prespecified criteria: the 90% paired CI for delta_S wholly inside ±0.10 and the 90% paired CI for delta_M wholly inside ±0.02 m, with censoring/missingness accounted for. This establishes equivalence only for those endpoints and margins, not identical trajectories or general semantic understanding. The sample size may be insufficient; report inconclusive honestly.
 
+**Prospective equivalence safeguard (24 September 2026; no learned-policy outcomes collected):** the descriptive bootstrap intervals above are not, by themselves, an equivalence test. An all-zero or otherwise zero-variance set of layout contrasts must be reported as **equivalence inconclusive**, even if its bootstrap interval collapses to zero. A positive equivalence claim requires a separately specified procedure with valid finite-sample coverage at the independent-layout level, fixed before confirmation outcomes and accounting for strata and missingness/censoring. Apply this requirement to both success and the continuous margin. Until that procedure is specified, report effects and uncertainty without a positive equivalence claim. This clarification changes no prompts, samples, scoring thresholds or frozen registry bytes; see [the analysis note](../../../../docs/EQUIVALENCE_ANALYSIS_NOTE.md).
+
 ## 9. Interpretation and follow-up rules
 
 | Observation | Supported statement | Still unresolved |

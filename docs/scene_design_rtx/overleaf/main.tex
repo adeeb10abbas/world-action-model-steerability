@@ -127,6 +127,8 @@ Uncertainty uses 20,000 layout-cluster bootstrap resamples, retaining all six co
 
 Prediction skill and disagreement rates use the same layout unit, averaging requests within episodes. Binary missingness bounds treat unknown cases as zero and one. Continuous prediction accuracy is conditional on valid localization. Equivalence is not inferred from nonsignificance: a claim requires the 90\% paired intervals to lie within both $\pm0.10$ success probability and $\pm0.02$ m requested margin, including missingness/censoring. Those criteria concern the specified endpoints only.
 
+The descriptive bootstrap intervals alone cannot establish equivalence. All-zero or otherwise zero-variance layout contrasts yield an inconclusive equivalence result, even when the bootstrap interval collapses to zero. A positive claim requires a procedure with valid finite-sample coverage at the independent-layout level, specified before confirmation outcomes and accounting for strata and missingness/censoring. Until that procedure is specified, we will report effects and uncertainty without a positive equivalence claim.
+
 We will examine the following explanations without presuming their outcomes:
 \begin{itemize}
 \item If C loses performance relative to D and I adds little, the longer construction is a sufficient observed source of difficulty in that setting.

@@ -72,6 +72,10 @@ matching times. Report uncertainty across independent layouts; resets,
 wordings and repeated frames do not create additional independent layouts.
 Separate physical failures, technical missingness and unavailable predictions.
 
+Follow [the equivalence safeguard](EQUIVALENCE_ANALYSIS_NOTE.md): a collapsed
+bootstrap interval or nonsignificant difference does not establish equivalence.
+Do not make a positive equivalence claim before a valid procedure is specified.
+
 Removing DIST pedestals is a design correction, not an additional support
 ablation. Cross-family differences do not isolate spatial-axis understanding.
 Use only this clean cohort in the paper. Update claims from measured outcomes,
