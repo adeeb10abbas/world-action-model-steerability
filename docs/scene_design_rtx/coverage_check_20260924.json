@@ -1,6 +1,6 @@
 {
   "status": "clean_wam_research_plan_with_completed_physical_qualification",
-  "checked_at_utc": "2026-09-24T12:37:19.057187+00:00",
+  "checked_at_utc": "2026-09-24T12:42:02.370833+00:00",
   "scope": "D/C/I x LAT/HEIGHT/DIST x N3/D1 in clean tabletop scenes",
   "repository": "https://github.com/adeeb10abbas/world-action-model-steerability",
   "cells": 1044,
@@ -64,7 +64,7 @@
   "learned_policy_launch_authorized": false,
   "physical_separation": "r(+) - r(-) = M(+) + M(-), in metres; implemented separately from binary success asymmetry",
   "open_work": [
-    "verify destination scene regeneration and runtime readiness",
+    "qualify cluster destination resets/rendering; workstation offline scene regeneration is complete",
     "qualify N3/D1 runtime and physical time/camera mappings",
     "coordinate localization and adjudication exports",
     "persistence skill and semantic-label validation",
@@ -102,15 +102,15 @@
   "overleaf": {
     "project_url": "https://www.overleaf.com/project/6ab2bdb39b30df4bbc98a15e",
     "project_title": "steering wams",
-    "synced_this_revision": false,
-    "checked_at_utc": "2026-09-24T04:29:42.855741+00:00",
+    "synced_this_revision": true,
+    "checked_at_utc": "2026-09-24T12:41:30.586888+00:00",
     "method": "Authenticated Chrome UI file upload; full sources read before replacement",
-    "preupload_review": "Full saved main.tex exactly matched the last synchronized source before replacement; no intervening user edits were present",
+    "preupload_review": "Both full saved sources exactly matched the last verified synchronized revision before replacement; no intervening user edits were present",
     "saved_source_readback_matches": true,
-    "readback_check": "Full main.tex editor clipboard text matched local character count and FNV-1a 64-bit fingerprint; compared with prior saved source, only the authorized 257-character LAT viewpoint clarification was added",
+    "readback_check": "Full editor clipboard text for both saved TeX sources matched each local character count and FNV-1a 64-bit fingerprint",
     "uploaded_source_sha256": {
-      "main.tex": "86cf377883cc7924faaaabfe1a979504335c84855ecd6eaae11001c634e41b2f",
-      "ablation_coverage_20260924.tex": "6d46bcb5edb91fac568fb725e043373cd51a4cfbf47556d938338f5fb3272589",
+      "main.tex": "455e7af08f40ab771eefe92adca49c3e4b2044c6d3cf35126b266972b8dcb3bd",
+      "ablation_coverage_20260924.tex": "deefe6b7a2f7a46989a9a3c3c1f018f84d7c6b87c9b33ad82743a29e2408b69d",
       "figures/lat-flat-right.png": "ac35e263b4ae4b966cd6c0938500c08fd75ec3d6c2f32185e71a218b4c054dab",
       "figures/height-upper-right.png": "6673f7e0036a5a3ba4b44fa1f7ecd37a811d7973806f24e785c576dad1ab7f03",
       "figures/dist-flat-right.png": "78b45a35a3bcd5d4193de78f1182f37fccb059de97318de135cf5dbcbb1c5a9e"
@@ -118,28 +118,57 @@
     "compile_checked_remotely": true,
     "compile_errors": 0,
     "compile_warnings": 0,
-    "pdf_pages": 10,
-    "compile_build": "1a0d1ac63f4-4a110c8fa627db79",
+    "pdf_pages": 11,
+    "compile_build": "1a0d36cd51f-cde3d7943177bde0",
     "other_project_files_changed": false,
     "image_upload_verification": "All three files present in figures folder and rendered in the compiled page 3; no remote PNG download/hash check performed",
     "synced_files_this_revision": [
-      "main.tex"
+      "main.tex",
+      "ablation_coverage_20260924.tex"
     ],
     "main_source_fingerprints": {
       "before": {
-        "chars": 23165,
-        "fnv1a64": "e89f1a634e6ce03a",
-        "sha256": "fcdc6b5035b87224820fe3f8900239209462204dc2b91509d9a8730c1afc9194"
+        "sha256": "86cf377883cc7924faaaabfe1a979504335c84855ecd6eaae11001c634e41b2f",
+        "chars": 23422,
+        "fnv1a64": "e8d0f66fd7ea70ae"
       },
       "after": {
-        "chars": 23422,
-        "fnv1a64": "e8d0f66fd7ea70ae",
-        "sha256": "86cf377883cc7924faaaabfe1a979504335c84855ecd6eaae11001c634e41b2f"
+        "sha256": "455e7af08f40ab771eefe92adca49c3e4b2044c6d3cf35126b266972b8dcb3bd",
+        "chars": 24300,
+        "fnv1a64": "66b73cca53912bb9"
       }
     },
     "compile_invocations_this_revision": 1,
-    "checked_this_revision": false,
-    "revision_note": "Retained verified prior remote build; physical-completion update and prospective equivalence safeguard await this revision sync."
+    "checked_this_revision": true,
+    "revision_note": "Final physical-completion status and preserved prospective equivalence safeguard synchronized and compiled; no learned-policy results.",
+    "source_fingerprints": {
+      "main.tex": {
+        "before": {
+          "sha256": "86cf377883cc7924faaaabfe1a979504335c84855ecd6eaae11001c634e41b2f",
+          "chars": 23422,
+          "fnv1a64": "e8d0f66fd7ea70ae"
+        },
+        "after": {
+          "sha256": "455e7af08f40ab771eefe92adca49c3e4b2044c6d3cf35126b266972b8dcb3bd",
+          "chars": 24300,
+          "fnv1a64": "66b73cca53912bb9"
+        }
+      },
+      "ablation_coverage_20260924.tex": {
+        "before": {
+          "sha256": "6d46bcb5edb91fac568fb725e043373cd51a4cfbf47556d938338f5fb3272589",
+          "chars": 6764,
+          "fnv1a64": "1e2905551771f6bc"
+        },
+        "after": {
+          "sha256": "deefe6b7a2f7a46989a9a3c3c1f018f84d7c6b87c9b33ad82743a29e2408b69d",
+          "chars": 7500,
+          "fnv1a64": "ce1d70ff9cd62711"
+        }
+      }
+    },
+    "local_pdf_retained": false,
+    "pdf_retention_note": "No completed local PDF was obtained: the browser download event timed out, and native save UI could not be inspected because the Mac was locked. The compiled 11-page PDF remains available in Overleaf; no second compilation was performed."
   },
   "delivery_hashes": {
     "ABLATION_COVERAGE.md": "10fa5d2e70d6565ccdb26dbd6c6a8810fd526a7ba3268a198f6c34986b637db8",
@@ -203,10 +232,30 @@
     }
   },
   "scope_clarification": "LAT uses robot-frame scoring while frozen prompts leave viewpoint unspecified; consistent reversal can reflect frame choice or relation grounding, which this experiment does not separate.",
-  "local_revision_pending_sync": {
+  "last_synced_local_revision": {
     "recorded_at_utc": "2026-09-24T12:37:19.057187+00:00",
     "main_tex_sha256": "455e7af08f40ab771eefe92adca49c3e4b2044c6d3cf35126b266972b8dcb3bd",
     "coverage_tex_sha256": "deefe6b7a2f7a46989a9a3c3c1f018f84d7c6b87c9b33ad82743a29e2408b69d",
-    "change": "Complete physical scene qualification, precise prior-outcome reuse, retained prospective equivalence safeguard; no learned-policy outcomes or frozen input changes."
+    "change": "Complete physical scene qualification, precise prior-outcome reuse, retained prospective equivalence safeguard; no learned-policy outcomes or frozen input changes.",
+    "synced_at_utc": "2026-09-24T12:41:30.586888+00:00"
+  },
+  "offline_materialization": {
+    "status": "physical_qualified_runtime_pending",
+    "layout_count": 87,
+    "cell_count": 1044,
+    "runtime_qualified": false,
+    "native_runs": 0,
+    "model_requests": 0,
+    "source_commit": "b4ad6145423e98b3b5f7524b3294b2de27e2953c",
+    "remaining_gates": [
+      "destination native reset and rendering checks",
+      "N3/D1 runtime qualification",
+      "verified physical time and camera maps",
+      "explicit learned-study release authorization"
+    ],
+    "receipt_path": "handoff/workstation-materialization.json",
+    "receipt_sha256": "bc029192fb1f575ebd886bbaaf00c0e3d4c371208ce2172786d429d1ff27fca9",
+    "basis": "Recorded actual-workstation offline materialization receipt; no native trials or model requests",
+    "manuscript_recompiled_for_this_addendum": false
   }
 }

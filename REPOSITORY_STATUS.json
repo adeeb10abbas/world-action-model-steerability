@@ -74,7 +74,16 @@
   "physical_completion_receipt": "handoff/physical-scene-completion.json",
   "recording_index": "handoff/scene-records.json",
   "scene_materialization": {
-    "status": "full_87_layout_destination_check_pending",
-    "models_or_simulators_required": false
+    "status": "passed_offline_destination_check",
+    "source_commit": "b4ad6145423e98b3b5f7524b3294b2de27e2953c",
+    "receipt": "handoff/workstation-materialization.json",
+    "layout_count": 87,
+    "bound_planned_cells": 1044,
+    "python": "3.11.14",
+    "runtime_qualified": false,
+    "model_requests": 0,
+    "native_runs": 0,
+    "workstation_output": "/home/ali/sgw-scene-design-20260923/evidence/SGW-FINAL-HANDOFF-20260924",
+    "local_inspection_copy": "/Users/ali-adeeb/Downloads/astra_creative_director/sgw_scene_handoff_20260924"
   }
 }

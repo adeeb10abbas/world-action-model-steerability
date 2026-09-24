@@ -4,6 +4,20 @@
 registry** into destination-specific scene overlays and 1,044 planned cell
 bindings. It runs no simulator, model, network request or release operation.
 
+The [complete registry](../artifacts/workshops/spatial_grounding_v1/scene_package_20260924/scene-registry.json)
+has passed the full materializer against the workstation's pinned RoboLab
+assets using study commit `b4ad6145423e98b3b5f7524b3294b2de27e2953c` and
+Python 3.11.14. The [saved receipt](../handoff/workstation-materialization.json)
+records 87 rebuilt layouts, 1,044 bound planned cells, zero native runs and
+zero model requests. The output remains `physical_qualified_runtime_pending`.
+
+The actual destination-bound output is at
+`/home/ali/sgw-scene-design-20260923/evidence/SGW-FINAL-HANDOFF-20260924`
+on the workstation. A copy for inspection is at
+`/Users/ali-adeeb/Downloads/astra_creative_director/sgw_scene_handoff_20260924`
+on this Mac; its embedded paths still refer to the workstation. Regenerate
+the output at the cluster's actual paths using the instructions below.
+
 Run it from the clean committed study checkout at the destination where the
 pinned RoboLab checkout and asset payloads already exist. The output must be a
 new directory outside both source checkouts. Supply every source alias used by

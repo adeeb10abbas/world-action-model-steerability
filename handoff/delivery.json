@@ -1,0 +1,56 @@
+{
+  "family_layouts": {
+    "DIST": 29,
+    "HEIGHT": 29,
+    "LAT": 29
+  },
+  "files": {
+    "artifacts/workshops/spatial_grounding_v1/scene_package_20260924/scene-registry.json": {
+      "bytes": 499725,
+      "sha256": "20733d7f74a42c8aa6f67b66834c7c4296567c77d59cfb19e92367c706e3fe75"
+    },
+    "handoff/physical-scene-completion.json": {
+      "bytes": 1949,
+      "sha256": "f74ced8848bde1aae3dac6796c2a80c448390f42f6650947499236393b80d83a"
+    },
+    "handoff/scene-records.json": {
+      "bytes": 150758,
+      "sha256": "0a0406f5dc840f4de57fd9fac3ffc38c2ec662142884fb462ecc0961dd93c5a2"
+    },
+    "handoff/software-check-20260924.json": {
+      "bytes": 457,
+      "sha256": "4532127e6348d33a12b49fa310e6929115e12f57057dbafd7a380484e934514d"
+    },
+    "handoff/workstation-materialization.json": {
+      "bytes": 3835,
+      "sha256": "bc029192fb1f575ebd886bbaaf00c0e3d4c371208ce2172786d429d1ff27fca9"
+    }
+  },
+  "learned_policy_episodes": 0,
+  "learned_policy_launch_authorized": false,
+  "offline_materialization": {
+    "bound_planned_cells": 1044,
+    "layout_count": 87,
+    "local_inspection_copy": "/Users/ali-adeeb/Downloads/astra_creative_director/sgw_scene_handoff_20260924",
+    "model_requests": 0,
+    "native_runs": 0,
+    "python": "3.11.14",
+    "receipt": "handoff/workstation-materialization.json",
+    "runtime_qualified": false,
+    "source_commit": "b4ad6145423e98b3b5f7524b3294b2de27e2953c",
+    "status": "passed_offline_destination_check",
+    "workstation_output": "/home/ali/sgw-scene-design-20260923/evidence/SGW-FINAL-HANDOFF-20260924"
+  },
+  "physical_scene_package_complete": true,
+  "recorded_at_utc": "2026-09-24T12:41:23.027428+00:00",
+  "remaining_cluster_work": [
+    "destination runtime/assets and model interface qualification",
+    "actual policy input and prediction time/camera mapping",
+    "separately authorized pilot, development and confirmation execution"
+  ],
+  "retained_campaign_rejections": 8,
+  "selected_layouts": 87,
+  "selected_scripted_trials": 522,
+  "status": "SCENE_PACKAGE_COMPLETE_STUDY_NOT_STARTED",
+  "unused_registered_candidates": 205
+}
