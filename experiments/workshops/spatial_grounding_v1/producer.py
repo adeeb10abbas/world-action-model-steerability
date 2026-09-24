@@ -1,8 +1,9 @@
-"""SGW-owned Nano server boundary and evidence producer.
+"""SGW-owned policy server boundary and evidence producer.
 
-The pinned Cosmos service does model inference; this wrapper owns the SGW
-request boundary.  It never passes SGW metadata to the model backend and never
-turns wrapper-generated identifiers into native model identifiers.
+The pinned native backend does inference; this wrapper owns the SGW request
+boundary. It never passes SGW metadata to the model backend and never turns
+wrapper-generated identifiers into native model identifiers. The original
+Nano entry point and config remain backward compatible.
 """
 
 from __future__ import annotations
@@ -171,7 +172,12 @@ class NanoEvidenceProducer:
         self._bound_fingerprint = ""
         self._bound_reset_id = ""
         self._prompt: str | None = None
-        self.attestation = derive_nano_attestation(backend, expected_config=expected_config)
+        self.model = str(expected_config["model"])
+        if self.model == "N3":
+            self.attestation = derive_nano_attestation(backend, expected_config=expected_config)
+        else:
+            from .checkpoint_backends import derive_attestation
+            self.attestation = derive_attestation(backend, expected_config=expected_config)
         attestation_path.parent.mkdir(parents=True, exist_ok=True)
         attestation_path.write_text(
             json.dumps(self.attestation, sort_keys=True, indent=2) + "\n",
@@ -183,6 +189,9 @@ class NanoEvidenceProducer:
         if not isinstance(camera, str) or not camera:
             raise AdapterError("SGW Nano reset requires camera_name")
         with self._lock:
+            if self.model != "N3":
+                # FLUX owns text/queue/history caches; Edge owns request RNG state.
+                self.backend.reset()
             self._reset_id = f"sgw-reset-{uuid.uuid4().hex}"
             self._wrapper_reset_id = self._reset_id
             self._camera_name = camera
@@ -250,7 +259,7 @@ class NanoEvidenceProducer:
                 raise AdapterError("pinned Nano backend did not return finite (32,8) actions")
             record: dict[str, Any] = {
             "request_id": packet_request_id,
-            "wrapper_request_id": f"sgw-n3-request-{uuid.uuid4().hex}",
+            "wrapper_request_id": f"sgw-{self.model.lower()}-request-{uuid.uuid4().hex}",
             "request_index": request_index,
             "reset_id": reset_id,
             "wrapper_reset_id": self._wrapper_reset_id,
@@ -270,6 +279,10 @@ class NanoEvidenceProducer:
             "actions_shape": list(actions.shape),
             "actions_sha256": _sha256_bytes(actions.tobytes()),
             }
+            if self.model != "N3":
+                record["model"] = self.model
+                record["effective_sampling_seed"] = sampling_seed
+                record["future_metadata"] = backend_packet.get("future_metadata", {})
             for key in ("request_id", "registered_cell_id", "reset_fingerprint"):
                 if not isinstance(record[key], str) or not record[key]:
                     raise AdapterError(f"SGW Nano packet lacks {key}")
@@ -285,14 +298,24 @@ class NanoEvidenceProducer:
                     os.fsync(future_handle.fileno())
                 record.update(
                 {
-                    "future_status": "exposed_and_retained",
+                    "future_status": backend_packet.get("future_status", "exposed_and_retained"),
+                    "future_encoding": "decoded_rgb_uint8",
                     "future_path": str(future_path),
                     "future_sha256": _sha256_bytes(future_path.read_bytes()),
                     "future_shape": list(future_array.shape),
                 }
                 )
             else:
-                record["future_status"] = "not_exposed"
+                record["future_status"] = backend_packet.get("future_status", "not_exposed")
+            latent = backend_packet.get("future_latent")
+            if latent is not None:
+                self.future_dir.mkdir(parents=True, exist_ok=True)
+                latent_path = self.future_dir / f"{record['wrapper_request_id']}-latents.npy"
+                np.save(latent_path, np.asarray(latent), allow_pickle=False)
+                with latent_path.open("rb") as latent_handle:
+                    os.fsync(latent_handle.fileno())
+                record["future_latent_path"] = str(latent_path)
+                record["future_latent_sha256"] = _sha256_bytes(latent_path.read_bytes())
             self.trace_path.parent.mkdir(parents=True, exist_ok=True)
             with self.trace_path.open("a", encoding="utf-8") as handle:
                 handle.write(json.dumps(record, sort_keys=True) + "\n")

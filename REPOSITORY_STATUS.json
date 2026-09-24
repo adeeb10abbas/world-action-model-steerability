@@ -19,14 +19,19 @@
     "sha256": "a7413451f7339c698fb4842bdb2007a59fb4f4bb8a8ebd97bf09355cbdc6d0f8",
     "wrist_changed": false
   },
-  "current_scope": "Repository preparation and explicitly authorized scene completion; no learned-policy study launch.",
+  "current_scope": "User-authorized cluster model integration, runtime qualification and gated study launch; behavioral release not yet created.",
+  "cluster_execution_continuation": "handoff/cluster-execution-20260924/README.md",
   "extraction_source_commit": "62ad0101d5fc26c6461aff47f611cab21219748a",
   "future_learned_policy_execution_location": "cluster_only",
   "handoff_entrypoint": "handoff/README.md",
   "historical_authorizations_are_not_new_launch_permission": true,
-  "learned_policy_launch_authorized": false,
+  "learned_policy_launch_authorized": true,
+  "learned_policy_authorization_receipt": {
+    "path": "handoff/cluster-execution-20260924/launch-instruction.json",
+    "sha256": "cffa0423119dbe631a1ddb08f91232ac0eb54d256ce3c1ecf1de194450608867"
+  },
   "model_roster_amendment": "docs/MODEL_ROSTER_AMENDMENT_20260924.md",
-  "pending_integration": "N3/E3/F3 planning queue is current; D1 execution is retired. E3/F3 adapters and immutable identities are pending. All models require cluster runtime and prediction time/camera qualification. Scene geometry and camera qualification evidence are retained; no model study launched.",
+  "pending_integration": "E3/F3 adapters, immutable identities and same-request FLUX capture implemented with CPU coverage. Current 87-layout/1566-cell binding regenerated on PVC. One LAT-P01 destination reset/render check passed. N3 attempts A/B failed before inference on libxcb/PATH dependencies; evidence preserved and bootstrap repair CPU-verified. All models still require actual runtime and prediction qualification; no study launched.",
   "physical_completion_receipt": "handoff/physical-scene-completion.json",
   "physical_scene_package_complete": true,
   "planned_behavioral_cells": 1566,

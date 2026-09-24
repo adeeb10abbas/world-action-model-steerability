@@ -1,7 +1,9 @@
 # Runtime for the clean workshop study
 
-**Construction only. No learned-policy launch is authorized.** The planned
-1,566-cell clean study is cluster-only and is not currently released.
+**Runtime integration is authorized; no behavioral release exists yet.** The
+1,566-cell clean study is cluster-only. Follow the
+[current continuation](../handoff/cluster-execution-20260924/README.md), including
+its checked-in startup bootstrap and preserved zero-request failures.
 
 ## External pins
 
@@ -10,8 +12,8 @@
 | [RoboLab](https://github.com/NVlabs/RoboLab) | `0aef241fb088ca21bb4ebd24448940ed56620d17` |
 | Cosmos source | `411d25b2e35bc441126f48c44a4b93e1c0564274`; native entry point `cosmos_framework.scripts.action_policy_server_robolab.RobolabPolicyService` |
 | [N3 checkpoint](https://huggingface.co/nvidia/Cosmos3-Nano-Policy-DROID) | `6706d7680581c255ff61e0f3bb49d90eac55c79e` |
-| [E3 checkpoint](https://huggingface.co/nvidia/Cosmos3-Edge-Policy-DROID) | Source/checkpoint pins and runtime integration pending |
-| [F3 checkpoint](https://huggingface.co/black-forest-labs/flux-3-action-droid) | Root BF16 package; source/checkpoint pins, runtime and predicted-video export pending |
+| [E3 checkpoint](https://huggingface.co/nvidia/Cosmos3-Edge-Policy-DROID) | Source `cf5d68c00d97ccd2480a2320ed652b92dec63102`; checkpoint `a7c7288f9b6ac1684e993007b0f9703dd26e58ef`; native qualification pending |
+| [F3 checkpoint](https://huggingface.co/black-forest-labs/flux-3-action-droid) | Source `e2dd1d8dbc5977b54315d61f7548c63c043d6d4f`; root BF16 checkpoint `3d0887bdc7acee1686b19afac267125d519ff4f1`; native qualification pending |
 
 The documented scene runtime uses Python 3.11, Isaac Sim 5.0.0.0, Isaac Lab
 2.2.0 and Torch 2.7.0+cu126. This records the source runtime identity; it is
@@ -22,6 +24,12 @@ The Nano checkpoint manifest retains its path under
 code remain historical references only; D1 is rejected by active runtime
 entry points. No E3/F3 runtime or checkpoint pin has been qualified yet. Keep all model weights and
 required auxiliary snapshots outside Git.
+
+The implemented E3/F3 backends verify immutable upstream file identities and
+load offline only. [Their identity manifest](../experiments/workshops/spatial_grounding_v1/checkpoint_integrations.json)
+records settings, Python/dependency requirements, environment variables and
+the F3 base-encoder pin `62878e2925e59b7a89ec14463ce89932624c490d`.
+Decoded forecasts remain explicitly unmapped pending native qualification.
 
 ## Assets and path binding
 

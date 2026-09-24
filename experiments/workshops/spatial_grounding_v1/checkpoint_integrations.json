@@ -1,0 +1,116 @@
+{
+  "schema_version": 1,
+  "verified_on": "2026-09-24",
+  "qualification": "CPU contracts only; native model loading, inference, reset isolation, capture parity and physical camera/time alignment remain pending",
+  "cpu_validation": {
+    "command": "SGW01_OFFICIAL_SOURCE_AUDIT=<reviewed-source-directory> .venv/bin/python -m pytest -q --basetemp .sgw-adapter-tests tests/test_sgw_checkpoint_integrations.py tests/test_sgw_model_retirement.py tests/test_sgw_nano_backend.py tests/test_sgw_nano_integration.py tests/test_sgw_runtime.py tests/test_sgw_adapters.py tests/test_sgw_producer.py tests/test_sgw_production_e2e.py tests/test_sgw_native_policy_observations.py tests/test_sgw_recorder.py",
+    "passed": 48,
+    "skipped": 4,
+    "skip_reasons": ["two collections of the optional historical Nano source-export check", "historical D1 source-export check", "Linux-only process receipt check on macOS"],
+    "python": "3.11.15",
+    "torch": "2.14.0 (CPU helpers only)",
+    "einops": "0.8.2",
+    "numpy": "2.4.6",
+    "official_checkpoint_tree_entries_verified": true,
+    "native_model_requests": 0,
+    "native_qualification": "pending",
+    "note": "Only synthetic CPU contracts and hash-verified AST-extracted official pure helpers were executed. The source-review scratch files and test outputs are not distributed. The new CPU test file is included in pyproject.toml testpaths."
+  },
+  "source_urls": {
+    "E3": "https://github.com/NVIDIA/cosmos-framework/tree/cf5d68c00d97ccd2480a2320ed652b92dec63102",
+    "F3": "https://github.com/black-forest-labs/flux-action/tree/e2dd1d8dbc5977b54315d61f7548c63c043d6d4f"
+  },
+  "instructions": [
+    "No weights or native dependencies are part of the CPU package. Only the resource coordinator may stage assets and launch native checks.",
+    "Use separate clean source checkouts and environments: retain the original N3 source/config unchanged. E3 official setup uses the policy-server dependency group; F3 setup uses encoders, serve, torch/CUDA-compatible NATTEN. See each pinned source docs/setup.md or docs/action_policy_droid_server.md.",
+    "Hash verification uses Hugging Face immutable tree metadata. sha256 is the LFS content OID; git_blob is SHA1(blob <byte_count> NUL <content>), not a raw SHA1. All listed runtime assets must exist locally. No automatic downloads, quantization, variant selection or fallback models.",
+    "Invoke the checkpoint-specific interpreter with -m experiments.workshops.spatial_grounding_v1.checkpoint_wrapper_entrypoint E3 (or F3). PYTHONPATH must include the study checkout and the selected official source (F3 src/).",
+    "Set SGW01_E3_SOURCE_ROOT and SGW01_E3_CHECKPOINT_PATH; E3 also requires SGW01_E3_OUTPUT_DIR to an explicit persistent output directory, never the upstream temporary default.",
+    "For F3 set SGW01_F3_SOURCE_ROOT, SGW01_F3_CHECKPOINT_PATH to the root BF16 package and SGW01_F3_BASE_PATH to the separately verified base encoders snapshot. No variants subfolder is allowed. Preparation is eager (compile=False), warmup=0, no text offload; single_frame_encode becomes True through the official preparation API.",
+    "Both require SGW01_<MODEL>_HOST=127.0.0.1, SGW01_<MODEL>_PORT, SGW01_SERVER_ATTESTATION, SGW01_TRACE_SIDECAR, SGW01_FUTURE_DIR. The existing owner also needs SGW01_SERVER_ARGV (JSON argv), SGW01_RUNTIME_RECEIPT (new path), SGW01_SERVER_LOG_DIR, SGW01_ENV_FACTORY, SGW01_CAMERA_NAME and a finite SGW01_READINESS_TIMEOUT appropriate to cold model loading.",
+    "Use the existing runtime.create_runtime owner, not a pre-existing remote service. It verifies the child PID/start/cmdline, socket ownership and checkpoint-specific attestation. This receipt does not qualify a runtime or release a queue.",
+    "The wrapper forces HF_HUB_OFFLINE=1 and TRANSFORMERS_OFFLINE=1 before any model import. Missing auxiliary dependencies fail closed. Request seeds are the frozen effective_policy_seed, explicitly passed to each native request, not inferred from a server query counter.",
+    "Only the existing three camera slots and measured arm joints/gripper enter the model. E3 keeps its official compose-then-bilinear-resize path. F3 uses its official compose_views and _resize_uint8 to adapt registered native frames to its required 540x640 composite, then its official reflect-pad to 544x736. This is a prospective F3 native-frame binding, not inherited N3/D1 qualification or a claim of equality to the PIL-based RoboLab client.",
+    "Both return 32 absolute seven-joint targets in radians plus DROID gripper closed fraction. The exact returned prefix is executed, at most 32 steps or the remaining 450-action budget. No delta integration, unit rescaling, extra gripper flip or client-side binarization is added.",
+    "E3 explicitly uses its documented guidance_interval=[960,1001] and structured JSON prompt formatter, guidance=3, unipc/4 steps/shift=5, history=1, conditioning_fps=15, resolution=480. The literal instruction reaches the official formatter unchanged.",
+    "F3 keeps root BF16 sampler cosmos_unipc/order2, 4 steps, shift=5, video CFG=4, action CFG=1, action_scale=2, absolute units, gripper_flip_dims=[-1], 15Hz and 32 returned/executed actions. Its official policy undoes scale and gripper flips before returning.",
+    "F3 captures the output of the same official _sample_prepared invocation used by RoboLabPolicy.infer, retains normalized latents and decodes them through the official video VAE; it never samples a second future. SGW01_F3_CAPTURE_FUTURE=0 disables this capture only for native capture-on/off action parity qualification. Default is 1.",
+    "Decoded predictions are explicitly decoded_unmapped; no camera/time-qualified prediction score follows from a decoded file. F3 decode exceptions preserve valid actions, sampled latents and decode_error evidence. Native checks must verify parity, decoded shape/slots, and the documented action k -> frame k+1 at 15Hz mapping before forecast analysis.",
+    "CPU source contracts can be run with SGW01_E3_SOURCE_ROOT and SGW01_F3_SOURCE_ROOT pointing to their pinned official checkouts, or SGW01_OFFICIAL_SOURCE_AUDIT pointing to a directory containing the exact reviewed filenames below (edge_server.py, flux_robolab.py, flux_policy.py, flux_packing.py, flux_positional.py). Tests AST-extract only pure helpers after SHA256 verification; no official model import or inference. Run python -m pytest -q --basetemp .sgw-adapter-tests tests/test_sgw_checkpoint_integrations.py; optional CPU torch and einops are needed for source and joint-sample contract checks."
+  ],
+  "sources": {
+    "edge_server.py": {"path": "cosmos_framework/scripts/action_policy_server_robolab.py", "sha256": "de429f70bba6fcecd1ed6f95200ec5edaf42e2ea9f90d6aabe94a872b4ce6768"},
+    "edge_transforms.py": {"path": "cosmos_framework/data/generator/action/utils/transforms.py", "sha256": "184367dc5516e2cfb590144a02f115b86fbd2363141ee4a30c38dc9c825a0bb1"},
+    "flux_robolab.py": {"path": "src/flux_action/serving/robolab.py", "sha256": "f78eed26f8e292c8aeba5abadecba2327b2862ab6e583fd237483106fc04b2c4"},
+    "flux_policy.py": {"path": "src/flux_action/policy.py", "sha256": "79551d5c6ac352af6424fb052f586e696f4a352ff3a60310d11d72300577365f"},
+    "flux_packing.py": {"path": "src/flux_action/processing/packing.py", "sha256": "afda07f38387c68311d3ba41da6e1e0c2062a7d671637264eabd0c2662853324"},
+    "flux_positional.py": {"path": "src/flux_action/models/positional.py", "sha256": "c24b02a9d188a3eaafcb1dc89de551433a4d7269e11dae5af4248be246a16fe0"},
+    "flux_video_vae.py": {"path": "src/flux_action/models/video_vae.py", "sha256": "5161f2bb96979bd436a429c59738679dbb17d638181cc713c847a981d768902a"}
+  },
+  "checkpoints": {
+    "E3": {
+      "asset": "nvidia/Cosmos3-Edge-Policy-DROID",
+      "revision": "a7c7288f9b6ac1684e993007b0f9703dd26e58ef",
+      "files": [
+        {"path": "chat_template.jinja", "bytes": 12158, "git_blob": "0a3d5967de71577bd2bb20994cee54c39bed63ba"},
+        {"path": "checkpoint.json", "bytes": 192, "git_blob": "b2aa986627b41670ab6a4659b7bb0810f5d992bf"},
+        {"path": "config.json", "bytes": 7527, "git_blob": "54a1b969d895172aa870656fac2c12155f73b42c"},
+        {"path": "generation_config.json", "bytes": 159, "git_blob": "07721c9fefade4dadf421fa533198aa90fff6f02"},
+        {"path": "model.safetensors.index.json", "bytes": 104914, "git_blob": "654b7c44bbf499ff45feb78e14882ceb3e161013"},
+        {"path": "model_index.json", "bytes": 555, "git_blob": "70fd5e0775133f2cbf4fc50c61507e4c49b071dc"},
+        {"path": "modular_model_index.json", "bytes": 1335, "git_blob": "359f6de67b9a3444bad549cef825690842e50be4"},
+        {"path": "preprocessor_config.json", "bytes": 334, "git_blob": "365eeed5cc1b1d095f2fceb90461f89885a9bd7d"},
+        {"path": "processor_config.json", "bytes": 781, "git_blob": "752751ce9a73dea4cad36c14e6e231af073af73c"},
+        {"path": "scheduler/scheduler_config.json", "bytes": 888, "git_blob": "14db24ff702d6af3bccdb857c0b491dd4638a265"},
+        {"path": "special_tokens_map.json", "bytes": 563, "git_blob": "0451f37912edb7f8a4bf04d77eef13f6130f0515"},
+        {"path": "text_tokenizer/chat_template.jinja", "bytes": 12158, "git_blob": "0a3d5967de71577bd2bb20994cee54c39bed63ba"},
+        {"path": "text_tokenizer/special_tokens_map.json", "bytes": 563, "git_blob": "0451f37912edb7f8a4bf04d77eef13f6130f0515"},
+        {"path": "text_tokenizer/tokenizer.json", "bytes": 17077500, "sha256": "4dc692a99dca6d92a44e9529ffb53541eb79bb260eec7281bc51268c05d7311c"},
+        {"path": "text_tokenizer/tokenizer_config.json", "bytes": 177253, "git_blob": "3bd19cfacc8bdd6e0bf31405519ee52987d39ed8"},
+        {"path": "tokenizer.json", "bytes": 17077500, "sha256": "4dc692a99dca6d92a44e9529ffb53541eb79bb260eec7281bc51268c05d7311c"},
+        {"path": "tokenizer_config.json", "bytes": 177253, "git_blob": "b3477e373eeb0753858974549bf9a67409acda03"},
+        {"path": "transformer/config.json", "bytes": 1079, "git_blob": "bcbc90228c93d19576b5cc8dd79a1e1da88e9bf3"},
+        {"path": "transformer/cosmos_framework_model.safetensors", "bytes": 11032, "sha256": "1815af3a075108820c1f3c26d50b999299a8d831526cf561a20249bf1bb6fcd1"},
+        {"path": "transformer/diffusion_pytorch_model-00001-of-00002.safetensors", "bytes": 5000041944, "sha256": "99b0ff1f9dbdcb497fac16cbc0ebe33dee19653b4c182fa0d474433dcc845206"},
+        {"path": "transformer/diffusion_pytorch_model-00002-of-00002.safetensors", "bytes": 1748779008, "sha256": "1842fefdacd0dcbb8ab543b59848a0b696e0c9634676bc76db9e0c971fe328d5"},
+        {"path": "transformer/diffusion_pytorch_model.safetensors.index.json", "bytes": 53623, "git_blob": "34532756a06ebdd1000a1da1fd6bf139713527ed"},
+        {"path": "vae/config.json", "bytes": 1755, "git_blob": "12aeec832f9b85f555b1e2267f84defa2fc91e9e"},
+        {"path": "vae/diffusion_pytorch_model.safetensors", "bytes": 1409400600, "sha256": "230496cb59ff85bc9c040487737c4062480cb61c71e697b197b4c30142f2a0da"},
+        {"path": "video_preprocessor_config.json", "bytes": 367, "git_blob": "3ba30a98e507a8450b8d7bb9cf94b236739ce267"},
+        {"path": "vision_encoder/model.safetensors", "bytes": 978739880, "sha256": "2180ad739ecc96b5c1e9386892d3c5c08bfa42b9cdab9aabc53b028671db89b3"}
+      ]
+    },
+    "F3": {
+      "asset": "black-forest-labs/flux-3-action-droid",
+      "revision": "3d0887bdc7acee1686b19afac267125d519ff4f1",
+      "files": [
+        {"path": "config.json", "bytes": 2100, "git_blob": "c897bf1405b21be12dd5ab27f9e68b2a6cd8fd56"},
+        {"path": "config.native.json", "bytes": 1478, "git_blob": "965554203cd3bcb6bb82c3785217c9864369ddbd"},
+        {"path": "lora.json", "bytes": 1213, "git_blob": "6e71ef5503e81b61ef1b8cf9dd2f3148b37059ef"},
+        {"path": "manifest.json", "bytes": 374, "git_blob": "66fd8b9c21c1e16d593adb2d684ac43e388d255d"},
+        {"path": "model.safetensors", "bytes": 13894173232, "sha256": "951be04674795b70e9e98d2a85c83c92503a7b6f6c31fd6fd94bc12527b19def"},
+        {"path": "policy_postprocessor.json", "bytes": 691, "git_blob": "c1cb0cc4c17f464aabdb07c453f603dcbea5f635"},
+        {"path": "policy_preprocessor.json", "bytes": 1979, "git_blob": "162b4befdc606a0ff9e62c8913c2e15dc5118546"}
+      ]
+    },
+    "F3-base": {
+      "asset": "black-forest-labs/flux-3-action-base",
+      "revision": "62878e2925e59b7a89ec14463ce89932624c490d",
+      "files": [
+        {"path": "text_encoder/chat_template.json", "bytes": 5502, "git_blob": "e49e75bdda104c8de941eb20e0b3765184fb27bc"},
+        {"path": "text_encoder/config.json", "bytes": 1505, "git_blob": "22be8bb79043d39840ca5e70d7a2dab80311602c"},
+        {"path": "text_encoder/generation_config.json", "bytes": 269, "git_blob": "e116347d7ef42621c7a5957f82c015c38d939c1f"},
+        {"path": "text_encoder/merges.txt", "bytes": 1671839, "git_blob": "20024bfe7c83998e9aeaf98a0cd6a2ce6306c2f0"},
+        {"path": "text_encoder/model-00001-of-00002.safetensors", "bytes": 4967229296, "sha256": "30a01a0556622645a3cce87b655bbbbbc1f170c196099f1b666c93202c3339a9"},
+        {"path": "text_encoder/model-00002-of-00002.safetensors", "bytes": 3908490048, "sha256": "046296a2a387efb43b0c997d5833c789604d168834f6e0d3064bf7bb13d002a6"},
+        {"path": "text_encoder/model.safetensors.index.json", "bytes": 64742, "git_blob": "3b52de97496e2f4501dfa92a87642f60db3e22a1"},
+        {"path": "text_encoder/preprocessor_config.json", "bytes": 390, "git_blob": "2ea84a437d448ff71b08df68fdd949d5cc4ebb64"},
+        {"path": "text_encoder/tokenizer.json", "bytes": 7032403, "git_blob": "c6cc1014128b19d1fc46b1d30a23e3b1d35db421"},
+        {"path": "text_encoder/tokenizer_config.json", "bytes": 10868, "git_blob": "d3d3763207692c78780f4bf42d4dadf49a5c8012"},
+        {"path": "text_encoder/video_preprocessor_config.json", "bytes": 385, "git_blob": "3ba673a5ad7d4d13f54155ecd38b2a94a6dac8fe"},
+        {"path": "text_encoder/vocab.json", "bytes": 2776833, "git_blob": "4783fe10ac3adce15ac8f358ef5462739852c569"},
+        {"path": "video_vae.safetensors", "bytes": 2508132617, "sha256": "db1c3211548371cf42c7230d52b5a99df5072f246d6bdfdc8fee99208ef58f01"}
+      ]
+    }
+  }
+}

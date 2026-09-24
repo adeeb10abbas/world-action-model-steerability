@@ -1,0 +1,90 @@
+{
+  "apiVersion": "batch/v1",
+  "kind": "Job",
+  "metadata": {
+    "name": "sgw01-ali-current-destination-20260924a",
+    "namespace": "211247-prod",
+    "labels": {"app.kubernetes.io/name": "sgw-01", "owner": "ali", "coordinator": "5ed7dc81"}
+  },
+  "spec": {
+    "activeDeadlineSeconds": 1200,
+    "backoffLimit": 0,
+    "completions": 1,
+    "parallelism": 1,
+    "template": {
+      "metadata": {
+        "labels": {"app.kubernetes.io/name": "sgw-01", "owner": "ali", "coordinator": "5ed7dc81"}
+      },
+      "spec": {
+        "automountServiceAccountToken": false,
+        "nodeName": "dcwipphhgc191.edc.nam.gm.com",
+        "schedulerName": "sgw01-ali-current-destination-20260924a",
+        "priority": 0,
+        "restartPolicy": "Never",
+        "terminationGracePeriodSeconds": 180,
+        "securityContext": {
+          "fsGroup": 2518800,
+          "supplementalGroups": [2518800],
+          "seccompProfile": {"type": "RuntimeDefault"}
+        },
+        "imagePullSecrets": [{"name": "artifactory-ci-pull-secret"}],
+        "containers": [{
+          "name": "destination-check",
+          "image": "artifactory-ci.gm.com/docker-approved/devcontainers/base@sha256:03f5ce7d090fbd378070a8216d0aedfc6e473c52da99b40b0cf53918612a297c",
+          "imagePullPolicy": "IfNotPresent",
+          "command": ["/bin/bash", "-ec"],
+          "args": [
+            "set -euo pipefail\nmkdir \"$OUT\"\nexec > >(tee \"$OUT/job.log\") 2>&1\ncd \"$SOURCE\"\ntest \"$(git rev-parse HEAD)\" = 6dbdecc37b397b2ab7b9f064008da40e067a5ceb\ntest -z \"$(git status --porcelain)\"\nCUDA_VISIBLE_DEVICES=$(\"$PY\" -m experiments.workshops.spatial_grounding_v1.gpu_idle_probe --expected-count 1 --output \"$OUT/gpu-idle.json\")\nexport CUDA_VISIBLE_DEVICES\ntest \"$CUDA_VISIBLE_DEVICES\" != GPU-60b3065c-79cb-61e6-b92a-32d0ae3750f3\nmkdir -p /data/users/ali/sgw-01/locks\nexec 9>\"/data/users/ali/sgw-01/locks/gpu-$CUDA_VISIBLE_DEVICES.lock\"\nflock --nonblock 9\nnvidia-smi --query-gpu=uuid,name,driver_version,memory.used,utilization.gpu --format=csv,noheader > \"$OUT/gpu-identity.csv\"\nmkdir -p \"$HOME/.cache\" \"$XDG_CACHE_HOME\" \"$WARP_CACHE_PATH\" \"$MPLCONFIGDIR\"\n\"$PY\" tools/camera_checks/capture.py --materialized /data/users/ali/sgw-01/current-20260924a/materialization --layout LAT-P01 --output \"$OUT/capture\" --study-root \"$SOURCE\" --headless --num_envs 1 --device cuda:0\nsync"
+          ],
+          "env": [
+            {"name": "SOURCE", "value": "/data/users/ali/sgw-01/current-20260924a/source"},
+            {"name": "OUT", "value": "/data/users/ali/sgw-01/current-20260924a/destination-check"},
+            {"name": "PY", "value": "/data/users/ali/vla_wam/envs/robolab-v2-isaac50/bin/python"},
+            {"name": "PYTHONPATH", "value": "/data/users/ali/sgw-01/current-20260924a/source:/data/users/ali/vla_wam/external/RoboLab-pi05-v3-0aef241"},
+            {"name": "HOME", "value": "/home/ali"},
+            {"name": "USER", "value": "ali"},
+            {"name": "LOGNAME", "value": "ali"},
+            {"name": "PYTHONDONTWRITEBYTECODE", "value": "1"},
+            {"name": "TMPDIR", "value": "/tmp"},
+            {"name": "NVIDIA_DRIVER_CAPABILITIES", "value": "compute,utility,graphics,display"},
+            {"name": "OMNI_KIT_ACCEPT_EULA", "value": "YES"},
+            {"name": "ACCEPT_EULA", "value": "Y"},
+            {"name": "VK_ICD_FILENAMES", "value": "/etc/vulkan/icd.d/nvidia_icd.json"},
+            {"name": "LD_LIBRARY_PATH", "value": "/data/users/ali/vla_wam/envs/robolab-native-libs-ubuntu2204/usr/lib/x86_64-linux-gnu:/data/users/ali/glvnd/lib:/data/users/ali/vla_wam/envs/fastwam-native-libs/lib:/usr/lib/x86_64-linux-gnu"},
+            {"name": "XDG_CACHE_HOME", "value": "/tmp/cache/xdg"},
+            {"name": "WARP_CACHE_PATH", "value": "/tmp/cache/warp"},
+            {"name": "MPLCONFIGDIR", "value": "/tmp/cache/matplotlib"}
+          ],
+          "resources": {
+            "requests": {"cpu": "4", "memory": "32Gi", "nvidia.com/gpu": "1"},
+            "limits": {"cpu": "8", "memory": "64Gi", "nvidia.com/gpu": "1"}
+          },
+          "securityContext": {
+            "allowPrivilegeEscalation": false,
+            "capabilities": {"drop": ["ALL"]},
+            "runAsGroup": 2518800,
+            "runAsNonRoot": true,
+            "runAsUser": 816149040
+          },
+          "volumeMounts": [
+            {"mountPath": "/data", "name": "workspace"},
+            {"mountPath": "/dev/shm", "name": "dshm"},
+            {"mountPath": "/tmp", "name": "tmp"},
+            {"mountPath": "/var/tmp", "name": "vartmp"},
+            {"mountPath": "/home/ali", "name": "home"},
+            {"mountPath": "/etc/passwd", "name": "userdb", "subPath": "passwd", "readOnly": true},
+            {"mountPath": "/etc/group", "name": "userdb", "subPath": "group", "readOnly": true}
+          ]
+        }],
+        "volumes": [
+          {"name": "workspace", "persistentVolumeClaim": {"claimName": "211247-prod-pvc"}},
+          {"name": "dshm", "emptyDir": {"medium": "Memory", "sizeLimit": "16Gi"}},
+          {"name": "tmp", "emptyDir": {}},
+          {"name": "vartmp", "emptyDir": {}},
+          {"name": "home", "emptyDir": {}},
+          {"name": "userdb", "configMap": {"name": "211247-ali-b200-1gpu-userdb"}}
+        ]
+      }
+    }
+  }
+}

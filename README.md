@@ -6,7 +6,7 @@ Do equivalent descriptions of a spatial goal produce the same predicted and exec
 
 The study compares Cosmos3 Nano Policy DROID (N3), Cosmos3 Edge Policy DROID (E3), and FLUX 3 Action DROID (F3) on left/right, higher/lower, and closer/farther placement. Each physical goal has direct, subject-first, and reference-inverted descriptions. All three checkpoints use the same clean layouts, robot, cameras, prompts and scoring rules. There are 29 layout slots per family: one pilot, four development and 24 confirmation layouts.
 
-**Roster revision 1.2:** DreamZero is retired from the executable queue. Edge and FLUX are planned but their runtime adapters, immutable identities and forecast capture still need integration; no model study is ready to launch. See the [model amendment](docs/MODEL_ROSTER_AMENDMENT_20260924.md).
+**Roster revision 1.2:** DreamZero is retired from the executable queue. Edge and FLUX adapters, immutable identities and same-request FLUX capture are now implemented with CPU coverage; actual runtime and forecast qualification remain pending. The user has separately authorized cluster execution subject to those gates. See the [current cluster continuation](handoff/cluster-execution-20260924/README.md) for deployed source, persistent bindings, preserved failures and reproducible startup repairs.
 
 The two exterior cameras now use closer, elevated tabletop views; the wrist camera is unchanged. Geometric coverage passed for all 87 layouts, and six representative layouts passed native camera and offline input-preprocessing checks. The 522 earlier scripted trials establish unchanged physical geometry; they were not rerun with the new cameras. See [current views and camera checks](docs/CAMERA_ALIGNMENT.md).
 

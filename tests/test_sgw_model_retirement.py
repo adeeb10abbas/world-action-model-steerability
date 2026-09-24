@@ -29,9 +29,10 @@ def test_retired_model_rejected_before_runtime_setup():
 
 @pytest.mark.parametrize('model', ['E3', 'F3'])
 def test_new_models_do_not_fall_back_to_a_different_runtime(model):
-    with pytest.raises(adapters.AdapterError, match='pending integration'):
-        adapters.load_production_adapter(model)
-    with pytest.raises(adapters.AdapterError, match='pending integration'):
+    adapter = adapters.make_adapter(model, cell_id='new', prompt='unchanged', transport=lambda _: {})
+    assert adapter.config['model'] == model
+    assert adapter.config != adapters.NANO_CONFIG
+    with pytest.raises(adapters.AdapterError, match='exact SGW-01 model identity'):
         runtime.create_runtime(model=model, config={})
 
 

@@ -463,12 +463,12 @@ def _nano_image(observation: Mapping[str, Any]) -> np.ndarray:
 
 
 class _NanoHttpTransport:
-    """Client for the SGW-owned HTTP wrapper around the pinned native service.
+    """Shared owned HTTP boundary, retaining the original Nano client name.
 
-    The audited server has no session state: ``history_length=1`` and every
-    request constructs a fresh one-frame sample.  Reset therefore clears only
-    transport request bookkeeping, but is accepted only with the attested
-    history setting; it is not a guessed OpenPI ``reset()`` call.
+    Each attested backend uses one-frame observations. Reset always reaches
+    the owned producer, which clears its episode binding and, for E3/F3,
+    invokes the checkpoint-specific RNG/cache reset. It is never a guessed
+    or no-op OpenPI ``reset()`` call.
     """
 
     def __init__(
@@ -828,10 +828,10 @@ class NativeRuntime:
 def create_runtime(*, model: str, config: Mapping[str, Any]) -> NativeRuntime:
     """Construct the real native client and simulator binding for one model."""
 
-    from .adapters import require_implemented_model
+    from .adapters import MODEL_ADAPTERS, require_implemented_model
 
     require_implemented_model(model)
-    expected = NANO_CONFIG
+    expected = MODEL_ADAPTERS[model].config
     if dict(config) != dict(expected):
         raise AdapterError("runtime config does not match the exact SGW-01 model identity")
     host = _required_env(f"SGW01_{model}_HOST")
@@ -886,7 +886,7 @@ def create_runtime(*, model: str, config: Mapping[str, Any]) -> NativeRuntime:
             or receipt.get("source_commit") != expected["source_commit"]
         ):
             raise AdapterError("runtime receipt model/config/source identity mismatch")
-        # E3/F3 must gain explicit implementations; there is no retired-model fallback.
+        # The owned HTTP boundary is shared; the attested backend is checkpoint-specific.
         client = _NanoHttpTransport(host, port, read_trace_sidecar, receipt)
         return NativeRuntime(
             transport=client,

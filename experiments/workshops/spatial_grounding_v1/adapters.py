@@ -40,6 +40,55 @@ NANO_CONFIG = {
     "executed_action_horizon": NANO_EXECUTED_HORIZON,
 }
 
+EDGE_CONFIG = {
+    "model": "E3",
+    "asset": "nvidia/Cosmos3-Edge-Policy-DROID",
+    "revision": "a7c7288f9b6ac1684e993007b0f9703dd26e58ef",
+    "source_commit": "cf5d68c00d97ccd2480a2320ed652b92dec63102",
+    "guidance": 3.0,
+    "guidance_interval": [960, 1001],
+    "format_prompt_as_json": True,
+    "denoising_steps": 4,
+    "sampler": "unipc",
+    "shift": 5.0,
+    "history_length": 1,
+    "conditioning_fps": 15,
+    "resolution": 480,
+    "precision": "bfloat16",
+    "returned_action_horizon": 32,
+    "executed_action_horizon": 32,
+}
+
+FLUX_CONFIG = {
+    "model": "F3",
+    "asset": "black-forest-labs/flux-3-action-droid",
+    "revision": "3d0887bdc7acee1686b19afac267125d519ff4f1",
+    "source_commit": "e2dd1d8dbc5977b54315d61f7548c63c043d6d4f",
+    "base_asset": "black-forest-labs/flux-3-action-base",
+    "base_revision": "62878e2925e59b7a89ec14463ce89932624c490d",
+    "package": "root",
+    "precision": "bfloat16",
+    "quantization": None,
+    "sampler": "cosmos_unipc",
+    "denoising_steps": 4,
+    "guidance": 4.0,
+    "action_guidance": 1.0,
+    "shift": 5.0,
+    "history_length": 1,
+    "conditioning_fps": 15,
+    "camera_keys": ["images.wrist", "images.left", "images.right"],
+    "canvas_hw": [544, 736],
+    "action_scale": 2.0,
+    "action_parameterization": "absolute",
+    "gripper_flip_dims": [-1],
+    "prepared_inference": True,
+    "compile": False,
+    "warmup": 0,
+    "single_frame_encode": True,
+    "returned_action_horizon": 32,
+    "executed_action_horizon": 32,
+}
+
 DREAMZERO_CONFIG = {
     "model": "D1",
     "asset": "GEAR-Dreams/DreamZero-DROID",
@@ -576,21 +625,48 @@ class DreamZeroPolicyAdapter(_BaseAdapter):
             raise AdapterError("D1 response uses custom action guidance")
 
 
+class EdgePolicyAdapter(_BaseAdapter):
+    """Official Cosmos Edge DROID interface, with its separately pinned settings."""
+
+    config = EDGE_CONFIG
+    returned_horizon = EDGE_CONFIG["returned_action_horizon"]
+    executed_horizon = EDGE_CONFIG["executed_action_horizon"]
+
+    def predict(self, observation: Any, prompt: str, *, action_step_start: int) -> Prediction:
+        return self._request(observation, prompt, action_step_start)
+
+
+class FluxPolicyAdapter(_BaseAdapter):
+    """Official root BF16 FLUX DROID absolute joint-position interface."""
+
+    config = FLUX_CONFIG
+    returned_horizon = FLUX_CONFIG["returned_action_horizon"]
+    executed_horizon = FLUX_CONFIG["executed_action_horizon"]
+
+    def predict(self, observation: Any, prompt: str, *, action_step_start: int) -> Prediction:
+        return self._request(observation, prompt, action_step_start)
+
+
+MODEL_ADAPTERS = {
+    "N3": NanoPolicyAdapter,
+    "E3": EdgePolicyAdapter,
+    "F3": FluxPolicyAdapter,
+}
+
+
 def require_implemented_model(model: str) -> None:
     """Reject retired and unfinished runtimes before loading any resources."""
     if model == "D1":
         raise AdapterError("DreamZero (D1) is retired from the active SGW-01 study")
-    if model in {"E3", "F3"}:
-        raise AdapterError(f"{model} runtime is pending integration; no fallback is permitted")
-    if model != "N3":
+    if model not in MODEL_ADAPTERS:
         raise AdapterError(f"unsupported SGW-01 model: {model}")
 
 
-def make_adapter(model: str, **kwargs: Any) -> NanoPolicyAdapter:
+def make_adapter(model: str, **kwargs: Any) -> _BaseAdapter:
     """Construct an implemented adapter from the active study roster."""
 
     require_implemented_model(model)
-    return NanoPolicyAdapter(**kwargs)
+    return MODEL_ADAPTERS[model](**kwargs)
 
 
 def _load_transport_factory() -> Callable[..., Transport]:
@@ -615,7 +691,8 @@ def load_production_adapter(model: str) -> ProductionAdapter:
 
     require_implemented_model(model)
     factory = _load_transport_factory()
-    config = dict(NANO_CONFIG)
+    policy_type = MODEL_ADAPTERS[model]
+    config = dict(policy_type.config)
     try:
         runtime = factory(model=model, config=config)
     except TypeError as exc:
@@ -625,7 +702,7 @@ def load_production_adapter(model: str) -> ProductionAdapter:
     if not callable(transport):
         raise AdapterError("pinned runtime factory did not return a callable transport")
     return ProductionAdapter(
-        NanoPolicyAdapter,
+        policy_type,
         transport=transport,
         transport_factory=factory,
         environment_factory=environment_factory,

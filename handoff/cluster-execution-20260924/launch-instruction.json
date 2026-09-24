@@ -1,0 +1,40 @@
+{
+  "schema_version": "sgw-current-launch-instruction-v1",
+  "status": "approved",
+  "authorization_source": "current_user_instruction",
+  "recorded_instruction_at_utc": "2026-09-24T18:43:06.233Z",
+  "owner_approval_reference": {
+    "relay_session_id": "c230f3cd-3fe9-4f1f-9ee4-e8b857151a60",
+    "coordinator_session_id": "5ed7dc81-68d8-493f-a8c4-81a4b6cb59f6",
+    "instruction": "Finish Edge/FLUX adapters, qualify actual pinned runtimes, regenerate cluster-path materialization, run small documented end-to-end checks, then launch the committed study on existing verified-idle Kubernetes capacity. Sole current launch/drain coordinator; preserve all raw outputs/videos and duplicate protection."
+  },
+  "source_main_commit": "6dbdecc37b397b2ab7b9f064008da40e067a5ceb",
+  "source_queue_sha256": "07a2bd6c1893e7662db0c12c01843c20d743bfeb4cb1b506f238a37ae19e068a",
+  "source_protocol_sha256": "4b420512939f8eba75fc31a91bd562812b6e8c1acd328b5ed7e268bbccb37bde",
+  "scope": {
+    "models": ["N3", "E3", "F3"],
+    "context": "prod-dcwi-warrenq1-vmkub007",
+    "namespace": "211247-prod",
+    "pvc": "211247-prod-pvc",
+    "persistent_cohort_parent": "/data/users/ali/sgw-01/current-20260924a",
+    "maximum_registered_behavioral_episodes": 1566,
+    "maximum_attempts_per_behavioral_cell": 3
+  },
+  "constraints": {
+    "existing_authorized_cluster_capacity_only": true,
+    "fresh_idle_allocation_check_required": true,
+    "allocation_scaling": "as_needed_verified_idle_capacity",
+    "max_concurrent_model_workers": null,
+    "max_total_allocated_gpus": null,
+    "new_paid_capacity_allowed": false,
+    "new_cluster_provisioning_allowed": false,
+    "preempt_or_stop_unowned_workloads_allowed": false,
+    "bounded_job_deadline_required": true,
+    "runtime_qualification_required": true,
+    "existing_release_and_worker_gates_required": true,
+    "scene_or_camera_redesign_allowed": false
+  },
+  "runtime_qualification_claimed": false,
+  "release_created": false,
+  "note": "Current instruction provenance only. This is not a technical qualification, runtime binding, external allocation receipt, or behavioral release. Historical authorizations remain insufficient."
+}

@@ -1,0 +1,49 @@
+{
+  "schema_version": "sgw-current-destination-check-v1",
+  "scope": "One destination native reset/render check, not physical goal qualification or model runtime qualification",
+  "status": "passed",
+  "source_commit": "6dbdecc37b397b2ab7b9f064008da40e067a5ceb",
+  "layout_id": "LAT-P01",
+  "candidate_id": "SGW-CLEAN-20260924-LAT-018",
+  "candidate_sha256": "ecf036b15a37609dd641bace83f2f2805d93ecdafc5ce0ecdff41545a8a8f8ec",
+  "camera_configuration": {
+    "revision": "close-oblique-v3-full-objects-20260924",
+    "sha256": "a7413451f7339c698fb4842bdb2007a59fb4f4bb8a8ebd97bf09355cbdc6d0f8"
+  },
+  "raw_receipt": {
+    "path": "/data/users/ali/sgw-01/current-20260924a/destination-check/capture/receipt.json",
+    "sha256": "f7f0b2783b762c90f9451eef63197343755daf3f6d7f6beb50422b9d2676910c",
+    "bytes": 107879
+  },
+  "script_sha256": "563c5a5fb267fdc1baa6df7aa201f8b4e35af026bc4024d1567a8b15fbca0771",
+  "job": "sgw01-ali-current-destination-20260924a",
+  "pod": "sgw01-ali-current-destination-20260924a-fbj8x",
+  "pod_uid": "e0e8725c-59f8-4d46-80f9-66eb715f9cc4",
+  "node": "dcwipphhgc191.edc.nam.gm.com",
+  "gpu_uuid": "GPU-8773b1c9-df29-a37a-e165-8f68986cdb88",
+  "gpu_type": "NVIDIA A40",
+  "initial_gpu_memory_used_mib": 0,
+  "initial_gpu_utilization_percent": 0,
+  "initial_compute_processes": [],
+  "gpu_uuid_lock_held": true,
+  "container_exit_code": 0,
+  "container_restart_count": 0,
+  "finished_at_utc": "2026-09-24T18:50:03Z",
+  "resets": 2,
+  "hold_steps": 3,
+  "observations": 5,
+  "exact_sensor_rgb_matches": 15,
+  "maximum_actor_root_reset_position_error_m": 0.0,
+  "maximum_actor_root_reset_angle_error_degrees": 0.0,
+  "control_step_dt_s": 0.06666666666666667,
+  "synchronized_sensor_timestamps_s": [
+    0.0,
+    0.06666667014360428,
+    0.13333334028720856,
+    0.20000006258487701,
+    0.0
+  ],
+  "model_requests": 0,
+  "physical_qualification_trials": 0,
+  "learned_policy_episodes": 0
+}

@@ -1,5 +1,12 @@
 # Start here: SGW-01 cluster handoff
 
+**Current execution continuation:** the user has since authorized cluster
+integration and launch subject to the runtime gates. See
+[the current cluster record](cluster-execution-20260924/README.md) for deployed
+source, destination materialization, exact Jobs, preserved startup failures
+and the reproducible bootstrap repair. No study episode has started. The
+original preparation-only handoff below does not itself grant that authority.
+
 **The scenes, camera configuration and experiment queue are ready to transfer.
 Model integration and cluster runtime qualification remain. No learned-policy
 episodes have started, and this handoff does not authorize a study launch.**

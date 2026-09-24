@@ -26,6 +26,38 @@ def require(condition: bool, message: str) -> None:
         raise ValueError(message)
 
 
+def validate_launch_instruction(status: dict, expected: dict, root: Path = ROOT) -> bool:
+    authorized = status.get("learned_policy_launch_authorized")
+    if authorized is False:
+        return False
+    require(authorized is True, "Launch authorization must be an explicit boolean")
+    reference = status.get("learned_policy_authorization_receipt")
+    require(isinstance(reference, dict) and isinstance(reference.get("path"), str),
+            "Current launch instruction must have a hash-bound receipt")
+    path = (root / reference["path"]).resolve()
+    require(path.is_relative_to(root.resolve()) and path.is_file(),
+            "Current launch instruction receipt is unavailable")
+    require(hashlib.sha256(path.read_bytes()).hexdigest() == reference.get("sha256"),
+            "Current launch instruction receipt hash differs")
+    instruction = json.loads(path.read_text())
+    constraints = instruction.get("constraints", {})
+    require(instruction.get("schema_version") == "sgw-current-launch-instruction-v1"
+            and instruction.get("status") == "approved"
+            and instruction.get("authorization_source") == "current_user_instruction"
+            and isinstance(instruction.get("owner_approval_reference"), dict)
+            and instruction.get("source_queue_sha256") == expected["planned_cells.csv"]
+            and instruction.get("source_protocol_sha256") == expected["protocol.json"]
+            and instruction.get("scope", {}).get("models") == ["N3", "E3", "F3"]
+            and instruction.get("scope", {}).get("maximum_registered_behavioral_episodes") == 1566
+            and constraints.get("runtime_qualification_required") is True
+            and constraints.get("existing_release_and_worker_gates_required") is True
+            and constraints.get("fresh_idle_allocation_check_required") is True
+            and constraints.get("new_paid_capacity_allowed") is False
+            and constraints.get("preempt_or_stop_unowned_workloads_allowed") is False,
+            "Current launch instruction does not cover this frozen, guarded study")
+    return True
+
+
 def validate(check_imports: bool = False) -> dict:
     expected = json.loads((SPEC / "registry_validation.json").read_text())["files"]
     for name, digest in expected.items():
@@ -62,8 +94,7 @@ def validate(check_imports: bool = False) -> dict:
                 == {(f, sign) for f in ("D", "C", "I") for sign in (1, -1)},
                 "Matched block conditions differ")
     status = json.loads((ROOT / "REPOSITORY_STATUS.json").read_text())
-    require(status["learned_policy_launch_authorized"] is False,
-            "Current repository construction scope must forbid policy launch")
+    authorized = validate_launch_instruction(status, expected)
     imported = []
     if check_imports:
         sys.path.insert(0, str(ROOT))
@@ -77,7 +108,7 @@ def validate(check_imports: bool = False) -> dict:
         "prompts": len(prompts), "planned_cells": len(cells), "matched_blocks": len(blocks),
         "stage_counts": dict(Counter(c["stage"] for c in cells)),
         "imported_modules": imported, "model_requests": 0, "simulator_trials": 0,
-        "learned_policy_launch_authorized": False,
+        "learned_policy_launch_authorized": authorized,
     }
 
 
