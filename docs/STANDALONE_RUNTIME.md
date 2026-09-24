@@ -22,14 +22,17 @@ not a claim that a new cluster environment has already been qualified.
 The Nano checkpoint manifest retains its path under
 `artifacts/vla_wam_shared_v2/pilot/expansion/`. DreamZero metadata and legacy
 code remain historical references only; D1 is rejected by active runtime
-entry points. No E3/F3 runtime or checkpoint pin has been qualified yet. Keep all model weights and
-required auxiliary snapshots outside Git.
+entry points. All three pins have passed their native six-request fixed-input
+check. This qualifies construction and the observed request contract, not
+closed-loop action execution or physical forecast mapping. Keep all model
+weights and required auxiliary snapshots outside Git.
 
 The implemented E3/F3 backends verify immutable upstream file identities and
 load offline only. [Their identity manifest](../experiments/workshops/spatial_grounding_v1/checkpoint_integrations.json)
 records settings, Python/dependency requirements, environment variables and
 the F3 base-encoder pin `62878e2925e59b7a89ec14463ce89932624c490d`.
-Decoded forecasts remain explicitly unmapped pending native qualification.
+FLUX's native capture-on/off action comparison passed exactly. Decoded
+forecasts remain explicitly unmapped pending physical qualification.
 
 ## Assets and path binding
 

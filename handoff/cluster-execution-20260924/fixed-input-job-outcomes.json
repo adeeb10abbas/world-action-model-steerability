@@ -1,0 +1,74 @@
+[
+  {
+    "containers": [
+      {
+        "name": "e3-check",
+        "restart_count": 0,
+        "state": {
+          "terminated": {
+            "containerID": "containerd://3fbff63d7cad47c5ba6008aeac89854213bc11142934960d5e3409c4466d0dc3",
+            "exitCode": 0,
+            "finishedAt": "2026-09-24T19:33:33Z",
+            "reason": "Completed",
+            "startedAt": "2026-09-24T19:31:15Z"
+          }
+        }
+      }
+    ],
+    "image": "artifactory-ci.gm.com/docker-approved/devcontainers/base@sha256:03f5ce7d090fbd378070a8216d0aedfc6e473c52da99b40b0cf53918612a297c",
+    "job": "sgw01-ali-current-e3-check-20260924a",
+    "job_uid": "d8cd5bfd-fd29-4e80-a7e1-edaf79766baa",
+    "node": "dcwipphai0061.edc.nam.gm.com",
+    "phase": "Succeeded",
+    "pod": "sgw01-ali-current-e3-check-20260924a-5pcg4",
+    "pod_uid": "32434c56-2486-4547-a12d-8b42b3768be4"
+  },
+  {
+    "containers": [
+      {
+        "name": "f3-check",
+        "restart_count": 0,
+        "state": {
+          "terminated": {
+            "containerID": "containerd://338c54835692616efe75a891714d810d6414313caf9d79da17c647faa551d5ee",
+            "exitCode": 0,
+            "finishedAt": "2026-09-24T19:34:06Z",
+            "reason": "Completed",
+            "startedAt": "2026-09-24T19:31:16Z"
+          }
+        }
+      }
+    ],
+    "image": "artifactory-ci.gm.com/docker-approved/devcontainers/base@sha256:03f5ce7d090fbd378070a8216d0aedfc6e473c52da99b40b0cf53918612a297c",
+    "job": "sgw01-ali-current-f3-check-20260924a",
+    "job_uid": "8d5ec9ea-a3d7-44d6-ab49-f95b3558d3d7",
+    "node": "dcwipphai0061.edc.nam.gm.com",
+    "phase": "Succeeded",
+    "pod": "sgw01-ali-current-f3-check-20260924a-qtj98",
+    "pod_uid": "f89bd24b-2ec9-452a-89d9-1fdd114e1aa3"
+  },
+  {
+    "containers": [
+      {
+        "name": "n3-check",
+        "restart_count": 0,
+        "state": {
+          "terminated": {
+            "containerID": "containerd://654f4bd086e5a8d9fe3697c3672e4fb95995612e3ee4ea0aae173b4d05084388",
+            "exitCode": 0,
+            "finishedAt": "2026-09-24T19:30:51Z",
+            "reason": "Completed",
+            "startedAt": "2026-09-24T19:26:40Z"
+          }
+        }
+      }
+    ],
+    "image": "artifactory-ci.gm.com/docker-approved/devcontainers/base@sha256:03f5ce7d090fbd378070a8216d0aedfc6e473c52da99b40b0cf53918612a297c",
+    "job": "sgw01-ali-current-n3-check-20260924c",
+    "job_uid": "27d9495b-9ae1-4e59-95ac-64b5248e0450",
+    "node": "dcwipphai0061.edc.nam.gm.com",
+    "phase": "Succeeded",
+    "pod": "sgw01-ali-current-n3-check-20260924c-jk478",
+    "pod_uid": "922b809d-304e-400a-9ea5-8dd344af3e7c"
+  }
+]

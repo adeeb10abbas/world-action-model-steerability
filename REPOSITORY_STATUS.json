@@ -31,7 +31,18 @@
     "sha256": "cffa0423119dbe631a1ddb08f91232ac0eb54d256ce3c1ecf1de194450608867"
   },
   "model_roster_amendment": "docs/MODEL_ROSTER_AMENDMENT_20260924.md",
-  "pending_integration": "E3/F3 adapters, immutable identities and same-request FLUX capture implemented with CPU coverage. Current 87-layout/1566-cell binding regenerated on PVC. One LAT-P01 destination reset/render check passed. N3 attempts A/B failed before inference on libxcb/PATH dependencies; evidence preserved and bootstrap repair CPU-verified. All models still require actual runtime and prediction qualification; no study launched.",
+  "pending_integration": "N3/E3/F3 each completed six genuine fixed-input requests on the pinned native runtime. Nano's three offline redecodes were identical; FLUX capture-on/off actions were exactly equal. All three Jobs exited zero, and 45 raw action/future/latent artifacts were hash-verified on PVC. Earlier zero-request Nano startup failures remain preserved. Current 87-layout/1566-cell binding and LAT-P01 destination check are complete. Live closed-loop action-prefix/camera/time qualification and guarded release remain; zero study episodes.",
+  "fixed_input_qualification": {
+    "N3": "handoff/cluster-execution-20260924/n3-fixed-input-result.json",
+    "E3": "handoff/cluster-execution-20260924/e3-fixed-input-result.json",
+    "F3": "handoff/cluster-execution-20260924/f3-fixed-input-result.json",
+    "job_outcomes": "handoff/cluster-execution-20260924/fixed-input-job-outcomes.json",
+    "completed_model_requests": 18,
+    "executed_actions": 0,
+    "behavioral_episodes": 0,
+    "closed_loop_qualified": false,
+    "physical_forecast_mapping_qualified": false
+  },
   "physical_completion_receipt": "handoff/physical-scene-completion.json",
   "physical_scene_package_complete": true,
   "planned_behavioral_cells": 1566,

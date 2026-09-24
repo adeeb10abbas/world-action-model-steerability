@@ -1,0 +1,68 @@
+{
+  "apiVersion": "batch/v1",
+  "kind": "Job",
+  "metadata": {
+    "name": "sgw01-ali-current-e3-check-20260924a",
+    "namespace": "211247-prod",
+    "labels": {"app.kubernetes.io/name": "sgw-01", "owner": "ali", "coordinator": "5ed7dc81"}
+  },
+  "spec": {
+    "activeDeadlineSeconds": 3600, "backoffLimit": 0, "completions": 1, "parallelism": 1,
+    "template": {
+      "metadata": {"labels": {"app.kubernetes.io/name": "sgw-01", "owner": "ali", "coordinator": "5ed7dc81"}},
+      "spec": {
+        "automountServiceAccountToken": false,
+        "nodeName": "dcwipphai0061.edc.nam.gm.com",
+        "schedulerName": "sgw01-ali-current-e3-check-20260924a",
+        "priority": 0, "restartPolicy": "Never", "terminationGracePeriodSeconds": 180,
+        "securityContext": {"fsGroup": 2518800, "supplementalGroups": [2518800]},
+        "imagePullSecrets": [{"name": "artifactory-ci-pull-secret"}],
+        "containers": [{
+          "name": "e3-check",
+          "image": "artifactory-ci.gm.com/docker-approved/devcontainers/base@sha256:03f5ce7d090fbd378070a8216d0aedfc6e473c52da99b40b0cf53918612a297c",
+          "imagePullPolicy": "IfNotPresent",
+          "command": ["/bin/bash", "-ec"],
+          "args": [
+            "set -euo pipefail\nmkdir \"$OUT\"\nexec > >(tee \"$OUT/job.log\") 2>&1\ncd \"$SOURCE\"\ntest \"$(git rev-parse HEAD)\" = 1b45b1fedaa5377d2d3dd7717607b18f5266be54\ntest -z \"$(git status --porcelain)\"\nCUDA_VISIBLE_DEVICES=$(\"$PY\" -m experiments.workshops.spatial_grounding_v1.gpu_idle_probe --expected-count 1 --output \"$OUT/gpu-idle.json\")\nexport CUDA_VISIBLE_DEVICES\ntest \"$CUDA_VISIBLE_DEVICES\" != GPU-60b3065c-79cb-61e6-b92a-32d0ae3750f3\nmkdir -p /data/users/ali/sgw-01/locks /data/users/ali/sgw-01/current-20260924a/locks\nexec 9>\"/data/users/ali/sgw-01/locks/gpu-$CUDA_VISIBLE_DEVICES.lock\"\nflock --nonblock 9\nexec 8>/data/users/ali/sgw-01/current-20260924a/locks/E3.lock\nflock --nonblock 8\nbash tools/cluster_policy_bootstrap.sh E3 \"$PY\" -m experiments.workshops.spatial_grounding_v1.checkpoint_fixed_input --model E3 --registration /data/users/ali/sgw-01/current-20260924a/current-n3-registration.json --output \"$OUT/evidence\" --request-timeout 900\nsync"
+          ],
+          "env": [
+            {"name": "SOURCE", "value": "/data/users/ali/sgw-01/current-20260924a/source-1b45b1f"},
+            {"name": "OUT", "value": "/data/users/ali/sgw-01/current-20260924a/e3-check-a"},
+            {"name": "PY", "value": "/data/users/ali/vla_wam/envs/cosmos-edge-a904d2d-v3-exact/bin/python"},
+            {"name": "PYTHONPATH", "value": "/data/users/ali/sgw-01/current-20260924a/source-1b45b1f:/data/users/ali/sgw-01/current-20260924a/external/cosmos-cf5d68c"},
+            {"name": "SGW01_E3_SOURCE_ROOT", "value": "/data/users/ali/sgw-01/current-20260924a/external/cosmos-cf5d68c"},
+            {"name": "SGW01_E3_CHECKPOINT_PATH", "value": "/data/users/ali/sgw-01/current-20260924a/checkpoints/cosmos3-edge-a7c7288"},
+            {"name": "SGW01_E3_OUTPUT_DIR", "value": "/data/users/ali/sgw-01/current-20260924a/e3-check-a/native"},
+            {"name": "UV_CACHE_DIR", "value": "/data/users/ali/sgw-01/current-20260924a/cache/uv"},
+            {"name": "HF_HOME", "value": "/data/users/ali/vla_wam/cache/huggingface-cosmos"},
+            {"name": "HF_HUB_OFFLINE", "value": "1"},
+            {"name": "HOME", "value": "/home/ali"},
+            {"name": "USER", "value": "ali"},
+            {"name": "LOGNAME", "value": "ali"},
+            {"name": "PYTHONDONTWRITEBYTECODE", "value": "1"},
+            {"name": "PYTHONUNBUFFERED", "value": "1"},
+            {"name": "NVIDIA_DRIVER_CAPABILITIES", "value": "compute,utility"}
+          ],
+          "resources": {
+            "requests": {"cpu": "8", "memory": "64Gi", "nvidia.com/gpu": "1"},
+            "limits": {"cpu": "16", "memory": "128Gi", "nvidia.com/gpu": "1"}
+          },
+          "securityContext": {"allowPrivilegeEscalation": false, "runAsGroup": 2518800, "runAsNonRoot": true, "runAsUser": 816149040},
+          "volumeMounts": [
+            {"mountPath": "/data", "name": "workspace"},
+            {"mountPath": "/dev/shm", "name": "dshm"},
+            {"mountPath": "/home/ali", "name": "home"},
+            {"mountPath": "/etc/passwd", "name": "userdb", "subPath": "passwd", "readOnly": true},
+            {"mountPath": "/etc/group", "name": "userdb", "subPath": "group", "readOnly": true}
+          ]
+        }],
+        "volumes": [
+          {"name": "workspace", "persistentVolumeClaim": {"claimName": "211247-prod-pvc"}},
+          {"name": "dshm", "emptyDir": {"medium": "Memory", "sizeLimit": "16Gi"}},
+          {"name": "home", "emptyDir": {}},
+          {"name": "userdb", "configMap": {"name": "211247-ali-b200-1gpu-userdb"}}
+        ]
+      }
+    }
+  }
+}

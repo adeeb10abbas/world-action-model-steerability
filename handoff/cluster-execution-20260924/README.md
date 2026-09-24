@@ -6,6 +6,12 @@ permission recorded in the original delivery. **No behavioral release or study
 episode has started.** Do not equate the implemented adapters, model loading,
 or the destination check below with qualified model inference.
 
+**All three actual pinned runtimes have now completed six fixed-input
+requests each (18 total), with zero executed actions or study episodes.**
+This is verified native inference, not merely a Running Pod. Closed-loop
+execution and physical forecast mapping remain unqualified. These requests
+are consumed; do not rerun them to finish downstream evidence.
+
 The sole resource/output coordinator is session
 `5ed7dc81-68d8-493f-a8c4-81a4b6cb59f6`, acting on the user's instruction relayed
 by `c230f3cd-3fe9-4f1f-9ee4-e8b857151a60`. The current instruction permits
@@ -44,7 +50,37 @@ changing the frozen scenes, cameras, prompts, splits or scoring.
 - E3/F3 adapter implementation, immutable file identities, official source
   references and CPU checks are recorded in
   [checkpoint_integrations.json](../../experiments/workshops/spatial_grounding_v1/checkpoint_integrations.json).
-  Their actual runtimes and capture parity remain unqualified.
+  Actual fixed-input results are retained below.
+
+## Completed native fixed-input checks
+
+The [terminal Job/Pod identities](fixed-input-job-outcomes.json) record all
+three Jobs exiting zero with no container restarts. Submitted manifests are
+in `jobs/n3-check-c.json`, `jobs/e3-check-a.json` and `jobs/f3-check-a.json`.
+Nano ran source `4c39c450b1dace8470edc7d907fb4e86a88bd0e3`; Edge and FLUX ran
+`1b45b1fedaa5377d2d3dd7717607b18f5266be54`. All used separately idle-checked,
+UUID-locked A100-SXM4-80GB allocations on `dcwipphai0061.edc.nam.gm.com`.
+
+- [Nano result](n3-fixed-input-result.json), with
+  [loaded runtime](n3-loaded-runtime.json): six valid native responses;
+  repeated actions and all three offline latent redecodes were bit-identical.
+  Opposite-prompt action RMS difference was `0.08661260613195104`.
+- [Edge result](e3-fixed-input-result.json): six valid native responses and
+  six decoded same-request futures; repeated actions were identical.
+  Opposite-prompt action RMS difference was `0.03079543058790927`.
+- [FLUX result](f3-fixed-input-result.json): six valid native responses,
+  three with same-request latent/video capture and three without capture.
+  All three matched capture-on/off action arrays were exactly equal (maximum
+  absolute differences `0.0`). Opposite-prompt RMS difference was
+  `0.12912268060309118`.
+
+These differences are descriptive model outputs, not physical success scores.
+All use the frozen effective seed `2026092201`. A separate CPU read verified
+45 retained action/future/latent/redecode artifact hashes (21 Nano, 12 Edge,
+12 FLUX) without making more model requests. Raw bytes, native traces and
+logs remain under `n3-check-c/`, `e3-check-a/` and `f3-check-a/` on the PVC.
+FLUX's three no-capture outputs are deliberately `not_exposed`, not missing
+scored zeros. Exposed forecasts remain physically unmapped.
 
 ## Reproducible startup repair
 
@@ -95,8 +131,8 @@ recording dependencies. These are CPU staging results, not runtime qualification
 The corrected Nano Job is retained as `jobs/n3-check-c.json`, using source
 `4c39c450b1dace8470edc7d907fb4e86a88bd0e3` and new output `n3-check-c`.
 It passed the fresh idle allocation check on
-`GPU-9b784824-3fad-dcf1-8e3e-abee22db4a8e` (A100-SXM4-80GB) and entered model
-initialization. This observation is not a completed inference receipt.
+`GPU-9b784824-3fad-dcf1-8e3e-abee22db4a8e` (A100-SXM4-80GB), completed all
+six requests and the three offline redecodes, then exited zero.
 
 For Edge/FLUX, use the new bounded `checkpoint_fixed_input.py` entrypoint
 documented in `docs/STANDALONE_RUNTIME.md`. Its CPU tests exercise fake
@@ -166,8 +202,9 @@ with different parents.
 
 ## Remaining gates and resume
 
-Finish actual N3/E3/F3 construction/inference checks and same-request capture
-parity, then establish the physical action-prefix/camera/time correspondence.
+Do not repeat the completed fixed-input construction/inference checks or
+capture parity. Establish the live physical action-prefix/camera/time
+correspondence with the separately bounded closed-loop technical check.
 Preserve unavailable forecasts explicitly. Complete guarded runtime/fixture
 receipts before creating any full model/family/stage release.
 

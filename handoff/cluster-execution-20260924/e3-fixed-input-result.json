@@ -1,0 +1,410 @@
+{
+  "behavioral_episodes": 0,
+  "capture_parity": {
+    "applicable": false,
+    "capture_enabled_vs_disabled_equal": null,
+    "max_absolute_action_difference": null
+  },
+  "closed_loop_ready": false,
+  "comparisons": {
+    "between_groups_equal": [
+      true,
+      true,
+      true
+    ],
+    "opposite_prompt_action_rms": [
+      0.03079543058790927,
+      0.03079543058790927
+    ],
+    "opposite_prompt_distinct": [
+      true,
+      true
+    ],
+    "repeat_equal": [
+      true,
+      true
+    ]
+  },
+  "diagnostic_id": "E3-current-fixed-input-ff381e5e58ec4dd0b1989d066525b17a",
+  "executed_actions": 0,
+  "forecast_scope": "same-request artifacts only; unavailable/decode_error preserved; physical camera/time mapping unqualified",
+  "http_prediction_attempts": 6,
+  "maximum_model_requests": 6,
+  "model": "E3",
+  "model_requests_completed": 6,
+  "model_requests_started": 6,
+  "n3_runtime_qualification_reused": false,
+  "physical_camera_time_alignment_qualified": false,
+  "physical_input_registration": {
+    "bytes": 2743,
+    "path": "/data/users/ali/sgw-01/current-20260924a/current-n3-registration.json",
+    "sha256": "2ee4773e5b72023330c4e397f622069c363ad28de962e4347119ee59d8576ef8"
+  },
+  "physical_reset_performed_in_this_job": false,
+  "release_permitted": false,
+  "requests": [
+    {
+      "actions": {
+        "bytes": 1152,
+        "path": "/data/users/ali/sgw-01/current-20260924a/e3-check-a/evidence/request-00/actions.npy",
+        "sha256": "2da6527ee9e00a79242c3a1b70bb48f8fbd7a5030f1674b2cc73d55f6386db25"
+      },
+      "capture_future": true,
+      "executed_actions": 0,
+      "future_status": "decoded_unmapped",
+      "index": 0,
+      "prompt_id": "LAT-D-POS",
+      "registered_cell_id": "LAT-P01-E3-D-POS",
+      "request_id": "E3-current-fixed-input-ff381e5e58ec4dd0b1989d066525b17a:request:0",
+      "sampling_seed": 2026092201,
+      "seconds": 28.65406231302768,
+      "trace": {
+        "actions_sha256": "25dcad194ecdbe82ab9ccb4bdc95f873c037bccb17caf7cf466c62109ab35bae",
+        "actions_shape": [
+          32,
+          8
+        ],
+        "backend_request": {
+          "observation_keys": [
+            "observation/exterior_image_1_left",
+            "observation/exterior_image_2_left",
+            "observation/gripper_position",
+            "observation/joint_position",
+            "observation/wrist_image_left"
+          ],
+          "prompt": "Put the Rubik's cube to the left of the bowl.",
+          "sampling_seed": 2026092201
+        },
+        "camera_id": "over_shoulder_left_camera",
+        "camera_name": "over_shoulder_left_camera",
+        "created_at": 1790278383.0742445,
+        "effective_sampling_seed": 2026092201,
+        "future_encoding": "decoded_rgb_uint8",
+        "future_metadata": {},
+        "future_path": "/data/users/ali/sgw-01/current-20260924a/e3-check-a/evidence/futures/sgw-e3-request-266a3968905d4e91a83156eadb88cbf0.npy",
+        "future_sha256": "4ed8fc60821768abc3388ef30f374095b85fa06bc1df43613969206290c8a66c",
+        "future_shape": [
+          33,
+          528,
+          640,
+          3
+        ],
+        "future_status": "decoded_unmapped",
+        "model": "E3",
+        "prompt_sha256": "7a9010154f1b73764e6fec767eff0563dfe95807babb6369e7cd6de60ec7aa92",
+        "provenance": "sgw_wrapper_generated",
+        "registered_cell_id": "LAT-P01-E3-D-POS",
+        "request_id": "E3-current-fixed-input-ff381e5e58ec4dd0b1989d066525b17a:request:0",
+        "request_index": 0,
+        "reset_fingerprint": "b05bf203ab547f287b0af7d1e6d89527532d84b6f4d481d4550e33ffa1d7f2a6",
+        "reset_id": "sgw-reset-206e23a288224a08b024c6d8d628ab4f",
+        "sampling_seed": 2026092201,
+        "wrapper_request_id": "sgw-e3-request-266a3968905d4e91a83156eadb88cbf0",
+        "wrapper_reset_id": "sgw-reset-206e23a288224a08b024c6d8d628ab4f"
+      }
+    },
+    {
+      "actions": {
+        "bytes": 1152,
+        "path": "/data/users/ali/sgw-01/current-20260924a/e3-check-a/evidence/request-01/actions.npy",
+        "sha256": "2da6527ee9e00a79242c3a1b70bb48f8fbd7a5030f1674b2cc73d55f6386db25"
+      },
+      "capture_future": true,
+      "executed_actions": 0,
+      "future_status": "decoded_unmapped",
+      "index": 1,
+      "prompt_id": "LAT-D-POS",
+      "registered_cell_id": "LAT-P01-E3-D-POS",
+      "request_id": "E3-current-fixed-input-ff381e5e58ec4dd0b1989d066525b17a:request:1",
+      "sampling_seed": 2026092201,
+      "seconds": 5.265524866990745,
+      "trace": {
+        "actions_sha256": "25dcad194ecdbe82ab9ccb4bdc95f873c037bccb17caf7cf466c62109ab35bae",
+        "actions_shape": [
+          32,
+          8
+        ],
+        "backend_request": {
+          "observation_keys": [
+            "observation/exterior_image_1_left",
+            "observation/exterior_image_2_left",
+            "observation/gripper_position",
+            "observation/joint_position",
+            "observation/wrist_image_left"
+          ],
+          "prompt": "Put the Rubik's cube to the left of the bowl.",
+          "sampling_seed": 2026092201
+        },
+        "camera_id": "over_shoulder_left_camera",
+        "camera_name": "over_shoulder_left_camera",
+        "created_at": 1790278388.2518523,
+        "effective_sampling_seed": 2026092201,
+        "future_encoding": "decoded_rgb_uint8",
+        "future_metadata": {},
+        "future_path": "/data/users/ali/sgw-01/current-20260924a/e3-check-a/evidence/futures/sgw-e3-request-ccf744a53dfc4a27957f17709eb1545c.npy",
+        "future_sha256": "4ed8fc60821768abc3388ef30f374095b85fa06bc1df43613969206290c8a66c",
+        "future_shape": [
+          33,
+          528,
+          640,
+          3
+        ],
+        "future_status": "decoded_unmapped",
+        "model": "E3",
+        "prompt_sha256": "7a9010154f1b73764e6fec767eff0563dfe95807babb6369e7cd6de60ec7aa92",
+        "provenance": "sgw_wrapper_generated",
+        "registered_cell_id": "LAT-P01-E3-D-POS",
+        "request_id": "E3-current-fixed-input-ff381e5e58ec4dd0b1989d066525b17a:request:1",
+        "request_index": 0,
+        "reset_fingerprint": "b05bf203ab547f287b0af7d1e6d89527532d84b6f4d481d4550e33ffa1d7f2a6",
+        "reset_id": "sgw-reset-177c4743f6884998bad1519de1925017",
+        "sampling_seed": 2026092201,
+        "wrapper_request_id": "sgw-e3-request-ccf744a53dfc4a27957f17709eb1545c",
+        "wrapper_reset_id": "sgw-reset-177c4743f6884998bad1519de1925017"
+      }
+    },
+    {
+      "actions": {
+        "bytes": 1152,
+        "path": "/data/users/ali/sgw-01/current-20260924a/e3-check-a/evidence/request-02/actions.npy",
+        "sha256": "1cc3b490b5e6225756189b6f55743170522c0cc2af9b4cfc91e9afee8e6c0e50"
+      },
+      "capture_future": true,
+      "executed_actions": 0,
+      "future_status": "decoded_unmapped",
+      "index": 2,
+      "prompt_id": "LAT-D-NEG",
+      "registered_cell_id": "LAT-P01-E3-D-NEG",
+      "request_id": "E3-current-fixed-input-ff381e5e58ec4dd0b1989d066525b17a:request:2",
+      "sampling_seed": 2026092201,
+      "seconds": 4.85999894188717,
+      "trace": {
+        "actions_sha256": "3dabe96b9e005aa25019b06b344ed692c67ec510cc7d446d9605bbaf1db4b554",
+        "actions_shape": [
+          32,
+          8
+        ],
+        "backend_request": {
+          "observation_keys": [
+            "observation/exterior_image_1_left",
+            "observation/exterior_image_2_left",
+            "observation/gripper_position",
+            "observation/joint_position",
+            "observation/wrist_image_left"
+          ],
+          "prompt": "Put the Rubik's cube to the right of the bowl.",
+          "sampling_seed": 2026092201
+        },
+        "camera_id": "over_shoulder_left_camera",
+        "camera_name": "over_shoulder_left_camera",
+        "created_at": 1790278393.2312486,
+        "effective_sampling_seed": 2026092201,
+        "future_encoding": "decoded_rgb_uint8",
+        "future_metadata": {},
+        "future_path": "/data/users/ali/sgw-01/current-20260924a/e3-check-a/evidence/futures/sgw-e3-request-8e25906e490e46feb1b450c288d7df84.npy",
+        "future_sha256": "b9fd6da288b4e981685cc998393b7400d93c2d232362668138ba634b00c8d81a",
+        "future_shape": [
+          33,
+          528,
+          640,
+          3
+        ],
+        "future_status": "decoded_unmapped",
+        "model": "E3",
+        "prompt_sha256": "61d9185096c89b210dc3e920914c889cf2292bed07f1265521658c5a5988e7f4",
+        "provenance": "sgw_wrapper_generated",
+        "registered_cell_id": "LAT-P01-E3-D-NEG",
+        "request_id": "E3-current-fixed-input-ff381e5e58ec4dd0b1989d066525b17a:request:2",
+        "request_index": 0,
+        "reset_fingerprint": "b05bf203ab547f287b0af7d1e6d89527532d84b6f4d481d4550e33ffa1d7f2a6",
+        "reset_id": "sgw-reset-50dbf8adc19d4c51ae6b745c0b2a448f",
+        "sampling_seed": 2026092201,
+        "wrapper_request_id": "sgw-e3-request-8e25906e490e46feb1b450c288d7df84",
+        "wrapper_reset_id": "sgw-reset-50dbf8adc19d4c51ae6b745c0b2a448f"
+      }
+    },
+    {
+      "actions": {
+        "bytes": 1152,
+        "path": "/data/users/ali/sgw-01/current-20260924a/e3-check-a/evidence/request-03/actions.npy",
+        "sha256": "2da6527ee9e00a79242c3a1b70bb48f8fbd7a5030f1674b2cc73d55f6386db25"
+      },
+      "capture_future": true,
+      "executed_actions": 0,
+      "future_status": "decoded_unmapped",
+      "index": 3,
+      "prompt_id": "LAT-D-POS",
+      "registered_cell_id": "LAT-P01-E3-D-POS",
+      "request_id": "E3-current-fixed-input-ff381e5e58ec4dd0b1989d066525b17a:request:3",
+      "sampling_seed": 2026092201,
+      "seconds": 4.7310299118980765,
+      "trace": {
+        "actions_sha256": "25dcad194ecdbe82ab9ccb4bdc95f873c037bccb17caf7cf466c62109ab35bae",
+        "actions_shape": [
+          32,
+          8
+        ],
+        "backend_request": {
+          "observation_keys": [
+            "observation/exterior_image_1_left",
+            "observation/exterior_image_2_left",
+            "observation/gripper_position",
+            "observation/joint_position",
+            "observation/wrist_image_left"
+          ],
+          "prompt": "Put the Rubik's cube to the left of the bowl.",
+          "sampling_seed": 2026092201
+        },
+        "camera_id": "over_shoulder_left_camera",
+        "camera_name": "over_shoulder_left_camera",
+        "created_at": 1790278398.0860038,
+        "effective_sampling_seed": 2026092201,
+        "future_encoding": "decoded_rgb_uint8",
+        "future_metadata": {},
+        "future_path": "/data/users/ali/sgw-01/current-20260924a/e3-check-a/evidence/futures/sgw-e3-request-58b0b082f83342b5ac98705eef167cdb.npy",
+        "future_sha256": "4ed8fc60821768abc3388ef30f374095b85fa06bc1df43613969206290c8a66c",
+        "future_shape": [
+          33,
+          528,
+          640,
+          3
+        ],
+        "future_status": "decoded_unmapped",
+        "model": "E3",
+        "prompt_sha256": "7a9010154f1b73764e6fec767eff0563dfe95807babb6369e7cd6de60ec7aa92",
+        "provenance": "sgw_wrapper_generated",
+        "registered_cell_id": "LAT-P01-E3-D-POS",
+        "request_id": "E3-current-fixed-input-ff381e5e58ec4dd0b1989d066525b17a:request:3",
+        "request_index": 0,
+        "reset_fingerprint": "b05bf203ab547f287b0af7d1e6d89527532d84b6f4d481d4550e33ffa1d7f2a6",
+        "reset_id": "sgw-reset-8b5d89b5e2a04545ade9e0eb301814c6",
+        "sampling_seed": 2026092201,
+        "wrapper_request_id": "sgw-e3-request-58b0b082f83342b5ac98705eef167cdb",
+        "wrapper_reset_id": "sgw-reset-8b5d89b5e2a04545ade9e0eb301814c6"
+      }
+    },
+    {
+      "actions": {
+        "bytes": 1152,
+        "path": "/data/users/ali/sgw-01/current-20260924a/e3-check-a/evidence/request-04/actions.npy",
+        "sha256": "2da6527ee9e00a79242c3a1b70bb48f8fbd7a5030f1674b2cc73d55f6386db25"
+      },
+      "capture_future": true,
+      "executed_actions": 0,
+      "future_status": "decoded_unmapped",
+      "index": 4,
+      "prompt_id": "LAT-D-POS",
+      "registered_cell_id": "LAT-P01-E3-D-POS",
+      "request_id": "E3-current-fixed-input-ff381e5e58ec4dd0b1989d066525b17a:request:4",
+      "sampling_seed": 2026092201,
+      "seconds": 5.5102216869127005,
+      "trace": {
+        "actions_sha256": "25dcad194ecdbe82ab9ccb4bdc95f873c037bccb17caf7cf466c62109ab35bae",
+        "actions_shape": [
+          32,
+          8
+        ],
+        "backend_request": {
+          "observation_keys": [
+            "observation/exterior_image_1_left",
+            "observation/exterior_image_2_left",
+            "observation/gripper_position",
+            "observation/joint_position",
+            "observation/wrist_image_left"
+          ],
+          "prompt": "Put the Rubik's cube to the left of the bowl.",
+          "sampling_seed": 2026092201
+        },
+        "camera_id": "over_shoulder_left_camera",
+        "camera_name": "over_shoulder_left_camera",
+        "created_at": 1790278403.6042802,
+        "effective_sampling_seed": 2026092201,
+        "future_encoding": "decoded_rgb_uint8",
+        "future_metadata": {},
+        "future_path": "/data/users/ali/sgw-01/current-20260924a/e3-check-a/evidence/futures/sgw-e3-request-fde5bf5e17f6439fb0cf65fae71cd57e.npy",
+        "future_sha256": "4ed8fc60821768abc3388ef30f374095b85fa06bc1df43613969206290c8a66c",
+        "future_shape": [
+          33,
+          528,
+          640,
+          3
+        ],
+        "future_status": "decoded_unmapped",
+        "model": "E3",
+        "prompt_sha256": "7a9010154f1b73764e6fec767eff0563dfe95807babb6369e7cd6de60ec7aa92",
+        "provenance": "sgw_wrapper_generated",
+        "registered_cell_id": "LAT-P01-E3-D-POS",
+        "request_id": "E3-current-fixed-input-ff381e5e58ec4dd0b1989d066525b17a:request:4",
+        "request_index": 0,
+        "reset_fingerprint": "b05bf203ab547f287b0af7d1e6d89527532d84b6f4d481d4550e33ffa1d7f2a6",
+        "reset_id": "sgw-reset-2f4bc1977a904e8d973d92de6caac2d1",
+        "sampling_seed": 2026092201,
+        "wrapper_request_id": "sgw-e3-request-fde5bf5e17f6439fb0cf65fae71cd57e",
+        "wrapper_reset_id": "sgw-reset-2f4bc1977a904e8d973d92de6caac2d1"
+      }
+    },
+    {
+      "actions": {
+        "bytes": 1152,
+        "path": "/data/users/ali/sgw-01/current-20260924a/e3-check-a/evidence/request-05/actions.npy",
+        "sha256": "1cc3b490b5e6225756189b6f55743170522c0cc2af9b4cfc91e9afee8e6c0e50"
+      },
+      "capture_future": true,
+      "executed_actions": 0,
+      "future_status": "decoded_unmapped",
+      "index": 5,
+      "prompt_id": "LAT-D-NEG",
+      "registered_cell_id": "LAT-P01-E3-D-NEG",
+      "request_id": "E3-current-fixed-input-ff381e5e58ec4dd0b1989d066525b17a:request:5",
+      "sampling_seed": 2026092201,
+      "seconds": 4.883589776000008,
+      "trace": {
+        "actions_sha256": "3dabe96b9e005aa25019b06b344ed692c67ec510cc7d446d9605bbaf1db4b554",
+        "actions_shape": [
+          32,
+          8
+        ],
+        "backend_request": {
+          "observation_keys": [
+            "observation/exterior_image_1_left",
+            "observation/exterior_image_2_left",
+            "observation/gripper_position",
+            "observation/joint_position",
+            "observation/wrist_image_left"
+          ],
+          "prompt": "Put the Rubik's cube to the right of the bowl.",
+          "sampling_seed": 2026092201
+        },
+        "camera_id": "over_shoulder_left_camera",
+        "camera_name": "over_shoulder_left_camera",
+        "created_at": 1790278408.4983969,
+        "effective_sampling_seed": 2026092201,
+        "future_encoding": "decoded_rgb_uint8",
+        "future_metadata": {},
+        "future_path": "/data/users/ali/sgw-01/current-20260924a/e3-check-a/evidence/futures/sgw-e3-request-e32dfb881d1e4a88967332f537926429.npy",
+        "future_sha256": "b9fd6da288b4e981685cc998393b7400d93c2d232362668138ba634b00c8d81a",
+        "future_shape": [
+          33,
+          528,
+          640,
+          3
+        ],
+        "future_status": "decoded_unmapped",
+        "model": "E3",
+        "prompt_sha256": "61d9185096c89b210dc3e920914c889cf2292bed07f1265521658c5a5988e7f4",
+        "provenance": "sgw_wrapper_generated",
+        "registered_cell_id": "LAT-P01-E3-D-NEG",
+        "request_id": "E3-current-fixed-input-ff381e5e58ec4dd0b1989d066525b17a:request:5",
+        "request_index": 0,
+        "reset_fingerprint": "b05bf203ab547f287b0af7d1e6d89527532d84b6f4d481d4550e33ffa1d7f2a6",
+        "reset_id": "sgw-reset-4d6d7e3f81f841138c242c5ac2938b50",
+        "sampling_seed": 2026092201,
+        "wrapper_request_id": "sgw-e3-request-e32dfb881d1e4a88967332f537926429",
+        "wrapper_reset_id": "sgw-reset-4d6d7e3f81f841138c242c5ac2938b50"
+      }
+    }
+  ],
+  "responses_validated": 6,
+  "sampling_seed": 2026092201,
+  "status": "six_current_fixed_input_requests_completed_not_a_study_release"
+}
