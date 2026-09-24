@@ -1,0 +1,11 @@
+{
+  "local_raw": "/Users/ali-adeeb/Downloads/astra_creative_director/sgw_camera_alignment_20260924",
+  "workstation_raw": "/home/ali/sgw-scene-design-20260923/evidence/SGW-CAMERA-ALIGNMENT-20260924",
+  "native_source_commit": "b4ad6145423e98b3b5f7524b3294b2de27e2953c",
+  "tests": {
+    "passed": 5,
+    "elapsed_s": 0.73,
+    "command": "SGW01_NANO_SOURCE_AUDIT=<nano-source.json> python -m pytest tests/test_sgw_native_policy_observations.py tests/test_sgw_prediction_alignment.py -q"
+  },
+  "superseded_for_future_study": "User requested closer exterior cameras after these checks; original camera evidence retained unchanged."
+}
