@@ -23,6 +23,13 @@ and these explicit facts: `complete: true`; integer `coverage.expected`,
 This is compiler/owner evidence, not a duplicate raw-result verifier, success
 score, or experimental release/runtime gate. Model failures and censored
 outcomes retain the compiler's existing semantics.
+The downloader also joins **all 1,566 completed ledger identities** to
+`releases[].completion_pointers[]` and the delivery index. Each cell, release,
+attempt, manifest path/hash and release hash set must match. The recorded
+status must agree with the ledger; it is compared, not rescored. A report
+paired with only a subset of the completed manifests is rejected. Every
+completed attempt needs its recorded `videos/viewport.mp4` and a registered
+viewing derivative, regardless of whether the outcome was success or failure.
 The technical-invalid coverage field counts **unresolved cells**, not older
 failed attempts of cells that later completed. Such historical recordings are
 still retained and can be included in the technical archive.
@@ -49,8 +56,11 @@ prediction viewing copy, its original may reference a retained
 a missing prediction, or treats an unlisted array as an available video.
 
 Copy only compact metadata to a local metadata directory, retaining the
-cohort-relative paths of the completion report, any timing receipts and
-`attempts/<cell_id>/<attempt_id>/manifest.json` files. Publish a separate JSON
+cohort-relative paths of the completion report, any timing receipts,
+`attempts/<cell_id>/<attempt_id>/manifest.json` files, and **all retained
+`predictions/request-NNNN.json` envelopes** listed by those manifests.
+If a compiler `artifact_root` is nested below `cohort_root`, preserve that
+prefix before `attempts/` in every path. Publish a separate JSON
 index with this shape; angle-bracket strings and numbers below are illustrative
 placeholders, **not a completion receipt or executable study evidence**:
 
@@ -70,6 +80,13 @@ placeholders, **not a completion receipt or executable study evidence**:
     {
       "path": "attempts/<cell_id>/<attempt_id>/manifest.json",
       "bytes": 123, "sha256": "<64 lowercase hex>"
+    }
+  ],
+  "predictions": [
+    {
+      "manifest_path": "attempts/<cell_id>/<attempt_id>/manifest.json",
+      "request_path": "predictions/request-0000.json",
+      "status": "not_exposed"
     }
   ],
   "videos": [
@@ -113,9 +130,28 @@ A separately established physical mapping can use
 that receipt is hash-checked, not scientifically requalified by this tool.
 Preserve additional recorded timing metadata in the encoding object.
 
-The owner must include all attempts and all exposed prediction derivatives in
-the final index. Checking the supplied index cannot detect an entire omitted
-attempt or a never-exported prediction. Video count is never episode count.
+Every retained request requires one explicit `predictions[]` disposition.
+The downloader hash-checks the request envelope against its attempt manifest.
+For `decoded_unmapped` or `exposed_and_retained`, the disposition must be
+`"encoded"` and the canonical retained future must have a viewing derivative
+whose source shape/dtype match the recorder metadata. Use `raw_response.future`
+when present, otherwise `raw_response.native_trace.future`, just as the
+adapter does. Raw-input arrays or duplicate trace aliases cannot substitute.
+Missing derivatives and false unavailable claims fail before copying.
+
+For unavailable outputs, the disposition must exactly match the recorder:
+`"not_exposed"`, `"decode_error"` or `"latent_only_retained"`. Those requests
+must not expose a decoded future; no video is invented or counted for them.
+An unsupported exposed array is an explicit delivery error, not permission
+to relabel it unavailable. Missing request envelopes, dispositions, or
+array-to-request provenance also fail. Arrays themselves are not downloaded.
+
+Completed-attempt coverage therefore comes from exact compiler identities,
+and exposed-prediction coverage comes from recorded request identities, never
+video counts. Historical attempts may be additional entries but cannot replace
+the compiled completed attempt. The compiler does not enumerate unpublished
+historical attempts; retain and index those separately as directed by the
+execution owner, without counting them as completed study cells.
 Native diagnostic outputs with a different manifest schema are not silently
 accepted as study attempts; keep their independent archive/index separate.
 
@@ -144,7 +180,8 @@ python -m tools.encode_study_video \
 ```
 
 For an exposed decoded prediction array, select the exact array path
-referenced by `raw_response.future` or `raw_response.native_trace.future` in
+referenced by `raw_response.future` (or, only when absent,
+`raw_response.native_trace.future`) in
 its retained request record; do not guess from array filenames:
 
 ```sh
@@ -210,8 +247,12 @@ numbers are not reusable path names.
 Run once for each item in the owner's finalized source list; stop on failures.
 Collect **only successfully published entry sidecars** into the final delivery
 index's `videos` list, together with the final compiler report and original
-attempt-manifest identities. The helper does not infer which attempts or
-predictions belong in that list, assert study completion, or start downloads.
+attempt-manifest identities. Add an `"encoded"` prediction disposition using
+the source `--manifest` and `--request-record` paths for each encoded future;
+copy its pinned request envelope with the metadata. Add matching unavailable
+dispositions directly from retained request records for unexposed/error/latent
+outputs. The encoder does not assert study completion or start downloads;
+the downloader validates the assembled list's exact delivery coverage.
 No original manifests or release/completion pointers are modified.
 
 ## Download and verify

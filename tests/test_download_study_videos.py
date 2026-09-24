@@ -25,7 +25,10 @@ def save_json(root: Path, relative: str, value: dict) -> dict:
 
 
 @pytest.fixture
-def package(tmp_path):
+def package(tmp_path, monkeypatch):
+    # Unit transport fixtures use one completed cell; the unmocked 1566-identity
+    # contract is exercised separately without thousands of redundant transfers.
+    monkeypatch.setattr(downloader, "STUDY_EPISODES", 1)
     root = tmp_path / "source"
     root.mkdir()
     cell, attempt = "N3-LAT-P01-D-POS", "attempt-001"
@@ -41,6 +44,12 @@ def package(tmp_path):
                       "predictions/request-0000-arrays/array-00001.npy": {"bytes": 1234, "sha256": "c" * 64}},
         "result": {"status": "valid_model_failure", "failure_reason": "wrong_side"},
     }
+    request_path = "predictions/request-0000.json"
+    request = save_json(root, f"attempts/{cell}/{attempt}/{request_path}", {
+        "future_status": "not_exposed", "raw_response": {},
+    })
+    manifest["artifacts"][request_path] = downloader.identity(request)
+    manifest_record = save_json(root, manifest_path, manifest)
     path = root / video_path
     path.parent.mkdir(parents=True)
     path.write_bytes(b"synthetic CPU-only viewing-copy bytes")
@@ -48,16 +57,25 @@ def package(tmp_path):
     value = {
         "schema_version": downloader.INDEX_SCHEMA, "study_id": "SGW-01",
         "cohort_id": "synthetic-test-cohort", "planned_queue_sha256": "f" * 64,
-        "study_status": "completed", "expected_episodes": 1566, "completed_episodes": 1566,
+        "study_status": "completed", "expected_episodes": 1, "completed_episodes": 1,
         "completion_receipt": save_json(root, "delivery/completion.json", {
             "schema_version": "sgw-01-cohort-analysis-v1", "cohort_id": "synthetic-test-cohort",
+            "cohort_root": str(root),
             "planned_queue_sha256": "f" * 64, "complete": True,
-            "coverage": {"expected": 1566, "observed": 1566, "completed": 1566,
+            "coverage": {"expected": 1, "observed": 1, "completed": 1,
                          "missing": 0, "duplicate": 0, "technical_invalid": 0},
-            "releases": [{"release_id": "release-test", "root": "/synthetic-test-cohort/release-test",
-                          "hashes_json_sha256": "b" * 64}],
+            "releases": [{"release_id": "release-test", "root": str(root / "release-test"),
+                          "artifact_root": str(root), "hashes": manifest["release_hashes"],
+                          "hashes_json_sha256": "b" * 64, "completion_pointers": [{
+                              "cell_id": cell, "path": str(root / "cells" / f"{cell}.complete.json"),
+                              "sha256": "d" * 64, "manifest_path": str(root / manifest_path),
+                              "manifest_sha256": manifest_record["sha256"],
+                          }]}],
+            "ledger": [{"cell_id": cell, "release_id": "release-test", "attempt_id": attempt,
+                        "analysis_status": "complete", "status": "valid_model_failure"}],
         }),
-        "attempt_manifests": [save_json(root, manifest_path, manifest)],
+        "attempt_manifests": [manifest_record],
+        "predictions": [{"manifest_path": manifest_path, "request_path": request_path, "status": "not_exposed"}],
         "videos": [{**record(path, video_path),
                     "original": {"manifest_path": manifest_path, "path": "videos/viewport.mp4", **original},
                     "encoding": {"codec": "h264", "encoder": "test encoder; not executed",
@@ -72,6 +90,13 @@ def package(tmp_path):
 def refresh(package):
     manifest_path = package["value"]["attempt_manifests"][0]["path"]
     package["value"]["attempt_manifests"][0] = save_json(package["root"], manifest_path, package["manifest"])
+    receipt_path = package["value"]["completion_receipt"]["path"]
+    receipt = json.loads((package["root"] / receipt_path).read_bytes())
+    for release in receipt.get("releases", []):
+        for pointer in release.get("completion_pointers", []):
+            if pointer["manifest_path"] == str(package["root"] / manifest_path):
+                pointer["manifest_sha256"] = package["value"]["attempt_manifests"][0]["sha256"]
+    package["value"]["completion_receipt"] = save_json(package["root"], receipt_path, receipt)
     identity = save_json(package["root"], "delivery/videos.json", package["value"])
     return {
         "index": package["root"] / identity["path"], "index_sha256": identity["sha256"],
@@ -82,6 +107,19 @@ def refresh(package):
 
 def local_video(package):
     return package["destination"] / "study" / package["value"]["videos"][0]["path"]
+
+
+def expose_prediction(package):
+    raw_path = "predictions/request-0000-arrays/array-00001.npy"
+    request_path = "predictions/request-0000.json"
+    request_record = save_json(
+        package["root"], str(Path(package["value"]["attempt_manifests"][0]["path"]).parent / request_path),
+        {"future_status": "decoded_unmapped", "raw_response": {
+            "future": {"path": raw_path, "sha256": package["manifest"]["artifacts"][raw_path]["sha256"],
+                       "shape": [451, 720, 1280, 3], "dtype": "uint8"}}},
+    )
+    package["manifest"]["artifacts"][request_path] = downloader.identity(request_record)
+    package["value"]["predictions"][0]["status"] = "encoded"
 
 
 def test_download_receipt_resume_and_offline_verification(package, monkeypatch):
@@ -264,6 +302,7 @@ def test_aggregate_disk_preflight_refuses_all_copy(package, monkeypatch):
     raw_path = "predictions/request-0000-arrays/array-00001.npy"
     second["original"].update(path=raw_path, **package["manifest"]["artifacts"][raw_path])
     package["value"]["videos"].append(second)
+    expose_prediction(package)
     args = refresh(package)
     available = second["bytes"] + 100
     monkeypatch.setattr(downloader, "free_bytes", lambda _: available)
@@ -302,21 +341,31 @@ def test_incremental_final_index_and_technical_separation(package):
     video["encoding"]["source"].update(fps_numerator=None, fps_denominator=None)
     video["encoding"]["timing_basis"] = "playback_only"
     package["value"]["videos"].append(video)
+    expose_prediction(package)
     report = downloader.archive(**refresh(package))
     assert report["complete"] == 2
     assert [entry["action"] for entry in report["files"]] == ["skipped_matching", "downloaded"]
     assert report["files"][1]["encoding"]["physical_time"] == {"status": "unavailable"}
     # A separate synthetic finalized technical attempt, not a scientific outcome rewrite.
-    package["manifest"]["attempt_id"] = "technical-attempt-001"
-    package["manifest"]["result"] = {"status": "technical_invalid", "technical_cause": "test"}
+    technical = copy.deepcopy(package["manifest"])
+    technical["attempt_id"] = "technical-attempt-001"
+    technical["result"] = {"status": "technical_invalid", "technical_cause": "test"}
     manifest_path = package["value"]["attempt_manifests"][0]["path"].replace("attempt-001", "technical-attempt-001")
-    package["value"]["attempt_manifests"][0]["path"] = manifest_path
-    for item in package["value"]["videos"]:
-        item["original"]["manifest_path"] = manifest_path
+    technical["artifacts"].pop(raw_path)
+    technical["artifacts"].pop("predictions/request-0000.json")
+    package["value"]["attempt_manifests"].append(save_json(package["root"], manifest_path, technical))
+    item = copy.deepcopy(package["value"]["videos"][0])
+    source_bytes = (package["root"] / item["path"]).read_bytes()
+    item["path"] = item["path"].replace("attempt-001", "technical-attempt-001")
+    target = package["root"] / item["path"]
+    target.parent.mkdir(parents=True)
+    target.write_bytes(source_bytes)
+    item["original"]["manifest_path"] = manifest_path
+    package["value"]["videos"].append(item)
     report = downloader.archive(**refresh(package))
-    assert report["complete"] == 2
-    assert all(entry["category"] == "technical" and entry["local_path"].startswith("technical/")
-               for entry in report["files"])
+    assert report["complete"] == 3
+    assert report["files"][-1]["category"] == "technical"
+    assert report["files"][-1]["local_path"].startswith("technical/")
 
 
 @pytest.mark.parametrize("change", ["frame_count", "fps", "codec", "original", "omitted", "timing"])
@@ -358,7 +407,7 @@ def test_kubectl_is_argument_vector_not_shell(package, monkeypatch):
     assert downloader.archive(**{**args, "source": source})["index_coverage_complete"]
 
 
-def test_cli_verify_missing_is_nonzero_and_source_free(package):
+def test_cli_rejects_nonstudy_scope(package):
     args = refresh(package)
     command = [
         sys.executable, "-m", "tools.download_study_videos", "verify",
@@ -368,7 +417,7 @@ def test_cli_verify_missing_is_nonzero_and_source_free(package):
     ]
     completed = subprocess.run(command, capture_output=True, text=True)
     assert completed.returncode == 1
-    assert json.loads(completed.stdout)["missing"] == 1
+    assert "completed-study gate" in json.loads(completed.stderr)["error"]
 
 
 def test_duplicate_json_keys_rejected():
@@ -384,14 +433,177 @@ def test_actual_recorder_manifest_is_supported(package):
     recorder = AttemptRecorder(
         SimpleNamespace(root=package["root"] / old["release_id"], release_id=old["release_id"],
                         hashes=old["release_hashes"]),
-        SimpleNamespace(cell_id=old["cell_id"]), old["attempt_id"],
+        SimpleNamespace(cell_id=old["cell_id"]), "technical-attempt-001",
     )
     original_path = recorder.path / "videos/viewport.mp4"
     original_path.parent.mkdir(parents=True, exist_ok=True)
     original_path.write_bytes(b"retained master; synthetic test data")
     manifest = recorder.artifact_manifest({"status": "technical_invalid", "technical_cause": "test"})
-    package["manifest"] = manifest
-    package["value"]["videos"][0]["original"].update(manifest["artifacts"]["videos/viewport.mp4"])
+    manifest_path = (recorder.path / "manifest.json").relative_to(package["root"]).as_posix()
+    package["value"]["attempt_manifests"].append(record(recorder.path / "manifest.json", manifest_path))
+    video = copy.deepcopy(package["value"]["videos"][0])
+    raw = (package["root"] / video["path"]).read_bytes()
+    video["path"] = video["path"].replace("attempt-001", "technical-attempt-001")
+    target = package["root"] / video["path"]
+    target.parent.mkdir(parents=True)
+    target.write_bytes(raw)
+    video["original"].update(manifest["artifacts"]["videos/viewport.mp4"], manifest_path=manifest_path)
+    package["value"]["videos"].append(video)
     report = downloader.archive(**refresh(package))
-    assert report["complete"] == 1 and report["files"][0]["category"] == "technical"
+    assert report["complete"] == 2 and report["files"][-1]["category"] == "technical"
     assert original_path.read_bytes() == b"retained master; synthetic test data"
+
+
+def test_full_1566_completed_identity_contract(tmp_path):
+    assert downloader.STUDY_EPISODES == 1566
+    manifests, records, pointers, ledger = {}, {}, [], []
+    hashes = {"queue.jsonl": "a" * 64}
+    for index in range(1566):
+        cell = f"synthetic-cell-{index}"
+        path = f"attempts/{cell}/attempt-001/manifest.json"
+        manifests[path] = {
+            "schema_version": "sgw-01-attempt-manifest-v1", "complete": True,
+            "cell_id": cell, "attempt_id": "attempt-001", "release_id": "synthetic-release",
+            "release_hashes": hashes, "artifacts": {"videos/viewport.mp4": {"bytes": 1, "sha256": "c" * 64}},
+            "result": {"status": "valid_model_failure"},
+        }
+        records[path] = {"sha256": "b" * 64}
+        pointers.append({"cell_id": cell, "manifest_path": "/cohort/" + path, "manifest_sha256": "b" * 64})
+        ledger.append({"cell_id": cell, "attempt_id": "attempt-001", "release_id": "synthetic-release",
+                       "analysis_status": "complete", "status": "valid_model_failure"})
+    report = {"cohort_root": "/cohort", "ledger": ledger, "releases": [{
+        "release_id": "synthetic-release", "artifact_root": "/cohort", "hashes": hashes,
+        "completion_pointers": pointers,
+    }]}
+    assert len(downloader.completed_attempts(report, manifests, records)) == 1566
+    metadata_root = tmp_path / "metadata"
+    videos = []
+    probe = {"width": 64, "height": 48, "frame_count": 5, "fps_numerator": 15, "fps_denominator": 1}
+    for pointer, (path, manifest) in zip(pointers, manifests.items(), strict=True):
+        records[path] = save_json(metadata_root, path, manifest)
+        pointer["manifest_sha256"] = records[path]["sha256"]
+        videos.append({
+            "path": "viewing/" + str(Path(path).parent / "videos/viewport.mp4"), "bytes": 1, "sha256": "d" * 64,
+            "original": {"manifest_path": path, "path": "videos/viewport.mp4", "bytes": 1, "sha256": "c" * 64},
+            "encoding": {"codec": "h264", "encoder": "synthetic contract fixture", "arguments": ["synthetic"],
+                         "source": probe, "output": probe, "timing_basis": "recorded_presentation",
+                         "physical_time": {"status": "unavailable"}},
+        })
+    report.update(
+        schema_version="sgw-01-cohort-analysis-v1", cohort_id="synthetic-full-cohort", complete=True,
+        planned_queue_sha256="f" * 64,
+        coverage={"expected": 1566, "observed": 1566, "completed": 1566,
+                  "missing": 0, "duplicate": 0, "technical_invalid": 0},
+    )
+    receipt = save_json(metadata_root, "delivery/completion.json", report)
+    index = save_json(metadata_root, "delivery/videos.json", {
+        "schema_version": downloader.INDEX_SCHEMA, "study_id": "SGW-01",
+        "study_status": "completed", "cohort_id": report["cohort_id"], "planned_queue_sha256": "f" * 64,
+        "expected_episodes": 1566, "completed_episodes": 1566, "completion_receipt": receipt,
+        "attempt_manifests": list(records.values()), "videos": videos, "predictions": [],
+    })
+    completed = subprocess.run([
+        sys.executable, "-m", "tools.download_study_videos", "verify",
+        "--index", str(metadata_root / index["path"]), "--index-sha256", index["sha256"],
+        "--metadata-root", str(metadata_root), "--destination", str(tmp_path / "archive"),
+        "--transport", "local", "--source-root", "/nonexistent-source", "--reserve-bytes", "0",
+    ], capture_output=True, text=True, timeout=30)
+    assert completed.returncode == 1, completed.stderr
+    assert json.loads(completed.stdout)["missing"] == 1566
+    assert json.loads(completed.stdout)["verified_bytes"] == 0
+    nested = copy.deepcopy(report)
+    nested["releases"][0]["artifact_root"] = "/cohort/lane"
+    for pointer in nested["releases"][0]["completion_pointers"]:
+        pointer["manifest_path"] = pointer["manifest_path"].replace("/cohort/", "/cohort/lane/", 1)
+    assert len(downloader.completed_attempts(
+        nested, {"lane/" + path: value for path, value in manifests.items()},
+        {"lane/" + path: value for path, value in records.items()},
+    )) == 1566
+    missing = records.pop(next(iter(records)))
+    with pytest.raises(ValueError, match="omits completed study attempt"):
+        downloader.completed_attempts(report, manifests, records)
+    records[next(iter(manifests))] = missing
+    ledger[0]["attempt_id"] = "different-attempt"
+    with pytest.raises(ValueError, match="provenance differs"):
+        downloader.completed_attempts(report, manifests, records)
+    ledger.pop(0)
+    pointers.pop(0)
+    with pytest.raises(ValueError, match="exactly 1566"):
+        downloader.completed_attempts(report, manifests, records)
+
+
+def test_whole_completed_attempt_cannot_be_replaced_by_historical_one(package):
+    args = refresh(package)
+    historical = copy.deepcopy(package["manifest"])
+    historical["attempt_id"] = "historical-attempt"
+    historical["result"]["status"] = "technical_invalid"
+    historical_path = f"attempts/{historical['cell_id']}/historical-attempt/manifest.json"
+    package["value"]["attempt_manifests"] = [save_json(package["root"], historical_path, historical)]
+    index = save_json(package["root"], "delivery/videos.json", package["value"])
+    with pytest.raises(ValueError, match="omits completed study attempt"):
+        downloader.archive(**{**args, "index_sha256": index["sha256"]})
+    assert not package["destination"].exists()
+
+
+@pytest.mark.parametrize("absent", ["original", "derivative"])
+def test_required_completed_viewport_cannot_be_omitted(package, absent):
+    if absent == "original":
+        package["manifest"]["artifacts"].pop("videos/viewport.mp4")
+    else:
+        package["manifest"]["artifacts"]["videos/other-camera.mp4"] = package["manifest"]["artifacts"]["videos/viewport.mp4"]
+        package["value"]["videos"][0]["original"]["path"] = "videos/other-camera.mp4"
+    with pytest.raises(ValueError, match="required viewport|omits recorded videos"):
+        downloader.archive(**refresh(package))
+    assert not package["destination"].exists()
+
+
+@pytest.mark.parametrize("declaration", ["encoded", "not_exposed", "decode_error"])
+def test_exposed_future_cannot_be_omitted_or_declared_unavailable(package, declaration):
+    expose_prediction(package)
+    package["value"]["predictions"][0]["status"] = declaration
+    with pytest.raises(ValueError, match="exposed prediction lacks"):
+        downloader.archive(**refresh(package))
+    assert not package["destination"].exists()
+
+
+def test_even_unavailable_future_needs_explicit_matching_disposition(package):
+    package["value"]["predictions"] = []
+    with pytest.raises(ValueError, match="disposition is missing"):
+        downloader.archive(**refresh(package))
+    package["value"]["predictions"] = [{
+        "manifest_path": package["value"]["attempt_manifests"][0]["path"],
+        "request_path": "predictions/request-0000.json", "status": "decode_error",
+    }]
+    with pytest.raises(ValueError, match="unavailable prediction differs"):
+        downloader.archive(**refresh(package))
+
+
+def test_request_identity_is_checked_without_array_transfer(package):
+    args = refresh(package)
+    request = package["root"] / Path(package["value"]["attempt_manifests"][0]["path"]).parent / "predictions/request-0000.json"
+    request.write_text('{"future_status":"not_exposed","raw_response":{}}')
+    with pytest.raises(ValueError, match="mismatch"):
+        downloader.archive(**args)
+
+
+@pytest.mark.parametrize("status", ["not_exposed", "decode_error", "latent_only_retained"])
+def test_recorded_unavailable_predictions_remain_explicit(package, status):
+    request_path = "predictions/request-0000.json"
+    record_path = str(Path(package["value"]["attempt_manifests"][0]["path"]).parent / request_path)
+    request = save_json(package["root"], record_path, {"future_status": status, "raw_response": {}})
+    package["manifest"]["artifacts"][request_path] = downloader.identity(request)
+    package["value"]["predictions"][0]["status"] = status
+    report = downloader.archive(**refresh(package))
+    assert report["index_coverage_complete"]
+    assert report["predictions"][0]["status"] == report["predictions"][0]["recorded_status"] == status
+    assert report["complete"] == 1  # Only the viewport, never an invented forecast.
+
+
+def test_canonical_future_selection_matches_adapter():
+    first, trace = {"path": "first.npy"}, {"path": "trace.npy"}
+    request = {"future_status": "decoded_unmapped", "raw_response": {
+        "future": first, "native_trace": {"future": trace},
+    }}
+    assert downloader.decoded_future(request) is first
+    request["raw_response"]["future"] = None
+    assert downloader.decoded_future(request) is trace

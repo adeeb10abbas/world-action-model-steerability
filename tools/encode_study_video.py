@@ -15,7 +15,7 @@ import sys
 import uuid
 
 from tools.download_study_videos import (
-    RESERVE_BYTES, VIDEO_SUFFIXES, checked_file, decode, directory, encoding_metadata,
+    RESERVE_BYTES, VIDEO_SUFFIXES, checked_file, decode, decoded_future, directory, encoding_metadata,
     free_bytes, identity, metadata, publish_json, regular_file, relative_path,
 )
 
@@ -78,7 +78,8 @@ def load_manifest(root: Path, path: str, digest: str) -> tuple[dict, dict]:
             or manifest.get("complete") is not True
             or not isinstance(manifest.get("artifacts"), dict)
             or not isinstance(manifest.get("result"), dict)
-            or path != f"attempts/{manifest.get('cell_id')}/{manifest.get('attempt_id')}/manifest.json"):
+            or PurePosixPath(path).parts[-4:] != (
+                "attempts", manifest.get("cell_id"), manifest.get("attempt_id"), "manifest.json")):
         raise ValueError("a finalized recorder attempt manifest with matching path is required")
     return manifest, {"path": path, "bytes": len(raw), "sha256": digest}
 
@@ -94,22 +95,19 @@ def prediction_frames(root: Path, manifest_path: str, manifest: dict, artifact: 
         raise ValueError("request record is absent from the immutable attempt manifest")
     record_identity = {"path": record_path, **identity(manifest["artifacts"][request_record])}
     request = metadata(root, record_identity)
-    if not isinstance(request, dict) or request.get("future_status") not in {"decoded_unmapped", "exposed_and_retained"}:
+    descriptor = decoded_future(request)
+    if descriptor is None:
         raise ValueError("request did not expose decoded RGB frames; latent/unavailable data cannot be encoded")
-    response = request.get("raw_response")
-    if not isinstance(response, dict):
-        raise ValueError("request lacks raw response provenance")
+    response = request["raw_response"]
     trace = response.get("native_trace", {})
     trace = trace if isinstance(trace, dict) else {}
-    candidates = [response.get("future"), trace.get("future")]
-    descriptors = [item for item in candidates if isinstance(item, dict) and item.get("path") == artifact]
-    if not descriptors or any(item.get("sha256") != manifest["artifacts"][artifact]["sha256"] for item in descriptors):
+    if descriptor.get("path") != artifact or descriptor.get("sha256") != manifest["artifacts"][artifact]["sha256"]:
         raise ValueError("array is not the decoded future referenced by this request")
     frames = np.load(stream, allow_pickle=False)
     if (not isinstance(frames, np.ndarray) or frames.dtype != np.uint8 or frames.ndim != 4
             or frames.shape[-1] != 3 or any(size <= 0 for size in frames.shape)):
         raise ValueError("only nonempty THWC uint8 RGB arrays are supported; no latent decoding or shape guessing")
-    if any(item.get("shape") != list(frames.shape) or item.get("dtype") != "uint8" for item in descriptors):
+    if descriptor.get("shape") != list(frames.shape) or descriptor.get("dtype") != "uint8":
         raise ValueError("decoded array dimensions/dtype differ from retained request metadata")
     return frames, {
         "request_record": record_identity, "future_status": request["future_status"],
