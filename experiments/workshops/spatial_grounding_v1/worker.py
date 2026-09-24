@@ -326,6 +326,13 @@ def _allocation_check(release: Release, *, model: str, minimum_runtime_seconds: 
                 or not reservation <= reserved <= approved):
             raise ResourceBlocked("external allocation receipt has invalid capped global reservation accounting")
     if verify_idle_probe:
+        gpu_names = release.binding.get("model_gpu_names")
+        expected_gpu_name = None
+        if gpu_names is not None:
+            if (not isinstance(gpu_names, Mapping) or not isinstance(gpu_names.get(model), str)
+                    or not gpu_names[model].strip()):
+                raise ResourceBlocked("runtime binding lacks the selected model's exact qualified GPU name")
+            expected_gpu_name = gpu_names[model]
         idle = _receipt(receipt.get("gpu_idle_probe_receipt"), "GPU idle probe")
         allocated = receipt.get("allocated_gpu_uuids")
         observed = idle.get("observed_at_unix")
@@ -360,9 +367,9 @@ def _allocation_check(release: Release, *, model: str, minimum_runtime_seconds: 
             )):
                 raise ResourceBlocked("GPU idle probe has malformed device measurements")
             try:
-                select_idle([gpu], set(occupied), 1)
+                select_idle([gpu], set(occupied), 1, expected_name=expected_gpu_name)
             except (ValueError, RuntimeError) as exc:
-                raise ResourceBlocked("not every allocated GPU passed the idle guard") from exc
+                raise ResourceBlocked(f"allocated GPU failed its idle/qualified-hardware guard: {exc}") from exc
     remaining = int((deadline - datetime.now(timezone.utc)).total_seconds())
     if remaining < minimum_runtime_seconds:
         raise ResourceBlocked("external allocation expires before one bounded operation can finish")

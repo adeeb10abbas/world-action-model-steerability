@@ -11,9 +11,15 @@ import subprocess
 import time
 
 
-def select_idle(gpus: list[dict], occupied_uuids: set[str], expected_count: int) -> dict:
+def select_idle(gpus: list[dict], occupied_uuids: set[str], expected_count: int,
+                *, expected_name: str | None = None) -> dict:
     if expected_count not in range(1, 5) or len(gpus) != expected_count:
         raise ValueError("Visible GPU count differs from the bounded Job allocation")
+    if expected_name is not None:
+        if not isinstance(expected_name, str) or not expected_name.strip():
+            raise ValueError("Expected GPU name must be a non-empty exact device name")
+        if any(gpu.get("name") != expected_name for gpu in gpus):
+            raise RuntimeError("Allocated GPU type differs from the qualified runtime hardware")
     candidates = [
         gpu for gpu in gpus
         if gpu["uuid"] not in occupied_uuids
@@ -29,6 +35,7 @@ def select_idle(gpus: list[dict], occupied_uuids: set[str], expected_count: int)
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--expected-count", type=int, required=True)
+    parser.add_argument("--expected-name", help="Exact qualified GPU name, not a capacity/compatibility guess")
     parser.add_argument("--output", type=Path, required=True)
     args = parser.parse_args()
     if args.output.exists():
@@ -52,8 +59,10 @@ def main() -> None:
     receipt = {"study_id": "SGW-01", "observed_at_unix": time.time(),
                "expected_visible_gpu_count": args.expected_count, "gpus": gpus,
                "compute_occupied_uuids": sorted(occupied), "model_requests": 0}
+    if args.expected_name is not None:
+        receipt["expected_gpu_name"] = args.expected_name
     try:
-        selected = select_idle(gpus, occupied, args.expected_count)
+        selected = select_idle(gpus, occupied, args.expected_count, expected_name=args.expected_name)
     except (ValueError, RuntimeError) as exc:
         receipt.update({"status": "blocked", "reason": str(exc)})
         with args.output.open("x") as stream:

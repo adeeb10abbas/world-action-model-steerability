@@ -200,6 +200,37 @@ Future releases must remain sibling directories in this same new cohort
 parent. Do not import old cohort completion pointers or evade model locks
 with different parents.
 
+## Hardware selection, not advertised availability
+
+The user's requested [bounded hardware inventory](hardware-inventory.json)
+was read at 19:44:49 UTC. Kubernetes advertises 95 A100 80GB, 64 A100 40GB,
+42 A40, 40 B200, 16 V100 32GB and eight RTX PRO 6000 Blackwell GPUs.
+These are capacity counts, **not idle counts**. Only this namespace's
+reservations are visible; the inventory cannot establish current physical
+availability across other namespaces.
+
+Use **A100-SXM4-80GB (SM80) for N3/E3/F3 inference** and **A40 (SM86) for the
+separate RoboLab headless/RTX renderer**. Those roles have current successful
+native evidence, on two distinct A100 devices and one A40 device. Their prior
+idle snapshots are not fresh admission receipts. A100 lacks RT cores and is
+not an Isaac renderer substitute. The installed policy builds are Torch
+2.10/CUDA 12.8 for Nano/FLUX and Torch 2.10/CUDA 13.0 for Edge, with exact
+NATTEN builds recorded in the inventory. Driver 580.95.05 was demonstrated.
+Torch architecture flags alone do not qualify all NATTEN/native kernel paths.
+No peak VRAM was recorded, so no lower-memory fit or minimum VRAM is claimed.
+
+The next useful plan is up to three policy lanes on node0061 and separate
+A40 simulator lanes on nodes191/192/193. The snapshot showed no
+namespace-visible GPU reservations on those candidate nodes, but each new
+useful Job must still pass fresh actual-device checks. Invoke
+`gpu_idle_probe --expected-name "NVIDIA A100-SXM4-80GB"` for policy lanes and
+`--expected-name "NVIDIA A40"` for simulator lanes, in addition to count,
+idle-process and physical-UUID locks. New release bindings should also set
+`model_gpu_names` per model; the worker checks those exact device names before
+construction. Preserve actual blocked receipts rather than trying other
+placements in a loop. Extra hardware does not waive one worker per model,
+whole partitions, P -> D -> C, or the protected node exclusion.
+
 ## Remaining gates and resume
 
 Do not repeat the completed fixed-input construction/inference checks or

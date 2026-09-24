@@ -89,6 +89,28 @@ def _rehash_binding(release):
     (release.root / "hashes.json").write_text(json.dumps(hashes))
 
 
+@pytest.mark.parametrize("device_name", ["NVIDIA A100-SXM4-80GB", "NVIDIA A100-SXM4-40GB"])
+def test_allocation_rechecks_frozen_gpu_type_not_just_idle_memory(tmp_path, device_name):
+    release = load_release(make_release(tmp_path))
+    allocation = json.loads(Path(release.binding["external_allocation_receipt"]["path"]).read_text())
+    idle_path = Path(allocation["gpu_idle_probe_receipt"]["path"])
+    idle = json.loads(idle_path.read_text())
+    idle["gpus"][0]["name"] = device_name
+    idle["selected_gpu"]["name"] = device_name
+    idle_path.write_text(json.dumps(idle))
+    allocation["gpu_idle_probe_receipt"]["sha256"] = hashlib.sha256(idle_path.read_bytes()).hexdigest()
+    release = _replace_receipt(release, "external_allocation_receipt", allocation)
+    binding = dict(release.binding, model_gpu_names={"N3": "NVIDIA A100-SXM4-80GB"})
+    (release.root / "runtime_binding.json").write_text(json.dumps(binding))
+    _rehash_binding(release)
+    release = load_release(release.root)
+    if device_name.endswith("80GB"):
+        assert worker_module._allocation_check(release, model="N3", minimum_runtime_seconds=1) > 0
+    else:
+        with pytest.raises(ResourceBlocked, match="qualified-hardware guard"):
+            worker_module._allocation_check(release, model="N3", minimum_runtime_seconds=1)
+
+
 def test_floor_override_blocks_before_adapter_start(tmp_path: Path) -> None:
     release = load_release(make_release(tmp_path))
     binding = dict(release.binding)

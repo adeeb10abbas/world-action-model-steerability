@@ -1,0 +1,182 @@
+{
+  "schema": "sgw-01-bounded-hardware-inventory-v1",
+  "observed_at_utc": "2026-09-24T19:44:49.489678+00:00",
+  "context": "prod-dcwi-warrenq1-vmkub007",
+  "namespace": "211247-prod",
+  "method": "One Node metadata inventory, one namespace-active-Pod reservation inventory, CPU package metadata, and existing completed native receipts. No new GPU probe or model request.",
+  "advertised_gpu_count": 265,
+  "namespace_visible_active_gpu_pods": 11,
+  "namespace_visible_reserved_gpus": 12,
+  "other_namespace_reservations_available": false,
+  "current_physical_idle_gpu_count": null,
+  "current_physical_idle_status": "unavailable_until_fresh_useful_allocation_check",
+  "advertised_capacity_is_not_availability": true,
+  "hardware": [
+    {
+      "product": "NVIDIA-A100-SXM4-80GB",
+      "nodes": 24,
+      "advertised_gpus": 95,
+      "ready_uncordoned_gpus": 95,
+      "label_memory_mib": 81920,
+      "compute_capability": "8.0",
+      "driver": "580.95.05",
+      "namespace_visible_reserved_gpus": 0,
+      "policy_status": "N3_E3_F3_fixed_input_inference_demonstrated",
+      "simulator_status": "excluded_no_RT_cores"
+    },
+    {
+      "product": "NVIDIA-A100-SXM4-40GB",
+      "nodes": 16,
+      "advertised_gpus": 64,
+      "ready_uncordoned_gpus": 64,
+      "label_memory_mib": 40960,
+      "compute_capability": "8.0",
+      "driver": "580.95.05",
+      "namespace_visible_reserved_gpus": 0,
+      "policy_status": "same_SM80_architecture_but_memory_fit_not_measured_or_qualified",
+      "simulator_status": "excluded_no_RT_cores"
+    },
+    {
+      "product": "NVIDIA-A40",
+      "nodes": 21,
+      "advertised_gpus": 42,
+      "ready_uncordoned_gpus": 42,
+      "label_memory_mib": 46068,
+      "compute_capability": "8.6",
+      "driver": "580.95.05",
+      "namespace_visible_reserved_gpus": 0,
+      "policy_status": "not_qualified_for_current_policy_runtimes",
+      "simulator_status": "current_RoboLab_Isaac50_headless_RTX_destination_check_demonstrated"
+    },
+    {
+      "product": "NVIDIA-B200",
+      "nodes": 5,
+      "advertised_gpus": 40,
+      "ready_uncordoned_gpus": 40,
+      "label_memory_mib": 183359,
+      "compute_capability": "10.0",
+      "driver": "580.95.05",
+      "namespace_visible_reserved_gpus": 9,
+      "policy_status": "PyTorch_SM100_build_present_but_current_native_pipeline_unqualified",
+      "simulator_status": "not_an_RTX_simulator_substitute",
+      "protected_node_excluded": "dcwipphhgc225.edc.nam.gm.com"
+    },
+    {
+      "product": "Tesla-V100-SXM2-32GB",
+      "nodes": 2,
+      "advertised_gpus": 16,
+      "ready_uncordoned_gpus": 16,
+      "label_memory_mib": 32768,
+      "compute_capability": "7.0",
+      "driver": "580.95.05",
+      "namespace_visible_reserved_gpus": 3,
+      "policy_status": "excluded_from_current_BF16_stack_E3_CUDA13_build_also_lacks_SM70",
+      "simulator_status": "excluded_no_RT_cores"
+    },
+    {
+      "product": "NVIDIA-RTX-PRO-6000-Blackwell-Server-Edition",
+      "nodes": 1,
+      "advertised_gpus": 8,
+      "ready_uncordoned_gpus": 8,
+      "label_memory_mib": 97887,
+      "compute_capability": "12.0",
+      "driver": "580.105.08",
+      "namespace_visible_reserved_gpus": 0,
+      "policy_status": "PyTorch_SM120_build_present_but_NATTEN_and_native_pipeline_unqualified",
+      "simulator_status": "RTX_candidate_only_not_current_Isaac50_qualification"
+    }
+  ],
+  "policy_environments": {
+    "N3": {
+      "torch": "2.10.0+cu128",
+      "cuda_build": "12.8",
+      "natten": "0.21.6.dev6+cu128.torch210",
+      "torch_compiled_arch_flags": "sm_70 sm_75 sm_80 sm_86 sm_90 sm_100 sm_120",
+      "proven_device_name": "NVIDIA A100-SXM4-80GB",
+      "result": "n3-fixed-input-result.json",
+      "peak_vram_mib": null,
+      "minimum_required_vram_mib": null
+    },
+    "E3": {
+      "torch": "2.10.0+cu130",
+      "cuda_build": "13.0",
+      "natten": "0.21.6.dev6+cu130.torch210.gb300",
+      "torch_compiled_arch_flags": "sm_75 sm_80 sm_86 sm_90 sm_100 sm_120 compute_120",
+      "proven_device_name": "NVIDIA A100-SXM4-80GB",
+      "result": "e3-fixed-input-result.json",
+      "peak_vram_mib": null,
+      "minimum_required_vram_mib": null
+    },
+    "F3": {
+      "torch": "2.10.0+cu128",
+      "cuda_build": "12.8",
+      "natten": "0.21.6+torch2100cu128",
+      "torch_compiled_arch_flags": "sm_70 sm_75 sm_80 sm_86 sm_90 sm_100 sm_120",
+      "proven_device_name": "NVIDIA A100-SXM4-80GB",
+      "result": "f3-fixed-input-result.json",
+      "peak_vram_mib": null,
+      "minimum_required_vram_mib": null
+    }
+  },
+  "kernel_scope": "Torch build flags are not proof of every NATTEN or end-to-end kernel path. The actual 18 completed requests demonstrate the installed pinned kernels on SM80 only. No minimum VRAM is inferred from an 80GB successful allocation or CPU resource requests.",
+  "demonstrated_physical_allocations": [
+    {
+      "gpu_uuid": "GPU-9b784824-3fad-dcf1-8e3e-abee22db4a8e",
+      "device_name": "NVIDIA A100-SXM4-80GB",
+      "node": "dcwipphai0061.edc.nam.gm.com",
+      "checks": ["n3-check-c", "e3-check-a"],
+      "allocation_idle_observed_at_unix": [1790278001.3223393, 1790278277.165779],
+      "allocation_free_memory_mib": 81153,
+      "current_idle_claimed": false
+    },
+    {
+      "gpu_uuid": "GPU-a5da8dd9-550d-f8e1-5d0d-1047abd4c14d",
+      "device_name": "NVIDIA A100-SXM4-80GB",
+      "node": "dcwipphai0061.edc.nam.gm.com",
+      "checks": ["f3-check-a"],
+      "allocation_idle_observed_at_unix": [1790278277.6328747],
+      "allocation_free_memory_mib": 81153,
+      "current_idle_claimed": false
+    },
+    {
+      "gpu_uuid": "GPU-8773b1c9-df29-a37a-e165-8f68986cdb88",
+      "device_name": "NVIDIA A40",
+      "node": "dcwipphhgc191.edc.nam.gm.com",
+      "checks": ["destination-check"],
+      "allocation_idle_observed_at_unix": [1790275707.3517532],
+      "allocation_free_memory_mib": 45489,
+      "current_idle_claimed": false
+    }
+  ],
+  "next_useful_admission_plan": {
+    "maximum_policy_workers": 3,
+    "maximum_separate_simulator_workers": 3,
+    "policy_device_name": "NVIDIA A100-SXM4-80GB",
+    "simulator_device_name": "NVIDIA A40",
+    "policy_candidate_node": "dcwipphai0061.edc.nam.gm.com",
+    "simulator_candidate_nodes": [
+      "dcwipphhgc191.edc.nam.gm.com",
+      "dcwipphhgc192.edc.nam.gm.com",
+      "dcwipphhgc193.edc.nam.gm.com"
+    ],
+    "candidate_namespace_visible_gpu_reservations": 0,
+    "fresh_physical_idle_and_exact_type_check_required": true,
+    "physical_uuid_and_model_locks_required": true,
+    "extra_capacity_does_not_waive_per_model_serialization": true,
+    "whole_partition_and_P_D_C_gates_unchanged": true,
+    "hardware_qualification_campaign_authorized_by_this_inventory": false
+  },
+  "protected": {
+    "pod": "211247-ali-b200-1gpu",
+    "pod_uid": "b58e8416-9412-4db5-921b-110420433480",
+    "observed_phase": "Running",
+    "excluded_node": "dcwipphhgc225.edc.nam.gm.com",
+    "excluded_gpu": "GPU-60b3065c-79cb-61e6-b92a-32d0ae3750f3",
+    "touched": false
+  },
+  "reference_urls": [
+    "https://natten.org/install/",
+    "https://docs.isaacsim.omniverse.nvidia.com/latest/installation/requirements.html"
+  ],
+  "reference_scope": "Current official hardware/build guidance is supporting context, not an upgrade instruction. Actual pinned-version compatibility is established by the retained native diagnostic and simulator receipts."
+}
