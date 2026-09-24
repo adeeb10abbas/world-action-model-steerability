@@ -1,6 +1,6 @@
 {
   "status": "clean_wam_research_plan_not_experimental_results",
-  "checked_at_utc": "2026-09-24T04:05:11.668189+00:00",
+  "checked_at_utc": "2026-09-24T04:29:42.855741+00:00",
   "scope": "D/C/I x LAT/HEIGHT/DIST x N3/D1 in clean tabletop scenes",
   "repository": "https://github.com/adeeb10abbas/world-action-model-steerability",
   "cells": 1044,
@@ -66,19 +66,22 @@
     "warnings": 0,
     "typesetting_warnings": 0,
     "pages": 10,
-    "pdf_sha256": "1cd47934cf7bf92ddab63b161ddc35f9bf9057cd33dc632b868e26c9b516d583"
+    "pdf_sha256": "1cd47934cf7bf92ddab63b161ddc35f9bf9057cd33dc632b868e26c9b516d583",
+    "source_main_sha256": "fcdc6b5035b87224820fe3f8900239209462204dc2b91509d9a8730c1afc9194",
+    "checked_this_revision": false,
+    "note": "Retained prior local figure-build receipt; this scope-only revision was compiled once in Overleaf."
   },
   "overleaf": {
     "project_url": "https://www.overleaf.com/project/6ab2bdb39b30df4bbc98a15e",
     "project_title": "steering wams",
     "synced_this_revision": true,
-    "checked_at_utc": "2026-09-24T04:05:11.668189+00:00",
+    "checked_at_utc": "2026-09-24T04:29:42.855741+00:00",
     "method": "Authenticated Chrome UI file upload; full sources read before replacement",
-    "preupload_review": "Both full saved TeX sources matched the previous synchronized revision before replacement; no intervening user edits were present",
+    "preupload_review": "Full saved main.tex exactly matched the last synchronized source before replacement; no intervening user edits were present",
     "saved_source_readback_matches": true,
-    "readback_check": "Full editor clipboard text character count and FNV-1a 64-bit fingerprint matched each uploaded local source",
+    "readback_check": "Full main.tex editor clipboard text matched local character count and FNV-1a 64-bit fingerprint; compared with prior saved source, only the authorized 257-character LAT viewpoint clarification was added",
     "uploaded_source_sha256": {
-      "main.tex": "fcdc6b5035b87224820fe3f8900239209462204dc2b91509d9a8730c1afc9194",
+      "main.tex": "86cf377883cc7924faaaabfe1a979504335c84855ecd6eaae11001c634e41b2f",
       "ablation_coverage_20260924.tex": "6d46bcb5edb91fac568fb725e043373cd51a4cfbf47556d938338f5fb3272589",
       "figures/lat-flat-right.png": "ac35e263b4ae4b966cd6c0938500c08fd75ec3d6c2f32185e71a218b4c054dab",
       "figures/height-upper-right.png": "6673f7e0036a5a3ba4b44fa1f7ecd37a811d7973806f24e785c576dad1ab7f03",
@@ -88,14 +91,30 @@
     "compile_errors": 0,
     "compile_warnings": 0,
     "pdf_pages": 10,
-    "compile_build": "1a0d193c946-1b2662b17bf23d89",
+    "compile_build": "1a0d1ac63f4-4a110c8fa627db79",
     "other_project_files_changed": false,
-    "image_upload_verification": "All three files present in figures folder and rendered in the compiled page 3; no remote PNG download/hash check performed"
+    "image_upload_verification": "All three files present in figures folder and rendered in the compiled page 3; no remote PNG download/hash check performed",
+    "synced_files_this_revision": [
+      "main.tex"
+    ],
+    "main_source_fingerprints": {
+      "before": {
+        "chars": 23165,
+        "fnv1a64": "e89f1a634e6ce03a",
+        "sha256": "fcdc6b5035b87224820fe3f8900239209462204dc2b91509d9a8730c1afc9194"
+      },
+      "after": {
+        "chars": 23422,
+        "fnv1a64": "e8d0f66fd7ea70ae",
+        "sha256": "86cf377883cc7924faaaabfe1a979504335c84855ecd6eaae11001c634e41b2f"
+      }
+    },
+    "compile_invocations_this_revision": 1
   },
   "delivery_hashes": {
     "ABLATION_COVERAGE.md": "d0e1f541b9edfc959459929ad77f9a10c0e760417f92dad1bc89685ad41dbba0",
     "ablation_coverage_20260924.tex": "6d46bcb5edb91fac568fb725e043373cd51a4cfbf47556d938338f5fb3272589",
-    "overleaf/main.tex": "fcdc6b5035b87224820fe3f8900239209462204dc2b91509d9a8730c1afc9194",
+    "overleaf/main.tex": "86cf377883cc7924faaaabfe1a979504335c84855ecd6eaae11001c634e41b2f",
     "overleaf/ablation_coverage_20260924.tex": "6d46bcb5edb91fac568fb725e043373cd51a4cfbf47556d938338f5fb3272589",
     "overleaf/figures/lat-flat-right.png": "ac35e263b4ae4b966cd6c0938500c08fd75ec3d6c2f32185e71a218b4c054dab",
     "overleaf/figures/height-upper-right.png": "6673f7e0036a5a3ba4b44fa1f7ecd37a811d7973806f24e785c576dad1ab7f03",
@@ -152,5 +171,6 @@
       "overleaf_pdf": "All three panels, labels and caption visibly present in compiled PDF page 3",
       "pixel_edits": false
     }
-  }
+  },
+  "scope_clarification": "LAT uses robot-frame scoring while frozen prompts leave viewpoint unspecified; consistent reversal can reflect frame choice or relation grounding, which this experiment does not separate."
 }
