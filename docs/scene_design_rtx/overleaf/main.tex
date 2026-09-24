@@ -9,7 +9,7 @@
 \setlength{\parskip}{0.35em}
 \setlist[itemize]{nosep,leftmargin=*}
 \newcommand{\cube}{Rubik's cube}
-\newcommand{\status}{\textbf{Research plan --- SGW-01, version 1.1; clean study, 24 September 2026.} Physical qualification of all 87 selected layouts is complete. Model requests and learned-policy episodes remain zero.}
+\newcommand{\status}{\textbf{Research plan --- SGW-01, version 1.2; clean study, 24 September 2026.} All 87 layouts retain prior physical qualification; closer exterior cameras have separate diagnostic checks. Model requests and learned-policy episodes remain zero.}
 \title{Spatial Instruction Robustness in World--Action Models:\newline Comparing Predicted and Executed Motion}
 \author{Ali-Adeeb Abbas}
 \date{24 September 2026}
@@ -56,6 +56,10 @@ LAT and DIST use a flat tabletop: the cube and reference objects rest directly o
 
 Removing DIST pedestals is scene cleanup, not a measured support ablation. Support presence is not a study factor. The families differ in references, geometry and placement requirements, so their comparison cannot identify a pure causal effect of spatial axis or relation type.
 
+\textbf{Camera framing.} The prospective camera revision \texttt{close-oblique-v2-20260924} places two elevated exterior views on the far side of the table, aimed toward the task area and back toward the robot. Positions, orientations and focal lengths are registered for each of the 87 layouts and remain identical across its six wording/goal conditions and both models. The robot, wrist camera, objects, supports, scoring and prompts are unchanged. Figure~10 of the TRI LBM paper~\cite{trilbm}, on PDF page~14, is a qualitative reference for elevated tabletop framing; we do not reproduce its hardware or camera calibration. Camera fit and resulting magnification vary with task geometry, so cross-family visual scale is not a controlled concept effect.
+
+The legacy sensor names retain ``shoulder'' for compatibility, but the revised exterior views are not robot-eye views. Screen-left must not be read as robot-left. LAT scoring remains robot-frame $+y$, while the frozen prompts leave viewpoint unspecified. Reference inversion changes the relational clause, not the viewpoint; a consistent reversal can reflect frame choice as well as relation grounding.
+
 \begin{figure}[htbp]
 \centering
 \begin{minipage}[t]{0.32\linewidth}
@@ -70,13 +74,13 @@ Removing DIST pedestals is scene cleanup, not a measured support ablation. Suppo
 \centering\includegraphics[width=\linewidth]{figures/dist-flat-right.png}
 \par\small\textbf{(c) DIST: flat tabletop}
 \end{minipage}
-\caption{Unmodified initial left-shoulder camera captures from three illustrative clean layouts: robot-right LAT approach, upper-right HEIGHT support, and bowl-right flat DIST. Each example independently passed both scripted goals across three resets (6/6). Geometry differs by task; wording comparisons within a layout reuse identical initial scenes. These are scripted feasibility examples, not learned-policy results.}
+\caption{Unmodified native reset images from the revised left exterior sensor for LAT-P01, HEIGHT-P01 and DIST-P01. They illustrate the closer camera framing, with no diagnostic overlays. Robot-right/left labels follow the robot frame, not the image. Prior scripted qualification belongs to the unchanged physical geometry; these new camera captures are not repeated goal trials or learned-policy results. Magnification differs across families, while wording/goal conditions within each layout share the same registered cameras.}
 \end{figure}
 
 Initial states must satisfy $|r(0)|\leq5$ mm, so neither requested relation is already satisfied. Success requires $q r\geq30$ mm for physical goal sign $q\in\{-1,+1\}$, a recorded pickup, detached release, and stable supported placement during the final 0.5 simulated seconds. Pickup requires a cube-center rise of at least 30 mm for three recorded steps. Final cube speed must be below 0.02 m/s and angular speed below 0.2 rad/s. If any reference center moves more than 5 mm from its initial position at any recorded step, success is zero; the trial and measured margins remain in the analysis. Simulator state is used for reset qualification and scoring, not language coaching or additional policy input.
 
 \subsection{Fixtures, models, and sample}
-All trials use clean tabletop scenes in DROID/RoboLab. Each selected layout passed both physical goals across three scripted resets, satisfied reset agreement within 3 mm and 2 degrees, and retains measured object, support, camera and asset identities. Scripted success establishes fixture feasibility only. The final campaign explicitly reused 14 passing and two rejected candidates from prior clean scripted checks; these outcomes were already known when its execution plan was recorded. New candidate designs and their order were recorded before their new trials. Selection followed the declared order and physical qualification, never model success.
+All trials use clean tabletop scenes in DROID/RoboLab. Before the camera revision, each selected layout passed both physical goals across three scripted resets, satisfied reset agreement within 3 mm and 2 degrees, and retained measured object, support, camera and asset identities. The 522 passing trials remain evidence for the unchanged physical geometry; they were not rerun with the new cameras. Scripted success establishes fixture feasibility only. The final campaign explicitly reused 14 passing and two rejected candidates from prior clean scripted checks; these outcomes were already known when its execution plan was recorded. New candidate designs and their order were recorded before their new trials. Selection followed the declared order and physical qualification, never model success.
 
 The completed registry contains 29 distinct layouts per family: one pilot on the seeded right side, two development layouts per side and 12 confirmation layouts per side, giving 14 left and 15 right layouts. LAT balances the cube's starting approach side relative to the fixed robot frame; HEIGHT balances the upper-support side; DIST balances bowl versus plate side. Side assignments are checked from measured geometry. Both models will use the same 87 accepted layouts.
 
@@ -142,7 +146,9 @@ We will examine the following explanations without presuming their outcomes:
 \input{ablation_coverage_20260924.tex}
 
 \section{Execution plan and current status}
-Physical scene qualification completed on 24 September 2026 at 12:29 UTC. The ready registry binds all 87 selected layouts to exact designs, measured geometry and independent six-trial verification: all 522 selected scripted trials passed. Eight rejected candidates are retained, and 205 unused registered candidates were deliberately left unrun after the quotas were met. These counts describe fixture qualification; model requests and learned-policy episodes are both zero. Destination scene regeneration and runtime checks remain part of the handoff, not evidence of model performance.
+Physical scene qualification completed on 24 September 2026 at 12:29 UTC. The ready registry binds all 87 selected layouts to exact original designs, measured geometry and independent six-trial verification: all 522 selected scripted trials passed. Eight rejected candidates are retained, and 205 unused registered candidates were deliberately left unrun after the quotas were met. The closer-camera revision inherits this geometry evidence without repeating goal trials. Its six-layout native diagnostic covered P01 and D01 in each family, with 12 resets and 18 hold steps: all 90 camera/observation samples matched exactly and the three streams advanced together at 15 Hz. Reset poses agreed and sensor timestamps restarted at zero; rendered pixels across separate resets were not byte-identical. The unchanged wrist view still clips references in HEIGHT and DIST. The first close-camera prototype, rejected for arm occlusion, remains recorded.
+
+All 87 revised scenes and 1,044 cell bindings passed offline destination materialization. Offline image preprocessing passed on six native inputs and one synthetic input, without model requests. These engineering checks do not qualify N3/D1 model inputs, future-frame time maps, or semantic prediction labels. Model requests and learned-policy episodes are both zero; destination and model/runtime checks remain handoff gates, not evidence of model performance.
 
 The recording pilot validates each model's runtime, reset, observations, decoded futures and timing. Development fixes the forecast horizon, labeling procedure and analysis choices before confirmation. Progression depends on those measurement requirements, not a favorable success rate. Every model episode retains its static prompt, complete action record and durable completion receipt; valid failures are observations, while technical retries remain separately identified and limited to three attempts per cell. The planned learned-policy study requires a separate explicit launch decision after scene and runtime readiness. This research plan does not authorize that launch.
 
@@ -157,6 +163,7 @@ The design is limited to two WAM configurations, three spatial task families and
 \bibitem{workshop} \emph{Do Robots Need World Models?} CoRL 2026 workshop. \url{https://do-robots-need-world-models.github.io/}. Accessed 22 September 2026.
 \bibitem{liberocf} \emph{When Vision Overrides Language: Evaluating and Mitigating Counterfactual Failures in VLAs}. 2026. \url{https://arxiv.org/abs/2602.17659}.
 \bibitem{stage} B. Jin, Y. Liang, and H. Shen. \emph{STAGE: Diagnosing Semantic Transfer at Grounded Execution in Embodied Agents}. 2026. \url{https://arxiv.org/abs/2609.13458}.
+\bibitem{trilbm} TRI LBM Team et al. \emph{A Careful Examination of Large Behavior Models for Multitask Dexterous Manipulation}. 2025. Figure~10, PDF p.~14. \url{https://arxiv.org/abs/2507.05331}.
 \end{thebibliography}
 \endgroup
 
@@ -206,6 +213,6 @@ The physical goal, rather than the literal direction word, determines scoring. E
 \end{description}
 
 \section{Remaining measurement work}
-Scene qualification must finish before the clean cohort is frozen. Runtime time maps, two-rater localization, persistence skill and validated semantic prediction labels must be completed before prediction fidelity is reported. The analysis must expose complete-layout counts, censoring, technical missingness and unknown forecasts. Section~\ref{sec:coverage-update} defines these remaining outputs; no planned cell is treated as an observation.
+Physical geometry qualification is complete; the prospective camera revision and destination/model interfaces require their distinct checks. Runtime time maps, two-rater localization, persistence skill and validated semantic prediction labels for the revised views must be completed before prediction fidelity is reported. The analysis must expose complete-layout counts, censoring, technical missingness and unknown forecasts. Section~\ref{sec:coverage-update} defines these remaining outputs; no planned cell is treated as an observation.
 
 \end{document}

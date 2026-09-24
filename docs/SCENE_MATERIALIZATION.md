@@ -6,17 +6,20 @@ bindings. It runs no simulator, model, network request or release operation.
 
 The [complete registry](../artifacts/workshops/spatial_grounding_v1/scene_package_20260924/scene-registry.json)
 has passed the full materializer against the workstation's pinned RoboLab
-assets using study commit `b4ad6145423e98b3b5f7524b3294b2de27e2953c` and
-Python 3.11.14. The [saved receipt](../handoff/workstation-materialization.json)
+assets using study commit `ba8da02cd4c2252b9bcc108b70520dd1a85724a7` and
+Python 3.11.14. The [current receipt](../handoff/close-camera-materialization.json)
 records 87 rebuilt layouts, 1,044 bound planned cells, zero native runs and
 zero model requests. The output remains `physical_qualified_runtime_pending`.
 
 The actual destination-bound output is at
-`/home/ali/sgw-scene-design-20260923/evidence/SGW-FINAL-HANDOFF-20260924`
-on the workstation. A copy for inspection is at
-`/Users/ali-adeeb/Downloads/astra_creative_director/sgw_scene_handoff_20260924`
-on this Mac; its embedded paths still refer to the workstation. Regenerate
-the output at the cluster's actual paths using the instructions below.
+`/home/ali/sgw-scene-design-20260923/evidence/SGW-CLOSE-HANDOFF-20260924`
+on the workstation. The receipt binds camera revision
+`close-oblique-v2-20260924`; see [camera checks](CAMERA_ALIGNMENT.md).
+Regenerate the output at the cluster's actual paths using the instructions below.
+
+The [earlier receipt](../handoff/workstation-materialization.json) and
+`SGW-FINAL-HANDOFF-20260924` output are retained as history. Their binding lacks
+the current camera identity and is rejected by the current environment.
 
 Run it from the clean committed study checkout at the destination where the
 pinned RoboLab checkout and asset payloads already exist. The output must be a
@@ -69,7 +72,9 @@ Outputs:
   physical fixture hashes. `fixture_sha256` hashes that layout's
   `physical-fixture.json` bytes.
 - `environment-binding.json` has the fields consumed by `JointPositionBinding`,
-  with 1,044 explicit cells. Each uses `scene_seed=int(environment_seed)` from
+  with the current camera revision/hash and 1,044 explicit cells. Loading a
+  binding with a missing or different camera identity fails. Each cell uses
+  `scene_seed=int(environment_seed)` from
   the frozen queue, not the candidate-generation seed. Both models and all six
   conditions for a layout share its one candidate and overlay.
 - `bound-cells.jsonl` retains `PLANNED_NOT_RELEASED`, empty runtime/time-map

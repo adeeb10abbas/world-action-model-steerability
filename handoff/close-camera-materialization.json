@@ -1,0 +1,82 @@
+{
+  "authoring_source_sha256": {
+    "experiments/workshops/spatial_grounding_v1/camera_configuration.py": "eeaaf97674b93e697b7d63689ad74b16cf30a172518d4ab5caac80fb122b30e1",
+    "experiments/workshops/spatial_grounding_v1/close_cameras.json": "33a02f7f75f10efe109550867dd5e00d149a832917c0d3a056e6e2a5d7c45d56",
+    "experiments/workshops/spatial_grounding_v1/prospective_family_scene.py": "15ad70278c9b3af5ecc8439e656f35617d0d013edc8fe03e8d61ba4dd5dd3345",
+    "experiments/workshops/spatial_grounding_v1/scene_design.py": "85dbd999c6ce449dce8f93996cb80bd7d580f380c52656418132ba845155630a",
+    "tools/build_scene_package.py": "d7681bc14f7819228f84fa4bf2608ae0e6211406e1f960970f7e52ee46853aa5",
+    "tools/materialize_scene_handoff.py": "7e458342539a0c7c7736d026096a6791d3508ef46b2f4098bd7fd7dbc82fb0de"
+  },
+  "camera_configuration": {
+    "revision": "close-oblique-v2-20260924",
+    "sha256": "33a02f7f75f10efe109550867dd5e00d149a832917c0d3a056e6e2a5d7c45d56"
+  },
+  "cell_count": 1044,
+  "files": {
+    "asset-relocation.json": {
+      "path": "/home/ali/sgw-scene-design-20260923/evidence/SGW-CLOSE-HANDOFF-20260924/asset-relocation.json",
+      "sha256": "2c31cac868c93552ba8ddba5319c06ab5bf87b4bb574a03c73cf901049bcce91"
+    },
+    "assets.json": {
+      "path": "/home/ali/sgw-scene-design-20260923/evidence/SGW-CLOSE-HANDOFF-20260924/assets.json",
+      "sha256": "eb5507f84044f7206f5822c7ef18595272f45022fcd166cfdb3a12ef88a09ec1"
+    },
+    "bound-cells.jsonl": {
+      "path": "/home/ali/sgw-scene-design-20260923/evidence/SGW-CLOSE-HANDOFF-20260924/bound-cells.jsonl",
+      "sha256": "e209ddeac4b691145a94ede61f730f33f4869928ed767c1c98bea262dc231ff6"
+    },
+    "environment-binding.json": {
+      "path": "/home/ali/sgw-scene-design-20260923/evidence/SGW-CLOSE-HANDOFF-20260924/environment-binding.json",
+      "sha256": "202956323c906eef685162d721b40234110045d23f6eb382dba1925d0681f85f"
+    },
+    "physical-fixtures.json": {
+      "path": "/home/ali/sgw-scene-design-20260923/evidence/SGW-CLOSE-HANDOFF-20260924/physical-fixtures.json",
+      "sha256": "aae4c615a32730c91c5f3f73360feabbb06f311a78cb36d06be116fdcacbc684"
+    },
+    "selection-registry.json": {
+      "path": "/home/ali/sgw-scene-design-20260923/evidence/SGW-CLOSE-HANDOFF-20260924/selection-registry.json",
+      "sha256": "20733d7f74a42c8aa6f67b66834c7c4296567c77d59cfb19e92367c706e3fe75"
+    }
+  },
+  "frozen_sources": {
+    "planned_cells.csv": {
+      "bytes": 267729,
+      "path": "/home/ali/sgw-scene-design-20260923/close-camera-v2-code-20260924/experiments/workshops/spatial_grounding_v1/spec/planned_cells.csv",
+      "sha256": "b5137427c6a35f8fe84d9add7ff6e559b4bebdb4173306891781d3ba0cc7ebf6"
+    },
+    "prompts.json": {
+      "bytes": 5308,
+      "path": "/home/ali/sgw-scene-design-20260923/close-camera-v2-code-20260924/experiments/workshops/spatial_grounding_v1/spec/prompts.json",
+      "sha256": "f07dbda34feb915472fc329be203ec526a7589007485eeb8f237c19c8708b979"
+    },
+    "protocol.json": {
+      "bytes": 6244,
+      "path": "/home/ali/sgw-scene-design-20260923/close-camera-v2-code-20260924/experiments/workshops/spatial_grounding_v1/spec/protocol.json",
+      "sha256": "47981c57b61dc44ad0a9590c2cafbadd498481ce97ea79637833baea90ffcbc6"
+    }
+  },
+  "layout_count": 87,
+  "learned_policy_launch_authorized": false,
+  "model_requests": 0,
+  "native_runs": 0,
+  "remaining_gates": [
+    "destination native reset and rendering checks",
+    "N3/D1 runtime qualification",
+    "verified physical time and camera maps",
+    "explicit learned-study release authorization"
+  ],
+  "runtime_qualified": false,
+  "schema_version": "sgw-offline-scene-handoff-v1",
+  "selection_registry": {
+    "bytes": 499725,
+    "path": "/home/ali/sgw-scene-design-20260923/close-camera-v2-code-20260924/artifacts/workshops/spatial_grounding_v1/scene_package_20260924/scene-registry.json",
+    "sha256": "20733d7f74a42c8aa6f67b66834c7c4296567c77d59cfb19e92367c706e3fe75"
+  },
+  "source_commit": "ba8da02cd4c2252b9bcc108b70520dd1a85724a7",
+  "source_root": "/home/ali/sgw-scene-design-20260923/close-camera-v2-code-20260924",
+  "source_roots": {
+    "evidence": "/home/ali/sgw-scene-design-20260923/close-camera-v2-code-20260924/artifacts/workshops/spatial_grounding_v1/workstation_receipts_20260924",
+    "repo": "/home/ali/sgw-scene-design-20260923/close-camera-v2-code-20260924"
+  },
+  "status": "physical_qualified_runtime_pending"
+}

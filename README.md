@@ -6,10 +6,13 @@ Do equivalent descriptions of a spatial goal produce the same predicted and exec
 
 The study compares Cosmos3 Nano Policy DROID (N3) and DreamZero DROID (D1) on left/right, higher/lower, and closer/farther placement. Each physical goal has direct, subject-first, and reference-inverted descriptions. Both models use the same clean layouts, robot, cameras, prompts and scoring rules. There are 29 layout slots per family: one pilot, four development and 24 confirmation layouts.
 
+The two exterior cameras now use closer, elevated tabletop views; the wrist camera is unchanged. Geometric coverage passed for all 87 layouts, and six representative layouts passed native camera and offline input-preprocessing checks. The 522 earlier scripted trials establish unchanged physical geometry; they were not rerun with the new cameras. See [current views and camera checks](docs/CAMERA_ALIGNMENT.md).
+
 | Start here | Contents |
 | --- | --- |
 | [Completed scene registry](artifacts/workshops/spatial_grounding_v1/scene_package_20260924/scene-registry.json) | 87 selected layouts, exact inputs and verification receipts |
-| [Clean scene examples](docs/CLEAN_SCENES.md) | Actual shoulder and wrist camera captures |
+| [Clean scene examples](docs/CLEAN_SCENES.md) | Current close exterior views and retained original captures |
+| [Camera alignment](docs/CAMERA_ALIGNMENT.md) | Registered framing, native synchronization and N3/D1 input checks |
 | [Scripted recordings](docs/SCENE_RECORDS.md) | Locations and verified identities of raw arrays, videos and state records |
 | [Scene construction](docs/scene_design_rtx/README.md) | Geometry, counterbalancing and scripted checks |
 | [Candidate inputs](artifacts/workshops/spatial_grounding_v1/balanced_flat_scene_candidates_20260924/) | Recorded layouts and selection order |

@@ -16,8 +16,11 @@ Owner: one agent for both model branches.
    [scene materialization](SCENE_MATERIALIZATION.md) to regenerate overlays
    at the cluster's real paths and produce the per-cell environment binding.
 3. Preserve flat-table LAT/DIST, raised supports only for HEIGHT, clean
-   lighting, the robot and all three cameras. Preserve measured object poses,
-   side assignments, prompts and seeds. Reuse the completed scripted evidence.
+   lighting and the robot. Use the registered close exterior cameras and
+   unchanged wrist camera in [CAMERA_ALIGNMENT.md](CAMERA_ALIGNMENT.md).
+   Preserve measured object poses, side assignments, prompts and seeds.
+   Reuse the completed scripted geometry evidence; its old exterior images
+   are historical. Regenerate the current camera binding at destination paths.
 4. Record the actual image, storage, source commit and asset paths. Give the
    same physical fixture hashes and environment binding to both model owners.
 
@@ -32,6 +35,11 @@ Use the official pinned model configuration and the existing wrapper. Bind
 the actual policy endpoint, GPU ownership, reset/session behavior, action
 interface and model-input cameras. Use `effective_policy_seed` from the frozen
 queue; the environment uses its separate `environment_seed`.
+
+The offline N3/D1 image extraction, slot mapping and input resize already
+passed on six real camera inputs and an asymmetric synthetic image. Reuse
+those checks with their exact pinned sources. Cluster server behavior, later
+model transforms and decoded-future timing still need actual runtime evidence.
 
 Generated futures need an evidenced camera and physical-time mapping to the
 actions that were actually executed. If that mapping or decoded output is
@@ -77,5 +85,9 @@ Do not make a positive equivalence claim before a valid procedure is specified.
 
 Removing DIST pedestals is a design correction, not an additional support
 ablation. Cross-family differences do not isolate spatial-axis understanding.
+Camera framing also varies with family geometry. In LAT, distinguish robot
+left/right from image left/right: the exterior views look back toward the
+robot, while the frozen prompts leave the viewpoint implicit. A reversal
+alone does not identify a language-understanding failure.
 Use only this clean cohort in the paper. Update claims from measured outcomes,
 not from the scripted scene checks or from an expected finding.

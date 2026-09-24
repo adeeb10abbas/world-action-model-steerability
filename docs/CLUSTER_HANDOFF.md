@@ -82,6 +82,14 @@ scene registry. It regenerates path-bound overlays, preserves the qualified
 geometry and appearance, and writes the 87-layout and 1,044-cell mappings.
 Its physical-only output intentionally lacks model/runtime qualification.
 
+Use camera revision `close-oblique-v2-20260924`, documented in
+[CAMERA_ALIGNMENT.md](CAMERA_ALIGNMENT.md). The current workstation
+materialization is [the close-camera handoff](../handoff/close-camera-materialization.json).
+The original `SGW-FINAL-HANDOFF-20260924` binding predates this camera revision;
+the current environment rejects it. Rematerialize at cluster paths rather
+than copying or manually patching an old binding. Original scene geometry,
+layout assignments and all 522 scripted physical passes remain unchanged.
+
 Transfer the selected **input JSON, family assignments, calibration, asset
 manifests, source hashes and qualification receipts** together. Preserve each
 selected layout ID, its appearance, support orientation, and measured object
@@ -115,12 +123,19 @@ layout. The original hashed scene registrations remain unchanged.
   `effective_policy_seed`, prompt text and SHA-256. N3's sampling seed varies
   by registered layout; D1's effective native seed is 1140. Never replace
   seeds with worker IDs. Prompts remain static for the full episode.
-- **Cameras and state:** retain wrist, left shoulder and right shoulder
-  cameras with their qualified transforms. `policy_observations.py` uses
+- **Cameras and state:** retain the unchanged wrist and registered close
+  exterior cameras. The historical sensor names remain for slot compatibility;
+  their exterior positions now look down from the far side of the table.
+  `policy_observations.py` uses
   `wrist_cam`, `over_shoulder_left_camera`, and `over_shoulder_right_camera`.
   N3 maps exterior cameras to official one-based slots; D1 uses its official
   extraction path. Policy input contains RGB and arm/gripper proprioception.
   Object coordinates and scoring state are for measurement only.
+  Both goal destinations and a 0.12 m lift envelope determine framing before
+  any model outcomes; the view stays fixed across all six conditions.
+  Offline slot/resize checks and six native camera diagnostics passed. These
+  do not establish server execution or generated-future timing. Wrist-only
+  predictions can lack a visible reference object; retain that missingness.
 - **Resets and actions:** perform a full physical reset and clear model
   session/cache for every cell. Verify reset positions within 3 mm and
   orientations within 2 degrees. Use the official absolute joint-position

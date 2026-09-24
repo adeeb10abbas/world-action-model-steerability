@@ -1,0 +1,2832 @@
+{
+  "status": "passed",
+  "layouts": 87,
+  "exterior_views": 174,
+  "scope": "Project measured initial object/support bounds and both scripted cube destinations, including 0.12 m lift; this is geometric coverage, not occlusion or model-performance evidence.",
+  "config_sha256": "33a02f7f75f10efe109550867dd5e00d149a832917c0d3a056e6e2a5d7c45d56",
+  "summary": {
+    "LAT": {
+      "layouts": 29,
+      "cube_width_px_range": [
+        28.868474817060928,
+        28.868484058010893
+      ],
+      "width_gain_range": [
+        2.073084468812112,
+        2.456646951907693
+      ],
+      "minimum_margin_native_px": 44.45761756394485
+    },
+    "HEIGHT": {
+      "layouts": 29,
+      "cube_width_px_range": [
+        20.521733227614874,
+        20.52173553693291
+      ],
+      "width_gain_range": [
+        1.4012847293009543,
+        1.5884759021733117
+      ],
+      "minimum_margin_native_px": 38.97883951723157
+    },
+    "DIST": {
+      "layouts": 29,
+      "cube_width_px_range": [
+        15.172141821681521,
+        15.618094281382497
+      ],
+      "width_gain_range": [
+        1.1235070958956639,
+        1.2926264347655068
+      ],
+      "minimum_margin_native_px": 39.572818279389935
+    }
+  },
+  "details": [
+    {
+      "layout_id": "DIST-C01",
+      "family": "DIST",
+      "views": {
+        "over_shoulder_left_camera": {
+          "minimum_margin_native_px": 67.52615310999613,
+          "cube_bbox_at_320x180_px": [
+            15.61809402423728,
+            17.96579170012211
+          ],
+          "original_cube_bbox_at_320x180_px": [
+            12.441914368829515,
+            12.658363449596948
+          ],
+          "width_gain": 1.2552806233231266,
+          "area_gain": 1.7815976207051327
+        },
+        "over_shoulder_right_camera": {
+          "minimum_margin_native_px": 39.572847830672,
+          "cube_bbox_at_320x180_px": [
+            15.172143213756726,
+            17.769712240028625
+          ],
+          "original_cube_bbox_at_320x180_px": [
+            12.948668773515749,
+            14.73185240298821
+          ],
+          "width_gain": 1.1717145197804972,
+          "area_gain": 1.413334133034039
+        }
+      }
+    },
+    {
+      "layout_id": "DIST-C02",
+      "family": "DIST",
+      "views": {
+        "over_shoulder_left_camera": {
+          "minimum_margin_native_px": 67.52612557280895,
+          "cube_bbox_at_320x180_px": [
+            15.618094150997393,
+            17.965791513231707
+          ],
+          "original_cube_bbox_at_320x180_px": [
+            12.082449910465158,
+            12.431880311057526
+          ],
+          "width_gain": 1.2926264347655068,
+          "area_gain": 1.8680245023621542
+        },
+        "over_shoulder_right_camera": {
+          "minimum_margin_native_px": 39.572818279389935,
+          "cube_bbox_at_320x180_px": [
+            15.172142879363719,
+            17.769711851391136
+          ],
+          "original_cube_bbox_at_320x180_px": [
+            12.493842106231,
+            14.223976051449455
+          ],
+          "width_gain": 1.2143696671016022,
+          "area_gain": 1.5170862905991958
+        }
+      }
+    },
+    {
+      "layout_id": "DIST-C03",
+      "family": "DIST",
+      "views": {
+        "over_shoulder_left_camera": {
+          "minimum_margin_native_px": 67.52617348751392,
+          "cube_bbox_at_320x180_px": [
+            15.61809289142306,
+            17.9657912298277
+          ],
+          "original_cube_bbox_at_320x180_px": [
+            13.070781303294552,
+            13.35099090115365
+          ],
+          "width_gain": 1.194885946679136,
+          "area_gain": 1.6079009880560577
+        },
+        "over_shoulder_right_camera": {
+          "minimum_margin_native_px": 39.57286969861991,
+          "cube_bbox_at_320x180_px": [
+            15.17214221957073,
+            17.769711832994915
+          ],
+          "original_cube_bbox_at_320x180_px": [
+            13.50426915414846,
+            14.966385410381164
+          ],
+          "width_gain": 1.1235070958956639,
+          "area_gain": 1.3339491660119207
+        }
+      }
+    },
+    {
+      "layout_id": "DIST-C04",
+      "family": "DIST",
+      "views": {
+        "over_shoulder_left_camera": {
+          "minimum_margin_native_px": 67.52615806668973,
+          "cube_bbox_at_320x180_px": [
+            15.618094144803763,
+            17.965791752685035
+          ],
+          "original_cube_bbox_at_320x180_px": [
+            12.16118445566471,
+            12.376032219955007
+          ],
+          "width_gain": 1.28425764790771,
+          "area_gain": 1.8643055422804078
+        },
+        "over_shoulder_right_camera": {
+          "minimum_margin_native_px": 39.5728531499027,
+          "cube_bbox_at_320x180_px": [
+            15.172143097766849,
+            17.7697121885913
+          ],
+          "original_cube_bbox_at_320x180_px": [
+            12.671107809162066,
+            14.564047285468419
+          ],
+          "width_gain": 1.1973809493433847,
+          "area_gain": 1.460934205505076
+        }
+      }
+    },
+    {
+      "layout_id": "DIST-C05",
+      "family": "DIST",
+      "views": {
+        "over_shoulder_left_camera": {
+          "minimum_margin_native_px": 67.52616302338322,
+          "cube_bbox_at_320x180_px": [
+            15.618093783104257,
+            17.96579159499626
+          ],
+          "original_cube_bbox_at_320x180_px": [
+            12.238463519968008,
+            12.320665522435434
+          ],
+          "width_gain": 1.2761482483174558,
+          "area_gain": 1.8608583628734816
+        },
+        "over_shoulder_right_camera": {
+          "minimum_margin_native_px": 39.57285846913328,
+          "cube_bbox_at_320x180_px": [
+            15.17214344573648,
+            17.76971234290326
+          ],
+          "original_cube_bbox_at_320x180_px": [
+            12.852881866970876,
+            14.920038903290077
+          ],
+          "width_gain": 1.1804468136228348,
+          "area_gain": 1.405907883360074
+        }
+      }
+    },
+    {
+      "layout_id": "DIST-C06",
+      "family": "DIST",
+      "views": {
+        "over_shoulder_left_camera": {
+          "minimum_margin_native_px": 67.52615806668973,
+          "cube_bbox_at_320x180_px": [
+            15.618094144803763,
+            17.965791752685035
+          ],
+          "original_cube_bbox_at_320x180_px": [
+            12.287769696381247,
+            12.476190133591189
+          ],
+          "width_gain": 1.271027577071476,
+          "area_gain": 1.8302876532880363
+        },
+        "over_shoulder_right_camera": {
+          "minimum_margin_native_px": 39.5728531499027,
+          "cube_bbox_at_320x180_px": [
+            15.172143097766849,
+            17.7697121885913
+          ],
+          "original_cube_bbox_at_320x180_px": [
+            12.817919044510631,
+            14.70123401960845
+          ],
+          "width_gain": 1.1836666345825013,
+          "area_gain": 1.4307244817486227
+        }
+      }
+    },
+    {
+      "layout_id": "DIST-C07",
+      "family": "DIST",
+      "views": {
+        "over_shoulder_left_camera": {
+          "minimum_margin_native_px": 67.52614429809648,
+          "cube_bbox_at_320x180_px": [
+            15.618094087617322,
+            17.965791606676888
+          ],
+          "original_cube_bbox_at_320x180_px": [
+            12.681510575890513,
+            12.786254437415977
+          ],
+          "width_gain": 1.231564173223157,
+          "area_gain": 1.730454011741697
+        },
+        "over_shoulder_right_camera": {
+          "minimum_margin_native_px": 39.572838374262005,
+          "cube_bbox_at_320x180_px": [
+            15.172143046560223,
+            17.769712045709866
+          ],
+          "original_cube_bbox_at_320x180_px": [
+            13.276710797533013,
+            15.12803705411342
+          ],
+          "width_gain": 1.1427636918459807,
+          "area_gain": 1.3423143840643819
+        }
+      }
+    },
+    {
+      "layout_id": "DIST-C08",
+      "family": "DIST",
+      "views": {
+        "over_shoulder_left_camera": {
+          "minimum_margin_native_px": 67.52615806668973,
+          "cube_bbox_at_320x180_px": [
+            15.618092941078373,
+            17.965791101340557
+          ],
+          "original_cube_bbox_at_320x180_px": [
+            12.300663213628951,
+            12.858450865728699
+          ],
+          "width_gain": 1.269695192026212,
+          "area_gain": 1.774014523251568
+        },
+        "over_shoulder_right_camera": {
+          "minimum_margin_native_px": 39.5728531499027,
+          "cube_bbox_at_320x180_px": [
+            15.172142040084623,
+            17.769711604384625
+          ],
+          "original_cube_bbox_at_320x180_px": [
+            12.561171964673747,
+            13.95389737807335
+          ],
+          "width_gain": 1.2078603877690557,
+          "area_gain": 1.5381602836454138
+        }
+      }
+    },
+    {
+      "layout_id": "DIST-C09",
+      "family": "DIST",
+      "views": {
+        "over_shoulder_left_camera": {
+          "minimum_margin_native_px": 67.52613934140265,
+          "cube_bbox_at_320x180_px": [
+            15.618093967050811,
+            17.96579155411399
+          ],
+          "original_cube_bbox_at_320x180_px": [
+            12.708496792709525,
+            12.86928911469883
+          ],
+          "width_gain": 1.2289489639727047,
+          "area_gain": 1.7156379595326743
+        },
+        "over_shoulder_right_camera": {
+          "minimum_margin_native_px": 39.5728330550312,
+          "cube_bbox_at_320x180_px": [
+            15.1721431625501,
+            17.769712097147178
+          ],
+          "original_cube_bbox_at_320x180_px": [
+            13.255747978607445,
+            15.014914430063229
+          ],
+          "width_gain": 1.1445708825360437,
+          "area_gain": 1.354566165007276
+        }
+      }
+    },
+    {
+      "layout_id": "DIST-C10",
+      "family": "DIST",
+      "views": {
+        "over_shoulder_left_camera": {
+          "minimum_margin_native_px": 67.5261354861965,
+          "cube_bbox_at_320x180_px": [
+            15.618092706139038,
+            17.965790756761393
+          ],
+          "original_cube_bbox_at_320x180_px": [
+            12.127407337824337,
+            12.590137095751956
+          ],
+          "width_gain": 1.2878344291634003,
+          "area_gain": 1.8377054759403342
+        },
+        "over_shoulder_right_camera": {
+          "minimum_margin_native_px": 39.572828917851666,
+          "cube_bbox_at_320x180_px": [
+            15.172142053661247,
+            17.769711370059085
+          ],
+          "original_cube_bbox_at_320x180_px": [
+            12.458811025777976,
+            14.024188292202126
+          ],
+          "width_gain": 1.2177841065467032,
+          "area_gain": 1.543024924758926
+        }
+      }
+    },
+    {
+      "layout_id": "DIST-C11",
+      "family": "DIST",
+      "views": {
+        "over_shoulder_left_camera": {
+          "minimum_margin_native_px": 67.52616302338322,
+          "cube_bbox_at_320x180_px": [
+            15.618093783104257,
+            17.96579159499626
+          ],
+          "original_cube_bbox_at_320x180_px": [
+            12.365716646880827,
+            12.419958410149931
+          ],
+          "width_gain": 1.2630156608872176,
+          "area_gain": 1.8269848734897898
+        },
+        "over_shoulder_right_camera": {
+          "minimum_margin_native_px": 39.57285846913328,
+          "cube_bbox_at_320x180_px": [
+            15.17214344573648,
+            17.76971234290326
+          ],
+          "original_cube_bbox_at_320x180_px": [
+            13.004490746904878,
+            15.063744187196335
+          ],
+          "width_gain": 1.1666849353057145,
+          "area_gain": 1.3762618003565439
+        }
+      }
+    },
+    {
+      "layout_id": "DIST-C12",
+      "family": "DIST",
+      "views": {
+        "over_shoulder_left_camera": {
+          "minimum_margin_native_px": 67.52616302338322,
+          "cube_bbox_at_320x180_px": [
+            15.618092820511862,
+            17.965791048777632
+          ],
+          "original_cube_bbox_at_320x180_px": [
+            12.38464522372567,
+            12.798861547106426
+          ],
+          "width_gain": 1.261085201745769,
+          "area_gain": 1.7701881644615682
+        },
+        "over_shoulder_right_camera": {
+          "minimum_margin_native_px": 39.57285846913328,
+          "cube_bbox_at_320x180_px": [
+            15.1721421560745,
+            17.769711655821936
+          ],
+          "original_cube_bbox_at_320x180_px": [
+            12.742742782487738,
+            14.28156804581144
+          ],
+          "width_gain": 1.1906496438840048,
+          "area_gain": 1.4814550326027403
+        }
+      }
+    },
+    {
+      "layout_id": "DIST-C13",
+      "family": "DIST",
+      "views": {
+        "over_shoulder_left_camera": {
+          "minimum_margin_native_px": 39.57281827939016,
+          "cube_bbox_at_320x180_px": [
+            15.172142995353596,
+            17.769711902828433
+          ],
+          "original_cube_bbox_at_320x180_px": [
+            12.08545491431991,
+            12.442265023515716
+          ],
+          "width_gain": 1.2554052042655264,
+          "area_gain": 1.7929363149673876
+        },
+        "over_shoulder_right_camera": {
+          "minimum_margin_native_px": 67.52612557280872,
+          "cube_bbox_at_320x180_px": [
+            15.618094030430882,
+            17.965791460668783
+          ],
+          "original_cube_bbox_at_320x180_px": [
+            12.491566959931248,
+            14.210547200557613
+          ],
+          "width_gain": 1.2502910227778854,
+          "area_gain": 1.5806898540467436
+        }
+      }
+    },
+    {
+      "layout_id": "DIST-C14",
+      "family": "DIST",
+      "views": {
+        "over_shoulder_left_camera": {
+          "minimum_margin_native_px": 39.57286969862014,
+          "cube_bbox_at_320x180_px": [
+            15.172142219570759,
+            17.76971183299493
+          ],
+          "original_cube_bbox_at_320x180_px": [
+            13.07454452223135,
+            13.362904363229973
+          ],
+          "width_gain": 1.160433711000238,
+          "area_gain": 1.5431205735863631
+        },
+        "over_shoulder_right_camera": {
+          "minimum_margin_native_px": 67.52617348751357,
+          "cube_bbox_at_320x180_px": [
+            15.618092891423032,
+            17.965791229827687
+          ],
+          "original_cube_bbox_at_320x180_px": [
+            13.501026540878655,
+            14.951582824752194
+          ],
+          "width_gain": 1.1568078059941802,
+          "area_gain": 1.390017885004152
+        }
+      }
+    },
+    {
+      "layout_id": "DIST-C15",
+      "family": "DIST",
+      "views": {
+        "over_shoulder_left_camera": {
+          "minimum_margin_native_px": 39.572858469133394,
+          "cube_bbox_at_320x180_px": [
+            15.172143097766877,
+            17.769712188591313
+          ],
+          "original_cube_bbox_at_320x180_px": [
+            12.164332849490847,
+            12.386327178579918
+          ],
+          "width_gain": 1.2472647111429482,
+          "area_gain": 1.7893548765872096
+        },
+        "over_shoulder_right_camera": {
+          "minimum_margin_native_px": 67.5261630233831,
+          "cube_bbox_at_320x180_px": [
+            15.618094144803763,
+            17.965791752685035
+          ],
+          "original_cube_bbox_at_320x180_px": [
+            12.668836611965872,
+            14.54999676216886
+          ],
+          "width_gain": 1.2327962403471429,
+          "area_gain": 1.5222106842770429
+        }
+      }
+    },
+    {
+      "layout_id": "DIST-C16",
+      "family": "DIST",
+      "views": {
+        "over_shoulder_left_camera": {
+          "minimum_margin_native_px": 39.572853149902926,
+          "cube_bbox_at_320x180_px": [
+            15.172143213756755,
+            17.76971224002864
+          ],
+          "original_cube_bbox_at_320x180_px": [
+            12.24175199870038,
+            12.330871970932222
+          ],
+          "width_gain": 1.2393767832715017,
+          "area_gain": 1.7860349898711945
+        },
+        "over_shoulder_right_camera": {
+          "minimum_margin_native_px": 67.52615806668939,
+          "cube_bbox_at_320x180_px": [
+            15.61809402423728,
+            17.96579170012211
+          ],
+          "original_cube_bbox_at_320x180_px": [
+            12.850620246888866,
+            14.905323725908318
+          ],
+          "width_gain": 1.215357214218389,
+          "area_gain": 1.4649030744588987
+        }
+      }
+    },
+    {
+      "layout_id": "DIST-C17",
+      "family": "DIST",
+      "views": {
+        "over_shoulder_left_camera": {
+          "minimum_margin_native_px": 39.572858469133394,
+          "cube_bbox_at_320x180_px": [
+            15.172143097766877,
+            17.769712188591313
+          ],
+          "original_cube_bbox_at_320x180_px": [
+            12.2910231957095,
+            12.486646336022432
+          ],
+          "width_gain": 1.2344084667469433,
+          "area_gain": 1.756683306867871
+        },
+        "over_shoulder_right_camera": {
+          "minimum_margin_native_px": 67.5261630233831,
+          "cube_bbox_at_320x180_px": [
+            15.618094144803763,
+            17.965791752685035
+          ],
+          "original_cube_bbox_at_320x180_px": [
+            12.81553315544869,
+            14.686929077981219
+          ],
+          "width_gain": 1.2186846973403933,
+          "area_gain": 1.49075653380979
+        }
+      }
+    },
+    {
+      "layout_id": "DIST-C18",
+      "family": "DIST",
+      "views": {
+        "over_shoulder_left_camera": {
+          "minimum_margin_native_px": 39.572843693492814,
+          "cube_bbox_at_320x180_px": [
+            15.172143046560223,
+            17.769712045709866
+          ],
+          "original_cube_bbox_at_320x180_px": [
+            12.685100046535496,
+            12.79721713530185
+          ],
+          "width_gain": 1.1960601801247897,
+          "area_gain": 1.6608020920054565
+        },
+        "over_shoulder_right_camera": {
+          "minimum_margin_native_px": 67.52614925478986,
+          "cube_bbox_at_320x180_px": [
+            15.618094087617322,
+            17.965791606676916
+          ],
+          "original_cube_bbox_at_320x180_px": [
+            13.273953412175274,
+            15.112927317342638
+          ],
+          "width_gain": 1.1765970244623527,
+          "area_gain": 1.398703011181002
+        }
+      }
+    },
+    {
+      "layout_id": "DIST-C19",
+      "family": "DIST",
+      "views": {
+        "over_shoulder_left_camera": {
+          "minimum_margin_native_px": 39.572858469133394,
+          "cube_bbox_at_320x180_px": [
+            15.172141924094774,
+            17.769711552947328
+          ],
+          "original_cube_bbox_at_320x180_px": [
+            12.303676253729378,
+            12.86953303959315
+          ],
+          "width_gain": 1.233138909965705,
+          "area_gain": 1.7026664967091296
+        },
+        "over_shoulder_right_camera": {
+          "minimum_margin_native_px": 67.5261630233831,
+          "cube_bbox_at_320x180_px": [
+            15.618093061644856,
+            17.965791153903467
+          ],
+          "original_cube_bbox_at_320x180_px": [
+            12.558585435612684,
+            13.940953068574629
+          ],
+          "width_gain": 1.2436188089588698,
+          "area_gain": 1.6026591357792739
+        }
+      }
+    },
+    {
+      "layout_id": "DIST-C20",
+      "family": "DIST",
+      "views": {
+        "over_shoulder_left_camera": {
+          "minimum_margin_native_px": 39.57283837426212,
+          "cube_bbox_at_320x180_px": [
+            15.1721431625501,
+            17.769712097147192
+          ],
+          "original_cube_bbox_at_320x180_px": [
+            12.712069283295818,
+            12.880389442925889
+          ],
+          "width_gain": 1.1935226928386018,
+          "area_gain": 1.646577126190999
+        },
+        "over_shoulder_right_camera": {
+          "minimum_margin_native_px": 67.52614429809626,
+          "cube_bbox_at_320x180_px": [
+            15.61809396705084,
+            17.96579155411399
+          ],
+          "original_cube_bbox_at_320x180_px": [
+            13.252932845816247,
+            15.00001978014835
+          ],
+          "width_gain": 1.178463223857747,
+          "area_gain": 1.4114664476667822
+        }
+      }
+    },
+    {
+      "layout_id": "DIST-C21",
+      "family": "DIST",
+      "views": {
+        "over_shoulder_left_camera": {
+          "minimum_margin_native_px": 39.57282891785178,
+          "cube_bbox_at_320x180_px": [
+            15.172142053661247,
+            17.769711370059085
+          ],
+          "original_cube_bbox_at_320x180_px": [
+            12.130366275747434,
+            12.600778120465748
+          ],
+          "width_gain": 1.2507571254460235,
+          "area_gain": 1.763827035183056
+        },
+        "over_shoulder_right_camera": {
+          "minimum_margin_native_px": 67.52613548619627,
+          "cube_bbox_at_320x180_px": [
+            15.618092706138981,
+            17.965790756761393
+          ],
+          "original_cube_bbox_at_320x180_px": [
+            12.456430709457436,
+            14.01111866364839
+          ],
+          "width_gain": 1.2538176521369866,
+          "area_gain": 1.607710713625588
+        }
+      }
+    },
+    {
+      "layout_id": "DIST-C22",
+      "family": "DIST",
+      "views": {
+        "over_shoulder_left_camera": {
+          "minimum_margin_native_px": 39.572853149902926,
+          "cube_bbox_at_320x180_px": [
+            15.172143213756755,
+            17.76971224002864
+          ],
+          "original_cube_bbox_at_320x180_px": [
+            12.369112295355762,
+            12.430324072239372
+          ],
+          "width_gain": 1.2266153666866981,
+          "area_gain": 1.7535023196939943
+        },
+        "over_shoulder_right_camera": {
+          "minimum_margin_native_px": 67.52615806668939,
+          "cube_bbox_at_320x180_px": [
+            15.61809402423728,
+            17.96579170012211
+          ],
+          "original_cube_bbox_at_320x180_px": [
+            13.002109865653495,
+            15.048756808386926
+          ],
+          "width_gain": 1.2011968969354885,
+          "area_gain": 1.434035616094805
+        }
+      }
+    },
+    {
+      "layout_id": "DIST-C23",
+      "family": "DIST",
+      "views": {
+        "over_shoulder_left_camera": {
+          "minimum_margin_native_px": 39.572858469133394,
+          "cube_bbox_at_320x180_px": [
+            15.172142156074528,
+            17.769711655821965
+          ],
+          "original_cube_bbox_at_320x180_px": [
+            12.38781561018564,
+            12.809845044418324
+          ],
+          "width_gain": 1.2247633185304703,
+          "area_gain": 1.6989815990316957
+        },
+        "over_shoulder_right_camera": {
+          "minimum_margin_native_px": 67.5261630233831,
+          "cube_bbox_at_320x180_px": [
+            15.61809282051189,
+            17.965791048777618
+          ],
+          "original_cube_bbox_at_320x180_px": [
+            12.740138323130935,
+            14.268034804681449
+          ],
+          "width_gain": 1.2258966444780082,
+          "area_gain": 1.543604516219936
+        }
+      }
+    },
+    {
+      "layout_id": "DIST-C24",
+      "family": "DIST",
+      "views": {
+        "over_shoulder_left_camera": {
+          "minimum_margin_native_px": 39.57282891785178,
+          "cube_bbox_at_320x180_px": [
+            15.172141821681521,
+            17.769711267184476
+          ],
+          "original_cube_bbox_at_320x180_px": [
+            12.174545517010642,
+            12.76322789778834
+          ],
+          "width_gain": 1.2462183332004095,
+          "area_gain": 1.7350579441334377
+        },
+        "over_shoulder_right_camera": {
+          "minimum_margin_native_px": 67.52613548619627,
+          "cube_bbox_at_320x180_px": [
+            15.618092947271975,
+            17.965790861887243
+          ],
+          "original_cube_bbox_at_320x180_px": [
+            12.419780288162002,
+            13.816991004621812
+          ],
+          "width_gain": 1.2575176520762181,
+          "area_gain": 1.6351099262332625
+        }
+      }
+    },
+    {
+      "layout_id": "DIST-D01",
+      "family": "DIST",
+      "views": {
+        "over_shoulder_left_camera": {
+          "minimum_margin_native_px": 67.52614925478997,
+          "cube_bbox_at_320x180_px": [
+            15.618094281382497,
+            17.96579184613023
+          ],
+          "original_cube_bbox_at_320x180_px": [
+            12.59996271234641,
+            12.845730415489626
+          ],
+          "width_gain": 1.239534960375612,
+          "area_gain": 1.7335897892779122
+        },
+        "over_shoulder_right_camera": {
+          "minimum_margin_native_px": 39.57284369349259,
+          "cube_bbox_at_320x180_px": [
+            15.172142996114871,
+            17.769712177160798
+          ],
+          "original_cube_bbox_at_320x180_px": [
+            13.0802145640873,
+            14.762592960926284
+          ],
+          "width_gain": 1.1599307428619037,
+          "area_gain": 1.396206987529314
+        }
+      }
+    },
+    {
+      "layout_id": "DIST-D02",
+      "family": "DIST",
+      "views": {
+        "over_shoulder_left_camera": {
+          "minimum_margin_native_px": 67.52614044289021,
+          "cube_bbox_at_320x180_px": [
+            15.618092585572498,
+            17.965790704198483
+          ],
+          "original_cube_bbox_at_320x180_px": [
+            12.105014751980434,
+            12.510526364729316
+          ],
+          "width_gain": 1.2902167329467573,
+          "area_gain": 1.8528208255510694
+        },
+        "over_shoulder_right_camera": {
+          "minimum_margin_native_px": 39.572834237082475,
+          "cube_bbox_at_320x180_px": [
+            15.172142169651124,
+            17.76971142149641
+          ],
+          "original_cube_bbox_at_320x180_px": [
+            12.476524779514762,
+            14.123404561751286
+          ],
+          "width_gain": 1.2160551465871574,
+          "area_gain": 1.5300099160226714
+        }
+      }
+    },
+    {
+      "layout_id": "DIST-D03",
+      "family": "DIST",
+      "views": {
+        "over_shoulder_left_camera": {
+          "minimum_margin_native_px": 39.57282891785178,
+          "cube_bbox_at_320x180_px": [
+            15.17214193767137,
+            17.769711318621788
+          ],
+          "original_cube_bbox_at_320x180_px": [
+            12.1079973265619,
+            12.521038150552627
+          ],
+          "width_gain": 1.2530678301677114,
+          "area_gain": 1.778339250867091
+        },
+        "over_shoulder_right_camera": {
+          "minimum_margin_native_px": 67.52613548619627,
+          "cube_bbox_at_320x180_px": [
+            15.618092826705492,
+            17.965790809324332
+          ],
+          "original_cube_bbox_at_320x180_px": [
+            12.474195925451681,
+            14.110157022359445
+          ],
+          "width_gain": 1.2520320283601745,
+          "area_gain": 1.5941527420601027
+        }
+      }
+    },
+    {
+      "layout_id": "DIST-D04",
+      "family": "DIST",
+      "views": {
+        "over_shoulder_left_camera": {
+          "minimum_margin_native_px": 39.572853149902926,
+          "cube_bbox_at_320x180_px": [
+            15.172143213756755,
+            17.76971224002864
+          ],
+          "original_cube_bbox_at_320x180_px": [
+            12.445257941053143,
+            12.66911600988037
+          ],
+          "width_gain": 1.2191103861100734,
+          "area_gain": 1.7099252018145163
+        },
+        "over_shoulder_right_camera": {
+          "minimum_margin_native_px": 67.52615806668939,
+          "cube_bbox_at_320x180_px": [
+            15.61809402423728,
+            17.96579170012211
+          ],
+          "original_cube_bbox_at_320x180_px": [
+            12.946105597102274,
+            14.71749022790685
+          ],
+          "width_gain": 1.2063932205012353,
+          "area_gain": 1.4726566128012415
+        }
+      }
+    },
+    {
+      "layout_id": "DIST-P01",
+      "family": "DIST",
+      "views": {
+        "over_shoulder_left_camera": {
+          "minimum_margin_native_px": 39.572843693492814,
+          "cube_bbox_at_320x180_px": [
+            15.17214311210472,
+            17.76971222859811
+          ],
+          "original_cube_bbox_at_320x180_px": [
+            12.603399996061057,
+            12.856791516310452
+          ],
+          "width_gain": 1.2038135040422802,
+          "area_gain": 1.6638225420855544
+        },
+        "over_shoulder_right_camera": {
+          "minimum_margin_native_px": 67.52614925478986,
+          "cube_bbox_at_320x180_px": [
+            15.618094160815957,
+            17.965791793567305
+          ],
+          "original_cube_bbox_at_320x180_px": [
+            13.077472434288552,
+            14.748173542653475
+          ],
+          "width_gain": 1.1942746764937548,
+          "area_gain": 1.454830330017692
+        }
+      }
+    },
+    {
+      "layout_id": "HEIGHT-C01",
+      "family": "HEIGHT",
+      "views": {
+        "over_shoulder_left_camera": {
+          "minimum_margin_native_px": 81.12674574255186,
+          "cube_bbox_at_320x180_px": [
+            20.521734962715556,
+            24.08680220040607
+          ],
+          "original_cube_bbox_at_320x180_px": [
+            13.045191355585047,
+            12.86416056171791
+          ],
+          "width_gain": 1.5731264036943062,
+          "area_gain": 2.9455155150023073
+        },
+        "over_shoulder_right_camera": {
+          "minimum_margin_native_px": 38.97887943943676,
+          "cube_bbox_at_320x180_px": [
+            20.521735454901858,
+            24.08680241839427
+          ],
+          "original_cube_bbox_at_320x180_px": [
+            13.655096765876493,
+            15.251486797955948
+          ],
+          "width_gain": 1.5028626897895592,
+          "area_gain": 2.3734837888584868
+        }
+      }
+    },
+    {
+      "layout_id": "HEIGHT-C02",
+      "family": "HEIGHT",
+      "views": {
+        "over_shoulder_left_camera": {
+          "minimum_margin_native_px": 81.12675073275716,
+          "cube_bbox_at_320x180_px": [
+            20.521733391676946,
+            24.086800987314618
+          ],
+          "original_cube_bbox_at_320x180_px": [
+            13.800579140271026,
+            13.777463440543585
+          ],
+          "width_gain": 1.4870197245413517,
+          "area_gain": 2.5997200663103897
+        },
+        "over_shoulder_right_camera": {
+          "minimum_margin_native_px": 38.97886059121494,
+          "cube_bbox_at_320x180_px": [
+            20.521733719801148,
+            24.086801132640048
+          ],
+          "original_cube_bbox_at_320x180_px": [
+            14.223301896357071,
+            15.267100609987878
+          ],
+          "width_gain": 1.442824870718469,
+          "area_gain": 2.276335017238774
+        }
+      }
+    },
+    {
+      "layout_id": "HEIGHT-C03",
+      "family": "HEIGHT",
+      "views": {
+        "over_shoulder_left_camera": {
+          "minimum_margin_native_px": 81.12671552408517,
+          "cube_bbox_at_320x180_px": [
+            20.521733271623674,
+            24.086800252613827
+          ],
+          "original_cube_bbox_at_320x180_px": [
+            12.91913414836597,
+            13.160447072443716
+          ],
+          "width_gain": 1.5884759021733117,
+          "area_gain": 2.9072949840627635
+        },
+        "over_shoulder_right_camera": {
+          "minimum_margin_native_px": 38.97883951723157,
+          "cube_bbox_at_320x180_px": [
+            20.521733271623646,
+            24.086800252613827
+          ],
+          "original_cube_bbox_at_320x180_px": [
+            13.20498889423638,
+            14.307576554363592
+          ],
+          "width_gain": 1.5540894003008838,
+          "area_gain": 2.616308975703876
+        }
+      }
+    },
+    {
+      "layout_id": "HEIGHT-C04",
+      "family": "HEIGHT",
+      "views": {
+        "over_shoulder_left_camera": {
+          "minimum_margin_native_px": 81.12674574255186,
+          "cube_bbox_at_320x180_px": [
+            20.521735126777656,
+            24.086802273068784
+          ],
+          "original_cube_bbox_at_320x180_px": [
+            13.367285689269892,
+            13.171897412821707
+          ],
+          "width_gain": 1.5352208072616225,
+          "area_gain": 2.8073829358871487
+        },
+        "over_shoulder_right_camera": {
+          "minimum_margin_native_px": 38.97886833635448,
+          "cube_bbox_at_320x180_px": [
+            20.52173529083973,
+            24.08680234573154
+          ],
+          "original_cube_bbox_at_320x180_px": [
+            13.974879589849024,
+            15.437190210435432
+          ],
+          "width_gain": 1.4684731384552439,
+          "area_gain": 2.2912733310804905
+        }
+      }
+    },
+    {
+      "layout_id": "HEIGHT-C05",
+      "family": "HEIGHT",
+      "views": {
+        "over_shoulder_left_camera": {
+          "minimum_margin_native_px": 81.12674075234656,
+          "cube_bbox_at_320x180_px": [
+            20.52173386185885,
+            24.08680153632183
+          ],
+          "original_cube_bbox_at_320x180_px": [
+            13.418102621796493,
+            13.696299910712412
+          ],
+          "width_gain": 1.529406536846957,
+          "area_gain": 2.6896688858699047
+        },
+        "over_shoulder_right_camera": {
+          "minimum_margin_native_px": 38.97887070363965,
+          "cube_bbox_at_320x180_px": [
+            20.52173353373462,
+            24.086801390996385
+          ],
+          "original_cube_bbox_at_320x180_px": [
+            13.634494173059636,
+            14.501738188522452
+          ],
+          "width_gain": 1.5051334705385302,
+          "area_gain": 2.499965900673628
+        }
+      }
+    },
+    {
+      "layout_id": "HEIGHT-C06",
+      "family": "HEIGHT",
+      "views": {
+        "over_shoulder_left_camera": {
+          "minimum_margin_native_px": 81.12674075234656,
+          "cube_bbox_at_320x180_px": [
+            20.52173371980112,
+            24.086801132640048
+          ],
+          "original_cube_bbox_at_320x180_px": [
+            13.580551471827988,
+            13.468106721992271
+          ],
+          "width_gain": 1.5111119575940772,
+          "area_gain": 2.7025218884172
+        },
+        "over_shoulder_right_camera": {
+          "minimum_margin_native_px": 38.97885867422861,
+          "cube_bbox_at_320x180_px": [
+            20.521733391676975,
+            24.086800987314604
+          ],
+          "original_cube_bbox_at_320x180_px": [
+            14.100474502392359,
+            15.351692541904484
+          ],
+          "width_gain": 1.455393106678442,
+          "area_gain": 2.283511347246162
+        }
+      }
+    },
+    {
+      "layout_id": "HEIGHT-C07",
+      "family": "HEIGHT",
+      "views": {
+        "over_shoulder_left_camera": {
+          "minimum_margin_native_px": 81.12674574255186,
+          "cube_bbox_at_320x180_px": [
+            20.521734820657855,
+            24.08680179672426
+          ],
+          "original_cube_bbox_at_320x180_px": [
+            13.796673453369323,
+            13.428103740750842
+          ],
+          "width_gain": 1.4874407870867008,
+          "area_gain": 2.6681124985796063
+        },
+        "over_shoulder_right_camera": {
+          "minimum_margin_native_px": 38.978853708076215,
+          "cube_bbox_at_320x180_px": [
+            20.521735312844157,
+            24.086802014712447
+          ],
+          "original_cube_bbox_at_320x180_px": [
+            14.54192791132428,
+            16.0406626345206
+          ],
+          "width_gain": 1.4112114595797993,
+          "area_gain": 2.1190877086735695
+        }
+      }
+    },
+    {
+      "layout_id": "HEIGHT-C08",
+      "family": "HEIGHT",
+      "views": {
+        "over_shoulder_left_camera": {
+          "minimum_margin_native_px": 81.12677097081212,
+          "cube_bbox_at_320x180_px": [
+            20.52173371980112,
+            24.086801132640048
+          ],
+          "original_cube_bbox_at_320x180_px": [
+            13.090028796194474,
+            13.364714589848901
+          ],
+          "width_gain": 1.5677378590463595,
+          "area_gain": 2.8254842095649617
+        },
+        "over_shoulder_right_camera": {
+          "minimum_margin_native_px": 38.97886572462131,
+          "cube_bbox_at_320x180_px": [
+            20.521733391676975,
+            24.086800987314604
+          ],
+          "original_cube_bbox_at_320x180_px": [
+            13.338804658696404,
+            14.336984105463145
+          ],
+          "width_gain": 1.5384986823611342,
+          "area_gain": 2.5847494360517236
+        }
+      }
+    },
+    {
+      "layout_id": "HEIGHT-C09",
+      "family": "HEIGHT",
+      "views": {
+        "over_shoulder_left_camera": {
+          "minimum_margin_native_px": 81.12674075234656,
+          "cube_bbox_at_320x180_px": [
+            20.521735312844157,
+            24.086802014712447
+          ],
+          "original_cube_bbox_at_320x180_px": [
+            13.549626606687553,
+            13.376512225967119
+          ],
+          "width_gain": 1.5145609475847437,
+          "area_gain": 2.7272377931872622
+        },
+        "over_shoulder_right_camera": {
+          "minimum_margin_native_px": 38.978859484766474,
+          "cube_bbox_at_320x180_px": [
+            20.521734820657883,
+            24.08680179672426
+          ],
+          "original_cube_bbox_at_320x180_px": [
+            14.125946417216738,
+            15.471236457078533
+          ],
+          "width_gain": 1.452768842139026,
+          "area_gain": 2.261781419612989
+        }
+      }
+    },
+    {
+      "layout_id": "HEIGHT-C10",
+      "family": "HEIGHT",
+      "views": {
+        "over_shoulder_left_camera": {
+          "minimum_margin_native_px": 81.12674075234656,
+          "cube_bbox_at_320x180_px": [
+            20.521735290839757,
+            24.086802345731513
+          ],
+          "original_cube_bbox_at_320x180_px": [
+            12.959861364332227,
+            12.615774503013128
+          ],
+          "width_gain": 1.5834841680729017,
+          "area_gain": 3.023284076998803
+        },
+        "over_shoulder_right_camera": {
+          "minimum_margin_native_px": 38.978873186716,
+          "cube_bbox_at_320x180_px": [
+            20.521735126777656,
+            24.086802273068784
+          ],
+          "original_cube_bbox_at_320x180_px": [
+            13.715144657547768,
+            15.61096013362814
+          ],
+          "width_gain": 1.496282805554228,
+          "area_gain": 2.308677222507333
+        }
+      }
+    },
+    {
+      "layout_id": "HEIGHT-C11",
+      "family": "HEIGHT",
+      "views": {
+        "over_shoulder_left_camera": {
+          "minimum_margin_native_px": 81.12675572296257,
+          "cube_bbox_at_320x180_px": [
+            20.521733369672575,
+            24.086801318333684
+          ],
+          "original_cube_bbox_at_320x180_px": [
+            13.456858560765369,
+            13.442113771473203
+          ],
+          "width_gain": 1.5250017882706635,
+          "area_gain": 2.7326368239891274
+        },
+        "over_shoulder_right_camera": {
+          "minimum_margin_native_px": 38.9788745890751,
+          "cube_bbox_at_320x180_px": [
+            20.52173402592092,
+            24.08680160898456
+          ],
+          "original_cube_bbox_at_320x180_px": [
+            13.902011024593435,
+            15.08529041248461
+          ],
+          "width_gain": 1.4761701734818673,
+          "area_gain": 2.357012502744506
+        }
+      }
+    },
+    {
+      "layout_id": "HEIGHT-C12",
+      "family": "HEIGHT",
+      "views": {
+        "over_shoulder_left_camera": {
+          "minimum_margin_native_px": 81.1267130289823,
+          "cube_bbox_at_320x180_px": [
+            20.52173371980112,
+            24.086801132640048
+          ],
+          "original_cube_bbox_at_320x180_px": [
+            14.059337200126038,
+            13.832090589450189
+          ],
+          "width_gain": 1.4596515772889456,
+          "area_gain": 2.541794896276826
+        },
+        "over_shoulder_right_camera": {
+          "minimum_margin_native_px": 38.97885931751263,
+          "cube_bbox_at_320x180_px": [
+            20.521733391676975,
+            24.086800987314604
+          ],
+          "original_cube_bbox_at_320x180_px": [
+            14.644941861255035,
+            15.821940837934406
+          ],
+          "width_gain": 1.4012847293009543,
+          "area_gain": 2.1332696631193806
+        }
+      }
+    },
+    {
+      "layout_id": "HEIGHT-C13",
+      "family": "HEIGHT",
+      "views": {
+        "over_shoulder_left_camera": {
+          "minimum_margin_native_px": 38.97886468250081,
+          "cube_bbox_at_320x180_px": [
+            20.521733391676946,
+            24.086800987314618
+          ],
+          "original_cube_bbox_at_320x180_px": [
+            13.037658136158257,
+            13.18539594125366
+          ],
+          "width_gain": 1.574035242936964,
+          "area_gain": 2.8754141182079116
+        },
+        "over_shoulder_right_camera": {
+          "minimum_margin_native_px": 81.12677346591431,
+          "cube_bbox_at_320x180_px": [
+            20.521733719801148,
+            24.086801132640048
+          ],
+          "original_cube_bbox_at_320x180_px": [
+            13.383918254972144,
+            14.547969434451659
+          ],
+          "width_gain": 1.5333128407428291,
+          "area_gain": 2.538677417181965
+        }
+      }
+    },
+    {
+      "layout_id": "HEIGHT-C14",
+      "family": "HEIGHT",
+      "views": {
+        "over_shoulder_left_camera": {
+          "minimum_margin_native_px": 38.97885080686494,
+          "cube_bbox_at_320x180_px": [
+            20.521734738626833,
+            24.086801760392902
+          ],
+          "original_cube_bbox_at_320x180_px": [
+            13.575567836126567,
+            13.133575061849285
+          ],
+          "width_gain": 1.5116667668232266,
+          "area_gain": 2.772376719116891
+        },
+        "over_shoulder_right_camera": {
+          "minimum_margin_native_px": 81.12673825724346,
+          "cube_bbox_at_320x180_px": [
+            20.52173539487518,
+            24.08680205104379
+          ],
+          "original_cube_bbox_at_320x180_px": [
+            14.406540565818858,
+            16.133703341476973
+          ],
+          "width_gain": 1.4244735091757774,
+          "area_gain": 2.1266668114731573
+        }
+      }
+    },
+    {
+      "layout_id": "HEIGHT-C15",
+      "family": "HEIGHT",
+      "views": {
+        "over_shoulder_left_camera": {
+          "minimum_margin_native_px": 38.97887417737294,
+          "cube_bbox_at_320x180_px": [
+            20.52173369779672,
+            24.086801463659086
+          ],
+          "original_cube_bbox_at_320x180_px": [
+            13.362162445188886,
+            13.508340464098836
+          ],
+          "width_gain": 1.53580932592132,
+          "area_gain": 2.738510657013616
+        },
+        "over_shoulder_right_camera": {
+          "minimum_margin_native_px": 81.12674574255152,
+          "cube_bbox_at_320x180_px": [
+            20.521733697796748,
+            24.086801463659114
+          ],
+          "original_cube_bbox_at_320x180_px": [
+            13.684591824753113,
+            14.717452990988647
+          ],
+          "width_gain": 1.4996233691586183,
+          "area_gain": 2.454305808573252
+        }
+      }
+    },
+    {
+      "layout_id": "HEIGHT-C16",
+      "family": "HEIGHT",
+      "views": {
+        "over_shoulder_left_camera": {
+          "minimum_margin_native_px": 38.978864463784284,
+          "cube_bbox_at_320x180_px": [
+            20.52173371980112,
+            24.086801132640048
+          ],
+          "original_cube_bbox_at_320x180_px": [
+            13.361343644034491,
+            12.851289624961908
+          ],
+          "width_gain": 1.5359034440345052,
+          "area_gain": 2.878699484255513
+        },
+        "over_shoulder_right_camera": {
+          "minimum_margin_native_px": 81.12675572296223,
+          "cube_bbox_at_320x180_px": [
+            20.521733391676975,
+            24.086800987314604
+          ],
+          "original_cube_bbox_at_320x180_px": [
+            14.267999246010874,
+            16.227784670149262
+          ],
+          "width_gain": 1.4383049114201878,
+          "area_gain": 2.13486713464855
+        }
+      }
+    },
+    {
+      "layout_id": "HEIGHT-C17",
+      "family": "HEIGHT",
+      "views": {
+        "over_shoulder_left_camera": {
+          "minimum_margin_native_px": 38.97887932364519,
+          "cube_bbox_at_320x180_px": [
+            20.52173369779672,
+            24.086801463659086
+          ],
+          "original_cube_bbox_at_320x180_px": [
+            13.211602282615132,
+            13.390418338605997
+          ],
+          "width_gain": 1.553311495366526,
+          "area_gain": 2.7941102849821733
+        },
+        "over_shoulder_right_camera": {
+          "minimum_margin_native_px": 81.12674574255152,
+          "cube_bbox_at_320x180_px": [
+            20.521733697796748,
+            24.086801463659114
+          ],
+          "original_cube_bbox_at_320x180_px": [
+            13.521396946199474,
+            14.578337831807517
+          ],
+          "width_gain": 1.5177228935331932,
+          "area_gain": 2.507630872267396
+        }
+      }
+    },
+    {
+      "layout_id": "HEIGHT-C18",
+      "family": "HEIGHT",
+      "views": {
+        "over_shoulder_left_camera": {
+          "minimum_margin_native_px": 38.97886017951272,
+          "cube_bbox_at_320x180_px": [
+            20.521733391676946,
+            24.086800987314618
+          ],
+          "original_cube_bbox_at_320x180_px": [
+            13.641918856150909,
+            13.654979615612561
+          ],
+          "width_gain": 1.5043142836481576,
+          "area_gain": 2.6535461635679978
+        },
+        "over_shoulder_right_camera": {
+          "minimum_margin_native_px": 81.12674574255152,
+          "cube_bbox_at_320x180_px": [
+            20.521733719801148,
+            24.086801132640048
+          ],
+          "original_cube_bbox_at_320x180_px": [
+            14.048210222769796,
+            15.117858250792224
+          ],
+          "width_gain": 1.460807703926501,
+          "area_gain": 2.327458299568478
+        }
+      }
+    },
+    {
+      "layout_id": "HEIGHT-C19",
+      "family": "HEIGHT",
+      "views": {
+        "over_shoulder_left_camera": {
+          "minimum_margin_native_px": 38.97885902160164,
+          "cube_bbox_at_320x180_px": [
+            20.521734820657855,
+            24.08680179672426
+          ],
+          "original_cube_bbox_at_320x180_px": [
+            13.487345910191294,
+            13.196888679250193
+          ],
+          "width_gain": 1.5215547193129557,
+          "area_gain": 2.777123293052123
+        },
+        "over_shoulder_right_camera": {
+          "minimum_margin_native_px": 81.12674075234611,
+          "cube_bbox_at_320x180_px": [
+            20.521735312844157,
+            24.086802014712447
+          ],
+          "original_cube_bbox_at_320x180_px": [
+            14.17545101278813,
+            15.71577047763293
+          ],
+          "width_gain": 1.4476954062576803,
+          "area_gain": 2.2188127955779064
+        }
+      }
+    },
+    {
+      "layout_id": "HEIGHT-C20",
+      "family": "HEIGHT",
+      "views": {
+        "over_shoulder_left_camera": {
+          "minimum_margin_native_px": 38.97887139195309,
+          "cube_bbox_at_320x180_px": [
+            20.521734880684505,
+            24.086802164074697
+          ],
+          "original_cube_bbox_at_320x180_px": [
+            12.988436064078854,
+            12.697531319024861
+          ],
+          "width_gain": 1.580000454207103,
+          "area_gain": 2.9972092529996885
+        },
+        "over_shoulder_right_camera": {
+          "minimum_margin_native_px": 81.12673825724346,
+          "cube_bbox_at_320x180_px": [
+            20.52173553693291,
+            24.086802454725614
+          ],
+          "original_cube_bbox_at_320x180_px": [
+            13.695696689471987,
+            15.489340397945355
+          ],
+          "width_gain": 1.49840756569238,
+          "area_gain": 2.330108713750406
+        }
+      }
+    },
+    {
+      "layout_id": "HEIGHT-C21",
+      "family": "HEIGHT",
+      "views": {
+        "over_shoulder_left_camera": {
+          "minimum_margin_native_px": 38.97886804044338,
+          "cube_bbox_at_320x180_px": [
+            20.521735312844157,
+            24.086802014712447
+          ],
+          "original_cube_bbox_at_320x180_px": [
+            12.957588861953326,
+            12.924980397425628
+          ],
+          "width_gain": 1.5837618812787795,
+          "area_gain": 2.9514751821525915
+        },
+        "over_shoulder_right_camera": {
+          "minimum_margin_native_px": 81.12678344632468,
+          "cube_bbox_at_320x180_px": [
+            20.521734820657883,
+            24.08680179672426
+          ],
+          "original_cube_bbox_at_320x180_px": [
+            13.448396996502055,
+            14.87590003738174
+          ],
+          "width_gain": 1.5259614083370392,
+          "area_gain": 2.470810498840492
+        }
+      }
+    },
+    {
+      "layout_id": "HEIGHT-C22",
+      "family": "HEIGHT",
+      "views": {
+        "over_shoulder_left_camera": {
+          "minimum_margin_native_px": 38.9788541712403,
+          "cube_bbox_at_320x180_px": [
+            20.52173371980112,
+            24.086801132640048
+          ],
+          "original_cube_bbox_at_320x180_px": [
+            13.662000976589326,
+            13.070845799754693
+          ],
+          "width_gain": 1.5021030780898321,
+          "area_gain": 2.7680579112451387
+        },
+        "over_shoulder_right_camera": {
+          "minimum_margin_native_px": 81.12675572296223,
+          "cube_bbox_at_320x180_px": [
+            20.521733391676975,
+            24.086800987314604
+          ],
+          "original_cube_bbox_at_320x180_px": [
+            14.644573854269481,
+            16.573498651225563
+          ],
+          "width_gain": 1.4013199425187826,
+          "area_gain": 2.0365835413097337
+        }
+      }
+    },
+    {
+      "layout_id": "HEIGHT-C23",
+      "family": "HEIGHT",
+      "views": {
+        "over_shoulder_left_camera": {
+          "minimum_margin_native_px": 38.978863884828634,
+          "cube_bbox_at_320x180_px": [
+            20.521733555739075,
+            24.086801059977333
+          ],
+          "original_cube_bbox_at_320x180_px": [
+            13.672337689548897,
+            13.75030600052905
+          ],
+          "width_gain": 1.5009674293976691,
+          "area_gain": 2.629287222263723
+        },
+        "over_shoulder_right_camera": {
+          "minimum_margin_native_px": 81.12674574255152,
+          "cube_bbox_at_320x180_px": [
+            20.521733555739047,
+            24.086801059977333
+          ],
+          "original_cube_bbox_at_320x180_px": [
+            14.021460524628054,
+            15.003493147322544
+          ],
+          "width_gain": 1.4635945748799535,
+          "area_gain": 2.3496735734429075
+        }
+      }
+    },
+    {
+      "layout_id": "HEIGHT-C24",
+      "family": "HEIGHT",
+      "views": {
+        "over_shoulder_left_camera": {
+          "minimum_margin_native_px": 38.97885839118327,
+          "cube_bbox_at_320x180_px": [
+            20.521735312844157,
+            24.086802014712447
+          ],
+          "original_cube_bbox_at_320x180_px": [
+            13.704960716838627,
+            13.49419713950276
+          ],
+          "width_gain": 1.497394683344848,
+          "area_gain": 2.6728117947845114
+        },
+        "over_shoulder_right_camera": {
+          "minimum_margin_native_px": 81.12675572296223,
+          "cube_bbox_at_320x180_px": [
+            20.521734820657883,
+            24.08680179672426
+          ],
+          "original_cube_bbox_at_320x180_px": [
+            14.304690976840249,
+            15.627290631672025
+          ],
+          "width_gain": 1.434615739262262,
+          "area_gain": 2.211215352713636
+        }
+      }
+    },
+    {
+      "layout_id": "HEIGHT-D01",
+      "family": "HEIGHT",
+      "views": {
+        "over_shoulder_left_camera": {
+          "minimum_margin_native_px": 81.12674075234656,
+          "cube_bbox_at_320x180_px": [
+            20.52173371980112,
+            24.086801132640048
+          ],
+          "original_cube_bbox_at_320x180_px": [
+            13.736986650764209,
+            13.587360211460492
+          ],
+          "width_gain": 1.4939035933808282,
+          "area_gain": 2.6482965200811845
+        },
+        "over_shoulder_right_camera": {
+          "minimum_margin_native_px": 38.978853527956694,
+          "cube_bbox_at_320x180_px": [
+            20.521733391676975,
+            24.086800987314604
+          ],
+          "original_cube_bbox_at_320x180_px": [
+            14.277997067011768,
+            15.505426571875276
+          ],
+          "width_gain": 1.437297773305395,
+          "area_gain": 2.2327605928567773
+        }
+      }
+    },
+    {
+      "layout_id": "HEIGHT-D02",
+      "family": "HEIGHT",
+      "views": {
+        "over_shoulder_left_camera": {
+          "minimum_margin_native_px": 81.12674075234656,
+          "cube_bbox_at_320x180_px": [
+            20.52173371980112,
+            24.086801132640048
+          ],
+          "original_cube_bbox_at_320x180_px": [
+            14.060024076484808,
+            14.202284997058499
+          ],
+          "width_gain": 1.459580268722543,
+          "area_gain": 2.475419953699469
+        },
+        "over_shoulder_right_camera": {
+          "minimum_margin_native_px": 38.97885011855163,
+          "cube_bbox_at_320x180_px": [
+            20.521733391676975,
+            24.086800987314604
+          ],
+          "original_cube_bbox_at_320x180_px": [
+            14.313479722201947,
+            15.068082751572717
+          ],
+          "width_gain": 1.4337347584211315,
+          "area_gain": 2.29186979949927
+        }
+      }
+    },
+    {
+      "layout_id": "HEIGHT-D03",
+      "family": "HEIGHT",
+      "views": {
+        "over_shoulder_left_camera": {
+          "minimum_margin_native_px": 38.97886984163858,
+          "cube_bbox_at_320x180_px": [
+            20.52173386185885,
+            24.08680153632183
+          ],
+          "original_cube_bbox_at_320x180_px": [
+            13.544846965831027,
+            13.72325148516181
+          ],
+          "width_gain": 1.5150952914882019,
+          "area_gain": 2.659267713205628
+        },
+        "over_shoulder_right_camera": {
+          "minimum_margin_native_px": 81.12675073275693,
+          "cube_bbox_at_320x180_px": [
+            20.52173353373462,
+            24.086801390996385
+          ],
+          "original_cube_bbox_at_320x180_px": [
+            13.825268952819641,
+            14.748507270713375
+          ],
+          "width_gain": 1.4843641453752148,
+          "area_gain": 2.4242171567129387
+        }
+      }
+    },
+    {
+      "layout_id": "HEIGHT-D04",
+      "family": "HEIGHT",
+      "views": {
+        "over_shoulder_left_camera": {
+          "minimum_margin_native_px": 38.978860977185,
+          "cube_bbox_at_320x180_px": [
+            20.521733227614874,
+            24.08680091465189
+          ],
+          "original_cube_bbox_at_320x180_px": [
+            13.011158696228733,
+            13.097470619479722
+          ],
+          "width_gain": 1.577241021090848,
+          "area_gain": 2.900612765104003
+        },
+        "over_shoulder_right_camera": {
+          "minimum_margin_native_px": 81.12676348550383,
+          "cube_bbox_at_320x180_px": [
+            20.52173388386322,
+            24.086801205302777
+          ],
+          "original_cube_bbox_at_320x180_px": [
+            13.405856570951102,
+            14.655720678759721
+          ],
+          "width_gain": 1.5308036286417819,
+          "area_gain": 2.5158887437646733
+        }
+      }
+    },
+    {
+      "layout_id": "HEIGHT-P01",
+      "family": "HEIGHT",
+      "views": {
+        "over_shoulder_left_camera": {
+          "minimum_margin_native_px": 38.978864335127476,
+          "cube_bbox_at_320x180_px": [
+            20.521734984719956,
+            24.086801869387003
+          ],
+          "original_cube_bbox_at_320x180_px": [
+            12.930539197090695,
+            12.840373552208618
+          ],
+          "width_gain": 1.5870749604422714,
+          "area_gain": 2.977137695301929
+        },
+        "over_shoulder_right_camera": {
+          "minimum_margin_native_px": 81.12677346591431,
+          "cube_bbox_at_320x180_px": [
+            20.521735148782057,
+            24.086801942049703
+          ],
+          "original_cube_bbox_at_320x180_px": [
+            13.468955859513756,
+            14.988394078868097
+          ],
+          "width_gain": 1.5236322223364176,
+          "area_gain": 2.448522995781401
+        }
+      }
+    },
+    {
+      "layout_id": "LAT-C01",
+      "family": "LAT",
+      "views": {
+        "over_shoulder_left_camera": {
+          "minimum_margin_native_px": 44.45763258140072,
+          "cube_bbox_at_320x180_px": [
+            28.86848373132935,
+            34.159010874001446
+          ],
+          "original_cube_bbox_at_320x180_px": [
+            13.359985116468863,
+            15.688532463931566
+          ],
+          "width_gain": 2.1608170577782415,
+          "area_gain": 4.704797822426633
+        },
+        "over_shoulder_right_camera": {
+          "minimum_margin_native_px": 44.457632581401334,
+          "cube_bbox_at_320x180_px": [
+            28.86848396555932,
+            34.15901097810199
+          ],
+          "original_cube_bbox_at_320x180_px": [
+            12.546279189558547,
+            12.39690643792001
+          ],
+          "width_gain": 2.300959792891002,
+          "area_gain": 6.340171333802735
+        }
+      }
+    },
+    {
+      "layout_id": "LAT-C02",
+      "family": "LAT",
+      "views": {
+        "over_shoulder_left_camera": {
+          "minimum_margin_native_px": 44.45763307377645,
+          "cube_bbox_at_320x180_px": [
+            28.868479664885427,
+            34.15900858013636
+          ],
+          "original_cube_bbox_at_320x180_px": [
+            13.542996051176175,
+            15.972124877746325
+          ],
+          "width_gain": 2.131616929946478,
+          "area_gain": 4.558812403292438
+        },
+        "over_shoulder_right_camera": {
+          "minimum_margin_native_px": 44.457633073776975,
+          "cube_bbox_at_320x180_px": [
+            28.868479566583062,
+            34.15900853644714
+          ],
+          "original_cube_bbox_at_320x180_px": [
+            12.649646105391838,
+            12.418964768568273
+          ],
+          "width_gain": 2.2821570916737377,
+          "area_gain": 6.277191781178054
+        }
+      }
+    },
+    {
+      "layout_id": "LAT-C03",
+      "family": "LAT",
+      "views": {
+        "over_shoulder_left_camera": {
+          "minimum_margin_native_px": 44.4576404594106,
+          "cube_bbox_at_320x180_px": [
+            28.86848389767698,
+            34.15901127814254
+          ],
+          "original_cube_bbox_at_320x180_px": [
+            13.13607481898299,
+            15.74184086441089
+          ],
+          "width_gain": 2.197649168072568,
+          "area_gain": 4.768789328019977
+        },
+        "over_shoulder_right_camera": {
+          "minimum_margin_native_px": 44.45764045941115,
+          "cube_bbox_at_320x180_px": [
+            28.868484058010893,
+            34.15901134940092
+          ],
+          "original_cube_bbox_at_320x180_px": [
+            12.211704774149169,
+            11.978271664669592
+          ],
+          "width_gain": 2.364001144141831,
+          "area_gain": 6.741535354463429
+        }
+      }
+    },
+    {
+      "layout_id": "LAT-C04",
+      "family": "LAT",
+      "views": {
+        "over_shoulder_left_camera": {
+          "minimum_margin_native_px": 44.45764882979631,
+          "cube_bbox_at_320x180_px": [
+            28.868479400858746,
+            34.15900863761012
+          ],
+          "original_cube_bbox_at_320x180_px": [
+            12.872610182658633,
+            15.117069729242175
+          ],
+          "width_gain": 2.2426282619626736,
+          "area_gain": 5.067513714192005
+        },
+        "over_shoulder_right_camera": {
+          "minimum_margin_native_px": 44.45764882979683,
+          "cube_bbox_at_320x180_px": [
+            28.86847996762104,
+            34.15900888950038
+          ],
+          "original_cube_bbox_at_320x180_px": [
+            12.189735426509074,
+            12.179119680384687
+          ],
+          "width_gain": 2.3682614066291072,
+          "area_gain": 6.642307864992516
+        }
+      }
+    },
+    {
+      "layout_id": "LAT-C05",
+      "family": "LAT",
+      "views": {
+        "over_shoulder_left_camera": {
+          "minimum_margin_native_px": 44.45763652040578,
+          "cube_bbox_at_320x180_px": [
+            28.868483700882365,
+            34.15901078277321
+          ],
+          "original_cube_bbox_at_320x180_px": [
+            13.199475544677028,
+            15.533368232777548
+          ],
+          "width_gain": 2.18709323739186,
+          "area_gain": 4.809577701335423
+        },
+        "over_shoulder_right_camera": {
+          "minimum_margin_native_px": 44.457636520406304,
+          "cube_bbox_at_320x180_px": [
+            28.868483935112394,
+            34.15901088687373
+          ],
+          "original_cube_bbox_at_320x180_px": [
+            12.416833471224834,
+            12.29791572981513
+          ],
+          "width_gain": 2.3249473387891637,
+          "area_gain": 6.457834254349782
+        }
+      }
+    },
+    {
+      "layout_id": "LAT-C06",
+      "family": "LAT",
+      "views": {
+        "over_shoulder_left_camera": {
+          "minimum_margin_native_px": 44.45764489079112,
+          "cube_bbox_at_320x180_px": [
+            28.868479431305673,
+            34.15900872883838
+          ],
+          "original_cube_bbox_at_320x180_px": [
+            13.02562121929796,
+            15.264350370389053
+          ],
+          "width_gain": 2.2162842712281474,
+          "area_gain": 4.959665621494767
+        },
+        "over_shoulder_right_camera": {
+          "minimum_margin_native_px": 44.457644890791734,
+          "cube_bbox_at_320x180_px": [
+            28.86847999806804,
+            34.1590089807286
+          ],
+          "original_cube_bbox_at_320x180_px": [
+            12.31546772724181,
+            12.27626812749935
+          ],
+          "width_gain": 2.344083118679364,
+          "area_gain": 6.522467208351299
+        }
+      }
+    },
+    {
+      "layout_id": "LAT-C07",
+      "family": "LAT",
+      "views": {
+        "over_shoulder_left_camera": {
+          "minimum_margin_native_px": 44.45763701278125,
+          "cube_bbox_at_320x180_px": [
+            28.868479634438472,
+            34.15900848890813
+          ],
+          "original_cube_bbox_at_320x180_px": [
+            13.378025775324915,
+            15.811587077169975
+          ],
+          "width_gain": 2.1579028265654046,
+          "area_gain": 4.661886287007677
+        },
+        "over_shoulder_right_camera": {
+          "minimum_margin_native_px": 44.45763701278182,
+          "cube_bbox_at_320x180_px": [
+            28.86847953613612,
+            34.15900844521895
+          ],
+          "original_cube_bbox_at_320x180_px": [
+            12.518726815337828,
+            12.319635466180145
+          ],
+          "width_gain": 2.306023604634197,
+          "area_gain": 6.39397813367264
+        }
+      }
+    },
+    {
+      "layout_id": "LAT-C08",
+      "family": "LAT",
+      "views": {
+        "over_shoulder_left_camera": {
+          "minimum_margin_native_px": 44.45764095178633,
+          "cube_bbox_at_320x180_px": [
+            28.868479271459165,
+            34.15900824989021
+          ],
+          "original_cube_bbox_at_320x180_px": [
+            13.181849053393108,
+            15.4143990470468
+          ],
+          "width_gain": 2.1900174364406184,
+          "area_gain": 4.853178086959603
+        },
+        "over_shoulder_right_camera": {
+          "minimum_margin_native_px": 44.45764095178685,
+          "cube_bbox_at_320x180_px": [
+            28.868479838221475,
+            34.15900850178043
+          ],
+          "original_cube_bbox_at_320x180_px": [
+            12.443451289739599,
+            12.37492220121078
+          ],
+          "width_gain": 2.319973708743115,
+          "area_gain": 6.403919180446193
+        }
+      }
+    },
+    {
+      "layout_id": "LAT-C09",
+      "family": "LAT",
+      "views": {
+        "over_shoulder_left_camera": {
+          "minimum_margin_native_px": 44.45764095178633,
+          "cube_bbox_at_320x180_px": [
+            28.868479308407217,
+            34.15900826631128
+          ],
+          "original_cube_bbox_at_320x180_px": [
+            13.233041178841859,
+            15.776639939204628
+          ],
+          "width_gain": 2.1815453392954494,
+          "area_gain": 4.723402800944126
+        },
+        "over_shoulder_right_camera": {
+          "minimum_margin_native_px": 44.45764095178685,
+          "cube_bbox_at_320x180_px": [
+            28.868479801273438,
+            34.159008485359344
+          ],
+          "original_cube_bbox_at_320x180_px": [
+            12.363321616107228,
+            12.146640746940221
+          ],
+          "width_gain": 2.335010015727723,
+          "area_gain": 6.566558491551219
+        }
+      }
+    },
+    {
+      "layout_id": "LAT-C10",
+      "family": "LAT",
+      "views": {
+        "over_shoulder_left_camera": {
+          "minimum_margin_native_px": 44.45763701278125,
+          "cube_bbox_at_320x180_px": [
+            28.86847930190612,
+            34.159008341118415
+          ],
+          "original_cube_bbox_at_320x180_px": [
+            13.341388100550006,
+            15.56729116777521
+          ],
+          "width_gain": 2.163828762369637,
+          "area_gain": 4.748047938843799
+        },
+        "over_shoulder_right_camera": {
+          "minimum_margin_native_px": 44.45763701278182,
+          "cube_bbox_at_320x180_px": [
+            28.86847986866843,
+            34.159008593008636
+          ],
+          "original_cube_bbox_at_320x180_px": [
+            12.573741738376953,
+            12.475115657491642
+          ],
+          "width_gain": 2.2959338969526857,
+          "area_gain": 6.286661211664934
+        }
+      }
+    },
+    {
+      "layout_id": "LAT-C11",
+      "family": "LAT",
+      "views": {
+        "over_shoulder_left_camera": {
+          "minimum_margin_native_px": 44.45763701278125,
+          "cube_bbox_at_320x180_px": [
+            28.868479338854172,
+            34.15900835753948
+          ],
+          "original_cube_bbox_at_320x180_px": [
+            13.395490375667663,
+            15.9364980226308
+          ],
+          "width_gain": 2.155089401675995,
+          "area_gain": 4.619315785598332
+        },
+        "over_shoulder_right_camera": {
+          "minimum_margin_native_px": 44.45763701278182,
+          "cube_bbox_at_320x180_px": [
+            28.86847983172038,
+            34.15900857658757
+          ],
+          "original_cube_bbox_at_320x180_px": [
+            12.491094956966407,
+            12.24328842485923
+          ],
+          "width_gain": 2.3111248398300055,
+          "area_gain": 6.448082450220103
+        }
+      }
+    },
+    {
+      "layout_id": "LAT-C12",
+      "family": "LAT",
+      "views": {
+        "over_shoulder_left_camera": {
+          "minimum_margin_native_px": 44.45763652040578,
+          "cube_bbox_at_320x180_px": [
+            28.868483737830417,
+            34.15901079919431
+          ],
+          "original_cube_bbox_at_320x180_px": [
+            13.253899631705508,
+            15.901023898841757
+          ],
+          "width_gain": 2.178112445394732,
+          "area_gain": 4.679080228884989
+        },
+        "over_shoulder_right_camera": {
+          "minimum_margin_native_px": 44.457636520406304,
+          "cube_bbox_at_320x180_px": [
+            28.868483898164328,
+            34.159010870452654
+          ],
+          "original_cube_bbox_at_320x180_px": [
+            12.336444300968438,
+            12.072342552932326
+          ],
+          "width_gain": 2.340097615963628,
+          "area_gain": 6.6213677710964145
+        }
+      }
+    },
+    {
+      "layout_id": "LAT-C13",
+      "family": "LAT",
+      "views": {
+        "over_shoulder_left_camera": {
+          "minimum_margin_native_px": 44.45762421101559,
+          "cube_bbox_at_320x180_px": [
+            28.868475141994963,
+            34.159005782335704
+          ],
+          "original_cube_bbox_at_320x180_px": [
+            11.751169666271068,
+            11.431806762131671
+          ],
+          "width_gain": 2.456646951907693,
+          "area_gain": 7.340625955413235
+        },
+        "over_shoulder_right_camera": {
+          "minimum_margin_native_px": 44.457624211016025,
+          "cube_bbox_at_320x180_px": [
+            28.868475388089436,
+            34.15900589170919
+          ],
+          "original_cube_bbox_at_320x180_px": [
+            13.062550479521946,
+            15.761115463921271
+          ],
+          "width_gain": 2.210018283439081,
+          "area_gain": 4.789764261139334
+        }
+      }
+    },
+    {
+      "layout_id": "LAT-C14",
+      "family": "LAT",
+      "views": {
+        "over_shoulder_left_camera": {
+          "minimum_margin_native_px": 44.45761756394485,
+          "cube_bbox_at_320x180_px": [
+            28.86848164757461,
+            34.15900952008115
+          ],
+          "original_cube_bbox_at_320x180_px": [
+            11.965292885520483,
+            12.062006256519993
+          ],
+          "width_gain": 2.4126849149266647,
+          "area_gain": 6.832605225468821
+        },
+        "over_shoulder_right_camera": {
+          "minimum_margin_native_px": 44.45761756394537,
+          "cube_bbox_at_320x180_px": [
+            28.868481671980874,
+            34.159009530928216
+          ],
+          "original_cube_bbox_at_320x180_px": [
+            12.563814107679093,
+            14.722113310222326
+          ],
+          "width_gain": 2.2977482335030928,
+          "area_gain": 5.331354415904867
+        }
+      }
+    },
+    {
+      "layout_id": "LAT-C15",
+      "family": "LAT",
+      "views": {
+        "over_shoulder_left_camera": {
+          "minimum_margin_native_px": 44.457633711505316,
+          "cube_bbox_at_320x180_px": [
+            28.868475070806966,
+            34.1590055690351
+          ],
+          "original_cube_bbox_at_320x180_px": [
+            12.602515210150955,
+            12.060318577157787
+          ],
+          "width_gain": 2.2906915476328296,
+          "area_gain": 6.488033034279252
+        },
+        "over_shoulder_right_camera": {
+          "minimum_margin_native_px": 44.457633711505785,
+          "cube_bbox_at_320x180_px": [
+            28.86847531690144,
+            34.15900567840861
+          ],
+          "original_cube_bbox_at_320x180_px": [
+            13.925373399494532,
+            16.94727104630077
+          ],
+          "width_gain": 2.073084468812112,
+          "area_gain": 4.178519594600508
+        }
+      }
+    },
+    {
+      "layout_id": "LAT-C16",
+      "family": "LAT",
+      "views": {
+        "over_shoulder_left_camera": {
+          "minimum_margin_native_px": 44.45764144416189,
+          "cube_bbox_at_320x180_px": [
+            28.868475827199575,
+            34.15900623254688
+          ],
+          "original_cube_bbox_at_320x180_px": [
+            12.376665445439045,
+            11.946003650576202
+          ],
+          "width_gain": 2.332492217266644,
+          "area_gain": 6.669646060516256
+        },
+        "over_shoulder_right_camera": {
+          "minimum_margin_native_px": 44.45764144416242,
+          "cube_bbox_at_320x180_px": [
+            28.868474817060928,
+            34.15900578360379
+          ],
+          "original_cube_bbox_at_320x180_px": [
+            13.593037790964956,
+            16.456561640627626
+          ],
+          "width_gain": 2.123769186917826,
+          "area_gain": 4.408323289104683
+        }
+      }
+    },
+    {
+      "layout_id": "LAT-C17",
+      "family": "LAT",
+      "views": {
+        "over_shoulder_left_camera": {
+          "minimum_margin_native_px": 44.457634797090954,
+          "cube_bbox_at_320x180_px": [
+            28.868481704662685,
+            34.15900969113409
+          ],
+          "original_cube_bbox_at_320x180_px": [
+            12.597929268798197,
+            12.5534359976417
+          ],
+          "width_gain": 2.291525939597266,
+          "area_gain": 6.235444765313114
+        },
+        "over_shoulder_right_camera": {
+          "minimum_margin_native_px": 44.45763479709157,
+          "cube_bbox_at_320x180_px": [
+            28.868481729068932,
+            34.15900970198116
+          ],
+          "original_cube_bbox_at_320x180_px": [
+            13.325132944706667,
+            15.448817320633324
+          ],
+          "width_gain": 2.166468570997393,
+          "area_gain": 4.790296849254439
+        }
+      }
+    },
+    {
+      "layout_id": "LAT-C18",
+      "family": "LAT",
+      "views": {
+        "over_shoulder_left_camera": {
+          "minimum_margin_native_px": 44.45761977963512,
+          "cube_bbox_at_320x180_px": [
+            28.868479479048062,
+            34.15900827416602
+          ],
+          "original_cube_bbox_at_320x180_px": [
+            11.894817358764413,
+            11.84462301161689
+          ],
+          "width_gain": 2.4269796339308236,
+          "area_gain": 6.999228030758443
+        },
+        "over_shoulder_right_camera": {
+          "minimum_margin_native_px": 44.45761977963535,
+          "cube_bbox_at_320x180_px": [
+            28.8684795773504,
+            34.15900831785523
+          ],
+          "original_cube_bbox_at_320x180_px": [
+            12.664776931319352,
+            15.053559942640092
+          ],
+          "width_gain": 2.279430560356741,
+          "area_gain": 5.172403588778198
+        }
+      }
+    },
+    {
+      "layout_id": "LAT-C19",
+      "family": "LAT",
+      "views": {
+        "over_shoulder_left_camera": {
+          "minimum_margin_native_px": 44.45762519576668,
+          "cube_bbox_at_320x180_px": [
+            28.86847943718351,
+            34.1590081487272
+          ],
+          "original_cube_bbox_at_320x180_px": [
+            12.915257141208315,
+            12.621275190387166
+          ],
+          "width_gain": 2.2352229709057623,
+          "area_gain": 6.049547175355582
+        },
+        "over_shoulder_right_camera": {
+          "minimum_margin_native_px": 44.457625195766916,
+          "cube_bbox_at_320x180_px": [
+            28.868479535485847,
+            34.159008192416415
+          ],
+          "original_cube_bbox_at_320x180_px": [
+            13.886857795599099,
+            16.30405171653352
+          ],
+          "width_gain": 2.0788345326496103,
+          "area_gain": 4.355415884718141
+        }
+      }
+    },
+    {
+      "layout_id": "LAT-C20",
+      "family": "LAT",
+      "views": {
+        "over_shoulder_left_camera": {
+          "minimum_margin_native_px": 44.457622980076486,
+          "cube_bbox_at_320x180_px": [
+            28.868481642658082,
+            34.15900941106343
+          ],
+          "original_cube_bbox_at_320x180_px": [
+            13.095497661353164,
+            13.122590201620952
+          ],
+          "width_gain": 2.204458539048381,
+          "area_gain": 5.738357963228265
+        },
+        "over_shoulder_right_camera": {
+          "minimum_margin_native_px": 44.457622980076955,
+          "cube_bbox_at_320x180_px": [
+            28.868481593168283,
+            34.15900938906832
+          ],
+          "original_cube_bbox_at_320x180_px": [
+            13.751977236175009,
+            15.550238970273952
+          ],
+          "width_gain": 2.099224067738335,
+          "area_gain": 4.611338435165456
+        }
+      }
+    },
+    {
+      "layout_id": "LAT-C21",
+      "family": "LAT",
+      "views": {
+        "over_shoulder_left_camera": {
+          "minimum_margin_native_px": 44.457627064434504,
+          "cube_bbox_at_320x180_px": [
+            28.868481908918966,
+            34.15900945457027
+          ],
+          "original_cube_bbox_at_320x180_px": [
+            12.92535535177268,
+            12.92743772029337
+          ],
+          "width_gain": 2.233476846341383,
+          "area_gain": 5.901661130494135
+        },
+        "over_shoulder_right_camera": {
+          "minimum_margin_native_px": 44.45762706443504,
+          "cube_bbox_at_320x180_px": [
+            28.86848126826051,
+            34.15900916983784
+          ],
+          "original_cube_bbox_at_320x180_px": [
+            13.608796112565983,
+            15.516290755283165
+          ],
+          "width_gain": 2.1213104399149723,
+          "area_gain": 4.6700505882474275
+        }
+      }
+    },
+    {
+      "layout_id": "LAT-C22",
+      "family": "LAT",
+      "views": {
+        "over_shoulder_left_camera": {
+          "minimum_margin_native_px": 44.45764095178633,
+          "cube_bbox_at_320x180_px": [
+            28.8684797643254,
+            34.15900846893827
+          ],
+          "original_cube_bbox_at_320x180_px": [
+            12.279317055968107,
+            11.925594213809035
+          ],
+          "width_gain": 2.3509841494233976,
+          "area_gain": 6.734028177606701
+        },
+        "over_shoulder_right_camera": {
+          "minimum_margin_native_px": 44.45764095178685,
+          "cube_bbox_at_320x180_px": [
+            28.86847934535524,
+            34.15900828273235
+          ],
+          "original_cube_bbox_at_320x180_px": [
+            13.396660082561993,
+            16.156397092971673
+          ],
+          "width_gain": 2.154901234146593,
+          "area_gain": 4.55604604678261
+        }
+      }
+    },
+    {
+      "layout_id": "LAT-C23",
+      "family": "LAT",
+      "views": {
+        "over_shoulder_left_camera": {
+          "minimum_margin_native_px": 44.45764267510094,
+          "cube_bbox_at_320x180_px": [
+            28.86848200032844,
+            34.15901015274896
+          ],
+          "original_cube_bbox_at_320x180_px": [
+            12.363693706778605,
+            12.429979318709158
+          ],
+          "width_gain": 2.3349399204625074,
+          "area_gain": 6.4166829569126405
+        },
+        "over_shoulder_right_camera": {
+          "minimum_margin_native_px": 44.457642675101475,
+          "cube_bbox_at_320x180_px": [
+            28.868481692202337,
+            34.159010015806246
+          ],
+          "original_cube_bbox_at_320x180_px": [
+            12.993433151248098,
+            15.036635105491456
+          ],
+          "width_gain": 2.2217747500728353,
+          "area_gain": 5.047247965263629
+        }
+      }
+    },
+    {
+      "layout_id": "LAT-C24",
+      "family": "LAT",
+      "views": {
+        "over_shoulder_left_camera": {
+          "minimum_margin_native_px": 44.457644890791215,
+          "cube_bbox_at_320x180_px": [
+            28.86847966553566,
+            34.15900883293887
+          ],
+          "original_cube_bbox_at_320x180_px": [
+            12.260695394021866,
+            12.124805428564116
+          ],
+          "width_gain": 2.3545548386767283,
+          "area_gain": 6.63344744011469
+        },
+        "over_shoulder_right_camera": {
+          "minimum_margin_native_px": 44.45764489079149,
+          "cube_bbox_at_320x180_px": [
+            28.86847976383801,
+            34.15900887662809
+          ],
+          "original_cube_bbox_at_320x180_px": [
+            13.061146427416475,
+            15.500379970366936
+          ],
+          "width_gain": 2.210256191848564,
+          "area_gain": 4.870858715806695
+        }
+      }
+    },
+    {
+      "layout_id": "LAT-D01",
+      "family": "LAT",
+      "views": {
+        "over_shoulder_left_camera": {
+          "minimum_margin_native_px": 44.45764095178633,
+          "cube_bbox_at_320x180_px": [
+            28.868479603991517,
+            34.15900839767992
+          ],
+          "original_cube_bbox_at_320x180_px": [
+            13.216546003678616,
+            15.654101345554793
+          ],
+          "width_gain": 2.184268083049568,
+          "area_gain": 4.766318432764055
+        },
+        "over_shoulder_right_camera": {
+          "minimum_margin_native_px": 44.45764095178685,
+          "cube_bbox_at_320x180_px": [
+            28.868479505689137,
+            34.159008353990686
+          ],
+          "original_cube_bbox_at_320x180_px": [
+            12.390120141096617,
+            12.221826534280964
+          ],
+          "width_gain": 2.3299596111207737,
+          "area_gain": 6.51204708211953
+        }
+      }
+    },
+    {
+      "layout_id": "LAT-D02",
+      "family": "LAT",
+      "views": {
+        "over_shoulder_left_camera": {
+          "minimum_margin_native_px": 44.45764489079112,
+          "cube_bbox_at_320x180_px": [
+            28.868479763838025,
+            34.15900887662808
+          ],
+          "original_cube_bbox_at_320x180_px": [
+            13.058453819557826,
+            15.49958359325207
+          ],
+          "width_gain": 2.210711939004701,
+          "area_gain": 4.872113388969104
+        },
+        "over_shoulder_right_camera": {
+          "minimum_margin_native_px": 44.457644890791734,
+          "cube_bbox_at_320x180_px": [
+            28.868479665535688,
+            34.15900883293886
+          ],
+          "original_cube_bbox_at_320x180_px": [
+            12.263769357829318,
+            12.125503904338984
+          ],
+          "width_gain": 2.3539646599033395,
+          "area_gain": 6.631402723089351
+        }
+      }
+    },
+    {
+      "layout_id": "LAT-D03",
+      "family": "LAT",
+      "views": {
+        "over_shoulder_left_camera": {
+          "minimum_margin_native_px": 44.45763085808627,
+          "cube_bbox_at_320x180_px": [
+            28.868481901375816,
+            34.15900985625719
+          ],
+          "original_cube_bbox_at_320x180_px": [
+            12.75955335865882,
+            12.737794147965147
+          ],
+          "width_gain": 2.2624994065160786,
+          "area_gain": 6.067356610508968
+        },
+        "over_shoulder_right_camera": {
+          "minimum_margin_native_px": 44.45763085808665,
+          "cube_bbox_at_320x180_px": [
+            28.868481593249726,
+            34.15900971931451
+          ],
+          "original_cube_bbox_at_320x180_px": [
+            13.466516618377625,
+            15.482483578765326
+          ],
+          "width_gain": 2.143723014001497,
+          "area_gain": 4.729696944179479
+        }
+      }
+    },
+    {
+      "layout_id": "LAT-D04",
+      "family": "LAT",
+      "views": {
+        "over_shoulder_left_camera": {
+          "minimum_margin_native_px": 44.45764095178633,
+          "cube_bbox_at_320x180_px": [
+            28.868479838221504,
+            34.15900850178042
+          ],
+          "original_cube_bbox_at_320x180_px": [
+            12.440326876054769,
+            12.374150212537742
+          ],
+          "width_gain": 2.3205563749122833,
+          "area_gain": 6.405927160894942
+        },
+        "over_shoulder_right_camera": {
+          "minimum_margin_native_px": 44.45764095178656,
+          "cube_bbox_at_320x180_px": [
+            28.868479271459137,
+            34.1590082498902
+          ],
+          "original_cube_bbox_at_320x180_px": [
+            13.1846370348797,
+            15.415290036281831
+          ],
+          "width_gain": 2.1895543423067423,
+          "area_gain": 4.851871399526323
+        }
+      }
+    },
+    {
+      "layout_id": "LAT-P01",
+      "family": "LAT",
+      "views": {
+        "over_shoulder_left_camera": {
+          "minimum_margin_native_px": 44.45761756394494,
+          "cube_bbox_at_320x180_px": [
+            28.868481684522663,
+            34.15900953650225
+          ],
+          "original_cube_bbox_at_320x180_px": [
+            12.03462813793567,
+            12.287220061348009
+          ],
+          "width_gain": 2.3987846864601625,
+          "area_gain": 6.6687264142495355
+        },
+        "over_shoulder_right_camera": {
+          "minimum_margin_native_px": 44.45761756394533,
+          "cube_bbox_at_320x180_px": [
+            28.86848163503285,
+            34.15900951450714
+          ],
+          "original_cube_bbox_at_320x180_px": [
+            12.517011518983082,
+            14.404360538714243
+          ],
+          "width_gain": 2.30633978336214,
+          "area_gain": 5.469335649563373
+        }
+      }
+    }
+  ],
+  "model_requests": 0
+}

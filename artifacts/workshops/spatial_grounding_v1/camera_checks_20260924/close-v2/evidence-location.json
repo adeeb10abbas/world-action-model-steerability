@@ -1,0 +1,613 @@
+{
+  "additional_evidence": "Per-reset warmup arrays, native logs and pinned source exports retained under workstation root; native receipts index them.",
+  "camera_configuration": {
+    "revision": "close-oblique-v2-20260924",
+    "sha256": "33a02f7f75f10efe109550867dd5e00d149a832917c0d3a056e6e2a5d7c45d56"
+  },
+  "local_root": "/Users/ali-adeeb/Downloads/astra_creative_director/sgw_close_camera_v2_20260924",
+  "policy_requests": 0,
+  "raw_snapshot_files": {
+    "DIST-D01/hold-1/capture.json": {
+      "bytes": 4427,
+      "sha256": "7cd81448426acb090550aa11ecdbb8c5b1f70804976b8242fe92196bdfe347f1"
+    },
+    "DIST-D01/hold-1/observation.npz": {
+      "bytes": 1542590,
+      "sha256": "355192da78729bac6ac8a8118a28dd4c227886d7e3de68450869e57f4d137296"
+    },
+    "DIST-D01/hold-1/over_shoulder_left_camera.png": {
+      "bytes": 499187,
+      "sha256": "6b6fc75d99c684b8b2188a525f697b8a0a0daa3c53cf20e0be8fd73160e5e5b1"
+    },
+    "DIST-D01/hold-1/over_shoulder_right_camera.png": {
+      "bytes": 441372,
+      "sha256": "3ae5b20fadae4e48a4abc02fbb7b243873ea3872440a8ad3d07c30fcf537be5a"
+    },
+    "DIST-D01/hold-1/wrist_cam.png": {
+      "bytes": 534622,
+      "sha256": "dff4c3eb1ebc295022930377744dd90e7d594e788318404a8696df7ff778284f"
+    },
+    "DIST-D01/hold-2/capture.json": {
+      "bytes": 4430,
+      "sha256": "7b67e35d7a18ca397a5add42b99c37ee608d6d359ea2b11bf55ad994f45b502f"
+    },
+    "DIST-D01/hold-2/observation.npz": {
+      "bytes": 1540701,
+      "sha256": "8a0d160c7d8f77d930feec03219afc999f788068a55a3aca88a79b2fa6e9b399"
+    },
+    "DIST-D01/hold-2/over_shoulder_left_camera.png": {
+      "bytes": 498337,
+      "sha256": "8eaa5b3f3cc8824ce8b2d1bf1a2b9fdc02c03f5de2dea8fa60667381b4a4c45e"
+    },
+    "DIST-D01/hold-2/over_shoulder_right_camera.png": {
+      "bytes": 441376,
+      "sha256": "af52b992b73dbe8318dd460128b9c5178c73640e57fa68dd8ebe80a4f494b42b"
+    },
+    "DIST-D01/hold-2/wrist_cam.png": {
+      "bytes": 531471,
+      "sha256": "529859c8fb4c004958af5275d821325f078ea593c5950e082a49f87c6225acc4"
+    },
+    "DIST-D01/hold-3/capture.json": {
+      "bytes": 4431,
+      "sha256": "4dc7d0359571e0ce51ff57127d6d036a238349288fda95e1c4462da6ffbbeb0e"
+    },
+    "DIST-D01/hold-3/observation.npz": {
+      "bytes": 1546435,
+      "sha256": "09c4c9764a3dc4c56866bc46de92166906c7a50ccd4c48a67e6f2924787996ae"
+    },
+    "DIST-D01/hold-3/over_shoulder_left_camera.png": {
+      "bytes": 498744,
+      "sha256": "942c2304329e3d31769f6144990609cf5bea172963d8b8423ae53ca317ae35f8"
+    },
+    "DIST-D01/hold-3/over_shoulder_right_camera.png": {
+      "bytes": 442944,
+      "sha256": "91f113af8f55617933130c5401991d91b61073d70a2775f17d6c0e7d588be2a5"
+    },
+    "DIST-D01/hold-3/wrist_cam.png": {
+      "bytes": 531263,
+      "sha256": "f28fcaef78574e3080867e7a59db179c26e539dbcaeefc17ea2fb5d28e7d202c"
+    },
+    "DIST-D01/reset-1/capture.json": {
+      "bytes": 4389,
+      "sha256": "5bc45e628e41fae2e01ad0b2b37fd6c74ee2b7dcd653972d5f52bc30b0a4e8d6"
+    },
+    "DIST-D01/reset-1/observation.npz": {
+      "bytes": 1546610,
+      "sha256": "dcf07e9485b2f631747e54639e3e3843a6f6b8011f991a2d44b0a6a0158da213"
+    },
+    "DIST-D01/reset-1/over_shoulder_left_camera.png": {
+      "bytes": 499194,
+      "sha256": "774cb466264122a744752da06c5b7c36c75a5565c3f5d442d1efcdc95bd740c6"
+    },
+    "DIST-D01/reset-1/over_shoulder_right_camera.png": {
+      "bytes": 442958,
+      "sha256": "d8027bdf4e318d434171585d830c5798a794a582416daa72de17ce04d2f3a92a"
+    },
+    "DIST-D01/reset-1/wrist_cam.png": {
+      "bytes": 534710,
+      "sha256": "3ff940638f97831bbbd452063959d7867be9b9d1653ac19fff1bc037ceade495"
+    },
+    "DIST-D01/reset-2/capture.json": {
+      "bytes": 4388,
+      "sha256": "b16ded563d0d49928ce4e2358dea8565bbb51d4d8d07285dcef7a82eef6b8729"
+    },
+    "DIST-D01/reset-2/observation.npz": {
+      "bytes": 1559813,
+      "sha256": "6d0cf80994250a7d71215264dd39e363d052061d500cfdc3d293096be380e88d"
+    },
+    "DIST-D01/reset-2/over_shoulder_left_camera.png": {
+      "bytes": 504307,
+      "sha256": "2238e1da3f8aa7b506f9082eb56c197d1ade50be541a209af01edb1e00059674"
+    },
+    "DIST-D01/reset-2/over_shoulder_right_camera.png": {
+      "bytes": 445304,
+      "sha256": "d932897cce0bd82c18e089093697c7e3b6f4e7affa4e48ecf61edc27835090e6"
+    },
+    "DIST-D01/reset-2/wrist_cam.png": {
+      "bytes": 533462,
+      "sha256": "82efb6acf9a5dfaeea2d6130b470288825a49db2f12d40368253127dfb9ad0dd"
+    },
+    "DIST-P01/hold-1/capture.json": {
+      "bytes": 4439,
+      "sha256": "5e17b4f41c1fc50e6292a82a686c45490e3f10d831c77d87617ca949e0d6b046"
+    },
+    "DIST-P01/hold-1/observation.npz": {
+      "bytes": 1559111,
+      "sha256": "d8c3a35dc3ac0d9e2537b68d24d30c73bc51a8ecdd71d2b305618857e9c7ac52"
+    },
+    "DIST-P01/hold-1/over_shoulder_left_camera.png": {
+      "bytes": 466454,
+      "sha256": "636062e27e3f524e769133c1b88b79fcdbc6dd8228bf77839a84eae3ce227ea1"
+    },
+    "DIST-P01/hold-1/over_shoulder_right_camera.png": {
+      "bytes": 469304,
+      "sha256": "d529d2e7c8e011222ca62f791fa4acab5c1653c54473f4373a470e8165738eac"
+    },
+    "DIST-P01/hold-1/wrist_cam.png": {
+      "bytes": 544869,
+      "sha256": "012295249a8d4000dda347eff33d4169678f21e4c138d37c3bfa7ba7068e5d14"
+    },
+    "DIST-P01/hold-2/capture.json": {
+      "bytes": 4447,
+      "sha256": "156f2094b4820bc84fb668b086104c486f8697af1d6995f85ad43be0df63e6cb"
+    },
+    "DIST-P01/hold-2/observation.npz": {
+      "bytes": 1558027,
+      "sha256": "db42e834e73bbccdc592ac8cb1d087717fbf0ed6b36fb825404f8774e72669dd"
+    },
+    "DIST-P01/hold-2/over_shoulder_left_camera.png": {
+      "bytes": 464409,
+      "sha256": "f62a0ea0b21e8f8b146f095ea30c5138217386cb80ebe6282fdbb95f4744eb12"
+    },
+    "DIST-P01/hold-2/over_shoulder_right_camera.png": {
+      "bytes": 469096,
+      "sha256": "c40303c3aebf5b1aca0546462ff3d11d0fd39827cd69ba2f87dc22a5b828c5f7"
+    },
+    "DIST-P01/hold-2/wrist_cam.png": {
+      "bytes": 543405,
+      "sha256": "1cd674473ebad577a5daf8c9c078292c9263e9e9b18f8e152592dc38c78c58ed"
+    },
+    "DIST-P01/hold-3/capture.json": {
+      "bytes": 4443,
+      "sha256": "d8f498dc32a795f2e1ebfb1942471cf823d6900b49cf5f60649f10313caf7af8"
+    },
+    "DIST-P01/hold-3/observation.npz": {
+      "bytes": 1563339,
+      "sha256": "48fd1367d1fc77ded9840dba4305089241d2d75572a9929d89783f8ea3ca7215"
+    },
+    "DIST-P01/hold-3/over_shoulder_left_camera.png": {
+      "bytes": 465660,
+      "sha256": "112ad11c5e105330c6115895ce997d02b775b7d93a29e6aeecc6d61e6ae5ebdc"
+    },
+    "DIST-P01/hold-3/over_shoulder_right_camera.png": {
+      "bytes": 469555,
+      "sha256": "38e01ec371ff2fbf2815356c3133c662abd00f092e56381ba5fab609ba0e2d42"
+    },
+    "DIST-P01/hold-3/wrist_cam.png": {
+      "bytes": 541462,
+      "sha256": "36e8617d9c787dce3353b68faae54689826839c241e2377ae057c17244a6ba1d"
+    },
+    "DIST-P01/reset-1/capture.json": {
+      "bytes": 4393,
+      "sha256": "1d5de74062e251eed5d5a2128192ab44f244d7cf14ad2dc697ea2c7d1dbecab0"
+    },
+    "DIST-P01/reset-1/observation.npz": {
+      "bytes": 1562055,
+      "sha256": "01f6a733f3b62cab762eb8a8a60131d60d06a33aab63704e48a615ff75c6dbf9"
+    },
+    "DIST-P01/reset-1/over_shoulder_left_camera.png": {
+      "bytes": 466961,
+      "sha256": "18f4cd867b1983dc933ff4e310952d11babe4bf0c9287598d5d9e00f24deec56"
+    },
+    "DIST-P01/reset-1/over_shoulder_right_camera.png": {
+      "bytes": 470296,
+      "sha256": "eb56018f7868cf9d012727f9d77ea110c210c90ddb61806460edeb1c6a08d6c0"
+    },
+    "DIST-P01/reset-1/wrist_cam.png": {
+      "bytes": 543429,
+      "sha256": "505ff094511bd352c6a81e32bf7dbe38d318b7e1fc77b239fe052a7c5bd815c0"
+    },
+    "DIST-P01/reset-2/capture.json": {
+      "bytes": 4392,
+      "sha256": "c06785708088da67abcc5cb62be00d7b0762ae6a5d693b4a4a90d55438b290b5"
+    },
+    "DIST-P01/reset-2/observation.npz": {
+      "bytes": 1571003,
+      "sha256": "38307435d2130cf95abdf596b3c667fa20c15b5585f6a33195bb4f1568cf02f9"
+    },
+    "DIST-P01/reset-2/over_shoulder_left_camera.png": {
+      "bytes": 464593,
+      "sha256": "82a1ee04d54aafe8bc47c67fccaa3cd595b20de3479402af3674cc3f3e9dbd42"
+    },
+    "DIST-P01/reset-2/over_shoulder_right_camera.png": {
+      "bytes": 475452,
+      "sha256": "c09badb8995d0ef48b6839933ae769db5a049af0f9c8a179ebe1dea0f93fa061"
+    },
+    "DIST-P01/reset-2/wrist_cam.png": {
+      "bytes": 544571,
+      "sha256": "a2b3fe505b92c3e61c4fc34f66a686c9ff36535fbe16622995021b0cc17d2990"
+    },
+    "HEIGHT-D01/hold-1/capture.json": {
+      "bytes": 6144,
+      "sha256": "0bb35bee27d8bd88be52503a5febd64c1346fe4a5fb51d1e36d91bff675baa6a"
+    },
+    "HEIGHT-D01/hold-1/observation.npz": {
+      "bytes": 1703701,
+      "sha256": "4a2b41a58dd27b27734849549d764f81443332a9751ef74d04e3be0b8c203ab9"
+    },
+    "HEIGHT-D01/hold-1/over_shoulder_left_camera.png": {
+      "bytes": 554162,
+      "sha256": "a5e81e286e77f203313a0a3f6fe0e6a6c720439d0d623423753435365a802656"
+    },
+    "HEIGHT-D01/hold-1/over_shoulder_right_camera.png": {
+      "bytes": 541227,
+      "sha256": "894e92536b91fa97855ff2e06b11557132aa5fdf64b0b9d1c8f4d9555f753872"
+    },
+    "HEIGHT-D01/hold-1/wrist_cam.png": {
+      "bytes": 507671,
+      "sha256": "e2d36f434800929791e44b6fa25b37f68e52e241d38ebc890e73fe0a24be4d8c"
+    },
+    "HEIGHT-D01/hold-2/capture.json": {
+      "bytes": 6144,
+      "sha256": "f9e86e0f00f7bb42040f092c5e54d6526a2a1c6f44bea521671e60d17c781c70"
+    },
+    "HEIGHT-D01/hold-2/observation.npz": {
+      "bytes": 1708295,
+      "sha256": "57374e044d2cd5cf9bf4bd67d5094adae91541833c8d7e2c30f28c85cb86b226"
+    },
+    "HEIGHT-D01/hold-2/over_shoulder_left_camera.png": {
+      "bytes": 553608,
+      "sha256": "41031c926a7d49f22ef6de034c90e208f8de869a2a10bf81c3f8243e35b3b0fc"
+    },
+    "HEIGHT-D01/hold-2/over_shoulder_right_camera.png": {
+      "bytes": 541535,
+      "sha256": "add7fff7384e56b1b1cc96edc6833e7fc989e644041ce215e687db6bb7a7c5a0"
+    },
+    "HEIGHT-D01/hold-2/wrist_cam.png": {
+      "bytes": 507840,
+      "sha256": "1f1b6e785a90152ffca7f7758417d3e3b9215e37cb7ea0f94614c441e73807c2"
+    },
+    "HEIGHT-D01/hold-3/capture.json": {
+      "bytes": 6138,
+      "sha256": "548015b126def997c8d43754149c356b8b1b445d55daf675fbc670d982ee56e1"
+    },
+    "HEIGHT-D01/hold-3/observation.npz": {
+      "bytes": 1710962,
+      "sha256": "fb9e9a60fbca88b8db84bd17accc280ea9ce604397164a645e32a16c290ccf69"
+    },
+    "HEIGHT-D01/hold-3/over_shoulder_left_camera.png": {
+      "bytes": 554127,
+      "sha256": "b9963f55fe5aeba1308b110ea9e7b76bebbf897c41af08dbcb51746a51588c2e"
+    },
+    "HEIGHT-D01/hold-3/over_shoulder_right_camera.png": {
+      "bytes": 542968,
+      "sha256": "45a95a30929665d7cf430ee09e95db8d577f06052a3336b472692bff2c62218c"
+    },
+    "HEIGHT-D01/hold-3/wrist_cam.png": {
+      "bytes": 506442,
+      "sha256": "cee535dc21ae03297b396904b5687d13b38ef97b24fb8df090997cb35d5d9eb4"
+    },
+    "HEIGHT-D01/reset-1/capture.json": {
+      "bytes": 6089,
+      "sha256": "2b0985187910b2e9ddb22063130c6560150dffe3cef87040626f6ae325c357c3"
+    },
+    "HEIGHT-D01/reset-1/observation.npz": {
+      "bytes": 1711239,
+      "sha256": "b58fce47ff5c8a91ab2e1d3173e40a21e8360930d24d2a1a44af18cbc62c1579"
+    },
+    "HEIGHT-D01/reset-1/over_shoulder_left_camera.png": {
+      "bytes": 553309,
+      "sha256": "8e90bb14dba3850df4dc7c2523f4c9471f94b60efadf863a7e3111c1fc6fd211"
+    },
+    "HEIGHT-D01/reset-1/over_shoulder_right_camera.png": {
+      "bytes": 543458,
+      "sha256": "53d4015d994d96b5230cf4327ccbfc326993afac9b888e66445ed8d2ecbdb69d"
+    },
+    "HEIGHT-D01/reset-1/wrist_cam.png": {
+      "bytes": 508719,
+      "sha256": "63ba61ee5a6e7bffd6fe1fd2c7d8dd2ed09182e905495ad523fc037823d54004"
+    },
+    "HEIGHT-D01/reset-2/capture.json": {
+      "bytes": 6088,
+      "sha256": "6520b470d1f85cf1b8038e9a6fb05104a196ac6cf18a6b23c8c5ba8b02f1e72b"
+    },
+    "HEIGHT-D01/reset-2/observation.npz": {
+      "bytes": 1736983,
+      "sha256": "71b12ac73012ae36d6f19773e4744f4424ecbbc5ff633a5c73b9a87975aba02e"
+    },
+    "HEIGHT-D01/reset-2/over_shoulder_left_camera.png": {
+      "bytes": 565062,
+      "sha256": "bf621e80fdebcacc6a3042692341f5739b016a7253c92acff11ab33412aa4258"
+    },
+    "HEIGHT-D01/reset-2/over_shoulder_right_camera.png": {
+      "bytes": 550612,
+      "sha256": "ceb19e52680f4847221e58508d5fd2fff922d45c230018ec179ef9a305da85e1"
+    },
+    "HEIGHT-D01/reset-2/wrist_cam.png": {
+      "bytes": 510526,
+      "sha256": "48c407641245ece566863ba96d708a62f3f7094b18c48fd690d0aeb33900dcc2"
+    },
+    "HEIGHT-P01/hold-1/capture.json": {
+      "bytes": 6262,
+      "sha256": "64785a2b01e046d78571b747c84280cb069c2a99e49c5cc140f1fff8872a4ccb"
+    },
+    "HEIGHT-P01/hold-1/observation.npz": {
+      "bytes": 1639373,
+      "sha256": "4185e0095674d83142e977e10851766f773fd1fde64dc2c47bdab0584a8a8432"
+    },
+    "HEIGHT-P01/hold-1/over_shoulder_left_camera.png": {
+      "bytes": 534030,
+      "sha256": "6d5b40132e0bd11ae37990f933722a918503ed36aef0f3ffbd6e895d2a604a31"
+    },
+    "HEIGHT-P01/hold-1/over_shoulder_right_camera.png": {
+      "bytes": 518619,
+      "sha256": "a0c34bad0459da4f538f9956ecfc16a87765453e30025bad858706087555b63e"
+    },
+    "HEIGHT-P01/hold-1/wrist_cam.png": {
+      "bytes": 496169,
+      "sha256": "754310879dbf273a6f444b648918b336353d7be671cc0fe9dbd3014bf7dee31e"
+    },
+    "HEIGHT-P01/hold-2/capture.json": {
+      "bytes": 6259,
+      "sha256": "ceb84c80b2f2198dfc5ab41016c4d1369a7f16b32f6eeae8fe3590a27dd29867"
+    },
+    "HEIGHT-P01/hold-2/observation.npz": {
+      "bytes": 1639414,
+      "sha256": "2aa8ce1692d95a3dfec43ed3a672c9f45e201f64269c5052eb06ca677038e4ce"
+    },
+    "HEIGHT-P01/hold-2/over_shoulder_left_camera.png": {
+      "bytes": 533304,
+      "sha256": "bf50368571ceeae9dcd5eb0570e41d4587cc4a842671da63debbafaaccf780e7"
+    },
+    "HEIGHT-P01/hold-2/over_shoulder_right_camera.png": {
+      "bytes": 516818,
+      "sha256": "8b2292825a13367ee13317207fc8a5b1c1e9e57099b2a3e15d14d2bf0b674374"
+    },
+    "HEIGHT-P01/hold-2/wrist_cam.png": {
+      "bytes": 494723,
+      "sha256": "6ea939a2c9d6cdb822592803655a98115dfdf90b3fd32c9137e19578cf16f048"
+    },
+    "HEIGHT-P01/hold-3/capture.json": {
+      "bytes": 6259,
+      "sha256": "19587ed46812e568d61a7bf95c3d2b1b1394610691da80dffa07b84276cfa872"
+    },
+    "HEIGHT-P01/hold-3/observation.npz": {
+      "bytes": 1642636,
+      "sha256": "e58439e3defa5563a67212c83e3290ecd333e8cb699ef4e472a51d4d9e08865d"
+    },
+    "HEIGHT-P01/hold-3/over_shoulder_left_camera.png": {
+      "bytes": 532969,
+      "sha256": "5a0c7a600d13a6307354a8a489421b61e102fed0f408b442d38dc72e7e493c4d"
+    },
+    "HEIGHT-P01/hold-3/over_shoulder_right_camera.png": {
+      "bytes": 517691,
+      "sha256": "479a3f98285b4e96f1f5fd3bd9093e9019eb58de5c0d6dc4a491761e8fdedf5f"
+    },
+    "HEIGHT-P01/hold-3/wrist_cam.png": {
+      "bytes": 492649,
+      "sha256": "5da6521bdd22dbd4d87466adf4a836539c601f07ec9049dcb82c340079345af7"
+    },
+    "HEIGHT-P01/reset-1/capture.json": {
+      "bytes": 6212,
+      "sha256": "ca7af0cfab7816723f15406e7c7af875bd6ca5102415a85aebc070f1690d138e"
+    },
+    "HEIGHT-P01/reset-1/observation.npz": {
+      "bytes": 1644495,
+      "sha256": "66dbe6f348dd9d93dcdee54a0f823664ea13aa86ee03c45229ed793af2f25713"
+    },
+    "HEIGHT-P01/reset-1/over_shoulder_left_camera.png": {
+      "bytes": 534230,
+      "sha256": "9758d489a4e37568c3b84e528dcb82682ef821f02597b1b4546446dd00239cec"
+    },
+    "HEIGHT-P01/reset-1/over_shoulder_right_camera.png": {
+      "bytes": 519289,
+      "sha256": "45bc42d7c2f5bb3be634b0a30b2e90936634885859c286314f5ef3d7b4ce4031"
+    },
+    "HEIGHT-P01/reset-1/wrist_cam.png": {
+      "bytes": 494949,
+      "sha256": "940d2e06f82f0c1e5bde12adc001652ee8abc55ec82a071df47f05dcc7ab1f7d"
+    },
+    "HEIGHT-P01/reset-2/capture.json": {
+      "bytes": 6211,
+      "sha256": "afdd89b7a5f9609c30928332fc756f9b5b6794328165566284b29486fd7385a0"
+    },
+    "HEIGHT-P01/reset-2/observation.npz": {
+      "bytes": 1674164,
+      "sha256": "d50b2823fc0c9c787a7ffdeb433e445d3d2f66ce46ccc6b7599df2a39fbbb06b"
+    },
+    "HEIGHT-P01/reset-2/over_shoulder_left_camera.png": {
+      "bytes": 550427,
+      "sha256": "067b6b4d550a7a86955d21205cf04a7c44f840eed49727e5752ed99f37ac5db1"
+    },
+    "HEIGHT-P01/reset-2/over_shoulder_right_camera.png": {
+      "bytes": 526562,
+      "sha256": "59988b65d757d69766b6b15d9e06293ccab638dbe90db4ccc76e25314d1b8656"
+    },
+    "HEIGHT-P01/reset-2/wrist_cam.png": {
+      "bytes": 494545,
+      "sha256": "18b793989ff181fb7473a9e9f7bcf0eaceb1bdf4998cd5072dcd6f8ee818112e"
+    },
+    "LAT-D01/hold-1/capture.json": {
+      "bytes": 3781,
+      "sha256": "aea8103b8a0a8c64b85258959d8ea6e328544fc703df800bbe0bd3a09d683917"
+    },
+    "LAT-D01/hold-1/observation.npz": {
+      "bytes": 1816371,
+      "sha256": "c411ff3ff8ad651e65218187d28e9ba6858fcd71fe7b0c7d1a4e426e6c960c11"
+    },
+    "LAT-D01/hold-1/over_shoulder_left_camera.png": {
+      "bytes": 575793,
+      "sha256": "161c8c486e84d552a7d1c21954c4738e869335f0bbda78765ede1c0915a825c0"
+    },
+    "LAT-D01/hold-1/over_shoulder_right_camera.png": {
+      "bytes": 557440,
+      "sha256": "771b0505946ada87237ff185d792c3022297189abfc879d923fe7f2a13d7cb11"
+    },
+    "LAT-D01/hold-1/wrist_cam.png": {
+      "bytes": 549496,
+      "sha256": "cc7e0bd93c467b074f7f9c66899fc5d3fa741829edee4b52d35b8e6bc1723cad"
+    },
+    "LAT-D01/hold-2/capture.json": {
+      "bytes": 3780,
+      "sha256": "50ec66cc91bd47ba8544b4ec42fd04494c87fed328a8823fedb42c66d17a8d3e"
+    },
+    "LAT-D01/hold-2/observation.npz": {
+      "bytes": 1825666,
+      "sha256": "8eae65b010c5592a5206ba7d9558612c498b82fb2f188c7b31e38758d1eafb60"
+    },
+    "LAT-D01/hold-2/over_shoulder_left_camera.png": {
+      "bytes": 576688,
+      "sha256": "eae52fd2a0a12b6cfbac8bcfa1446cf543055ce54f94d8622bb51a0d4bf3dc0c"
+    },
+    "LAT-D01/hold-2/over_shoulder_right_camera.png": {
+      "bytes": 559927,
+      "sha256": "ab3ff3a3a50ca6921a16e8f477297185a9f2c9c0b3b1758aa626a6faf24c8953"
+    },
+    "LAT-D01/hold-2/wrist_cam.png": {
+      "bytes": 548393,
+      "sha256": "79d27c0095334b6ce91e1b183583df5a924e408ec9f7f9fcece566d7f7dc1cc7"
+    },
+    "LAT-D01/hold-3/capture.json": {
+      "bytes": 3777,
+      "sha256": "b0dfc94cc87b1b2cbe8968693316641d050cfb4f8a7b46f012f5183993671514"
+    },
+    "LAT-D01/hold-3/observation.npz": {
+      "bytes": 1830384,
+      "sha256": "38d86c1d09fa4db14142de5ec7542aef092b62f39d35b7aba9652afad505ab1a"
+    },
+    "LAT-D01/hold-3/over_shoulder_left_camera.png": {
+      "bytes": 576759,
+      "sha256": "c90dbd716700be34d5ce0ed74af81408af19088d6262889e3c412c09e3d381e3"
+    },
+    "LAT-D01/hold-3/over_shoulder_right_camera.png": {
+      "bytes": 559946,
+      "sha256": "d78d3e770694c9203eacfa4293caa958ac6019721b5cbd403c988da38aeb4de4"
+    },
+    "LAT-D01/hold-3/wrist_cam.png": {
+      "bytes": 546370,
+      "sha256": "7ca7a4531cce4d5e3a58ba74c3d02358e3ac8c6aac81c6f49bebe942e77cf309"
+    },
+    "LAT-D01/reset-1/capture.json": {
+      "bytes": 3732,
+      "sha256": "ccb1c4b153c6053a1c5e4825f2ba218754b7cb571752084087035f99b61552df"
+    },
+    "LAT-D01/reset-1/observation.npz": {
+      "bytes": 1829622,
+      "sha256": "b9ed2b2c8a0964f00d34224db33879f829b18d2fee8716a00d95d7736bdc4aa7"
+    },
+    "LAT-D01/reset-1/over_shoulder_left_camera.png": {
+      "bytes": 577174,
+      "sha256": "ff145c55e89285b602c854dfceb96e9a330b95648ee0990a659e471b2d867846"
+    },
+    "LAT-D01/reset-1/over_shoulder_right_camera.png": {
+      "bytes": 558104,
+      "sha256": "bb3fc630cbba38318083db86de028c690dbedb63885a8f2ae578b00c5d490c7d"
+    },
+    "LAT-D01/reset-1/wrist_cam.png": {
+      "bytes": 550113,
+      "sha256": "fe807ce8a2bbb14463b08bc3b6d7111c11480a249bb3c7c5228c3cf958b2606e"
+    },
+    "LAT-D01/reset-2/capture.json": {
+      "bytes": 3731,
+      "sha256": "261dd557f5231fef45519b7956a0a32469dfd1ef5a4c272cf39b5099edc19d57"
+    },
+    "LAT-D01/reset-2/observation.npz": {
+      "bytes": 1842942,
+      "sha256": "06ee811bcf7eba6210029ab87d14ec484c07656bf020884831b583e72592f750"
+    },
+    "LAT-D01/reset-2/over_shoulder_left_camera.png": {
+      "bytes": 576461,
+      "sha256": "07bd4b4c6f6b47ebf02298ac34eeab2694112e00d4e5a8a33238c1939d95f08e"
+    },
+    "LAT-D01/reset-2/over_shoulder_right_camera.png": {
+      "bytes": 564376,
+      "sha256": "cc7b8f7dcf7f7c8312ea12f41597fc8f2e454338126c5c8f8616c84b08d90cfe"
+    },
+    "LAT-D01/reset-2/wrist_cam.png": {
+      "bytes": 551056,
+      "sha256": "6bd0f73b4e386e5f4a9f5f82a7e3feaa4279486e21a79fc1be1be32424284d40"
+    },
+    "LAT-P01/hold-1/capture.json": {
+      "bytes": 3791,
+      "sha256": "dab780bb4445a90ca5c00d0003fc0af28d9d75c0e84953cec825154cab40734e"
+    },
+    "LAT-P01/hold-1/observation.npz": {
+      "bytes": 1824712,
+      "sha256": "4dce20d249af097ca67f937d1e33781c2bfa77f13c96bc4aa700238912bce400"
+    },
+    "LAT-P01/hold-1/over_shoulder_left_camera.png": {
+      "bytes": 568735,
+      "sha256": "715532c41938297c3cd329e72a720e19d3cd931d8f083107633279739a398446"
+    },
+    "LAT-P01/hold-1/over_shoulder_right_camera.png": {
+      "bytes": 578312,
+      "sha256": "538668bc480a681ac156095e8015abe91ed9f66d0c9bbe8b0a74e24f75e1e8fe"
+    },
+    "LAT-P01/hold-1/wrist_cam.png": {
+      "bytes": 532910,
+      "sha256": "3a31117191030a0e17d8f3aefb9725a989e601b3c5a5e459ffa75f0dc3c3da3c"
+    },
+    "LAT-P01/hold-2/capture.json": {
+      "bytes": 3791,
+      "sha256": "abc9daa0cec83bbabd95349e0d75358434997eb3b9a9d7d9b8e31f7a456fc8c5"
+    },
+    "LAT-P01/hold-2/observation.npz": {
+      "bytes": 1830927,
+      "sha256": "b31e00b36e996c10c33e5d97ff906cec31460d42337d457955c82a6d3795128c"
+    },
+    "LAT-P01/hold-2/over_shoulder_left_camera.png": {
+      "bytes": 570766,
+      "sha256": "2637ddf65714643ddb78ff15ad2e8c6f02d55552123fc3849b239716a7af0004"
+    },
+    "LAT-P01/hold-2/over_shoulder_right_camera.png": {
+      "bytes": 577606,
+      "sha256": "f7f5df3e96e51f9f7911571392e1532660ff177970afb6e07389bee6ee8cc32c"
+    },
+    "LAT-P01/hold-2/wrist_cam.png": {
+      "bytes": 530281,
+      "sha256": "59fb7d67ee2610c3baf944774d805e564fe8946ef2a735fa808367f7e8258a08"
+    },
+    "LAT-P01/hold-3/capture.json": {
+      "bytes": 3793,
+      "sha256": "e3e710890c7f1eac9c3a0f196e309b87067be8ffed979f560696a6ce14796204"
+    },
+    "LAT-P01/hold-3/observation.npz": {
+      "bytes": 1837631,
+      "sha256": "3c5ff09c4cd222468b8c1652a7d4208f6a66a882febef8261d5f46d5ab4ea871"
+    },
+    "LAT-P01/hold-3/over_shoulder_left_camera.png": {
+      "bytes": 569441,
+      "sha256": "955b1600e4670df5d9f912bda3813c28d9eb4436c27b5aa1f6ecc57afbb8cc1b"
+    },
+    "LAT-P01/hold-3/over_shoulder_right_camera.png": {
+      "bytes": 578320,
+      "sha256": "6c1758df8e952d87ce7d41095bd62d6b2969ac48f8f8fd93b90878525f608dc6"
+    },
+    "LAT-P01/hold-3/wrist_cam.png": {
+      "bytes": 528345,
+      "sha256": "ca80e0ec3607190a5bc40df6bfdac62857694f1045b602f4615203aee7cc72a3"
+    },
+    "LAT-P01/reset-1/capture.json": {
+      "bytes": 3749,
+      "sha256": "c5de98ac02d7e205927e08b0da78c894267a5ef25d728e87956046a3660d1d7d"
+    },
+    "LAT-P01/reset-1/observation.npz": {
+      "bytes": 1835115,
+      "sha256": "13677579779f4e82258f2798c948961bfc7435a848ef3bc19314b4820b90781e"
+    },
+    "LAT-P01/reset-1/over_shoulder_left_camera.png": {
+      "bytes": 571498,
+      "sha256": "8a30d1f23f83f248248251fd143839f81dc3143c23c4b5d444bcbf9b8c638ff2"
+    },
+    "LAT-P01/reset-1/over_shoulder_right_camera.png": {
+      "bytes": 579476,
+      "sha256": "b76df66dcee7a8eafbe5854c57bb5ba40828f063552dfde47cdfa49df5dccbc9"
+    },
+    "LAT-P01/reset-1/wrist_cam.png": {
+      "bytes": 532716,
+      "sha256": "6c0f785082cb9de5666e51a3193aafd59499a83b5d6bbebde43ca930ad03c2ab"
+    },
+    "LAT-P01/reset-2/capture.json": {
+      "bytes": 3748,
+      "sha256": "15b7fb75591ba739ef7d007e73553cc49ac314d9ed4de1578ce5070f334477e8"
+    },
+    "LAT-P01/reset-2/observation.npz": {
+      "bytes": 1855974,
+      "sha256": "18954ec3f141d1a21a61b40b3746b956975202d820cc8366700c31d985845285"
+    },
+    "LAT-P01/reset-2/over_shoulder_left_camera.png": {
+      "bytes": 570163,
+      "sha256": "bcdf8c3650147dcf06ba6544006f360d880eac1b60f7b5305eb5a9501d3259c8"
+    },
+    "LAT-P01/reset-2/over_shoulder_right_camera.png": {
+      "bytes": 588641,
+      "sha256": "445cfe833d74e656f329a9bfbc06ddb5f4bfcc2a90d3054c0e95a2e5f2230f4d"
+    },
+    "LAT-P01/reset-2/wrist_cam.png": {
+      "bytes": 535115,
+      "sha256": "8786246b1fb54e3c8abe1b5b4f41bedbb10aad63e8a9a674bf6183ec78b8efd5"
+    }
+  },
+  "source_commit": "ba8da02cd4c2252b9bcc108b70520dd1a85724a7",
+  "workstation_root": "/home/ali/sgw-scene-design-20260923/evidence/SGW-CLOSE-CAMERA-V2-20260924"
+}

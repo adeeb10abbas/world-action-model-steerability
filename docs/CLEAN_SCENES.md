@@ -1,10 +1,22 @@
 # Clean scene examples
 
-Actual simulator captures for the WAM steerability study. These show the initial scenes; the qualification status below comes from physical trial receipts. A passing example is not a claim that the full 87-layout set is complete.
+The active study uses the closer exterior cameras shown below. All 87 selected
+layouts retain their completed physical geometry qualification. Camera-only
+diagnostics passed on six representative layouts; see
+[CAMERA_ALIGNMENT.md](CAMERA_ALIGNMENT.md) for scope and evidence.
+
+![Original and current exterior framing](../artifacts/workshops/spatial_grounding_v1/camera_checks_20260924/close-v2/before-after.jpg)
+
+## Historical qualification images
+
+The following original simulator captures belong to the scripted physical
+trials. Their exterior-camera framing is superseded; they are retained as
+evidence of the unchanged geometry. The qualification status below comes
+from physical trial receipts, not the camera-only checks.
 
 All scenes retain both shoulder cameras and the wrist camera. The images below are initial captures, not continuous recordings.
 
-Updated 2026-09-24 03:49 UTC.
+Original captures recorded before the closer-camera revision on 2026-09-24.
 
 ## Left / right: robot-right approach
 

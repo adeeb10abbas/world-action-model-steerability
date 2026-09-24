@@ -1,89 +1,102 @@
 {
-  "study_id": "SGW-01",
-  "status": "PHYSICAL_SCENES_COMPLETE_RUNTIME_PENDING",
-  "learned_policy_launch_authorized": false,
-  "planned_behavioral_cells": 1044,
-  "prompt_count": 18,
-  "future_learned_policy_execution_location": "cluster_only",
+  "active_geometry": {
+    "DIST": "flat tabletop; pedestal revision excluded",
+    "HEIGHT": "raised supports",
+    "LAT": "flat tabletop"
+  },
+  "camera_configuration": {
+    "documentation": "docs/CAMERA_ALIGNMENT.md",
+    "geometry_layouts": 87,
+    "native_checked_layouts": 6,
+    "receipt": "handoff/camera-alignment.json",
+    "revision": "close-oblique-v2-20260924",
+    "sha256": "33a02f7f75f10efe109550867dd5e00d149a832917c0d3a056e6e2a5d7c45d56",
+    "wrist_changed": false
+  },
   "current_scope": "Repository preparation and explicitly authorized scene completion; no learned-policy study launch.",
   "extraction_source_commit": "62ad0101d5fc26c6461aff47f611cab21219748a",
-  "pending_integration": "All 87 physical layouts are selected and verified. Cluster model/runtime and prediction time/camera qualification remain; no learned-policy study launch.",
+  "future_learned_policy_execution_location": "cluster_only",
   "historical_authorizations_are_not_new_launch_permission": true,
+  "learned_policy_launch_authorized": false,
+  "pending_integration": "All 87 physical layouts are selected. Closer-camera geometry, six-layout native diagnostics and offline input preprocessing passed. Cluster model/runtime and decoded prediction time/camera qualification remain; no learned-policy study launch.",
+  "physical_completion_receipt": "handoff/physical-scene-completion.json",
+  "physical_scene_package_complete": true,
+  "planned_behavioral_cells": 1044,
+  "prompt_count": 18,
+  "recording_index": "handoff/scene-records.json",
   "scene_families_implemented": [
     "LAT",
     "HEIGHT",
     "DIST"
   ],
-  "physical_scene_package_complete": true,
-  "active_geometry": {
-    "LAT": "flat tabletop",
-    "HEIGHT": "raised supports",
-    "DIST": "flat tabletop; pedestal revision excluded"
-  },
-  "scripted_qualification_snapshot": {
-    "recorded_at_utc": "2026-09-24T12:29:07.058571+00:00",
-    "eligible_passed_layouts": {
-      "LAT": 29,
-      "HEIGHT": 29,
-      "DIST": 29
+  "scene_materialization": {
+    "bound_planned_cells": 1044,
+    "camera_configuration": {
+      "revision": "close-oblique-v2-20260924",
+      "sha256": "33a02f7f75f10efe109550867dd5e00d149a832917c0d3a056e6e2a5d7c45d56"
     },
-    "target_layouts_per_family": 29,
-    "flat_dist_prototypes": "Both orientations independently verified: six of six trials passed each.",
-    "learned_policy_episodes": 0,
-    "valid_physical_rejections": 8,
+    "layout_count": 87,
+    "local_receipt_copy": "/Users/ali-adeeb/Downloads/astra_creative_director/sgw_close_camera_v2_20260924/materialization.json",
+    "model_requests": 0,
+    "native_runs": 0,
+    "python": "3.11.14",
+    "receipt": "handoff/close-camera-materialization.json",
+    "runtime_qualified": false,
+    "source_commit": "ba8da02cd4c2252b9bcc108b70520dd1a85724a7",
+    "status": "passed_offline_destination_check",
+    "workstation_output": "/home/ali/sgw-scene-design-20260923/evidence/SGW-CLOSE-HANDOFF-20260924"
+  },
+  "scene_registry": "artifacts/workshops/spatial_grounding_v1/scene_package_20260924/scene-registry.json",
+  "scripted_qualification_snapshot": {
+    "DIST_package_check": {
+      "confirmation": 24,
+      "development": 4,
+      "invalid_evidence": 0,
+      "left": 14,
+      "pilot": 1,
+      "right": 15,
+      "selected_layouts": 29,
+      "selection_order_resolved": true
+    },
+    "HEIGHT_package_check": {
+      "confirmation": 24,
+      "development": 4,
+      "invalid_evidence": 0,
+      "left": 14,
+      "pilot": 1,
+      "right": 15,
+      "selected_layouts": 29,
+      "selection_order_resolved": true
+    },
+    "LAT_package_check": {
+      "confirmation": 24,
+      "development": 4,
+      "invalid_evidence": 0,
+      "left": 14,
+      "pilot": 1,
+      "right": 15,
+      "selected_layouts": 29,
+      "selection_order_resolved": true
+    },
     "campaign_phase": "completed",
     "complete_families": [
       "LAT",
       "HEIGHT",
       "DIST"
     ],
-    "LAT_package_check": {
-      "selected_layouts": 29,
-      "left": 14,
-      "right": 15,
-      "pilot": 1,
-      "development": 4,
-      "confirmation": 24,
-      "selection_order_resolved": true,
-      "invalid_evidence": 0
+    "eligible_passed_layouts": {
+      "DIST": 29,
+      "HEIGHT": 29,
+      "LAT": 29
     },
-    "HEIGHT_package_check": {
-      "selected_layouts": 29,
-      "left": 14,
-      "right": 15,
-      "pilot": 1,
-      "development": 4,
-      "confirmation": 24,
-      "selection_order_resolved": true,
-      "invalid_evidence": 0
-    },
+    "flat_dist_prototypes": "Both orientations independently verified: six of six trials passed each.",
+    "learned_policy_episodes": 0,
+    "recorded_at_utc": "2026-09-24T12:29:07.058571+00:00",
     "selected_scripted_trials": 522,
+    "target_layouts_per_family": 29,
     "unused_registered_candidates": 205,
-    "DIST_package_check": {
-      "selected_layouts": 29,
-      "left": 14,
-      "right": 15,
-      "pilot": 1,
-      "development": 4,
-      "confirmation": 24,
-      "selection_order_resolved": true,
-      "invalid_evidence": 0
-    }
+    "valid_physical_rejections": 8
   },
-  "scene_registry": "artifacts/workshops/spatial_grounding_v1/scene_package_20260924/scene-registry.json",
-  "physical_completion_receipt": "handoff/physical-scene-completion.json",
-  "recording_index": "handoff/scene-records.json",
-  "scene_materialization": {
-    "status": "passed_offline_destination_check",
-    "source_commit": "b4ad6145423e98b3b5f7524b3294b2de27e2953c",
-    "receipt": "handoff/workstation-materialization.json",
-    "layout_count": 87,
-    "bound_planned_cells": 1044,
-    "python": "3.11.14",
-    "runtime_qualified": false,
-    "model_requests": 0,
-    "native_runs": 0,
-    "workstation_output": "/home/ali/sgw-scene-design-20260923/evidence/SGW-FINAL-HANDOFF-20260924",
-    "local_inspection_copy": "/Users/ali-adeeb/Downloads/astra_creative_director/sgw_scene_handoff_20260924"
-  }
+  "status": "PHYSICAL_SCENES_COMPLETE_RUNTIME_PENDING",
+  "study_id": "SGW-01"
 }

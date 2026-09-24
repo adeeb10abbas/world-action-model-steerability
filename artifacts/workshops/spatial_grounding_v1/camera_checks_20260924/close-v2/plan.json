@@ -1,0 +1,18 @@
+{
+  "created_utc": "2026-09-24T14:13:10.809347+00:00",
+  "layouts": {
+    "LAT-P01": "right",
+    "LAT-D01": "left",
+    "HEIGHT-P01": "right",
+    "HEIGHT-D01": "left",
+    "DIST-P01": "right",
+    "DIST-D01": "left"
+  },
+  "scope": "Camera checks only: two resets and three current-position holds per layout. No learned models. No physical goal qualification repeats.",
+  "script_sha256": "3c08bb9616ee3ec5d948377c32a33c3f3b327cae19893e3027de6ef9722744e5",
+  "camera_config_sha256": "33a02f7f75f10efe109550867dd5e00d149a832917c0d3a056e6e2a5d7c45d56",
+  "max_processes": 2,
+  "per_process_timeout_seconds": 300,
+  "model_requests": 0,
+  "study_cells_launched": 0
+}

@@ -1,0 +1,291 @@
+{
+  "status": "passed",
+  "source_sha256": {
+    "nano": "024a6d19048a6ac732ca0b23e741b5da6d38424223783b944bf539b2b6bd9a24",
+    "dreamzero": "96de16927536f2b48427a6a2dcc3111d03204e1832e50e159cadf67b3fe956ac"
+  },
+  "checks": [
+    {
+      "input": "DIST-D01",
+      "N3": {
+        "shape": [
+          540,
+          640,
+          3
+        ],
+        "wrist_rows": [
+          0,
+          360
+        ],
+        "left_rectangle_xyxy": [
+          0,
+          360,
+          320,
+          540
+        ],
+        "right_rectangle_xyxy": [
+          320,
+          360,
+          640,
+          540
+        ],
+        "composition_pixel_checks_passed": true
+      },
+      "D1": {
+        "shape_per_view": [
+          180,
+          320,
+          3
+        ],
+        "mapping": {
+          "over_shoulder_left_camera": "observation/exterior_image_0_left",
+          "over_shoulder_right_camera": "observation/exterior_image_1_left",
+          "wrist_cam": "observation/wrist_image_left"
+        },
+        "pixel_checks_passed": true
+      }
+    },
+    {
+      "input": "DIST-P01",
+      "N3": {
+        "shape": [
+          540,
+          640,
+          3
+        ],
+        "wrist_rows": [
+          0,
+          360
+        ],
+        "left_rectangle_xyxy": [
+          0,
+          360,
+          320,
+          540
+        ],
+        "right_rectangle_xyxy": [
+          320,
+          360,
+          640,
+          540
+        ],
+        "composition_pixel_checks_passed": true
+      },
+      "D1": {
+        "shape_per_view": [
+          180,
+          320,
+          3
+        ],
+        "mapping": {
+          "over_shoulder_left_camera": "observation/exterior_image_0_left",
+          "over_shoulder_right_camera": "observation/exterior_image_1_left",
+          "wrist_cam": "observation/wrist_image_left"
+        },
+        "pixel_checks_passed": true
+      }
+    },
+    {
+      "input": "HEIGHT-D01",
+      "N3": {
+        "shape": [
+          540,
+          640,
+          3
+        ],
+        "wrist_rows": [
+          0,
+          360
+        ],
+        "left_rectangle_xyxy": [
+          0,
+          360,
+          320,
+          540
+        ],
+        "right_rectangle_xyxy": [
+          320,
+          360,
+          640,
+          540
+        ],
+        "composition_pixel_checks_passed": true
+      },
+      "D1": {
+        "shape_per_view": [
+          180,
+          320,
+          3
+        ],
+        "mapping": {
+          "over_shoulder_left_camera": "observation/exterior_image_0_left",
+          "over_shoulder_right_camera": "observation/exterior_image_1_left",
+          "wrist_cam": "observation/wrist_image_left"
+        },
+        "pixel_checks_passed": true
+      }
+    },
+    {
+      "input": "HEIGHT-P01",
+      "N3": {
+        "shape": [
+          540,
+          640,
+          3
+        ],
+        "wrist_rows": [
+          0,
+          360
+        ],
+        "left_rectangle_xyxy": [
+          0,
+          360,
+          320,
+          540
+        ],
+        "right_rectangle_xyxy": [
+          320,
+          360,
+          640,
+          540
+        ],
+        "composition_pixel_checks_passed": true
+      },
+      "D1": {
+        "shape_per_view": [
+          180,
+          320,
+          3
+        ],
+        "mapping": {
+          "over_shoulder_left_camera": "observation/exterior_image_0_left",
+          "over_shoulder_right_camera": "observation/exterior_image_1_left",
+          "wrist_cam": "observation/wrist_image_left"
+        },
+        "pixel_checks_passed": true
+      }
+    },
+    {
+      "input": "LAT-D01",
+      "N3": {
+        "shape": [
+          540,
+          640,
+          3
+        ],
+        "wrist_rows": [
+          0,
+          360
+        ],
+        "left_rectangle_xyxy": [
+          0,
+          360,
+          320,
+          540
+        ],
+        "right_rectangle_xyxy": [
+          320,
+          360,
+          640,
+          540
+        ],
+        "composition_pixel_checks_passed": true
+      },
+      "D1": {
+        "shape_per_view": [
+          180,
+          320,
+          3
+        ],
+        "mapping": {
+          "over_shoulder_left_camera": "observation/exterior_image_0_left",
+          "over_shoulder_right_camera": "observation/exterior_image_1_left",
+          "wrist_cam": "observation/wrist_image_left"
+        },
+        "pixel_checks_passed": true
+      }
+    },
+    {
+      "input": "LAT-P01",
+      "N3": {
+        "shape": [
+          540,
+          640,
+          3
+        ],
+        "wrist_rows": [
+          0,
+          360
+        ],
+        "left_rectangle_xyxy": [
+          0,
+          360,
+          320,
+          540
+        ],
+        "right_rectangle_xyxy": [
+          320,
+          360,
+          640,
+          540
+        ],
+        "composition_pixel_checks_passed": true
+      },
+      "D1": {
+        "shape_per_view": [
+          180,
+          320,
+          3
+        ],
+        "mapping": {
+          "over_shoulder_left_camera": "observation/exterior_image_0_left",
+          "over_shoulder_right_camera": "observation/exterior_image_1_left",
+          "wrist_cam": "observation/wrist_image_left"
+        },
+        "pixel_checks_passed": true
+      }
+    },
+    {
+      "input": "synthetic-corner-check",
+      "N3": {
+        "shape": [
+          540,
+          640,
+          3
+        ],
+        "wrist_rows": [
+          0,
+          360
+        ],
+        "left_rectangle_xyxy": [
+          0,
+          360,
+          320,
+          540
+        ],
+        "right_rectangle_xyxy": [
+          320,
+          360,
+          640,
+          540
+        ],
+        "composition_pixel_checks_passed": true
+      },
+      "D1": {
+        "shape_per_view": [
+          180,
+          320,
+          3
+        ],
+        "mapping": {
+          "over_shoulder_left_camera": "observation/exterior_image_0_left",
+          "over_shoulder_right_camera": "observation/exterior_image_1_left",
+          "wrist_cam": "observation/wrist_image_left"
+        },
+        "pixel_checks_passed": true
+      }
+    }
+  ],
+  "model_requests": 0,
+  "scope": "Pinned image extraction, composition and service input resize only; later learned transforms, server execution and decoded futures not checked"
+}

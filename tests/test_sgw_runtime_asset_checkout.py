@@ -64,6 +64,7 @@ def test_jointpos_asset_exclusion_preserves_exact_manifest_validation(tmp_path, 
     }, "assets": []}))
     binding = tmp_path / "binding.json"
     binding.write_text(json.dumps({
+        "camera_configuration": jointpos.camera_configuration_identity(),
         "source_root": str(study), "source_commit": study_revision,
         "robolab_root": str(robolab), "robolab_commit": robolab_revision,
         "assets_manifest": str(manifest), "assets_manifest_sha256": jointpos._sha256(manifest),

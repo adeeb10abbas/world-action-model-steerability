@@ -18,6 +18,8 @@ def project(points,camera):
     p=np.atleast_2d(points)-camera['position_world_m']
     if 'quaternion_ros_wxyz' in camera:
         r=rotation(camera['quaternion_ros_wxyz'])
+    elif 'quaternion_opengl_wxyz' in camera:
+        r=rotation(camera['quaternion_opengl_wxyz']) @ np.diag([1,-1,-1])
     else:
         r=rotation(camera['quaternion_world_wxyz']) @ np.array([[0,0,1],[-1,0,0],[0,-1,0]])
     xyz=p@r
@@ -37,12 +39,21 @@ def geometry(objects,camera):
             'projected_bbox_size_px':(hi-lo).tolist()}
     return result
 
-def main(repo,root):
+def main(repo,root,config_path=None):
     registry_path=repo/'artifacts/workshops/spatial_grounding_v1/scene_package_20260924/scene-registry.json'
     registry=json.loads(registry_path.read_text())
     receipts={p.parent.name:json.loads(p.read_text()) for p in root.glob('*/receipt.json')}
     assert len(receipts)==6
     base=receipts['LAT-P01']['snapshots'][0]['camera']
+    config=json.loads(config_path.read_text()) if config_path else None
+    by_layout={v['layout_id']:v for v in config['configurations'].values()} if config else {}
+    original_ref=registry['layouts']['LAT-P01']['files']['capture']['path']
+    original_base=json.loads((repo/'artifacts/workshops/spatial_grounding_v1/workstation_receipts_20260924'/original_ref).read_text())['cameras']
+    def registered(layout,name):
+        if not config or name=='wrist_cam':return base[name]
+        v=by_layout[layout]['views'][name];f=v['focal_px']
+        return {'K':[[f,0,640],[0,f,360],[0,0,1]],'position_world_m':v['position_env_m'],
+                'quaternion_opengl_wxyz':v['quaternion_opengl_wxyz']}
     native=[]
     contact=Image.new('RGB',(1440,6*294),'white')
     for row,(layout,receipt) in enumerate(sorted(receipts.items())):
@@ -54,7 +65,11 @@ def main(repo,root):
             assert np.ptp([c['sensor_timestamp_s'] for c in cams])<1e-8
             for name,c in s['camera'].items():
                 assert c['observation_equals_sensor_rgb']
-                assert np.allclose(c['K'],base[name]['K'],atol=1e-6)
+                assert np.allclose(c['K'],registered(layout,name)['K'],atol=1e-4)
+                if config and name!='wrist_cam':
+                    expected=registered(layout,name)
+                    assert np.allclose(c['position_world_m'],expected['position_world_m'],atol=1e-6)
+                    assert np.allclose(rotation(c['quaternion_opengl_wxyz']),rotation(expected['quaternion_opengl_wxyz']),atol=1e-6)
         for a,b in zip(snapshots[:3],snapshots[1:4]):
             for name in CAMERAS:
                 assert b['camera'][name]['frame']-a['camera'][name]['frame']==1
@@ -104,12 +119,12 @@ def main(repo,root):
             objects[name]={'bbox_world_m':corners,'center_world_m':ob['geometric_center_env_local_xyz_m']}
         views={}
         for name,c in capture['cameras'].items():
-            assert np.allclose(c['position_world_m'],base[name]['position_world_m'],atol=1e-7)
-            assert np.allclose(rotation(c['quaternion_world_wxyz']),rotation(base[name]['quaternion_world_wxyz']),atol=1e-7)
+            assert np.allclose(c['position_world_m'],original_base[name]['position_world_m'],atol=1e-7)
+            assert np.allclose(rotation(c['quaternion_world_wxyz']),rotation(original_base[name]['quaternion_world_wxyz']),atol=1e-7)
             image=Image.open(path.parent/(name+'.png'))
             assert image.mode=='RGB' and image.size==(1280,720)
             array=np.asarray(image);assert np.ptp(array)
-            views[name]={'geometry':geometry(objects,{**c,'K':base[name]['K']}),'image_sha256':hashlib.sha256((path.parent/(name+'.png')).read_bytes()).hexdigest()}
+            views[name]={'geometry':geometry(objects,registered(layout,name) if config else {**c,'K':base[name]['K']}),'image_sha256':hashlib.sha256((path.parent/(name+'.png')).read_bytes()).hexdigest()}
         archived.append({'layout_id':layout,'side':item['side'],'views':views,'capture_sha256':ref['sha256']})
     warnings=[]
     for layout in archived:
@@ -118,9 +133,13 @@ def main(repo,root):
                 if not p['bbox_inside_image']:
                     warnings.append({'layout':layout['layout_id'],'camera':name,'object':obj,'center_inside':p['center_inside_image']})
     report={'schema':'sgw-camera-alignment-check-v1','status':'mapping_and_sync_passed_with_wrist_visibility_limits',
-        'registry_sha256':hashlib.sha256(registry_path.read_bytes()).hexdigest(),'native_layouts':native,
+        'registry_sha256':hashlib.sha256(registry_path.read_bytes()).hexdigest(),
+        'projection_camera_revision':config['revision'] if config else 'original',
+        'retained_images_are_original':True,'native_layouts':native,
         'retained_layouts':archived,'retained_layout_count':len(archived),'retained_image_count':len(archived)*3,
-        'intrinsics':{name:base[name]['K'] for name in CAMERAS},'projection_boundary_warnings':warnings,
+        'example_LAT_P01_intrinsics':{name:base[name]['K'] for name in CAMERAS},
+        'intrinsics_scope':'Example only; close exterior focal lengths vary by registered layout. Native receipts and close_cameras.json contain each layout.',
+        'projection_boundary_warnings':warnings,
         'model_requests':0,'learned_policy_episodes':0,'full_model_runtime_qualified':False,
         'limitations':['Geometric field of view does not prove absence of occlusion.',
                        'Native checks cover six selected layouts, not 87 fresh runs.',
@@ -132,4 +151,4 @@ def main(repo,root):
 
 if __name__=='__main__':
     import sys
-    main(Path(sys.argv[1]),Path(sys.argv[2]))
+    main(Path(sys.argv[1]),Path(sys.argv[2]),Path(sys.argv[3]) if len(sys.argv)>3 else None)

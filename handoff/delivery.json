@@ -1,4 +1,13 @@
 {
+  "camera_checks": {
+    "documentation": "docs/CAMERA_ALIGNMENT.md",
+    "geometry_layouts": 87,
+    "native_checked_layouts": 6,
+    "receipt": "handoff/camera-alignment.json",
+    "revision": "close-oblique-v2-20260924",
+    "sha256": "33a02f7f75f10efe109550867dd5e00d149a832917c0d3a056e6e2a5d7c45d56",
+    "wrist_changed": false
+  },
   "family_layouts": {
     "DIST": 29,
     "HEIGHT": 29,
@@ -8,6 +17,14 @@
     "artifacts/workshops/spatial_grounding_v1/scene_package_20260924/scene-registry.json": {
       "bytes": 499725,
       "sha256": "20733d7f74a42c8aa6f67b66834c7c4296567c77d59cfb19e92367c706e3fe75"
+    },
+    "handoff/camera-alignment.json": {
+      "bytes": 14725,
+      "sha256": "5e71e7cb11a9b1c68998f653236a2a2a0b81b7c619a20c445de1a0c199a4c21b"
+    },
+    "handoff/close-camera-materialization.json": {
+      "bytes": 4419,
+      "sha256": "5e66ca105ceccc45355ce312cbf21c06914956ca6cdf0ef8b481df3ce06333fa"
     },
     "handoff/physical-scene-completion.json": {
       "bytes": 1949,
@@ -30,22 +47,26 @@
   "learned_policy_launch_authorized": false,
   "offline_materialization": {
     "bound_planned_cells": 1044,
+    "camera_configuration": {
+      "revision": "close-oblique-v2-20260924",
+      "sha256": "33a02f7f75f10efe109550867dd5e00d149a832917c0d3a056e6e2a5d7c45d56"
+    },
     "layout_count": 87,
-    "local_inspection_copy": "/Users/ali-adeeb/Downloads/astra_creative_director/sgw_scene_handoff_20260924",
+    "local_receipt_copy": "/Users/ali-adeeb/Downloads/astra_creative_director/sgw_close_camera_v2_20260924/materialization.json",
     "model_requests": 0,
     "native_runs": 0,
     "python": "3.11.14",
-    "receipt": "handoff/workstation-materialization.json",
+    "receipt": "handoff/close-camera-materialization.json",
     "runtime_qualified": false,
-    "source_commit": "b4ad6145423e98b3b5f7524b3294b2de27e2953c",
+    "source_commit": "ba8da02cd4c2252b9bcc108b70520dd1a85724a7",
     "status": "passed_offline_destination_check",
-    "workstation_output": "/home/ali/sgw-scene-design-20260923/evidence/SGW-FINAL-HANDOFF-20260924"
+    "workstation_output": "/home/ali/sgw-scene-design-20260923/evidence/SGW-CLOSE-HANDOFF-20260924"
   },
   "physical_scene_package_complete": true,
-  "recorded_at_utc": "2026-09-24T12:41:23.027428+00:00",
+  "recorded_at_utc": "2026-09-24T14:28:20.461265+00:00",
   "remaining_cluster_work": [
     "destination runtime/assets and model interface qualification",
-    "actual policy input and prediction time/camera mapping",
+    "actual server/model input transformations and decoded prediction time/camera mapping",
     "separately authorized pilot, development and confirmation execution"
   ],
   "retained_campaign_rejections": 8,
