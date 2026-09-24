@@ -263,9 +263,18 @@ prediction scoring remains disallowed, and the original Nano cleanup failure
 stays preserved beside its external witness. No such receipt qualifies
 generated future pixels.
 
-The first real study attempt on an A100-40GB is its memory-fit observation;
-there is no extra qualification campaign. Preserve OOM as an infrastructure
-failure and use only explicitly approved A100-80GB fallback allocations.
+The original A100-40GB plan has been superseded by the prospective
+all-A40 policy amendment in
+`handoff/cluster-execution-20260924/a40-policy-amendment.json`.
+The first real A40 request per model is its compatibility observation.
+Finite supervisors retain cgroup memory limits, OOM events and a 0.2-second
+sampled memory peak in heartbeat/exit receipts. A missing kernel `memory.peak`
+is explicitly null; the sampled peak is not represented as a kernel high-water mark.
+IPv4-only namespaces may lack `/proc/net/tcp6`; socket ownership still requires
+the readable IPv4 table and an inode owned by the launched process group.
+
+There is no extra qualification campaign. Preserve OOM as an infrastructure
+failure; the current A40 amendment forbids moving a cohort back to A100.
 Initial bare-Pod simulators use GPU0 with multi-GPU rendering disabled.
 Do not assume a CUDA-visible UUID alone isolates Vulkan GPU1; any separately
 authorized second-GPU placement verification follows genuine initial study

@@ -23,6 +23,19 @@ from .study_lane import read_reference, reference
 STOP = False
 
 
+def sample_memory(previous_peak: int = 0, root: Path = Path("/sys/fs/cgroup")) -> dict[str, Any]:
+    current = int((root / "memory.current").read_text().strip())
+    maximum = (root / "memory.max").read_text().strip()
+    events = dict(line.split() for line in (root / "memory.events").read_text().splitlines())
+    peak_path = root / "memory.peak"
+    return {
+        "current_bytes": current, "limit_bytes": None if maximum == "max" else int(maximum),
+        "sampled_peak_bytes": max(previous_peak, current), "sampling_interval_seconds": 0.2,
+        "kernel_peak_bytes": int(peak_path.read_text().strip()) if peak_path.exists() else None,
+        "events": {key: int(value) for key, value in events.items()},
+    }
+
+
 def process_info(pid: int, proc: Path = Path("/proc")) -> dict[str, Any]:
     from .worker import _supervisor_process
 
@@ -225,11 +238,14 @@ def run_owned(args, plan) -> int:
                 "process_start_identity": process_info(child.pid)["process_start_identity"],
             })
             last_heartbeat = 0.0
+            memory = sample_memory()
             while child.poll() is None and not STOP and datetime.now(timezone.utc) < deadline:
+                memory = sample_memory(memory["sampled_peak_bytes"])
                 if time.monotonic() - last_heartbeat >= 60:
                     atomic_json(args.run_root / "heartbeat.json", {
                         "at_utc": utc_now(), "status": "supervising", "child_pid": child.pid,
                         "deadline_utc": receipt["deadline_utc"],
+                        "host_memory": memory,
                     })
                     last_heartbeat = time.monotonic()
                 time.sleep(0.2)
@@ -243,6 +259,7 @@ def run_owned(args, plan) -> int:
                 "at_utc": utc_now(), "returncode": code, "child_returncode": child.returncode,
                 "interrupted": STOP, "owned_descendants_remaining": descendants(os.getpid()),
                 "status": "complete" if code == 0 else "failed_preserve_no_automatic_retry",
+                "host_memory": sample_memory(memory["sampled_peak_bytes"]),
             })
             return code
     except BaseException as exc:

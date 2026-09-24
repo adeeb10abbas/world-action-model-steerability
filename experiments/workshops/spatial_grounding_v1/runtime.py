@@ -208,9 +208,15 @@ def _assert_port_free(host: str, port: int) -> None:
 def _listening_socket_inodes(port: int) -> set[str]:
     inodes: set[str] = set()
     for proc_net in (Path("/proc/net/tcp"), Path("/proc/net/tcp6")):
-        if not proc_net.is_file():
-            raise AdapterError("Linux socket ownership cannot be verified")
-        for line in proc_net.read_text(encoding="utf-8").splitlines()[1:]:
+        try:
+            lines = proc_net.read_text(encoding="utf-8").splitlines()[1:]
+        except FileNotFoundError as exc:
+            if proc_net.name == "tcp6":
+                continue  # IPv6-disabled network namespaces have no tcp6 table.
+            raise AdapterError("Linux socket ownership cannot be verified: missing IPv4 table") from exc
+        except OSError as exc:
+            raise AdapterError(f"Linux socket ownership cannot be verified: unreadable {proc_net.name}") from exc
+        for line in lines:
             fields = line.split()
             if len(fields) >= 10 and fields[1].rsplit(":", 1)[-1] == f"{port:04X}" and fields[3] == "0A":
                 inodes.add(fields[9])

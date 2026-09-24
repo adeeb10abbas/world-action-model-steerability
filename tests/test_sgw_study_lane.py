@@ -9,6 +9,23 @@ from experiments.workshops.spatial_grounding_v1 import study_supervisor as super
 from experiments.workshops.spatial_grounding_v1.contract import ContractError
 
 
+def test_supervisor_distinguishes_sampled_and_kernel_memory_peaks(tmp_path):
+    (tmp_path / "memory.current").write_text("2048\n")
+    (tmp_path / "memory.max").write_text("34359738368\n")
+    (tmp_path / "memory.events").write_text("oom 0\noom_kill 0\n")
+    first = supervisor.sample_memory(root=tmp_path)
+    assert first["sampled_peak_bytes"] == 2048
+    assert first["kernel_peak_bytes"] is None
+    assert first["limit_bytes"] == 32 * 1024**3
+    (tmp_path / "memory.current").write_text("1024\n")
+    (tmp_path / "memory.peak").write_text("4096\n")
+    (tmp_path / "memory.events").write_text("oom 1\noom_kill 1\n")
+    final = supervisor.sample_memory(first["sampled_peak_bytes"], tmp_path)
+    assert final["sampled_peak_bytes"] == 2048
+    assert final["kernel_peak_bytes"] == 4096
+    assert final["events"]["oom_kill"] == 1
+
+
 def test_dispatch_claim_is_exclusive_and_partition_scoped(tmp_path):
     with lane.dispatch_claim(tmp_path, "N3-LAT-P") as first:
         with lane.dispatch_claim(tmp_path, "N3-LAT-P") as duplicate:

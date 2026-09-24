@@ -51,6 +51,23 @@ These bare Pods have no Job UID: bind actual Pod and finite supervisor
 identities rather than fabricate Job owners. At amendment time there were
 zero study releases, requests and episodes.
 
+The first three A40 study-phase startups created releases but consumed **zero
+model requests, actions or episodes**. All stopped during model construction
+because the socket guard incorrectly required `/proc/net/tcp6` in these
+IPv4-only namespaces. Their [original statuses, terminal supervisors and logs](a40-ipv4-startup-preservation.json)
+remain unchanged under `study/`. The guard now permits only a missing IPv6
+table, still requiring readable IPv4 evidence and process-group socket-inode
+ownership. All three old policy supervisors terminated with no owned descendants.
+Their idle simulator lanes received identity-bound stop instructions.
+The authorized relaunch uses one fixed source and a fresh `study-a40-v2/`
+cohort, not rewritten release hashes or reused attempts.
+
+The fresh capacity check also found live ablation queues on A40e/f
+(PIDs 39208 and 36943); both remain excluded. Only the 11 single-GPU Pods
+g..q were clean. The approved useful fleet is five pairs plus one spare:
+initial N3 i-to-m, E3 j-to-g, and F3 k-to-h, then provisional N3 l-to-n and
+F3 o-to-p after each model's first request succeeds; q is unclaimed.
+
 The screenshot's A40 names were abbreviated: actual names end in
 `-a40-2gpu`. Read-only telemetry found live `lerobot-train` in A40a/b/c/d
 (PIDs 1604, 965, 979, 979 respectively), with 11.2-11.4 GiB occupied and

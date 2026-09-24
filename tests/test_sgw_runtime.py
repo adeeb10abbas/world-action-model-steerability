@@ -16,6 +16,42 @@ from experiments.workshops.spatial_grounding_v1 import runtime
 from experiments.workshops.spatial_grounding_v1.adapters import AdapterError
 
 
+@pytest.mark.parametrize("ipv6", [False, True])
+def test_listener_inodes_allow_ipv4_only_namespaces(tmp_path, monkeypatch, ipv6):
+    (tmp_path / "tcp").write_text(
+        "header\n0: 0100007F:1FBF 00000000:0000 0A 0:0 00:0 0 1000 0 101\n"
+        "1: 0100007F:1FBF 00000000:0000 01 0:0 00:0 0 1000 0 102\n"
+        "2: 0100007F:1FC0 00000000:0000 0A 0:0 00:0 0 1000 0 103\n"
+    )
+    if ipv6:
+        (tmp_path / "tcp6").write_text(
+            "header\n0: 00000000000000000000000001000000:1FBF 0:0 0A 0:0 00:0 0 1000 0 201\n"
+        )
+    monkeypatch.setattr(runtime, "Path", lambda value: tmp_path / Path(value).name)
+    assert runtime._listening_socket_inodes(8127) == ({"101", "201"} if ipv6 else {"101"})
+
+
+@pytest.mark.parametrize("ipv6", [False, True])
+def test_listener_inodes_still_require_ipv4_evidence(tmp_path, monkeypatch, ipv6):
+    if ipv6:
+        (tmp_path / "tcp6").write_text("header\n")
+    monkeypatch.setattr(runtime, "Path", lambda value: tmp_path / Path(value).name)
+    with pytest.raises(AdapterError, match="missing IPv4 table"):
+        runtime._listening_socket_inodes(8127)
+
+
+@pytest.mark.parametrize("denied", ["tcp", "tcp6"])
+def test_listener_inodes_reject_unreadable_tables(monkeypatch, denied):
+    def read_table(path, **kwargs):
+        if path.name == denied:
+            raise PermissionError("denied")
+        return "header\n"
+
+    monkeypatch.setattr(Path, "read_text", read_table)
+    with pytest.raises(AdapterError, match=f"unreadable {denied}"):
+        runtime._listening_socket_inodes(8127)
+
+
 class _ResettableClient:
     def __init__(self) -> None:
         self.calls = 0
