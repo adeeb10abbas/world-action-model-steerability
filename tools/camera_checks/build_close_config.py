@@ -21,7 +21,7 @@ def build(repo):
         design=json.loads((repo/item['files']['design']['path']).read_text())
         pts=[];cube=None
         for name,ob in cap['objects'].items():
-            if name in ['table','banana']:continue
+            if name == 'table':continue
             corners=np.array(list(itertools.product(*zip(ob['bbox_env_local_min_xyz_m'],ob['bbox_env_local_max_xyz_m']))))
             pts.extend(corners)
             if name=='rubiks_cube':cube=corners;origin=np.array(ob['geometric_center_env_local_xyz_m'])
@@ -31,7 +31,7 @@ def build(repo):
         pts=np.array(pts);focus=(pts.min(0)+pts.max(0))/2
         views={};limit=[]
         for name,sign in [('over_shoulder_left_camera',1),('over_shoulder_right_camera',-1)]:
-            pos=focus+[.25,sign*.18,.50]
+            pos=focus+[.20,sign*.06,.65]
             forward=focus-pos;forward/=np.linalg.norm(forward)
             right=np.cross(forward,[0,0,1]);right/=np.linalg.norm(right)
             down=np.cross(forward,right);ros=np.stack([right,down,forward],axis=1)
@@ -45,9 +45,9 @@ def build(repo):
                                          resolution_hw=[720,1280])
         result[item['candidate_id']]={'layout_id':key,'family':item['family'],'side':item['side'],'views':views,
             'framing_bounds_min_m':pts.min(0).tolist(),'framing_bounds_max_m':pts.max(0).tolist()}
-    return {'schema':'sgw-close-cameras-v1','revision':'close-oblique-v2-20260924',
+    return {'schema':'sgw-close-cameras-v1','revision':'close-oblique-v3-full-objects-20260924',
         'basis_registry_sha256':hashlib.sha256(regpath.read_bytes()).hexdigest(),
-        'method':'Layout-centered symmetric elevated oblique views; include scored objects, supports, both cube destinations, and 0.12 m lift envelope. Fit shared focal length for both exterior views with >=36 px boundary margin. Wrist unchanged.',
+        'method':'Layout-centered symmetric elevated oblique views; include every tabletop object (including the banana), supports, both cube destinations, and 0.12 m lift envelope. Fit shared focal length for both exterior views with >=36 px boundary margin. Wrist unchanged.',
         'requested_by_user':'Move scene cameras closer, from the side or top, before learned-policy study.',
         'model_requests_used_for_design':0,'configurations':result}
 

@@ -114,7 +114,7 @@ def main(repo,root,config_path=None):
         payload=path.read_bytes(); assert hashlib.sha256(payload).hexdigest()==ref['sha256']
         capture=json.loads(payload); objects={}
         for name,ob in capture['objects'].items():
-            if name in ('table','banana'):continue
+            if name == 'table':continue
             corners=list(itertools.product(*zip(ob['bbox_env_local_min_xyz_m'],ob['bbox_env_local_max_xyz_m'])))
             objects[name]={'bbox_world_m':corners,'center_world_m':ob['geometric_center_env_local_xyz_m']}
         views={}

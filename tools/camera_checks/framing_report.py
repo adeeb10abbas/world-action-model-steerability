@@ -13,7 +13,7 @@ def main(repo,output):
         capture=json.loads((repo/'artifacts/workshops/spatial_grounding_v1/workstation_receipts_20260924'/item['files']['capture']['path']).read_text())
         design=json.loads((repo/item['files']['design']['path']).read_text())
         objs={name:np.array(list(itertools.product(*zip(v['bbox_env_local_min_xyz_m'],v['bbox_env_local_max_xyz_m']))))
-              for name,v in capture['objects'].items() if name not in ('table','banana')}
+              for name,v in capture['objects'].items() if name != 'table'}
         cube=objs['rubiks_cube'];origin=capture['objects']['rubiks_cube']['geometric_center_env_local_xyz_m']
         for goal,target in {'initial':origin,**design['targets']}.items():
             for lift in [0,.12]:objs[f'cube_at_{goal}_lift_{lift}']=cube-origin+target+[0,0,lift]
@@ -40,7 +40,7 @@ def main(repo,output):
         summary[family]={'layouts':29,'cube_width_px_range':[min(v['cube_bbox_at_320x180_px'][0] for v in vals),max(v['cube_bbox_at_320x180_px'][0] for v in vals)],
                          'width_gain_range':[min(v['width_gain'] for v in vals),max(v['width_gain'] for v in vals)],
                          'minimum_margin_native_px':min(v['minimum_margin_native_px'] for v in vals)}
-    report={'status':'passed','layouts':87,'exterior_views':174,'scope':'Project measured initial object/support bounds and both scripted cube destinations, including 0.12 m lift; this is geometric coverage, not occlusion or model-performance evidence.',
+    report={'status':'passed','layouts':87,'exterior_views':174,'scope':'Project every measured tabletop object (including banana), support and both scripted cube destinations, including 0.12 m lift; this is geometric coverage, not occlusion or model-performance evidence.',
             'config_sha256':hashlib.sha256(CONFIG_PATH.read_bytes()).hexdigest(),'summary':summary,'details':results,'model_requests':0}
     output.write_text(json.dumps(report,indent=2)+'\n');print(json.dumps(summary))
 

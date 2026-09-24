@@ -1,4 +1,5 @@
 import json
+import itertools
 from pathlib import Path
 from types import SimpleNamespace
 import numpy as np
@@ -7,7 +8,24 @@ from experiments.workshops.spatial_grounding_v1.adapters import AdapterError
 from experiments.workshops.spatial_grounding_v1.camera_configuration import (
     CONFIG_PATH, camera_views, configure_study_cameras,
 )
-from tools.camera_checks.analyze import rotation
+from tools.camera_checks.analyze import rotation, project
+
+
+def test_every_tabletop_object_including_banana_fits_both_exterior_views():
+    root=Path(__file__).resolve().parents[1]
+    registry=json.loads((root/'artifacts/workshops/spatial_grounding_v1/scene_package_20260924/scene-registry.json').read_text())
+    for layout,item in registry['layouts'].items():
+        capture=json.loads((root/'artifacts/workshops/spatial_grounding_v1/workstation_receipts_20260924'/item['files']['capture']['path']).read_text())
+        assert 'banana' in capture['objects']
+        for name,view in camera_views(item['candidate_id']).items():
+            f=view['focal_px']
+            camera={'K':[[f,0,640],[0,f,360],[0,0,1]],'position_world_m':view['position_env_m'],
+                    'quaternion_opengl_wxyz':view['quaternion_opengl_wxyz']}
+            for obj,bounds in capture['objects'].items():
+                if obj=='table':continue
+                points=np.array(list(itertools.product(*zip(bounds['bbox_env_local_min_xyz_m'],bounds['bbox_env_local_max_xyz_m']))))
+                uv,z=project(points,camera)
+                assert (z>0).all() and (uv>=36-1e-6).all() and (uv<=[1244+1e-6,684+1e-6]).all(),(layout,name,obj)
 
 
 def test_every_selected_layout_has_fixed_symmetric_views_and_valid_look_direction():

@@ -112,7 +112,7 @@ def main():
             origin = to_np(env.scene.env_origins[0])
             objects = {}
             for name in candidate.metadata['native_scene']['object_names']:
-                if name in ('table', 'banana'):
+                if name == 'table':
                     continue
                 corners, center = world.get_bbox(name, env_id=0)
                 objects[name] = {'center_world_m': (to_np(center)+origin).tolist(),
