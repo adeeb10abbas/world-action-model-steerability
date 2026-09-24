@@ -1,0 +1,49 @@
+[
+  {
+    "pod": "sgw01-ali-live-f3-simulator-20260924b-f7dwc",
+    "uid": "e1d866d6-7b2e-48c4-8b35-c58bb801f10e",
+    "owner": [
+      {
+        "apiVersion": "batch/v1",
+        "blockOwnerDeletion": true,
+        "controller": true,
+        "kind": "Job",
+        "name": "sgw01-ali-live-f3-simulator-20260924b",
+        "uid": "f5950f7f-a541-46b9-aaf4-c6039a2aaacd"
+      }
+    ],
+    "node": "dcwipphhgc190.edc.nam.gm.com",
+    "phase": "Failed",
+    "containers": [
+      {
+        "name": "simulator",
+        "output_env": {
+          "SOURCE": "/data/users/ali/sgw-01/current-20260924a/source-a68a0bc",
+          "OUT": "/data/users/ali/sgw-01/current-20260924a/closed-loop-F3-b/simulator"
+        }
+      }
+    ]
+  },
+  {
+    "pod": "sgw01-ali-paper-engineering-20260923ct-2-ntzmh",
+    "uid": "dcd7ec79-1968-4409-8ccf-23e70e60a509",
+    "owner": [
+      {
+        "apiVersion": "batch/v1",
+        "blockOwnerDeletion": true,
+        "controller": true,
+        "kind": "Job",
+        "name": "sgw01-ali-paper-engineering-20260923ct-2",
+        "uid": "960fac8a-cdcd-4376-9e6e-80783044505b"
+      }
+    ],
+    "node": "dcwipphhgc194.edc.nam.gm.com",
+    "phase": "Failed",
+    "containers": [
+      {
+        "name": "native-engineering",
+        "output_env": {}
+      }
+    ]
+  }
+]

@@ -1,0 +1,228 @@
+{
+  "apiVersion": "batch/v1",
+  "kind": "Job",
+  "metadata": {
+    "name": "sgw01-ali-live-f3-policy-20260924b",
+    "namespace": "211247-prod",
+    "labels": {
+      "app.kubernetes.io/name": "sgw-01",
+      "owner": "ali",
+      "coordinator": "5ed7dc81"
+    }
+  },
+  "spec": {
+    "activeDeadlineSeconds": 3600,
+    "backoffLimit": 0,
+    "completions": 1,
+    "parallelism": 1,
+    "template": {
+      "metadata": {
+        "labels": {
+          "app.kubernetes.io/name": "sgw-01",
+          "owner": "ali",
+          "coordinator": "5ed7dc81"
+        }
+      },
+      "spec": {
+        "automountServiceAccountToken": false,
+        "nodeName": "dcwipphai0063.edc.nam.gm.com",
+        "schedulerName": "sgw01-ali-live-f3-policy-20260924b",
+        "priority": 0,
+        "restartPolicy": "Never",
+        "terminationGracePeriodSeconds": 180,
+        "securityContext": {
+          "fsGroup": 2518800,
+          "supplementalGroups": [
+            2518800
+          ]
+        },
+        "imagePullSecrets": [
+          {
+            "name": "artifactory-ci-pull-secret"
+          }
+        ],
+        "containers": [
+          {
+            "name": "policy",
+            "image": "artifactory-ci.gm.com/docker-approved/devcontainers/base@sha256:03f5ce7d090fbd378070a8216d0aedfc6e473c52da99b40b0cf53918612a297c",
+            "imagePullPolicy": "IfNotPresent",
+            "command": [
+              "/bin/bash",
+              "-ec"
+            ],
+            "args": [
+              "set -euo pipefail\nmkdir \"$OUT\"\nexec > >(tee \"$OUT/job.log\") 2>&1\ncd \"$SOURCE\"\ntest \"$(git rev-parse HEAD)\" = a68a0bc4aef413f400dede291cbd83f139b996bf\ntest -z \"$(git status --porcelain)\"\nCUDA_VISIBLE_DEVICES=$(\"$PY\" -m experiments.workshops.spatial_grounding_v1.gpu_idle_probe --expected-count 1 --expected-name \"$EXPECTED_GPU_NAME\" --output \"$OUT/gpu-idle.json\")\nexport CUDA_VISIBLE_DEVICES\ntest \"$CUDA_VISIBLE_DEVICES\" != GPU-60b3065c-79cb-61e6-b92a-32d0ae3750f3\nmkdir -p /data/users/ali/sgw-01/locks /data/users/ali/sgw-01/current-20260924a/locks\nexec 9>\"/data/users/ali/sgw-01/locks/gpu-$CUDA_VISIBLE_DEVICES.lock\"\nflock --nonblock 9\nexec 8>/data/users/ali/sgw-01/current-20260924a/locks/F3.lock\nflock --nonblock 8\nfor attempt in $(seq 1 180); do\n  if test -f \"${IDENTITY%.json}.sha256\"; then break; fi\n  sleep 1\ndone\ntest -f \"${IDENTITY%.json}.sha256\"\nIDENTITY_SHA256=$(cat \"${IDENTITY%.json}.sha256\")\nbash tools/cluster_policy_bootstrap.sh \"$MODEL\" \"$PY\" -m experiments.workshops.spatial_grounding_v1.runtime_closed_loop_check --registration \"$REGISTRATION\" --registration-sha256 \"$REGISTRATION_SHA256\" --identity \"$IDENTITY\" --identity-sha256 \"$IDENTITY_SHA256\" --output \"$OUT/evidence\"\nsync\n"
+            ],
+            "env": [
+              {
+                "name": "SOURCE",
+                "value": "/data/users/ali/sgw-01/current-20260924a/source-a68a0bc"
+              },
+              {
+                "name": "OUT",
+                "value": "/data/users/ali/sgw-01/current-20260924a/closed-loop-F3-b/policy"
+              },
+              {
+                "name": "PY",
+                "value": "/data/users/ali/sgw-01/current-20260924a/envs/flux-e2dd1d8/bin/python"
+              },
+              {
+                "name": "PYTHONPATH",
+                "value": "/data/users/ali/sgw-01/current-20260924a/source-a68a0bc:/data/users/ali/sgw-01/current-20260924a/external/flux-action-e2dd1d8"
+              },
+              {
+                "name": "SGW01_F3_SOURCE_ROOT",
+                "value": "/data/users/ali/sgw-01/current-20260924a/external/flux-action-e2dd1d8"
+              },
+              {
+                "name": "SGW01_F3_CHECKPOINT_PATH",
+                "value": "/data/users/ali/sgw-01/current-20260924a/checkpoints/flux-3-action-droid-3d0887b"
+              },
+              {
+                "name": "SGW01_F3_BASE_PATH",
+                "value": "/data/users/ali/sgw-01/current-20260924a/checkpoints/flux-3-action-base-62878e2"
+              },
+              {
+                "name": "HF_HOME",
+                "value": "/data/users/ali/vla_wam/cache/huggingface-cosmos"
+              },
+              {
+                "name": "HF_HUB_OFFLINE",
+                "value": "1"
+              },
+              {
+                "name": "HOME",
+                "value": "/home/ali"
+              },
+              {
+                "name": "USER",
+                "value": "ali"
+              },
+              {
+                "name": "LOGNAME",
+                "value": "ali"
+              },
+              {
+                "name": "PYTHONDONTWRITEBYTECODE",
+                "value": "1"
+              },
+              {
+                "name": "PYTHONUNBUFFERED",
+                "value": "1"
+              },
+              {
+                "name": "NVIDIA_DRIVER_CAPABILITIES",
+                "value": "compute,utility"
+              },
+              {
+                "name": "MODEL",
+                "value": "F3"
+              },
+              {
+                "name": "REGISTRATION",
+                "value": "/data/users/ali/sgw-01/current-20260924a/closed-loop-F3-b/registration.json"
+              },
+              {
+                "name": "REGISTRATION_SHA256",
+                "value": "3e4c20af72d9a10574b316fda20f0fa73ef664d6164d661d34e539a75ca33f21"
+              },
+              {
+                "name": "IDENTITY",
+                "value": "/data/users/ali/sgw-01/current-20260924a/closed-loop-F3-b/identity.json"
+              },
+              {
+                "name": "EXPECTED_GPU_NAME",
+                "value": "NVIDIA A100-SXM4-80GB"
+              },
+              {
+                "name": "JOB_UID",
+                "valueFrom": {
+                  "fieldRef": {
+                    "fieldPath": "metadata.labels['batch.kubernetes.io/controller-uid']"
+                  }
+                }
+              },
+              {
+                "name": "POD_UID",
+                "valueFrom": {
+                  "fieldRef": {
+                    "fieldPath": "metadata.uid"
+                  }
+                }
+              }
+            ],
+            "resources": {
+              "requests": {
+                "cpu": "8",
+                "memory": "64Gi",
+                "nvidia.com/gpu": "1"
+              },
+              "limits": {
+                "cpu": "16",
+                "memory": "128Gi",
+                "nvidia.com/gpu": "1"
+              }
+            },
+            "securityContext": {
+              "allowPrivilegeEscalation": false,
+              "runAsGroup": 2518800,
+              "runAsNonRoot": true,
+              "runAsUser": 816149040
+            },
+            "volumeMounts": [
+              {
+                "mountPath": "/data",
+                "name": "workspace"
+              },
+              {
+                "mountPath": "/dev/shm",
+                "name": "dshm"
+              },
+              {
+                "mountPath": "/home/ali",
+                "name": "home"
+              },
+              {
+                "mountPath": "/etc/passwd",
+                "name": "userdb",
+                "subPath": "passwd",
+                "readOnly": true
+              },
+              {
+                "mountPath": "/etc/group",
+                "name": "userdb",
+                "subPath": "group",
+                "readOnly": true
+              }
+            ]
+          }
+        ],
+        "volumes": [
+          {
+            "name": "workspace",
+            "persistentVolumeClaim": {
+              "claimName": "211247-prod-pvc"
+            }
+          },
+          {
+            "name": "dshm",
+            "emptyDir": {
+              "medium": "Memory",
+              "sizeLimit": "16Gi"
+            }
+          },
+          {
+            "name": "home",
+            "emptyDir": {}
+          },
+          {
+            "name": "userdb",
+            "configMap": {
+              "name": "211247-ali-b200-1gpu-userdb"
+            }
+          }
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,2379 @@
+{
+  "observed_at_utc": "2026-09-24T21:12:03.162908+00:00",
+  "scope": "only_ali_owned_sgw_pods_on_four_prior_candidates_not_global_idle",
+  "pods": [
+    {
+      "pod": "sgw01-ali-a40-preflight-20260922e-xbz9l",
+      "uid": "9ef0a2b0-79b7-49bc-b897-9a524c8ee5f0",
+      "node": "dcwipphhgc191.edc.nam.gm.com",
+      "owners": [
+        {
+          "apiVersion": "batch/v1",
+          "blockOwnerDeletion": true,
+          "controller": true,
+          "kind": "Job",
+          "name": "sgw01-ali-a40-preflight-20260922e",
+          "uid": "bef32a52-e324-496d-96d3-a63f3a178cb3"
+        }
+      ],
+      "phase": "Succeeded",
+      "containers": [
+        {
+          "name": "preflight",
+          "resources": {
+            "limits": {
+              "cpu": "32",
+              "memory": "128Gi",
+              "nvidia.com/gpu": "1"
+            },
+            "requests": {
+              "cpu": "16",
+              "memory": "64Gi",
+              "nvidia.com/gpu": "1"
+            }
+          },
+          "output_env": {}
+        }
+      ]
+    },
+    {
+      "pod": "sgw01-ali-capture-sequencer-20260923as-pt8vs",
+      "uid": "7d86b298-4409-4e4e-8fdb-57479988b6c1",
+      "node": "dcwipphhgc191.edc.nam.gm.com",
+      "owners": [
+        {
+          "apiVersion": "batch/v1",
+          "blockOwnerDeletion": true,
+          "controller": true,
+          "kind": "Job",
+          "name": "sgw01-ali-capture-sequencer-20260923as",
+          "uid": "26610acb-0428-48b9-b3ab-0a75e13f51f2"
+        }
+      ],
+      "phase": "Succeeded",
+      "containers": [
+        {
+          "name": "sequence",
+          "resources": {
+            "limits": {
+              "cpu": "1",
+              "memory": "512Mi"
+            },
+            "requests": {
+              "cpu": "1",
+              "memory": "256Mi"
+            }
+          },
+          "output_env": {}
+        }
+      ]
+    },
+    {
+      "pod": "sgw01-ali-current-e3-check-20260924a-5pcg4",
+      "uid": "32434c56-2486-4547-a12d-8b42b3768be4",
+      "node": "dcwipphai0061.edc.nam.gm.com",
+      "owners": [
+        {
+          "apiVersion": "batch/v1",
+          "blockOwnerDeletion": true,
+          "controller": true,
+          "kind": "Job",
+          "name": "sgw01-ali-current-e3-check-20260924a",
+          "uid": "d8cd5bfd-fd29-4e80-a7e1-edaf79766baa"
+        }
+      ],
+      "phase": "Succeeded",
+      "containers": [
+        {
+          "name": "e3-check",
+          "resources": {
+            "limits": {
+              "cpu": "16",
+              "memory": "128Gi",
+              "nvidia.com/gpu": "1"
+            },
+            "requests": {
+              "cpu": "8",
+              "memory": "64Gi",
+              "nvidia.com/gpu": "1"
+            }
+          },
+          "output_env": {
+            "SOURCE": "/data/users/ali/sgw-01/current-20260924a/source-1b45b1f",
+            "OUT": "/data/users/ali/sgw-01/current-20260924a/e3-check-a"
+          }
+        }
+      ]
+    },
+    {
+      "pod": "sgw01-ali-current-f3-check-20260924a-qtj98",
+      "uid": "f89bd24b-2ec9-452a-89d9-1fdd114e1aa3",
+      "node": "dcwipphai0061.edc.nam.gm.com",
+      "owners": [
+        {
+          "apiVersion": "batch/v1",
+          "blockOwnerDeletion": true,
+          "controller": true,
+          "kind": "Job",
+          "name": "sgw01-ali-current-f3-check-20260924a",
+          "uid": "8d5ec9ea-a3d7-44d6-ab49-f95b3558d3d7"
+        }
+      ],
+      "phase": "Succeeded",
+      "containers": [
+        {
+          "name": "f3-check",
+          "resources": {
+            "limits": {
+              "cpu": "16",
+              "memory": "128Gi",
+              "nvidia.com/gpu": "1"
+            },
+            "requests": {
+              "cpu": "8",
+              "memory": "64Gi",
+              "nvidia.com/gpu": "1"
+            }
+          },
+          "output_env": {
+            "SOURCE": "/data/users/ali/sgw-01/current-20260924a/source-1b45b1f",
+            "OUT": "/data/users/ali/sgw-01/current-20260924a/f3-check-a"
+          }
+        }
+      ]
+    },
+    {
+      "pod": "sgw01-ali-current-n3-check-20260924a-mhrkf",
+      "uid": "67635581-20da-47e4-a06e-0ee39428fa9b",
+      "node": "dcwipphai0061.edc.nam.gm.com",
+      "owners": [
+        {
+          "apiVersion": "batch/v1",
+          "blockOwnerDeletion": true,
+          "controller": true,
+          "kind": "Job",
+          "name": "sgw01-ali-current-n3-check-20260924a",
+          "uid": "264e50d8-8796-419d-9405-3e170a914d99"
+        }
+      ],
+      "phase": "Failed",
+      "containers": [
+        {
+          "name": "n3-check",
+          "resources": {
+            "limits": {
+              "cpu": "16",
+              "memory": "128Gi",
+              "nvidia.com/gpu": "1"
+            },
+            "requests": {
+              "cpu": "8",
+              "memory": "64Gi",
+              "nvidia.com/gpu": "1"
+            }
+          },
+          "output_env": {
+            "SOURCE": "/data/users/ali/sgw-01/current-20260924a/source-f6b3f17",
+            "OUT": "/data/users/ali/sgw-01/current-20260924a/n3-check"
+          }
+        }
+      ]
+    },
+    {
+      "pod": "sgw01-ali-current-n3-check-20260924b-xvfjk",
+      "uid": "da36ed45-2432-4c14-b72c-7dd1e3b82fbb",
+      "node": "dcwipphai0061.edc.nam.gm.com",
+      "owners": [
+        {
+          "apiVersion": "batch/v1",
+          "blockOwnerDeletion": true,
+          "controller": true,
+          "kind": "Job",
+          "name": "sgw01-ali-current-n3-check-20260924b",
+          "uid": "e26a4192-a43b-4f7d-98d5-8e400ef30478"
+        }
+      ],
+      "phase": "Failed",
+      "containers": [
+        {
+          "name": "n3-check",
+          "resources": {
+            "limits": {
+              "cpu": "16",
+              "memory": "128Gi",
+              "nvidia.com/gpu": "1"
+            },
+            "requests": {
+              "cpu": "8",
+              "memory": "64Gi",
+              "nvidia.com/gpu": "1"
+            }
+          },
+          "output_env": {
+            "SOURCE": "/data/users/ali/sgw-01/current-20260924a/source-f6b3f17",
+            "OUT": "/data/users/ali/sgw-01/current-20260924a/n3-check-b"
+          }
+        }
+      ]
+    },
+    {
+      "pod": "sgw01-ali-current-n3-check-20260924c-jk478",
+      "uid": "922b809d-304e-400a-9ea5-8dd344af3e7c",
+      "node": "dcwipphai0061.edc.nam.gm.com",
+      "owners": [
+        {
+          "apiVersion": "batch/v1",
+          "blockOwnerDeletion": true,
+          "controller": true,
+          "kind": "Job",
+          "name": "sgw01-ali-current-n3-check-20260924c",
+          "uid": "27d9495b-9ae1-4e59-95ac-64b5248e0450"
+        }
+      ],
+      "phase": "Succeeded",
+      "containers": [
+        {
+          "name": "n3-check",
+          "resources": {
+            "limits": {
+              "cpu": "16",
+              "memory": "128Gi",
+              "nvidia.com/gpu": "1"
+            },
+            "requests": {
+              "cpu": "8",
+              "memory": "64Gi",
+              "nvidia.com/gpu": "1"
+            }
+          },
+          "output_env": {
+            "SOURCE": "/data/users/ali/sgw-01/current-20260924a/source-4c39c45",
+            "OUT": "/data/users/ali/sgw-01/current-20260924a/n3-check-c"
+          }
+        }
+      ]
+    },
+    {
+      "pod": "sgw01-ali-current-stage-20260924a-slzmk",
+      "uid": "d9dc6029-5575-4752-a698-bc49b8a2f916",
+      "node": "dcwipphhgc191.edc.nam.gm.com",
+      "owners": [
+        {
+          "apiVersion": "batch/v1",
+          "blockOwnerDeletion": true,
+          "controller": true,
+          "kind": "Job",
+          "name": "sgw01-ali-current-stage-20260924a",
+          "uid": "b442c396-e8b5-46f7-b305-08cca7a816bd"
+        }
+      ],
+      "phase": "Running",
+      "containers": [
+        {
+          "name": "stage",
+          "resources": {
+            "limits": {
+              "cpu": "2",
+              "memory": "8Gi"
+            },
+            "requests": {
+              "cpu": "100m",
+              "memory": "512Mi"
+            }
+          },
+          "output_env": {}
+        }
+      ]
+    },
+    {
+      "pod": "sgw01-ali-evidence-reader-20260923aw-n2dpc",
+      "uid": "53039685-aa29-4719-9260-4a4e741301f4",
+      "node": "dcwipphhgc191.edc.nam.gm.com",
+      "owners": [
+        {
+          "apiVersion": "batch/v1",
+          "blockOwnerDeletion": true,
+          "controller": true,
+          "kind": "Job",
+          "name": "sgw01-ali-evidence-reader-20260923aw",
+          "uid": "5d4dc4c2-a454-48bb-acf2-9d0eaa724d10"
+        }
+      ],
+      "phase": "Succeeded",
+      "containers": [
+        {
+          "name": "evidence-reader",
+          "resources": {
+            "limits": {
+              "cpu": "2",
+              "memory": "2Gi"
+            },
+            "requests": {
+              "cpu": "100m",
+              "memory": "256Mi"
+            }
+          },
+          "output_env": {}
+        }
+      ]
+    },
+    {
+      "pod": "sgw01-ali-family-collector-20260923bu-jvpjd",
+      "uid": "76cfcee1-b742-4bd8-a787-7ad26ccdd15b",
+      "node": "dcwipphhgc191.edc.nam.gm.com",
+      "owners": [
+        {
+          "apiVersion": "batch/v1",
+          "blockOwnerDeletion": true,
+          "controller": true,
+          "kind": "Job",
+          "name": "sgw01-ali-family-collector-20260923bu",
+          "uid": "d386cfac-76ee-40c1-a339-b6aaa11531cf"
+        }
+      ],
+      "phase": "Failed",
+      "containers": [
+        {
+          "name": "stage",
+          "resources": {
+            "limits": {
+              "cpu": "16",
+              "memory": "8Gi"
+            },
+            "requests": {
+              "cpu": "4",
+              "memory": "4Gi"
+            }
+          },
+          "output_env": {}
+        }
+      ]
+    },
+    {
+      "pod": "sgw01-ali-family-native-smoke-20260923bn-1-gz848",
+      "uid": "3904cede-0349-4cd8-9e62-89c24ff1e001",
+      "node": "dcwipphhgc191.edc.nam.gm.com",
+      "owners": [
+        {
+          "apiVersion": "batch/v1",
+          "blockOwnerDeletion": true,
+          "controller": true,
+          "kind": "Job",
+          "name": "sgw01-ali-family-native-smoke-20260923bn",
+          "uid": "181cdd45-0bce-4acb-8388-0134e52cf34c"
+        }
+      ],
+      "phase": "Failed",
+      "containers": [
+        {
+          "name": "qualify",
+          "resources": {
+            "limits": {
+              "cpu": "32",
+              "memory": "128Gi",
+              "nvidia.com/gpu": "1"
+            },
+            "requests": {
+              "cpu": "16",
+              "memory": "64Gi",
+              "nvidia.com/gpu": "1"
+            }
+          },
+          "output_env": {}
+        }
+      ]
+    },
+    {
+      "pod": "sgw01-ali-family-native-smoke-20260923bp-2-lcfvz",
+      "uid": "dd966ac7-5092-42c5-a2f1-5790f3977b2a",
+      "node": "dcwipphhgc191.edc.nam.gm.com",
+      "owners": [
+        {
+          "apiVersion": "batch/v1",
+          "blockOwnerDeletion": true,
+          "controller": true,
+          "kind": "Job",
+          "name": "sgw01-ali-family-native-smoke-20260923bp",
+          "uid": "f8253c9e-1f98-49e5-9e5a-765ff71277f2"
+        }
+      ],
+      "phase": "Failed",
+      "containers": [
+        {
+          "name": "qualify",
+          "resources": {
+            "limits": {
+              "cpu": "32",
+              "memory": "128Gi",
+              "nvidia.com/gpu": "1"
+            },
+            "requests": {
+              "cpu": "16",
+              "memory": "64Gi",
+              "nvidia.com/gpu": "1"
+            }
+          },
+          "output_env": {}
+        }
+      ]
+    },
+    {
+      "pod": "sgw01-ali-family-native-smoke-20260923br-1-cff8x",
+      "uid": "486f0e88-b3a4-4020-9cec-886dd4ec47ef",
+      "node": "dcwipphhgc191.edc.nam.gm.com",
+      "owners": [
+        {
+          "apiVersion": "batch/v1",
+          "blockOwnerDeletion": true,
+          "controller": true,
+          "kind": "Job",
+          "name": "sgw01-ali-family-native-smoke-20260923br",
+          "uid": "72b77b0a-bcdb-42b4-8a0a-0956a9492259"
+        }
+      ],
+      "phase": "Succeeded",
+      "containers": [
+        {
+          "name": "qualify",
+          "resources": {
+            "limits": {
+              "cpu": "32",
+              "memory": "128Gi",
+              "nvidia.com/gpu": "1"
+            },
+            "requests": {
+              "cpu": "16",
+              "memory": "64Gi",
+              "nvidia.com/gpu": "1"
+            }
+          },
+          "output_env": {}
+        }
+      ]
+    },
+    {
+      "pod": "sgw01-ali-family-source-stage-20260923bm-2cwjn",
+      "uid": "c6f6c50b-b30d-41b6-9bab-90abbebf95b7",
+      "node": "dcwipphhgc191.edc.nam.gm.com",
+      "owners": [
+        {
+          "apiVersion": "batch/v1",
+          "blockOwnerDeletion": true,
+          "controller": true,
+          "kind": "Job",
+          "name": "sgw01-ali-family-source-stage-20260923bm",
+          "uid": "ab57c90d-1917-42ce-a8a6-e6edcb33ed15"
+        }
+      ],
+      "phase": "Succeeded",
+      "containers": [
+        {
+          "name": "stage",
+          "resources": {
+            "limits": {
+              "cpu": "4",
+              "memory": "4Gi"
+            },
+            "requests": {
+              "cpu": "1",
+              "memory": "2Gi"
+            }
+          },
+          "output_env": {}
+        }
+      ]
+    },
+    {
+      "pod": "sgw01-ali-family-source-stage-20260923bo-jbtvh",
+      "uid": "41993e38-612a-4ce4-8c15-1cab06d2cd29",
+      "node": "dcwipphhgc191.edc.nam.gm.com",
+      "owners": [
+        {
+          "apiVersion": "batch/v1",
+          "blockOwnerDeletion": true,
+          "controller": true,
+          "kind": "Job",
+          "name": "sgw01-ali-family-source-stage-20260923bo",
+          "uid": "b76545c7-fec9-44ec-8712-da22564a18c7"
+        }
+      ],
+      "phase": "Succeeded",
+      "containers": [
+        {
+          "name": "stage",
+          "resources": {
+            "limits": {
+              "cpu": "4",
+              "memory": "4Gi"
+            },
+            "requests": {
+              "cpu": "1",
+              "memory": "2Gi"
+            }
+          },
+          "output_env": {}
+        }
+      ]
+    },
+    {
+      "pod": "sgw01-ali-family-source-stage-20260923bq-9gqfj",
+      "uid": "b303603f-0245-440c-ba0a-3e73a82bde05",
+      "node": "dcwipphhgc191.edc.nam.gm.com",
+      "owners": [
+        {
+          "apiVersion": "batch/v1",
+          "blockOwnerDeletion": true,
+          "controller": true,
+          "kind": "Job",
+          "name": "sgw01-ali-family-source-stage-20260923bq",
+          "uid": "c386c1dd-13ae-4330-82ef-3148221fcbf9"
+        }
+      ],
+      "phase": "Succeeded",
+      "containers": [
+        {
+          "name": "stage",
+          "resources": {
+            "limits": {
+              "cpu": "4",
+              "memory": "4Gi"
+            },
+            "requests": {
+              "cpu": "1",
+              "memory": "2Gi"
+            }
+          },
+          "output_env": {}
+        }
+      ]
+    },
+    {
+      "pod": "sgw01-ali-family-source-stage-20260923bs-5xsdq",
+      "uid": "7709208c-cdca-4a71-9dd5-97f73e44dcb1",
+      "node": "dcwipphhgc191.edc.nam.gm.com",
+      "owners": [
+        {
+          "apiVersion": "batch/v1",
+          "blockOwnerDeletion": true,
+          "controller": true,
+          "kind": "Job",
+          "name": "sgw01-ali-family-source-stage-20260923bs",
+          "uid": "40fcbc2c-a5f0-401d-8058-d4806e08e094"
+        }
+      ],
+      "phase": "Succeeded",
+      "containers": [
+        {
+          "name": "stage",
+          "resources": {
+            "limits": {
+              "cpu": "4",
+              "memory": "4Gi"
+            },
+            "requests": {
+              "cpu": "1",
+              "memory": "2Gi"
+            }
+          },
+          "output_env": {}
+        }
+      ]
+    },
+    {
+      "pod": "sgw01-ali-gripper-calibration-20260923af-bntbx",
+      "uid": "67e449a0-e8f1-4056-a6fc-91605ecbaeb4",
+      "node": "dcwipphhgc191.edc.nam.gm.com",
+      "owners": [
+        {
+          "apiVersion": "batch/v1",
+          "blockOwnerDeletion": true,
+          "controller": true,
+          "kind": "Job",
+          "name": "sgw01-ali-gripper-calibration-20260923af",
+          "uid": "8892c27d-180c-4f9d-b866-4056e4166387"
+        }
+      ],
+      "phase": "Succeeded",
+      "containers": [
+        {
+          "name": "workspace",
+          "resources": {
+            "limits": {
+              "cpu": "32",
+              "memory": "128Gi",
+              "nvidia.com/gpu": "1"
+            },
+            "requests": {
+              "cpu": "16",
+              "memory": "64Gi",
+              "nvidia.com/gpu": "1"
+            }
+          },
+          "output_env": {}
+        }
+      ]
+    },
+    {
+      "pod": "sgw01-ali-gripper-export-20260923ag-t42lc",
+      "uid": "651d91eb-4b95-44c7-8ed1-30744bad60a2",
+      "node": "dcwipphhgc191.edc.nam.gm.com",
+      "owners": [
+        {
+          "apiVersion": "batch/v1",
+          "blockOwnerDeletion": true,
+          "controller": true,
+          "kind": "Job",
+          "name": "sgw01-ali-gripper-export-20260923ag",
+          "uid": "bb8fdde2-7a57-4ad4-b62d-29294107a453"
+        }
+      ],
+      "phase": "Succeeded",
+      "containers": [
+        {
+          "name": "export",
+          "resources": {
+            "limits": {
+              "cpu": "2",
+              "memory": "4Gi"
+            },
+            "requests": {
+              "cpu": "2",
+              "memory": "2Gi"
+            }
+          },
+          "output_env": {}
+        }
+      ]
+    },
+    {
+      "pod": "sgw01-ali-historical-export-20260923bj-wzsnl",
+      "uid": "e675bea5-df86-4c67-9917-d035f21a5754",
+      "node": "dcwipphhgc191.edc.nam.gm.com",
+      "owners": [
+        {
+          "apiVersion": "batch/v1",
+          "blockOwnerDeletion": true,
+          "controller": true,
+          "kind": "Job",
+          "name": "sgw01-ali-historical-export-20260923bj",
+          "uid": "586c16c7-98cb-4314-a464-592cfc4c6812"
+        }
+      ],
+      "phase": "Succeeded",
+      "containers": [
+        {
+          "name": "export",
+          "resources": {
+            "limits": {
+              "cpu": "2",
+              "memory": "1Gi"
+            },
+            "requests": {
+              "cpu": "250m",
+              "memory": "1Gi"
+            }
+          },
+          "output_env": {}
+        }
+      ]
+    },
+    {
+      "pod": "sgw01-ali-historical-lineage-20260923bv-2zd5q",
+      "uid": "a684cb3a-b012-4f15-ba49-f6d574093434",
+      "node": "dcwipphhgc191.edc.nam.gm.com",
+      "owners": [
+        {
+          "apiVersion": "batch/v1",
+          "blockOwnerDeletion": true,
+          "controller": true,
+          "kind": "Job",
+          "name": "sgw01-ali-historical-lineage-20260923bv",
+          "uid": "f97205ed-aa9c-4f1f-8495-be199e0cfb91"
+        }
+      ],
+      "phase": "Succeeded",
+      "containers": [
+        {
+          "name": "extract",
+          "resources": {
+            "limits": {
+              "cpu": "2",
+              "memory": "1Gi"
+            },
+            "requests": {
+              "cpu": "250m",
+              "memory": "1Gi"
+            }
+          },
+          "output_env": {
+            "SOURCE_COMMIT": "2818c18eacb286faa8dadd1982935150e0088ee0"
+          }
+        }
+      ]
+    },
+    {
+      "pod": "sgw01-ali-historical-population-20260923bx-zkdrd",
+      "uid": "53cfa73d-4fdb-4195-9907-e35c2e56e451",
+      "node": "dcwipphhgc191.edc.nam.gm.com",
+      "owners": [
+        {
+          "apiVersion": "batch/v1",
+          "blockOwnerDeletion": true,
+          "controller": true,
+          "kind": "Job",
+          "name": "sgw01-ali-historical-population-20260923bx",
+          "uid": "42144006-eb70-45b9-b8d0-056943927715"
+        }
+      ],
+      "phase": "Succeeded",
+      "containers": [
+        {
+          "name": "extract",
+          "resources": {
+            "limits": {
+              "cpu": "2",
+              "memory": "1Gi"
+            },
+            "requests": {
+              "cpu": "250m",
+              "memory": "1Gi"
+            }
+          },
+          "output_env": {
+            "SOURCE_COMMIT": "c9d8517d452285af24f43d98316c1dd871aa368f"
+          }
+        }
+      ]
+    },
+    {
+      "pod": "sgw01-ali-historical-stream-20260923bk-tkhhn",
+      "uid": "8cf014ee-8825-4fcd-9774-1365b17a3e25",
+      "node": "dcwipphhgc191.edc.nam.gm.com",
+      "owners": [
+        {
+          "apiVersion": "batch/v1",
+          "blockOwnerDeletion": true,
+          "controller": true,
+          "kind": "Job",
+          "name": "sgw01-ali-historical-stream-20260923bk",
+          "uid": "fb4c7c7b-a7aa-49e2-9b08-63753f2e4a6b"
+        }
+      ],
+      "phase": "Failed",
+      "containers": [
+        {
+          "name": "extract",
+          "resources": {
+            "limits": {
+              "cpu": "2",
+              "memory": "1Gi"
+            },
+            "requests": {
+              "cpu": "250m",
+              "memory": "1Gi"
+            }
+          },
+          "output_env": {
+            "SOURCE_COMMIT": "b5923f6ecec2a77f2af39d718e61f5fb6f526912"
+          }
+        }
+      ]
+    },
+    {
+      "pod": "sgw01-ali-historical-stream-20260923bl-m9dfw",
+      "uid": "ce247e1a-85ca-4064-b637-3452eaf8c945",
+      "node": "dcwipphhgc191.edc.nam.gm.com",
+      "owners": [
+        {
+          "apiVersion": "batch/v1",
+          "blockOwnerDeletion": true,
+          "controller": true,
+          "kind": "Job",
+          "name": "sgw01-ali-historical-stream-20260923bl",
+          "uid": "d6f46ed7-06bb-49b3-a931-e11e47dbc083"
+        }
+      ],
+      "phase": "Succeeded",
+      "containers": [
+        {
+          "name": "extract",
+          "resources": {
+            "limits": {
+              "cpu": "2",
+              "memory": "1Gi"
+            },
+            "requests": {
+              "cpu": "250m",
+              "memory": "1Gi"
+            }
+          },
+          "output_env": {
+            "SOURCE_COMMIT": "b5923f6ecec2a77f2af39d718e61f5fb6f526912"
+          }
+        }
+      ]
+    },
+    {
+      "pod": "sgw01-ali-lat-batch-20260923ak-0-7xjw2",
+      "uid": "23316596-cb5e-4ba3-a309-7a2652c5cdda",
+      "node": "dcwipphhgc191.edc.nam.gm.com",
+      "owners": [
+        {
+          "apiVersion": "batch/v1",
+          "blockOwnerDeletion": true,
+          "controller": true,
+          "kind": "Job",
+          "name": "sgw01-ali-lat-batch-20260923ak",
+          "uid": "f31bfbca-f4e3-4919-af8a-3fd92ec515a2"
+        }
+      ],
+      "phase": "Succeeded",
+      "containers": [
+        {
+          "name": "workspace",
+          "resources": {
+            "limits": {
+              "cpu": "32",
+              "memory": "128Gi",
+              "nvidia.com/gpu": "1"
+            },
+            "requests": {
+              "cpu": "16",
+              "memory": "64Gi",
+              "nvidia.com/gpu": "1"
+            }
+          },
+          "output_env": {}
+        }
+      ]
+    },
+    {
+      "pod": "sgw01-ali-lat-batch-20260923ak-12-rk2jg",
+      "uid": "6a79036d-178b-4a4c-a71e-98cabff42192",
+      "node": "dcwipphhgc191.edc.nam.gm.com",
+      "owners": [
+        {
+          "apiVersion": "batch/v1",
+          "blockOwnerDeletion": true,
+          "controller": true,
+          "kind": "Job",
+          "name": "sgw01-ali-lat-batch-20260923ak",
+          "uid": "f31bfbca-f4e3-4919-af8a-3fd92ec515a2"
+        }
+      ],
+      "phase": "Succeeded",
+      "containers": [
+        {
+          "name": "workspace",
+          "resources": {
+            "limits": {
+              "cpu": "32",
+              "memory": "128Gi",
+              "nvidia.com/gpu": "1"
+            },
+            "requests": {
+              "cpu": "16",
+              "memory": "64Gi",
+              "nvidia.com/gpu": "1"
+            }
+          },
+          "output_env": {}
+        }
+      ]
+    },
+    {
+      "pod": "sgw01-ali-lat-batch-20260923ak-17-d2pj2",
+      "uid": "207056c7-7427-448b-bdc4-70142fdfaf3d",
+      "node": "dcwipphhgc191.edc.nam.gm.com",
+      "owners": [
+        {
+          "apiVersion": "batch/v1",
+          "blockOwnerDeletion": true,
+          "controller": true,
+          "kind": "Job",
+          "name": "sgw01-ali-lat-batch-20260923ak",
+          "uid": "f31bfbca-f4e3-4919-af8a-3fd92ec515a2"
+        }
+      ],
+      "phase": "Succeeded",
+      "containers": [
+        {
+          "name": "workspace",
+          "resources": {
+            "limits": {
+              "cpu": "32",
+              "memory": "128Gi",
+              "nvidia.com/gpu": "1"
+            },
+            "requests": {
+              "cpu": "16",
+              "memory": "64Gi",
+              "nvidia.com/gpu": "1"
+            }
+          },
+          "output_env": {}
+        }
+      ]
+    },
+    {
+      "pod": "sgw01-ali-lat-batch-20260923ak-20-v85pp",
+      "uid": "885fe491-7dbd-414c-ae9d-f44448e79dca",
+      "node": "dcwipphhgc191.edc.nam.gm.com",
+      "owners": [
+        {
+          "apiVersion": "batch/v1",
+          "blockOwnerDeletion": true,
+          "controller": true,
+          "kind": "Job",
+          "name": "sgw01-ali-lat-batch-20260923ak",
+          "uid": "f31bfbca-f4e3-4919-af8a-3fd92ec515a2"
+        }
+      ],
+      "phase": "Succeeded",
+      "containers": [
+        {
+          "name": "workspace",
+          "resources": {
+            "limits": {
+              "cpu": "32",
+              "memory": "128Gi",
+              "nvidia.com/gpu": "1"
+            },
+            "requests": {
+              "cpu": "16",
+              "memory": "64Gi",
+              "nvidia.com/gpu": "1"
+            }
+          },
+          "output_env": {}
+        }
+      ]
+    },
+    {
+      "pod": "sgw01-ali-lat-batch-20260923ak-24-mjvcv",
+      "uid": "a99bb519-425d-4035-9b00-ed9d805c5d7d",
+      "node": "dcwipphhgc191.edc.nam.gm.com",
+      "owners": [
+        {
+          "apiVersion": "batch/v1",
+          "blockOwnerDeletion": true,
+          "controller": true,
+          "kind": "Job",
+          "name": "sgw01-ali-lat-batch-20260923ak",
+          "uid": "f31bfbca-f4e3-4919-af8a-3fd92ec515a2"
+        }
+      ],
+      "phase": "Succeeded",
+      "containers": [
+        {
+          "name": "workspace",
+          "resources": {
+            "limits": {
+              "cpu": "32",
+              "memory": "128Gi",
+              "nvidia.com/gpu": "1"
+            },
+            "requests": {
+              "cpu": "16",
+              "memory": "64Gi",
+              "nvidia.com/gpu": "1"
+            }
+          },
+          "output_env": {}
+        }
+      ]
+    },
+    {
+      "pod": "sgw01-ali-lat-batch-20260923ak-29-sfw2p",
+      "uid": "2f12479b-8dcf-4653-ac14-7d2861c828c0",
+      "node": "dcwipphhgc191.edc.nam.gm.com",
+      "owners": [
+        {
+          "apiVersion": "batch/v1",
+          "blockOwnerDeletion": true,
+          "controller": true,
+          "kind": "Job",
+          "name": "sgw01-ali-lat-batch-20260923ak",
+          "uid": "f31bfbca-f4e3-4919-af8a-3fd92ec515a2"
+        }
+      ],
+      "phase": "Succeeded",
+      "containers": [
+        {
+          "name": "workspace",
+          "resources": {
+            "limits": {
+              "cpu": "32",
+              "memory": "128Gi",
+              "nvidia.com/gpu": "1"
+            },
+            "requests": {
+              "cpu": "16",
+              "memory": "64Gi",
+              "nvidia.com/gpu": "1"
+            }
+          },
+          "output_env": {}
+        }
+      ]
+    },
+    {
+      "pod": "sgw01-ali-lat-batch-20260923ak-33-fjsng",
+      "uid": "19bd7f16-fab2-4257-9a25-a7f6651d9837",
+      "node": "dcwipphhgc191.edc.nam.gm.com",
+      "owners": [
+        {
+          "apiVersion": "batch/v1",
+          "blockOwnerDeletion": true,
+          "controller": true,
+          "kind": "Job",
+          "name": "sgw01-ali-lat-batch-20260923ak",
+          "uid": "f31bfbca-f4e3-4919-af8a-3fd92ec515a2"
+        }
+      ],
+      "phase": "Succeeded",
+      "containers": [
+        {
+          "name": "workspace",
+          "resources": {
+            "limits": {
+              "cpu": "32",
+              "memory": "128Gi",
+              "nvidia.com/gpu": "1"
+            },
+            "requests": {
+              "cpu": "16",
+              "memory": "64Gi",
+              "nvidia.com/gpu": "1"
+            }
+          },
+          "output_env": {}
+        }
+      ]
+    },
+    {
+      "pod": "sgw01-ali-lat-batch-20260923ak-37-v8nhg",
+      "uid": "8a4d96bb-d015-4436-88a1-780eb4e19147",
+      "node": "dcwipphhgc191.edc.nam.gm.com",
+      "owners": [
+        {
+          "apiVersion": "batch/v1",
+          "blockOwnerDeletion": true,
+          "controller": true,
+          "kind": "Job",
+          "name": "sgw01-ali-lat-batch-20260923ak",
+          "uid": "f31bfbca-f4e3-4919-af8a-3fd92ec515a2"
+        }
+      ],
+      "phase": "Succeeded",
+      "containers": [
+        {
+          "name": "workspace",
+          "resources": {
+            "limits": {
+              "cpu": "32",
+              "memory": "128Gi",
+              "nvidia.com/gpu": "1"
+            },
+            "requests": {
+              "cpu": "16",
+              "memory": "64Gi",
+              "nvidia.com/gpu": "1"
+            }
+          },
+          "output_env": {}
+        }
+      ]
+    },
+    {
+      "pod": "sgw01-ali-lat-batch-20260923ak-5-8227v",
+      "uid": "34cb184a-7005-421c-8b8b-a4d26889d15a",
+      "node": "dcwipphhgc191.edc.nam.gm.com",
+      "owners": [
+        {
+          "apiVersion": "batch/v1",
+          "blockOwnerDeletion": true,
+          "controller": true,
+          "kind": "Job",
+          "name": "sgw01-ali-lat-batch-20260923ak",
+          "uid": "f31bfbca-f4e3-4919-af8a-3fd92ec515a2"
+        }
+      ],
+      "phase": "Succeeded",
+      "containers": [
+        {
+          "name": "workspace",
+          "resources": {
+            "limits": {
+              "cpu": "32",
+              "memory": "128Gi",
+              "nvidia.com/gpu": "1"
+            },
+            "requests": {
+              "cpu": "16",
+              "memory": "64Gi",
+              "nvidia.com/gpu": "1"
+            }
+          },
+          "output_env": {}
+        }
+      ]
+    },
+    {
+      "pod": "sgw01-ali-lat-batch-20260923ak-9-p65cs",
+      "uid": "fd31f9f4-2014-45f9-abbb-70bc537c92fa",
+      "node": "dcwipphhgc191.edc.nam.gm.com",
+      "owners": [
+        {
+          "apiVersion": "batch/v1",
+          "blockOwnerDeletion": true,
+          "controller": true,
+          "kind": "Job",
+          "name": "sgw01-ali-lat-batch-20260923ak",
+          "uid": "f31bfbca-f4e3-4919-af8a-3fd92ec515a2"
+        }
+      ],
+      "phase": "Succeeded",
+      "containers": [
+        {
+          "name": "workspace",
+          "resources": {
+            "limits": {
+              "cpu": "32",
+              "memory": "128Gi",
+              "nvidia.com/gpu": "1"
+            },
+            "requests": {
+              "cpu": "16",
+              "memory": "64Gi",
+              "nvidia.com/gpu": "1"
+            }
+          },
+          "output_env": {}
+        }
+      ]
+    },
+    {
+      "pod": "sgw01-ali-lat-qualification-20260922ac-k9vrw",
+      "uid": "5e019700-1787-493a-9266-198d73c75a5a",
+      "node": "dcwipphhgc191.edc.nam.gm.com",
+      "owners": [
+        {
+          "apiVersion": "batch/v1",
+          "blockOwnerDeletion": true,
+          "controller": true,
+          "kind": "Job",
+          "name": "sgw01-ali-lat-qualification-20260922ac",
+          "uid": "1e30c533-705d-47e6-b1f8-7f4a4d2a317c"
+        }
+      ],
+      "phase": "Succeeded",
+      "containers": [
+        {
+          "name": "qualification",
+          "resources": {
+            "limits": {
+              "cpu": "32",
+              "memory": "128Gi",
+              "nvidia.com/gpu": "1"
+            },
+            "requests": {
+              "cpu": "16",
+              "memory": "64Gi",
+              "nvidia.com/gpu": "1"
+            }
+          },
+          "output_env": {}
+        }
+      ]
+    },
+    {
+      "pod": "sgw01-ali-lat-qualification-20260923ai-5942n",
+      "uid": "a14f6eba-b236-4387-ac06-64d9a87b3f38",
+      "node": "dcwipphhgc191.edc.nam.gm.com",
+      "owners": [
+        {
+          "apiVersion": "batch/v1",
+          "blockOwnerDeletion": true,
+          "controller": true,
+          "kind": "Job",
+          "name": "sgw01-ali-lat-qualification-20260923ai",
+          "uid": "fe60a7a3-0f16-46b0-ab1a-b38c78ee52a5"
+        }
+      ],
+      "phase": "Succeeded",
+      "containers": [
+        {
+          "name": "workspace",
+          "resources": {
+            "limits": {
+              "cpu": "32",
+              "memory": "128Gi",
+              "nvidia.com/gpu": "1"
+            },
+            "requests": {
+              "cpu": "16",
+              "memory": "64Gi",
+              "nvidia.com/gpu": "1"
+            }
+          },
+          "output_env": {}
+        }
+      ]
+    },
+    {
+      "pod": "sgw01-ali-lat-verify-20260923ao-d4dzz",
+      "uid": "0806ed9d-2d61-43bd-a460-4743a3d53edc",
+      "node": "dcwipphhgc191.edc.nam.gm.com",
+      "owners": [
+        {
+          "apiVersion": "batch/v1",
+          "blockOwnerDeletion": true,
+          "controller": true,
+          "kind": "Job",
+          "name": "sgw01-ali-lat-verify-20260923ao",
+          "uid": "1de130fb-6fd4-4c10-94d5-6fcc6e1e4c1c"
+        }
+      ],
+      "phase": "Succeeded",
+      "containers": [
+        {
+          "name": "verify",
+          "resources": {
+            "limits": {
+              "cpu": "2",
+              "memory": "4Gi"
+            },
+            "requests": {
+              "cpu": "2",
+              "memory": "4Gi"
+            }
+          },
+          "output_env": {}
+        }
+      ]
+    },
+    {
+      "pod": "sgw01-ali-lat-workspace-20260922f-6qffb",
+      "uid": "2e8b79f6-f50e-4a9f-b1ce-bb9e41b0f24c",
+      "node": "dcwipphhgc191.edc.nam.gm.com",
+      "owners": [
+        {
+          "apiVersion": "batch/v1",
+          "blockOwnerDeletion": true,
+          "controller": true,
+          "kind": "Job",
+          "name": "sgw01-ali-lat-workspace-20260922f",
+          "uid": "9dd9d13c-408c-41cc-928f-87bd2e6501ce"
+        }
+      ],
+      "phase": "Failed",
+      "containers": [
+        {
+          "name": "workspace",
+          "resources": {
+            "limits": {
+              "cpu": "32",
+              "memory": "128Gi",
+              "nvidia.com/gpu": "1"
+            },
+            "requests": {
+              "cpu": "16",
+              "memory": "64Gi",
+              "nvidia.com/gpu": "1"
+            }
+          },
+          "output_env": {}
+        }
+      ]
+    },
+    {
+      "pod": "sgw01-ali-lat-workspace-20260922g-mphj5",
+      "uid": "80e92e92-79f8-447c-94fb-b4ed0952a5b8",
+      "node": "dcwipphhgc191.edc.nam.gm.com",
+      "owners": [
+        {
+          "apiVersion": "batch/v1",
+          "blockOwnerDeletion": true,
+          "controller": true,
+          "kind": "Job",
+          "name": "sgw01-ali-lat-workspace-20260922g",
+          "uid": "1911cb05-6433-4fa3-8c11-bc457ce54cbc"
+        }
+      ],
+      "phase": "Succeeded",
+      "containers": [
+        {
+          "name": "workspace",
+          "resources": {
+            "limits": {
+              "cpu": "32",
+              "memory": "128Gi",
+              "nvidia.com/gpu": "1"
+            },
+            "requests": {
+              "cpu": "16",
+              "memory": "64Gi",
+              "nvidia.com/gpu": "1"
+            }
+          },
+          "output_env": {}
+        }
+      ]
+    },
+    {
+      "pod": "sgw01-ali-lat-workspace-20260922m-kqjkn",
+      "uid": "d1c07097-615b-4f86-bcb2-8172a83db3b7",
+      "node": "dcwipphhgc191.edc.nam.gm.com",
+      "owners": [
+        {
+          "apiVersion": "batch/v1",
+          "blockOwnerDeletion": true,
+          "controller": true,
+          "kind": "Job",
+          "name": "sgw01-ali-lat-workspace-20260922m",
+          "uid": "3516c551-cbec-4a7d-85e3-180575e53c8d"
+        }
+      ],
+      "phase": "Failed",
+      "containers": [
+        {
+          "name": "workspace",
+          "resources": {
+            "limits": {
+              "cpu": "32",
+              "memory": "128Gi",
+              "nvidia.com/gpu": "1"
+            },
+            "requests": {
+              "cpu": "16",
+              "memory": "64Gi",
+              "nvidia.com/gpu": "1"
+            }
+          },
+          "output_env": {}
+        }
+      ]
+    },
+    {
+      "pod": "sgw01-ali-lat-workspace-20260922r-cqkvm",
+      "uid": "50c88961-1966-45ab-a26c-7923cb7ab8e9",
+      "node": "dcwipphhgc191.edc.nam.gm.com",
+      "owners": [
+        {
+          "apiVersion": "batch/v1",
+          "blockOwnerDeletion": true,
+          "controller": true,
+          "kind": "Job",
+          "name": "sgw01-ali-lat-workspace-20260922r",
+          "uid": "18b4a41f-9e61-4812-a97c-35a481981ee1"
+        }
+      ],
+      "phase": "Succeeded",
+      "containers": [
+        {
+          "name": "workspace",
+          "resources": {
+            "limits": {
+              "cpu": "32",
+              "memory": "128Gi",
+              "nvidia.com/gpu": "1"
+            },
+            "requests": {
+              "cpu": "16",
+              "memory": "64Gi",
+              "nvidia.com/gpu": "1"
+            }
+          },
+          "output_env": {}
+        }
+      ]
+    },
+    {
+      "pod": "sgw01-ali-live-e3-policy-20260924b-ssttc",
+      "uid": "b9bcc44e-20a5-45f2-a4d6-30262ed31cad",
+      "node": "dcwipphai0061.edc.nam.gm.com",
+      "owners": [
+        {
+          "apiVersion": "batch/v1",
+          "blockOwnerDeletion": true,
+          "controller": true,
+          "kind": "Job",
+          "name": "sgw01-ali-live-e3-policy-20260924b",
+          "uid": "88cda879-a2fa-4b38-8c96-162f4bd6fb9a"
+        }
+      ],
+      "phase": "Succeeded",
+      "containers": [
+        {
+          "name": "policy",
+          "resources": {
+            "limits": {
+              "cpu": "16",
+              "memory": "128Gi",
+              "nvidia.com/gpu": "1"
+            },
+            "requests": {
+              "cpu": "8",
+              "memory": "64Gi",
+              "nvidia.com/gpu": "1"
+            }
+          },
+          "output_env": {
+            "SOURCE": "/data/users/ali/sgw-01/current-20260924a/source-a68a0bc",
+            "OUT": "/data/users/ali/sgw-01/current-20260924a/closed-loop-E3-b/policy"
+          }
+        }
+      ]
+    },
+    {
+      "pod": "sgw01-ali-live-e3-simulator-20260924b-w2wk5",
+      "uid": "c9a3819d-6cac-48d4-b4b2-3ff7c33541a2",
+      "node": "dcwipphhgc191.edc.nam.gm.com",
+      "owners": [
+        {
+          "apiVersion": "batch/v1",
+          "blockOwnerDeletion": true,
+          "controller": true,
+          "kind": "Job",
+          "name": "sgw01-ali-live-e3-simulator-20260924b",
+          "uid": "fa97e737-e79d-49a1-8c6f-57c4e638d9e7"
+        }
+      ],
+      "phase": "Succeeded",
+      "containers": [
+        {
+          "name": "simulator",
+          "resources": {
+            "limits": {
+              "cpu": "8",
+              "memory": "64Gi",
+              "nvidia.com/gpu": "1"
+            },
+            "requests": {
+              "cpu": "4",
+              "memory": "32Gi",
+              "nvidia.com/gpu": "1"
+            }
+          },
+          "output_env": {
+            "SOURCE": "/data/users/ali/sgw-01/current-20260924a/source-a68a0bc",
+            "OUT": "/data/users/ali/sgw-01/current-20260924a/closed-loop-E3-b/simulator"
+          }
+        }
+      ]
+    },
+    {
+      "pod": "sgw01-ali-main-p-20260923dn-policy-00-cffll",
+      "uid": "60b03b32-5664-4d03-a1b3-5685f55c9ef7",
+      "node": "dcwipphai0061.edc.nam.gm.com",
+      "owners": [
+        {
+          "apiVersion": "batch/v1",
+          "blockOwnerDeletion": true,
+          "controller": true,
+          "kind": "Job",
+          "name": "sgw01-ali-main-p-20260923dn-policy-00",
+          "uid": "9de07a00-880f-43e2-b222-54e9868db612"
+        }
+      ],
+      "phase": "Succeeded",
+      "containers": [
+        {
+          "name": "fixed-input",
+          "resources": {
+            "limits": {
+              "cpu": "16",
+              "memory": "128Gi",
+              "nvidia.com/gpu": "1"
+            },
+            "requests": {
+              "cpu": "8",
+              "memory": "64Gi",
+              "nvidia.com/gpu": "1"
+            }
+          },
+          "output_env": {
+            "SOURCE": "/data/users/ali/sgw-01/source/main-p-20260923dn",
+            "ROOT": "/data/users/ali/sgw-01/main/n3-lat-p-20260923dn",
+            "SOURCE_COMMIT": "77cdac5a402dc076b12fd2c65ee1da602510c871"
+          }
+        }
+      ]
+    },
+    {
+      "pod": "sgw01-ali-material-audit-20260922v-7lthq",
+      "uid": "f91dcfca-8d4d-4a15-b27b-4bb233c4470a",
+      "node": "dcwipphhgc191.edc.nam.gm.com",
+      "owners": [
+        {
+          "apiVersion": "batch/v1",
+          "blockOwnerDeletion": true,
+          "controller": true,
+          "kind": "Job",
+          "name": "sgw01-ali-material-audit-20260922v",
+          "uid": "4c8e98ad-0d56-4f64-8ffb-fcdb2fe10994"
+        }
+      ],
+      "phase": "Succeeded",
+      "containers": [
+        {
+          "name": "audit",
+          "resources": {
+            "limits": {
+              "cpu": "1",
+              "memory": "2Gi"
+            },
+            "requests": {
+              "cpu": "1",
+              "memory": "2Gi"
+            }
+          },
+          "output_env": {}
+        }
+      ]
+    },
+    {
+      "pod": "sgw01-ali-material-export-20260922w-wkfhr",
+      "uid": "f4fc3a4c-8be2-4668-8c7b-672ef9c9a100",
+      "node": "dcwipphhgc191.edc.nam.gm.com",
+      "owners": [
+        {
+          "apiVersion": "batch/v1",
+          "blockOwnerDeletion": true,
+          "controller": true,
+          "kind": "Job",
+          "name": "sgw01-ali-material-export-20260922w",
+          "uid": "3afeb9cf-f8d7-4f60-9577-40f08d4a2c97"
+        }
+      ],
+      "phase": "Succeeded",
+      "containers": [
+        {
+          "name": "export",
+          "resources": {
+            "limits": {
+              "cpu": "1",
+              "memory": "1Gi"
+            },
+            "requests": {
+              "cpu": "1",
+              "memory": "512Mi"
+            }
+          },
+          "output_env": {}
+        }
+      ]
+    },
+    {
+      "pod": "sgw01-ali-paper-engineering-20260923cn-5d7sr",
+      "uid": "71f51ac6-5511-4c6b-8d08-cc0dd6df7ade",
+      "node": "dcwipphhgc191.edc.nam.gm.com",
+      "owners": [
+        {
+          "apiVersion": "batch/v1",
+          "blockOwnerDeletion": true,
+          "controller": true,
+          "kind": "Job",
+          "name": "sgw01-ali-paper-engineering-20260923cn",
+          "uid": "acdf52db-7ded-4b33-8b7a-1ec818e82a2c"
+        }
+      ],
+      "phase": "Failed",
+      "containers": [
+        {
+          "name": "native-engineering",
+          "resources": {
+            "limits": {
+              "cpu": "32",
+              "memory": "128Gi",
+              "nvidia.com/gpu": "1"
+            },
+            "requests": {
+              "cpu": "16",
+              "memory": "64Gi",
+              "nvidia.com/gpu": "1"
+            }
+          },
+          "output_env": {}
+        }
+      ]
+    },
+    {
+      "pod": "sgw01-ali-paper-handoff-20260923cm-lxgt5",
+      "uid": "abc046c0-bd23-4b08-ad18-8e9c774b2b0f",
+      "node": "dcwipphhgc191.edc.nam.gm.com",
+      "owners": [
+        {
+          "apiVersion": "batch/v1",
+          "blockOwnerDeletion": true,
+          "controller": true,
+          "kind": "Job",
+          "name": "sgw01-ali-paper-handoff-20260923cm",
+          "uid": "a4940db8-7081-4b1f-ad77-fa8d9f7ee217"
+        }
+      ],
+      "phase": "Failed",
+      "containers": [
+        {
+          "name": "natural-release-handoff",
+          "resources": {
+            "limits": {
+              "cpu": "100m",
+              "memory": "256Mi"
+            },
+            "requests": {
+              "cpu": "20m",
+              "memory": "64Mi"
+            }
+          },
+          "output_env": {}
+        }
+      ]
+    },
+    {
+      "pod": "sgw01-ali-paper-handoff-20260923co-6p6nl",
+      "uid": "4fcf6f8b-10d3-493b-8082-14331b41dc0b",
+      "node": "dcwipphhgc191.edc.nam.gm.com",
+      "owners": [
+        {
+          "apiVersion": "batch/v1",
+          "blockOwnerDeletion": true,
+          "controller": true,
+          "kind": "Job",
+          "name": "sgw01-ali-paper-handoff-20260923co",
+          "uid": "d01cc07e-5d3d-41dc-8c02-e264bb900324"
+        }
+      ],
+      "phase": "Failed",
+      "containers": [
+        {
+          "name": "natural-release-handoff",
+          "resources": {
+            "limits": {
+              "cpu": "100m",
+              "memory": "256Mi"
+            },
+            "requests": {
+              "cpu": "20m",
+              "memory": "64Mi"
+            }
+          },
+          "output_env": {}
+        }
+      ]
+    },
+    {
+      "pod": "sgw01-ali-policy-source-audit-20260922p-cfkrq",
+      "uid": "da60d33c-cad6-4072-bd62-f1268ca204d4",
+      "node": "dcwipphhgc191.edc.nam.gm.com",
+      "owners": [
+        {
+          "apiVersion": "batch/v1",
+          "blockOwnerDeletion": true,
+          "controller": true,
+          "kind": "Job",
+          "name": "sgw01-ali-policy-source-audit-20260922p",
+          "uid": "8ee8bbd9-8107-44c3-a53d-494e338c39ea"
+        }
+      ],
+      "phase": "Succeeded",
+      "containers": [
+        {
+          "name": "audit",
+          "resources": {
+            "limits": {
+              "cpu": "1",
+              "memory": "1Gi"
+            },
+            "requests": {
+              "cpu": "1",
+              "memory": "1Gi"
+            }
+          },
+          "output_env": {}
+        }
+      ]
+    },
+    {
+      "pod": "sgw01-ali-prospective-capture-20260923ar-1-rb2h9",
+      "uid": "7097d4b3-f88f-49e6-a0f2-dd807f5275db",
+      "node": "dcwipphhgc191.edc.nam.gm.com",
+      "owners": [
+        {
+          "apiVersion": "batch/v1",
+          "blockOwnerDeletion": true,
+          "controller": true,
+          "kind": "Job",
+          "name": "sgw01-ali-prospective-capture-20260923ar",
+          "uid": "8f3327bc-95bb-48ea-ae17-3eaf4b2d4077"
+        }
+      ],
+      "phase": "Succeeded",
+      "containers": [
+        {
+          "name": "capture",
+          "resources": {
+            "limits": {
+              "cpu": "32",
+              "memory": "128Gi",
+              "nvidia.com/gpu": "1"
+            },
+            "requests": {
+              "cpu": "16",
+              "memory": "64Gi",
+              "nvidia.com/gpu": "1"
+            }
+          },
+          "output_env": {}
+        }
+      ]
+    },
+    {
+      "pod": "sgw01-ali-prospective-capture-20260923bf-1-vd8vk",
+      "uid": "1757792d-b372-4dff-8299-f8d589b678b1",
+      "node": "dcwipphhgc191.edc.nam.gm.com",
+      "owners": [
+        {
+          "apiVersion": "batch/v1",
+          "blockOwnerDeletion": true,
+          "controller": true,
+          "kind": "Job",
+          "name": "sgw01-ali-prospective-capture-20260923bf",
+          "uid": "19df9e13-f5e0-40cb-ad4f-80e7077ffc87"
+        }
+      ],
+      "phase": "Succeeded",
+      "containers": [
+        {
+          "name": "capture",
+          "resources": {
+            "limits": {
+              "cpu": "32",
+              "memory": "128Gi",
+              "nvidia.com/gpu": "1"
+            },
+            "requests": {
+              "cpu": "16",
+              "memory": "64Gi",
+              "nvidia.com/gpu": "1"
+            }
+          },
+          "output_env": {}
+        }
+      ]
+    },
+    {
+      "pod": "sgw01-ali-prospective-capture-20260923bi-0-b44n8",
+      "uid": "30f89340-cf81-4028-b4c2-1499badf5fee",
+      "node": "dcwipphhgc191.edc.nam.gm.com",
+      "owners": [
+        {
+          "apiVersion": "batch/v1",
+          "blockOwnerDeletion": true,
+          "controller": true,
+          "kind": "Job",
+          "name": "sgw01-ali-prospective-capture-20260923bi",
+          "uid": "d33f060e-2c64-4770-9f5b-0d6da3dd83f4"
+        }
+      ],
+      "phase": "Succeeded",
+      "containers": [
+        {
+          "name": "capture",
+          "resources": {
+            "limits": {
+              "cpu": "32",
+              "memory": "128Gi",
+              "nvidia.com/gpu": "1"
+            },
+            "requests": {
+              "cpu": "16",
+              "memory": "64Gi",
+              "nvidia.com/gpu": "1"
+            }
+          },
+          "output_env": {}
+        }
+      ]
+    },
+    {
+      "pod": "sgw01-ali-qualification-export-20260923ad-b5wmh",
+      "uid": "ab17ab74-59f1-469d-8832-a1b2f24683c2",
+      "node": "dcwipphhgc191.edc.nam.gm.com",
+      "owners": [
+        {
+          "apiVersion": "batch/v1",
+          "blockOwnerDeletion": true,
+          "controller": true,
+          "kind": "Job",
+          "name": "sgw01-ali-qualification-export-20260923ad",
+          "uid": "51d3a67b-9d8e-40fb-aa49-96f97fb1a8ed"
+        }
+      ],
+      "phase": "Succeeded",
+      "containers": [
+        {
+          "name": "export",
+          "resources": {
+            "limits": {
+              "cpu": "2",
+              "memory": "4Gi"
+            },
+            "requests": {
+              "cpu": "2",
+              "memory": "4Gi"
+            }
+          },
+          "output_env": {}
+        }
+      ]
+    },
+    {
+      "pod": "sgw01-ali-qualification-export-20260923aj-s92c9",
+      "uid": "7c1b85fe-34e6-4772-a722-ddbf4ea98c09",
+      "node": "dcwipphhgc191.edc.nam.gm.com",
+      "owners": [
+        {
+          "apiVersion": "batch/v1",
+          "blockOwnerDeletion": true,
+          "controller": true,
+          "kind": "Job",
+          "name": "sgw01-ali-qualification-export-20260923aj",
+          "uid": "6b80421a-dd5e-4635-a3c6-a7ad1937fc75"
+        }
+      ],
+      "phase": "Succeeded",
+      "containers": [
+        {
+          "name": "export",
+          "resources": {
+            "limits": {
+              "cpu": "2",
+              "memory": "4Gi"
+            },
+            "requests": {
+              "cpu": "2",
+              "memory": "4Gi"
+            }
+          },
+          "output_env": {}
+        }
+      ]
+    },
+    {
+      "pod": "sgw01-ali-render-diagnostic-20260922z-4rrqs",
+      "uid": "a999c926-8ccf-4507-b535-196511761f35",
+      "node": "dcwipphhgc191.edc.nam.gm.com",
+      "owners": [
+        {
+          "apiVersion": "batch/v1",
+          "blockOwnerDeletion": true,
+          "controller": true,
+          "kind": "Job",
+          "name": "sgw01-ali-render-diagnostic-20260922z",
+          "uid": "ec5b5fe0-3199-4cab-b372-e70b4e997df8"
+        }
+      ],
+      "phase": "Succeeded",
+      "containers": [
+        {
+          "name": "workspace",
+          "resources": {
+            "limits": {
+              "cpu": "32",
+              "memory": "128Gi",
+              "nvidia.com/gpu": "1"
+            },
+            "requests": {
+              "cpu": "16",
+              "memory": "64Gi",
+              "nvidia.com/gpu": "1"
+            }
+          },
+          "output_env": {}
+        }
+      ]
+    },
+    {
+      "pod": "sgw01-ali-render-export-20260922aa-cjpqw",
+      "uid": "9279305a-5317-4179-bb43-c835d969705c",
+      "node": "dcwipphhgc191.edc.nam.gm.com",
+      "owners": [
+        {
+          "apiVersion": "batch/v1",
+          "blockOwnerDeletion": true,
+          "controller": true,
+          "kind": "Job",
+          "name": "sgw01-ali-render-export-20260922aa",
+          "uid": "b4c722cb-fa87-41e3-b4a0-dd177a60c98d"
+        }
+      ],
+      "phase": "Succeeded",
+      "containers": [
+        {
+          "name": "export",
+          "resources": {
+            "limits": {
+              "cpu": "1",
+              "memory": "2Gi"
+            },
+            "requests": {
+              "cpu": "1",
+              "memory": "1Gi"
+            }
+          },
+          "output_env": {}
+        }
+      ]
+    },
+    {
+      "pod": "sgw01-ali-source-stage-20260922ab-9tkrg",
+      "uid": "7974d464-d8e7-4683-8264-71c954d3124f",
+      "node": "dcwipphhgc191.edc.nam.gm.com",
+      "owners": [
+        {
+          "apiVersion": "batch/v1",
+          "blockOwnerDeletion": true,
+          "controller": true,
+          "kind": "Job",
+          "name": "sgw01-ali-source-stage-20260922ab",
+          "uid": "53d6d25b-f8ac-4d71-ba66-effd3c031531"
+        }
+      ],
+      "phase": "Succeeded",
+      "containers": [
+        {
+          "name": "stage",
+          "resources": {
+            "limits": {
+              "cpu": "2",
+              "memory": "8Gi"
+            },
+            "requests": {
+              "cpu": "2",
+              "memory": "8Gi"
+            }
+          },
+          "output_env": {}
+        }
+      ]
+    },
+    {
+      "pod": "sgw01-ali-source-stage-20260922l-8ll5c",
+      "uid": "6c314c40-f320-4b9b-96d9-a1f5c6748b5b",
+      "node": "dcwipphhgc191.edc.nam.gm.com",
+      "owners": [
+        {
+          "apiVersion": "batch/v1",
+          "blockOwnerDeletion": true,
+          "controller": true,
+          "kind": "Job",
+          "name": "sgw01-ali-source-stage-20260922l",
+          "uid": "0e16a67f-c817-46ee-b4d3-f301efed0f7c"
+        }
+      ],
+      "phase": "Failed",
+      "containers": [
+        {
+          "name": "stage",
+          "resources": {
+            "limits": {
+              "cpu": "1",
+              "memory": "2Gi"
+            },
+            "requests": {
+              "cpu": "1",
+              "memory": "2Gi"
+            }
+          },
+          "output_env": {}
+        }
+      ]
+    },
+    {
+      "pod": "sgw01-ali-source-stage-20260922y-c8klf",
+      "uid": "644bdc0e-ebb9-4dfe-ac40-a08cbdc74de1",
+      "node": "dcwipphhgc191.edc.nam.gm.com",
+      "owners": [
+        {
+          "apiVersion": "batch/v1",
+          "blockOwnerDeletion": true,
+          "controller": true,
+          "kind": "Job",
+          "name": "sgw01-ali-source-stage-20260922y",
+          "uid": "cb21cb87-7a84-49b0-b995-241423951ec6"
+        }
+      ],
+      "phase": "Succeeded",
+      "containers": [
+        {
+          "name": "stage",
+          "resources": {
+            "limits": {
+              "cpu": "1",
+              "memory": "2Gi"
+            },
+            "requests": {
+              "cpu": "1",
+              "memory": "2Gi"
+            }
+          },
+          "output_env": {}
+        }
+      ]
+    },
+    {
+      "pod": "sgw01-ali-source-stage-20260923ae-99989",
+      "uid": "de094d3f-97aa-4234-ba47-e039198aead5",
+      "node": "dcwipphhgc191.edc.nam.gm.com",
+      "owners": [
+        {
+          "apiVersion": "batch/v1",
+          "blockOwnerDeletion": true,
+          "controller": true,
+          "kind": "Job",
+          "name": "sgw01-ali-source-stage-20260923ae",
+          "uid": "896c6a05-c000-40cc-a7f5-ab28d79404fb"
+        }
+      ],
+      "phase": "Succeeded",
+      "containers": [
+        {
+          "name": "stage",
+          "resources": {
+            "limits": {
+              "cpu": "2",
+              "memory": "8Gi"
+            },
+            "requests": {
+              "cpu": "2",
+              "memory": "8Gi"
+            }
+          },
+          "output_env": {}
+        }
+      ]
+    },
+    {
+      "pod": "sgw01-ali-source-stage-20260923ah-6l4gt",
+      "uid": "7e2dde0b-e62e-4ab9-9b2c-a2298a199bd0",
+      "node": "dcwipphhgc191.edc.nam.gm.com",
+      "owners": [
+        {
+          "apiVersion": "batch/v1",
+          "blockOwnerDeletion": true,
+          "controller": true,
+          "kind": "Job",
+          "name": "sgw01-ali-source-stage-20260923ah",
+          "uid": "f3a98986-3591-4220-b596-aa067a08860f"
+        }
+      ],
+      "phase": "Succeeded",
+      "containers": [
+        {
+          "name": "stage",
+          "resources": {
+            "limits": {
+              "cpu": "2",
+              "memory": "8Gi"
+            },
+            "requests": {
+              "cpu": "2",
+              "memory": "8Gi"
+            }
+          },
+          "output_env": {}
+        }
+      ]
+    },
+    {
+      "pod": "sgw01-ali-source-stage-20260923al-nnsc8",
+      "uid": "6ad7c5e0-05da-4154-94c5-f4b5cd1abdc9",
+      "node": "dcwipphhgc191.edc.nam.gm.com",
+      "owners": [
+        {
+          "apiVersion": "batch/v1",
+          "blockOwnerDeletion": true,
+          "controller": true,
+          "kind": "Job",
+          "name": "sgw01-ali-source-stage-20260923al",
+          "uid": "6d1401f5-9e9f-480c-9c97-f1ae9892a812"
+        }
+      ],
+      "phase": "Succeeded",
+      "containers": [
+        {
+          "name": "stage",
+          "resources": {
+            "limits": {
+              "cpu": "2",
+              "memory": "4Gi"
+            },
+            "requests": {
+              "cpu": "2",
+              "memory": "4Gi"
+            }
+          },
+          "output_env": {}
+        }
+      ]
+    },
+    {
+      "pod": "sgw01-ali-source-stage-20260923an-q5cj9",
+      "uid": "07755ce9-0eeb-46e4-bfca-98f5618606be",
+      "node": "dcwipphhgc191.edc.nam.gm.com",
+      "owners": [
+        {
+          "apiVersion": "batch/v1",
+          "blockOwnerDeletion": true,
+          "controller": true,
+          "kind": "Job",
+          "name": "sgw01-ali-source-stage-20260923an",
+          "uid": "6d97c8e4-266e-4cb0-8bef-7f2cf380e22b"
+        }
+      ],
+      "phase": "Failed",
+      "containers": [
+        {
+          "name": "stage",
+          "resources": {
+            "limits": {
+              "cpu": "2",
+              "memory": "4Gi"
+            },
+            "requests": {
+              "cpu": "2",
+              "memory": "4Gi"
+            }
+          },
+          "output_env": {}
+        }
+      ]
+    },
+    {
+      "pod": "sgw01-ali-source-stage-20260923ap-842gb",
+      "uid": "43715d14-9a1e-46cd-9332-495d9be070d2",
+      "node": "dcwipphhgc191.edc.nam.gm.com",
+      "owners": [
+        {
+          "apiVersion": "batch/v1",
+          "blockOwnerDeletion": true,
+          "controller": true,
+          "kind": "Job",
+          "name": "sgw01-ali-source-stage-20260923ap",
+          "uid": "bb3c837e-cb73-43a8-9bc2-a822d55f726f"
+        }
+      ],
+      "phase": "Succeeded",
+      "containers": [
+        {
+          "name": "stage",
+          "resources": {
+            "limits": {
+              "cpu": "2",
+              "memory": "4Gi"
+            },
+            "requests": {
+              "cpu": "2",
+              "memory": "4Gi"
+            }
+          },
+          "output_env": {}
+        }
+      ]
+    },
+    {
+      "pod": "sgw01-ali-source-stage-20260923aq-k4xzn",
+      "uid": "13e820c4-6efc-4f7a-89a2-a3f9628a8452",
+      "node": "dcwipphhgc191.edc.nam.gm.com",
+      "owners": [
+        {
+          "apiVersion": "batch/v1",
+          "blockOwnerDeletion": true,
+          "controller": true,
+          "kind": "Job",
+          "name": "sgw01-ali-source-stage-20260923aq",
+          "uid": "775d0856-6560-452b-9c79-19d17958b27b"
+        }
+      ],
+      "phase": "Succeeded",
+      "containers": [
+        {
+          "name": "stage",
+          "resources": {
+            "limits": {
+              "cpu": "2",
+              "memory": "4Gi"
+            },
+            "requests": {
+              "cpu": "2",
+              "memory": "4Gi"
+            }
+          },
+          "output_env": {}
+        }
+      ]
+    },
+    {
+      "pod": "sgw01-ali-source-stage-20260923bb-7wrzs",
+      "uid": "da07cca7-352d-4578-be51-2ec0565ec5a3",
+      "node": "dcwipphhgc191.edc.nam.gm.com",
+      "owners": [
+        {
+          "apiVersion": "batch/v1",
+          "blockOwnerDeletion": true,
+          "controller": true,
+          "kind": "Job",
+          "name": "sgw01-ali-source-stage-20260923bb",
+          "uid": "e94e770e-a46d-4db4-a6d6-0137cc675534"
+        }
+      ],
+      "phase": "Succeeded",
+      "containers": [
+        {
+          "name": "stage",
+          "resources": {
+            "limits": {
+              "cpu": "2",
+              "memory": "4Gi"
+            },
+            "requests": {
+              "cpu": "250m",
+              "memory": "4Gi"
+            }
+          },
+          "output_env": {}
+        }
+      ]
+    },
+    {
+      "pod": "sgw01-ali-source-stage-20260923be-wmv9w",
+      "uid": "c7b70ee8-1941-4c03-912b-10ccacf4723c",
+      "node": "dcwipphhgc191.edc.nam.gm.com",
+      "owners": [
+        {
+          "apiVersion": "batch/v1",
+          "blockOwnerDeletion": true,
+          "controller": true,
+          "kind": "Job",
+          "name": "sgw01-ali-source-stage-20260923be",
+          "uid": "13454164-7774-4608-88a9-012242482c49"
+        }
+      ],
+      "phase": "Succeeded",
+      "containers": [
+        {
+          "name": "stage",
+          "resources": {
+            "limits": {
+              "cpu": "2",
+              "memory": "4Gi"
+            },
+            "requests": {
+              "cpu": "250m",
+              "memory": "4Gi"
+            }
+          },
+          "output_env": {}
+        }
+      ]
+    },
+    {
+      "pod": "sgw01-ali-source-stage-20260923bh-mrw9g",
+      "uid": "4dc66e21-23e7-42b4-828d-09d2955f4db4",
+      "node": "dcwipphhgc191.edc.nam.gm.com",
+      "owners": [
+        {
+          "apiVersion": "batch/v1",
+          "blockOwnerDeletion": true,
+          "controller": true,
+          "kind": "Job",
+          "name": "sgw01-ali-source-stage-20260923bh",
+          "uid": "d6b0590b-f699-4d72-8e34-78d7629658c1"
+        }
+      ],
+      "phase": "Succeeded",
+      "containers": [
+        {
+          "name": "stage",
+          "resources": {
+            "limits": {
+              "cpu": "2",
+              "memory": "4Gi"
+            },
+            "requests": {
+              "cpu": "250m",
+              "memory": "4Gi"
+            }
+          },
+          "output_env": {}
+        }
+      ]
+    },
+    {
+      "pod": "sgw01-ali-texture-audit-20260922x-l7v8t",
+      "uid": "f556c320-4846-42aa-94be-1f57f5c65477",
+      "node": "dcwipphhgc191.edc.nam.gm.com",
+      "owners": [
+        {
+          "apiVersion": "batch/v1",
+          "blockOwnerDeletion": true,
+          "controller": true,
+          "kind": "Job",
+          "name": "sgw01-ali-texture-audit-20260922x",
+          "uid": "857ad766-9d23-4551-9cd9-84b3203c6b8e"
+        }
+      ],
+      "phase": "Succeeded",
+      "containers": [
+        {
+          "name": "audit",
+          "resources": {
+            "limits": {
+              "cpu": "1",
+              "memory": "2Gi"
+            },
+            "requests": {
+              "cpu": "1",
+              "memory": "1Gi"
+            }
+          },
+          "output_env": {}
+        }
+      ]
+    },
+    {
+      "pod": "sgw01-ali-workspace-export-20260922s-wp8ck",
+      "uid": "d18ce8c0-e216-4bed-b274-4943b7b357ba",
+      "node": "dcwipphhgc191.edc.nam.gm.com",
+      "owners": [
+        {
+          "apiVersion": "batch/v1",
+          "blockOwnerDeletion": true,
+          "controller": true,
+          "kind": "Job",
+          "name": "sgw01-ali-workspace-export-20260922s",
+          "uid": "d73cb7e3-49b5-412a-8df7-0b41629d70f5"
+        }
+      ],
+      "phase": "Succeeded",
+      "containers": [
+        {
+          "name": "export",
+          "resources": {
+            "limits": {
+              "cpu": "1",
+              "memory": "1Gi"
+            },
+            "requests": {
+              "cpu": "1",
+              "memory": "512Mi"
+            }
+          },
+          "output_env": {}
+        }
+      ]
+    }
+  ]
+}

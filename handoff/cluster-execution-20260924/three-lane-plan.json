@@ -1,0 +1,79 @@
+{
+  "schema_version": "sgw-01-prospective-three-model-allocation-v1",
+  "status": "prospective_not_an_idle_or_launch_receipt",
+  "authorization": "current_user_direction_for_one_independent_worker_lane_per_model_on_existing_capacity",
+  "coordinator_session_id": "5ed7dc81-68d8-493f-a8c4-81a4b6cb59f6",
+  "context": "prod-dcwi-warrenq1-vmkub007",
+  "namespace": "211247-prod",
+  "pvc": "211247-prod-pvc",
+  "inventory_observed_at_utc": "2026-09-24T21:08:34.598006+00:00",
+  "inventory_semantics": "ready unschedulable=false untainted sharing=none replicas=1 node metadata only; free GPU counts unavailable",
+  "desired_model_lanes": 3,
+  "desired_total_gpus": 6,
+  "lanes": {
+    "N3": {
+      "policy_node": "dcwipphai0061.edc.nam.gm.com",
+      "policy_gpu_name": "NVIDIA A100-SXM4-80GB",
+      "simulator_node": "dcwipphhgc191.edc.nam.gm.com",
+      "simulator_gpu_name": "NVIDIA A40",
+      "gpus_per_role": 1,
+      "remaining_initial_gate": "external witness of consumed two-request live evidence; no replay"
+    },
+    "E3": {
+      "policy_node": "dcwipphai0062.edc.nam.gm.com",
+      "policy_gpu_name": "NVIDIA A100-SXM4-80GB",
+      "simulator_node": "dcwipphhgc194.edc.nam.gm.com",
+      "simulator_gpu_name": "NVIDIA A40",
+      "gpus_per_role": 1,
+      "remaining_initial_gate": "live technical check already passed; no repeat"
+    },
+    "F3": {
+      "policy_node": "dcwipphai0063.edc.nam.gm.com",
+      "policy_gpu_name": "NVIDIA A100-SXM4-80GB",
+      "simulator_node": "dcwipphhgc190.edc.nam.gm.com",
+      "simulator_gpu_name": "NVIDIA A40",
+      "gpus_per_role": 1,
+      "remaining_initial_gate": "registered first two-request live check, attempt B, source a68a0bc4aef413f400dede291cbd83f139b996bf"
+    }
+  },
+  "first_useful_admission": "F3 registered live check on its distinct proposed pair; N3/E3 requests are consumed and will not be rerun for resource checks",
+  "qualification_job_deadline_seconds": 3600,
+  "automatic_admission_retries": 0,
+  "speculative_placement_sweep": false,
+  "required_before_model_or_simulator_construction": [
+    "actual Kubernetes allocation and exact Job/Pod identity",
+    "one-shot true idle-device and exact GPU-name check",
+    "protected UUID exclusion",
+    "shared physical UUID lock",
+    "shared cohort model lock for model construction"
+  ],
+  "required_before_study_activation": [
+    "model-specific native gates and source-bound time/camera evidence",
+    "guarded immutable model/family/stage release",
+    "durable per-model nine-partition policy and simulator progression",
+    "persistent recorder outputs, completion claims and existing resume guards",
+    "measured pilot storage/runtime receipts before D/C"
+  ],
+  "preserve_current_e3_objects": [
+    "sgw01-ali-live-e3-policy-20260924b-ssttc",
+    "sgw01-ali-live-e3-simulator-20260924b-w2wk5"
+  ],
+  "subsequent_user_clarification": "Protection applies to Edge evidence and claims, not indefinite retention of verified terminal allocation objects. Preserve full terminal identities/logs first, then recycle only terminal Kubernetes objects.",
+  "qualification_recovery": {
+    "failed_independent_attempt": "F3-b: A10080 on0063 passed idle check; A40 on190 was rejected, zero model requests/actions",
+    "successor_attempt": "F3-c on proven0061/191 with fresh registration/actual simulator identity",
+    "edge_terminal_preservation": "handoff/cluster-execution-20260924/e3-live-b-preservation.json",
+    "flux_terminal_preservation": "handoff/cluster-execution-20260924/f3-live-b-terminal-preservation.json",
+    "prior_f3_model_lock_verified_released": true,
+    "scientific_requests_replayed": false,
+    "expansion_is_not_a_qualification_prerequisite": true
+  },
+  "excluded_node": "dcwipphhgc225.edc.nam.gm.com",
+  "excluded_gpu_uuid": "GPU-60b3065c-79cb-61e6-b92a-32d0ae3750f3",
+  "new_paid_capacity": false,
+  "new_cluster_provisioning": false,
+  "preempt_or_interrupt_other_workloads": false,
+  "scene_camera_prompt_seed_or_scoring_changes": false,
+  "study_episodes_started": 0,
+  "running_idle_qualified_gpu_count_claimed_by_this_plan": 0
+}

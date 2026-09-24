@@ -1,0 +1,52 @@
+[
+  {
+    "pod": "sgw01-ali-live-f3-policy-20260924b-jrjng",
+    "uid": "9b421c4f-cf72-4b28-b6f2-f5e9f00e800e",
+    "job": {
+      "apiVersion": "batch/v1",
+      "blockOwnerDeletion": true,
+      "controller": true,
+      "kind": "Job",
+      "name": "sgw01-ali-live-f3-policy-20260924b",
+      "uid": "27985b1f-05bd-4a3f-b4af-9574e6ffe4dc"
+    },
+    "node": "dcwipphai0063.edc.nam.gm.com",
+    "phase": "Running",
+    "reason": null,
+    "message": null,
+    "containers": [
+      {
+        "containerID": "containerd://868a26adb0307d6ad56d1ae5162e63529f189c6d7db059d195c9fd088339a9aa",
+        "image": "artifactory-ci.gm.com/docker-approved/devcontainers/base:ubuntu22.04",
+        "imageID": "artifactory-ci.gm.com/docker-approved/devcontainers/base@sha256:03f5ce7d090fbd378070a8216d0aedfc6e473c52da99b40b0cf53918612a297c",
+        "lastState": {},
+        "name": "policy",
+        "ready": true,
+        "restartCount": 0,
+        "started": true,
+        "state": {
+          "running": {
+            "startedAt": "2026-09-24T21:18:05Z"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "pod": "sgw01-ali-live-f3-simulator-20260924b-f7dwc",
+    "uid": "e1d866d6-7b2e-48c4-8b35-c58bb801f10e",
+    "job": {
+      "apiVersion": "batch/v1",
+      "blockOwnerDeletion": true,
+      "controller": true,
+      "kind": "Job",
+      "name": "sgw01-ali-live-f3-simulator-20260924b",
+      "uid": "f5950f7f-a541-46b9-aaf4-c6039a2aaacd"
+    },
+    "node": "dcwipphhgc190.edc.nam.gm.com",
+    "phase": "Failed",
+    "reason": "UnexpectedAdmissionError",
+    "message": "Pod was rejected: Allocate failed due to requested number of devices unavailable for nvidia.com/gpu. Requested: 1, Available: 0, which is unexpected",
+    "containers": []
+  }
+]

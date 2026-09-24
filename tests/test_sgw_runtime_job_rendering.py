@@ -64,8 +64,25 @@ def test_distinct_attempt_can_reuse_one_compatible_lane_without_weaker_guards(mo
     {"attempt_suffix": "a\nb"},
     {"simulator_node": "dcwipphhgc225.edc.nam.gm.com"},
     {"simulator_node": "unknown"},
+    {"policy_node": "dcwipphhgc225.edc.nam.gm.com"},
 ))
 def test_rejects_unsafe_attempts_and_unregistered_nodes(overrides):
     with pytest.raises(ValueError):
         render(model="N3", role="simulator", materialization=MATERIALIZATION,
                registration_sha256=HASHES["N3"], **overrides)
+
+
+@pytest.mark.parametrize("model,policy,simulator", (
+    ("E3", "dcwipphai0062.edc.nam.gm.com", "dcwipphhgc194.edc.nam.gm.com"),
+    ("F3", "dcwipphai0063.edc.nam.gm.com", "dcwipphhgc190.edc.nam.gm.com"),
+))
+def test_prospective_independent_lanes_retain_exact_hardware_guards(model, policy, simulator):
+    for role, node, gpu in (("policy", policy, "NVIDIA A100-SXM4-80GB"),
+                            ("simulator", simulator, "NVIDIA A40")):
+        value = render(model=model, role=role, materialization=MATERIALIZATION,
+                       registration_sha256="b" * 64, attempt_suffix="b",
+                       policy_node=policy, simulator_node=simulator)
+        spec = value["spec"]["template"]["spec"]
+        assert spec["nodeName"] == node
+        env = {item["name"]: item for item in spec["containers"][0]["env"]}
+        assert env["EXPECTED_GPU_NAME"]["value"] == gpu

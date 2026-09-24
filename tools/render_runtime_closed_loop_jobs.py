@@ -11,18 +11,22 @@ JOBS = Path(__file__).resolve().parents[1] / "handoff/cluster-execution-20260924
 TEMPLATES = {"N3": "n3-check-c.json", "E3": "e3-check-a.json", "F3": "f3-check-a.json"}
 SIMULATOR_NODES = {model: f"dcwipphhgc{node}.edc.nam.gm.com"
                    for model, node in (("N3", 191), ("E3", 192), ("F3", 193))}
+POLICY_CANDIDATES = tuple(f"dcwipphai{node:04d}.edc.nam.gm.com" for node in (61, 62, 63))
+SIMULATOR_CANDIDATES = (*SIMULATOR_NODES.values(), "dcwipphhgc190.edc.nam.gm.com",
+                        "dcwipphhgc194.edc.nam.gm.com")
 
 
 def render(
     *, model: str, role: str, materialization: dict, registration_sha256: str,
-    attempt_suffix: str = "a", simulator_node: str | None = None,
+    attempt_suffix: str = "a", simulator_node: str | None = None, policy_node: str | None = None,
 ) -> dict:
     source, commit = materialization["source_root"], materialization["source_commit"]
     if (model not in TEMPLATES or role not in ("policy", "simulator")
             or not re.fullmatch("[0-9a-f]{40}", commit)
             or not re.fullmatch("[0-9a-f]{64}", registration_sha256)
             or not re.fullmatch("[a-z][a-z0-9]{0,7}", attempt_suffix)
-            or (simulator_node is not None and simulator_node not in SIMULATOR_NODES.values())
+            or (simulator_node is not None and simulator_node not in SIMULATOR_CANDIDATES)
+            or (policy_node is not None and policy_node not in POLICY_CANDIDATES)
             or not Path(source).is_relative_to(ROOT)):
         raise ValueError("explicit current source, model, role and registration hash are required")
     name = f"sgw01-ali-live-{model.lower()}-{role}-20260924{attempt_suffix}"
@@ -34,7 +38,7 @@ def render(
     spec = value["spec"]["template"]["spec"]
     spec["schedulerName"] = name
     spec["nodeName"] = (
-        "dcwipphai0061.edc.nam.gm.com" if role == "policy"
+        (policy_node or POLICY_CANDIDATES[0]) if role == "policy"
         else simulator_node or SIMULATOR_NODES[model]
     )
     value["spec"]["activeDeadlineSeconds"] = 3600
@@ -103,13 +107,15 @@ def main() -> None:
     parser.add_argument("--materialization-receipt", type=Path, required=True)
     parser.add_argument("--registration-sha256", required=True)
     parser.add_argument("--attempt-suffix", default="a")
-    parser.add_argument("--simulator-node", choices=tuple(SIMULATOR_NODES.values()))
+    parser.add_argument("--simulator-node", choices=SIMULATOR_CANDIDATES)
+    parser.add_argument("--policy-node", choices=POLICY_CANDIDATES)
     parser.add_argument("--output", type=Path, required=True)
     args = parser.parse_args()
     value = render(model=args.model, role=args.role,
                    materialization=json.loads(args.materialization_receipt.read_text()),
                    registration_sha256=args.registration_sha256,
-                   attempt_suffix=args.attempt_suffix, simulator_node=args.simulator_node)
+                   attempt_suffix=args.attempt_suffix, simulator_node=args.simulator_node,
+                   policy_node=args.policy_node)
     with args.output.open("x") as stream:
         json.dump(value, stream, indent=2)
         stream.write("\n")

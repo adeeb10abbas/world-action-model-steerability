@@ -1,0 +1,32 @@
+{
+  "idle": {
+    "study_id": "SGW-01",
+    "observed_at_unix": 1790284686.4848425,
+    "expected_visible_gpu_count": 1,
+    "gpus": [
+      {
+        "index": 0,
+        "uuid": "GPU-629fce94-92f7-4687-4882-b59f399964ff",
+        "name": "NVIDIA A100-SXM4-80GB",
+        "memory_used_mib": 0,
+        "memory_free_mib": 81153,
+        "utilization_percent": 0
+      }
+    ],
+    "compute_occupied_uuids": [],
+    "model_requests": 0,
+    "expected_gpu_name": "NVIDIA A100-SXM4-80GB",
+    "status": "passed_idle_snapshot_only",
+    "selected_gpu": {
+      "index": 0,
+      "uuid": "GPU-629fce94-92f7-4687-4882-b59f399964ff",
+      "name": "NVIDIA A100-SXM4-80GB",
+      "memory_used_mib": 0,
+      "memory_free_mib": 81153,
+      "utilization_percent": 0
+    }
+  },
+  "identity_published": false,
+  "model_evidence_created": false,
+  "simulator_mailbox_created": false
+}

@@ -12,6 +12,14 @@ This is verified native inference, not merely a Running Pod. Closed-loop
 execution and physical forecast mapping remain unqualified. These requests
 are consumed; do not rerun them to finish downstream evidence.
 
+**Subsequent live evidence:** Nano-B and Edge-B each consumed two additional
+real requests and executed 64 acknowledged physical actions with two resets.
+Edge's [final technical result](e3-live-result.json) is receiver-confirmed and
+completed with clean owned HTTP shutdown. Nano's original missing post-close
+marker/cleanup failure remains preserved and requires a separate external
+lifecycle witness; no Nano replay is allowed. These are still **zero study
+episodes**, and do not make forecasts physically scored evidence.
+
 The [latest user instruction](completion-instruction.json) extends the
 objective through all 1,566 unique study outcomes and verified video/raw
 manifests, not merely launch. Keep every actual recording on the PVC and push
@@ -304,6 +312,34 @@ registered A40 candidate nodes for sequential use; type/idle/UUID/model locks,
 finite deadlines and no automatic retries remain unchanged. Registration and
 actual UID binding are still separate required steps. Do not resubmit any
 recorded attempt or treat an old idle snapshot as current admission.
+
+The successful Edge check uses source
+`a68a0bc4aef413f400dede291cbd83f139b996bf` and
+[its source-only materialization](lifecycle-materialization.json), including
+the outer Isaac shutdown witness. The initial source bundle import exposed
+the delivered depth-one history boundary; the new checkout explicitly retains
+the real `6dbdecc` shallow boundary. No commit or historical checkout was
+rewritten. The incomplete import remains separate on the PVC.
+
+The user's newer resource direction requests
+[three independent model lanes](three-lane-plan.json): three A10080 policy
+GPUs plus three A40 simulator GPUs, not one unsuitable physical GPU per model.
+The supplied node inventory establishes compatible advertised capacity only.
+One useful distinct FLUX pair was attempted: node0063 allocated an
+[actually idle A10080](f3-live-b-pre-execution.json), but node190's A40
+[admission was rejected](f3-live-b-admission.json) with requested 1/available 0.
+No simulator identity was published and no FLUX live request or action ran.
+This is not three running lanes. The user clarified that protection applies
+to Edge's evidence/claims, not indefinite retention of terminal allocation
+objects. After [full Edge preservation](e3-live-b-preservation.json) and
+[failed FLUX preservation](f3-live-b-terminal-preservation.json), only their
+four verified terminal Jobs/Pods were recycled. FLUX's prior policy exited
+1 at 21:21:07 UTC, and its shared model lock was independently available.
+Fresh FLUX-C is separately registered and admitted on the proven0061/191
+pair; its actual simulator UID was bound before proceeding. Its live requests
+have not previously been consumed. No Nano/Edge requests are replayed.
+The separate protected training workload remains untouched. No paid resources,
+new cluster, speculative placement sweep, or lower hardware guard is allowed.
 
 ## Remaining gates and resume
 
