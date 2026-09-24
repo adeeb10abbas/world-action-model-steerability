@@ -131,3 +131,29 @@ without replacing genuine differences. Output directories are exclusive;
 technical failure preserves the partial attempt and never triggers an
 automatic retry. Success is only a fixed-input contract result, not physical
 time/camera mapping, closed-loop qualification or a study release.
+
+## Resuming under a replacement Job
+
+Allocation receipts bind an actual Job UID and Pod UID. Reusing the old
+receipt under a replacement Pod must fail; rewriting the scientific release
+would also invalidate its existing completion pointers. New releases can
+explicitly set `allow_operational_receipt_refresh: true` in their immutable
+runtime binding to permit a separately hash-bound run admission.
+
+Bind `SGW01_RUN_ADMISSION` to an absolute receipt path and
+`SGW01_RUN_ADMISSION_SHA256` to its SHA-256. The
+`sgw-01-run-admission-v1` object must have `status: approved`, the unchanged
+`release_id` and complete `release_hashes`, selected `model`, actual
+`job_uid`/`pod_uid`, the same `resource_owner` and unchanged
+`operational_authorization_receipt` reference. Its `receipts` object must
+contain fresh hash-bound `external_allocation_receipt` and
+`resource_budget_receipt`; also include `storage_budget_receipt` for D/C or
+when the release already requires one.
+
+This refresh cannot replace prompts, fixtures, runtime identity, stage
+authorizations or the queue. All existing allocation, fresh-idle, expiry,
+measured-pilot and storage-floor guards still run against the new receipts.
+Every newly started attempt retains `run-admission.json`. Completed cells
+remain skipped under the same immutable release, and technical attempt
+counts do not reset. Without opt-in and an explicit admission, the original
+receipt behavior is unchanged.

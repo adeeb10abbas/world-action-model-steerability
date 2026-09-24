@@ -127,6 +127,49 @@ def _receipt(value: Any, label: str) -> Mapping[str, Any]:
         raise ResourceBlocked(f"{label} receipt is unreadable or malformed: {exc}") from exc
 
 
+def _run_admission(release: Release) -> Mapping[str, Any] | None:
+    """Refresh expiring operational evidence without rewriting a scientific release."""
+    path = os.environ.get("SGW01_RUN_ADMISSION")
+    digest = os.environ.get("SGW01_RUN_ADMISSION_SHA256")
+    if path is None and digest is None:
+        return None
+    if (release.binding.get("allow_operational_receipt_refresh") is not True
+            or not path or not digest or not Path(path).is_absolute()):
+        raise ResourceBlocked("run admission requires release opt-in and an absolute hash-bound receipt")
+    value = _receipt({"path": path, "sha256": digest}, "run admission")
+    models = {cell.model for cell in release.cells}
+    stages = {cell.stage for cell in release.cells}
+    job_uid, pod_uid = os.environ.get("JOB_UID"), os.environ.get("POD_UID")
+    authorization = release.binding.get("operational_authorization_receipt")
+    if (value.get("schema") != "sgw-01-run-admission-v1"
+            or value.get("status") != "approved"
+            or value.get("release_id") != release.release_id
+            or value.get("release_hashes") != dict(release.hashes)
+            or not isinstance(value.get("model"), str)
+            or models != {value["model"]} or len(stages) != 1
+            or not job_uid or not pod_uid
+            or value.get("job_uid") != job_uid or value.get("pod_uid") != pod_uid
+            or value.get("resource_owner") != release.binding.get("resource_owner")
+            or value.get("operational_authorization_receipt") != authorization):
+        raise ResourceBlocked("run admission differs from the immutable release, owner, or current Job/Pod")
+    receipts = value.get("receipts")
+    allowed = {"external_allocation_receipt", "resource_budget_receipt", "storage_budget_receipt"}
+    required = {"external_allocation_receipt", "resource_budget_receipt"}
+    if stages != {"P"} or release.binding.get("storage_budget_receipt") is not None:
+        required.add("storage_budget_receipt")
+    if (not isinstance(receipts, Mapping) or not required.issubset(receipts)
+            or not set(receipts).issubset(allowed)):
+        raise ResourceBlocked("run admission must bind all required operational receipts, and no scientific inputs")
+    for key, reference in receipts.items():
+        _receipt(reference, key)
+    return value
+
+
+def _operational_reference(release: Release, field: str) -> Any:
+    admission = _run_admission(release)
+    return release.binding.get(field) if admission is None else admission["receipts"].get(field)
+
+
 def _expiry(receipt: Mapping[str, Any], label: str) -> datetime:
     value = receipt.get("expires_at_utc")
     if not isinstance(value, str):
@@ -242,7 +285,7 @@ def _authorization_check(release: Release, *, model: str) -> str:
 def _allocation_check(release: Release, *, model: str, minimum_runtime_seconds: int,
                       verify_idle_probe: bool = True) -> int:
     """Validate the coordinator-owned Job reservation; this is not a local ledger."""
-    receipt = _receipt(release.binding.get("external_allocation_receipt"), "external allocation")
+    receipt = _receipt(_operational_reference(release, "external_allocation_receipt"), "external allocation")
     if receipt.get("schema") != "sgw-01-external-allocation-v1" or receipt.get("status") != "approved":
         raise ResourceBlocked("external allocation receipt is not approved")
     mode = _authorization_check(release, model=model)
@@ -332,7 +375,7 @@ def _space_check(release: Release, *, stage: str) -> None:
     if configured is not None and (type(configured) is not int or configured < floor):
         raise ResourceBlocked("minimum_free_bytes cannot lower the immutable 100 GiB floor")
     required = max(floor, configured or floor)
-    storage_ref = release.binding.get("storage_budget_receipt")
+    storage_ref = _operational_reference(release, "storage_budget_receipt")
     if stage in {"D", "C"} and storage_ref is None:
         raise ResourceBlocked(f"{stage} requires a measured pilot storage receipt")
     if storage_ref is not None:
@@ -353,7 +396,7 @@ def _space_check(release: Release, *, stage: str) -> None:
 
 
 def _budget_check(release: Release, *, stage: str, model: str, minimum_runtime_seconds: int) -> None:
-    budget = _receipt(release.binding.get("resource_budget_receipt"), "resource budget")
+    budget = _receipt(_operational_reference(release, "resource_budget_receipt"), "resource budget")
     expiry = _expiry(budget, "resource budget")
     if budget.get("status") != "approved":
         raise ResourceBlocked("resource budget receipt is not approved")
@@ -552,6 +595,9 @@ def run_partition(release: Release, *, model: str, family: str, stage: str, max_
                         return EXIT_ATTEMPTS_EXHAUSTED
                     recorder = AttemptRecorder(release, cell, f"attempt-{number:03d}")
                     recorder.begin()
+                    admission = _run_admission(release)
+                    if admission is not None:
+                        atomic_json(recorder.path / "run-admission.json", admission)
                     try:
                         reset = _run_with_deadline(
                             min(request_deadline, allocation_remaining), "reset",

@@ -216,3 +216,12 @@ completion pointers. Keep P -> D -> C and all six conditions in each block.
 Never substitute a diagnostic registration or `bound-cells.jsonl` for its
 released `queue.jsonl`. Retain all raw arrays/videos/request traces on the
 PVC and commit only compact evidence and hashes.
+
+The worker now supports an explicitly opted-in, hash-bound
+[replacement-Job admission](../../docs/STANDALONE_RUNTIME.md#resuming-under-a-replacement-job).
+This fixes the otherwise unavoidable stale Job/Pod UID in an immutable
+allocation receipt without rewriting scientific release hashes or replaying
+completed cells. Its regression check stops after one synthetic completion,
+rejects the replacement Job's old allocation, then resumes only the remaining
+five cells with fresh operational authority. This is CPU engineering evidence,
+not a native study-resume claim.
