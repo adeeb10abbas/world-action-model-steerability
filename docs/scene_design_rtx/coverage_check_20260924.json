@@ -74,7 +74,7 @@
   "overleaf": {
     "project_url": "https://www.overleaf.com/project/6ab2bdb39b30df4bbc98a15e",
     "project_title": "steering wams",
-    "synced_this_revision": true,
+    "synced_this_revision": false,
     "checked_at_utc": "2026-09-24T04:29:42.855741+00:00",
     "method": "Authenticated Chrome UI file upload; full sources read before replacement",
     "preupload_review": "Full saved main.tex exactly matched the last synchronized source before replacement; no intervening user edits were present",
@@ -109,12 +109,14 @@
         "sha256": "86cf377883cc7924faaaabfe1a979504335c84855ecd6eaae11001c634e41b2f"
       }
     },
-    "compile_invocations_this_revision": 1
+    "compile_invocations_this_revision": 1,
+    "checked_this_revision": false,
+    "revision_note": "Retained verified prior Overleaf build. The subsequent local equivalence safeguard is pending synchronization and compilation with the final scene-status update."
   },
   "delivery_hashes": {
     "ABLATION_COVERAGE.md": "d0e1f541b9edfc959459929ad77f9a10c0e760417f92dad1bc89685ad41dbba0",
     "ablation_coverage_20260924.tex": "6d46bcb5edb91fac568fb725e043373cd51a4cfbf47556d938338f5fb3272589",
-    "overleaf/main.tex": "86cf377883cc7924faaaabfe1a979504335c84855ecd6eaae11001c634e41b2f",
+    "overleaf/main.tex": "7ebdf9cdeeb71e59bcd46892755153d95dbdfc1fa8583b2df1d8c11a04d55508",
     "overleaf/ablation_coverage_20260924.tex": "6d46bcb5edb91fac568fb725e043373cd51a4cfbf47556d938338f5fb3272589",
     "overleaf/figures/lat-flat-right.png": "ac35e263b4ae4b966cd6c0938500c08fd75ec3d6c2f32185e71a218b4c054dab",
     "overleaf/figures/height-upper-right.png": "6673f7e0036a5a3ba4b44fa1f7ecd37a811d7973806f24e785c576dad1ab7f03",
@@ -172,5 +174,10 @@
       "pixel_edits": false
     }
   },
-  "scope_clarification": "LAT uses robot-frame scoring while frozen prompts leave viewpoint unspecified; consistent reversal can reflect frame choice or relation grounding, which this experiment does not separate."
+  "scope_clarification": "LAT uses robot-frame scoring while frozen prompts leave viewpoint unspecified; consistent reversal can reflect frame choice or relation grounding, which this experiment does not separate.",
+  "local_revision_pending_sync": {
+    "recorded_at_utc": "2026-09-24T09:42:00.950275+00:00",
+    "main_tex_sha256": "7ebdf9cdeeb71e59bcd46892755153d95dbdfc1fa8583b2df1d8c11a04d55508",
+    "change": "Prospective equivalence safeguard; no learned-policy outcomes, additional episodes, or frozen registry changes."
+  }
 }
