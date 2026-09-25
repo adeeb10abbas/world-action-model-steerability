@@ -151,13 +151,14 @@
   "lane_loan_authorization": "handoff/cluster-execution-20260924/lane-loan-authorization.json",
   "latest_lane_loan": {
     "receipt": "handoff/cluster-execution-20260924/lane-loan-20260925a.json",
+    "first_request_witness": "handoff/cluster-execution-20260924/lane-loan-20260925a-first-request.json",
     "actual_loans": 1,
     "pair": "o/p",
     "from_policy_family": "F3",
     "to_policy_family": "E3",
     "completed_boundary_partition": "F3-HEIGHT-D",
     "destination_partition": "E3-DIST-D",
-    "status": "Controllers started under unchanged a94696d; first request/action not yet observed at 07:28 UTC."
+    "status": "Genuine E3 request and 30 subsequent actions observed at 07:28:42 UTC on the loaned o/p pair; unchanged a94696d, no replay or interrupted episode."
   },
   "latest_periodic_report": "handoff/cluster-execution-20260924/report-20260925-0408.json",
   "notification_observer_recovery": "handoff/cluster-execution-20260924/notification-observer-start-v3.json",

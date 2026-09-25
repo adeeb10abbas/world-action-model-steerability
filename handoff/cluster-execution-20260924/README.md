@@ -55,9 +55,13 @@ image Python supplied the API; model and simulator interpreters did not change.
 Fresh idle UUID checks, new immutable plans/control roots and exact new
 supervisor identities admitted E3 on the same o/p GPUs. Guardian ownership
 transitioned from 10 to 8 to 9 to 10 watched owners, without restarting the
-guardian or clearing a hold. At 07:28, the new controllers had claimed
-`E3-DIST-D`, but a first request/action witness had not yet been observed.
-This is a controller launch, not a claim of completed inference.
+guardian or clearing a hold. The initial 07:28 publication only established
+controller startup and the `E3-DIST-D` claim. At **07:28:42 UTC**, the
+[first genuine loan request/action witness](lane-loan-20260925a-first-request.json)
+recorded `DIST-D01-E3-C-POS:request:0` and 30 subsequent actions.
+Its admission receipt was independently matched to the new E3 supervisor,
+Pod o and the exact `sgw-current-E3-DIST-D-r4` release. This establishes
+actual execution on the loan, not a completed episode or successful outcome.
 The other four pairs were not restarted or reassigned.
 
 **Current monitoring inputs:** use
@@ -67,8 +71,8 @@ The other four pairs were not restarted or reassigned.
 The original metadata collector remains preserved. The boundary observer
 completed its notification and was rearmed against the new index as PID 8142,
 start identity `152328157`, using the same `sgw-boundary-loan-watch` handle.
-The first-action observer `sgw-loan-first-action-20260925a` only reads metadata;
-it never sends an inference request. Further progress must use the new
+The first-action observer `sgw-loan-first-action-20260925a` completed after
+reading that witness; it never sent an inference request. Further progress must use the new
 roster so the intentionally retired F3 owners are not reported as live failures.
 
 The 07:26 snapshot has three unfinished attempts; the fourth active partition

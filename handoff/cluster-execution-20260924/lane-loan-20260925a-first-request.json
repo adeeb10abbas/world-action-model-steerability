@@ -1,0 +1,41 @@
+{
+  "actions_recorded": 30,
+  "attempt_id": "attempt-001",
+  "cell_id": "DIST-D01-E3-C-POS",
+  "first_request": {
+    "camera_fingerprint": "a9b6d124a4f11a2d0f84b05bd71f15e697a167f7415fd3231a5b4832895d49a1",
+    "camera_name": "over_shoulder_left_camera",
+    "prompt_sha256": "f6c7780137e89e8c64b53f236fc06864679d0e08b43f7ea8a94ec2446e26b807",
+    "request_id": "DIST-D01-E3-C-POS:request:0",
+    "request_index": 0,
+    "reset_sha256": "a9b6d124a4f11a2d0f84b05bd71f15e697a167f7415fd3231a5b4832895d49a1",
+    "started_at_utc": "2026-09-25T07:27:39.380453+00:00",
+    "target_action_step": 0
+  },
+  "lane": "e3-a40-loan-20260925a",
+  "model": "E3",
+  "observed_at_utc": "2026-09-25T07:28:42.272269+00:00",
+  "requests_dispatched": 1,
+  "scope": "First actual request and subsequent recorded actions on the new loan; not an episode result",
+  "source_commit": "a94696d3fa75c78a4f756536b988cead607e53b8",
+  "persistent_witness": {
+    "path": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/loans/loan-20260925a/first-request-and-actions.json",
+    "sha256": "22f56401d7daa0f36a130f5e4c1c3b58bb0b1a755e5c3ab885968e9eee174753",
+    "bytes": 812
+  },
+  "run_admission": {
+    "path": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/attempts/DIST-D01-E3-C-POS/attempt-001/run-admission.json",
+    "sha256": "16ac689004efd138063280d03bd9b24655f70f3de9cb53471b861ebae1e87566",
+    "bytes": 2257
+  },
+  "supervisor_identity": {
+    "bytes": 1544,
+    "path": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/supervisors/e3-a40-loan-20260925a-policy-35c5e443-02c3-463b-aa32-f33e6e1c01c3/start.json",
+    "sha256": "cac7c6a8804c6ccb44134e5068149ef94abe8b83fa1c96c3bb57efa9658b4825"
+  },
+  "verified_supervisor_id": "2efbd95b-b137-4d2d-8434-bd8b627d54c2",
+  "verified_policy_pod": "211247-alia40o-a40-1gpu",
+  "verified_policy_pid": 16749,
+  "release_id": "sgw-current-E3-DIST-D-r4",
+  "completed_episode": false
+}
