@@ -1,0 +1,338 @@
+{
+  "active_lane_index": {
+    "reference": {
+      "path": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/active-lanes.json",
+      "sha256": "69696d1d23f9c7d1e2fb3d8eec66d862c0045b96a4a434e63f441d2b55f889a2"
+    },
+    "value": {
+      "lanes": [
+        {
+          "lane": "n3-a40-r4-0",
+          "model": "N3",
+          "policy_gpu": "GPU-c3747c87-38c7-06ff-1787-db180f8680b1",
+          "policy_interpreter": "/data/users/ali/vla_wam/envs/cosmos-nano-411d25b-v3-exact/bin/python",
+          "policy_pod": "211247-alia40i-a40-1gpu",
+          "policy_run": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/supervisors/n3-a40-r4-0-policy-fb61170f-6dc7-41b7-b6b8-c5dde70ed15e",
+          "policy_supervisor_id": "8a274a4a-548f-47d4-a73d-7360fbf7e3ac",
+          "policy_template": {
+            "path": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/inputs-a40-r4/n3-a40-r4-0-policy-template.json",
+            "sha256": "d21a88327ead49bb52b49be5e197841f8f19a01b6d1dce2117db317ca1b86880"
+          },
+          "simulator_gpu": "GPU-8773b1c9-df29-a37a-e165-8f68986cdb88",
+          "simulator_plan": {
+            "path": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/inputs-a40-r4/n3-a40-r4-0-simulator-plan.json",
+            "sha256": "9ca4d0a4157d58094c2b99fa25ccbb2f9589c40bb389070f003d158da4352a79"
+          },
+          "simulator_pod": "211247-alia40m-a40-1gpu",
+          "simulator_run": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/supervisors/n3-a40-r4-0-simulator-2b78eb27-5cca-446d-b4ce-80107dd9a06f",
+          "simulator_supervisor_id": "ac5ccb8e-0f3f-49de-a48a-714a2af2a296"
+        },
+        {
+          "lane": "e3-a40-r4-0",
+          "model": "E3",
+          "policy_gpu": "GPU-d06ff1b3-0d35-7aa7-a7f2-9d16a37fc397",
+          "policy_interpreter": "/data/users/ali/vla_wam/envs/cosmos-edge-a904d2d-v3-exact/bin/python",
+          "policy_pod": "211247-alia40j-a40-1gpu",
+          "policy_run": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/supervisors/e3-a40-r4-0-policy-5c1e42a4-f9a8-417b-b944-a3377c2873ed",
+          "policy_supervisor_id": "c9d6953c-7e03-4bc1-b97f-692b36cf59e7",
+          "policy_template": {
+            "path": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/inputs-a40-r4/e3-a40-r4-0-policy-template.json",
+            "sha256": "9441f5b78e90a933e2e948b6367d0cc20cb9c96b4a661e63109e8143d9ee2b4b"
+          },
+          "simulator_gpu": "GPU-cf7ce957-9226-b4e4-07c7-999e48bf97fa",
+          "simulator_plan": {
+            "path": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/inputs-a40-r4/e3-a40-r4-0-simulator-plan.json",
+            "sha256": "7925d6b0c3ac15c7ab084ad9721bc415684bdf4b08e8eea34317181944353499"
+          },
+          "simulator_pod": "211247-alia40g-a40-1gpu",
+          "simulator_run": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/supervisors/e3-a40-r4-0-simulator-6bfa33ce-a436-4e9b-b2ba-66e39c056ed6",
+          "simulator_supervisor_id": "6cb6bec0-9722-437e-83b2-0e40346da4a0"
+        },
+        {
+          "lane": "f3-a40-r4-0",
+          "model": "F3",
+          "policy_gpu": "GPU-0d10aff1-6627-2fde-a1b4-15064c5a0fb0",
+          "policy_interpreter": "/data/users/ali/sgw-01/current-20260924a/envs/flux-e2dd1d8/bin/python",
+          "policy_pod": "211247-alia40k-a40-1gpu",
+          "policy_run": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/supervisors/f3-a40-r4-0-policy-48794e58-df43-4e08-8186-9d0540b4c9d0",
+          "policy_supervisor_id": "e11beba3-aa31-4a78-81db-a668d27d1a00",
+          "policy_template": {
+            "path": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/inputs-a40-r4/f3-a40-r4-0-policy-template.json",
+            "sha256": "ae7e697dbc18b7dfd347a629bd29fecf3f4ad32e9bb48cd54d5cdd23eacbc417"
+          },
+          "simulator_gpu": "GPU-c25113ff-078d-6edd-f284-6723a02fca5f",
+          "simulator_plan": {
+            "path": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/inputs-a40-r4/f3-a40-r4-0-simulator-plan.json",
+            "sha256": "96bd015b29a356d5ab98f439deb60e93fea413ceb0b8470f5a21bac227afd9bb"
+          },
+          "simulator_pod": "211247-alia40h-a40-1gpu",
+          "simulator_run": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/supervisors/f3-a40-r4-0-simulator-7e964a21-4828-465a-992d-237b16f05c18",
+          "simulator_supervisor_id": "57ad1942-c5d0-4202-83c7-610fc454863d"
+        },
+        {
+          "lane": "n3-a40-r4-1",
+          "model": "N3",
+          "policy_gpu": "GPU-8fcaadc2-f836-2077-c879-c0ee94c6a205",
+          "policy_interpreter": "/data/users/ali/vla_wam/envs/cosmos-nano-411d25b-v3-exact/bin/python",
+          "policy_pod": "211247-alia40l-a40-1gpu",
+          "policy_run": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/supervisors/n3-a40-r4-1-policy-a8bc0af8-016c-49bd-a0c9-2ac854703f8a",
+          "policy_supervisor_id": "4c1ca0fe-222f-4600-b8fc-f6bcda122214",
+          "policy_template": {
+            "path": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/inputs-a40-r4/n3-a40-r4-1-policy-template.json",
+            "sha256": "1f2316eae6baa912e3111310bbb76f0a7a5f1bacfc7d87ec8b9c1938edbad79f"
+          },
+          "simulator_gpu": "GPU-738deba4-99b9-f756-a246-6395a8a2c720",
+          "simulator_plan": {
+            "path": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/inputs-a40-r4/n3-a40-r4-1-simulator-plan.json",
+            "sha256": "613dadd284c7b125af37b928014b3355ce5b7bfdd65bf0be61e56f4bead520fa"
+          },
+          "simulator_pod": "211247-alia40n-a40-1gpu",
+          "simulator_run": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/supervisors/n3-a40-r4-1-simulator-bd8a035c-b897-4769-af94-19912dc11127",
+          "simulator_supervisor_id": "8efffe6e-7169-4521-a96a-acfb5e6e0ebd"
+        },
+        {
+          "lane": "e3-a40-loan-20260925a",
+          "model": "E3",
+          "policy_gpu": "GPU-b089ea9d-c01e-56de-f33f-5a0e71d3581a",
+          "policy_interpreter": "/data/users/ali/vla_wam/envs/cosmos-edge-a904d2d-v3-exact/bin/python",
+          "policy_pod": "211247-alia40o-a40-1gpu",
+          "policy_run": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/supervisors/e3-a40-loan-20260925a-policy-35c5e443-02c3-463b-aa32-f33e6e1c01c3",
+          "policy_supervisor_id": "2efbd95b-b137-4d2d-8434-bd8b627d54c2",
+          "policy_template": {
+            "bytes": 3438,
+            "path": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/loans/loan-20260925a/policy-template.json",
+            "sha256": "3737cd85996bc03862c43ba180159ca5ee8c899942f6478e182b45f013878923"
+          },
+          "simulator_gpu": "GPU-07dd8eee-ceb3-fb2b-0269-ec07cf5aab7c",
+          "simulator_plan": {
+            "bytes": 2232,
+            "path": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/loans/loan-20260925a/simulator-plan.json",
+            "sha256": "6c8aa628d75055b3ce2b6ffd3f4b5ff52b4f0f724531bba5f79c8e2afecc9c83"
+          },
+          "simulator_pod": "211247-alia40p-a40-1gpu",
+          "simulator_run": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/supervisors/e3-a40-loan-20260925a-simulator-dab91f41-8146-4b11-a256-a0d015151616",
+          "simulator_supervisor_id": "b6b1a625-0bfc-487c-94ee-bb118f124db7"
+        }
+      ],
+      "source_commit": "a94696d3fa75c78a4f756536b988cead607e53b8"
+    }
+  },
+  "active_owner_index": {
+    "reference": {
+      "path": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/storage-guard/active-owners.json",
+      "sha256": "4155a5124305ab4cc98ddc14ad7e8310f990ca50f411a8ab98133603dae78c04"
+    },
+    "value": {
+      "schema_version": "sgw-01-storage-guard-owners-v1",
+      "supervisor_roots": [
+        "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/supervisors/n3-a40-r4-0-policy-fb61170f-6dc7-41b7-b6b8-c5dde70ed15e",
+        "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/supervisors/n3-a40-r4-0-simulator-2b78eb27-5cca-446d-b4ce-80107dd9a06f",
+        "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/supervisors/e3-a40-r4-0-policy-5c1e42a4-f9a8-417b-b944-a3377c2873ed",
+        "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/supervisors/e3-a40-r4-0-simulator-6bfa33ce-a436-4e9b-b2ba-66e39c056ed6",
+        "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/supervisors/f3-a40-r4-0-policy-48794e58-df43-4e08-8186-9d0540b4c9d0",
+        "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/supervisors/f3-a40-r4-0-simulator-7e964a21-4828-465a-992d-237b16f05c18",
+        "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/supervisors/n3-a40-r4-1-policy-a8bc0af8-016c-49bd-a0c9-2ac854703f8a",
+        "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/supervisors/n3-a40-r4-1-simulator-bd8a035c-b897-4769-af94-19912dc11127",
+        "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/supervisors/e3-a40-loan-20260925a-simulator-dab91f41-8146-4b11-a256-a0d015151616",
+        "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/supervisors/e3-a40-loan-20260925a-policy-35c5e443-02c3-463b-aa32-f33e6e1c01c3"
+      ]
+    }
+  },
+  "completed_development_partitions": {
+    "E3-HEIGHT-D": {
+      "completed_at_utc": "2026-09-25T10:03:21.104174Z",
+      "episodes": 24,
+      "operation": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/operations/e3-a40-r4-0-HEIGHT-D-6d77a9f0347e4b17acc6e7193ff6e7e0",
+      "reference": {
+        "path": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/partition-completions/E3-HEIGHT-D.json",
+        "sha256": "910dcbac93f67bccd44ae3c7ea212c29690a7f266fcfdd30dc6799ba9139aaa1"
+      },
+      "release_id": "sgw-current-E3-HEIGHT-D-r4"
+    },
+    "E3-LAT-D": {
+      "completed_at_utc": "2026-09-25T06:23:01.978353Z",
+      "episodes": 24,
+      "operation": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/operations/e3-a40-r4-0-LAT-D-e1de2d44cc62434c81fee39acdc69c15",
+      "reference": {
+        "path": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/partition-completions/E3-LAT-D.json",
+        "sha256": "28ec0df04124ff7408674953e051243d914d0c8c64bf7c2b0d9649a226c78965"
+      },
+      "release_id": "sgw-current-E3-LAT-D-r4"
+    },
+    "F3-HEIGHT-D": {
+      "completed_at_utc": "2026-09-25T07:09:41.903574Z",
+      "episodes": 24,
+      "operation": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/operations/f3-a40-r4-1-HEIGHT-D-74a6f37ed2fb41c08d66ea7e7ddb9480",
+      "reference": {
+        "path": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/partition-completions/F3-HEIGHT-D.json",
+        "sha256": "0d390fc81f6a21d5458afc32c44142c1cd06210f173f5c2fde4f10eb375b74bf"
+      },
+      "release_id": "sgw-current-F3-HEIGHT-D-r4"
+    },
+    "F3-LAT-D": {
+      "completed_at_utc": "2026-09-25T06:43:17.544708Z",
+      "episodes": 24,
+      "operation": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/operations/f3-a40-r4-0-LAT-D-92e7c6add4bb44909de9e5c40a7bea71",
+      "reference": {
+        "path": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/partition-completions/F3-LAT-D.json",
+        "sha256": "479ea91cf2c72df3e0b34640c70ebba2f92a5ad86169f992296509b4f1a322de"
+      },
+      "release_id": "sgw-current-F3-LAT-D-r4"
+    },
+    "N3-HEIGHT-D": {
+      "completed_at_utc": "2026-09-25T07:23:24.622972Z",
+      "episodes": 24,
+      "operation": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/operations/n3-a40-r4-1-HEIGHT-D-bb67192c5c834a67832681f8f20e2df0",
+      "reference": {
+        "path": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/partition-completions/N3-HEIGHT-D.json",
+        "sha256": "92dbb816370ae6ab540cca465dd4632f18cb89ddd4558264e61bcd2987f6d0be"
+      },
+      "release_id": "sgw-current-N3-HEIGHT-D-r4"
+    },
+    "N3-LAT-D": {
+      "completed_at_utc": "2026-09-25T07:14:43.109322Z",
+      "episodes": 24,
+      "operation": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/operations/n3-a40-r4-0-LAT-D-a938d9efc2634ca8a0e0ed3e7ae76056",
+      "reference": {
+        "path": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/partition-completions/N3-LAT-D.json",
+        "sha256": "e36b2647caf8ddd82a3e9e4cdce4b34c2a3e00b54359f3ee6eb3325f9362a27a"
+      },
+      "release_id": "sgw-current-N3-LAT-D-r4"
+    }
+  },
+  "delta_since_previous_progress": {
+    "completions_per_hour": 26.100617343885038,
+    "elapsed_seconds": 3724.049846,
+    "new_actions": 11094,
+    "new_completed": 27,
+    "new_requests": 370
+  },
+  "execution_source_commit": "a94696d3fa75c78a4f756536b988cead607e53b8",
+  "fleet_hold": null,
+  "guardian_exit": null,
+  "guardian_heartbeat": {
+    "at_utc": "2026-09-25T10:16:41.551782Z",
+    "available_bytes": 149529189941248,
+    "available_inodes": 72527566,
+    "status": "watching",
+    "total_bytes": 219902325555200,
+    "total_inodes": 134217728
+  },
+  "lane_statuses": {
+    "e3-a40-loan-20260925a": {
+      "at_utc": "2026-09-25T07:24:22.428336Z",
+      "partition": "E3-DIST-D",
+      "status": "running"
+    },
+    "e3-a40-r4-0": {
+      "at_utc": "2026-09-25T10:16:43.536178Z",
+      "status": "waiting_for_stage_or_partition"
+    },
+    "f3-a40-r4-0": {
+      "at_utc": "2026-09-25T06:43:31.164449Z",
+      "partition": "F3-DIST-D",
+      "status": "running"
+    },
+    "n3-a40-r4-0": {
+      "at_utc": "2026-09-25T07:14:56.301725Z",
+      "partition": "N3-DIST-D",
+      "status": "running"
+    },
+    "n3-a40-r4-1": {
+      "at_utc": "2026-09-25T10:15:57.609762Z",
+      "status": "waiting_for_stage_or_partition"
+    }
+  },
+  "local_clients": {
+    "at_utc": "2026-09-25T10:17:25.892464+00:00",
+    "processes": [
+      {
+        "command": "kubectl --context prod-dcwi-warrenq1-vmkub007 -n 211247-prod exec 211247-alia40q-a40-1gpu -- /data/users/ali/vla_wam/envs/robolab-v2-isaac50/bin/python -u /data/users/ali/sgw-01/current-20260924a/deploy-boundary-20260925a/watch_partition_boundary.py --cohort /data/users/ali/sgw-01/current-20260924a/study-a40-v2 --lane-index /data/users/ali/sgw-01/current-20260924a/study-a40-v2/active-lanes.json --seconds 1209600",
+        "elapsed": "02:50:37",
+        "pid": 49286,
+        "state": "Ss"
+      },
+      {
+        "command": "kubectl --context prod-dcwi-warrenq1-vmkub007 -n 211247-prod --request-timeout=336h exec 211247-alia40q-a40-1gpu -- /data/users/ali/vla_wam/envs/robolab-v2-isaac50/bin/python -u /data/users/ali/sgw-01/current-20260924a/deploy-storage-502d720/event-watcher-v3.py --registration /data/users/ali/sgw-01/current-20260924a/deploy-storage-502d720/event-watcher-start-v4.json --seconds 1209600",
+        "elapsed": "59:58",
+        "pid": 80027,
+        "state": "Ss"
+      }
+    ]
+  },
+  "observed_at_utc": "2026-09-25T10:16:47.516604+00:00",
+  "observers": {
+    "boundary": {
+      "pid": 8142,
+      "process": {
+        "command": [
+          "/data/users/ali/vla_wam/envs/robolab-v2-isaac50/bin/python",
+          "-u",
+          "/data/users/ali/sgw-01/current-20260924a/deploy-boundary-20260925a/watch_partition_boundary.py",
+          "--cohort",
+          "/data/users/ali/sgw-01/current-20260924a/study-a40-v2",
+          "--lane-index",
+          "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/active-lanes.json",
+          "--seconds",
+          "1209600"
+        ],
+        "cwd": "/home/alia40q",
+        "ppid": 0,
+        "process_start_identity": "152328157",
+        "started_at_unix": 1790321208.57
+      }
+    },
+    "guardian": {
+      "pid": 4121,
+      "process": {
+        "command": [
+          "/data/users/ali/vla_wam/envs/robolab-v2-isaac50/bin/python",
+          "-u",
+          "/data/users/ali/sgw-01/current-20260924a/deploy-storage-502d720/watch_study_storage.py",
+          "--cohort",
+          "/data/users/ali/sgw-01/current-20260924a/study-a40-v2",
+          "--owners-index",
+          "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/storage-guard/active-owners.json",
+          "--run-root",
+          "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/storage-guard/guard-502d7208-f732b6579b6946dd8b97de290f9d5359",
+          "--source-commit",
+          "502d720856c9f7a88dd37acb53255ae2388f5071",
+          "--implementation-sha256",
+          "9aeca327677c4cd097fd3624f626953d8fa3ac357d16423de57ee1af92b3855e",
+          "--seconds",
+          "1209600",
+          "--poll-seconds",
+          "60"
+        ],
+        "cwd": "/home/alia40q",
+        "ppid": 1,
+        "process_start_identity": "150027267",
+        "started_at_unix": 1790298199.67
+      }
+    },
+    "storage_notification": {
+      "pid": 11261,
+      "process": {
+        "command": [
+          "/data/users/ali/vla_wam/envs/robolab-v2-isaac50/bin/python",
+          "-u",
+          "/data/users/ali/sgw-01/current-20260924a/deploy-storage-502d720/event-watcher-v3.py",
+          "--registration",
+          "/data/users/ali/sgw-01/current-20260924a/deploy-storage-502d720/event-watcher-start-v4.json",
+          "--seconds",
+          "1209600"
+        ],
+        "cwd": "/home/alia40q",
+        "ppid": 0,
+        "process_start_identity": "152992038",
+        "started_at_unix": 1790327847.38
+      }
+    }
+  },
+  "progress_reference": {
+    "path": "handoff/cluster-execution-20260924/progress-20260925-1013.json",
+    "sha256": "d6d2cb8a16a0c19ed8d54fb9775f4da85a29f28bed1c9ce0b9e922e489865fff"
+  },
+  "schema_version": "sgw-01-hourly-control-snapshot-v1",
+  "scope": "Small control/partition-summary metadata only; no raw artifact reads or runtime operations."
+}

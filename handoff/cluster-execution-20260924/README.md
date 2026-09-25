@@ -3,12 +3,12 @@
 The user separately authorized runtime integration, bounded checks, and the
 committed study on 24 September 2026. This supersedes the preparation-only
 permission recorded in the original delivery. **Genuine study execution is
-running on five A40 policy/simulator pairs.** At 2026-09-25 09:13 UTC,
-233 unique episodes were complete: N3 77/522, E3 73/522 and F3 83/522.
-These comprise all 54 pilots and 179 development episodes, with 231 valid model
-failures and two valid successes; the five technical attempts remain separate.
+running on five A40 policy/simulator pairs.** At 2026-09-25 10:15 UTC,
+260 unique episodes were complete: N3 84/522, E3 86/522 and F3 90/522.
+These comprise all 54 pilots and 206 development episodes, with 257 valid model
+failures and three valid successes; the five technical attempts remain separate.
 The frozen pilot barrier released development at 03:01:35.850529 UTC.
-See [the operational snapshot](progress-20260925-0912.json),
+See [the operational snapshot](progress-20260925-1013.json),
 [the applied boundary-loan evidence](lane-loan-20260925a.json),
 [the periodic timing/capacity report](report-20260925-0812.json) and
 [first valid episode evidence for every model](first-valid-study-episodes.json).
@@ -33,6 +33,32 @@ protected B200 are untouched. Full 1,566-cell completion, final analysis and
 final-only local H.264 delivery remain pending. No local video transfer has
 started. Progress receipts are collected hourly; capacity can be reassigned
 only at a verified quiescent boundary without losing an in-flight attempt.
+
+**10:15 UTC hourly progress:** 27 additional completions since 09:13
+correspond to 26.10 episodes/hour, with 370 additional dispatched requests
+and 11,094 additional recorded actions. Only two attempts remain in progress
+at the snapshot, both with genuine requests/actions. FLUX has all 90
+pilot/development episode completion pointers, but its `DIST-D` partition
+finalization is still pending; this is not yet an intact completed boundary.
+`E3-HEIGHT-D` now has its completed-partition receipt, and that Edge lane
+waits alongside one Nano lane. The three remaining D partitions are already
+owned, so no boundary loan would unlock additional D work.
+
+The [control snapshot](control-20260925-1017.json) preserves six completed
+D partition receipts and the current three running/two waiting lane states.
+Only **ten D cells remain** (six N3, four E3), followed by completion of all
+nine D partitions before C. No C episode has started. All ten owners,
+guardian, storage observer and boundary observer retain their exact
+identities; both local notification clients remain alive. No new technical
+attempt, OOM, fleet hold, restart, loan or physical pair was added.
+
+The 265 finalized manifests, including the five technical attempts, account
+for **2,102.743 GiB**. Native/in-flight bytes remain separately unmeasured.
+The guardian reported **135.996 TiB and 72,527,566 inodes available**;
+per-UID/GID quota remains unverified and all masters remain remote.
+Isolated expansion still awaits the explicit replacement-Pod-name relay;
+shared a-f remain untouched. The next roughly four-hour report is due
+around 12:10 UTC.
 
 **09:13 UTC hourly progress and notification recovery:** 28 additional
 completions since 08:12 correspond to 27.31 episodes/hour, with 426 additional
