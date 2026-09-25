@@ -269,13 +269,19 @@ def _released_row(row: Any, lane: Lane) -> tuple[dict, str]:
     return dict(row), candidate
 
 
-def read_descriptor(path: Path, lane: Lane) -> tuple[dict, dict, Path, Path]:
+def read_descriptor(path: Path, lane: Lane, *, metadata_refresh: Any = None) -> tuple[dict, dict, Path, Path]:
     value = _read(path)
     required = {"schema_version", "lane_identity_sha256", "cell_id", "attempt_id", "evidence_root", "mailbox_root",
                 "cell", "identity", "attempt_intent", "timeouts"}
     _require(set(value) == required and value["schema_version"] == DESCRIPTOR_SCHEMA
              and value["lane_identity_sha256"] == lane.sha256, "descriptor does not bind this simulator lane")
     root, metadata, token = _paths(value, lane)
+    refresh = DirectoryRefresher() if metadata_refresh is None else metadata_refresh
+    # The queue entry may be visible while newly created attempt directories
+    # remain negative-cached on this Pod's NFS mount.
+    for directory in (root.parent.parent.parent.parent, root.parent.parent.parent,
+                      root.parent.parent, root.parent, root, metadata):
+        refresh(directory)
     _require(path == lane.control / "requests" / f"{token}.json" and _digest(path) == _digest(metadata / "descriptor.json"),
              "published descriptor differs from retained attempt descriptor")
     _require(set(value["timeouts"]) == set(TIMEOUTS), "descriptor timeout fields differ")
@@ -671,8 +677,7 @@ def supervise(path: Path, sha256: str, deadline_seconds: float, *, metadata_refr
                     if request in completed:
                         _require(_digest(request) == completed[request], "completed descriptor changed")
                         continue
-                    descriptor, identity, root, metadata = read_descriptor(request, lane)
-                    refresh(metadata)
+                    descriptor, identity, root, metadata = read_descriptor(request, lane, metadata_refresh=refresh)
                     if (metadata / "result.json").exists():
                         _result(metadata, request, lane, identity)
                         _same_or_create(lane.control / "results" / request.name, {

@@ -17,6 +17,16 @@ The separate competence diagnostic is cancelled; the
 [final stop receipt](handoff/cluster-execution-20260924/user-stop-final-20260925.json)
 records exact counts, control exits and GPU release evidence.
 
+**New N3-only launch, 25 September 20:07 UTC:** six isolated A40 pairs now
+have durable controls for the separately registered stock-camera/official-input
+r5 cohort, using exact source `f149036`. Three pilot blocks are claimed;
+the remaining pairs wait for the N3 pilot barrier. The
+[launch receipt](handoff/cluster-execution-20260924/r5-launch-20260925.json)
+is followed by genuine HEIGHT/LAT inference. A q-side descriptor-visibility
+fault held the fleet at 20:12:51 UTC; existing episodes drain naturally and
+authorized infrastructure recovery is being prepared. E3/F3 remain
+unauthorized, and no stopped r4 release is resumed.
+
 **All 87 required scenes are physically validated: 29 LAT, 29 HEIGHT and 29 flat DIST layouts. Each passed both goals across three resets (522 selected scripted trials). The learned-policy study had 396 of 1,566 unique episodes complete at 2026-09-25 15:18 UTC: all 54 pilots, 216 development episodes and 126 genuine confirmation episodes. All five supervised A40 policy/simulator pairs have completed confirmation episodes after the development barrier released at 11:28:27 UTC.**
 
 The study compares Cosmos3 Nano Policy DROID (N3), Cosmos3 Edge Policy DROID (E3), and FLUX 3 Action DROID (F3) on left/right, higher/lower, and closer/farther placement. Each physical goal has direct, subject-first, and reference-inverted descriptions. All three checkpoints use the same clean layouts, robot, cameras, prompts and scoring rules. There are 29 layout slots per family: one pilot, four development and 24 confirmation layouts.

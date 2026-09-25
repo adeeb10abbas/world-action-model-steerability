@@ -39,7 +39,12 @@
     "camera_revision": "stock-over-shoulder-official-input-v1-20260925",
     "policy_input_revision": "robolab-cosmos-client-pad-360x640-v1",
     "gates": "handoff/cluster-execution-20260924/stock-r5-gates.json",
-    "status": "MINIMUM_GATES_PASSED_LAUNCH_PREPARATION"
+    "status": "GENUINE_LAT_HEIGHT_INFERENCE_WITNESSED_INFRASTRUCTURE_HOLD_RECOVERY_PENDING",
+    "execution_source_commit": "f149036791002f6ee28caf611ab029c92c266787",
+    "launch_receipt": "handoff/cluster-execution-20260924/r5-launch-20260925.json",
+    "first_inference_receipt": "handoff/cluster-execution-20260924/r5-first-inference-20260925.json",
+    "first_fault_hold": "handoff/cluster-execution-20260924/r5-descriptor-hold-20260925.json",
+    "isolated_policy_simulator_pairs": ["i/m", "l/n", "j/g", "o/p", "k/h", "u/q"]
   },
   "user_stop_authorization": "handoff/cluster-execution-20260924/user-stop-authorization-20260925.json",
   "user_stop_hold": "handoff/cluster-execution-20260924/user-stop-hold-20260925.json",
@@ -48,7 +53,7 @@
     "sha256": "cffa0423119dbe631a1ddb08f91232ac0eb54d256ce3c1ecf1de194450608867"
   },
   "model_roster_amendment": "docs/MODEL_ROSTER_AMENDMENT_20260924.md",
-  "pending_integration": "Never resume superseded study-a40-v2/r4. Stage stock camera/official-input revision for study-a40-v3/r5 with six-cell blocks and N3-only P-D-C barriers. Reuse LAT stock reset facts, render HEIGHT/DIST P01, pass official image-packing gate, then launch on six verified isolated pairs. Preserve model pins/scoring, N=1 hold and all videos; forecast mapping remains unavailable.",
+  "pending_integration": "Never resume superseded study-a40-v2/r4. N3-only study-a40-v3/r5 launched from f149036 with genuine HEIGHT/LAT responses and receiver actions. q-side descriptor visibility failed before DIST native startup or requests; first-fault hold preserved. Finish in-flight episodes naturally, then apply explicitly authorized infrastructure-only source/recovery bridge without replaying completed cells. E3/F3 require a new user call and forecast mapping remains unavailable.",
   "policy_hardware_amendment": "handoff/cluster-execution-20260924/a40-policy-amendment.json",
   "three_model_lane_plan": "handoff/cluster-execution-20260924/three-lane-plan.json",
   "edge_live_qualification": "handoff/cluster-execution-20260924/e3-live-result.json",

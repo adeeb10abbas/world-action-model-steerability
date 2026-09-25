@@ -12,6 +12,19 @@ diagnostic is cancelled. Read
 [the stop/new-revision authority](cluster-execution-20260924/user-stop-authorization-20260925.json)
 before the historical continuation below.
 
+**New N3 launch, 25 September 20:07 UTC:** `study-a40-v3/r5` now has
+six durable policy/simulator pairs from exact source
+`f149036791002f6ee28caf611ab029c92c266787`: i/m, l/n, j/g, o/p, k/h and
+u/q. All twelve fresh isolated-idle/PVC checks passed. LAT, HEIGHT and DIST
+pilot blocks were claimed; the other three pairs wait for the N3 P18 barrier.
+The [launch receipt](cluster-execution-20260924/r5-launch-20260925.json)
+establishes controls and claims. [Genuine new-camera inference](cluster-execution-20260924/r5-first-inference-20260925.json)
+was subsequently witnessed on HEIGHT and LAT, but a q-side descriptor
+visibility fault held the fleet at 20:12:51 UTC. Those two in-flight episodes
+drain naturally; DIST had no model requests. Authorized recovery is in
+preparation, not yet resumed. E3/F3 remain unauthorized. The old cohort and
+its guardian remain untouched.
+
 **Historical execution continuation (now stopped):** the user authorized cluster
 integration and launch subject to the runtime gates. See
 [the current cluster record](cluster-execution-20260924/README.md) for deployed

@@ -1,5 +1,43 @@
 # Current cluster continuation
 
+**New N3 r5 launch, 25 September 20:07 UTC:** twelve durable controls are
+started on isolated pairs i/m, l/n, j/g, o/p, k/h and u/q using exact
+`f149036791002f6ee28caf611ab029c92c266787`. The separately registered
+`study-a40-v3` binds stock left/right/wrist cameras, official per-view
+360 x 640 packing, unchanged prompts/scoring and N3-only P18 -> D72 -> C432
+six-cell blocks. First claims are LAT-P01 on i/m, HEIGHT-P01 on l/n and
+DIST-P01 on u/q; three other pairs wait for the pilot barrier. This
+[launch receipt](r5-launch-20260925.json) records controller startup.
+[Subsequent inference evidence](r5-first-inference-20260925.json) records
+HEIGHT with 64 received actions/three requested chunks and LAT with 32
+received actions/two requested chunks. These are genuine stock-camera
+model outcomes in progress, not completed results or competence evidence.
+
+**First-fault hold, 20:12:51 UTC:** q's simulator controller failed before
+starting DIST's native child: the queue descriptor was visible, but its
+already-written retained attempt descriptor was not. The latter subsequently
+became visible with its matching hash. The source dereferenced that metadata
+before its FORCE_SYNC refresh. The [unaltered hold](r5-descriptor-hold-20260925.json)
+is preserved, and LAT/HEIGHT drain naturally. DIST has zero model requests.
+A CPU-tested ordering correction refreshes the validated attempt-directory
+chain before reading descriptor/identity files, without retrying any request.
+The orchestrator explicitly authorized a hash-bound infrastructure recovery,
+DIST attempt-002, and retained LAT/HEIGHT outcomes; this recovery is not yet
+deployed or resumed. Immutable release/source and partial-block guards remain
+in force until the explicit bridge is ready.
+
+Fresh checks established twelve distinct idle isolated UUIDs and PVC
+writes/locks. Available storage was 147,311,984,377,856 bytes and 71,083,992
+inodes, above the retained conservative full1566 envelope; enforced per-user
+quota remains unverified. The active r5 CPU guardian is q PID30606,
+start156888315, with a 20 TiB/5M-inode floor and twelve indexed owners.
+The separate held-cohort guardian remains unchanged. All raw masters stay
+on the PVC. Six initial zero-request simulator-control exits are preserved:
+external preparation supplied an extra metadata key in an exact-key
+environment reference. Corrected versioned external plans retain the same
+execution source; no model request, behavioral attempt or completed cell
+was retried.
+
 **USER STOP, 25 September 16:05:40 UTC:** the current close-camera cohort is
 superseded and under a durable user-attributed fleet hold. No new claims or
 attempts are authorized for that cohort. All five in-flight episodes finalized

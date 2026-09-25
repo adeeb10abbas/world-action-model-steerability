@@ -246,6 +246,46 @@ def test_first_actual_reset_uses_startup_budget_without_a_probe(setup):
     assert not errors and len(launches) == 1
 
 
+def test_attempt_metadata_refreshed_before_descriptor_dereference(setup, monkeypatch):
+    root = attempt(setup)
+    metadata = root / "lane"
+    expected = [root.parent.parent.parent.parent, root.parent.parent.parent,
+                root.parent.parent, root.parent, root, metadata]
+    observed, errors, launches = [], [], []
+    digest = lane._digest
+
+    def cache_sensitive_digest(path):
+        if threading.current_thread().name == "descriptor-reader" and path == metadata / "descriptor.json":
+            if not all(directory in observed for directory in expected):
+                raise FileNotFoundError("synthetic NFS negative-cache miss before FORCE_SYNC")
+            positions = [observed.index(directory) for directory in expected]
+            assert positions == sorted(positions)
+        return digest(path)
+
+    monkeypatch.setattr(lane, "_digest", cache_sensitive_digest)
+
+    def run():
+        try:
+            lane.supervise(setup.path, setup.sha, 8, metadata_refresh=observed.append,
+                           popen=spawner(setup, launches=launches), environ=setup.env)
+        except BaseException as error:
+            errors.append(error)
+
+    thread = threading.Thread(target=run, name="descriptor-reader")
+    thread.start()
+    try:
+        client = lane.create_environment(cell=setup.rows[0], evidence_root=root)
+        client.reset()
+        client.finish_episode()
+    finally:
+        stop(setup)
+        thread.join(8)
+    assert not thread.is_alive() and not errors and len(launches) == 1
+    assert (metadata / "descriptor.json").read_bytes() == (
+        Path(setup.identity["control_root"]) / "requests" / f"{setup.rows[0]['cell_id']}--{root.parent.name}.json"
+    ).read_bytes()
+
+
 def test_process_group_probe_never_calls_permission_denied_absent(monkeypatch):
     def denied(pgid, signum):
         assert pgid == 123 and signum == 0
