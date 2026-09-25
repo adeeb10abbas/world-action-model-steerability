@@ -19,7 +19,7 @@
     "sha256": "a7413451f7339c698fb4842bdb2007a59fb4f4bb8a8ebd97bf09355cbdc6d0f8",
     "wrist_changed": false
   },
-  "current_scope": "User-authorized full1566-cell study through results and final-only local H.264 derivatives. Genuine A40 study execution has begun; five completed physical attempts remain technical_invalid, with the fleet held for an infrastructure-only retry.",
+  "current_scope": "User-authorized full1566-cell study through results and final-only local H.264 derivatives. Five A40 policy/simulator pairs are executing genuine study episodes. All3 models have valid recorded outcomes; original technical failures remain preserved.",
   "cluster_execution_continuation": "handoff/cluster-execution-20260924/README.md",
   "cluster_hardware_inventory": "handoff/cluster-execution-20260924/hardware-inventory.json",
   "live_admission_evidence": "handoff/cluster-execution-20260924/live-admission-a.json",
@@ -34,7 +34,7 @@
     "sha256": "cffa0423119dbe631a1ddb08f91232ac0eb54d256ce3c1ecf1de194450608867"
   },
   "model_roster_amendment": "docs/MODEL_ROSTER_AMENDMENT_20260924.md",
-  "pending_integration": "All3 models demonstrated genuine A40 inference. Five first study attempts each consumed15 requests and450 actions with retained videos and actual clean native simulator exits. A policy-reader interpreter mismatch caused technical_invalid finalization; original manifests remain unchanged. Fleet held after those attempts. Retry uses the corrected common source, versioned immutable releases in the same cohort, existing attempt counters (attempt-002), and an automatic first-technical-invalid fleet hold. Frozen prompts/scoring/queue and A100 qualification identities unchanged. Forecast physical mapping remains unavailable; no local video transfers.",
+  "pending_integration": "Runtime integration and first valid A40 episodes verified for all3 models on execution sourcea94696d3fa75c78a4f756536b988cead607e53b8. Continue all1566 unique episodes and final analysis/delivery. Same cohort, r4 immutable releases, preserved attempt counters and automatic N=1 technical-invalid hold. Frozen prompts/scoring/queue and A100 qualification identities unchanged. Forecast physical mapping remains unavailable; no local video transfers.",
   "policy_hardware_amendment": "handoff/cluster-execution-20260924/a40-policy-amendment.json",
   "three_model_lane_plan": "handoff/cluster-execution-20260924/three-lane-plan.json",
   "edge_live_qualification": "handoff/cluster-execution-20260924/e3-live-result.json",
@@ -144,6 +144,16 @@
   "a40_startup_preservation": "handoff/cluster-execution-20260924/a40-ipv4-startup-preservation.json",
   "a40_attempt1_preservation": "handoff/cluster-execution-20260924/a40-attempt1-preservation.json",
   "a40_zero_request_recovery_hold": "handoff/cluster-execution-20260924/a40-r3-admission-hold.json",
-  "status": "A40_GENUINE_STUDY_EXECUTION_HELD_FOR_FINALIZATION_REPAIR",
+  "first_valid_study_episodes": "handoff/cluster-execution-20260924/first-valid-study-episodes.json",
+  "learned_policy_progress": {
+    "as_of_utc": "2026-09-25T00:43:21.851995+00:00",
+    "valid_completed_unique_episodes": 7,
+    "expected_unique_episodes": 1566,
+    "preserved_technical_invalid_attempts": 5,
+    "active_policy_simulator_pairs": 5,
+    "execution_source_commit": "a94696d3fa75c78a4f756536b988cead607e53b8",
+    "receipt": "handoff/cluster-execution-20260924/progress-first-valid.json"
+  },
+  "status": "A40_STUDY_RUNNING_VALID_EPISODES_FOR_ALL_THREE_MODELS",
   "study_id": "SGW-01"
 }

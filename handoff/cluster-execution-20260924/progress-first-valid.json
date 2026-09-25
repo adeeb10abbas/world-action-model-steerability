@@ -1,0 +1,364 @@
+{
+  "cohort_root": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2",
+  "completed_by_partition": {
+    "E3-LAT-P": 2,
+    "F3-HEIGHT-P": 1,
+    "F3-LAT-P": 2,
+    "N3-HEIGHT-P": 1,
+    "N3-LAT-P": 1
+  },
+  "completed_status_counts": {
+    "valid_model_failure": 7
+  },
+  "completion_identity_catalogue_sha256": "2b1fecb681f863d1ecac21d80960fdc77929fa3d5efd718fb7df722a1bca4f5a",
+  "execution_source_commit": "a94696d3fa75c78a4f756536b988cead607e53b8",
+  "expected_unique_episodes": 1566,
+  "fleet_hold": null,
+  "not_yet_completed_unique_episodes": 1559,
+  "observed_at_utc": "2026-09-25T00:43:21.851995+00:00",
+  "owners": [
+    {
+      "lane": "n3-a40-r4-0",
+      "pod": "211247-alia40i-a40-1gpu",
+      "receipt": {
+        "at_utc": "2026-09-25T00:42:47.321146Z",
+        "child_pid": 4052,
+        "deadline_utc": "2026-10-09T00:22:49.420000+00:00",
+        "host_memory": {
+          "anon_bytes": 5218365440,
+          "anon_plus_shmem_bytes": 5235150848,
+          "current_bytes": 34359513088,
+          "events": {
+            "high": 0,
+            "low": 0,
+            "max": 236215,
+            "oom": 0,
+            "oom_kill": 0
+          },
+          "kernel_peak_bytes": null,
+          "limit_bytes": 34359738368,
+          "sampled_anon_plus_shmem_peak_bytes": 5782011904,
+          "sampled_peak_bytes": 34359738368,
+          "sampling_interval_seconds": 0.2,
+          "shmem_bytes": 16785408
+        },
+        "status": "supervising"
+      },
+      "role": "policy",
+      "terminal": false
+    },
+    {
+      "lane": "n3-a40-r4-0",
+      "pod": "211247-alia40m-a40-1gpu",
+      "receipt": {
+        "at_utc": "2026-09-25T00:42:21.690725Z",
+        "child_pid": 3924,
+        "deadline_utc": "2026-10-09T00:22:43.680000+00:00",
+        "host_memory": {
+          "anon_bytes": 4096692224,
+          "anon_plus_shmem_bytes": 6630223872,
+          "current_bytes": 20037763072,
+          "events": {
+            "high": 0,
+            "low": 0,
+            "max": 0,
+            "oom": 0,
+            "oom_kill": 0
+          },
+          "kernel_peak_bytes": null,
+          "limit_bytes": 34359738368,
+          "sampled_anon_plus_shmem_peak_bytes": 6986743808,
+          "sampled_peak_bytes": 20038340608,
+          "sampling_interval_seconds": 0.2,
+          "shmem_bytes": 2533531648
+        },
+        "status": "supervising"
+      },
+      "role": "simulator",
+      "terminal": false
+    },
+    {
+      "lane": "e3-a40-r4-0",
+      "pod": "211247-alia40j-a40-1gpu",
+      "receipt": {
+        "at_utc": "2026-09-25T00:42:38.918874Z",
+        "child_pid": 4108,
+        "deadline_utc": "2026-10-09T00:23:13.030000+00:00",
+        "host_memory": {
+          "anon_bytes": 2788167680,
+          "anon_plus_shmem_bytes": 2804953088,
+          "current_bytes": 33732493312,
+          "events": {
+            "high": 0,
+            "low": 0,
+            "max": 15566,
+            "oom": 0,
+            "oom_kill": 0
+          },
+          "kernel_peak_bytes": null,
+          "limit_bytes": 34359738368,
+          "sampled_anon_plus_shmem_peak_bytes": 4181032960,
+          "sampled_peak_bytes": 34359738368,
+          "sampling_interval_seconds": 0.2,
+          "shmem_bytes": 16785408
+        },
+        "status": "supervising"
+      },
+      "role": "policy",
+      "terminal": false
+    },
+    {
+      "lane": "e3-a40-r4-0",
+      "pod": "211247-alia40g-a40-1gpu",
+      "receipt": {
+        "at_utc": "2026-09-25T00:43:21.593839Z",
+        "child_pid": 4306,
+        "deadline_utc": "2026-10-09T00:22:43.880000+00:00",
+        "host_memory": {
+          "anon_bytes": 4067196928,
+          "anon_plus_shmem_bytes": 6600728576,
+          "current_bytes": 27016642560,
+          "events": {
+            "high": 0,
+            "low": 0,
+            "max": 0,
+            "oom": 0,
+            "oom_kill": 0
+          },
+          "kernel_peak_bytes": null,
+          "limit_bytes": 34359738368,
+          "sampled_anon_plus_shmem_peak_bytes": 6995656704,
+          "sampled_peak_bytes": 27040690176,
+          "sampling_interval_seconds": 0.2,
+          "shmem_bytes": 2533531648
+        },
+        "status": "supervising"
+      },
+      "role": "simulator",
+      "terminal": false
+    },
+    {
+      "lane": "f3-a40-r4-0",
+      "pod": "211247-alia40k-a40-1gpu",
+      "receipt": {
+        "at_utc": "2026-09-25T00:42:53.559492Z",
+        "child_pid": 3613,
+        "deadline_utc": "2026-10-09T00:22:54.780000+00:00",
+        "host_memory": {
+          "anon_bytes": 2987327488,
+          "anon_plus_shmem_bytes": 3004047360,
+          "current_bytes": 33982808064,
+          "events": {
+            "high": 0,
+            "low": 0,
+            "max": 83957,
+            "oom": 0,
+            "oom_kill": 0
+          },
+          "kernel_peak_bytes": null,
+          "limit_bytes": 34359738368,
+          "sampled_anon_plus_shmem_peak_bytes": 5422419968,
+          "sampled_peak_bytes": 34359738368,
+          "sampling_interval_seconds": 0.2,
+          "shmem_bytes": 16719872
+        },
+        "status": "supervising"
+      },
+      "role": "policy",
+      "terminal": false
+    },
+    {
+      "lane": "f3-a40-r4-0",
+      "pod": "211247-alia40h-a40-1gpu",
+      "receipt": {
+        "at_utc": "2026-09-25T00:43:21.521668Z",
+        "child_pid": 3946,
+        "deadline_utc": "2026-10-09T00:22:43.180000+00:00",
+        "host_memory": {
+          "anon_bytes": 4080254976,
+          "anon_plus_shmem_bytes": 6613786624,
+          "current_bytes": 26601861120,
+          "events": {
+            "high": 0,
+            "low": 0,
+            "max": 0,
+            "oom": 0,
+            "oom_kill": 0
+          },
+          "kernel_peak_bytes": null,
+          "limit_bytes": 34359738368,
+          "sampled_anon_plus_shmem_peak_bytes": 7014371328,
+          "sampled_peak_bytes": 26601861120,
+          "sampling_interval_seconds": 0.2,
+          "shmem_bytes": 2533531648
+        },
+        "status": "supervising"
+      },
+      "role": "simulator",
+      "terminal": false
+    },
+    {
+      "lane": "n3-a40-r4-1",
+      "pod": "211247-alia40l-a40-1gpu",
+      "receipt": {
+        "at_utc": "2026-09-25T00:42:46.409586Z",
+        "child_pid": 3884,
+        "deadline_utc": "2026-10-09T00:22:48.840000+00:00",
+        "host_memory": {
+          "anon_bytes": 4692975616,
+          "anon_plus_shmem_bytes": 4709761024,
+          "current_bytes": 33856577536,
+          "events": {
+            "high": 0,
+            "low": 0,
+            "max": 191520,
+            "oom": 0,
+            "oom_kill": 0
+          },
+          "kernel_peak_bytes": null,
+          "limit_bytes": 34359738368,
+          "sampled_anon_plus_shmem_peak_bytes": 5676134400,
+          "sampled_peak_bytes": 34359742464,
+          "sampling_interval_seconds": 0.2,
+          "shmem_bytes": 16785408
+        },
+        "status": "supervising"
+      },
+      "role": "policy",
+      "terminal": false
+    },
+    {
+      "lane": "n3-a40-r4-1",
+      "pod": "211247-alia40n-a40-1gpu",
+      "receipt": {
+        "at_utc": "2026-09-25T00:42:22.001954Z",
+        "child_pid": 3855,
+        "deadline_utc": "2026-10-09T00:22:44.340000+00:00",
+        "host_memory": {
+          "anon_bytes": 4098105344,
+          "anon_plus_shmem_bytes": 6631636992,
+          "current_bytes": 23004295168,
+          "events": {
+            "high": 0,
+            "low": 0,
+            "max": 0,
+            "oom": 0,
+            "oom_kill": 0
+          },
+          "kernel_peak_bytes": null,
+          "limit_bytes": 34359738368,
+          "sampled_anon_plus_shmem_peak_bytes": 6999990272,
+          "sampled_peak_bytes": 23004557312,
+          "sampling_interval_seconds": 0.2,
+          "shmem_bytes": 2533531648
+        },
+        "status": "supervising"
+      },
+      "role": "simulator",
+      "terminal": false
+    },
+    {
+      "lane": "f3-a40-r4-1",
+      "pod": "211247-alia40o-a40-1gpu",
+      "receipt": {
+        "at_utc": "2026-09-25T00:42:54.258529Z",
+        "child_pid": 3506,
+        "deadline_utc": "2026-10-09T00:22:55.400000+00:00",
+        "host_memory": {
+          "anon_bytes": 3411611648,
+          "anon_plus_shmem_bytes": 3428331520,
+          "current_bytes": 33848963072,
+          "events": {
+            "high": 0,
+            "low": 0,
+            "max": 53685,
+            "oom": 0,
+            "oom_kill": 0
+          },
+          "kernel_peak_bytes": null,
+          "limit_bytes": 34359738368,
+          "sampled_anon_plus_shmem_peak_bytes": 5463396352,
+          "sampled_peak_bytes": 34359738368,
+          "sampling_interval_seconds": 0.2,
+          "shmem_bytes": 16719872
+        },
+        "status": "supervising"
+      },
+      "role": "policy",
+      "terminal": false
+    },
+    {
+      "lane": "f3-a40-r4-1",
+      "pod": "211247-alia40p-a40-1gpu",
+      "receipt": {
+        "at_utc": "2026-09-25T00:43:21.045693Z",
+        "child_pid": 3784,
+        "deadline_utc": "2026-10-09T00:22:43.960000+00:00",
+        "host_memory": {
+          "anon_bytes": 4074291200,
+          "anon_plus_shmem_bytes": 6607822848,
+          "current_bytes": 25202659328,
+          "events": {
+            "high": 0,
+            "low": 0,
+            "max": 0,
+            "oom": 0,
+            "oom_kill": 0
+          },
+          "kernel_peak_bytes": null,
+          "limit_bytes": 34359738368,
+          "sampled_anon_plus_shmem_peak_bytes": 6974414848,
+          "sampled_peak_bytes": 25202790400,
+          "sampling_interval_seconds": 0.2,
+          "shmem_bytes": 2533531648
+        },
+        "status": "supervising"
+      },
+      "role": "simulator",
+      "terminal": false
+    }
+  ],
+  "schema_version": "sgw-01-operational-progress-v1",
+  "technical_invalid_attempts": 5,
+  "total_dispatched_study_requests_including_preserved_attempts": 217,
+  "total_recorded_study_actions_including_preserved_attempts": 6468,
+  "unfinished_attempts": [
+    {
+      "actions_recorded": 448,
+      "attempt_id": "attempt-001",
+      "cell_id": "HEIGHT-P01-F3-C-NEG",
+      "requests_dispatched": 15,
+      "status": "in_progress_or_unfinished"
+    },
+    {
+      "actions_recorded": 192,
+      "attempt_id": "attempt-001",
+      "cell_id": "HEIGHT-P01-N3-C-NEG",
+      "requests_dispatched": 7,
+      "status": "in_progress_or_unfinished"
+    },
+    {
+      "actions_recorded": 32,
+      "attempt_id": "attempt-001",
+      "cell_id": "LAT-P01-E3-C-POS",
+      "requests_dispatched": 2,
+      "status": "in_progress_or_unfinished"
+    },
+    {
+      "actions_recorded": 81,
+      "attempt_id": "attempt-001",
+      "cell_id": "LAT-P01-F3-C-POS",
+      "requests_dispatched": 3,
+      "status": "in_progress_or_unfinished"
+    },
+    {
+      "actions_recorded": 315,
+      "attempt_id": "attempt-001",
+      "cell_id": "LAT-P01-N3-D-POS",
+      "requests_dispatched": 10,
+      "status": "in_progress_or_unfinished"
+    }
+  ],
+  "valid_completed_unique_episodes": 7,
+  "validation_scope": "Completion identity and manifest digest; final compiler performs full raw-artifact validation"
+}

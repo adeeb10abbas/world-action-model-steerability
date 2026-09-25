@@ -2,11 +2,32 @@
 
 The user separately authorized runtime integration, bounded checks, and the
 committed study on 24 September 2026. This supersedes the preparation-only
-permission recorded in the original delivery. **Genuine study execution has
-started on A40, but no valid completed episode is yet claimed.** Distinguish
-the retained technical attempts below from model failures and valid outcomes.
+permission recorded in the original delivery. **Genuine study execution is
+running on five A40 policy/simulator pairs.** Seven unique episodes were
+complete at 2026-09-25 00:43:21 UTC; subsequent cells were already executing.
+See [the operational snapshot](progress-first-valid.json) and
+[first valid episode evidence for every model](first-valid-study-episodes.json).
+The execution source is `a94696d3fa75c78a4f756536b988cead607e53b8`;
+receipt-only commits do not change the running source or materialization.
 
-**Current hold and repair:** the first five A40 attempts completed 15 genuine
+Each model's first valid `LAT-P01-*-I-POS/attempt-002` retained 15 requests,
+15 predictions and 450 actions. All three outcomes are **valid model failures**.
+Every manifest artifact hash was independently verified. First-episode
+wall times were N3 506.951 s, E3 426.463 s and F3 426.057 s, including reset and
+finalization, not just model sampling. Videos remain under
+`study-a40-v2/attempts/<cell>/attempt-002/videos/viewport.mp4` on the PVC.
+Sampled policy anon+shmem peaks were 3.757-5.320 GiB across the five lanes,
+with no OOM or OOM-kill events. The original technical attempts below are
+preserved separately, never relabeled.
+
+Current pairs are N3 i/m and l/n, E3 j/g, and F3 k/h and o/p (policy/simulator
+aliases). Pod q remains unclaimed for GPU work. Other A40/A100 queues and the
+protected B200 are untouched. Full 1,566-cell completion, final analysis and
+final-only local H.264 delivery remain pending. No local video transfer has
+started. Progress receipts are collected hourly; capacity can be reassigned
+only at a verified quiescent boundary without losing an in-flight attempt.
+
+**Preserved hold and repair:** the first five A40 attempts completed 15 genuine
 requests and 450 physical actions each: 75 requests and 2,250 actions total.
 All five native simulator children exited zero with their process groups
 drained, and every viewport video is retained. The policy-side verifier

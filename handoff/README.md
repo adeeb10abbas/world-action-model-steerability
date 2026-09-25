@@ -4,9 +4,13 @@
 integration and launch subject to the runtime gates. See
 [the current cluster record](cluster-execution-20260924/README.md) for deployed
 source, destination materialization, actual owners and preserved failures.
-Genuine A40 study attempts have started; the first five are retained as
-technical-invalid attempts pending a verified finalization repair. The
+Genuine A40 study execution is running on five policy/simulator pairs. All
+three models have valid recorded episodes after the verified recovery; seven
+unique episodes were complete at 2026-09-25 00:43 UTC. The five original
+technical-invalid attempts remain unchanged. The
 original preparation-only handoff below does not itself grant that authority.
+
+## Original preparation-only handoff
 
 **The scenes, camera configuration and experiment queue are ready to transfer.
 Model integration and cluster runtime qualification remain. No learned-policy
@@ -16,7 +20,7 @@ Use the latest committed `main` from this repository. Do not redesign the
 scenes, rerun completed physical qualification, or reuse an old environment
 binding. Record the exact commit used by each cluster checkout.
 
-## Current study
+## Delivered study snapshot
 
 | Item | Current value |
 | --- | --- |
