@@ -5,8 +5,8 @@ integration and launch subject to the runtime gates. See
 [the current cluster record](cluster-execution-20260924/README.md) for deployed
 source, destination materialization, actual owners and preserved failures.
 Genuine A40 study execution is running on five policy/simulator pairs. All
-three models have valid recorded episodes after the verified recovery; 21
-unique episodes were complete at 2026-09-25 01:05 UTC. The five original
+three models have valid recorded episodes after the verified recovery; all 54
+pilot episodes were complete at 2026-09-25 03:02 UTC. The five original
 technical-invalid attempts remain unchanged. The
 original preparation-only handoff below does not itself grant that authority.
 

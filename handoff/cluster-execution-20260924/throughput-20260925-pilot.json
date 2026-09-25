@@ -1,0 +1,346 @@
+{
+  "barrier_waits": [
+    {
+      "barrier_ready": "2026-09-25T03:01:35.850529+00:00",
+      "idle_seconds": 0.0,
+      "last_pilot_summary": "2026-09-25T03:01:35.850529+00:00",
+      "policy_pod": "211247-alia40j-a40-1gpu"
+    },
+    {
+      "barrier_ready": "2026-09-25T03:01:35.850529+00:00",
+      "idle_seconds": 2679.1611280441284,
+      "last_pilot_summary": "2026-09-25T02:16:56.689401+00:00",
+      "policy_pod": "211247-alia40k-a40-1gpu"
+    },
+    {
+      "barrier_ready": "2026-09-25T03:01:35.850529+00:00",
+      "idle_seconds": 5782.805763959885,
+      "last_pilot_summary": "2026-09-25T01:25:13.044765+00:00",
+      "policy_pod": "211247-alia40o-a40-1gpu"
+    },
+    {
+      "barrier_ready": "2026-09-25T03:01:35.850529+00:00",
+      "idle_seconds": 1953.9860110282898,
+      "last_pilot_summary": "2026-09-25T02:29:01.864518+00:00",
+      "policy_pod": "211247-alia40l-a40-1gpu"
+    },
+    {
+      "barrier_ready": "2026-09-25T03:01:35.850529+00:00",
+      "idle_seconds": 5323.877614021301,
+      "last_pilot_summary": "2026-09-25T01:32:51.972915+00:00",
+      "policy_pod": "211247-alia40i-a40-1gpu"
+    }
+  ],
+  "evidence": {
+    "bytes": 198362,
+    "path": "/data/users/ali/sgw-01/current-20260924a/deploy-storage-502d720/throughput-pilot-receipts.json",
+    "sha256": "decd93c0e96d7b62f2b6672978ff1ef61348784a4d93f55e4b0d659cd69e8f93"
+  },
+  "execution_source_commit": "a94696d3fa75c78a4f756536b988cead607e53b8",
+  "findings": [
+    "All54 pilot cells completed; all outcomes are valid_model_failure, not technical invalidity.",
+    "Global P-to-D barrier was satisfied only at03:01:35.850529Z; single E3 lane processed its3 pilot partitions serially.",
+    "The54 episodes used54 native simulator children but only9 policy-server launches: policy already stays resident for6 episodes per partition.",
+    "Measured end-to-end active episode mean is466-554 seconds, not1090; denominator-based fleet estimate includes idle pairs.",
+    "The published result timestamp precedes manifest hashing/pointer publication; previous426-507s first-episode figures excluded that final hash/publication interval.",
+    "Existing logs do not isolate NFS write wait from inference/physics/transport inside the379-463s rollout; no unsupported NFS-only attribution is made.",
+    "Simulator startup and physical reset cannot be separated by a receiver-ready receipt because none is emitted; their combined measured cost is48-52s."
+  ],
+  "fleet_time_attribution": {
+    "frozen_pilot_barrier_idle": {
+      "percent": 44.84562242950104,
+      "seconds": 15739.830517053604
+    },
+    "manifest_hashing_and_pointer_publication": {
+      "percent": 3.173771707380776,
+      "seconds": 1113.924304485321
+    },
+    "native_close": {
+      "percent": 0.5123434104287201,
+      "seconds": 179.821307182312
+    },
+    "other_inter_claim_or_transition_gap": {
+      "percent": 0.4279389231449457,
+      "seconds": 150.19718217849731
+    },
+    "partition_admission_and_policy_startup": {
+      "percent": 2.421930150439247,
+      "seconds": 850.044397354126
+    },
+    "partition_cleanup_and_full_reverification": {
+      "percent": 6.2983064225959655,
+      "seconds": 2210.567503929138
+    },
+    "rollout_including_inference_physics_transport_and_recording": {
+      "percent": 37.760665361785506,
+      "seconds": 13253.165879011154
+    },
+    "scoring_and_result_write": {
+      "percent": 0.02858340826657007,
+      "seconds": 10.03214979171753
+    },
+    "startup_and_reset": {
+      "percent": 4.021143226386341,
+      "seconds": 1411.3331344127655
+    },
+    "video_encode": {
+      "percent": 0.509694960070887,
+      "seconds": 178.8917591571808
+    }
+  },
+  "hourly_receipts": "Overdue receipt captured and pushed now; hourly automation remains armed, missed interval not fabricated.",
+  "models": {
+    "E3": {
+      "completed_pilot_episodes": 18,
+      "mean_intent_to_completion_pointer_seconds": 465.7181854248047,
+      "mean_seconds": {
+        "manifest_hashing_and_pointer_publication": 28.67526019944085,
+        "native_close": 5.457591109805637,
+        "rollout_including_inference_physics_transport_and_recording": 379.0447739760081,
+        "scoring_and_result_write": 0.3086749580171373,
+        "startup_and_reset": 47.94716521104177,
+        "video_encode": 4.284719970491198
+      },
+      "native_child_count": 18
+    },
+    "F3": {
+      "completed_pilot_episodes": 18,
+      "mean_intent_to_completion_pointer_seconds": 495.95305762026044,
+      "mean_seconds": {
+        "manifest_hashing_and_pointer_publication": 35.87417181332906,
+        "native_close": 5.299963712692261,
+        "rollout_including_inference_physics_transport_and_recording": 396.75110818280115,
+        "scoring_and_result_write": 0.30906494458516437,
+        "startup_and_reset": 51.90890811549293,
+        "video_encode": 5.809840851359898
+      },
+      "native_child_count": 18
+    },
+    "N3": {
+      "completed_pilot_episodes": 18,
+      "mean_intent_to_completion_pointer_seconds": 554.1873175700506,
+      "mean_seconds": {
+        "manifest_hashing_and_pointer_publication": 30.31018074353536,
+        "native_close": 5.449309825897217,
+        "rollout_including_inference_physics_transport_and_recording": 462.770625339614,
+        "scoring_and_result_write": 0.2752671109305488,
+        "startup_and_reset": 50.70350421799554,
+        "video_encode": 4.678430332077874
+      },
+      "native_child_count": 18
+    }
+  },
+  "partitions": [
+    {
+      "completion_reverification_seconds": 187.40621852874756,
+      "first_attempt_at": "2026-09-25T02:11:51.863413+00:00",
+      "inter_episode_gap_seconds": [
+        0.9888100624084473,
+        1.1897478103637695,
+        1.198629379272461,
+        1.1825833320617676,
+        1.251284122467041
+      ],
+      "model_server_pid": 8532,
+      "model_server_start_identity": "150263370",
+      "operation": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/operations/e3-a40-r4-0-DIST-P-44ca8e767dc9430c82772231da15bf1d",
+      "partition": "E3-DIST-P",
+      "partition_wall_seconds": 3093.275644302368,
+      "policy_pod": "211247-alia40j-a40-1gpu",
+      "six_episode_intent_to_pointer_seconds": 2790.7698426246643,
+      "startup_once_per_partition_seconds": 109.28852844238281,
+      "summary_published_at": "2026-09-25T03:01:35.850529Z"
+    },
+    {
+      "completion_reverification_seconds": 226.63913702964783,
+      "first_attempt_at": "2026-09-25T01:17:19.592679+00:00",
+      "inter_episode_gap_seconds": [
+        1.1618549823760986,
+        1.215895175933838,
+        1.1367321014404297,
+        1.0504872798919678,
+        1.058434247970581
+      ],
+      "model_server_pid": 6346,
+      "model_server_start_identity": "149936179",
+      "operation": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/operations/e3-a40-r4-0-HEIGHT-P-7d2e0d74ccb04331804c2ef1d8125954",
+      "partition": "E3-HEIGHT-P",
+      "partition_wall_seconds": 3271.4256467819214,
+      "policy_pod": "211247-alia40j-a40-1gpu",
+      "six_episode_intent_to_pointer_seconds": 2930.2527742385864,
+      "startup_once_per_partition_seconds": 108.91033172607422,
+      "summary_published_at": "2026-09-25T02:10:02.107994Z"
+    },
+    {
+      "completion_reverification_seconds": 219.5629472732544,
+      "first_attempt_at": "2026-09-25T00:27:23.549540+00:00",
+      "inter_episode_gap_seconds": [
+        0.9230782985687256,
+        0.9411699771881104,
+        1.1111278533935547,
+        1.2159230709075928,
+        1.0544188022613525
+      ],
+      "model_server_pid": 4167,
+      "model_server_start_identity": "149636737",
+      "operation": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/operations/e3-a40-r4-0-LAT-P-02b1e857dfcb4d7e8e1c3e9e5b197a2f",
+      "partition": "E3-LAT-P",
+      "partition_wall_seconds": 2993.595697402954,
+      "policy_pod": "211247-alia40j-a40-1gpu",
+      "six_episode_intent_to_pointer_seconds": 2661.9047207832336,
+      "startup_once_per_partition_seconds": 106.88231134414673,
+      "summary_published_at": "2026-09-25T01:15:30.262926Z"
+    },
+    {
+      "completion_reverification_seconds": 336.62617349624634,
+      "first_attempt_at": "2026-09-25T01:21:52.310619+00:00",
+      "inter_episode_gap_seconds": [
+        1.297032117843628,
+        1.2246160507202148,
+        1.1909232139587402,
+        1.1569862365722656,
+        1.278709888458252
+      ],
+      "model_server_pid": 5754,
+      "model_server_start_identity": "148169569",
+      "operation": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/operations/f3-a40-r4-0-DIST-P-1077e3aec0314a9a8ff827da77fda3e1",
+      "partition": "F3-DIST-P",
+      "partition_wall_seconds": 3619.026186466217,
+      "policy_pod": "211247-alia40k-a40-1gpu",
+      "six_episode_intent_to_pointer_seconds": 2961.6043407917023,
+      "startup_once_per_partition_seconds": 314.64740467071533,
+      "summary_published_at": "2026-09-25T02:16:56.689401Z"
+    },
+    {
+      "completion_reverification_seconds": 268.4725966453552,
+      "first_attempt_at": "2026-09-25T00:26:53.189619+00:00",
+      "inter_episode_gap_seconds": [
+        1.2132818698883057,
+        1.135836124420166,
+        1.1506633758544922,
+        1.1558632850646973,
+        1.131633996963501
+      ],
+      "model_server_pid": 3565,
+      "model_server_start_identity": "149402401",
+      "operation": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/operations/f3-a40-r4-1-HEIGHT-P-d7c97e940e9447d3aedd211879786ea9",
+      "partition": "F3-HEIGHT-P",
+      "partition_wall_seconds": 3621.075439929962,
+      "policy_pod": "211247-alia40o-a40-1gpu",
+      "six_episode_intent_to_pointer_seconds": 3225.5952706336975,
+      "startup_once_per_partition_seconds": 121.22029399871826,
+      "summary_published_at": "2026-09-25T01:25:13.044765Z"
+    },
+    {
+      "completion_reverification_seconds": 259.70970249176025,
+      "first_attempt_at": "2026-09-25T00:26:31.800997+00:00",
+      "inter_episode_gap_seconds": [
+        1.164457082748413,
+        1.1595947742462158,
+        0.9357056617736816,
+        1.2447199821472168,
+        1.175220251083374
+      ],
+      "model_server_pid": 3672,
+      "model_server_start_identity": "147858938",
+      "operation": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/operations/f3-a40-r4-0-LAT-P-8970b12b5f644b508f5eff3b9e81e625",
+      "partition": "F3-LAT-P",
+      "partition_wall_seconds": 3105.503669500351,
+      "policy_pod": "211247-alia40k-a40-1gpu",
+      "six_episode_intent_to_pointer_seconds": 2739.9554257392883,
+      "startup_once_per_partition_seconds": 100.15884351730347,
+      "summary_published_at": "2026-09-25T01:16:37.145823Z"
+    },
+    {
+      "completion_reverification_seconds": 236.40503311157227,
+      "first_attempt_at": "2026-09-25T01:30:55.651034+00:00",
+      "inter_episode_gap_seconds": [
+        1.1447010040283203,
+        1.082576036453247,
+        1.1808881759643555,
+        1.126560926437378,
+        1.1569323539733887
+      ],
+      "model_server_pid": 6125,
+      "model_server_start_identity": "149094429",
+      "operation": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/operations/n3-a40-r4-1-DIST-P-0d960b04639a420db1c64195e4a21d22",
+      "partition": "N3-DIST-P",
+      "partition_wall_seconds": 3803.4116163253784,
+      "policy_pod": "211247-alia40l-a40-1gpu",
+      "six_episode_intent_to_pointer_seconds": 3244.116792201996,
+      "startup_once_per_partition_seconds": 317.1981325149536,
+      "summary_published_at": "2026-09-25T02:29:01.864518Z"
+    },
+    {
+      "completion_reverification_seconds": 224.6034824848175,
+      "first_attempt_at": "2026-09-25T00:29:29.089184+00:00",
+      "inter_episode_gap_seconds": [
+        1.0813755989074707,
+        1.0297765731811523,
+        1.0064561367034912,
+        1.2159397602081299,
+        1.1323330402374268
+      ],
+      "model_server_pid": 4111,
+      "model_server_start_identity": "145835405",
+      "operation": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/operations/n3-a40-r4-0-HEIGHT-P-5f5f7f946d7d4552ad662005a10f208d",
+      "partition": "N3-HEIGHT-P",
+      "partition_wall_seconds": 4086.3014278411865,
+      "policy_pod": "211247-alia40i-a40-1gpu",
+      "six_episode_intent_to_pointer_seconds": 3572.8143672943115,
+      "startup_once_per_partition_seconds": 283.4176969528198,
+      "summary_published_at": "2026-09-25T01:32:51.972915Z"
+    },
+    {
+      "completion_reverification_seconds": 251.14221286773682,
+      "first_attempt_at": "2026-09-25T00:28:43.756497+00:00",
+      "inter_episode_gap_seconds": [
+        0.9200084209442139,
+        0.9443378448486328,
+        0.8869202136993408,
+        1.0705361366271973,
+        0.6372809410095215
+      ],
+      "model_server_pid": 3943,
+      "model_server_start_identity": "148729021",
+      "operation": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/operations/n3-a40-r4-1-LAT-P-d5fa5e4a022847a9a1ed70856fd7e7e6",
+      "partition": "N3-LAT-P",
+      "partition_wall_seconds": 3653.018456697464,
+      "policy_pod": "211247-alia40l-a40-1gpu",
+      "six_episode_intent_to_pointer_seconds": 3158.4405567646027,
+      "startup_once_per_partition_seconds": 238.9766035079956,
+      "summary_published_at": "2026-09-25T01:25:37.798350Z"
+    }
+  ],
+  "proposal_not_deployed": {
+    "approval_required": true,
+    "pilot_counterfactual": {
+      "borrowed_partition": "E3-DIST-P",
+      "counterfactual_all_pilots_ready_at": "2026-09-25T02:29:01.864518+00:00",
+      "limitation": "Retrospective estimate conditional on unchanged observed costs, not a measured deployed gain or a future guarantee.",
+      "loan_available_at": "2026-09-25T01:25:13.044765+00:00",
+      "observed_all_pilots_ready_at": "2026-09-25T03:01:35.850529+00:00",
+      "observed_borrowed_partition_cost_seconds": 3093.275644302368,
+      "potential_elapsed_time_saved_seconds": 1953.9860110282898
+    },
+    "preferred": "Temporarily loan a verified quiescent lane to E3 at an intact partition boundary, preserving all stage barriers and model-specific bindings.",
+    "resident_simulator": {
+      "limitation": "Upper bound only: physical reset and some close/recording work remain; cannot fix a2.4x fleet gap.",
+      "requires": "New native lifecycle/reset implementation plus prospective qualified release; not a live switch.",
+      "upper_bound_seconds_per_episode_by_model": {
+        "E3": 53.40475632084741,
+        "F3": 57.20887182818519,
+        "N3": 56.152814043892754
+      }
+    }
+  },
+  "recorded_at_utc": "2026-09-25T03:05:35.723746+00:00",
+  "runtime_changes_deployed": false,
+  "schema_version": "sgw-01-existing-receipts-throughput-diagnosis-v1",
+  "scope": "54 existing valid pilot episodes; read-only metadata and logs, no new inference or deployment",
+  "window": {
+    "end": "2026-09-25T03:02:00+00:00",
+    "five_pair_seconds": 35097.80813455582,
+    "start": "2026-09-25T01:05:00.438373+00:00"
+  }
+}

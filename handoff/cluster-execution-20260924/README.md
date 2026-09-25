@@ -3,9 +3,10 @@
 The user separately authorized runtime integration, bounded checks, and the
 committed study on 24 September 2026. This supersedes the preparation-only
 permission recorded in the original delivery. **Genuine study execution is
-running on five A40 policy/simulator pairs.** Twenty-one unique episodes were
-complete at 2026-09-25 01:05 UTC; subsequent cells were already executing.
-See [the operational snapshot](progress-storage-guard.json) and
+running on five A40 policy/simulator pairs.** All 54 pilot episodes were
+complete at 2026-09-25 03:02 UTC; the frozen pilot barrier released development
+startup at 03:01:35.850529 UTC. All 54 were valid model failures.
+See [the operational snapshot](progress-20260925-0302.json) and
 [first valid episode evidence for every model](first-valid-study-episodes.json).
 The execution source is `a94696d3fa75c78a4f756536b988cead607e53b8`;
 receipt-only commits do not change the running source or materialization.
@@ -13,8 +14,10 @@ receipt-only commits do not change the running source or materialization.
 Each model's first valid `LAT-P01-*-I-POS/attempt-002` retained 15 requests,
 15 predictions and 450 actions. All three outcomes are **valid model failures**.
 Every manifest artifact hash was independently verified. First-episode
-wall times were N3 506.951 s, E3 426.463 s and F3 426.057 s, including reset and
-finalization, not just model sampling. Videos remain under
+intent-to-result times were N3 506.951 s, E3 426.463 s and F3 426.057 s.
+These include reset, rollout, video encoding and native close, but the result
+timestamp precedes manifest hashing and completion-pointer publication;
+they are not the full end-to-end worker time. Videos remain under
 `study-a40-v2/attempts/<cell>/attempt-002/videos/viewport.mp4` on the PVC.
 Sampled policy anon+shmem peaks were 3.757-5.320 GiB across the five lanes,
 with no OOM or OOM-kill events. The original technical attempts below are
@@ -64,6 +67,31 @@ on Pod q and a finite 14-day lifetime. The operational owner index is
 manifests accounted for 206.309 GiB across valid and preserved technical
 attempts, with five attempts in flight; unindexed native bytes remain
 separately unmeasured.
+
+**Throughput diagnosis (receipts only):** the
+[54-pilot timing analysis](throughput-20260925-pilot.json) attributes 44.85%
+of five-pair time from 01:05 to 03:02 to the frozen global pilot barrier.
+E3's single lane had three serial pilot partitions; other lanes waited
+32.6-96.4 minutes after their last pilot partition. Active episode means,
+including pointer publication, were N3 554.2 s, E3 465.7 s and F3 495.9 s.
+Policy servers already stayed resident across each six-episode partition:
+there were nine policy launches, not 54. Each episode did relaunch Isaac;
+startup plus physical reset averaged 48-52 s, native close 5 s, video encoding
+4-6 s and manifest hashing/publication 29-36 s. Inter-episode gaps were about
+one second. Each partition also spent 187-337 s on final full re-verification
+and cleanup. Existing receipts cannot isolate NFS write time from the
+379-463 s combined inference/physics/transport/recording interval.
+
+No throughput change has been deployed. The preferred proposal is a loan of
+a quiescent lane to E3 at an intact partition boundary, preserving the stage
+barriers, frozen bindings and every in-flight attempt. Replaying the existing
+pilot timing with the idle F3 lane taking E3-DIST would have released the
+barrier **32 min 34 s earlier**, conditional on unchanged recorded costs.
+Resident-simulator work could save at most 53-57 s per episode before
+subtracting still-required physical reset work; it is not a 2.4x remedy and
+requires a prospective lifecycle change. Both remain subject to new approval.
+The missed hourly receipt was not backfilled: the next actual snapshot was
+captured at 03:02, and hourly monitoring is re-armed.
 
 **Preserved hold and repair:** the first five A40 attempts completed 15 genuine
 requests and 450 physical actions each: 75 requests and 2,250 actions total.
