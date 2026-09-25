@@ -33,6 +33,65 @@ final-only local H.264 delivery remain pending. No local video transfer has
 started. Progress receipts are collected hourly; capacity can be reassigned
 only at a verified quiescent boundary without losing an in-flight attempt.
 
+**Additional A40 capacity, 25 September:** the
+[prospective expansion and placement record](shared-a40-expansion-20260925.json)
+preserves the authorized six proposed pairs and their actual eligibility.
+**No additional study lane or request was launched.** Existing pairs and
+the independent CPU guardian on q were not restarted.
+
+| Lane | Policy / simulator | Policy model | Actual expansion state |
+| --- | --- | --- | --- |
+| 1 | i / m | N3 | Existing, unchanged |
+| 2 | l / n | N3 | Existing, unchanged |
+| 3 | j / g | E3 | Existing, unchanged |
+| 4 | k / h | F3 | Existing, unchanged |
+| 5 | o / p | F3 | Existing, unchanged |
+| 6 | r index 1 / s index 0 | Unassigned | Declared 1 / visible 2 GPU admission conflict |
+| 7 | t index 0 / u isolated | Unassigned | Policy t has the same count conflict |
+| 8 | v index 0 / q isolated | Unassigned | Policy v has the same count conflict |
+| 9 | b index 1 / a index 0 | Unassigned | b had a live user evaluation queue targeting index 1 |
+| 10 | e index 1 / c index 0 | Unassigned | c placement diagnostic did not qualify |
+| 11 | f index 1 / d index 0 | Unassigned | d placement diagnostic did not qualify |
+
+Exact UUIDs, Pod UIDs, observed RAM and timestamps are in the receipt.
+r/s/t/v expose two GPUs despite a one-GPU Pod allocation. CPU reproduction
+confirmed that `a94696d` requires one `pod_gpu_count` to equal both values:
+declaring one fails visible-count admission; declaring two fails actual-Pod
+admission. No truthful declaration or binding note alone can satisfy both.
+Genuine isolation or a prospectively authorized source amendment is needed;
+no guard, Pod receipt or running source was changed. u actually exposed only
+one GPU in the read-only inventory. No Isaac process was started in r.
+
+The e/f training queues were explicitly constrained to `GPUS=0`; b's
+evaluation queue targeted its proposed study GPU despite near-zero GPU
+memory. On c/d, one 180-second camera-enabled AppLauncher placement attempt
+each was stopped with no owned descendants remaining, zero model requests,
+zero scene resets and zero actions. **Neither qualified graphics placement.**
+The diagnostic harness omitted the frozen simulator runtime environment and
+inherited the Pods' different library path. Logs reported missing
+`libGLU.so.1`, CUDA driver-entry-point errors and no suitable PhysX GPU.
+These are preserved diagnostic-startup failures, not evidence that the
+qualified production runtime or the physical GPUs are incompatible.
+There was no automatic retry and no study attempt was consumed.
+
+No cross-UUID client was observed, but no owned graphics client was observed
+either, so absence of a spill is not a placement pass. Neighbor memory and
+utilization varied during the attempts; unchanged-neighbor behavior cannot
+be claimed. The old c/d user queue roots were zombies on follow-up, not
+verified still running; this coordinator signaled only its own diagnostic
+descendants, and the external cause of those queue exits is unknown.
+
+The RAM envelope adds the existing measured policy peak of 6,306,213,888
+bytes, simulator peak of 7,057,051,648 bytes and an 8 GiB margin:
+20.446 GiB above existing user anon+shmem. At the actual check starts,
+c/d user anon+shmem was 15.506/16.488 GiB against 64 GiB limits; both fit.
+Minimum observed remaining anon headroom was 46.904/47.199 GiB, respectively.
+This does not implement the required durable 4 GiB shared-Pod boundary hold.
+Shared reservation/binding semantics and a launcher preserving foreign
+processes also remain prerequisites; the original launcher refuses them.
+At most nine whole partitions are claimable within a stage, so eleven
+physical pairs would include standby capacity without changing the protocol.
+
 **05:09 UTC progress:** 36 additional completions since 04:08 correspond to
 35.25 episodes/hour, with 534 additional dispatched requests and 16,013
 additional recorded actions. Five attempts were unfinished at the snapshot:

@@ -1,0 +1,711 @@
+{
+  "schema_version": 1,
+  "recorded_at_utc": "2026-09-25T05:36:06.541270+00:00",
+  "status": "EXPANSION_NOT_LAUNCHED_EXISTING_FIVE_PAIRS_UNCHANGED",
+  "execution_source_commit": "a94696d3fa75c78a4f756536b988cead607e53b8",
+  "authorization": {
+    "relayed_at_utc": "2026-09-25T05:19:00Z",
+    "intent": "Add the six specified A40 pairs, E3 first by remaining claimable work.",
+    "constraints": [
+      "Same execution source and each policy's own frozen binding.",
+      "UUID-pinned CUDA with PCI_BUS_ID order; never run Isaac in r.",
+      "Full C/G/C+G placement observation before real requests on non-isolated simulators.",
+      "No user-process stop, preemption, replay or in-flight interruption.",
+      "Shared64GiB user anon+shmem plus measured study peaks plus8GiB must fit.",
+      "Durable shared-Pod boundary hold if remaining anon headroom falls below4GiB.",
+      "CPU guardian on q remains; do not use newly available A100 capacity."
+    ]
+  },
+  "lanes": [
+    {
+      "lane": 1,
+      "model": "N3",
+      "policy": "i",
+      "simulator": "m",
+      "status": "existing_unchanged"
+    },
+    {
+      "lane": 2,
+      "model": "N3",
+      "policy": "l",
+      "simulator": "n",
+      "status": "existing_unchanged"
+    },
+    {
+      "lane": 3,
+      "model": "E3",
+      "policy": "j",
+      "simulator": "g",
+      "status": "existing_unchanged"
+    },
+    {
+      "lane": 4,
+      "model": "F3",
+      "policy": "k",
+      "simulator": "h",
+      "status": "existing_unchanged"
+    },
+    {
+      "lane": 5,
+      "model": "F3",
+      "policy": "o",
+      "simulator": "p",
+      "status": "existing_unchanged"
+    },
+    {
+      "lane": 6,
+      "model": null,
+      "policy": "r",
+      "simulator": "s",
+      "status": "blocked_declared1_visible2",
+      "native_checks": 0
+    },
+    {
+      "lane": 7,
+      "model": null,
+      "policy": "t",
+      "simulator": "u",
+      "status": "blocked_policy_declared1_visible2",
+      "native_checks": 0
+    },
+    {
+      "lane": 8,
+      "model": null,
+      "policy": "v",
+      "simulator": "q",
+      "status": "blocked_policy_declared1_visible2",
+      "native_checks": 0
+    },
+    {
+      "lane": 9,
+      "model": null,
+      "policy": "b",
+      "simulator": "a",
+      "status": "skipped_target_has_user_eval_queue",
+      "native_checks": 0
+    },
+    {
+      "lane": 10,
+      "model": null,
+      "policy": "e",
+      "simulator": "c",
+      "status": "not_qualified_diagnostic_startup_failure",
+      "native_checks": 1
+    },
+    {
+      "lane": 11,
+      "model": null,
+      "policy": "f",
+      "simulator": "d",
+      "status": "not_qualified_diagnostic_startup_failure",
+      "native_checks": 1
+    }
+  ],
+  "new_study_lanes_launched": 0,
+  "new_study_requests": 0,
+  "native_placement_attempts": 2,
+  "native_placement_passes": 0,
+  "actual_lane_loans": [],
+  "observations": {
+    "r": {
+      "observed_at_utc": "2026-09-25T05:23:15.498485+00:00",
+      "pod": "211247-alia40r-a40-1gpu",
+      "pod_uid": "76629adf-810d-4cbb-865f-8135d08353b2",
+      "node": "dcwipphhgc193.edc.nam.gm.com",
+      "declared_gpu_count": 1,
+      "visible_gpu_count": 2,
+      "own_index": 1,
+      "own_uuid": "GPU-bbdbeaae-37a8-3420-0e95-36fbbf0e134f",
+      "own_memory_used": "0 MiB",
+      "own_utilization": "0 %",
+      "other_visible_uuids": [
+        "GPU-8fcaadc2-f836-2077-c879-c0ee94c6a205"
+      ],
+      "user_anon_plus_shmem_bytes": 11653120,
+      "cgroup_limit_bytes": 34359738368,
+      "queue_gpu_environments": [],
+      "inventory": {
+        "path": "/data/users/ali/sgw-01/current-20260924a/placement-20260925a/inventory/gpu-inventory-r-0524.json",
+        "sha256": "557b5805486a2afc3e0adb2353d1d2f34a815ae759c8e8381e1711664f4d26e7"
+      }
+    },
+    "s": {
+      "observed_at_utc": "2026-09-25T05:23:15.564424+00:00",
+      "pod": "211247-alia40s-a40-1gpu",
+      "pod_uid": "576da298-471c-469b-b747-bdf2470e5605",
+      "node": "dcwipphhgc190.edc.nam.gm.com",
+      "declared_gpu_count": 1,
+      "visible_gpu_count": 2,
+      "own_index": 0,
+      "own_uuid": "GPU-f2450631-969e-6418-b008-07073c3bb382",
+      "own_memory_used": "0 MiB",
+      "own_utilization": "0 %",
+      "other_visible_uuids": [
+        "GPU-738deba4-99b9-f756-a246-6395a8a2c720"
+      ],
+      "user_anon_plus_shmem_bytes": 11653120,
+      "cgroup_limit_bytes": 34359738368,
+      "queue_gpu_environments": [],
+      "inventory": {
+        "path": "/data/users/ali/sgw-01/current-20260924a/placement-20260925a/inventory/gpu-inventory-s-0524.json",
+        "sha256": "a00499aafaf20b84f121b60e44d389ace969dfdff6c0a9bb938d5d1866c14092"
+      }
+    },
+    "t": {
+      "observed_at_utc": "2026-09-25T05:23:15.585759+00:00",
+      "pod": "211247-alia40t-a40-1gpu",
+      "pod_uid": "51a76fef-bd50-48cb-a249-3193650c73eb",
+      "node": "dcwipphhgc186.edc.nam.gm.com",
+      "declared_gpu_count": 1,
+      "visible_gpu_count": 2,
+      "own_index": 0,
+      "own_uuid": "GPU-3124e4ef-2dcb-06d8-72d5-b65b932a5642",
+      "own_memory_used": "0 MiB",
+      "own_utilization": "0 %",
+      "other_visible_uuids": [
+        "GPU-d06ff1b3-0d35-7aa7-a7f2-9d16a37fc397"
+      ],
+      "user_anon_plus_shmem_bytes": 11649024,
+      "cgroup_limit_bytes": 34359738368,
+      "queue_gpu_environments": [],
+      "inventory": {
+        "path": "/data/users/ali/sgw-01/current-20260924a/placement-20260925a/inventory/gpu-inventory-t-0524.json",
+        "sha256": "3c6f7161e7e0f58988701717b6f00f795b789561d6426b9af91625c7db08327f"
+      }
+    },
+    "u": {
+      "observed_at_utc": "2026-09-25T05:23:15.538137+00:00",
+      "pod": "211247-alia40u-a40-1gpu",
+      "pod_uid": "acd83e87-e31c-4d16-9835-77ba2a68f06d",
+      "node": "dcwipphhgc199.edc.nam.gm.com",
+      "declared_gpu_count": 1,
+      "visible_gpu_count": 1,
+      "own_index": 0,
+      "own_uuid": "GPU-e58ac27f-3d12-0208-aca3-a7c5b6f9e6c2",
+      "own_memory_used": "0 MiB",
+      "own_utilization": "0 %",
+      "other_visible_uuids": [],
+      "user_anon_plus_shmem_bytes": 11579392,
+      "cgroup_limit_bytes": 34359738368,
+      "queue_gpu_environments": [],
+      "inventory": {
+        "path": "/data/users/ali/sgw-01/current-20260924a/placement-20260925a/inventory/gpu-inventory-u-0524.json",
+        "sha256": "8eee39fdf844f97e0b87c8217a2742dcc22f9c3cecda03fb10df6cdb03659913"
+      }
+    },
+    "v": {
+      "observed_at_utc": "2026-09-25T05:23:15.534616+00:00",
+      "pod": "211247-alia40v-a40-1gpu",
+      "pod_uid": "f536a0ee-21d6-4146-a7a5-601974b621a6",
+      "node": "dcwipphhgc171.edc.nam.gm.com",
+      "declared_gpu_count": 1,
+      "visible_gpu_count": 2,
+      "own_index": 0,
+      "own_uuid": "GPU-879aa116-7e0f-930d-2942-4574172a086d",
+      "own_memory_used": "0 MiB",
+      "own_utilization": "0 %",
+      "other_visible_uuids": [
+        "GPU-07dd8eee-ceb3-fb2b-0269-ec07cf5aab7c"
+      ],
+      "user_anon_plus_shmem_bytes": 11776000,
+      "cgroup_limit_bytes": 34359738368,
+      "queue_gpu_environments": [],
+      "inventory": {
+        "path": "/data/users/ali/sgw-01/current-20260924a/placement-20260925a/inventory/gpu-inventory-v-0524.json",
+        "sha256": "6cf57a268af7fe27b27b2e1e2222ec9b84ef5981d804a7a892f84445055d8fc0"
+      }
+    },
+    "q": {
+      "observed_at_utc": "2026-09-25T05:23:15.397186+00:00",
+      "pod": "211247-alia40q-a40-1gpu",
+      "pod_uid": "8f937736-b9f0-4c7f-9ecb-5ebf3e9d3eca",
+      "node": "dcwipphhgc199.edc.nam.gm.com",
+      "declared_gpu_count": 1,
+      "visible_gpu_count": 1,
+      "own_index": 0,
+      "own_uuid": "GPU-41d6e6cc-52be-1c84-616a-e70a826c4452",
+      "own_memory_used": "0 MiB",
+      "own_utilization": "0 %",
+      "other_visible_uuids": [],
+      "user_anon_plus_shmem_bytes": 48414720,
+      "cgroup_limit_bytes": 34359738368,
+      "queue_gpu_environments": [],
+      "inventory": {
+        "path": "/data/users/ali/sgw-01/current-20260924a/placement-20260925a/inventory/gpu-inventory-q-0524.json",
+        "sha256": "e5cf5ee3ae9b9cece2523c9a772230ff0ebeeb1e684ede2805ef07be32352c62"
+      }
+    },
+    "a": {
+      "observed_at_utc": "2026-09-25T05:23:15.782005+00:00",
+      "pod": "211247-alia40a-a40-2gpu",
+      "pod_uid": "769baf38-a26c-4724-90de-9fcc313e913f",
+      "node": "dcwipphhgc189.edc.nam.gm.com",
+      "declared_gpu_count": 2,
+      "visible_gpu_count": 2,
+      "own_index": 0,
+      "own_uuid": "GPU-d249e04d-c7a9-1234-f948-348d1ff83a86",
+      "own_memory_used": "1 MiB",
+      "own_utilization": "0 %",
+      "other_visible_uuids": [
+        "GPU-8ae996bc-3db6-9af8-709d-c64be8611541"
+      ],
+      "user_anon_plus_shmem_bytes": 4832768000,
+      "cgroup_limit_bytes": 68719476736,
+      "queue_gpu_environments": [
+        {
+          "pid": 141,
+          "ppid": 1,
+          "process_start_identity": "149385422",
+          "state": "S",
+          "gpu_environment": {
+            "CUDA_DEVICE_ORDER": "PCI_BUS_ID",
+            "GPU": "1",
+            "NVIDIA_VISIBLE_DEVICES": "all"
+          },
+          "entrypoints": [
+            "/data/users/ali/scripts/ablation/ablation-eval-worker.sh"
+          ]
+        }
+      ],
+      "inventory": {
+        "path": "/data/users/ali/sgw-01/current-20260924a/placement-20260925a/inventory/gpu-inventory-a-0524.json",
+        "sha256": "590f45bb2ebdc645dbbd82655c3a01b6f68fa30b0b054ccd813deeaabc37a333"
+      }
+    },
+    "b": {
+      "observed_at_utc": "2026-09-25T05:23:16.078204+00:00",
+      "pod": "211247-alia40b-a40-2gpu",
+      "pod_uid": "4e37f6e4-3af5-42e3-b7b1-b96ed5aa0d3f",
+      "node": "dcwipphhgc192.edc.nam.gm.com",
+      "declared_gpu_count": 2,
+      "visible_gpu_count": 2,
+      "own_index": 1,
+      "own_uuid": "GPU-872e7072-60f3-5671-7908-05a4ba6be7f8",
+      "own_memory_used": "3 MiB",
+      "own_utilization": "0 %",
+      "other_visible_uuids": [
+        "GPU-477ca871-9616-5f42-311b-986b647707b4"
+      ],
+      "user_anon_plus_shmem_bytes": 35180953600,
+      "cgroup_limit_bytes": 68719476736,
+      "queue_gpu_environments": [
+        {
+          "pid": 132,
+          "ppid": 1,
+          "process_start_identity": "148069373",
+          "state": "S",
+          "gpu_environment": {
+            "CUDA_DEVICE_ORDER": "PCI_BUS_ID",
+            "GPU": "1",
+            "NVIDIA_VISIBLE_DEVICES": "all"
+          },
+          "entrypoints": [
+            "/data/users/ali/scripts/ablation/ablation-eval-worker.sh"
+          ]
+        }
+      ],
+      "inventory": {
+        "path": "/data/users/ali/sgw-01/current-20260924a/placement-20260925a/inventory/gpu-inventory-b-0524.json",
+        "sha256": "08aa3131aee2350fb6d8f0696626882b93eee39038db39cb5b6e50941e722e5d"
+      }
+    },
+    "c": {
+      "observed_at_utc": "2026-09-25T05:23:15.678202+00:00",
+      "pod": "211247-alia40c-a40-2gpu",
+      "pod_uid": "f4a03864-d3e5-4711-a57f-6bf38969e531",
+      "node": "dcwipphhgc195.edc.nam.gm.com",
+      "declared_gpu_count": 2,
+      "visible_gpu_count": 2,
+      "own_index": 0,
+      "own_uuid": "GPU-7c98d85a-00a0-e4fc-4a56-1e7418d7b5ab",
+      "own_memory_used": "1 MiB",
+      "own_utilization": "0 %",
+      "other_visible_uuids": [
+        "GPU-fb12bb07-2d9e-e524-df80-b06f7805dd0e"
+      ],
+      "user_anon_plus_shmem_bytes": 6815551488,
+      "cgroup_limit_bytes": 68719476736,
+      "queue_gpu_environments": [
+        {
+          "pid": 130,
+          "ppid": 1,
+          "process_start_identity": "146318091",
+          "state": "S",
+          "gpu_environment": {
+            "CUDA_DEVICE_ORDER": "PCI_BUS_ID",
+            "GPU": "1",
+            "NVIDIA_VISIBLE_DEVICES": "all"
+          },
+          "entrypoints": [
+            "/data/users/ali/scripts/ablation/ablation-eval-worker.sh"
+          ]
+        }
+      ],
+      "inventory": {
+        "path": "/data/users/ali/sgw-01/current-20260924a/placement-20260925a/inventory/gpu-inventory-c-0524.json",
+        "sha256": "58ca6fc6740097501773943cffe35134341f4847531471dbd5400c05f4c10971"
+      }
+    },
+    "d": {
+      "observed_at_utc": "2026-09-25T05:23:15.651071+00:00",
+      "pod": "211247-alia40d-a40-2gpu",
+      "pod_uid": "b604a089-3f5c-48a4-afcd-5616350f660c",
+      "node": "dcwipphhgc197.edc.nam.gm.com",
+      "declared_gpu_count": 2,
+      "visible_gpu_count": 2,
+      "own_index": 0,
+      "own_uuid": "GPU-6f5df30f-8045-795d-28ea-5bac129234f5",
+      "own_memory_used": "1 MiB",
+      "own_utilization": "0 %",
+      "other_visible_uuids": [
+        "GPU-33f80574-7e65-17ec-6479-041a2c508482"
+      ],
+      "user_anon_plus_shmem_bytes": 5678641152,
+      "cgroup_limit_bytes": 68719476736,
+      "queue_gpu_environments": [
+        {
+          "pid": 131,
+          "ppid": 1,
+          "process_start_identity": "148218132",
+          "state": "S",
+          "gpu_environment": {
+            "CUDA_DEVICE_ORDER": "PCI_BUS_ID",
+            "GPU": "1",
+            "NVIDIA_VISIBLE_DEVICES": "all"
+          },
+          "entrypoints": [
+            "/data/users/ali/scripts/ablation/ablation-eval-worker.sh"
+          ]
+        }
+      ],
+      "inventory": {
+        "path": "/data/users/ali/sgw-01/current-20260924a/placement-20260925a/inventory/gpu-inventory-d-0524.json",
+        "sha256": "2b11f044f8214698becd75128f54ee464c33d912a738e1b522182acec5d9469e"
+      }
+    },
+    "e": {
+      "observed_at_utc": "2026-09-25T05:23:16.084863+00:00",
+      "pod": "211247-alia40e-a40-2gpu",
+      "pod_uid": "36fcbfe9-f9e1-407a-afb8-0b8ce0b85d41",
+      "node": "dcwipphhgc188.edc.nam.gm.com",
+      "declared_gpu_count": 2,
+      "visible_gpu_count": 2,
+      "own_index": 1,
+      "own_uuid": "GPU-c95e24ba-ca3a-8933-0f3e-5ddaca20a446",
+      "own_memory_used": "0 MiB",
+      "own_utilization": "0 %",
+      "other_visible_uuids": [
+        "GPU-fbcefa5e-8150-0a04-5c20-3c87eaa81d8b"
+      ],
+      "user_anon_plus_shmem_bytes": 22753746944,
+      "cgroup_limit_bytes": 68719476736,
+      "queue_gpu_environments": [
+        {
+          "pid": 39208,
+          "ppid": 1,
+          "process_start_identity": "149388572",
+          "state": "S",
+          "gpu_environment": {
+            "CUDA_DEVICE_ORDER": "PCI_BUS_ID",
+            "GPUS": "0",
+            "NVIDIA_VISIBLE_DEVICES": "all"
+          },
+          "entrypoints": [
+            "/data/users/ali/scripts/ablation-v3/ablation-train-queue.sh"
+          ]
+        }
+      ],
+      "inventory": {
+        "path": "/data/users/ali/sgw-01/current-20260924a/placement-20260925a/inventory/gpu-inventory-e-0524.json",
+        "sha256": "e9ada52fe0fcfa7bf62ea75b62c1d24ea3523e7fdb8f046ac659119b44185ad1"
+      }
+    },
+    "f": {
+      "observed_at_utc": "2026-09-25T05:23:15.936748+00:00",
+      "pod": "211247-alia40f-a40-2gpu",
+      "pod_uid": "2e950931-ede4-4ad9-9da1-7cd0613ce516",
+      "node": "dcwipphhgc201.edc.nam.gm.com",
+      "declared_gpu_count": 2,
+      "visible_gpu_count": 2,
+      "own_index": 1,
+      "own_uuid": "GPU-9424fc3a-40a8-d5b0-d960-afd3443013a8",
+      "own_memory_used": "0 MiB",
+      "own_utilization": "0 %",
+      "other_visible_uuids": [
+        "GPU-64aa1a7e-1c1c-edc2-b104-822d67d6a8a5"
+      ],
+      "user_anon_plus_shmem_bytes": 18521911296,
+      "cgroup_limit_bytes": 68719476736,
+      "queue_gpu_environments": [
+        {
+          "pid": 36943,
+          "ppid": 1,
+          "process_start_identity": "148615829",
+          "state": "S",
+          "gpu_environment": {
+            "CUDA_DEVICE_ORDER": "PCI_BUS_ID",
+            "GPUS": "0",
+            "NVIDIA_VISIBLE_DEVICES": "all"
+          },
+          "entrypoints": [
+            "/data/users/ali/scripts/ablation-v3/ablation-train-queue.sh"
+          ]
+        }
+      ],
+      "inventory": {
+        "path": "/data/users/ali/sgw-01/current-20260924a/placement-20260925a/inventory/gpu-inventory-f-0524.json",
+        "sha256": "8f4f46c1eb35da7c72b33eebac3a9d8ea27ed111b5e0342bdafe4ca18b3f7612"
+      }
+    }
+  },
+  "count_contract": {
+    "source_unchanged": true,
+    "cpu_reproduced": true,
+    "declared1_plan": "gpu_idle_probe rejects two enumerated GPUs against expected_count1.",
+    "visible2_plan": "study_supervisor rejects pod_gpu_count2 against actual Pod allocation1.",
+    "affected_pods": [
+      "r",
+      "s",
+      "t",
+      "v"
+    ],
+    "u_observation": "Actually enumerated one GPU despite NVIDIA_VISIBLE_DEVICES=all.",
+    "required_resolution": "Genuine Pod isolation or a prospectively authorized source amendment separating declared, visible and exclusively owned GPU identities. A note alone cannot satisfy both frozen guards.",
+    "declarations_falsified": false,
+    "guards_weakened": false
+  },
+  "shared_pod_remaining_requirements": [
+    "Truthful shared allocation/binding semantics; existing plans declare whole_pod reservation.",
+    "Launcher must preserve foreign user processes and q CPU guardian; original launcher refuses them.",
+    "Durable4GiB per-lane RAM boundary hold; current controllers have no such per-lane input."
+  ],
+  "memory_budget": {
+    "source_receipt": "handoff/cluster-execution-20260924/progress-20260925-0510.json",
+    "measured_policy_peak_bytes": 6306213888,
+    "measured_simulator_peak_bytes": 7057051648,
+    "margin_bytes": 8589934592,
+    "required_extra_bytes": 21953200128,
+    "scope": "Conservative admission envelope only, not a measured future shared-Pod peak."
+  },
+  "placement_diagnostics": {
+    "c": {
+      "status": "not_qualified",
+      "scope": "AppLauncher/graphics/CUDA placement only; no scene or learned-policy qualification.",
+      "started_at_utc": "2026-09-25T05:28:37.163464+00:00",
+      "finished_at_utc": "2026-09-25T05:31:38.457337+00:00",
+      "source_commit": "a94696d3fa75c78a4f756536b988cead607e53b8",
+      "target_uuid": "GPU-7c98d85a-00a0-e4fc-4a56-1e7418d7b5ab",
+      "neighbor_uuid": "GPU-fb12bb07-2d9e-e524-df80-b06f7805dd0e",
+      "configured_environment": {
+        "CUDA_DEVICE_ORDER": "PCI_BUS_ID",
+        "CUDA_VISIBLE_DEVICES": "GPU-7c98d85a-00a0-e4fc-4a56-1e7418d7b5ab",
+        "MUJOCO_EGL_DEVICE_ID": "0",
+        "NVIDIA_VISIBLE_DEVICES": "GPU-7c98d85a-00a0-e4fc-4a56-1e7418d7b5ab"
+      },
+      "diagnostic_environment_deviation": {
+        "inherited_ld_library_path": "/data/users/jsalfity/glvnd/lib",
+        "frozen_runtime_environment_applied": false,
+        "interpretation": "The diagnostic harness omitted the frozen simulator environment. Its startup failure does not demonstrate that these GPUs or the qualified production runtime cannot support placement."
+      },
+      "child": {
+        "command": [
+          "/data/users/ali/vla_wam/envs/robolab-v2-isaac50/bin/python",
+          "-u",
+          "/data/users/ali/sgw-01/current-20260924a/placement-20260925a/isaac_placement_child.py"
+        ],
+        "cwd": "/home/alia40c",
+        "pid": 345555,
+        "ppid": 345541,
+        "process_start_identity": "149299620",
+        "started_at_unix": 1790314116.2
+      },
+      "returncode": -15,
+      "owned_descendants_remaining": {},
+      "child_proc_absent_on_followup": true,
+      "graphics_client_observed": false,
+      "settings_verified": false,
+      "cross_uuid_violations": [],
+      "neighbor_memory_and_utilization_unchanged": false,
+      "neighbor_stability_qualified": false,
+      "timed_out": true,
+      "deadline_seconds": 180,
+      "ram_breach": false,
+      "baseline_ram": {
+        "anon_plus_shmem_bytes": 16649682944,
+        "limit_bytes": 68719476736
+      },
+      "required_extra_bytes": 21953200128,
+      "max_sampled_anon_plus_shmem_bytes": 18356187136,
+      "minimum_remaining_anon_headroom_bytes": 50363289600,
+      "failure_markers": {
+        "libGLU.so.1: cannot open shared object file": true,
+        "CUDA libs are present, but no suitable CUDA GPU was found": true,
+        "a suitable driver entry point was not found": true
+      },
+      "artifacts": [
+        {
+          "path": "/data/users/ali/sgw-01/current-20260924a/placement-20260925a/c/child-start.json",
+          "sha256": "69d945eacab3b5f8a77eea8b46155727f48b4f4159446ecb48d9a526acde1fb8",
+          "bytes": 285
+        },
+        {
+          "path": "/data/users/ali/sgw-01/current-20260924a/placement-20260925a/c/native.log",
+          "sha256": "5053b0b4a9ec9a7c27829dcd742ec47b9d06c2a6bf8d810706af5ae1a0776175",
+          "bytes": 18121
+        },
+        {
+          "path": "/data/users/ali/sgw-01/current-20260924a/placement-20260925a/c/result.json",
+          "sha256": "eed7bdc82e59f451fb9d2d08efc7dd933a51564c2f65c553bec3827bd7794504",
+          "bytes": 1763
+        },
+        {
+          "path": "/data/users/ali/sgw-01/current-20260924a/placement-20260925a/c/samples.json",
+          "sha256": "56e3a337ad4ab65654af171d3a4247a9aa717a2031ef2cb6d1617fdf584452ae",
+          "bytes": 127228
+        },
+        {
+          "path": "/data/users/ali/sgw-01/current-20260924a/placement-20260925a/c/start.json",
+          "sha256": "34cfc6020ce9bdbb241e07bd992487f301f8c5176fff71813c35be2937b0699b",
+          "bytes": 876
+        }
+      ],
+      "model_requests": 0,
+      "scene_resets": 0,
+      "physical_actions": 0
+    },
+    "d": {
+      "status": "not_qualified",
+      "scope": "AppLauncher/graphics/CUDA placement only; no scene or learned-policy qualification.",
+      "started_at_utc": "2026-09-25T05:28:37.142549+00:00",
+      "finished_at_utc": "2026-09-25T05:31:38.553177+00:00",
+      "source_commit": "a94696d3fa75c78a4f756536b988cead607e53b8",
+      "target_uuid": "GPU-6f5df30f-8045-795d-28ea-5bac129234f5",
+      "neighbor_uuid": "GPU-33f80574-7e65-17ec-6479-041a2c508482",
+      "configured_environment": {
+        "CUDA_DEVICE_ORDER": "PCI_BUS_ID",
+        "CUDA_VISIBLE_DEVICES": "GPU-6f5df30f-8045-795d-28ea-5bac129234f5",
+        "MUJOCO_EGL_DEVICE_ID": "0",
+        "NVIDIA_VISIBLE_DEVICES": "GPU-6f5df30f-8045-795d-28ea-5bac129234f5"
+      },
+      "diagnostic_environment_deviation": {
+        "inherited_ld_library_path": "/data/users/jsalfity/glvnd/lib",
+        "frozen_runtime_environment_applied": false,
+        "interpretation": "The diagnostic harness omitted the frozen simulator environment. Its startup failure does not demonstrate that these GPUs or the qualified production runtime cannot support placement."
+      },
+      "child": {
+        "command": [
+          "/data/users/ali/vla_wam/envs/robolab-v2-isaac50/bin/python",
+          "-u",
+          "/data/users/ali/sgw-01/current-20260924a/placement-20260925a/isaac_placement_child.py"
+        ],
+        "cwd": "/home/alia40d",
+        "pid": 351555,
+        "ppid": 351541,
+        "process_start_identity": "151199426",
+        "started_at_unix": 1790314116.26
+      },
+      "returncode": -15,
+      "owned_descendants_remaining": {},
+      "child_proc_absent_on_followup": true,
+      "graphics_client_observed": false,
+      "settings_verified": false,
+      "cross_uuid_violations": [],
+      "neighbor_memory_and_utilization_unchanged": false,
+      "neighbor_stability_qualified": false,
+      "timed_out": true,
+      "deadline_seconds": 180,
+      "ram_breach": false,
+      "baseline_ram": {
+        "anon_plus_shmem_bytes": 17703567360,
+        "limit_bytes": 68719476736
+      },
+      "required_extra_bytes": 21953200128,
+      "max_sampled_anon_plus_shmem_bytes": 18039570432,
+      "minimum_remaining_anon_headroom_bytes": 50679906304,
+      "failure_markers": {
+        "libGLU.so.1: cannot open shared object file": true,
+        "CUDA libs are present, but no suitable CUDA GPU was found": true,
+        "a suitable driver entry point was not found": true
+      },
+      "artifacts": [
+        {
+          "path": "/data/users/ali/sgw-01/current-20260924a/placement-20260925a/d/child-start.json",
+          "sha256": "ea89d5cc788ba0226f692515efc6ddf0f6d1ddf416723b0805f5fa5d646d2c6b",
+          "bytes": 286
+        },
+        {
+          "path": "/data/users/ali/sgw-01/current-20260924a/placement-20260925a/d/native.log",
+          "sha256": "8324daf030e9ce8a3cbe9d2f1f5cf8d4722a7e8ae786ae7619dab93425e72e22",
+          "bytes": 18121
+        },
+        {
+          "path": "/data/users/ali/sgw-01/current-20260924a/placement-20260925a/d/result.json",
+          "sha256": "361e2825ac14bf605966dbcd554c7884d36d057e52b9723f80278c72ca0168ca",
+          "bytes": 1900
+        },
+        {
+          "path": "/data/users/ali/sgw-01/current-20260924a/placement-20260925a/d/samples.json",
+          "sha256": "3feb825b6e2b323a5b85a8046815a50f2b8547de000a6336c000a219ddcc6cf0",
+          "bytes": 128401
+        },
+        {
+          "path": "/data/users/ali/sgw-01/current-20260924a/placement-20260925a/d/start.json",
+          "sha256": "8f8307f7fa7dd0b56253b4bb540c6629debd5da01b7c18703b9aea48d304d20f",
+          "bytes": 876
+        }
+      ],
+      "model_requests": 0,
+      "scene_resets": 0,
+      "physical_actions": 0
+    }
+  },
+  "diagnostic_scripts": [
+    {
+      "path": "/data/users/ali/sgw-01/current-20260924a/placement-20260925a/check_isaac_placement.py",
+      "sha256": "ee1bfa24107a953a0a5ed36983bbfef68701fe2ad025ea5b6ddc2cd83e3ef160"
+    },
+    {
+      "path": "/data/users/ali/sgw-01/current-20260924a/placement-20260925a/isaac_placement_child.py",
+      "sha256": "cc61c66845271063544581bb1e0ce7ffc1867c794184a63ede2f57990db22540"
+    }
+  ],
+  "frozen_simulator_plan": {
+    "path": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/inputs-a40-r4/n3-a40-r4-0-simulator-plan.json",
+    "sha256": "9ca4d0a4157d58094c2b99fa25ccbb2f9589c40bb389070f003d158da4352a79"
+  },
+  "frozen_simulator_environment": {
+    "LD_LIBRARY_PATH": "/data/users/ali/vla_wam/envs/robolab-native-libs-ubuntu2204/usr/lib/x86_64-linux-gnu:/data/users/ali/glvnd/lib:/data/users/ali/vla_wam/envs/fastwam-native-libs/lib:/usr/lib/x86_64-linux-gnu",
+    "VK_ICD_FILENAMES": "/etc/vulkan/icd.d/nvidia_icd.json",
+    "OMNI_KIT_ACCEPT_EULA": "YES",
+    "ACCEPT_EULA": "Y",
+    "NVIDIA_DRIVER_CAPABILITIES": "compute,utility,graphics,display",
+    "PYTHONPATH": "/data/users/ali/sgw-01/current-20260924a/source-a94696d:/data/users/ali/vla_wam/external/RoboLab-pi05-v3-0aef241"
+  },
+  "neighbor_queue_followup": {
+    "c": {
+      "pid": 130,
+      "process_start_identity": "146318091",
+      "state": "Z",
+      "exit_code": 15
+    },
+    "d": {
+      "pid": 131,
+      "process_start_identity": "148218132",
+      "state": "Z",
+      "exit_code": 15
+    },
+    "interpretation": "Old user queue roots were zombies on follow-up, not verified still live. Diagnostic cleanup addressed only descendants of its own exact monitor; no user process was signaled by this coordinator. External cause unknown."
+  },
+  "guardian_heartbeat": {
+    "at_utc": "2026-09-25T05:33:30.033157Z",
+    "available_bytes": 151415745937408,
+    "available_inodes": 73866058,
+    "status": "watching",
+    "total_bytes": 219902325555200,
+    "total_inodes": 134217728
+  },
+  "guardian_or_original_lane_restarted": false,
+  "maximum_simultaneously_claimable_partitions_per_stage": 9,
+  "capacity_note": "Eleven pairs cannot all execute concurrently under nine intact stage partitions. Additional pairs would be standby capacity; no partition splitting is authorized.",
+  "retry_policy": "Preserve both failed diagnostics; no automatic native retry or new model check."
+}
