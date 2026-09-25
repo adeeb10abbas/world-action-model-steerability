@@ -90,7 +90,7 @@ def main():
                 ('EgocentricMirroredWideAngleHighCameraCfg', 'egocentric_mirrored_wide_angle_high_camera'),
             )
             for cls, name in classes:
-                setattr(cfg.scene, name, copy.deepcopy(getattr(getattr(presets, cls), name)))
+                setattr(cfg.scene, name, copy.deepcopy(getattr(getattr(presets, cls)(), name)))
                 extra_cameras.append(name)
             receipt['camera_configuration'] = {
                 'revision': 'unselected-stock-front-candidates-no-study',
