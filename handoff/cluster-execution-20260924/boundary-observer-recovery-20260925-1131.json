@@ -1,0 +1,88 @@
+{
+  "automatic_hold_clears": 0,
+  "confirmation_startup": {
+    "path": "handoff/cluster-execution-20260924/confirmation-startup-20260925-1131.json",
+    "sha256": "d89eeac6aed8b0101baa253019ea33f57206fe35187ebb55cc364872efeb9d9f"
+  },
+  "development_barrier_complete_utc": "2026-09-25T11:28:27.905266Z",
+  "genuine_confirmation_request_observed": false,
+  "hint_reconciliation": {
+    "path": "handoff/cluster-execution-20260924/boundary-hint-reconciliation-20260925-1131.json",
+    "sha256": "8640b334546fa5d421cef8055fedece1e4699e2916ac340550c51a646d7350ac"
+  },
+  "intermediate_unchanged_observer": {
+    "disposition": "Rejected after FORCE_SYNC reconciliation: N3-DIST-D had completed at11:28:27.905266Z. No loan, stop, launch or replay was performed.",
+    "event": "SGW_PARTITION_BOUNDARY",
+    "exit_code": 0,
+    "hint": {
+      "from": "E3",
+      "lane": "e3-a40-r4-0",
+      "stage": "D",
+      "to": "N3",
+      "unclaimed_partition": "N3-DIST-D"
+    },
+    "live_verification": "Expected one live observer but found none after its normal event exit; assertion failed before any mutation.",
+    "observed_at_utc": "2026-09-25T11:29:05.672056+00:00",
+    "pid": 14892
+  },
+  "loans_applied": 0,
+  "local_clients": [
+    {
+      "command": "kubectl --context prod-dcwi-warrenq1-vmkub007 -n 211247-prod --request-timeout=336h exec 211247-alia40q-a40-1gpu -- /data/users/ali/vla_wam/envs/robolab-v2-isaac50/bin/python -u /data/users/ali/sgw-01/current-20260924a/deploy-storage-502d720/event-watcher-v3.py --registration /data/users/ali/sgw-01/current-20260924a/deploy-storage-502d720/event-watcher-start-v4.json --seconds 1209600",
+      "elapsed": "02:15:25",
+      "pid": 80027,
+      "state": "Ss"
+    },
+    {
+      "command": "kubectl --context prod-dcwi-warrenq1-vmkub007 -n 211247-prod --request-timeout=336h exec 211247-alia40q-a40-1gpu -- /data/users/ali/vla_wam/envs/robolab-v2-isaac50/bin/python -u /data/users/ali/sgw-01/current-20260924a/deploy-boundary-20260925a/watch_partition_boundary_v2.py --cohort /data/users/ali/sgw-01/current-20260924a/study-a40-v2 --lane-index /data/users/ali/sgw-01/current-20260924a/study-a40-v2/active-lanes.json --registration /data/users/ali/sgw-01/current-20260924a/deploy-boundary-20260925a/boundary-observer-start-v4.json --seconds 1209600",
+      "elapsed": "01:58",
+      "pid": 90022,
+      "state": "Ss"
+    }
+  ],
+  "model_execution_source": "a94696d3fa75c78a4f756536b988cead607e53b8",
+  "model_runtime_restarts": 0,
+  "new_physical_pairs": 0,
+  "observed_at_utc": "2026-09-25T11:32:52.767866+00:00",
+  "observer_only_change": {
+    "CPU_cases": [
+      "stale D hint reproduction",
+      "refreshed D-to-C transition",
+      "owned D excluded",
+      "C loan suggestion",
+      "all partitions complete",
+      "directory refresh order",
+      "fresh snapshot contents",
+      "fleet hold observer stop"
+    ],
+    "changes": [
+      "Refresh cohort/control directories with existing read-only statx FORCE_SYNC helper.",
+      "Hold an exclusive observer lock and preserve immutable registration.",
+      "Persist the terminal hint/result before writing to the notification stream."
+    ],
+    "new_script": {
+      "path": "/data/users/ali/sgw-01/current-20260924a/deploy-boundary-20260925a/watch_partition_boundary_v2.py",
+      "sha256": "6a0f1ed14725f124ef437caf6b9f95d6216dc8bcb97d5ac05d433614bc3b9cb2"
+    },
+    "previous_script_sha256": "a296365ab46b73a10021c7556b5f630b1e5e399e75cc15d5f84a12871b3add80",
+    "scope": "External CPU notification helper only; model and admission source remain a94696d."
+  },
+  "replacement": {
+    "path": "handoff/cluster-execution-20260924/boundary-observer-start-v4.json",
+    "sha256": "3d4f509dbbd5ed7e35f6a8edb0a87b82457288f217dcab51520b443290ed4897"
+  },
+  "retirement": {
+    "path": "handoff/cluster-execution-20260924/boundary-observer-retirement-20260925-1130.json",
+    "sha256": "ffefdb2a76215e7a9a9641284cffe901c6c2a35f7eb2332f7fdbfffbebd940da"
+  },
+  "schema_version": "sgw-01-boundary-notification-recovery-v1",
+  "scope": "Post-barrier intent/admission observed; zero C requests/actions at the11:31 capture is startup, not inference or a completed episode.",
+  "timing_collector": {
+    "boundary_registration_argument": "/data/users/ali/sgw-01/current-20260924a/deploy-boundary-20260925a/boundary-observer-start-v4.json",
+    "change": "Require registered exact PID/start/argv rather than retired PID8142.",
+    "path": "/data/users/ali/sgw-01/current-20260924a/deploy-storage-502d720/hourly_control_receipts_v3.py",
+    "sha256": "230768f3070692bda826bc11b107978966ac5259817022c93e3437262b974eb8",
+    "validation": "Installed with matching digest and compiled; first full metadata collection deferred to next due report."
+  },
+  "underlying_TLS_cause": "Unproven; both notification clients now command-scoped to SPDY."
+}

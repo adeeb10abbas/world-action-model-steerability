@@ -162,6 +162,15 @@
   },
   "latest_periodic_report": "handoff/cluster-execution-20260924/report-20260925-0812.json",
   "notification_observer_recovery": "handoff/cluster-execution-20260924/notification-observer-start-v4.json",
+  "boundary_observer_recovery": "handoff/cluster-execution-20260924/boundary-observer-recovery-20260925-1131.json",
+  "confirmation_stage_transition": {
+    "development_barrier_complete_utc": "2026-09-25T11:28:27.905266Z",
+    "completed_development_partitions": 9,
+    "startup_receipt": "handoff/cluster-execution-20260924/confirmation-startup-20260925-1131.json",
+    "startup_observed_at_utc": "2026-09-25T11:31:29.991931+00:00",
+    "genuine_confirmation_inference_observed_at_this_capture": false,
+    "status": "Post-barrier C attempt intent and approved admission observed; zero recorded C requests/actions in this capture. Latest complete-episode snapshot remains 270 at 11:17."
+  },
   "additional_a40_capacity": {
     "receipt": "handoff/cluster-execution-20260924/shared-a40-expansion-20260925.json",
     "current_authorization": "handoff/cluster-execution-20260924/isolated-a40-expansion-authorization.json",

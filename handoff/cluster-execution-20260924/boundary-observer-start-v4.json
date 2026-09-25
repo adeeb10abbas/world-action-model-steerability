@@ -1,0 +1,107 @@
+{
+  "active_owners": {
+    "path": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/storage-guard/active-owners.json",
+    "sha256": "4155a5124305ab4cc98ddc14ad7e8310f990ca50f411a8ab98133603dae78c04"
+  },
+  "active_roster": {
+    "path": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/active-lanes.json",
+    "sha256": "69696d1d23f9c7d1e2fb3d8eec66d862c0045b96a4a434e63f441d2b55f889a2"
+  },
+  "bash_shell_id": "sgw-boundary-loan-watch",
+  "execution_source_unchanged": "a94696d3fa75c78a4f756536b988cead607e53b8",
+  "guardian": {
+    "exit": null,
+    "heartbeat": {
+      "at_utc": "2026-09-25T11:30:44.095385Z",
+      "available_bytes": 149226323443712,
+      "available_inodes": 72351846,
+      "status": "watching",
+      "total_bytes": 219902325555200,
+      "total_inodes": 134217728
+    },
+    "pid": 4121,
+    "process": {
+      "command": [
+        "/data/users/ali/vla_wam/envs/robolab-v2-isaac50/bin/python",
+        "-u",
+        "/data/users/ali/sgw-01/current-20260924a/deploy-storage-502d720/watch_study_storage.py",
+        "--cohort",
+        "/data/users/ali/sgw-01/current-20260924a/study-a40-v2",
+        "--owners-index",
+        "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/storage-guard/active-owners.json",
+        "--run-root",
+        "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/storage-guard/guard-502d7208-f732b6579b6946dd8b97de290f9d5359",
+        "--source-commit",
+        "502d720856c9f7a88dd37acb53255ae2388f5071",
+        "--implementation-sha256",
+        "9aeca327677c4cd097fd3624f626953d8fa3ac357d16423de57ee1af92b3855e",
+        "--seconds",
+        "1209600",
+        "--poll-seconds",
+        "60"
+      ],
+      "cwd": "/home/alia40q",
+      "ppid": 1,
+      "process_start_identity": "150027267",
+      "started_at_unix": 1790298199.67
+    }
+  },
+  "model_operations": 0,
+  "new_gpu_claims": 0,
+  "observed_at_utc": "2026-09-25T11:31:11.647946+00:00",
+  "pid": 14965,
+  "pod": "211247-alia40q-a40-1gpu",
+  "previous_observers_not_live": [
+    8142,
+    14892
+  ],
+  "process": {
+    "command": [
+      "/data/users/ali/vla_wam/envs/robolab-v2-isaac50/bin/python",
+      "-u",
+      "/data/users/ali/sgw-01/current-20260924a/deploy-boundary-20260925a/watch_partition_boundary_v2.py",
+      "--cohort",
+      "/data/users/ali/sgw-01/current-20260924a/study-a40-v2",
+      "--lane-index",
+      "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/active-lanes.json",
+      "--registration",
+      "/data/users/ali/sgw-01/current-20260924a/deploy-boundary-20260925a/boundary-observer-start-v4.json",
+      "--seconds",
+      "1209600"
+    ],
+    "cwd": "/home/alia40q",
+    "ppid": 0,
+    "process_start_identity": "153792717",
+    "started_at_unix": 1790335854.17
+  },
+  "registration": {
+    "path": "/data/users/ali/sgw-01/current-20260924a/deploy-boundary-20260925a/boundary-observer-start-v4.json",
+    "sha256": "c402696a5b889d567689bf280ccef913f5950f3886c13400d467ecd42bcc8f46"
+  },
+  "schema_version": "sgw-01-boundary-observer-start-verification-v2",
+  "scope": "Versioned notification-only helper adds FORCE_SYNC directory refresh, singleton lock, immutable registration and durable result before notification; no admission/model-source change.",
+  "script": {
+    "path": "/data/users/ali/sgw-01/current-20260924a/deploy-boundary-20260925a/watch_partition_boundary_v2.py",
+    "sha256": "6a0f1ed14725f124ef437caf6b9f95d6216dc8bcb97d5ac05d433614bc3b9cb2"
+  },
+  "single_observer_lock_held": true,
+  "storage_observer": {
+    "pid": 11261,
+    "process": {
+      "command": [
+        "/data/users/ali/vla_wam/envs/robolab-v2-isaac50/bin/python",
+        "-u",
+        "/data/users/ali/sgw-01/current-20260924a/deploy-storage-502d720/event-watcher-v3.py",
+        "--registration",
+        "/data/users/ali/sgw-01/current-20260924a/deploy-storage-502d720/event-watcher-start-v4.json",
+        "--seconds",
+        "1209600"
+      ],
+      "cwd": "/home/alia40q",
+      "ppid": 0,
+      "process_start_identity": "152992038",
+      "started_at_unix": 1790327847.38
+    }
+  },
+  "transport_setting": "KUBECTL_REMOTE_COMMAND_WEBSOCKETS=false"
+}

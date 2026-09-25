@@ -7,8 +7,9 @@ source, destination materialization, actual owners and preserved failures.
 Genuine A40 study execution is running on five policy/simulator pairs. All
 three models have valid recorded episodes after the verified recovery; 270
 unique episodes (54 pilot and 216 development) were complete at
-2026-09-25 11:17 UTC. Confirmation still awaits the final development
-partition receipt. The five original
+2026-09-25 11:17 UTC. The final development partition receipt subsequently
+released the confirmation barrier at 11:28:27 UTC. The 11:31 capture shows
+post-barrier startup, not yet a genuine confirmation request. The five original
 technical-invalid attempts remain unchanged. The
 original preparation-only handoff below does not itself grant that authority.
 

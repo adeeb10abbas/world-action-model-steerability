@@ -1,0 +1,202 @@
+{
+  "completed_D_partitions": {
+    "E3-DIST-D": {
+      "completed_at_utc": "2026-09-25T11:07:45.489849Z",
+      "episodes": 24,
+      "reference": {
+        "path": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/partition-completions/E3-DIST-D.json",
+        "sha256": "80542572a2304125ae3e955c835790691fca8c8b9fc944f5f3300451d468bf7c"
+      }
+    },
+    "E3-HEIGHT-D": {
+      "completed_at_utc": "2026-09-25T10:03:21.104174Z",
+      "episodes": 24,
+      "reference": {
+        "path": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/partition-completions/E3-HEIGHT-D.json",
+        "sha256": "910dcbac93f67bccd44ae3c7ea212c29690a7f266fcfdd30dc6799ba9139aaa1"
+      }
+    },
+    "E3-LAT-D": {
+      "completed_at_utc": "2026-09-25T06:23:01.978353Z",
+      "episodes": 24,
+      "reference": {
+        "path": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/partition-completions/E3-LAT-D.json",
+        "sha256": "28ec0df04124ff7408674953e051243d914d0c8c64bf7c2b0d9649a226c78965"
+      }
+    },
+    "F3-DIST-D": {
+      "completed_at_utc": "2026-09-25T10:33:14.312297Z",
+      "episodes": 24,
+      "reference": {
+        "path": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/partition-completions/F3-DIST-D.json",
+        "sha256": "62e7de3f044cb4b3fa503bf27313444960e6c625904ef2c57a481d57dd83ea99"
+      }
+    },
+    "F3-HEIGHT-D": {
+      "completed_at_utc": "2026-09-25T07:09:41.903574Z",
+      "episodes": 24,
+      "reference": {
+        "path": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/partition-completions/F3-HEIGHT-D.json",
+        "sha256": "0d390fc81f6a21d5458afc32c44142c1cd06210f173f5c2fde4f10eb375b74bf"
+      }
+    },
+    "F3-LAT-D": {
+      "completed_at_utc": "2026-09-25T06:43:17.544708Z",
+      "episodes": 24,
+      "reference": {
+        "path": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/partition-completions/F3-LAT-D.json",
+        "sha256": "479ea91cf2c72df3e0b34640c70ebba2f92a5ad86169f992296509b4f1a322de"
+      }
+    },
+    "N3-DIST-D": {
+      "completed_at_utc": "2026-09-25T11:28:27.905266Z",
+      "episodes": 24,
+      "reference": {
+        "path": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/partition-completions/N3-DIST-D.json",
+        "sha256": "b5b835274bf6b1751af908693d437b8a5d8078d1369d874c634d3b887763a9c1"
+      }
+    },
+    "N3-HEIGHT-D": {
+      "completed_at_utc": "2026-09-25T07:23:24.622972Z",
+      "episodes": 24,
+      "reference": {
+        "path": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/partition-completions/N3-HEIGHT-D.json",
+        "sha256": "92dbb816370ae6ab540cca465dd4632f18cb89ddd4558264e61bcd2987f6d0be"
+      }
+    },
+    "N3-LAT-D": {
+      "completed_at_utc": "2026-09-25T07:14:43.109322Z",
+      "episodes": 24,
+      "reference": {
+        "path": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/partition-completions/N3-LAT-D.json",
+        "sha256": "e36b2647caf8ddd82a3e9e4cdce4b34c2a3e00b54359f3ee6eb3325f9362a27a"
+      }
+    }
+  },
+  "confirmation_attempts": [
+    {
+      "actions_recorded": 0,
+      "admission_reference": {
+        "path": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/attempts/LAT-C01-E3-I-POS/attempt-001/run-admission.json",
+        "sha256": "2a55bcdc033e6e695019db46c61d44eb39f6ebd0c3679daa2f1228d738f26cbd"
+      },
+      "attempt_id": "attempt-001",
+      "attempt_root": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/attempts/LAT-C01-E3-I-POS/attempt-001",
+      "cell_id": "LAT-C01-E3-I-POS",
+      "first_request": null,
+      "intent": {
+        "attempt_id": "attempt-001",
+        "cell": {
+          "action_cap": "450",
+          "block_id": "LAT-C01-E3",
+          "cell_id": "LAT-C01-E3-I-POS",
+          "effective_policy_seed": "2026092401",
+          "environment_seed": "20262923",
+          "family": "LAT",
+          "fixture_sha256": "3f4814ab16a10366b0b22a012c53cdf360353770ef97ba4d3a149c47b1f288e3",
+          "form": "I",
+          "layout_id": "LAT-C01",
+          "model": "E3",
+          "physical_goal_sign": "1",
+          "prompt": "Place the Rubik's cube so that the bowl is to the right of the Rubik's cube.",
+          "prompt_id": "LAT-I-POS",
+          "prompt_sha256": "6ed00a80ed714a034daa682371ddf42c2e576e40ccc4345fa73053833b4e2d39",
+          "release_id": "sgw-current-E3-LAT-C-r4",
+          "runtime_sha256": "53f433fb9475f79a8b9bf045a0be9369c74a56a5b00e2a2d56fe96ffe9e3d20a",
+          "stage": "C",
+          "status": "RELEASED",
+          "study_id": "SGW-01",
+          "time_map_sha256": "f82dc2edce02dad7bae32c079087482fdcc342d526e65957053bddc56c4c5c57",
+          "within_block_order": "1"
+        },
+        "cell_id": "LAT-C01-E3-I-POS",
+        "created_at_utc": "2026-09-25T11:31:26.061293Z",
+        "release_id": "sgw-current-E3-LAT-C-r4",
+        "schema_version": "sgw-01-attempt-intent-v1"
+      },
+      "requests_dispatched": 0,
+      "run_admission": {
+        "allocated_gpu_count": 1,
+        "family": "LAT",
+        "gpu_name": "NVIDIA A40",
+        "job_name": null,
+        "job_uid": null,
+        "model": "E3",
+        "operational_authorization_receipt": {
+          "path": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/inputs-a40-r4/authorization.json",
+          "sha256": "c889b820e3ff3767eae4a814b889420c3274190081d5140b26e20835bb66df14"
+        },
+        "owner_kind": "Pod",
+        "pod_name": "211247-alia40o-a40-1gpu",
+        "pod_uid": "f9e72f20-4a39-4d7b-aa5f-838ba2d16330",
+        "receipts": {
+          "external_allocation_receipt": {
+            "bytes": 2107,
+            "path": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/operations/e3-a40-loan-20260925a-LAT-C-7f25dd9a74004f0cb2764c2238e81030/allocation.json",
+            "sha256": "15a7238407f4cbefe62e3f961092734e36a93ee7682c96cebc40cd06192f2cd5"
+          },
+          "resource_budget_receipt": {
+            "bytes": 874,
+            "path": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/operations/e3-a40-loan-20260925a-LAT-C-7f25dd9a74004f0cb2764c2238e81030/budget.json",
+            "sha256": "df4e9cbd3f45d4e12d69392c2183b17132014671ac53ec31122cd8d9e7c5c15e"
+          },
+          "storage_budget_receipt": {
+            "bytes": 786,
+            "path": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/operations/e3-a40-loan-20260925a-LAT-C-7f25dd9a74004f0cb2764c2238e81030/storage.json",
+            "sha256": "d58e12cc1ede241e8ea8c2f79f347e6b420f9aedf5ab4e571724c47a0067ad8a"
+          }
+        },
+        "release_hashes": {
+          "fixtures.json": "9d794de6748608ce5d8f9f402d05d723519c3c0eaab847f52710de3f3ce8c2eb",
+          "prompts.json": "f07dbda34feb915472fc329be203ec526a7589007485eeb8f237c19c8708b979",
+          "protocol.json": "4b420512939f8eba75fc31a91bd562812b6e8c1acd328b5ed7e268bbccb37bde",
+          "queue.jsonl": "21e49807fa7afc1bab5fbe7db3f3b623aa1e065a77fb8df91684f06cee1a681d",
+          "release_receipt.json": "b5dae5e5e3aaa449dd658861c79ec0c292ebe3d3d25b82d34520c3d6d43c842e",
+          "runtime_binding.json": "53f433fb9475f79a8b9bf045a0be9369c74a56a5b00e2a2d56fe96ffe9e3d20a"
+        },
+        "release_id": "sgw-current-E3-LAT-C-r4",
+        "resource_owner": "SGW-01-coordinator-5ed7dc81",
+        "schema": "sgw-01-run-admission-v2",
+        "selected_gpu_uuid": "GPU-b089ea9d-c01e-56de-f33f-5a0e71d3581a",
+        "stage": "C",
+        "status": "approved",
+        "supervisor_identity_receipt": {
+          "bytes": 1544,
+          "path": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/supervisors/e3-a40-loan-20260925a-policy-35c5e443-02c3-463b-aa32-f33e6e1c01c3/start.json",
+          "sha256": "cac7c6a8804c6ccb44134e5068149ef94abe8b83fa1c96c3bb57efa9658b4825"
+        }
+      }
+    }
+  ],
+  "execution_source": "a94696d3fa75c78a4f756536b988cead607e53b8",
+  "lane_statuses": {
+    "e3-a40-loan-20260925a": {
+      "at_utc": "2026-09-25T11:29:00.332999Z",
+      "partition": "E3-LAT-C",
+      "status": "running"
+    },
+    "e3-a40-r4-0": {
+      "at_utc": "2026-09-25T11:29:40.519526Z",
+      "partition": "E3-HEIGHT-C",
+      "status": "running"
+    },
+    "f3-a40-r4-0": {
+      "at_utc": "2026-09-25T11:29:03.057781Z",
+      "partition": "F3-LAT-C",
+      "status": "running"
+    },
+    "n3-a40-r4-0": {
+      "at_utc": "2026-09-25T11:28:56.620153Z",
+      "partition": "N3-LAT-C",
+      "status": "running"
+    },
+    "n3-a40-r4-1": {
+      "at_utc": "2026-09-25T11:29:47.110409Z",
+      "partition": "N3-HEIGHT-C",
+      "status": "running"
+    }
+  },
+  "observed_at_utc": "2026-09-25T11:31:29.991931+00:00",
+  "schema_version": "sgw-01-confirmation-first-request-metadata-v1",
+  "scope": "Existing first C intent/admission/request-index and state filenames only; no model requests sent or raw arrays read"
+}

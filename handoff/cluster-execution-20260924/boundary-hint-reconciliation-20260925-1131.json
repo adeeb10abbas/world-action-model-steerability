@@ -1,0 +1,53 @@
+{
+  "N3_DIST_D": {
+    "completed_at_utc": "2026-09-25T11:28:27.905266Z",
+    "episodes": 24,
+    "operation": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/operations/n3-a40-r4-0-DIST-D-5f627833c53e4b52bebbbb85026d783a",
+    "reference": {
+      "path": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/partition-completions/N3-DIST-D.json",
+      "sha256": "b5b835274bf6b1751af908693d437b8a5d8078d1369d874c634d3b887763a9c1"
+    },
+    "release_id": "sgw-current-N3-DIST-D-r4"
+  },
+  "completed_C_pointer_count": 0,
+  "completed_D_partitions": [
+    "E3-DIST-D",
+    "E3-HEIGHT-D",
+    "E3-LAT-D",
+    "F3-DIST-D",
+    "F3-HEIGHT-D",
+    "F3-LAT-D",
+    "N3-DIST-D",
+    "N3-HEIGHT-D",
+    "N3-LAT-D"
+  ],
+  "fleet_hold": null,
+  "lane_statuses": {
+    "e3-a40-loan-20260925a": {
+      "at_utc": "2026-09-25T11:29:00.332999Z",
+      "partition": "E3-LAT-C",
+      "status": "running"
+    },
+    "e3-a40-r4-0": {
+      "at_utc": "2026-09-25T11:29:40.519526Z",
+      "partition": "E3-HEIGHT-C",
+      "status": "running"
+    },
+    "f3-a40-r4-0": {
+      "at_utc": "2026-09-25T11:29:03.057781Z",
+      "partition": "F3-LAT-C",
+      "status": "running"
+    },
+    "n3-a40-r4-0": {
+      "at_utc": "2026-09-25T11:28:56.620153Z",
+      "partition": "N3-LAT-C",
+      "status": "running"
+    },
+    "n3-a40-r4-1": {
+      "at_utc": "2026-09-25T11:28:18.411354Z",
+      "status": "waiting_for_stage_or_partition"
+    }
+  },
+  "observed_at_utc": "2026-09-25T11:29:44.680538+00:00",
+  "scope": "FORCE_SYNC refreshed small control directories; hint is not launch authority"
+}

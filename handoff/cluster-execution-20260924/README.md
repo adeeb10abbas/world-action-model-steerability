@@ -34,6 +34,52 @@ final-only local H.264 delivery remain pending. No local video transfer has
 started. Progress receipts are collected hourly; capacity can be reassigned
 only at a verified quiescent boundary without losing an in-flight attempt.
 
+**11:28 UTC development barrier release and boundary-observer recovery:**
+`N3-DIST-D` published its final partition receipt at
+**11:28:27.905266 UTC**, completing all nine D partitions without a restart.
+The [11:31 startup capture](confirmation-startup-20260925-1131.json) records
+the first C attempt intent and approved admission for `LAT-C01-E3-I-POS`,
+created at 11:31:26 UTC against `sgw-current-E3-LAT-C-r4`.
+It had zero requests/actions at that capture: this is **post-barrier
+startup, not yet witnessed C inference or an episode result**. The latest
+complete-episode count remains the 11:17 snapshot, not a new count.
+
+The boundary notification connection independently failed at 11:26:49 UTC
+with `tls: bad record MAC` (client stderr 07:26 EDT), while guardian and
+storage-notification processes remained healthy. Only the exact orphan
+PID 8142/start `152328157` was retired through its pidfd after its argv,
+absence of children and unchanged protection identities were checked.
+An unchanged replacement, PID 14892, exited normally after emitting a
+**stale D loan hint**: its notification named `N3-DIST-D` even though that
+partition had completed. Fresh FORCE_SYNC reconciliation rejected the hint;
+no controller was stopped, lane loaned or episode replayed. The attempted
+live verification found no process after this normal exit and failed before
+any mutation; that diagnostic is preserved in the recovery receipt.
+
+The external, read-only observer is now separately versioned as
+`deploy-boundary-20260925a/watch_partition_boundary_v2.py`. It reuses the
+existing statx FORCE_SYNC directory refresher, holds a singleton observer
+lock, and saves immutable registration and terminal-result metadata before
+notification. CPU cases cover the stale D hint, refreshed transition, owned
+partition exclusion, C loan suggestion, all-complete and hold behavior.
+**Model/admission source `a94696d`, lane plans, bindings, claims, guardian
+and study workers were not changed.** The new observer is PID **14965**,
+start **`153792717`**, under the same `sgw-boundary-loan-watch` handle with
+command-scoped SPDY. Its identity and lock, absence of both earlier
+observers, and one live local client PID 90022 were verified. The storage
+observer remains PID 11261/start `152992038`. The underlying TLS fault
+remains unproven; changing transport is not a claimed root-cause fix.
+
+See [the complete recovery record](boundary-observer-recovery-20260925-1131.json)
+for script hashes, the rejected hint, exact retirement/start identities and
+the barrier evidence. Timing collection must now use
+`hourly_control_receipts_v3.py --lane-index <current-active-lanes.json>
+--boundary-registration
+/data/users/ali/sgw-01/current-20260924a/deploy-boundary-20260925a/boundary-observer-start-v4.json`;
+v2's hard-coded retired PID is historical. The v3 collector was compiled and
+installed, but its first complete metadata collection is deferred to the
+due 12:10 report. The existing single 12:10 fallback remains armed.
+
 **11:17 UTC hourly progress:** all 270 pilot/development episodes now have
 completion pointers, and no episode attempt is unfinished at the snapshot.
 However, only **eight of nine D partition-completion receipts** are present.
@@ -205,9 +251,11 @@ The other four pairs were not restarted or reassigned.
 `study-a40-v2/active-lanes.json`, not the frozen initial-lane index, and
 `deploy-storage-502d720/study_progress_snapshot_v2.py --lane-index
 /data/users/ali/sgw-01/current-20260924a/study-a40-v2/active-lanes.json`.
-The original metadata collector remains preserved. The boundary observer
-completed its notification and was rearmed against the new index as PID 8142,
-start identity `152328157`, using the same `sgw-boundary-loan-watch` handle.
+The original metadata collector remains preserved. At 07:26, the boundary
+observer completed its notification and was rearmed against the new index
+as PID 8142/start `152328157`; the 11:31 recovery above supersedes that
+observer with PID 14965/start `153792717` under the same
+`sgw-boundary-loan-watch` handle.
 The first-action observer `sgw-loan-first-action-20260925a` completed after
 reading that witness; it never sent an inference request. Further progress must use the new
 roster so the intentionally retired F3 owners are not reported as live failures.
