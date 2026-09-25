@@ -24,6 +24,9 @@ from .contract import (
 from .recorder import atomic_json, fleet_is_held, request_fleet_hold, utc_now
 from .release import create_release
 from .block_scheduling import MODE as BLOCK_MODE, begin_once, frozen_blocks, registration, selected_cells
+from .operator_recovery import (
+    INTERNAL_FIELDS, begin_recovery, claim_area, effective_release, execution_identity, load_recovery,
+)
 
 MODELS = ("N3", "E3", "F3")
 FAMILIES = ("LAT", "HEIGHT", "DIST")
@@ -113,6 +116,12 @@ def _block_registration(plan: Mapping[str, Any], binding: Mapping[str, Any] | No
             or environment.get("SGW01_CAMERA_REVISION") != declared["camera_configuration"]["revision"]
             or environment.get("SGW01_POLICY_INPUT_REVISION") != declared["policy_input_revision"]):
         raise ContractError("block plan must explicitly propagate its declared camera/input revisions")
+    recovery = plan.get("operator_recovery")
+    if recovery is not None:
+        approval = load_recovery(recovery)
+        if (approval["cohort_root"] != plan["cohort_root"]
+                or approval["new_source"] != {"root": plan["source_root"], "commit": plan["source_commit"]}):
+            raise ContractError("recovery plan differs from its approved cohort/new source")
     return registered
 
 
@@ -232,6 +241,91 @@ def read_partition_summary(cohort: Path, model: str, family: str, stage: str, bl
     return value
 
 
+def lane_completion_state(plan: Mapping[str, Any]) -> dict[str, Any]:
+    """Inspect published, pointer-backed claim units, never infer success from exit.
+
+    A block with missing publication is not resumable merely because some of its
+    cells completed. The existing worker deliberately rejects partial blocks.
+    """
+    from .contract import Cell
+    from .mailbox_visibility import DirectoryRefresher
+    from .release import _queue_rows
+
+    cohort, model = Path(plan["cohort_root"]), plan["model"]
+    block_mode = plan.get("scheduling_mode") == BLOCK_MODE
+    _block_registration(plan)
+    queue = plan["inputs"]["queue"]
+    if queue["sha256"] != QUEUE_SHA256 or sha256_file(Path(queue["path"])) != QUEUE_SHA256:
+        raise ContractError("supervisor completion requires the frozen planned queue")
+    assigned = plan.get("partitions")
+    expected = {f"{family}-{stage}" for family in FAMILIES for stage in STAGES}
+    if (model not in MODELS or not isinstance(assigned, list) or not assigned
+            or len(set(assigned)) != len(assigned) or not set(assigned).issubset(expected)):
+        raise ContractError("supervisor completion requires explicit registered partitions")
+    rows = _queue_rows(Path(queue["path"]))
+    refresh = DirectoryRefresher()
+    refresh(cohort)
+    for name in ("cells", "attempts", "block-claims", "block-executions", "block-completions", "partition-completions"):
+        if (cohort / name).is_dir():
+            refresh(cohort / name)
+    completed, owned, pending, unsafe = [], [], [], []
+    for partition in assigned:
+        family, stage = partition.split("-")
+        cells = tuple(Cell(row) for row in rows
+                      if (row["model"], row["family"], row["stage"]) == (model, family, stage))
+        units = frozen_blocks(cells) if block_mode else {f"{model}-{partition}": cells}
+        for unit, unit_cells in units.items():
+            claim_path = cohort / "block-claims" / f"{unit}.json"
+            expected_root = release_path(cohort, model, family, stage, plan.get("release_revision", ""))
+            if block_mode and plan.get("operator_recovery") is not None and expected_root.exists():
+                effective = effective_release(load_release(expected_root), plan["operator_recovery"])
+                if effective.binding.get("operator_recovery") is not None:
+                    claim_path = cohort / claim_area(effective, "dispatch") / f"{unit}.json"
+            claim = load_json(claim_path, "block claim") if block_mode and claim_path.exists() else None
+            mine = claim is not None and claim.get("lane_id") == plan["lane_id"]
+            summary = read_partition_summary(cohort, model, family, stage, unit if block_mode else None)
+            if summary is None:
+                pending.append(unit)
+                attempted = any((cohort / "attempts" / cell.cell_id).exists()
+                                or (cohort / "cells" / f"{cell.cell_id}.complete.json").exists()
+                                for cell in unit_cells)
+                execution = (cohort / "block-executions" / f"{unit}.json").exists()
+                if mine or (claim is None and (attempted or execution)):
+                    unsafe.append(unit)
+                continue
+            root = release_path(cohort, model, family, stage, plan.get("release_revision", ""))
+            if (summary["release_path"] != str(root)
+                    or summary["release_id"] != partition_release_id(plan, family, stage)):
+                raise ContractError("completed queue unit belongs to a different planned release")
+            release = effective_release(load_release(root), plan.get("operator_recovery"))
+            if (release.binding["source_commit"] != plan["source_commit"]
+                    or any(release.hashes[filename] != plan["inputs"][key]["sha256"] for key, filename in (
+                        ("protocol", "protocol.json"), ("prompts", "prompts.json"), ("fixtures", "fixtures.json")))):
+                raise ContractError("completed queue unit differs from the planned source/scientific inputs")
+            # Publication already verified raw artifacts. Recheck the small
+            # immutable pointer/manifest/result chain rather than reread videos.
+            for episode in summary["episodes"]:
+                pointer = read_reference(episode["pointer"])
+                manifest = read_reference(episode["manifest"])
+                if (episode["pointer"]["path"] != str(cohort / "cells" / f"{episode['cell_id']}.complete.json")
+                        or pointer.get("manifest_path") != episode["manifest"]["path"]
+                        or pointer.get("manifest_sha256") != episode["manifest"]["sha256"]
+                        or manifest.get("complete") is not True
+                        or manifest.get("release_id") != release.release_id
+                        or manifest.get("release_hashes") != dict(release.hashes)
+                        or manifest.get("result") != read_reference(pointer["result"])
+                        or manifest["result"].get("status") not in {"valid_success", "valid_model_failure", "censored"}):
+                    raise ContractError("queue completion lacks its immutable valid completion pointer")
+            completed.append(unit)
+            if mine or not block_mode:
+                owned.append(unit)
+    return {
+        "complete": not pending, "completed_units": sorted(completed),
+        "owned_completed_units": sorted(owned), "pending_units": sorted(pending),
+        "unsafe_owned_units": sorted(unsafe), "held": fleet_is_held(cohort),
+    }
+
+
 def stage_ready(cohort: Path, stage: str, model: str | None = None) -> bool:
     if stage == "P":
         return True
@@ -348,6 +442,12 @@ def prepare_operation(plan: Mapping[str, Any], family: str, stage: str, root: Pa
 
 def worker_environment(plan: Mapping[str, Any], root: Path) -> dict[str, str]:
     environment = {**os.environ, **plan["runtime_environment"]}
+    if plan.get("operator_recovery") is not None:
+        environment["SGW01_OPERATOR_RECOVERY"] = plan["operator_recovery"]["path"]
+        environment["SGW01_OPERATOR_RECOVERY_SHA256"] = plan["operator_recovery"]["sha256"]
+    else:
+        environment.pop("SGW01_OPERATOR_RECOVERY", None)
+        environment.pop("SGW01_OPERATOR_RECOVERY_SHA256", None)
     port = str(plan["policy_port"])
     module = ("nano_wrapper_entrypoint" if plan["model"] == "N3" else "checkpoint_wrapper_entrypoint")
     server = [
@@ -397,6 +497,8 @@ def stop_remote_lane(plan: Mapping[str, Any]) -> None:
 
 def run_one(plan: Mapping[str, Any], family: str, stage: str, block_id: str | None = None) -> int:
     cohort = Path(plan["cohort_root"])
+    revision = plan.get("release_revision", "")
+    path = release_path(cohort, plan["model"], family, stage, revision)
     block_mode = plan.get("scheduling_mode") == BLOCK_MODE
     if block_mode:
         _block_registration(plan)
@@ -406,15 +508,18 @@ def run_one(plan: Mapping[str, Any], family: str, stage: str, block_id: str | No
             return 44
         if not stage_ready(cohort, stage, plan["model"]):
             raise ContractError("per-model stage barrier is not complete")
-        begin_once(cohort, "block-claims", block_id, lane_id=plan["lane_id"],
-                   release_id=partition_release_id(plan, family, stage))
+        recovery_release = (effective_release(load_release(path), plan["operator_recovery"])
+                            if plan.get("operator_recovery") is not None and path.exists() else None)
+        if recovery_release is not None and recovery_release.binding.get("operator_recovery") is not None:
+            begin_recovery(recovery_release, block_id, "dispatch", lane_id=plan["lane_id"])
+        else:
+            begin_once(cohort, "block-claims", block_id, lane_id=plan["lane_id"],
+                       release_id=partition_release_id(plan, family, stage))
     elif block_id is not None:
         raise ContractError("block dispatch requires explicit registration")
     root = cohort / "operations" / f"{plan['lane_id']}-{family}-{stage}-{uuid.uuid4().hex}"
     root.mkdir(parents=True, exist_ok=False)
     binding = prepare_operation(plan, family, stage, root)
-    revision = plan.get("release_revision", "")
-    path = release_path(cohort, plan["model"], family, stage, revision)
     inputs = plan["inputs"]
     # Publication is serialized briefly, not for the worker lifetime. Every
     # block keeps the same authoritative full-partition release and cell IDs.
@@ -432,7 +537,7 @@ def run_one(plan: Mapping[str, Any], family: str, stage: str, block_id: str | No
                 runtime_binding=root / "binding.json", resource_owner=binding["resource_owner"],
                 stage=stage, model=plan["model"], family=family,
             )
-        release = load_release(path)
+        release = effective_release(load_release(path), plan.get("operator_recovery"))
     for key, filename in (("protocol", "protocol.json"), ("prompts", "prompts.json"), ("fixtures", "fixtures.json")):
         if release.hashes[filename] != inputs[key]["sha256"]:
             raise ContractError("existing release differs from the lane's scientific inputs")
@@ -440,7 +545,7 @@ def run_one(plan: Mapping[str, Any], family: str, stage: str, block_id: str | No
         raise ContractError("resume must retain the original released executable source")
     if block_mode:
         selected_cells(release, plan["model"], family, stage, block_id)
-        operational = {"external_allocation_receipt", "resource_budget_receipt", "storage_budget_receipt"}
+        operational = {"external_allocation_receipt", "resource_budget_receipt", "storage_budget_receipt"} | INTERNAL_FIELDS
         if ({k: v for k, v in release.binding.items() if k not in operational}
                 != {k: v for k, v in binding.items() if k not in operational}):
             raise ContractError("parallel block operation changed the immutable runtime binding")
@@ -465,6 +570,8 @@ def run_one(plan: Mapping[str, Any], family: str, stage: str, block_id: str | No
                              "path": plan["runtime_environment"]["SGW01_SIMULATOR_LANE_IDENTITY"],
                              "sha256": plan["runtime_environment"]["SGW01_SIMULATOR_LANE_IDENTITY_SHA256"],
                          })
+    if release.binding.get("operator_recovery") is not None:
+        admission["execution_identity"] = execution_identity(release)
     atomic_json(root / "admission.json", admission)
     environment = worker_environment(plan, root)
     environment["SGW01_RUN_ADMISSION"] = str(root / "admission.json")
@@ -483,6 +590,8 @@ def run_one(plan: Mapping[str, Any], family: str, stage: str, block_id: str | No
     summary["operation"] = str(root)
     if block_mode:
         summary.update(schema="sgw-01-block-completion-v1", block_id=block_id)
+        if release.binding.get("operator_recovery") is not None:
+            summary["execution_identity"] = execution_identity(release)
         atomic_json(cohort / "block-completions" / f"{block_id}.json", summary)
         publish_block_partition(cohort, release, plan["model"], family, stage)
     else:

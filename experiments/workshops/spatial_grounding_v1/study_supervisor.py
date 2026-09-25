@@ -1,4 +1,9 @@
-"""Detach one finite, source-pinned study process tree inside an allocated Pod."""
+"""Supervise a finite source-pinned tree; exit zero is not queue completion.
+
+Policy continuation is limited to verified completed-block boundaries with new
+own-lane progress and untouched pending blocks. Partial/no-progress exits hold;
+simulator exits report listener shutdown, never study completion.
+"""
 
 from __future__ import annotations
 
@@ -17,8 +22,8 @@ from typing import Any
 import uuid
 
 from .contract import ContractError, sha256_file
-from .recorder import atomic_json, utc_now
-from .study_lane import read_reference, reference
+from .recorder import atomic_json, request_fleet_hold, utc_now
+from .study_lane import lane_completion_state, read_reference, reference
 
 STOP = False
 
@@ -165,6 +170,25 @@ def physical_gpu_lease(plan):
         yield
 
 
+def policy_exit_decision(plan, before, after) -> tuple[int, str]:
+    if after["held"]:
+        return 44, "held_no_new_claims"
+    if not set(before["completed_units"]).issubset(after["completed_units"]):
+        return 42, "incomplete_preserve_no_automatic_retry"
+    if after["complete"]:
+        return 0, "complete"
+    if (plan.get("scheduling_mode") == "six-cell-block-v1" and not after["unsafe_owned_units"]
+            and set(after["owned_completed_units"]) - set(before["completed_units"])):
+        environment = plan["runtime_environment"]
+        identity = read_reference({
+            "path": environment["SGW01_SIMULATOR_LANE_IDENTITY"],
+            "sha256": environment["SGW01_SIMULATOR_LANE_IDENTITY_SHA256"],
+        })
+        if not (Path(identity["control_root"]) / "stop.json").exists():
+            return 0, "continue_pending_blocks"
+    return 42, "incomplete_preserve_no_automatic_retry"
+
+
 def run(args) -> int:
     plan = read_reference({"path": str(args.plan), "sha256": args.plan_sha256})
     validate_launch(plan)
@@ -249,45 +273,70 @@ def run_owned(args, plan) -> int:
         ]
     child = None
     try:
-        with (args.run_root / "child.log").open("xb", buffering=0) as log:
-            child = subprocess.Popen(command, env=environment, stdin=subprocess.DEVNULL,
-                                     stdout=log, stderr=subprocess.STDOUT, start_new_session=True)
-            atomic_json(args.run_root / "child-start.json", {
-                "pid": child.pid, "command": command,
-                "process_start_identity": process_info(child.pid)["process_start_identity"],
-            })
-            last_heartbeat = 0.0
-            memory = sample_memory()
-            while child.poll() is None and not STOP and datetime.now(timezone.utc) < deadline:
-                memory = sample_memory(memory["sampled_peak_bytes"],
-                                       previous_anon_peak=memory["sampled_anon_plus_shmem_peak_bytes"])
-                if time.monotonic() - last_heartbeat >= 60:
-                    atomic_json(args.run_root / "heartbeat.json", {
-                        "at_utc": utc_now(), "status": "supervising", "child_pid": child.pid,
-                        "deadline_utc": receipt["deadline_utc"],
-                        "host_memory": memory,
-                    })
-                    last_heartbeat = time.monotonic()
-                time.sleep(0.2)
-            code = child.poll()
-            leftover = descendants(os.getpid())
-            if code is None or leftover:
-                stop_tree(child)
-                if code is None or code == 0:
-                    code = 124 if datetime.now(timezone.utc) >= deadline else 125
-            atomic_json(args.run_root / "exit.json", {
+        before = lane_completion_state(plan) if args.role == "policy" else None
+        generation = 0
+        memory = sample_memory()
+        while True:
+            generation += 1
+            prefix = "child" if generation == 1 else f"child-{generation:03d}"
+            with (args.run_root / f"{prefix}.log").open("xb", buffering=0) as log:
+                child = subprocess.Popen(command, env=environment, stdin=subprocess.DEVNULL,
+                                         stdout=log, stderr=subprocess.STDOUT, start_new_session=True)
+                atomic_json(args.run_root / f"{prefix}-start.json", {
+                    "pid": child.pid, "command": command,
+                    "process_start_identity": process_info(child.pid)["process_start_identity"],
+                })
+                last_heartbeat = 0.0
+                while child.poll() is None and not STOP and datetime.now(timezone.utc) < deadline:
+                    memory = sample_memory(memory["sampled_peak_bytes"],
+                                           previous_anon_peak=memory["sampled_anon_plus_shmem_peak_bytes"])
+                    if time.monotonic() - last_heartbeat >= 60:
+                        atomic_json(args.run_root / "heartbeat.json", {
+                            "at_utc": utc_now(), "status": "supervising", "child_pid": child.pid,
+                            "deadline_utc": receipt["deadline_utc"],
+                            "host_memory": memory,
+                        })
+                        last_heartbeat = time.monotonic()
+                    time.sleep(0.2)
+                code = child.poll()
+                leftover = descendants(os.getpid())
+                if code is None or leftover:
+                    stop_tree(child)
+                    if code is None or code == 0:
+                        code = 124 if datetime.now(timezone.utc) >= deadline else 125
+            status = "listener_stopped" if code == 0 else "failed_preserve_no_automatic_retry"
+            completion = None
+            if code == 0 and args.role == "policy":
+                completion = lane_completion_state(plan)
+                code, status = policy_exit_decision(plan, before, completion)
+            if code == 0 and (STOP or datetime.now(timezone.utc) >= deadline):
+                code = 125 if STOP else 124
+                status = "interrupted_preserve_no_automatic_retry"
+            result = {
                 "at_utc": utc_now(), "returncode": code, "child_returncode": child.returncode,
                 "interrupted": STOP, "owned_descendants_remaining": descendants(os.getpid()),
-                "status": "complete" if code == 0 else "failed_preserve_no_automatic_retry",
+                "status": status, "queue_completion": completion,
                 "host_memory": sample_memory(memory["sampled_peak_bytes"],
                                             previous_anon_peak=memory["sampled_anon_plus_shmem_peak_bytes"]),
-            })
+            }
+            atomic_json(args.run_root / f"{prefix}-exit.json", result)
+            if status == "continue_pending_blocks":
+                before = completion
+                continue
+            if code != 0 and args.role == "policy":
+                request_fleet_hold(Path(plan["cohort_root"]), lane_id=plan["lane_id"],
+                                   reason=f"policy supervisor {status}; child exit {child.returncode}; no automatic retry")
+            atomic_json(args.run_root / "exit.json", result)
             return code
     except BaseException as exc:
         if child is not None:
             stop_tree(child)
+        if args.role == "policy":
+            request_fleet_hold(Path(plan["cohort_root"]), lane_id=plan["lane_id"],
+                               reason=f"supervisor {type(exc).__name__}: {exc}; no automatic retry")
         atomic_json(args.run_root / "failure.json", {
             "at_utc": utc_now(), "error_type": type(exc).__name__, "error": str(exc),
+            "child_returncode": child.returncode if child is not None else None,
         })
         raise
 
