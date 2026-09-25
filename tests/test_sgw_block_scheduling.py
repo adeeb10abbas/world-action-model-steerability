@@ -525,3 +525,52 @@ def test_legacy_worker_does_not_require_new_runtime_identity_declarations(cohort
         cohort.old, model="N3", family="LAT", stage="P", max_valid=6, max_attempts=3,
         worker_id="legacy-cpu", adapter=FakeAdapter(), scorer=lambda *_: {"status": "valid_model_failure"},
     ) == 0
+
+
+@pytest.mark.parametrize("fault", [
+    None, "all-models", "missing-model", "duplicate-model", "old-ceiling", "short-ceiling",
+    "old-protocol", "subset-queue-hash", "other-requested-model",
+])
+def test_block_authorization_is_n3_522_with_full_queue_and_new_protocol(cohort, fault):
+    release = cohort.release()
+    authorization = json.loads(Path(release.binding["operational_authorization_receipt"]["path"]).read_text())
+    authorization["source_protocol_sha256"] = release.hashes["protocol.json"]
+    authorization["source_queue_sha256"] = blocks.QUEUE_SHA256
+    authorization["scope"].update(
+        models=["N3"], maximum_registered_behavioral_episodes=522, persistent_study_root=str(cohort.root),
+    )
+    model = "N3"
+    if fault in {"all-models", "missing-model", "duplicate-model"}:
+        authorization["scope"]["models"] = {
+            "all-models": ["N3", "E3", "F3"], "missing-model": [], "duplicate-model": ["N3", "N3"],
+        }[fault]
+    elif fault in {"old-ceiling", "short-ceiling"}:
+        authorization["scope"]["maximum_registered_behavioral_episodes"] = 1566 if fault == "old-ceiling" else 521
+    elif fault == "old-protocol":
+        authorization["source_protocol_sha256"] = sha256_file(blocks.SPEC / "protocol.json")
+    elif fault == "subset-queue-hash":
+        authorization["source_queue_sha256"] = "0" * 64
+    elif fault == "other-requested-model":
+        model = "E3"
+    path = cohort.root / "synthetic-authorization.json"
+    atomic_json(path, authorization)
+    release = replace(release, binding={**release.binding, "operational_authorization_receipt": lane.reference(path)})
+    if fault is None:
+        assert worker._authorization_check(release, model=model) == "existing_idle_capacity_no_aggregate_hour_cap"
+        assert worker.SOURCE_QUEUE_EPISODE_COUNT == 1566
+        assert release.hashes["protocol.json"] != sha256_file(blocks.SPEC / "protocol.json")
+    else:
+        with pytest.raises((ContractError, worker.ResourceBlocked)):
+            worker._authorization_check(release, model=model)
+
+
+def test_legacy_authorization_retains_1566_ceiling(cohort):
+    release = cohort.old
+    assert worker._authorization_check(release, model="N3") == "existing_idle_capacity_no_aggregate_hour_cap"
+    authorization = json.loads(Path(release.binding["operational_authorization_receipt"]["path"]).read_text())
+    authorization["scope"]["maximum_registered_behavioral_episodes"] = 522
+    path = cohort.root / "synthetic-legacy-short-authorization.json"
+    atomic_json(path, authorization)
+    release = replace(release, binding={**release.binding, "operational_authorization_receipt": lane.reference(path)})
+    with pytest.raises(worker.ResourceBlocked, match="bounded"):
+        worker._authorization_check(release, model="N3")

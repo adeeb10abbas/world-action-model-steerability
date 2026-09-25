@@ -1,0 +1,76 @@
+{
+  "camera_configuration": {
+    "revision": "stock-over-shoulder-official-input-v1-20260925",
+    "sha256": "4c5663875693c98d265cfd42b9c1d8b2dec6a43b92ad7f09151e49b2ea889023"
+  },
+  "capture": "/data/users/ali/sgw-01/current-20260924a/front-side-candidates-r2-20260925/LAT-P01",
+  "capture_declared_configuration": {
+    "preset_classes": [
+      "HeadCameraCfg",
+      "EgocentricMirroredCameraCfg",
+      "EgocentricMirroredWideAngleCameraCfg",
+      "EgocentricMirroredWideAngleHighCameraCfg"
+    ],
+    "revision": "unselected-stock-front-candidates-no-study",
+    "selection_rule": "Initial arm, cube, reference/support and destination visibility only; no model outcomes.",
+    "source_sha256": "3a37bb3a95bf6f2af730d5bb7a5acd33c15acfe5d956c2f40010e384bffac260"
+  },
+  "checks": [
+    {
+      "composite_rgb_sha256": "24127fd660e5036ee909a0fc4cbe40775dc0d4c88b2187207f59546337cc29b4",
+      "composite_shape": [
+        540,
+        640,
+        3
+      ],
+      "input": "native-reset",
+      "official_composition_pixel_equal": true,
+      "official_extraction_pixel_equal": true,
+      "per_view_shape": [
+        360,
+        640,
+        3
+      ]
+    },
+    {
+      "composite_rgb_sha256": "fb98e6e0683640a6eaddaa2adc1dd1ff838781c012d4da8e5c14348972317182",
+      "composite_shape": [
+        540,
+        640,
+        3
+      ],
+      "input": "synthetic-corners",
+      "official_composition_pixel_equal": true,
+      "official_extraction_pixel_equal": true,
+      "per_view_shape": [
+        360,
+        640,
+        3
+      ]
+    }
+  ],
+  "model_requests": 0,
+  "model_runtime_qualification": false,
+  "nano_source_sha256": "024a6d19048a6ac732ca0b23e741b5da6d38424223783b944bf539b2b6bd9a24",
+  "native_reset_inputs": 1,
+  "official_client_sha256": "6c22690779922a54bf18324da975253e1a8c9f824e89e22f0a480d92d2609d4d",
+  "policy_input": {
+    "height": 360,
+    "helper": "openpi_client.image_tools.resize_with_pad",
+    "helper_sha256": "d48b4bd7f44e79fe6db8a8e07c9161144fa250be686e1245014a8b47e6171977",
+    "interpolation": "PIL bilinear",
+    "revision": "robolab-cosmos-client-pad-360x640-v1",
+    "server_composition_changed": false,
+    "width": 640
+  },
+  "retained_capture_extrinsics_intrinsics_verified": true,
+  "schema": "sgw-official-n3-packing-gate-v1",
+  "scope": "Official per-view resize and existing service compose exactly match the pinned official client. No model, learned transforms, or forecasts executed.",
+  "status": "passed",
+  "synthetic_inputs": 1,
+  "view_order": [
+    "wrist top",
+    "stock left bottom left",
+    "stock right bottom right"
+  ]
+}

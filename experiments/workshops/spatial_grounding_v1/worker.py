@@ -31,7 +31,7 @@ import traceback
 from typing import Any, Callable, Mapping, Protocol
 import uuid
 
-from .contract import Cell, ContractError, Release, load_release, validate_stage_authorizations, verify_completion_pointer
+from .contract import Cell, ContractError, Release, STAGE_EPISODES, load_release, validate_stage_authorizations, verify_completion_pointer
 from .gpu_idle_probe import select_idle
 from .recorder import AttemptRecorder, atomic_json, fleet_is_held, next_attempt_number, request_fleet_hold, utc_now
 from .block_scheduling import MODE as BLOCK_MODE, begin_once, protocol_runtime, registration, selected_cells
@@ -552,6 +552,14 @@ def _authorization_check(release: Release, *, model: str) -> str:
     if not isinstance(scope, Mapping) or not isinstance(constraints, Mapping):
         raise ResourceBlocked("operational authorization lacks bounded scope and constraints")
     models = scope.get("models")
+    expected_episodes = SOURCE_QUEUE_EPISODE_COUNT
+    if release.binding.get("scheduling_mode") == BLOCK_MODE:
+        registered = registration(release.binding, model=model, cohort=release.root.parent,
+                                  protocol_sha256=release.hashes["protocol.json"],
+                                  prompts_sha256=release.hashes["prompts.json"])
+        if registered is None or models != registered["allowed_models"]:
+            raise ResourceBlocked("block authorization must cover exactly the registered N3-only scope")
+        expected_episodes = 3 * sum(STAGE_EPISODES.values())
     authorized_workers = constraints.get("max_concurrent_model_workers")
     authorized_gpus = constraints.get("max_total_allocated_gpus")
     as_needed = _as_needed_scaling(authorization, constraints)
@@ -563,7 +571,7 @@ def _authorization_check(release: Release, *, model: str) -> str:
             or scope.get("pvc") != release.binding["pvc_name"]
             or scope.get("persistent_study_root") != _study_root(release)
             or not isinstance(models, list) or model not in models
-            or scope.get("maximum_registered_behavioral_episodes") != SOURCE_QUEUE_EPISODE_COUNT
+            or scope.get("maximum_registered_behavioral_episodes") != expected_episodes
             or scope.get("maximum_attempts_per_behavioral_cell") != 3
             or not (as_needed or (
                 type(authorized_workers) is int and type(authorized_gpus) is int

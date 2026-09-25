@@ -34,6 +34,17 @@ and N3-only P18 -> D72 -> C432 progression are separately registered.
 The old `protocol.json`, `close_cameras.json`, queue and receipts remain
 untouched. E3/F3 cannot start without another user call.
 
+**Minimum gates passed:** retained LAT and new HEIGHT/DIST P01 reset frames
+show the arm/gripper, cube, references and supports. Every initial object
+and both destination boxes fit at least one exterior view in the inexpensive
+87-layout projection of retained geometry. Official per-view extraction and
+the final composite are pixel-identical to the pinned RoboLab client for
+one native reset and one synthetic slot-marker input. These checks used
+zero model requests. [Selected reset views](../artifacts/workshops/spatial_grounding_v1/camera_checks_20260925/stock-r5/all-three-families.jpg),
+[packing preview](../artifacts/workshops/spatial_grounding_v1/camera_checks_20260925/stock-r5/packing/native-reset-service-input.png),
+and [gate receipt](../handoff/cluster-execution-20260924/stock-r5-gates.json)
+preserve the reused LAT capture's original declaration.
+
 ## Preserved close-camera qualification
 
 The superseded exterior-camera revision is **`close-oblique-v3-full-objects-20260924`**.

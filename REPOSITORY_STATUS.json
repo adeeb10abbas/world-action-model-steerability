@@ -28,7 +28,19 @@
   "future_learned_policy_execution_location": "cluster_only",
   "handoff_entrypoint": "handoff/README.md",
   "historical_authorizations_are_not_new_launch_permission": true,
-  "learned_policy_launch_authorized": false,
+  "learned_policy_launch_authorized": true,
+  "current_launch_scope": {
+    "cohort": "study-a40-v3",
+    "release_revision": "r5",
+    "allowed_models": ["N3"],
+    "episodes": 522,
+    "old_cohort_resume_authorized": false,
+    "E3_F3_launch_authorized": false,
+    "camera_revision": "stock-over-shoulder-official-input-v1-20260925",
+    "policy_input_revision": "robolab-cosmos-client-pad-360x640-v1",
+    "gates": "handoff/cluster-execution-20260924/stock-r5-gates.json",
+    "status": "MINIMUM_GATES_PASSED_LAUNCH_PREPARATION"
+  },
   "user_stop_authorization": "handoff/cluster-execution-20260924/user-stop-authorization-20260925.json",
   "user_stop_hold": "handoff/cluster-execution-20260924/user-stop-hold-20260925.json",
   "learned_policy_authorization_receipt": {

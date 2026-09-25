@@ -1,0 +1,69 @@
+{
+  "all_87_initial_bounds_project_into_at_least_one_exterior": true,
+  "allowed_models": [
+    "N3"
+  ],
+  "at_utc": "2026-09-25T16:36:45.459676+00:00",
+  "camera_configuration": {
+    "revision": "stock-over-shoulder-official-input-v1-20260925",
+    "sha256": "4c5663875693c98d265cfd42b9c1d8b2dec6a43b92ad7f09151e49b2ea889023"
+  },
+  "lat_capture_reused_without_relabeling": true,
+  "layouts": [
+    "LAT-P01",
+    "HEIGHT-P01",
+    "DIST-P01"
+  ],
+  "minimum_gate_passed": true,
+  "model_requests": 0,
+  "models_waiting_for_user_call": [
+    "E3",
+    "F3"
+  ],
+  "new_successful_native_resets": 2,
+  "no_competence_or_causal_claim": true,
+  "packing": {
+    "path": "/data/users/ali/sgw-01/current-20260924a/stock-r5-official-packing/receipt.json",
+    "sha256": "3416e432c54bc43fd398a29cd8392befc362612444ac2136a33bbbc086549190"
+  },
+  "policy_input": {
+    "height": 360,
+    "helper": "openpi_client.image_tools.resize_with_pad",
+    "helper_sha256": "d48b4bd7f44e79fe6db8a8e07c9161144fa250be686e1245014a8b47e6171977",
+    "interpolation": "PIL bilinear",
+    "revision": "robolab-cosmos-client-pad-360x640-v1",
+    "server_composition_changed": false,
+    "width": 640
+  },
+  "preserved_prelaunch_attempts": [
+    {
+      "reason": "Camera configclass must be instantiated; failed before reset, fixed in24e9d1b.",
+      "root": "/data/users/ali/sgw-01/current-20260924a/front-side-camera-20260925"
+    },
+    {
+      "reason": "Transient runc PID67648 triggered strict foreign-process guard before native launch; PID later absent, no signals sent.",
+      "root": "/data/users/ali/sgw-01/current-20260924a/stock-r5-height-reset"
+    }
+  ],
+  "raw_master_downloads": 0,
+  "reset_captures": {
+    "DIST-P01": {
+      "path": "/data/users/ali/sgw-01/current-20260924a/stock-r5-dist-reset/DIST-P01/receipt.json",
+      "sha256": "8a1857a12923865d2039200fa3585a3198f9d44bee03446c2cf1d3eadd72cd0d"
+    },
+    "HEIGHT-P01": {
+      "path": "/data/users/ali/sgw-01/current-20260924a/stock-r5-height-reset-r2/HEIGHT-P01/receipt.json",
+      "sha256": "b7e70d65033eb5ef12be553db826a52f0f23b8d824c20e5fecb64ab54f17fe14"
+    },
+    "LAT-P01": {
+      "path": "/data/users/ali/sgw-01/current-20260924a/front-side-candidates-r2-20260925/LAT-P01/receipt.json",
+      "sha256": "e4de1e3b16193195238feda44f28d77bfbc4b64403b1b15090c5e0a96002aa6c"
+    }
+  },
+  "schema": "sgw-stock-camera-rerun-gates-v1",
+  "status": "passed",
+  "visibility": {
+    "path": "/data/users/ali/sgw-01/current-20260924a/stock-r5-visibility.json",
+    "sha256": "7bcdc658118b81d8050adf700e375de521b973a7be988d82a24f0600f9b4e5c3"
+  }
+}

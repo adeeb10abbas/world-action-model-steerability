@@ -151,12 +151,26 @@ def simulator_gpu_lease(plan, role):
         yield
 
 
+PHYSICAL_GPU_LOCK_ROOT = Path("/data/users/ali/sgw-01/locks")
+
+
+@contextmanager
+def physical_gpu_lease(plan):
+    if plan.get("scheduling_mode") != "six-cell-block-v1":
+        yield
+        return
+    PHYSICAL_GPU_LOCK_ROOT.mkdir(parents=True, exist_ok=True)
+    with (PHYSICAL_GPU_LOCK_ROOT / f"gpu-{plan['gpu_uuid']}.lock").open("a+") as stream:
+        fcntl.flock(stream.fileno(), fcntl.LOCK_EX | fcntl.LOCK_NB)
+        yield
+
+
 def run(args) -> int:
     plan = read_reference({"path": str(args.plan), "sha256": args.plan_sha256})
     validate_launch(plan)
     if not args.run_root.resolve().is_relative_to(Path(plan["cohort_root"]).resolve()):
         raise ContractError("supervisor receipt/log root must remain inside the study cohort")
-    with simulator_gpu_lease(plan, args.role):
+    with physical_gpu_lease(plan), simulator_gpu_lease(plan, args.role):
         return run_owned(args, plan)
 
 
