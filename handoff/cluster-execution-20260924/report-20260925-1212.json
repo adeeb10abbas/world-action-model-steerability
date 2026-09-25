@@ -1,0 +1,266 @@
+{
+  "actual_loans": {
+    "boundary": "F3-HEIGHT-D",
+    "count": 1,
+    "from": "F3",
+    "new_loans_this_report": 0,
+    "pair": "o/p",
+    "receipt": "handoff/cluster-execution-20260924/lane-loan-20260925a.json",
+    "to": "E3"
+  },
+  "analysis_implementation": {
+    "path": "/data/users/ali/sgw-01/current-20260924a/deploy-storage-502d720/build_confirmation_report_20260925.py",
+    "sha256": "917b226cff01854dabba289b868b5b749875bc30f4f6b685bff0a3da415d7727"
+  },
+  "as_of_utc": "2026-09-25T12:12:18.989272+00:00",
+  "capacity": {
+    "at_utc": "2026-09-25T12:13:45.560499Z",
+    "available_bytes": 148905136226304,
+    "available_inodes": 72164566,
+    "status": "watching",
+    "total_bytes": 219902325555200,
+    "total_inodes": 134217728
+  },
+  "completed_by_policy_family": {
+    "E3": {
+      "D_reverification_seconds_per_episode": 48.630310767226746,
+      "completed": 98,
+      "episode_mean_seconds_by_stage": {
+        "C": 491.07659393548965,
+        "D": 482.0692341956827
+      },
+      "expected": 522,
+      "mean_partition_startup_seconds": 125.35324749946594,
+      "projection_episode_seconds": 491.07659393548965,
+      "startup_samples": 5,
+      "timing_samples_by_stage": {
+        "C": 8,
+        "D": 72
+      }
+    },
+    "F3": {
+      "D_reverification_seconds_per_episode": 56.057389034165276,
+      "completed": 94,
+      "episode_mean_seconds_by_stage": {
+        "C": 488.92248380184174,
+        "D": 511.1128732264042
+      },
+      "expected": 522,
+      "mean_partition_startup_seconds": 303.38452142477036,
+      "projection_episode_seconds": 511.1128732264042,
+      "startup_samples": 4,
+      "timing_samples_by_stage": {
+        "C": 4,
+        "D": 72
+      }
+    },
+    "N3": {
+      "D_reverification_seconds_per_episode": 51.59907978773117,
+      "completed": 96,
+      "episode_mean_seconds_by_stage": {
+        "C": 581.1970248222351,
+        "D": 570.1423956222004
+      },
+      "expected": 522,
+      "mean_partition_startup_seconds": 375.4493056774139,
+      "projection_episode_seconds": 581.1970248222351,
+      "startup_samples": 5,
+      "timing_samples_by_stage": {
+        "C": 6,
+        "D": 72
+      }
+    }
+  },
+  "completed_by_stage": {
+    "C": 18,
+    "D": 216,
+    "P": 54
+  },
+  "completed_status_counts": {
+    "valid_model_failure": 284,
+    "valid_success": 4
+  },
+  "conditional_collection_projection": {
+    "D_only_timing_sensitivity_seconds_remaining": 178011.5670368711,
+    "assigned_C_partitions": [
+      "N3-LAT-C",
+      "E3-HEIGHT-C",
+      "F3-LAT-C",
+      "N3-HEIGHT-C",
+      "E3-LAT-C",
+      "E3-DIST-C",
+      "F3-HEIGHT-C",
+      "F3-DIST-C",
+      "N3-DIST-C"
+    ],
+    "assumptions": [
+      "Only5 currently verified pairs; no prospective hardware expansion.",
+      "Actual5 active C assignments,18 completed C cells, no remaining D work scheduled or D barrier charged again.",
+      "Use the larger of each model's observed D mean and early C mean; C samples are6 N3,8 E3,4 F3 and only initial confirmation layouts.",
+      "Charge unfinished episodes a full mean, without partial-work credit; one-second interepisode allowance.",
+      "Observed D24 final verification per episode scales linearly to each full144-cell C partition; no complete C verification cost yet measured.",
+      "Future partition startup uses model mean observed D/C admission-to-first-intent; current already-started partitions do not pay it again.",
+      "Retain own-model unclaimed partitions; only at a completed whole-partition boundary consider loan to most unclaimed whole work.",
+      "Each projected future loan costs the first observed886.7s boundary-to-admission interval, including coordinator latency, one sample.",
+      "No infrastructure failure/retry/replay or scientific/lifecycle change. Future C scene costs, storage contention and coordination latency remain uncertain."
+    ],
+    "collection_complete_utc": "2026-09-27T14:31:41.125631+00:00",
+    "collection_seconds_remaining": 181162.136358881,
+    "delivery_limitation": "Collection ETA excludes final full-artifact validation, global analysis, derivative encoding and final-only local transfer.",
+    "final_analysis_encoding_transfer_seconds": null,
+    "future_loan_handoff_allowance_seconds": 886.7454972267151,
+    "partition_completion_events": [
+      {
+        "complete_seconds_from_snapshot": 75893.4879014492,
+        "lane": "e3-a40-loan-20260925a",
+        "partition": "E3-LAT-C"
+      },
+      {
+        "complete_seconds_from_snapshot": 75893.4879014492,
+        "lane": "e3-a40-r4-0",
+        "partition": "E3-HEIGHT-C"
+      },
+      {
+        "complete_seconds_from_snapshot": 79768.06627261639,
+        "lane": "f3-a40-r4-0",
+        "partition": "F3-LAT-C"
+      },
+      {
+        "complete_seconds_from_snapshot": 89520.04798936844,
+        "lane": "n3-a40-r4-0",
+        "partition": "N3-LAT-C"
+      },
+      {
+        "complete_seconds_from_snapshot": 89520.04798936844,
+        "lane": "n3-a40-r4-1",
+        "partition": "N3-HEIGHT-C"
+      },
+      {
+        "complete_seconds_from_snapshot": 153880.63542613984,
+        "lane": "e3-a40-loan-20260925a",
+        "partition": "E3-DIST-C"
+      },
+      {
+        "complete_seconds_from_snapshot": 158900.1356856227,
+        "lane": "e3-a40-r4-0",
+        "partition": "F3-HEIGHT-C"
+      },
+      {
+        "complete_seconds_from_snapshot": 161887.96855956316,
+        "lane": "f3-a40-r4-0",
+        "partition": "F3-DIST-C"
+      },
+      {
+        "complete_seconds_from_snapshot": 181162.136358881,
+        "lane": "n3-a40-r4-0",
+        "partition": "N3-DIST-C"
+      }
+    ],
+    "projected_loans": [
+      {
+        "completed_boundary": "E3-HEIGHT-C",
+        "from": "E3",
+        "handoff_allowance_seconds": 886.7454972267151,
+        "kind": "conditional_projection_not_actual_loan",
+        "lane": "e3-a40-r4-0",
+        "seconds_from_snapshot": 75893.4879014492,
+        "to": "F3"
+      }
+    ],
+    "uniform_25_percent_slowdown_seconds_remaining": 226452.67044860125,
+    "without_further_loans_seconds_remaining": 244007.87084650993
+  },
+  "execution_source_commit": "a94696d3fa75c78a4f756536b988cead607e53b8",
+  "fleet_hold": null,
+  "footprint": {
+    "accounting_scope": "Immutable attempt manifests, including preserved technical failures; not a recursive allocated-disk scan",
+    "engineering_allowance_for_in_progress_bytes": 85443196790,
+    "engineering_allowance_for_unindexed_native_bytes": 2504681801981,
+    "finalized_attempt_manifests": 294,
+    "finalized_manifest_accounted_files": 1805718,
+    "finalized_manifest_accounted_logical_bytes": 2504681801981,
+    "maximum_accounted_attempt_bytes": 8544319679,
+    "unindexed_native_and_in_progress_actual_bytes": null
+  },
+  "observed_since_previous_periodic_receipt": {
+    "completions_per_hour": 20.739010676203034,
+    "elapsed_seconds": 14407.630367,
+    "limitation": "This window includes development-barrier waiting/finalization and confirmation startup; not steady C throughput.",
+    "new_actions": 38319,
+    "new_completions": 83,
+    "new_requests": 1276
+  },
+  "pending_capacity": "Await explicit recreated isolated r/s/t/v Pod-name relay; no additional physical pair admitted, shareda-f permanently excluded.",
+  "preserved_technical_invalid_attempts": 5,
+  "remaining_C": 1278,
+  "remaining_barriers": {
+    "continuous_guards": "Exact source/binding/ownership/deadline, first technical-invalid hold,20TiB/5M inode floor; per-UID/GID quota unverified.",
+    "development_barrier_complete_utc": "2026-09-25T11:28:27.905266+00:00",
+    "final_analysis": "All1566 unique cells and27 explicit authoritative release identities plus complete accounting/artifact validation.",
+    "final_delivery": "Full study accounting, verified derivatives, laptop capacity; all raw masters retained remotely with no early transfer.",
+    "forecast_evidence": "Physical camera/time mapping and semantic qualification unavailable, never scored zero; preserve equivalence safeguard.",
+    "within_C": "No further global stage barrier;9 whole144-cell partitions and intact6-condition blocks remain mandatory."
+  },
+  "schema_version": "sgw-01-periodic-confirmation-report-v1",
+  "source_receipts": [
+    {
+      "path": "handoff/cluster-execution-20260924/progress-20260925-1210.json",
+      "sha256": "787b46e4b8d0848d213a2c650ee811edb5e7400fe18b2b04ba6250c31e8e64ff"
+    },
+    {
+      "path": "handoff/cluster-execution-20260924/control-timing-20260925-1215.json",
+      "sha256": "6a1adf6f2a539fbe841eec3390b60e5678ab6ac8548b1ddf75fb009be392a2aa"
+    },
+    {
+      "path": "handoff/cluster-execution-20260924/first-confirmation-completions-20260925.json",
+      "sha256": "d6e4eb6d272f7bf3b0e773ab92e03eff46143208505f3ba029eb12c5729bc84f"
+    },
+    {
+      "path": "handoff/cluster-execution-20260924/progress-20260925-0810.json",
+      "sha256": "4eb2c13586741917bfa08b9419646dc4b7b242a4d5170adabfc130e05eacd9f3"
+    },
+    {
+      "path": "handoff/cluster-execution-20260924/report-20260925-0812.json",
+      "sha256": "5b7c976b8c77af8bcd52536c2aaa50a0004d121d77dc96d118c13db983c56f65"
+    }
+  ],
+  "supervised_pairs": 5,
+  "unfinished_attempts": [
+    {
+      "actions_recorded": 448,
+      "attempt_id": "attempt-001",
+      "cell_id": "HEIGHT-C01-E3-C-POS",
+      "requests_dispatched": 15,
+      "status": "in_progress_or_unfinished"
+    },
+    {
+      "actions_recorded": 327,
+      "attempt_id": "attempt-001",
+      "cell_id": "HEIGHT-C01-N3-D-POS",
+      "requests_dispatched": 11,
+      "status": "in_progress_or_unfinished"
+    },
+    {
+      "actions_recorded": 0,
+      "attempt_id": "attempt-001",
+      "cell_id": "LAT-C01-E3-D-NEG",
+      "requests_dispatched": 0,
+      "status": "in_progress_or_unfinished"
+    },
+    {
+      "actions_recorded": 416,
+      "attempt_id": "attempt-001",
+      "cell_id": "LAT-C01-F3-D-POS",
+      "requests_dispatched": 14,
+      "status": "in_progress_or_unfinished"
+    },
+    {
+      "actions_recorded": 450,
+      "attempt_id": "attempt-001",
+      "cell_id": "LAT-C01-N3-C-POS",
+      "requests_dispatched": 15,
+      "status": "in_progress_or_unfinished"
+    }
+  ],
+  "unique_completed": 288
+}

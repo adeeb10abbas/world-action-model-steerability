@@ -1,0 +1,260 @@
+{
+  "development_barrier_complete_utc": "2026-09-25T11:28:27.905266+00:00",
+  "execution_source_commit": "a94696d3fa75c78a4f756536b988cead607e53b8",
+  "observed_at_utc": "2026-09-25T12:14:06.567526+00:00",
+  "progress_observed_at_utc": "2026-09-25T12:12:18.989272+00:00",
+  "schema_version": "sgw-01-first-confirmation-completions-v1",
+  "scope": "One actually completed first C episode per current lane; all5 are valid model failures, not technical errors or task successes.",
+  "witnesses": {
+    "e3-a40-loan-20260925a": {
+      "actions_recorded": 450,
+      "admission_reference": {
+        "bytes": 2252,
+        "path": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/attempts/LAT-C01-E3-I-POS/attempt-001/run-admission.json",
+        "sha256": "2a55bcdc033e6e695019db46c61d44eb39f6ebd0c3679daa2f1228d738f26cbd"
+      },
+      "cell_id": "LAT-C01-E3-I-POS",
+      "completed_episode": true,
+      "family": "LAT",
+      "first_request": {
+        "camera_fingerprint": "de4c386e688d0a1b9c48059fb6ab3e33b6e3418a442b21a9fffec0de2879f863",
+        "camera_name": "over_shoulder_left_camera",
+        "prompt_sha256": "6ed00a80ed714a034daa682371ddf42c2e576e40ccc4345fa73053833b4e2d39",
+        "request_id": "LAT-C01-E3-I-POS:request:0",
+        "request_index": 0,
+        "reset_sha256": "de4c386e688d0a1b9c48059fb6ab3e33b6e3418a442b21a9fffec0de2879f863",
+        "started_at_utc": "2026-09-25T11:32:16.880451+00:00",
+        "target_action_step": 0
+      },
+      "model": "E3",
+      "pointer_reference": {
+        "bytes": 506,
+        "path": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/cells/LAT-C01-E3-I-POS.complete.json",
+        "sha256": "901d539cb8c455decc2f7aaa6863e9743a0ab6799097e58bb6b5fdb3ad01cb92"
+      },
+      "policy_pod": "211247-alia40o-a40-1gpu",
+      "policy_pod_uid": "f9e72f20-4a39-4d7b-aa5f-838ba2d16330",
+      "release_id": "sgw-current-E3-LAT-C-r4",
+      "request_index_reference": {
+        "bytes": 6515,
+        "path": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/attempts/LAT-C01-E3-I-POS/attempt-001/request_index.jsonl",
+        "sha256": "f5221fac7ef813701939b469b0d75878d5a50e4f5c796e0c64473244b360ebbe"
+      },
+      "requests_dispatched": 15,
+      "result_reference": {
+        "bytes": 5235556,
+        "path": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/attempts/LAT-C01-E3-I-POS/attempt-001/result.json",
+        "sha256": "ba50eebf2b5f8c0e4e4863858824660f141042bfbb08afc37f7025d78771bb25"
+      },
+      "status": "valid_model_failure",
+      "supervisor_id": "2efbd95b-b137-4d2d-8434-bd8b627d54c2",
+      "supervisor_pid": 16749,
+      "supervisor_reference": {
+        "bytes": 1544,
+        "path": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/supervisors/e3-a40-loan-20260925a-policy-35c5e443-02c3-463b-aa32-f33e6e1c01c3/start.json",
+        "sha256": "cac7c6a8804c6ccb44134e5068149ef94abe8b83fa1c96c3bb57efa9658b4825"
+      },
+      "supervisor_start": "151918700"
+    },
+    "e3-a40-r4-0": {
+      "actions_recorded": 450,
+      "admission_reference": {
+        "bytes": 2227,
+        "path": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/attempts/HEIGHT-C01-E3-I-POS/attempt-001/run-admission.json",
+        "sha256": "553b46d7d20ba9cd29a19d9fc8bd475f3fd0b3deec33ef58b46902d8bcac8a3c"
+      },
+      "cell_id": "HEIGHT-C01-E3-I-POS",
+      "completed_episode": true,
+      "family": "HEIGHT",
+      "first_request": {
+        "camera_fingerprint": "46e357418e34d2ae02a059a51a4dd5e4e569fe1aecee5a04669e53c57b093d34",
+        "camera_name": "over_shoulder_left_camera",
+        "prompt_sha256": "dc035ef9c00f5068092a80105a9c0ef3d77c103df7a1bb0c245a032d09d1014f",
+        "request_id": "HEIGHT-C01-E3-I-POS:request:0",
+        "request_index": 0,
+        "reset_sha256": "46e357418e34d2ae02a059a51a4dd5e4e569fe1aecee5a04669e53c57b093d34",
+        "started_at_utc": "2026-09-25T11:32:23.925358+00:00",
+        "target_action_step": 0
+      },
+      "model": "E3",
+      "pointer_reference": {
+        "bytes": 518,
+        "path": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/cells/HEIGHT-C01-E3-I-POS.complete.json",
+        "sha256": "71e6b14fbf72c60a450361ef0d5c6a7dcaf0137594f043fbfa4bb3647902fdff"
+      },
+      "policy_pod": "211247-alia40j-a40-1gpu",
+      "policy_pod_uid": "6a332c4b-54b1-4ff9-b676-9d35b401bddf",
+      "release_id": "sgw-current-E3-HEIGHT-C-r4",
+      "request_index_reference": {
+        "bytes": 6560,
+        "path": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/attempts/HEIGHT-C01-E3-I-POS/attempt-001/request_index.jsonl",
+        "sha256": "2bcaf2ca8186909e54638787725a58ba60fdb4afe815b027aa2f985670b408ef"
+      },
+      "requests_dispatched": 15,
+      "result_reference": {
+        "bytes": 6025987,
+        "path": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/attempts/HEIGHT-C01-E3-I-POS/attempt-001/result.json",
+        "sha256": "5bbbeb8e83088b9367284f501498cc11af1cf30668e8030c726ef61d73092e26"
+      },
+      "status": "valid_model_failure",
+      "supervisor_id": "c9d6953c-7e03-4bc1-b97f-692b36cf59e7",
+      "supervisor_pid": 4101,
+      "supervisor_reference": {
+        "bytes": 1557,
+        "path": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/supervisors/e3-a40-r4-0-policy-5c1e42a4-f9a8-417b-b944-a3377c2873ed/start.json",
+        "sha256": "b0238d8b15096d7896bd6db86c38bc5486308f54b7cf00d9ba6f4a10ec06c706"
+      },
+      "supervisor_start": "149636503"
+    },
+    "f3-a40-r4-0": {
+      "actions_recorded": 450,
+      "admission_reference": {
+        "bytes": 2212,
+        "path": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/attempts/LAT-C01-F3-I-POS/attempt-001/run-admission.json",
+        "sha256": "87f88846c117ff4fbd6544647443b413e2e84ca297f63af2c57ed787a9af333d"
+      },
+      "cell_id": "LAT-C01-F3-I-POS",
+      "completed_episode": true,
+      "family": "LAT",
+      "first_request": {
+        "camera_fingerprint": "de4c386e688d0a1b9c48059fb6ab3e33b6e3418a442b21a9fffec0de2879f863",
+        "camera_name": "over_shoulder_left_camera",
+        "prompt_sha256": "6ed00a80ed714a034daa682371ddf42c2e576e40ccc4345fa73053833b4e2d39",
+        "request_id": "LAT-C01-F3-I-POS:request:0",
+        "request_index": 0,
+        "reset_sha256": "de4c386e688d0a1b9c48059fb6ab3e33b6e3418a442b21a9fffec0de2879f863",
+        "started_at_utc": "2026-09-25T11:34:01.105130+00:00",
+        "target_action_step": 0
+      },
+      "model": "F3",
+      "pointer_reference": {
+        "bytes": 506,
+        "path": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/cells/LAT-C01-F3-I-POS.complete.json",
+        "sha256": "bff8a402607bc9049a88b50bb3a85451d77c753def3a86d6820ac489ba105017"
+      },
+      "policy_pod": "211247-alia40k-a40-1gpu",
+      "policy_pod_uid": "4a2ef7d9-7c56-4455-9dbe-914b1576bbe1",
+      "release_id": "sgw-current-F3-LAT-C-r4",
+      "request_index_reference": {
+        "bytes": 6515,
+        "path": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/attempts/LAT-C01-F3-I-POS/attempt-001/request_index.jsonl",
+        "sha256": "b1b71192d3169de23d9b83a7b62872c43264029b8992fc780dff093c827b10e2"
+      },
+      "requests_dispatched": 15,
+      "result_reference": {
+        "bytes": 5214449,
+        "path": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/attempts/LAT-C01-F3-I-POS/attempt-001/result.json",
+        "sha256": "cf474e631b62c6dbb79f5887ed2bfd7c3b4f89d0dcc11f1e3dbd226f9d9e84f1"
+      },
+      "status": "valid_model_failure",
+      "supervisor_id": "e11beba3-aa31-4a78-81db-a668d27d1a00",
+      "supervisor_pid": 3606,
+      "supervisor_reference": {
+        "bytes": 1558,
+        "path": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/supervisors/f3-a40-r4-0-policy-48794e58-df43-4e08-8186-9d0540b4c9d0/start.json",
+        "sha256": "4c53da25423655ec1152b2b0770da410ab75d07b5198cdc5928e918e81fff568"
+      },
+      "supervisor_start": "147858778"
+    },
+    "n3-a40-r4-0": {
+      "actions_recorded": 450,
+      "admission_reference": {
+        "bytes": 2212,
+        "path": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/attempts/LAT-C01-N3-I-POS/attempt-001/run-admission.json",
+        "sha256": "95d127ed40d751168dcd4b37b56b05957a00d7a9763b28c4d996868e5c95f2b5"
+      },
+      "cell_id": "LAT-C01-N3-I-POS",
+      "completed_episode": true,
+      "family": "LAT",
+      "first_request": {
+        "camera_fingerprint": "de4c386e688d0a1b9c48059fb6ab3e33b6e3418a442b21a9fffec0de2879f863",
+        "camera_name": "over_shoulder_left_camera",
+        "prompt_sha256": "6ed00a80ed714a034daa682371ddf42c2e576e40ccc4345fa73053833b4e2d39",
+        "request_id": "LAT-C01-N3-I-POS:request:0",
+        "request_index": 0,
+        "reset_sha256": "de4c386e688d0a1b9c48059fb6ab3e33b6e3418a442b21a9fffec0de2879f863",
+        "started_at_utc": "2026-09-25T11:36:27.116392+00:00",
+        "target_action_step": 0
+      },
+      "model": "N3",
+      "pointer_reference": {
+        "bytes": 506,
+        "path": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/cells/LAT-C01-N3-I-POS.complete.json",
+        "sha256": "756a1f32ca4f8720a78a086e5a9bb5a1c20b59b3b16c17cdd4992c83a3685510"
+      },
+      "policy_pod": "211247-alia40i-a40-1gpu",
+      "policy_pod_uid": "a482b245-98ae-473f-ba8f-3c8da9a7a9eb",
+      "release_id": "sgw-current-N3-LAT-C-r4",
+      "request_index_reference": {
+        "bytes": 6515,
+        "path": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/attempts/LAT-C01-N3-I-POS/attempt-001/request_index.jsonl",
+        "sha256": "c39c0299a2021559f18430089c7956fce90d0d414a6fd17e32c081aa7baed315"
+      },
+      "requests_dispatched": 15,
+      "result_reference": {
+        "bytes": 5232079,
+        "path": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/attempts/LAT-C01-N3-I-POS/attempt-001/result.json",
+        "sha256": "4e9f240a4af7c5d9238f870cd5583e0443eb55482e94e16421d613f8fc67ca29"
+      },
+      "status": "valid_model_failure",
+      "supervisor_id": "8a274a4a-548f-47d4-a73d-7360fbf7e3ac",
+      "supervisor_pid": 4045,
+      "supervisor_reference": {
+        "bytes": 1557,
+        "path": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/supervisors/n3-a40-r4-0-policy-fb61170f-6dc7-41b7-b6b8-c5dde70ed15e/start.json",
+        "sha256": "f0c1a0b1b2c3e6dbdb693adfd3a53dc6b6a2e98b45f3877a14cc83c37925038b"
+      },
+      "supervisor_start": "145835242"
+    },
+    "n3-a40-r4-1": {
+      "actions_recorded": 450,
+      "admission_reference": {
+        "bytes": 2227,
+        "path": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/attempts/HEIGHT-C01-N3-I-POS/attempt-001/run-admission.json",
+        "sha256": "31d936644a24cb12074ee1c5b537b7d01ad6efa2e6385a7d2154b46e6b1190f9"
+      },
+      "cell_id": "HEIGHT-C01-N3-I-POS",
+      "completed_episode": true,
+      "family": "HEIGHT",
+      "first_request": {
+        "camera_fingerprint": "46e357418e34d2ae02a059a51a4dd5e4e569fe1aecee5a04669e53c57b093d34",
+        "camera_name": "over_shoulder_left_camera",
+        "prompt_sha256": "dc035ef9c00f5068092a80105a9c0ef3d77c103df7a1bb0c245a032d09d1014f",
+        "request_id": "HEIGHT-C01-N3-I-POS:request:0",
+        "request_index": 0,
+        "reset_sha256": "46e357418e34d2ae02a059a51a4dd5e4e569fe1aecee5a04669e53c57b093d34",
+        "started_at_utc": "2026-09-25T11:36:27.659806+00:00",
+        "target_action_step": 0
+      },
+      "model": "N3",
+      "pointer_reference": {
+        "bytes": 518,
+        "path": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/cells/HEIGHT-C01-N3-I-POS.complete.json",
+        "sha256": "705cce787620b2741d3c22c58f75977b362c0aef5c47f64fe60956e6ebc9dfa9"
+      },
+      "policy_pod": "211247-alia40l-a40-1gpu",
+      "policy_pod_uid": "acdc8cc0-a7f8-4f01-b94b-34191d5d9834",
+      "release_id": "sgw-current-N3-HEIGHT-C-r4",
+      "request_index_reference": {
+        "bytes": 6560,
+        "path": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/attempts/HEIGHT-C01-N3-I-POS/attempt-001/request_index.jsonl",
+        "sha256": "9905cdbd970614e80fae5e83e6bd732f617eb15d0e3837a96ac3f1c749169494"
+      },
+      "requests_dispatched": 15,
+      "result_reference": {
+        "bytes": 6067103,
+        "path": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/attempts/HEIGHT-C01-N3-I-POS/attempt-001/result.json",
+        "sha256": "6043a252ffa012554411013710e1ecba2b5636da7a12ef6052f35ee69b0d5603"
+      },
+      "status": "valid_model_failure",
+      "supervisor_id": "4c1ca0fe-222f-4600-b8fc-f6bcda122214",
+      "supervisor_pid": 3877,
+      "supervisor_reference": {
+        "bytes": 1557,
+        "path": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/supervisors/n3-a40-r4-1-policy-a8bc0af8-016c-49bd-a0c9-2ac854703f8a/start.json",
+        "sha256": "395e64c6230fb821d215eab99adf3f3f939557ed8c516dff29fef21a8f83e3fb"
+      },
+      "supervisor_start": "148728884"
+    }
+  }
+}

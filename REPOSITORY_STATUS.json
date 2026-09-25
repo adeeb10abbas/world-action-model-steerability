@@ -160,7 +160,7 @@
     "destination_partition": "E3-DIST-D",
     "status": "Genuine E3 request and 30 subsequent actions observed at 07:28:42 UTC on the loaned o/p pair; unchanged a94696d, no replay or interrupted episode."
   },
-  "latest_periodic_report": "handoff/cluster-execution-20260924/report-20260925-0812.json",
+  "latest_periodic_report": "handoff/cluster-execution-20260924/report-20260925-1212.json",
   "notification_observer_recovery": "handoff/cluster-execution-20260924/notification-observer-start-v4.json",
   "boundary_observer_recovery": "handoff/cluster-execution-20260924/boundary-observer-recovery-20260925-1131.json",
   "confirmation_stage_transition": {
@@ -169,7 +169,9 @@
     "startup_receipt": "handoff/cluster-execution-20260924/confirmation-startup-20260925-1131.json",
     "startup_observed_at_utc": "2026-09-25T11:31:29.991931+00:00",
     "genuine_confirmation_inference_observed_at_this_capture": false,
-    "status": "Post-barrier C attempt intent and approved admission observed; zero recorded C requests/actions in this capture. Latest complete-episode snapshot remains 270 at 11:17."
+    "completed_confirmation_witnesses": "handoff/cluster-execution-20260924/first-confirmation-completions-20260925.json",
+    "genuine_confirmation_verification_observed_at_utc": "2026-09-25T12:14:06.567526+00:00",
+    "status": "The original 11:31 capture remains startup-only. Later evidence verifies one completed first C episode per current lane, each with 15 genuine requests and 450 actions, exact r4 release/current supervisor admission. The 12:12 progress snapshot includes18 completed C episodes."
   },
   "additional_a40_capacity": {
     "receipt": "handoff/cluster-execution-20260924/shared-a40-expansion-20260925.json",
@@ -182,18 +184,18 @@
     "status": "Awaiting relayed names of recreated GPU-isolated r/s/t/v Pods. Shared a-f permanently excluded; five existing physical pairs retained, with o/p separately loaned to E3."
   },
   "learned_policy_progress": {
-    "as_of_utc": "2026-09-25T11:17:19.376218+00:00",
-    "valid_completed_unique_episodes": 270,
+    "as_of_utc": "2026-09-25T12:12:18.989272+00:00",
+    "valid_completed_unique_episodes": 288,
     "valid_completed_by_model": {
-      "N3": 90,
-      "E3": 90,
-      "F3": 90
+      "N3": 96,
+      "E3": 98,
+      "F3": 94
     },
     "expected_unique_episodes": 1566,
     "preserved_technical_invalid_attempts": 5,
     "active_policy_simulator_pairs": 5,
     "execution_source_commit": "a94696d3fa75c78a4f756536b988cead607e53b8",
-    "receipt": "handoff/cluster-execution-20260924/progress-20260925-1115.json"
+    "receipt": "handoff/cluster-execution-20260924/progress-20260925-1210.json"
   },
   "status": "A40_STUDY_RUNNING_VALID_EPISODES_FOR_ALL_THREE_MODELS",
   "study_id": "SGW-01"

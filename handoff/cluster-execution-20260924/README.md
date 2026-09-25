@@ -3,14 +3,16 @@
 The user separately authorized runtime integration, bounded checks, and the
 committed study on 24 September 2026. This supersedes the preparation-only
 permission recorded in the original delivery. **Genuine study execution is
-running on five A40 policy/simulator pairs.** At 2026-09-25 11:17 UTC,
-270 unique episodes were complete: N3 90/522, E3 90/522 and F3 90/522.
-These comprise all 54 pilots and 216 development episodes, with 267 valid model
-failures and three valid successes; the five technical attempts remain separate.
+running on five A40 policy/simulator pairs.** At 2026-09-25 12:12 UTC,
+288 unique episodes were complete: N3 96/522, E3 98/522 and F3 94/522.
+These comprise all 54 pilots, 216 development and 18 confirmation episodes,
+with 284 valid model failures and four valid successes; the five technical
+attempts remain separate.
 The frozen pilot barrier released development at 03:01:35.850529 UTC.
-See [the operational snapshot](progress-20260925-1115.json),
+See [the operational snapshot](progress-20260925-1210.json),
+[first completed confirmation evidence for all five pairs](first-confirmation-completions-20260925.json),
 [the applied boundary-loan evidence](lane-loan-20260925a.json),
-[the periodic timing/capacity report](report-20260925-0812.json) and
+[the periodic timing/capacity report](report-20260925-1212.json) and
 [first valid episode evidence for every model](first-valid-study-episodes.json).
 The execution source is `a94696d3fa75c78a4f756536b988cead607e53b8`;
 receipt-only commits do not change the running source or materialization.
@@ -33,6 +35,75 @@ protected B200 are untouched. Full 1,566-cell completion, final analysis and
 final-only local H.264 delivery remain pending. No local video transfer has
 started. Progress receipts are collected hourly; capacity can be reassigned
 only at a verified quiescent boundary without losing an in-flight attempt.
+
+**12:12 UTC four-hour report: genuine confirmation execution is verified
+on all five current pairs.** Each pair's first completed C episode retained
+15 requests and 450 recorded actions, matched to its frozen r4 release,
+current supervisor and Pod identity. All five first episodes are valid model
+failures, not technical invalidities or task successes. The earliest recorded
+C request is `LAT-C01-E3-I-POS:request:0` at 11:32:16.880451 UTC, after the
+11:28:27.905266 development barrier. These witnesses supersede the earlier
+startup-only observation without changing it.
+
+Current assignments are N3 `LAT-C` and `HEIGHT-C`, E3 `HEIGHT-C` and `LAT-C`,
+and F3 `LAT-C`. The snapshot has 18 completed C cells and five unfinished
+attempts; one has zero requests at startup and one has 450 actions awaiting
+publication. This is not five simultaneous inference calls. No new loan,
+physical pair, technical attempt, OOM or fleet hold occurred. The single
+o/p F3-to-E3 loan remains the only actual reassignment. Since 08:12, 83
+additional unique completions, 1,276 requests and 38,319 actions correspond
+to 20.74 episodes/hour; the interval includes development-barrier waiting
+and C startup, not steady confirmation throughput.
+
+The 294 finalized manifests account for **2,332.667 GiB**. They include the
+five technical attempts and a result finalized during collection that is
+not in the earlier 288-cell completion-pointer catalogue. Unindexed native
+and in-flight actual bytes remain separately unmeasured. The guardian
+reported **135.428 TiB and 72,164,566 inodes available**. Per-UID/GID quota
+remains unverified; raw masters stay remote, with no derivatives or local
+media transfer started.
+
+The [timing evidence](control-timing-20260925-1215.json) uses all 216 D cells
+and exactly the 18 C identities in the progress snapshot. A timestamp cutoff
+alone included a concurrently finalized extra C cell. The selected identity
+catalogue was instead required to match the original progress catalogue's
+SHA-256 and every selected pointer digest. Three later timing rows were
+excluded; no outcome, pointer or recorded hash was changed. Detailed timing
+and catalogue reconciliation are preserved on the PVC, with compact hashes
+and aggregates committed here.
+
+Early C mean intent-to-pointer times are N3 **581.2 s** (six samples), E3
+**491.1 s** (eight) and F3 **488.9 s** (four). The projection conservatively
+uses the larger of each model's D and early C mean, hence **511.1 s** for
+F3. These C samples cover only initial confirmation layouts. It uses the
+five actual C assignments and remaining cells, does not schedule D again,
+and does not recharge startup for current partitions. Complete D24
+verification overhead is scaled to C144; full C verification cost remains
+unmeasured. Future loans retain the observed 886.7 s coordination allowance.
+
+With five existing pairs and further approved intact-boundary loans,
+conditional collection time is **50.3 hours remaining, around
+27 September 14:30 UTC**. The same current roster with no further loans
+gives 67.8 hours; a uniform 25% slowdown gives 62.9 hours. Using D means alone
+gives 49.4 hours. These are engineering sensitivities, not promised deadlines
+or launch instructions. Future scene costs, storage contention and
+coordination latency remain uncertain; final artifact validation, analysis,
+derivative encoding and local transfer remain additional, unestimated work.
+
+There are **1,278 C cells remaining**, with no further global stage barrier
+inside C. Nine whole 144-cell partitions, intact six-condition blocks,
+continuous source/ownership/storage/technical-failure guards, and final
+1,566-cell/27-authoritative-release accounting and artifact validation remain
+mandatory. Forecast physical camera/time mapping and semantic qualification
+remain unavailable, not scored zero. Isolated expansion still awaits an
+explicit replacement-Pod-name relay; shared a-f remain excluded.
+
+Current timing collection is separately versioned as
+`deploy-storage-502d720/hourly_control_receipts_v4.py`, using both
+`--lane-index` and `--boundary-registration` as below; it includes D/C timing
+and completed C witnesses. The v3 collector remains preserved. Guardian,
+storage observer and boundary observer identities are unchanged.
+The next roughly four-hour report is due around 16:10 UTC.
 
 **11:28 UTC development barrier release and boundary-observer recovery:**
 `N3-DIST-D` published its final partition receipt at
@@ -72,13 +143,14 @@ remains unproven; changing transport is not a claimed root-cause fix.
 
 See [the complete recovery record](boundary-observer-recovery-20260925-1131.json)
 for script hashes, the rejected hint, exact retirement/start identities and
-the barrier evidence. Timing collection must now use
+the barrier evidence. At that recovery, timing collection was updated to
 `hourly_control_receipts_v3.py --lane-index <current-active-lanes.json>
 --boundary-registration
 /data/users/ali/sgw-01/current-20260924a/deploy-boundary-20260925a/boundary-observer-start-v4.json`;
 v2's hard-coded retired PID is historical. The v3 collector was compiled and
-installed, but its first complete metadata collection is deferred to the
-due 12:10 report. The existing single 12:10 fallback remains armed.
+installed, with full collection deferred to the 12:10 report; the executed
+D/C-aware v4 collector described above now supersedes it. The then-existing
+12:10 fallback was retained.
 
 **11:17 UTC hourly progress:** all 270 pilot/development episodes now have
 completion pointers, and no episode attempt is unfinished at the snapshot.
