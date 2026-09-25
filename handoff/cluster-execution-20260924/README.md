@@ -3,12 +3,12 @@
 The user separately authorized runtime integration, bounded checks, and the
 committed study on 24 September 2026. This supersedes the preparation-only
 permission recorded in the original delivery. **Genuine study execution is
-running on five A40 policy/simulator pairs.** At 2026-09-25 04:08 UTC,
-87 unique episodes were complete: N3 30/522, E3 26/522 and F3 31/522.
-These comprise all 54 pilots and 33 development episodes, with 86 valid model
+running on five A40 policy/simulator pairs.** At 2026-09-25 05:09 UTC,
+123 unique episodes were complete: N3 43/522, E3 34/522 and F3 46/522.
+These comprise all 54 pilots and 69 development episodes, with 122 valid model
 failures and one valid success; the five technical attempts remain separate.
 The frozen pilot barrier released development at 03:01:35.850529 UTC.
-See [the operational snapshot](progress-20260925-0408.json),
+See [the operational snapshot](progress-20260925-0510.json),
 [the periodic timing/capacity report](report-20260925-0408.json) and
 [first valid episode evidence for every model](first-valid-study-episodes.json).
 The execution source is `a94696d3fa75c78a4f756536b988cead607e53b8`;
@@ -33,6 +33,28 @@ final-only local H.264 delivery remain pending. No local video transfer has
 started. Progress receipts are collected hourly; capacity can be reassigned
 only at a verified quiescent boundary without losing an in-flight attempt.
 
+**05:09 UTC progress:** 36 additional completions since 04:08 correspond to
+35.25 episodes/hour, with 534 additional dispatched requests and 16,013
+additional recorded actions. Five attempts were unfinished at the snapshot:
+three executing actions, one at 450 actions awaiting final publication, and
+one newly starting with no request yet. They are not five newly completed
+episodes or five simultaneous inference calls. No new technical attempt or
+fleet hold occurred. Finalized manifests account for 1,015.723 GiB across
+128 attempts; unindexed native/in-flight bytes remain separately unmeasured.
+The guardian subsequently reported 137.847 TiB and 73.964 million inodes free.
+
+The local storage-notification connection failed with `tls: bad record MAC`;
+the independent guardian retained its process identity and fresh heartbeat,
+and study workers continued. The disconnected read-only observer remained
+alive remotely. Its
+[exact PID/start-bound retirement](notification-observer-retirement-20260925-0510.json)
+stopped only that orphan observer, not the guardian, boundary observer or
+model workers. The
+[replacement notification observer](notification-observer-start-v3.json)
+is running with a verified identity and an exclusive observer lock.
+Current Bash handle: `storage-guard-events-v3`. This restores notifications;
+it does not claim the underlying intermittent TLS fault was eliminated.
+
 **04:08 UTC progress:** 33 additional completions since 03:02 correspond to
 30.03 episodes/hour across the fleet, with 532 additional dispatched requests
 and 15,919 additional recorded actions. All five pairs had real requests and
@@ -43,7 +65,7 @@ Finalized manifests accounted for 729.992 GiB across 92 attempts, including
 the five technical attempts. Actual unindexed native and in-flight bytes
 remain unmeasured, with separate engineering allowances in the receipt.
 
-The current conditional collection projection is **about 56 hours remaining,
+The 04:08 UTC conditional collection projection was **about 56 hours remaining,
 around 27 September 12:02 UTC**, assuming approved whole-partition loans,
 unchanged observed costs and no infrastructure failures. It includes model
 startup, per-episode publication, scaled partition re-verification and the

@@ -1,0 +1,68 @@
+{
+  "boundary_observer_unchanged": {
+    "pid": 4280,
+    "process_start_identity": "150805581"
+  },
+  "failed_local_shell_id": "storage-guard-events-v2",
+  "fleet_hold": null,
+  "guardian_unchanged": {
+    "exit": null,
+    "heartbeat": {
+      "at_utc": "2026-09-25T05:10:28.862466Z",
+      "available_bytes": 151564492734464,
+      "available_inodes": 73963717,
+      "status": "watching",
+      "total_bytes": 219902325555200,
+      "total_inodes": 134217728
+    },
+    "pid": 4121,
+    "process": {
+      "command": [
+        "/data/users/ali/vla_wam/envs/robolab-v2-isaac50/bin/python",
+        "-u",
+        "/data/users/ali/sgw-01/current-20260924a/deploy-storage-502d720/watch_study_storage.py",
+        "--cohort",
+        "/data/users/ali/sgw-01/current-20260924a/study-a40-v2",
+        "--owners-index",
+        "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/storage-guard/active-owners.json",
+        "--run-root",
+        "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/storage-guard/guard-502d7208-f732b6579b6946dd8b97de290f9d5359",
+        "--source-commit",
+        "502d720856c9f7a88dd37acb53255ae2388f5071",
+        "--implementation-sha256",
+        "9aeca327677c4cd097fd3624f626953d8fa3ac357d16423de57ee1af92b3855e",
+        "--seconds",
+        "1209600",
+        "--poll-seconds",
+        "60"
+      ],
+      "cwd": "/home/alia40q",
+      "ppid": 1,
+      "process_start_identity": "150027267",
+      "started_at_unix": 1790298199.67
+    }
+  },
+  "model_runtime_operations": 0,
+  "observed_at_utc": "2026-09-25T05:11:03.369784+00:00",
+  "observer_after": "proc_path_absent_after_identity_checked_SIGTERM",
+  "observer_before": {
+    "command": [
+      "/data/users/ali/vla_wam/envs/robolab-v2-isaac50/bin/python",
+      "-u",
+      "-"
+    ],
+    "cwd": "/home/alia40q",
+    "ppid": 0,
+    "process_start_identity": "150053761",
+    "started_at_unix": 1790298464.61
+  },
+  "observer_start_receipt": {
+    "path": "/data/users/ali/sgw-01/current-20260924a/deploy-storage-502d720/event-watcher-start-v2.json",
+    "sha256": "65dcfde05731015232beb04aed9b0911e93fb5865fc6dbb9a33f0ff9cdf9e932"
+  },
+  "orphaned_remote_observer_pid": 4140,
+  "raw_artifact_reads": 0,
+  "replacement_observer_started": false,
+  "schema_version": "sgw-01-notification-observer-retirement-v1",
+  "trigger": "kubectl notification stream failed: local error: tls: bad record MAC"
+}

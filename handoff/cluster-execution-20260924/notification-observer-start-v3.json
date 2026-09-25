@@ -1,0 +1,39 @@
+{
+  "bash_shell_id": "storage-guard-events-v3",
+  "boundary_observer_pid_unchanged": 4280,
+  "guardian_pid_unchanged": 4121,
+  "guardian_start_identity_unchanged": "150027267",
+  "model_execution_source_unchanged": "a94696d3fa75c78a4f756536b988cead607e53b8",
+  "model_operations": 0,
+  "new_gpu_claims": 0,
+  "observed_at_utc": "2026-09-25T05:12:01.794496+00:00",
+  "pid": 6144,
+  "pod": "211247-alia40q-a40-1gpu",
+  "process": {
+    "command": [
+      "/data/users/ali/vla_wam/envs/robolab-v2-isaac50/bin/python",
+      "-u",
+      "/data/users/ali/sgw-01/current-20260924a/deploy-storage-502d720/event-watcher-v3.py",
+      "--registration",
+      "/data/users/ali/sgw-01/current-20260924a/deploy-storage-502d720/event-watcher-start-v3.json",
+      "--seconds",
+      "1209600"
+    ],
+    "cwd": "/home/alia40q",
+    "ppid": 0,
+    "process_start_identity": "151516341",
+    "started_at_unix": 1790313090.41
+  },
+  "schema_version": "sgw-01-notification-observer-start-verification-v1",
+  "scope": "Notification-only TLS transport recovery; no claim that the underlying intermittent transport fault is eliminated. Independent storage protection and study execution were not restarted.",
+  "script": {
+    "path": "/data/users/ali/sgw-01/current-20260924a/deploy-storage-502d720/event-watcher-v3.py",
+    "sha256": "9180f0562879b27c8edbf8fda616d62cc2f45cc923fff3628c5d36553c7782a5"
+  },
+  "single_observer_lock_held": true,
+  "start_receipt": {
+    "path": "/data/users/ali/sgw-01/current-20260924a/deploy-storage-502d720/event-watcher-start-v3.json",
+    "sha256": "9ed02935758140f18dae5e8a5ae4edd7ea5e201a33fa9769a022afe18c84edbf"
+  },
+  "superseded_orphan_pid_absent": 4140
+}
