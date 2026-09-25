@@ -35,6 +35,7 @@ from .contract import Cell, ContractError, Release, STAGE_EPISODES, load_release
 from .gpu_idle_probe import select_idle
 from .recorder import AttemptRecorder, atomic_json, fleet_is_held, next_attempt_number, request_fleet_hold, utc_now
 from .block_scheduling import MODE as BLOCK_MODE, begin_once, protocol_runtime, registration, selected_cells
+from .operator_recovery import begin_recovery, effective_release, execution_identity, expected_attempt
 
 EXIT_RELEASE_INVALID, EXIT_ATTEMPTS_EXHAUSTED, EXIT_STORAGE_BUDGET_BLOCKED = 42, 43, 44
 SOURCE_QUEUE_EPISODE_COUNT = 1566
@@ -337,6 +338,13 @@ def _run_admission(release: Release, *, model: str | None = None, family: str | 
         _pod_owner(value)
         _pod_hardware_check(release, value["model"], value)
         _supervisor_check(release, value.get("supervisor_identity_receipt"))
+        if release.binding.get("operator_recovery") is not None:
+            if value.get("execution_identity") != execution_identity(release):
+                raise ResourceBlocked("run admission must disclose the effective recovery source and immutable release")
+            environment = release.binding["environment_binding"]
+            if (os.environ.get("SGW01_ENV_BINDING") != environment["path"]
+                    or os.environ.get("SGW01_ENV_BINDING_SHA256") != environment["sha256"]):
+                raise ResourceBlocked("recovery runtime environment differs from the approved overlay")
         if release.binding.get("scheduling_mode") == BLOCK_MODE:
             selected_cells(release, value["model"], value["family"], value["stage"], value.get("block_id"))
             if block_id is not None and value.get("block_id") != block_id:
@@ -921,6 +929,7 @@ def run_partition(release: Release, *, model: str, family: str, stage: str, max_
                   max_attempts: int, worker_id: str, adapter: Adapter | None = None,
                   heartbeat_seconds: int = 60, scorer: ScoreFn | None = None,
                   block_id: str | None = None) -> int:
+    release = effective_release(release)
     cells = selected_cells(release, model, family, stage, block_id)
     if block_id is not None:
         _protocol_runtime_check(release)
@@ -963,13 +972,17 @@ def run_partition(release: Release, *, model: str, family: str, stage: str, max_
             if block_id is not None:
                 if STOP_REQUESTED:
                     return EXIT_ATTEMPTS_EXHAUSTED
-                if len(pending) != 6 or any((release.root.parent / "attempts" / cell.cell_id).exists() for cell in cells):
+                recovery = release.binding.get("operator_recovery") is not None
+                if recovery:
+                    begin_recovery(release, block_id, "execution", worker_id=worker_id)
+                elif len(pending) != 6 or any((release.root.parent / "attempts" / cell.cell_id).exists() for cell in cells):
                     request_fleet_hold(release.root.parent, block_id=block_id,
                                        reason="prior or partial block attempts; no automatic replay")
                     raise ContractError("prior or partial block attempts preserved; no automatic replay")
-                begin_once(release.root.parent, "block-executions", block_id,
-                           release_id=release.release_id, worker_id=worker_id,
-                           release_hashes=dict(release.hashes))
+                if not recovery:
+                    begin_once(release.root.parent, "block-executions", block_id,
+                               release_id=release.release_id, worker_id=worker_id,
+                               release_hashes=dict(release.hashes))
             try:
                 adapter = adapter or load_adapter(model)
             except Exception as exc:
@@ -1005,12 +1018,17 @@ def run_partition(release: Release, *, model: str, family: str, stage: str, max_
                         _status(release, worker_id, state="blocked", reason=str(exc), valid=valid)
                         return EXIT_STORAGE_BUDGET_BLOCKED
                     number = next_attempt_number(release, cell)
+                    approved_attempt = expected_attempt(release, block_id, cell.cell_id) if block_id is not None else None
+                    if release.binding.get("operator_recovery") is not None and number != approved_attempt:
+                        raise ContractError("recovery attempt number differs from the exact operator authorization")
                     if number > max_attempts:
                         _status(release, worker_id, state="blocked", cell_id=cell.cell_id,
                                 reason="technical attempts exhausted", valid=valid)
                         return EXIT_ATTEMPTS_EXHAUSTED
                     recorder = AttemptRecorder(release, cell, f"attempt-{number:03d}")
                     recorder.begin()
+                    if release.binding.get("operator_recovery") is not None:
+                        atomic_json(recorder.path / "execution-identity.json", execution_identity(release))
                     admission = _run_admission(release)
                     if admission is not None:
                         atomic_json(recorder.path / "run-admission.json", admission)
