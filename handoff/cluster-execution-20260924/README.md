@@ -3,12 +3,12 @@
 The user separately authorized runtime integration, bounded checks, and the
 committed study on 24 September 2026. This supersedes the preparation-only
 permission recorded in the original delivery. **Genuine study execution is
-running on five A40 policy/simulator pairs.** At 2026-09-25 10:15 UTC,
-260 unique episodes were complete: N3 84/522, E3 86/522 and F3 90/522.
-These comprise all 54 pilots and 206 development episodes, with 257 valid model
+running on five A40 policy/simulator pairs.** At 2026-09-25 11:17 UTC,
+270 unique episodes were complete: N3 90/522, E3 90/522 and F3 90/522.
+These comprise all 54 pilots and 216 development episodes, with 267 valid model
 failures and three valid successes; the five technical attempts remain separate.
 The frozen pilot barrier released development at 03:01:35.850529 UTC.
-See [the operational snapshot](progress-20260925-1013.json),
+See [the operational snapshot](progress-20260925-1115.json),
 [the applied boundary-loan evidence](lane-loan-20260925a.json),
 [the periodic timing/capacity report](report-20260925-0812.json) and
 [first valid episode evidence for every model](first-valid-study-episodes.json).
@@ -33,6 +33,32 @@ protected B200 are untouched. Full 1,566-cell completion, final analysis and
 final-only local H.264 delivery remain pending. No local video transfer has
 started. Progress receipts are collected hourly; capacity can be reassigned
 only at a verified quiescent boundary without losing an in-flight attempt.
+
+**11:17 UTC hourly progress:** all 270 pilot/development episodes now have
+completion pointers, and no episode attempt is unfinished at the snapshot.
+However, only **eight of nine D partition-completion receipts** are present.
+`N3-DIST-D` is still finalizing; its lane remains running while the other
+four lanes wait. **Confirmation has not started.** Episode completion alone
+does not release the frozen global barrier or certify retirement quiescence.
+No boundary loan can unlock already completed or already owned D work.
+
+The ten additional completions since 10:15 correspond to 9.75 episodes/hour,
+with 140 additional requests and 4,231 additional recorded actions. This
+interval reaches the end of D and includes barrier waiting/finalization;
+it is not an estimate of steady confirmation throughput. The
+[control snapshot](control-20260925-1116.json) preserves the eight completed
+partitions, remaining running partition, four waiting lane states and
+unchanged guardian/observer identities. All ten owners and both local
+notification clients remain alive, with no new technical attempt, OOM,
+fleet hold, restart, loan or added physical pair.
+
+The 275 finalized manifests, including the five technical attempts, account
+for **2,181.983 GiB**. Unindexed native bytes remain separately unmeasured.
+The guardian reported **135.735 TiB and 72,377,072 inodes available**;
+per-UID/GID quota remains unverified and all raw masters stay remote.
+The next roughly four-hour report remains due around 12:10 UTC and needs
+a fresh, stage-aware observation even though this hourly receipt will be
+less than 55 minutes old.
 
 **10:15 UTC hourly progress:** 27 additional completions since 09:13
 correspond to 26.10 episodes/hour, with 370 additional dispatched requests
