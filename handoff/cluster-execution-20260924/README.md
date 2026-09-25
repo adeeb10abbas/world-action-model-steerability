@@ -25,6 +25,16 @@ The new binding enables a durable fleet hold on the first technical-invalid
 attempt (N=1), checked before model construction, new attempts and dispatch.
 Only the coordinator clears the hold after verifying and deploying a fix.
 
+The first `r3` recovery was
+[blocked at resource admission before loading a model or creating an attempt](a40-r3-admission-hold.json):
+its budget/allocation receipt retained the original release ID. The N=1 hold
+stopped the fleet without consuming `attempt-002`. Release creation and all
+operational receipts now share the revision-aware identifier; CPU coverage
+checks allocation, budget, measured-runtime and storage identities for P/D/C.
+Fresh `r4` releases preserve both the original technical attempts and the
+zero-request `r3` release. The initiating blocked lane now also stops its own
+idle simulator, rather than requiring a separate coordinator stop.
+
 **All three actual pinned runtimes have now completed six fixed-input
 requests each (18 total), with zero executed actions or study episodes.**
 This is verified native inference, not merely a Running Pod. Physical forecast

@@ -98,6 +98,11 @@ def release_path(cohort: Path, model: str, family: str, stage: str, revision: st
     return cohort / f"{prefix}-{model}-{family}-{stage}"
 
 
+def partition_release_id(plan: Mapping[str, Any], family: str, stage: str) -> str:
+    revision = plan.get("release_revision", "")
+    return f"sgw-current-{plan['model']}-{family}-{stage}" + (f"-{revision}" if revision else "")
+
+
 def assert_replacement_uncompleted(cohort: Path, model: str, family: str, stage: str) -> None:
     prior_paths = list(cohort.glob(f"release-*-{model}-{family}-{stage}"))
     original = release_path(cohort, model, family, stage)
@@ -250,8 +255,7 @@ def prepare_operation(plan: Mapping[str, Any], family: str, stage: str, root: Pa
     supervisor_path = Path(os.environ["SGW01_SUPERVISOR_RECEIPT"])
     supervisor_ref = reference(supervisor_path)
     supervisor = read_reference(supervisor_ref)
-    release_id = f"sgw-current-{plan['model']}-{family}-{stage}"
-    identity = receipt_identity(plan, binding, release_id)
+    identity = receipt_identity(plan, binding, partition_release_id(plan, family, stage))
     idle_path = root / "idle.json"
     subprocess.run([
         sys.executable, "-m", "experiments.workshops.spatial_grounding_v1.gpu_idle_probe",
@@ -368,7 +372,7 @@ def run_one(plan: Mapping[str, Any], family: str, stage: str) -> int:
         if revision:
             assert_replacement_uncompleted(cohort, plan["model"], family, stage)
         create_release(
-            output=path, release_id=f"sgw-current-{plan['model']}-{family}-{stage}" + (f"-{revision}" if revision else ""),
+            output=path, release_id=partition_release_id(plan, family, stage),
             protocol=Path(inputs["protocol"]["path"]), prompts=Path(inputs["prompts"]["path"]),
             planned_queue=Path(inputs["queue"]["path"]), fixtures=Path(inputs["fixtures"]["path"]),
             runtime_binding=root / "binding.json", resource_owner=binding["resource_owner"],
@@ -456,6 +460,7 @@ def run(plan: Mapping[str, Any]) -> int:
                     if plan.get("hold_on_technical_invalid") is True:
                         request_fleet_hold(cohort, lane_id=plan["lane_id"], partition=partition,
                                            reason=f"worker exited {result}; no automatic retry")
+                        stop_remote_lane(plan)
                     atomic_json(status_path, {
                         "status": "blocked_preserve_no_automatic_retry", "partition": partition,
                         "returncode": result, "at_utc": utc_now(),

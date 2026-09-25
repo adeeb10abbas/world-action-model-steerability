@@ -283,6 +283,9 @@ It preserves the shared cohort's attempt directories and three-attempt
 ceiling. Replacements reject any already valid/censored attempt or completion
 pointer; they cannot replay a valid failure. Completion summaries retain their
 exact release path, and final compilation uses the explicit 27-release index.
+The same revision-aware release identifier binds allocation, resource-budget,
+measured-runtime and storage receipts; versioning only the release directory
+or queue identity is insufficient for worker admission.
 
 Set `hold_on_technical_invalid: true` in the new immutable binding. The first
 technical invalidity durably publishes `fleet-hold.json` before artifact

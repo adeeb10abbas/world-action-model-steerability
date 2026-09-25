@@ -1,0 +1,186 @@
+{
+  "automatic_hold_threshold": 1,
+  "budget": {
+    "bytes": 602,
+    "path": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/operations/e3-a40-r3-0-LAT-P-52f2d4f6329c413c8632bf163bd75799/budget.json",
+    "sha256": "a263aa4cff13ce363d3eef48b2815c97e7e64fd71703612d17efcc39f7fcd68c"
+  },
+  "budget_release_id": "sgw-current-E3-LAT-P",
+  "cohort_root": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2",
+  "existing_attempts_unchanged": 5,
+  "expected_release_id": "sgw-current-E3-LAT-P-r3",
+  "failure": "resource budget receipt is not bound to this release, PVC, study root, and runtime",
+  "genuine_model_requests": 0,
+  "hold": {
+    "bytes": 226,
+    "path": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/hold-history/fleet-hold-before-r4.json",
+    "sha256": "b9bcdf6c576658bcf90cc90b51a5dcc710348870efdf6548995c208969ccf8a5"
+  },
+  "new_attempts_created": 0,
+  "owners": [
+    {
+      "exit": {
+        "bytes": 517,
+        "path": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/supervisors/n3-a40-r3-0-policy-2e1d1e47-072d-44e7-828e-35bcd6b7cb46/exit.json",
+        "sha256": "285a3c9b3c0393847f97f15bb6a6df9f0dd699d55fd1b01a052294992deab572"
+      },
+      "lane": "n3-a40-r3-0",
+      "returncode": 44,
+      "role": "policy",
+      "start": {
+        "bytes": 1557,
+        "path": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/supervisors/n3-a40-r3-0-policy-2e1d1e47-072d-44e7-828e-35bcd6b7cb46/start.json",
+        "sha256": "d3a88a307560812ad3ed9fad67f8ce89d6f6602715143e8bccd00a656bc1a176"
+      }
+    },
+    {
+      "exit": {
+        "bytes": 485,
+        "path": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/supervisors/n3-a40-r3-0-simulator-c42e3f84-ecca-495f-b0bc-67420ef3ff11/exit.json",
+        "sha256": "67ad778d068fac9b15a5b810f062bedac3f1e91037011572ed2b62ef43e83a4c"
+      },
+      "lane": "n3-a40-r3-0",
+      "returncode": 0,
+      "role": "simulator",
+      "start": {
+        "bytes": 1562,
+        "path": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/supervisors/n3-a40-r3-0-simulator-c42e3f84-ecca-495f-b0bc-67420ef3ff11/start.json",
+        "sha256": "60377283d7c30fd68cff2929265cd723a2ecddd29591cc761f3e78093e971bab"
+      }
+    },
+    {
+      "exit": {
+        "bytes": 512,
+        "path": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/supervisors/e3-a40-r3-0-policy-04eb9226-c14c-481d-83cb-b328d85f4a9e/exit.json",
+        "sha256": "15c7b2f7add00fbe13500f4cb1ffc8c1ab6535d4b22f1df258f254e17b4ecae9"
+      },
+      "lane": "e3-a40-r3-0",
+      "returncode": 44,
+      "role": "policy",
+      "start": {
+        "bytes": 1557,
+        "path": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/supervisors/e3-a40-r3-0-policy-04eb9226-c14c-481d-83cb-b328d85f4a9e/start.json",
+        "sha256": "f6ada9e29812b5aca24b123ef5a03168a6c5e38c6d17160b2ea8ea9b93c5874a"
+      }
+    },
+    {
+      "exit": {
+        "bytes": 485,
+        "path": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/supervisors/e3-a40-r3-0-simulator-f0808ea2-f518-4b4c-9fd7-b4e8d4409008/exit.json",
+        "sha256": "3607447de39ab6dee4dc788c8666def6e49169c654b6e7161dfc2e1199b08def"
+      },
+      "lane": "e3-a40-r3-0",
+      "returncode": 0,
+      "role": "simulator",
+      "start": {
+        "bytes": 1562,
+        "path": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/supervisors/e3-a40-r3-0-simulator-f0808ea2-f518-4b4c-9fd7-b4e8d4409008/start.json",
+        "sha256": "44797593e24b94e2bacecc5354ceb665126c2218bba1a564e075fe2336d6a8df"
+      }
+    },
+    {
+      "exit": {
+        "bytes": 516,
+        "path": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/supervisors/f3-a40-r3-0-policy-1c89dbb9-3ccb-4be6-bf86-e2544c1a8146/exit.json",
+        "sha256": "db063d9c5cd9de586a5fd028b8c89514c7aa29201eb1b3051bc4323c0ccd7c8b"
+      },
+      "lane": "f3-a40-r3-0",
+      "returncode": 44,
+      "role": "policy",
+      "start": {
+        "bytes": 1558,
+        "path": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/supervisors/f3-a40-r3-0-policy-1c89dbb9-3ccb-4be6-bf86-e2544c1a8146/start.json",
+        "sha256": "b643c9b0d11f180d2c102791ebc22e40feacf66c4eb2c6cc1a67e41f33f5d3c9"
+      }
+    },
+    {
+      "exit": {
+        "bytes": 485,
+        "path": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/supervisors/f3-a40-r3-0-simulator-06a154ca-a032-42fe-bfff-9a0e72605ad9/exit.json",
+        "sha256": "c0194b3bc72747d9dad51a3cd7102461d37b0ab37fb3dd21fa4546c0e11784f9"
+      },
+      "lane": "f3-a40-r3-0",
+      "returncode": 0,
+      "role": "simulator",
+      "start": {
+        "bytes": 1562,
+        "path": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/supervisors/f3-a40-r3-0-simulator-06a154ca-a032-42fe-bfff-9a0e72605ad9/start.json",
+        "sha256": "0619ef92c02139063e7e432f71ac8d1a11926aa8ed9edad8ca355e0a03c60a58"
+      }
+    },
+    {
+      "exit": {
+        "bytes": 516,
+        "path": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/supervisors/n3-a40-r3-1-policy-83654562-800e-4340-9b09-9caccb00795f/exit.json",
+        "sha256": "4ef1f4daef9fe9d8b26c1eae8d0bd99a0ce3163f76ff99c36cfeed5d4936d3a3"
+      },
+      "lane": "n3-a40-r3-1",
+      "returncode": 44,
+      "role": "policy",
+      "start": {
+        "bytes": 1557,
+        "path": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/supervisors/n3-a40-r3-1-policy-83654562-800e-4340-9b09-9caccb00795f/start.json",
+        "sha256": "0cf54977de519d31cadef0a3ba5cecd71d8b59d4166f21de92f493d25f2ad3e4"
+      }
+    },
+    {
+      "exit": {
+        "bytes": 485,
+        "path": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/supervisors/n3-a40-r3-1-simulator-f0bb344b-a085-4512-b57b-daf61acec740/exit.json",
+        "sha256": "0f2a107c79737b50daf8633e8ad72feebd5ea1aff0bb6adb336adb4949b37675"
+      },
+      "lane": "n3-a40-r3-1",
+      "returncode": 0,
+      "role": "simulator",
+      "start": {
+        "bytes": 1562,
+        "path": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/supervisors/n3-a40-r3-1-simulator-f0bb344b-a085-4512-b57b-daf61acec740/start.json",
+        "sha256": "9f258e87c4fb8942d24bdab1ef88f3e75c85835c503dc556f5a707f7c670e57c"
+      }
+    },
+    {
+      "exit": {
+        "bytes": 516,
+        "path": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/supervisors/f3-a40-r3-1-policy-5d4bb6c6-87a9-4405-a0e7-127ec2ac7a59/exit.json",
+        "sha256": "06883a852f8cc27a1c0fb2ebe82f9304d8e13dbe9ae947f491580d23ff9384fb"
+      },
+      "lane": "f3-a40-r3-1",
+      "returncode": 44,
+      "role": "policy",
+      "start": {
+        "bytes": 1558,
+        "path": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/supervisors/f3-a40-r3-1-policy-5d4bb6c6-87a9-4405-a0e7-127ec2ac7a59/start.json",
+        "sha256": "caf97f20d74d23dd4bf6c1ba794dbf65495d29fada79db51b2f983d8173cec2c"
+      }
+    },
+    {
+      "exit": {
+        "bytes": 485,
+        "path": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/supervisors/f3-a40-r3-1-simulator-b1c4c3a5-fcd9-45ee-99dd-2ea32f03b84f/exit.json",
+        "sha256": "ac1760ae9021157d787e4685f8f98a0dea259bb6caa070e21df7ee755bf26024"
+      },
+      "lane": "f3-a40-r3-1",
+      "returncode": 0,
+      "role": "simulator",
+      "start": {
+        "bytes": 1562,
+        "path": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/supervisors/f3-a40-r3-1-simulator-b1c4c3a5-fcd9-45ee-99dd-2ea32f03b84f/start.json",
+        "sha256": "506d010f81f87a2cfbc7fab4c418e27da8fcff7c6fceeb89b0b3c612c79b93d7"
+      }
+    }
+  ],
+  "physical_actions": 0,
+  "recorded_at_utc": "2026-09-25T00:19:33.997096+00:00",
+  "release_receipt": {
+    "bytes": 1184,
+    "path": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/release-r3-E3-LAT-P/release_receipt.json",
+    "sha256": "44a592db29903c2079de896dd4256974339a32762c0a1e83072c5c415e66c8a5"
+  },
+  "schema": "sgw-01-zero-request-admission-preservation-v1",
+  "source_commit": "095fa2140d46798bf7975792351034c648a2b6ec",
+  "worker_status": {
+    "bytes": 281,
+    "path": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/status/E3-LAT-P-4052.json",
+    "sha256": "5c9c4bb5c41b4eb6c3597f11060b36a2e597411ab581d58fd9310954858c0669"
+  }
+}

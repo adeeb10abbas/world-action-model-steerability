@@ -109,7 +109,8 @@ def test_controller_holds_all_new_claims_after_first_failure(monkeypatch, tmp_pa
     monkeypatch.setattr(mailbox_visibility, "DirectoryRefresher", lambda: lambda path: None)
     monkeypatch.setattr(lane, "read_partition_summary", lambda *_: None)
     monkeypatch.setattr(lane, "stage_ready", lambda *_: True)
-    monkeypatch.setattr(lane, "stop_remote_lane", lambda *_: None)
+    stopped = []
+    monkeypatch.setattr(lane, "stop_remote_lane", lambda plan: stopped.append(plan["lane_id"]))
     calls = []
     monkeypatch.setattr(lane, "run_one", lambda p, f, s: calls.append((f, s)) or 42)
     plan = {"cohort_root": str(tmp_path), "lane_id": "n3-0", "model": "N3",
@@ -118,6 +119,63 @@ def test_controller_holds_all_new_claims_after_first_failure(monkeypatch, tmp_pa
     assert (tmp_path / "fleet-hold.json").exists()
     assert lane.run({**plan, "lane_id": "other-lane"}) == 44
     assert calls == [("LAT", "P")]
+    assert stopped == ["n3-0", "other-lane"]
+
+
+@pytest.mark.parametrize("revision", ["", "r4"])
+@pytest.mark.parametrize("stage", lane.STAGES)
+def test_operation_receipts_match_versioned_release_identity(tmp_path, monkeypatch, revision, stage):
+    import json
+    from experiments.workshops.spatial_grounding_v1 import worker
+    from experiments.workshops.spatial_grounding_v1.contract import Release
+    from experiments.workshops.spatial_grounding_v1.recorder import atomic_json
+
+    binding = {
+        "worker_image_digest": "synthetic@sha256:" + "a" * 64, "source_commit": "b" * 40,
+        "simulator_commit": "c" * 40, "model_code_commits": {}, "checkpoint_hashes": {},
+        "node_gpu_type": "CPU-fixture-only", "pvc_name": "synthetic", "pvc_mount_path": str(tmp_path.parent),
+        "source_root": str(Path(lane.__file__).resolve().parents[3]), "persistent_study_root": str(tmp_path),
+        "allow_parallel_existing_pod_lanes": True,
+        "request_deadline_seconds": 900, "episode_deadline_seconds": 3600,
+    }
+    atomic_json(tmp_path / "binding.json", binding)
+    atomic_json(tmp_path / "allocation.json", {"fixture": "CPU only"})
+    atomic_json(tmp_path / "supervisor.json", {"deadline_seconds": 7200, "deadline_utc": "2030-01-01T00:00:00Z"})
+    monkeypatch.setenv("SGW01_SUPERVISOR_RECEIPT", str(tmp_path / "supervisor.json"))
+    monkeypatch.setenv("POD_NAME", "synthetic")
+    monkeypatch.setenv("POD_UID", "synthetic-uid")
+    plan = {
+        "model": "N3", "release_revision": revision, "cohort_root": str(tmp_path),
+        "gpu_name": "CPU-fixture-only", "gpu_uuid": "GPU-synthetic", "pod_gpu_count": 1,
+        "allocated_gpu_uuids": ["GPU-synthetic"], "pod_receipt": {"fixture": "CPU only"},
+        "inputs": {key: lane.reference(tmp_path / f"{key}.json") for key in ("binding", "allocation")},
+    }
+    operation = tmp_path / "operation"
+    operation.mkdir()
+
+    def no_gpu_probe(command, **kwargs):
+        assert ".gpu_idle_probe" in command[2]
+        atomic_json(Path(command[command.index("--output") + 1]), {"fixture": "CPU only; no GPU observation"})
+
+    monkeypatch.setattr(lane.subprocess, "run", no_gpu_probe)
+    monkeypatch.setattr(lane, "measured_pilots", lambda root: {
+        "pilot_p95_episode_bytes": 1024, "pilot_p95_episode_seconds": 60,
+    })
+    bound = lane.prepare_operation(plan, "LAT", stage, operation)
+    expected_id = f"sgw-current-N3-LAT-{stage}" + (f"-{revision}" if revision else "")
+    assert lane.partition_release_id(plan, "LAT", stage) == expected_id
+    expected_root = tmp_path / "expected-release"
+    expected_root.mkdir()
+    atomic_json(expected_root / "release_receipt.json", {"source_queue_sha256": lane.QUEUE_SHA256})
+    expected = Release(expected_root, expected_id, {}, (), bound)
+    filenames = ["allocation.json", "budget.json"]
+    if stage != "P":
+        filenames.extend(["measured-runtime.json", "storage.json"])
+    for filename in filenames:
+        receipt = json.loads((operation / filename).read_text())
+        worker._receipt_identity(expected, receipt, filename)
+        with pytest.raises(worker.ResourceBlocked, match="not bound"):
+            worker._receipt_identity(expected, {**receipt, "release_id": "wrong-release"}, filename)
 
 
 def test_replacement_release_retains_attempt_number_and_rejects_valid_replay(tmp_path):
