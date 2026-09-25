@@ -33,9 +33,27 @@ final-only local H.264 delivery remain pending. No local video transfer has
 started. Progress receipts are collected hourly; capacity can be reassigned
 only at a verified quiescent boundary without losing an in-flight attempt.
 
-**Additional A40 capacity, 25 September:** the
+**Current expansion decision, 05:38 UTC:** the
+[isolation-only authorization](isolated-a40-expansion-authorization.json)
+supersedes the six-pair proposal below. Target **eight isolated pairs**:
+the existing five plus r/s, t/u and v/q. The parent will relay recreated
+r/s/t/v Pod names using the g-q isolation template. Until then, do not poll,
+recreate or bind them. Verify the new actual Pod identities, exactly one
+visible idle GPU and a fresh PVC-only check, then use unchanged `a94696d`
+admission and the selected policy's frozen binding at an intact partition
+boundary. Choose the model with the most remaining claimable work.
+q's CPU guardian and all existing lanes remain unchanged.
+
+**Permanent stand-down on shared a-f:** no further diagnostics, retries or
+study launches there. The parent reported that the user's replacement
+evaluation workers are running again and explained the old zombie queue
+roots as the user's restart; this is attributed parent evidence, not another
+cluster check by this coordinator. Preserve the earlier failed diagnostics.
+No admission-source amendment is authorized or required by this new plan.
+
+**Historical initial A40 expansion proposal, 25 September:** the
 [prospective expansion and placement record](shared-a40-expansion-20260925.json)
-preserves the authorized six proposed pairs and their actual eligibility.
+preserves the then-authorized six proposed pairs and their actual eligibility.
 **No additional study lane or request was launched.** Existing pairs and
 the independent CPU guardian on q were not restarted.
 

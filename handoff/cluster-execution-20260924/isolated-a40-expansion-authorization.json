@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "relayed_at_utc": "2026-09-25T05:38:08.468Z",
+  "authority": "Current coordinating parent relaying the user's resource decision",
+  "status": "AWAITING_RECREATED_ISOLATED_POD_NAMES",
+  "execution_source_commit": "a94696d3fa75c78a4f756536b988cead607e53b8",
+  "admission_source_amendment_authorized": false,
+  "existing_pairs_unchanged": 5,
+  "target_total_pairs": 8,
+  "additional_pairs_launched": 0,
+  "supersedes_expansion_plan": "handoff/cluster-execution-20260924/shared-a40-expansion-20260925.json",
+  "preserve_previous_diagnostics": true,
+  "permanent_shared_pod_stand_down": {
+    "aliases": ["a", "b", "c", "d", "e", "f"],
+    "additional_diagnostics": false,
+    "retries": false,
+    "study_launches": false,
+    "reason": "Leave the shared Pods and their evaluation/training workers to the user."
+  },
+  "replacement_pods_required": ["r", "s", "t", "v"],
+  "replacement_template": "Same GPU-isolated template as existing g-q; exactly one GPU visible",
+  "readiness_signal": "Wait for the coordinator's explicit relay of recreated Pod names; do not poll or recreate Pods.",
+  "prospective_pairs": [
+    {"lane": 6, "policy_alias": "r", "simulator_alias": "s", "model": null},
+    {"lane": 7, "policy_alias": "t", "simulator_alias": "u", "model": null},
+    {"lane": 8, "policy_alias": "v", "simulator_alias": "q", "model": null}
+  ],
+  "preflight": [
+    "Read the actual replacement Pod UID, node, image and resource allocation; do not reuse old Pod receipts.",
+    "Verify exactly one visible GPU, actual idle UUID and exclusive physical-UUID ownership under unchanged a94696d guards.",
+    "Perform only the fresh PVC check before admission; do not repeat scene, model or shared-Pod placement diagnostics.",
+    "Use the chosen policy model's frozen runtime environment and binding without changing scientific inputs.",
+    "Retain q's independent CPU storage guardian and observers; never restart or terminate them for GPU placement."
+  ],
+  "scheduling": [
+    "Admit only at an intact partition boundary for the policy family with the most remaining claimable work.",
+    "Verify no in-flight attempt or owned child before reassigning an existing lane; do not interrupt or replay.",
+    "Preserve whole partitions, six-condition blocks and the global development-to-confirmation barrier.",
+    "Record new exact identities and update guardian and observer operational indexes for any admitted pair."
+  ],
+  "parent_followup_observation": {
+    "independently_rechecked_by_this_coordinator": false,
+    "reported_active_workers": [
+      "narrow-40a-a40--g1",
+      "narrow-40c-a40--g1",
+      "narrow-40d-a40--g1"
+    ],
+    "reported_age_minutes_approximately": 7.5,
+    "explanation": "The old zombie evaluation queue roots were the user's restart, according to the coordinating parent's read-only check."
+  },
+  "new_model_requests": 0,
+  "new_scene_resets": 0,
+  "new_physical_actions": 0
+}
