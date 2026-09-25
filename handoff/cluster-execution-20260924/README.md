@@ -3,14 +3,14 @@
 The user separately authorized runtime integration, bounded checks, and the
 committed study on 24 September 2026. This supersedes the preparation-only
 permission recorded in the original delivery. **Genuine study execution is
-running on five A40 policy/simulator pairs.** At 2026-09-25 07:26 UTC,
-185 unique episodes were complete: N3 66/522, E3 49/522 and F3 70/522.
-These comprise all 54 pilots and 131 development episodes, with 184 valid model
+running on five A40 policy/simulator pairs.** At 2026-09-25 08:12 UTC,
+205 unique episodes were complete: N3 71/522, E3 59/522 and F3 75/522.
+These comprise all 54 pilots and 151 development episodes, with 204 valid model
 failures and one valid success; the five technical attempts remain separate.
 The frozen pilot barrier released development at 03:01:35.850529 UTC.
-See [the operational snapshot](progress-20260925-0730.json),
+See [the operational snapshot](progress-20260925-0810.json),
 [the applied boundary-loan evidence](lane-loan-20260925a.json),
-[the periodic timing/capacity report](report-20260925-0408.json) and
+[the periodic timing/capacity report](report-20260925-0812.json) and
 [first valid episode evidence for every model](first-valid-study-episodes.json).
 The execution source is `a94696d3fa75c78a4f756536b988cead607e53b8`;
 receipt-only commits do not change the running source or materialization.
@@ -33,6 +33,52 @@ protected B200 are untouched. Full 1,566-cell completion, final analysis and
 final-only local H.264 delivery remain pending. No local video transfer has
 started. Progress receipts are collected hourly; capacity can be reassigned
 only at a verified quiescent boundary without losing an in-flight attempt.
+
+**08:12 UTC four-hour report:** since 04:08, 118 additional completions
+correspond to 29.06 episodes/hour, with 1,772 additional dispatched requests
+and 53,153 additional recorded actions. Four partitions are active and one
+N3 lane waits because no remaining D partition is unclaimed. Four attempts
+are unfinished, including one already at 450 actions awaiting final
+publication; they are not four simultaneous inference calls. The o/p
+F3-to-E3 loan has five completed E3-DIST-D episodes. No further loan,
+new technical attempt, OOM or fleet hold occurred.
+
+Finalized manifests account for **1,666.433 GiB** across 210 attempts,
+including the five preserved technical attempts. Actual unindexed native
+and in-flight bytes remain separately unmeasured. The guardian reported
+**136.762 TiB and 72,981,706 inodes available**; per-UID quota remains
+unverified. All raw masters remain remote. Guardian identity, its ten-owner
+index, the current five-pair roster and the boundary observer are unchanged.
+
+The [current timing evidence](control-timing-20260925-0810.json) uses all
+151 D completions in the progress snapshot. Mean intent-to-pointer times
+are N3 570.6 s, E3 471.5 s and F3 512.0 s. Actual completed 24-cell D
+partitions spent 1,155.6-1,387.1 s between the last completion pointer and
+partition-summary publication. The projection now uses that measured D
+overhead, rather than extrapolating only the six-cell pilots, and charges
+each future loan the first observed 886.7 s boundary-to-admission interval
+(including coordinator latency, one sample only).
+
+With the **five currently verified pairs**, unchanged observed costs and
+further approved boundary loans, conditional collection time is **53.5 hours
+remaining, around 27 September 13:45 UTC**. Without further loans from the
+current post-loan roster, the same calculation gives 72.0 hours. A uniform
+25% slowdown gives 66.9 hours. These are engineering projections, not
+guaranteed deadlines: confirmation-scene costs, future storage contention
+and future handoff latency are unmeasured. Final full-artifact validation,
+analysis, derivative encoding and local transfer remain additional,
+unestimated work; hypothetical future loan events are not launch instructions.
+
+The remaining execution barrier is **65 more D episodes**, completing all
+216 D cells and nine whole D partitions (270 cumulative P+D), before any
+of the 1,296 C cells. The current conditional barrier projection is
+25 September 11:34 UTC. There is no additional global barrier inside C,
+but nine whole 144-cell partitions and all six-condition blocks stay intact.
+Final analysis still requires all 1,566 cells and 27 authoritative release
+identities with complete accounting and artifact validation; final-only
+video delivery additionally requires verified derivatives and local space.
+Physical forecast mapping and semantic qualification remain unavailable,
+not scored zero. The next roughly four-hour report is due around 12:10 UTC.
 
 **First approved lane loan applied at 07:23 UTC:** o/p changed from F3 to E3
 after its intact `F3-HEIGHT-D` boundary completed at 07:09:41.903574 UTC.
