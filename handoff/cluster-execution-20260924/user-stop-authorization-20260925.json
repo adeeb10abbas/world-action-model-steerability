@@ -1,0 +1,63 @@
+{
+  "schema_version": 1,
+  "authority": "Explicit user decisions relayed by coordinating parent c230f3cd-3fe9-4f1f-9ee4-e8b857151a60",
+  "user_stop_quote": "please stop it and re run this thing, I think there's something missing",
+  "user_camera_quote": "move the scene cameras back",
+  "hold_created_at_utc": "2026-09-25T16:05:40.756901Z",
+  "cohort": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2",
+  "execution_source_commit": "a94696d3fa75c78a4f756536b988cead607e53b8",
+  "status": "USER_STOPPED_SUPERSEDED_DRAIN_IN_PROGRESS",
+  "reason": "Suspected setup/integration problem; low study success is not yet evidence of a diagnosed cause.",
+  "stop_instructions": [
+    "No new claims, dispatches or attempts. Existing episodes may finish normally and finalize.",
+    "Do not interrupt an in-flight episode; preserve incomplete evidence honestly if natural finalization fails.",
+    "Cleanly drain all five study pairs; verify exact owned descendants and GPU memory before release.",
+    "Keep CPU storage monitoring on q. Preserve all raw data, recorded outcomes and frozen inputs.",
+    "Hand verified released GPU resources to the separate competence diagnostic; this coordinator remains resource owner."
+  ],
+  "diagnostic": {
+    "project_session_id": "8ce720b4-9584-49db-bded-a96974fa96e3",
+    "output_root": "/data/users/ali/sgw-01/competence-diagnostic-20260925/",
+    "initial_reserved_pods": ["211247-alia40u-a40-1gpu", "211247-alia40q-a40-1gpu"],
+    "authorized_foreign_processes_are_not_study_owners": true,
+    "shared_uuid_locks_required": true,
+    "release_requires_explicit_drained_handoff": true
+  },
+  "superseded_preliminary_revision_instructions": {
+    "launch_authorized_now": false,
+    "old_release_may_restart": false,
+    "camera": "Original stock RoboLab DROID exterior preset from camera_checks_20260924/original; wrist unchanged",
+    "preserve": ["87 layouts", "18 prompts", "scorer", "450-action cap", "model pins/settings", "A40 within-model hardware", "admission rules", "all raw videos"],
+    "disclose_before_outcomes": ["new protocol/runtime revision", "original exterior camera hashes", "intact six-cell layout-block claim units", "per-model stage barriers", "N3 then E3 then F3 order"],
+    "order": ["N3 P18 then D72 then C432", "E3 P18 then D72 then C432", "F3 P18 then D72 then C432"],
+    "launch_gate": "Root cause identified and fixed; parent relays diagnostic verdict that original cameras restore competent behavior on a few P/D layouts.",
+    "capacity": "Use verified released isolated pairs, initially the five study pairs plus u/q only after diagnostic release.",
+    "technical_invalid_fleet_hold_threshold": 1,
+    "requested_projection": "N3-only ETA when the revision is staged",
+    "old_protocol_and_frozen_records_must_remain_unchanged": true
+  },
+  "current_revision_instructions": {
+    "authority": "Later explicit user override relayed by the same parent: do not over-collect; change cameras and rerun N3 quickly",
+    "diagnostic_cancelled": true,
+    "diagnostic_gate_required": false,
+    "front_slot": "exterior_image_1_left / over_shoulder_left_camera",
+    "front_preset": "Select a pinned RoboLab built-in front-facing mirrored/head preset by LAT-P01 reset-frame visibility only; no behavioral outcome selection.",
+    "side_slot": "over_shoulder_right_camera",
+    "side_preset": "Unchanged stock OverShoulderLeftCameraCfg or OverShoulderRightCameraCfg, selected by cube/reference and arm visibility.",
+    "wrist_changed": false,
+    "minimum_gates": [
+      "Render LAT/HEIGHT/DIST P01 reset frames: arm, cube, references and destinations visible in front; arm visible in side.",
+      "Check N3 three-view input packing and slot order once.",
+      "Push render images and paths. Fast projection across87 layouts only if inexpensive; otherwise disclose P01-only verification."
+    ],
+    "new_revision_only": true,
+    "preserve_non_camera_scientific_inputs": ["87 layouts", "18 prompts", "scorer", "450-action cap", "model pins/settings", "A40 hardware", "admission rules"],
+    "execution_revision": ["intact six-cell layout-block claims", "within-model P18 then D72 then C432 barriers", "N=1 technical-invalid fleet hold", "storage guardian", "all videos"],
+    "allowed_models_now": ["N3"],
+    "models_waiting_for_new_user_call": ["E3", "F3"],
+    "launch_after_minimum_gates": "N3 only, automatically through P then D then C unless technical fault; use verified released isolated pairs, including u/q only after diagnostic release.",
+    "first_results_report": "First finished N3 pilot episode outcome, failure stage and persistent video path.",
+    "old_release_may_restart": false,
+    "old_protocol_and_frozen_records_must_remain_unchanged": true
+  }
+}

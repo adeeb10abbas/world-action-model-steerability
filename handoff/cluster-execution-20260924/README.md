@@ -1,5 +1,22 @@
 # Current cluster continuation
 
+**USER STOP, 25 September 16:05:40 UTC:** the current close-camera cohort is
+superseded and under a durable user-attributed fleet hold. No new claims or
+attempts are authorized. Existing episodes are draining to their normal
+completion before GPU release; the counts below are historical snapshots,
+not a final stop count. See [the stop and future-revision authority](user-stop-authorization-20260925.json)
+and [verified hold](user-stop-hold-20260925.json). Raw data, outcomes and old
+protocol/release records remain unchanged. The latest override cancels the
+separate diagnostic and permits a new front/side-camera N3-only revision
+after minimal reset-view/input-packing gates, starting again from P.
+
+The existing storage guardian exits cleanly on any fleet hold. Its terminal
+receipt is preserved; a separately versioned replacement uses
+`--preserved-hold-sha256` to monitor capacity for the exact user-stopped
+cohort. This mode verifies the hold identity on every cycle, never clears
+it, and records capacity faults without relabeling intentionally retired
+owners as research failures. Active-cohort guard behavior is unchanged.
+
 The user separately authorized runtime integration, bounded checks, and the
 committed study on 24 September 2026. This supersedes the preparation-only
 permission recorded in the original delivery. **Genuine study execution is

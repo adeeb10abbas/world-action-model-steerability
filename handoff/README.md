@@ -1,5 +1,14 @@
 # Start here: SGW-01 cluster handoff
 
+**Current user stop:** the close-camera cohort is superseded under a durable
+hold from 2026-09-25 16:05:40 UTC. Do not resume its releases. Finalize
+already in-flight episodes, preserve all data, and release only verified
+drained resources. The later front/side-camera override permits a new
+N3-only run after minimal reset-view and input-packing gates; the separate
+diagnostic is cancelled. Read
+[the stop/new-revision authority](cluster-execution-20260924/user-stop-authorization-20260925.json)
+before the historical continuation below.
+
 **Current execution continuation:** the user has since authorized cluster
 integration and launch subject to the runtime gates. See
 [the current cluster record](cluster-execution-20260924/README.md) for deployed

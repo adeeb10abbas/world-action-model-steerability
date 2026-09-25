@@ -76,6 +76,15 @@ def owner_faults(cohort: Path, index_path: Path, now: datetime, refresh) -> list
     return faults
 
 
+def verify_preserved_hold(cohort: Path, expected_sha256: str) -> None:
+    path = cohort / "fleet-hold.json"
+    if sha256_file(path) != expected_sha256:
+        raise ValueError("preserved user hold changed or disappeared")
+    value = json.loads(path.read_text())
+    if value.get("phase") != "user_requested_stop_supersede":
+        raise ValueError("capacity-only observation requires a user-stopped cohort")
+
+
 def reserve_hold(path: Path) -> None:
     payload = {
         "schema_version": "sgw-01-fleet-hold-v1", "automatic_technical_invalid_threshold": 1,
@@ -112,10 +121,13 @@ def _stop(_signum, _frame) -> None:
 def run(args) -> int:
     cohort = args.cohort.resolve(strict=True)
     root = args.run_root.resolve()
+    preserved_hold = getattr(args, "preserved_hold_sha256", None)
     if root.parent != (cohort / "storage-guard").resolve() or not args.owners_index.resolve().is_relative_to(cohort):
         raise ValueError("guardian state and owner index must stay inside its cohort")
     if sha256_file(Path(__file__)) != args.implementation_sha256:
         raise ValueError("guardian implementation differs from the operator-pinned source")
+    if preserved_hold is not None:
+        verify_preserved_hold(cohort, preserved_hold)
     root.mkdir(parents=True, exist_ok=False)
     lock_path = cohort / "locks" / "storage-guardian.lock"
     with lock_path.open("a+") as lock:
@@ -131,6 +143,8 @@ def run(args) -> int:
             "implementation_sha256": args.implementation_sha256,
             "owners_index": str(args.owners_index), "cohort_root": str(cohort),
             "reserved_hold": str(reserve),
+            "preserved_hold_sha256": preserved_hold,
+            "observation_scope": "preserved_cohort_capacity_only" if preserved_hold else "active_owners_and_capacity",
         })
         refresh = DirectoryRefresher()
         deadline = time.monotonic() + args.seconds
@@ -138,20 +152,31 @@ def run(args) -> int:
         try:
             while not STOP_REQUESTED:
                 refresh(cohort)
-                if (cohort / "fleet-hold.json").exists():
+                if preserved_hold is not None:
+                    verify_preserved_hold(cohort, preserved_hold)
+                elif (cohort / "fleet-hold.json").exists():
                     status, code = "existing_fleet_hold_preserved", 0
                     break
                 observed = capacity(cohort)
                 faults = capacity_faults(observed)
-                faults.extend(owner_faults(cohort, args.owners_index, datetime.now(timezone.utc), refresh))
+                if preserved_hold is None:
+                    faults.extend(owner_faults(cohort, args.owners_index, datetime.now(timezone.utc), refresh))
                 if time.monotonic() >= deadline:
                     faults.append("finite storage guardian lifetime expired")
                 if faults:
+                    if preserved_hold is not None:
+                        atomic_json(root / "capacity-fault.json", {
+                            "at_utc": utc_now(), "faults": faults, "observed_capacity": observed,
+                            "preserved_hold_sha256": preserved_hold,
+                        })
                     method = publish_hold(cohort, reserve, reason="; ".join(faults), observed_capacity=observed)
                     status, code = "fleet_held", 44
                     print(json.dumps({"status": status, "faults": faults, "hold_method": method}), flush=True)
                     break
-                atomic_json(root / "heartbeat.json", {"status": "watching", "at_utc": utc_now(), **observed})
+                atomic_json(root / "heartbeat.json", {
+                    "status": "watching_preserved_cohort" if preserved_hold else "watching",
+                    "at_utc": utc_now(), **observed,
+                })
                 time.sleep(min(args.poll_seconds, max(0, deadline - time.monotonic())))
             if STOP_REQUESTED:
                 status, code = "stopped_by_signal", 0
@@ -178,6 +203,8 @@ def main() -> None:
     parser.add_argument("--run-root", type=Path, required=True)
     parser.add_argument("--source-commit", required=True)
     parser.add_argument("--implementation-sha256", required=True)
+    parser.add_argument("--preserved-hold-sha256",
+                        help="Observe capacity only for this exact, already user-stopped cohort hold")
     parser.add_argument("--seconds", type=int, default=14 * 86400)
     parser.add_argument("--poll-seconds", type=int, default=60)
     args = parser.parse_args()
@@ -185,6 +212,8 @@ def main() -> None:
         parser.error("guardian lifetime must be <=14 days and polling interval <=60 seconds")
     if re.fullmatch(r"[0-9a-f]{40}", args.source_commit) is None:
         parser.error("source commit must be a full lowercase Git SHA")
+    if args.preserved_hold_sha256 is not None and re.fullmatch(r"[0-9a-f]{64}", args.preserved_hold_sha256) is None:
+        parser.error("preserved hold must be a full lowercase SHA-256")
     for signum in (signal.SIGTERM, signal.SIGINT):
         signal.signal(signum, _stop)
     raise SystemExit(run(args))

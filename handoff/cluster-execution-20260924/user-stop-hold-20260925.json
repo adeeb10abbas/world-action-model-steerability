@@ -1,0 +1,26 @@
+{
+  "hold": {
+    "authority": {
+      "coordinator_project_session_id": "5ed7dc81-68d8-493f-a8c4-81a4b6cb59f6",
+      "kind": "explicit_user_instruction_relayed_by_orchestrator",
+      "relay_project_session_id": "c230f3cd-3fe9-4f1f-9ee4-e8b857151a60",
+      "user_quote": "please stop it and re run this thing, I think there's something missing"
+    },
+    "automatic_technical_invalid_threshold": 1,
+    "created_at_utc": "2026-09-25T16:05:40.756901Z",
+    "drain_policy": "No new dispatches/claims/attempts; allow already in-flight episodes to finish normally and finalize. No replay of this release.",
+    "phase": "user_requested_stop_supersede",
+    "preserve_raw_masters": true,
+    "reason": "User suspects setup/integration problem after low P+D competence; preserve this run and diagnose before any new revision.",
+    "rerun_gate": "Identified and fixed root cause plus disclosed new protocol/runtime revision restarting at P; never relaunch current release.",
+    "schema_version": "sgw-01-fleet-hold-v1",
+    "source_commit": "a94696d3fa75c78a4f756536b988cead607e53b8"
+  },
+  "hold_reference": {
+    "path": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/fleet-hold.json",
+    "sha256": "7e2a9ce3f24b07f61475bb22a2b9db98216fb9acb23b1dc218418ce7e77ad578"
+  },
+  "model_or_protocol_changes": false,
+  "observed_at_utc": "2026-09-25T16:05:40.758586+00:00",
+  "process_signals_sent": false
+}
