@@ -17,6 +17,7 @@ from experiments.workshops.spatial_grounding_v1.contract import (
     REQUIRED_RELEASE_FILES, STAGE_EPISODES, Release, load_json, load_release, sha256_file,
 )
 from experiments.workshops.spatial_grounding_v1.recorder import atomic_json
+from experiments.workshops.spatial_grounding_v1.failure_stages import compile_failure_stages, load_geometry
 
 SPEC = ROOT / "experiments/workshops/spatial_grounding_v1/spec"
 INDEX_SCHEMA = "sgw-01-cohort-index-v1"
@@ -133,7 +134,48 @@ def _pointer_inputs(pointer: Path, release: Release, planned: Mapping[str, str])
     }
 
 
-def compile_study_cohort(queue: Path, index_path: Path) -> dict[str, Any]:
+def _failure_analysis_rows(
+    rows: Sequence[Mapping[str, Any]], releases: Sequence[Mapping[str, Any]],
+) -> list[Mapping[str, Any]]:
+    references = {ref["cell_id"]: ref for release in releases for ref in release["completion_pointers"]}
+    result: list[Mapping[str, Any]] = []
+    for row in rows:
+        if isinstance(row.get("episode_mapping"), list) or row["analysis_status"] != "complete":
+            result.append(row)
+            continue
+        reference = references[row["cell_id"]]
+        manifest_path = Path(reference["manifest_path"])
+        if sha256_file(manifest_path) != reference["manifest_sha256"]:
+            raise ValueError("attempt manifest changed before failure-stage analysis")
+        manifest = load_json(manifest_path, "failure-stage attempt manifest")
+        states = []
+        for name, metadata in sorted(manifest["artifacts"].items()):
+            if name != "states/reset.json" and re.fullmatch(r"states/state-[0-9]+\.json", name) is None:
+                continue
+            path = (manifest_path.parent / name).resolve()
+            _within(path, manifest_path.parent, "failure-stage state")
+            if sha256_file(path) != metadata["sha256"]:
+                raise ValueError("state artifact changed before failure-stage analysis")
+            raw = load_json(path, "recorded state")
+            state = raw.get("state")
+            if not isinstance(state, dict):
+                states.append({})
+                continue
+            step = 0 if name == "states/reset.json" else raw.get("action_index")
+            # An inconsistent wrapper/state identity remains diagnostic missingness.
+            if ("action_step" in state and state["action_step"] != step
+                    or "sim_time_s" in state and state["sim_time_s"] != raw.get("sim_time_s")):
+                states.append({})
+                continue
+            states.append({"action_step": step, "sim_time_s": raw.get("sim_time_s"), **state})
+        states.sort(key=lambda state: state.get("action_step") if type(state.get("action_step")) is int else -1)
+        result.append({**row, "episode_mapping": states, "failure_state_source": "manifest_bound_state_files"})
+    return result
+
+
+def compile_study_cohort(
+    queue: Path, index_path: Path, *, failure_workspaces: Sequence[Path] = (),
+) -> dict[str, Any]:
     """Read only indexed study roots; never execute, rescore, or discover cohorts."""
     queue, index_path = queue.resolve(), index_path.resolve()
     index_hash = sha256_file(index_path)
@@ -213,6 +255,10 @@ def compile_study_cohort(queue: Path, index_path: Path) -> dict[str, Any]:
     combined = analysis.registered_compilation_from_rows(ledger[row["cell_id"]] for row in planned)
     technical = [row["cell_id"] for row in combined.ledger if row["analysis_status"] == "incomplete"]
     complete = combined.complete and set(by_partition) == PARTITIONS
+    calibration, geometry = load_geometry(failure_workspaces)
+    failure_stages = compile_failure_stages(
+        _failure_analysis_rows(combined.ledger, provenance), calibration=calibration, geometry=geometry,
+    )
     _require(sha256_file(index_path) == index_hash and sha256_file(queue) == queue_hash,
              "cohort input changed during compilation")
     return {
@@ -235,6 +281,7 @@ def compile_study_cohort(queue: Path, index_path: Path) -> dict[str, Any]:
         "primary_statistics": analysis.compile_primary_statistics(combined),
         "paper_export_plan": analysis.render_paper_export_plan(combined),
         "coverage_table": analysis.render_neutral_coverage_table(combined),
+        "failure_stage_analysis": failure_stages,
     }
 
 
@@ -244,10 +291,12 @@ def main(argv: Sequence[str] | None = None) -> int:
     parser.add_argument("--index", type=Path, required=True, help="explicit hash-pinned cohort index")
     parser.add_argument("--output", type=Path, required=True, help="new downstream report path")
     parser.add_argument("--require-complete", action="store_true", help="exit 2 after writing an incomplete report")
+    parser.add_argument("--failure-workspace", type=Path, action="append", default=[],
+                        help="existing registry-hash-bound model-blind workspace for exploratory TCP frame mapping")
     args = parser.parse_args(argv)
     try:
         _require(not args.output.exists(), "report output already exists; use a new checkpoint path")
-        report = compile_study_cohort(args.queue, args.index)
+        report = compile_study_cohort(args.queue, args.index, failure_workspaces=args.failure_workspace)
         for release in report["releases"]:
             root = Path(release["artifact_root"])
             _require(not args.output.resolve().is_relative_to(Path(release["root"]))

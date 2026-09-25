@@ -141,3 +141,70 @@ Focused synthetic CPU regression command (no native dependencies needed):
 python -m pytest -q tests/test_compile_study_cohort.py \
   tests/test_sgw_compile.py tests/test_sgw_compile_physical_separation.py
 ```
+
+## Exploratory failure diagnostics
+
+The compiler also emits additive `failure_stage_analysis` with schema
+`sgw-01-exploratory-failure-stages-v1`. Its definitions were separately
+committed in [the pre-analysis note](FAILURE_STAGE_ANALYSIS_NOTE.md).
+Existing primary statistics, completeness and video-helper fields are
+unchanged. `groups` retains P/D/C separately, then model/family/form/sign;
+it includes primary-stage and pickup-substage counts, explicit
+numerator/denominator/proportions, planned/valid/technical/censored/missing
+counts, and conditional median-event observability counts.
+`paired_layout_transitions` shows each layout's matched D/C/I labels and
+pairwise transitions for the same model and goal sign. `episodes` keeps
+recorded primary stages alongside exploratory substages, timelines,
+observability reasons, available-state field paths and geometry provenance.
+
+State diagnostics use the hash-verified `result.episode_mapping` when
+present; otherwise they read only the manifest-bound `states/reset.json`
+and `states/state-NNNN.json` records. They never read unindexed attempts,
+decode media or reconstruct missing states. The original ledger is not
+rewritten. Missing diagnostic data cannot turn a valid result into a
+technical failure or a complete report into an incomplete one.
+
+For TCP approach observability, repeat `--failure-workspace` for the existing
+model-blind workspace files used to materialize the selected scenes:
+
+```sh
+python tools/compile_study_cohort.py \
+  --queue experiments/workshops/spatial_grounding_v1/spec/planned_cells.csv \
+  --index /pvc/clean-study/cohort-index.json \
+  --failure-workspace /pvc/geometry/measured-workspace.json \
+  --output /pvc/clean-study/analysis-with-stages.json
+```
+
+Each supplied workspace must match a selected layout's existing
+`regenerate_scene.workspace_sha256` in the completed scene registry; paths
+do not create new geometry authority. Omit this option if those files are
+not available: approach is explicitly `unobservable`, while observed
+attachment, closure, lift and other supported timelines remain usable.
+Even with a workspace, missing origin/root fields, incompatible asset
+identity or inconsistent coordinate checks leave approach unobservable.
+Filtered contact forces are absent from the reported live state schema;
+closure is derived from calibrated `finger_joint` bands and is not contact.
+
+The SVG renderer is dependency-free and requires one explicit stage. It
+does not pool families or signs; both figures use those facets, with rows
+for each model/form. The report's exact hash is embedded in both figures.
+
+```sh
+python tools/render_failure_stages.py \
+  --report /pvc/clean-study/analysis-with-stages.json \
+  --report-sha256 EXACT_SHA256_OF_REPORT \
+  --stage C --output-dir /pvc/clean-study/figures-C
+```
+
+The new directory contains `stage-proportions.svg` and
+`median-timelines.svg`. Partial reports are prominently labeled incomplete.
+Absent events have no plotted zero-time marker; per-event observed and
+unobservable counts appear in legend order, with full denominators in the
+report and SVG tooltips. Median timelines are descriptive, conditional
+episode summaries, not inferential layout-level estimates.
+
+```sh
+python -m pytest -q tests/test_sgw_failure_stages.py \
+  tests/test_compile_study_cohort.py tests/test_sgw_compile.py \
+  tests/test_sgw_compile_physical_separation.py
+```
