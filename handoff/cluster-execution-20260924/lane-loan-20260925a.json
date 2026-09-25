@@ -1,0 +1,619 @@
+{
+  "observed_at_utc": "2026-09-25T07:25:42.149795+00:00",
+  "prepared": {
+    "authorization": {
+      "bytes": 4134,
+      "path": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/loans/loan-20260925a/authorization.json",
+      "sha256": "772a15aa49835b068d216928482df5f4570225f61cbc4d2f8747ed49d4057562"
+    },
+    "completed_boundary_partition": "F3-HEIGHT-D",
+    "deadline_utc": "2026-10-09T00:22:55.400000+00:00",
+    "destination_claimable_partition": "E3-DIST-D",
+    "frozen_binding": {
+      "path": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/inputs-a40-r4/binding-template.json",
+      "sha256": "65da3806f5ac127aa1c7ff536e40158d632915b1690afe7f51a106bf43ac3b35"
+    },
+    "new": {
+      "lane": "e3-a40-loan-20260925a",
+      "model": "E3",
+      "policy_gpu": "GPU-b089ea9d-c01e-56de-f33f-5a0e71d3581a",
+      "policy_interpreter": "/data/users/ali/vla_wam/envs/cosmos-edge-a904d2d-v3-exact/bin/python",
+      "policy_pod": "211247-alia40o-a40-1gpu",
+      "policy_run": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/supervisors/e3-a40-loan-20260925a-policy-35c5e443-02c3-463b-aa32-f33e6e1c01c3",
+      "policy_supervisor_id": "2efbd95b-b137-4d2d-8434-bd8b627d54c2",
+      "policy_template": {
+        "bytes": 3438,
+        "path": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/loans/loan-20260925a/policy-template.json",
+        "sha256": "3737cd85996bc03862c43ba180159ca5ee8c899942f6478e182b45f013878923"
+      },
+      "simulator_gpu": "GPU-07dd8eee-ceb3-fb2b-0269-ec07cf5aab7c",
+      "simulator_plan": {
+        "bytes": 2232,
+        "path": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/loans/loan-20260925a/simulator-plan.json",
+        "sha256": "6c8aa628d75055b3ce2b6ffd3f4b5ff52b4f0f724531bba5f79c8e2afecc9c83"
+      },
+      "simulator_pod": "211247-alia40p-a40-1gpu",
+      "simulator_run": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/supervisors/e3-a40-loan-20260925a-simulator-dab91f41-8146-4b11-a256-a0d015151616",
+      "simulator_supervisor_id": "b6b1a625-0bfc-487c-94ee-bb118f124db7"
+    },
+    "old": {
+      "lane": "f3-a40-r4-1",
+      "model": "F3",
+      "policy_gpu": "GPU-b089ea9d-c01e-56de-f33f-5a0e71d3581a",
+      "policy_interpreter": "/data/users/ali/sgw-01/current-20260924a/envs/flux-e2dd1d8/bin/python",
+      "policy_pod": "211247-alia40o-a40-1gpu",
+      "policy_run": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/supervisors/f3-a40-r4-1-policy-85b94c4c-81a4-46c5-a667-57135af7a95b",
+      "policy_supervisor_id": "a08bd2b8-d75c-47a2-815c-2560f7264684",
+      "policy_template": {
+        "path": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/inputs-a40-r4/f3-a40-r4-1-policy-template.json",
+        "sha256": "68d6ca43ef83eb32f89be2ed62133d994c3c1c2d8bdccbec8b86db0bfe1ceb8d"
+      },
+      "simulator_gpu": "GPU-07dd8eee-ceb3-fb2b-0269-ec07cf5aab7c",
+      "simulator_plan": {
+        "path": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/inputs-a40-r4/f3-a40-r4-1-simulator-plan.json",
+        "sha256": "bc0d10dfbea137f2eac6f5c30bdaea6bea0adf3cbe6344f43c85d84eef9bc7c0"
+      },
+      "simulator_pod": "211247-alia40p-a40-1gpu",
+      "simulator_run": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/supervisors/f3-a40-r4-1-simulator-41fe11b3-f4b2-4483-825a-6eaedb219091",
+      "simulator_supervisor_id": "abe96901-dc11-4daf-b9e1-feb389dbf7c6"
+    },
+    "source_commit": "a94696d3fa75c78a4f756536b988cead607e53b8"
+  },
+  "retirement": {
+    "at_utc": "2026-09-25T07:23:36.993697Z",
+    "controller_only_signal": "SIGSTOP; verify no worker; SIGTERM then SIGCONT",
+    "execution_source_commit": "a94696d3fa75c78a4f756536b988cead607e53b8",
+    "exits": {
+      "policy": {
+        "at_utc": "2026-09-25T07:23:36.121376Z",
+        "child_returncode": -15,
+        "host_memory": {
+          "anon_bytes": 71970816,
+          "anon_plus_shmem_bytes": 71970816,
+          "current_bytes": 34258722816,
+          "events": {
+            "high": 0,
+            "low": 0,
+            "max": 1449703,
+            "oom": 0,
+            "oom_kill": 0
+          },
+          "kernel_peak_bytes": null,
+          "limit_bytes": 34359738368,
+          "sampled_anon_plus_shmem_peak_bytes": 5515014144,
+          "sampled_peak_bytes": 34359853056,
+          "sampling_interval_seconds": 0.2,
+          "shmem_bytes": 0
+        },
+        "interrupted": false,
+        "owned_descendants_remaining": {},
+        "returncode": -15,
+        "status": "failed_preserve_no_automatic_retry"
+      },
+      "simulator": {
+        "at_utc": "2026-09-25T07:23:36.305023Z",
+        "child_returncode": 0,
+        "host_memory": {
+          "anon_bytes": 15192064,
+          "anon_plus_shmem_bytes": 15196160,
+          "current_bytes": 27718619136,
+          "events": {
+            "high": 0,
+            "low": 0,
+            "max": 105800,
+            "oom": 0,
+            "oom_kill": 0
+          },
+          "kernel_peak_bytes": null,
+          "limit_bytes": 34359738368,
+          "sampled_anon_plus_shmem_peak_bytes": 7009480704,
+          "sampled_peak_bytes": 34359738368,
+          "sampling_interval_seconds": 0.2,
+          "shmem_bytes": 4096
+        },
+        "interrupted": false,
+        "owned_descendants_remaining": {},
+        "returncode": 0,
+        "status": "complete"
+      }
+    },
+    "guardian_post_transition_heartbeat": {
+      "at_utc": "2026-09-25T07:23:35.029921Z",
+      "available_bytes": 150737803804672,
+      "available_inodes": 73291107,
+      "status": "watching",
+      "total_bytes": 219902325555200,
+      "total_inodes": 134217728
+    },
+    "model_or_native_process_interrupted": false,
+    "old": {
+      "lane": "f3-a40-r4-1",
+      "model": "F3",
+      "policy_gpu": "GPU-b089ea9d-c01e-56de-f33f-5a0e71d3581a",
+      "policy_interpreter": "/data/users/ali/sgw-01/current-20260924a/envs/flux-e2dd1d8/bin/python",
+      "policy_pod": "211247-alia40o-a40-1gpu",
+      "policy_run": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/supervisors/f3-a40-r4-1-policy-85b94c4c-81a4-46c5-a667-57135af7a95b",
+      "policy_supervisor_id": "a08bd2b8-d75c-47a2-815c-2560f7264684",
+      "policy_template": {
+        "path": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/inputs-a40-r4/f3-a40-r4-1-policy-template.json",
+        "sha256": "68d6ca43ef83eb32f89be2ed62133d994c3c1c2d8bdccbec8b86db0bfe1ceb8d"
+      },
+      "simulator_gpu": "GPU-07dd8eee-ceb3-fb2b-0269-ec07cf5aab7c",
+      "simulator_plan": {
+        "path": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/inputs-a40-r4/f3-a40-r4-1-simulator-plan.json",
+        "sha256": "bc0d10dfbea137f2eac6f5c30bdaea6bea0adf3cbe6344f43c85d84eef9bc7c0"
+      },
+      "simulator_pod": "211247-alia40p-a40-1gpu",
+      "simulator_run": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/supervisors/f3-a40-r4-1-simulator-41fe11b3-f4b2-4483-825a-6eaedb219091",
+      "simulator_supervisor_id": "abe96901-dc11-4daf-b9e1-feb389dbf7c6"
+    },
+    "owners_before_sha256": "3c828546282c6ee4be8cad57fa8c498a2796247ced86e7d6b126011b67c71389",
+    "owners_during_retirement": {
+      "bytes": 1077,
+      "path": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/loans/loan-20260925a/owners-during-retirement.json",
+      "sha256": "f5dc501fa8aeaf513d3adda9df57ca940290a560aa48d7d0c23ec4037eb7ef09"
+    },
+    "status": "verified_intentional_quiescent_retirement"
+  },
+  "retirement_start": {
+    "at_utc": "2026-09-25T07:22:46.745152Z",
+    "available_whole_partitions": {
+      "E3": [
+        "E3-DIST-D"
+      ],
+      "F3": [],
+      "N3": []
+    },
+    "boundary_receipt": {
+      "bytes": 18842,
+      "path": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/partition-completions/F3-HEIGHT-D.json",
+      "sha256": "0d390fc81f6a21d5458afc32c44142c1cd06210f173f5c2fde4f10eb375b74bf"
+    },
+    "completed_boundary_partition": "F3-HEIGHT-D",
+    "completed_by_model": {
+      "E3": 48,
+      "F3": 70,
+      "N3": 66
+    },
+    "controller_frozen_only_after_idle_check": {
+      "command": [
+        "/data/users/ali/sgw-01/current-20260924a/envs/flux-e2dd1d8/bin/python",
+        "-m",
+        "experiments.workshops.spatial_grounding_v1.study_lane",
+        "--plan",
+        "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/inputs-a40-r4/f3-a40-r4-1-policy-plan.json",
+        "--plan-sha256",
+        "840c53cb915eafdfd9576b6bcb43e2b4cb502e46b0c7bbc339aae1922adacb74"
+      ],
+      "pid": 3506,
+      "process_start_identity": "149402265"
+    },
+    "destination_claimable_partition": "E3-DIST-D",
+    "from_policy_family": "F3",
+    "owned_tree_after_freeze": {
+      "3506": "149402265"
+    },
+    "pending_simulator_requests": [],
+    "selection": "Most unclaimed whole-stage cells; tie-break by most remaining model cells.",
+    "simulator_quiescence": {
+      "bytes": 1889,
+      "path": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/loans/loan-20260925a/simulator-quiescence.json",
+      "sha256": "793baccffc1cf8c3a2193694e83dcc454d128e3f7e673b8416512786943eb611"
+    },
+    "to_policy_family": "E3"
+  },
+  "new_launches": {
+    "policy": {
+      "at_utc": "2026-09-25T07:24:16.055008Z",
+      "child_start": {
+        "bytes": 381,
+        "path": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/supervisors/e3-a40-loan-20260925a-policy-35c5e443-02c3-463b-aa32-f33e6e1c01c3/child-start.json",
+        "sha256": "37bedda6e77059a658820226a5766b3bbf1fa93ad3305fb6f3e4d1489a2b186b"
+      },
+      "fresh_idle": {
+        "bytes": 669,
+        "path": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/loans/loan-20260925a/policy-fresh-idle.json",
+        "sha256": "e3ed679128e80dc298bf4653f44b237b39b7db648c57763b2051327ef28e985b"
+      },
+      "owners_after": {
+        "schema_version": "sgw-01-storage-guard-owners-v1",
+        "supervisor_roots": [
+          "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/supervisors/n3-a40-r4-0-policy-fb61170f-6dc7-41b7-b6b8-c5dde70ed15e",
+          "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/supervisors/n3-a40-r4-0-simulator-2b78eb27-5cca-446d-b4ce-80107dd9a06f",
+          "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/supervisors/e3-a40-r4-0-policy-5c1e42a4-f9a8-417b-b944-a3377c2873ed",
+          "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/supervisors/e3-a40-r4-0-simulator-6bfa33ce-a436-4e9b-b2ba-66e39c056ed6",
+          "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/supervisors/f3-a40-r4-0-policy-48794e58-df43-4e08-8186-9d0540b4c9d0",
+          "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/supervisors/f3-a40-r4-0-simulator-7e964a21-4828-465a-992d-237b16f05c18",
+          "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/supervisors/n3-a40-r4-1-policy-a8bc0af8-016c-49bd-a0c9-2ac854703f8a",
+          "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/supervisors/n3-a40-r4-1-simulator-bd8a035c-b897-4769-af94-19912dc11127",
+          "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/supervisors/e3-a40-loan-20260925a-simulator-dab91f41-8146-4b11-a256-a0d015151616",
+          "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/supervisors/e3-a40-loan-20260925a-policy-35c5e443-02c3-463b-aa32-f33e6e1c01c3"
+        ]
+      },
+      "owners_after_sha256": "4155a5124305ab4cc98ddc14ad7e8310f990ca50f411a8ab98133603dae78c04",
+      "owners_before_sha256": "852c848b0fdde0199a62abc6997c7852c874f9842040b2dcea93f0fca4cc62c5",
+      "process": {
+        "command": [
+          "/data/users/ali/vla_wam/envs/cosmos-edge-a904d2d-v3-exact/bin/python",
+          "-m",
+          "experiments.workshops.spatial_grounding_v1.study_supervisor",
+          "run",
+          "--plan",
+          "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/loans/loan-20260925a/policy-plan.json",
+          "--plan-sha256",
+          "a3a3c1c1cdfcd00bd7c2136c087a6078b230a6aeace2fffd0afd2b0a93a1462b",
+          "--run-root",
+          "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/supervisors/e3-a40-loan-20260925a-policy-35c5e443-02c3-463b-aa32-f33e6e1c01c3",
+          "--supervisor-id",
+          "2efbd95b-b137-4d2d-8434-bd8b627d54c2",
+          "--seconds",
+          "1184331",
+          "--role",
+          "policy"
+        ],
+        "cwd": "/data/users/ali/sgw-01/current-20260924a/source-a94696d",
+        "pid": 16749,
+        "ppid": 1,
+        "process_start_identity": "151918700",
+        "started_at_unix": 1790321055.0
+      },
+      "role": "policy",
+      "source_commit": "a94696d3fa75c78a4f756536b988cead607e53b8",
+      "start": {
+        "bytes": 1544,
+        "path": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/supervisors/e3-a40-loan-20260925a-policy-35c5e443-02c3-463b-aa32-f33e6e1c01c3/start.json",
+        "sha256": "cac7c6a8804c6ccb44134e5068149ef94abe8b83fa1c96c3bb57efa9658b4825"
+      },
+      "status": "supervisor_started_not_an_inference_claim"
+    },
+    "simulator": {
+      "at_utc": "2026-09-25T07:23:52.618081Z",
+      "child_start": {
+        "bytes": 493,
+        "path": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/supervisors/e3-a40-loan-20260925a-simulator-dab91f41-8146-4b11-a256-a0d015151616/child-start.json",
+        "sha256": "7cf3b9468925c4e6a20a1c905be0f83025940aa74f7c54ec44692f4d52275abc"
+      },
+      "fresh_idle": {
+        "bytes": 669,
+        "path": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/loans/loan-20260925a/simulator-fresh-idle.json",
+        "sha256": "5927a8026b0d808e72dbdbc1707d3058a7c9cec05cd01e92857d17007c2142fd"
+      },
+      "owners_after": {
+        "schema_version": "sgw-01-storage-guard-owners-v1",
+        "supervisor_roots": [
+          "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/supervisors/n3-a40-r4-0-policy-fb61170f-6dc7-41b7-b6b8-c5dde70ed15e",
+          "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/supervisors/n3-a40-r4-0-simulator-2b78eb27-5cca-446d-b4ce-80107dd9a06f",
+          "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/supervisors/e3-a40-r4-0-policy-5c1e42a4-f9a8-417b-b944-a3377c2873ed",
+          "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/supervisors/e3-a40-r4-0-simulator-6bfa33ce-a436-4e9b-b2ba-66e39c056ed6",
+          "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/supervisors/f3-a40-r4-0-policy-48794e58-df43-4e08-8186-9d0540b4c9d0",
+          "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/supervisors/f3-a40-r4-0-simulator-7e964a21-4828-465a-992d-237b16f05c18",
+          "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/supervisors/n3-a40-r4-1-policy-a8bc0af8-016c-49bd-a0c9-2ac854703f8a",
+          "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/supervisors/n3-a40-r4-1-simulator-bd8a035c-b897-4769-af94-19912dc11127",
+          "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/supervisors/e3-a40-loan-20260925a-simulator-dab91f41-8146-4b11-a256-a0d015151616"
+        ]
+      },
+      "owners_after_sha256": "852c848b0fdde0199a62abc6997c7852c874f9842040b2dcea93f0fca4cc62c5",
+      "owners_before_sha256": "f5dc501fa8aeaf513d3adda9df57ca940290a560aa48d7d0c23ec4037eb7ef09",
+      "process": {
+        "command": [
+          "/data/users/ali/vla_wam/envs/robolab-v2-isaac50/bin/python",
+          "-m",
+          "experiments.workshops.spatial_grounding_v1.study_supervisor",
+          "run",
+          "--plan",
+          "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/loans/loan-20260925a/simulator-plan.json",
+          "--plan-sha256",
+          "6c8aa628d75055b3ce2b6ffd3f4b5ff52b4f0f724531bba5f79c8e2afecc9c83",
+          "--run-root",
+          "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/supervisors/e3-a40-loan-20260925a-simulator-dab91f41-8146-4b11-a256-a0d015151616",
+          "--supervisor-id",
+          "b6b1a625-0bfc-487c-94ee-bb118f124db7",
+          "--seconds",
+          "1184338",
+          "--role",
+          "simulator"
+        ],
+        "cwd": "/data/users/ali/sgw-01/current-20260924a/source-a94696d",
+        "pid": 26505,
+        "ppid": 1,
+        "process_start_identity": "149166406",
+        "started_at_unix": 1790321032.06
+      },
+      "role": "simulator",
+      "source_commit": "a94696d3fa75c78a4f756536b988cead607e53b8",
+      "start": {
+        "bytes": 1563,
+        "path": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/supervisors/e3-a40-loan-20260925a-simulator-dab91f41-8146-4b11-a256-a0d015151616/start.json",
+        "sha256": "28498f8f0826207b97c59861310a59fbb893675249c19259f33a2cdbc051425f"
+      },
+      "status": "supervisor_started_not_an_inference_claim"
+    }
+  },
+  "guardian_process": {
+    "pid": 4121,
+    "ppid": 1,
+    "process_start_identity": "150027267",
+    "started_at_unix": 1790298199.67,
+    "command": [
+      "/data/users/ali/vla_wam/envs/robolab-v2-isaac50/bin/python",
+      "-u",
+      "/data/users/ali/sgw-01/current-20260924a/deploy-storage-502d720/watch_study_storage.py",
+      "--cohort",
+      "/data/users/ali/sgw-01/current-20260924a/study-a40-v2",
+      "--owners-index",
+      "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/storage-guard/active-owners.json",
+      "--run-root",
+      "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/storage-guard/guard-502d7208-f732b6579b6946dd8b97de290f9d5359",
+      "--source-commit",
+      "502d720856c9f7a88dd37acb53255ae2388f5071",
+      "--implementation-sha256",
+      "9aeca327677c4cd097fd3624f626953d8fa3ac357d16423de57ee1af92b3855e",
+      "--seconds",
+      "1209600",
+      "--poll-seconds",
+      "60"
+    ],
+    "cwd": "/home/alia40q"
+  },
+  "guardian_heartbeat": {
+    "at_utc": "2026-09-25T07:25:35.101657Z",
+    "available_bytes": 150722964357120,
+    "available_inodes": 73255576,
+    "status": "watching",
+    "total_bytes": 219902325555200,
+    "total_inodes": 134217728
+  },
+  "guardian_exit": null,
+  "active_owner_index": {
+    "path": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/storage-guard/active-owners.json",
+    "sha256": "4155a5124305ab4cc98ddc14ad7e8310f990ca50f411a8ab98133603dae78c04",
+    "bytes": 1348
+  },
+  "active_lane_index": {
+    "path": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/active-lanes.json",
+    "sha256": "69696d1d23f9c7d1e2fb3d8eec66d862c0045b96a4a434e63f441d2b55f889a2",
+    "bytes": 5823
+  },
+  "lane_statuses": {
+    "n3-a40-r4-0": {
+      "at_utc": "2026-09-25T07:14:56.301725Z",
+      "partition": "N3-DIST-D",
+      "status": "running"
+    },
+    "e3-a40-r4-0": {
+      "at_utc": "2026-09-25T06:23:09.453637Z",
+      "partition": "E3-HEIGHT-D",
+      "status": "running"
+    },
+    "f3-a40-r4-0": {
+      "at_utc": "2026-09-25T06:43:31.164449Z",
+      "partition": "F3-DIST-D",
+      "status": "running"
+    },
+    "n3-a40-r4-1": {
+      "at_utc": "2026-09-25T07:25:13.724288Z",
+      "status": "waiting_for_stage_or_partition"
+    },
+    "e3-a40-loan-20260925a": {
+      "at_utc": "2026-09-25T07:24:22.428336Z",
+      "partition": "E3-DIST-D",
+      "status": "running"
+    }
+  },
+  "fleet_hold": null,
+  "coordinator_scripts": [
+    {
+      "path": "/data/users/ali/sgw-01/current-20260924a/deploy-loan-20260925a/prepare_boundary_loan.py",
+      "sha256": "c9f1cb4ec408238a0e3c004691af25839523ba3a2f412d871ee673c1e54395a6",
+      "bytes": 5710
+    },
+    {
+      "path": "/data/users/ali/sgw-01/current-20260924a/deploy-loan-20260925a/retire_boundary_lane.py",
+      "sha256": "ebde3fef8dc5c61939586ce6ee97a35898eeaf71d9d10401e7c334e4fa7c4488",
+      "bytes": 11262
+    },
+    {
+      "path": "/data/users/ali/sgw-01/current-20260924a/deploy-loan-20260925a/launch_boundary_loan.py",
+      "sha256": "f0100f6389ec933eebea6fbb3f9133e385f7accdf0e6b42074960f58338d5801",
+      "bytes": 5893
+    }
+  ],
+  "metadata_collector": {
+    "path": "/data/users/ali/sgw-01/current-20260924a/deploy-storage-502d720/study_progress_snapshot_v2.py",
+    "sha256": "941f6e1bcca4f05a62d8c668329768a101d0eefde5ee62f1bf471099e640836d",
+    "bytes": 6442
+  },
+  "preserved_retirement_error": {
+    "error": "Pinned RoboLab Python lacks os.pidfd_open; failed before any process signal or owner-index change.",
+    "resolved_by": "Existing base-image /usr/bin/python3 3.10.12 for CPU-only retirement coordination; all policy and simulator runtime interpreters unchanged."
+  },
+  "schema_version": "sgw-01-boundary-loan-execution-v1",
+  "status": "APPLIED_CONTROLLERS_STARTED_FIRST_ACTION_NOT_YET_OBSERVED",
+  "lane_pair": "o/p",
+  "from_policy_family": "F3",
+  "to_policy_family": "E3",
+  "completed_boundary_partition": "F3-HEIGHT-D",
+  "destination_claimable_partition": "E3-DIST-D",
+  "boundary_completed_at_utc": "2026-09-25T07:09:41.903574Z",
+  "old_supervisor_receipts": {
+    "policy": {
+      "command": [
+        "/data/users/ali/sgw-01/current-20260924a/envs/flux-e2dd1d8/bin/python",
+        "-m",
+        "experiments.workshops.spatial_grounding_v1.study_supervisor",
+        "run",
+        "--plan",
+        "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/inputs-a40-r4/f3-a40-r4-1-policy-plan.json",
+        "--plan-sha256",
+        "840c53cb915eafdfd9576b6bcb43e2b4cb502e46b0c7bbc339aae1922adacb74",
+        "--run-root",
+        "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/supervisors/f3-a40-r4-1-policy-85b94c4c-81a4-46c5-a667-57135af7a95b",
+        "--supervisor-id",
+        "a08bd2b8-d75c-47a2-815c-2560f7264684",
+        "--seconds",
+        "1209485",
+        "--role",
+        "policy"
+      ],
+      "deadline_seconds": 1209485,
+      "deadline_utc": "2026-10-09T00:22:55.400000+00:00",
+      "entrypoint": {
+        "path": "/data/users/ali/sgw-01/current-20260924a/source-a94696d/experiments/workshops/spatial_grounding_v1/study_supervisor.py",
+        "sha256": "b252174b6cd5ccb4d53090931d0a3b668c38b8e920c0334ac8e0051c3094597d"
+      },
+      "gpu_uuid": "GPU-b089ea9d-c01e-56de-f33f-5a0e71d3581a",
+      "pid": 3499,
+      "plan": {
+        "path": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/inputs-a40-r4/f3-a40-r4-1-policy-plan.json",
+        "sha256": "840c53cb915eafdfd9576b6bcb43e2b4cb502e46b0c7bbc339aae1922adacb74"
+      },
+      "pod_name": "211247-alia40o-a40-1gpu",
+      "pod_uid": "f9e72f20-4a39-4d7b-aa5f-838ba2d16330",
+      "process_start_identity": "149402240",
+      "role": "policy",
+      "schema": "sgw-01-existing-pod-supervisor-v1",
+      "source_commit": "a94696d3fa75c78a4f756536b988cead607e53b8",
+      "source_root": "/data/users/ali/sgw-01/current-20260924a/source-a94696d",
+      "started_at_utc": "2026-09-25T00:24:50.400000+00:00",
+      "supervisor_id": "a08bd2b8-d75c-47a2-815c-2560f7264684"
+    },
+    "simulator": {
+      "command": [
+        "/data/users/ali/vla_wam/envs/robolab-v2-isaac50/bin/python",
+        "-m",
+        "experiments.workshops.spatial_grounding_v1.study_supervisor",
+        "run",
+        "--plan",
+        "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/inputs-a40-r4/f3-a40-r4-1-simulator-plan.json",
+        "--plan-sha256",
+        "bc0d10dfbea137f2eac6f5c30bdaea6bea0adf3cbe6344f43c85d84eef9bc7c0",
+        "--run-root",
+        "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/supervisors/f3-a40-r4-1-simulator-41fe11b3-f4b2-4483-825a-6eaedb219091",
+        "--supervisor-id",
+        "abe96901-dc11-4daf-b9e1-feb389dbf7c6",
+        "--seconds",
+        "1209505",
+        "--role",
+        "simulator"
+      ],
+      "deadline_seconds": 1209505,
+      "deadline_utc": "2026-10-09T00:22:43.960000+00:00",
+      "entrypoint": {
+        "path": "/data/users/ali/sgw-01/current-20260924a/source-a94696d/experiments/workshops/spatial_grounding_v1/study_supervisor.py",
+        "sha256": "b252174b6cd5ccb4d53090931d0a3b668c38b8e920c0334ac8e0051c3094597d"
+      },
+      "gpu_uuid": "GPU-07dd8eee-ceb3-fb2b-0269-ec07cf5aab7c",
+      "pid": 3772,
+      "plan": {
+        "path": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/inputs-a40-r4/f3-a40-r4-1-simulator-plan.json",
+        "sha256": "bc0d10dfbea137f2eac6f5c30bdaea6bea0adf3cbe6344f43c85d84eef9bc7c0"
+      },
+      "pod_name": "211247-alia40p-a40-1gpu",
+      "pod_uid": "6f6089e8-77ab-46a4-9467-f89ec9aeff10",
+      "process_start_identity": "146649096",
+      "role": "simulator",
+      "schema": "sgw-01-existing-pod-supervisor-v1",
+      "source_commit": "a94696d3fa75c78a4f756536b988cead607e53b8",
+      "source_root": "/data/users/ali/sgw-01/current-20260924a/source-a94696d",
+      "started_at_utc": "2026-09-25T00:24:18.960000+00:00",
+      "supervisor_id": "abe96901-dc11-4daf-b9e1-feb389dbf7c6"
+    }
+  },
+  "old_simulator_quiescence": {
+    "observed_at_utc": "2026-09-25T07:16:44.389595+00:00",
+    "pod": "211247-alia40p-a40-1gpu",
+    "supervisor": {
+      "pid": 3772,
+      "ppid": 1,
+      "process_start_identity": "146649096",
+      "started_at_unix": 1790295858.96,
+      "command": [
+        "/data/users/ali/vla_wam/envs/robolab-v2-isaac50/bin/python",
+        "-m",
+        "experiments.workshops.spatial_grounding_v1.study_supervisor",
+        "run",
+        "--plan",
+        "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/inputs-a40-r4/f3-a40-r4-1-simulator-plan.json",
+        "--plan-sha256",
+        "bc0d10dfbea137f2eac6f5c30bdaea6bea0adf3cbe6344f43c85d84eef9bc7c0",
+        "--run-root",
+        "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/supervisors/f3-a40-r4-1-simulator-41fe11b3-f4b2-4483-825a-6eaedb219091",
+        "--supervisor-id",
+        "abe96901-dc11-4daf-b9e1-feb389dbf7c6",
+        "--seconds",
+        "1209505",
+        "--role",
+        "simulator"
+      ],
+      "cwd": "/data/users/ali/sgw-01/current-20260924a/source-a94696d"
+    },
+    "controller": {
+      "pid": 3784,
+      "ppid": 3772,
+      "process_start_identity": "146649138",
+      "started_at_unix": 1790295859.38,
+      "command": [
+        "/data/users/ali/vla_wam/envs/robolab-v2-isaac50/bin/python",
+        "-m",
+        "experiments.workshops.spatial_grounding_v1.remote_simulator_lane",
+        "--lane-identity",
+        "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/supervisors/f3-a40-r4-1-simulator-41fe11b3-f4b2-4483-825a-6eaedb219091/lane-identity.json",
+        "--lane-identity-sha256",
+        "434ee7c08ffd8be1f6d353bc76b143ce822638281b04c75e15e1b85ed65529e9",
+        "--deadline-seconds",
+        "1209504"
+      ],
+      "cwd": "/data/users/ali/sgw-01/current-20260924a/source-a94696d"
+    },
+    "owned_descendants": {
+      "3784": "146649138"
+    },
+    "pending_requests": [],
+    "gpu_readonly": "0, GPU-07dd8eee-ceb3-fb2b-0269-ec07cf5aab7c, NVIDIA A40, 0 MiB, 0 %\n"
+  },
+  "publication_observation": {
+    "observed_at_utc": "2026-09-25T07:28:02.239903+00:00",
+    "first_request_and_actions": null,
+    "boundary_completed_at_utc": "2026-09-25T07:09:41.903574Z",
+    "boundary_observer": {
+      "pid": 8142,
+      "ppid": 0,
+      "process_start_identity": "152328157",
+      "started_at_unix": 1790321208.57,
+      "command": [
+        "/data/users/ali/vla_wam/envs/robolab-v2-isaac50/bin/python",
+        "-u",
+        "/data/users/ali/sgw-01/current-20260924a/deploy-boundary-20260925a/watch_partition_boundary.py",
+        "--cohort",
+        "/data/users/ali/sgw-01/current-20260924a/study-a40-v2",
+        "--lane-index",
+        "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/active-lanes.json",
+        "--seconds",
+        "1209600"
+      ],
+      "cwd": "/home/alia40q"
+    },
+    "boundary_observer_source": {
+      "path": "/data/users/ali/sgw-01/current-20260924a/deploy-boundary-20260925a/watch_partition_boundary.py",
+      "sha256": "a296365ab46b73a10021c7556b5f630b1e5e399e75cc15d5f84a12871b3add80",
+      "bytes": 4338
+    },
+    "active_lane_index": {
+      "path": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/active-lanes.json",
+      "sha256": "69696d1d23f9c7d1e2fb3d8eec66d862c0045b96a4a434e63f441d2b55f889a2",
+      "bytes": 5823
+    },
+    "model_source_unchanged": true
+  },
+  "new_model_runtime_source": "a94696d3fa75c78a4f756536b988cead607e53b8",
+  "cpu_validation": [
+    "Destination E3 binding, interpreter and scientific environment preserved.",
+    "Reject an extra owned child, absent controller or changed start identity.",
+    "Rank claimable whole-stage work before remaining-model-cell tie-break.",
+    "Post-freeze ownership recheck closes the controller new-claim race.",
+    "Ten guardian owners exactly match the five-pair post-loan operational roster."
+  ],
+  "no_model_or_native_process_interrupted": true,
+  "old_policy_exit_interpretation": "Intentional quiescent controller SIGTERM; original negative15 receipt remains unchanged. This is not a new technical-invalid episode.",
+  "observation_limitation": "Supervisor start and partition claim do not establish inference. The bounded metadata-only first-request/action observer remains responsible for that witness."
+}

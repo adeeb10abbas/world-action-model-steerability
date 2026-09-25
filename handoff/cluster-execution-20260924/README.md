@@ -3,13 +3,13 @@
 The user separately authorized runtime integration, bounded checks, and the
 committed study on 24 September 2026. This supersedes the preparation-only
 permission recorded in the original delivery. **Genuine study execution is
-running on five A40 policy/simulator pairs.** At 2026-09-25 06:11 UTC,
-157 unique episodes were complete: N3 55/522, E3 42/522 and F3 60/522.
-These comprise all 54 pilots and 103 development episodes, with 156 valid model
+running on five A40 policy/simulator pairs.** At 2026-09-25 07:26 UTC,
+185 unique episodes were complete: N3 66/522, E3 49/522 and F3 70/522.
+These comprise all 54 pilots and 131 development episodes, with 184 valid model
 failures and one valid success; the five technical attempts remain separate.
 The frozen pilot barrier released development at 03:01:35.850529 UTC.
-See [the operational snapshot](progress-20260925-0610.json),
-[the current owner and boundary evidence](control-20260925-0612.json),
+See [the operational snapshot](progress-20260925-0730.json),
+[the applied boundary-loan evidence](lane-loan-20260925a.json),
 [the periodic timing/capacity report](report-20260925-0408.json) and
 [first valid episode evidence for every model](first-valid-study-episodes.json).
 The execution source is `a94696d3fa75c78a4f756536b988cead607e53b8`;
@@ -27,12 +27,54 @@ Sampled policy anon+shmem peaks were 3.757-5.320 GiB across the five lanes,
 with no OOM or OOM-kill events. The original technical attempts below are
 preserved separately, never relabeled.
 
-Current pairs are N3 i/m and l/n, E3 j/g, and F3 k/h and o/p (policy/simulator
+Current pairs are N3 i/m and l/n, E3 j/g and o/p, and F3 k/h (policy/simulator
 aliases). Pod q remains unclaimed for GPU work. Other A40/A100 queues and the
 protected B200 are untouched. Full 1,566-cell completion, final analysis and
 final-only local H.264 delivery remain pending. No local video transfer has
 started. Progress receipts are collected hourly; capacity can be reassigned
 only at a verified quiescent boundary without losing an in-flight attempt.
+
+**First approved lane loan applied at 07:23 UTC:** o/p changed from F3 to E3
+after its intact `F3-HEIGHT-D` boundary completed at 07:09:41.903574 UTC.
+The observer's earlier N3 suggestion was only a hint: fresh inspection found
+`N3-DIST-D` already owned and `E3-DIST-D` the only remaining unclaimed D
+partition. The destination uses E3's own frozen binding, interpreter and
+runtime environment with unchanged model execution source `a94696d`.
+
+Both old owners had no worker/native child or pending simulator request.
+The policy controller was briefly frozen using its exact pidfd, then its
+owned tree was checked again to close the new-claim race. The guardian index
+excluded the two retiring owners before a completed guardian observation and
+their intentional retirement. The policy's original negative-15 terminal
+receipt and the simulator's clean zero exit are preserved; no in-flight model
+or native process was interrupted and no technical-invalid episode was added.
+The pinned RoboLab Python lacked the coordinator-only pidfd API; that first
+CPU invocation failed before any signal or index change. The existing base
+image Python supplied the API; model and simulator interpreters did not change.
+
+Fresh idle UUID checks, new immutable plans/control roots and exact new
+supervisor identities admitted E3 on the same o/p GPUs. Guardian ownership
+transitioned from 10 to 8 to 9 to 10 watched owners, without restarting the
+guardian or clearing a hold. At 07:28, the new controllers had claimed
+`E3-DIST-D`, but a first request/action witness had not yet been observed.
+This is a controller launch, not a claim of completed inference.
+The other four pairs were not restarted or reassigned.
+
+**Current monitoring inputs:** use
+`study-a40-v2/active-lanes.json`, not the frozen initial-lane index, and
+`deploy-storage-502d720/study_progress_snapshot_v2.py --lane-index
+/data/users/ali/sgw-01/current-20260924a/study-a40-v2/active-lanes.json`.
+The original metadata collector remains preserved. The boundary observer
+completed its notification and was rearmed against the new index as PID 8142,
+start identity `152328157`, using the same `sgw-boundary-loan-watch` handle.
+The first-action observer `sgw-loan-first-action-20260925a` only reads metadata;
+it never sends an inference request. Further progress must use the new
+roster so the intentionally retired F3 owners are not reported as live failures.
+
+The 07:26 snapshot has three unfinished attempts; the fourth active partition
+is the newly started E3 loan, and one N3 lane waits for a claimable partition.
+There is no fleet hold or new technical attempt. Isolated expansion still
+awaits the parent's recreated-Pod-name relay; shared a-f remain excluded.
 
 **06:11 UTC progress:** 34 additional completions since 05:09 correspond to
 33.03 episodes/hour, with 516 additional dispatched requests and 15,509
@@ -61,7 +103,8 @@ recreate or bind them. Verify the new actual Pod identities, exactly one
 visible idle GPU and a fresh PVC-only check, then use unchanged `a94696d`
 admission and the selected policy's frozen binding at an intact partition
 boundary. Choose the model with the most remaining claimable work.
-q's CPU guardian and all existing lanes remain unchanged.
+q's CPU guardian and the existing physical allocations remain unchanged;
+the separately approved model-family boundary loans still apply.
 
 **Permanent stand-down on shared a-f:** no further diagnostics, retries or
 study launches there. The parent reported that the user's replacement
@@ -226,7 +269,7 @@ one second. Each partition also spent 187-337 s on final full re-verification
 and cleanup. Existing receipts cannot isolate NFS write time from the
 379-463 s combined inference/physics/transport/recording interval.
 
-No throughput change has been deployed. The preferred proposal is a loan of
+No throughput change had been deployed at that timing snapshot. The preferred proposal was a loan of
 a quiescent lane to E3 at an intact partition boundary, preserving the stage
 barriers, frozen bindings and every in-flight attempt. Replaying the existing
 pilot timing with the idle F3 lane taking E3-DIST would have released the
