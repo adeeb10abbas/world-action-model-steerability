@@ -27,6 +27,37 @@ final-only local H.264 delivery remain pending. No local video transfer has
 started. Progress receipts are collected hourly; capacity can be reassigned
 only at a verified quiescent boundary without losing an in-flight attempt.
 
+**Storage retention:** the
+[metadata-only capacity sanity check](storage-capacity-sanity.json) reuses
+three completed 450-action manifests; it reads no raw arrays/videos and runs
+no new inference or recursive scan. The largest recorded attempt occupies
+7.953 GiB of manifest-accounted raw masters. The conservative one-attempt plan
+requires 36.833 TiB including native-output allowance, all later viewing
+copies, margin and the original 100 GiB reserve; preserving the new 20 TiB
+export floor requires 56.735 TiB available at that snapshot. The export
+reported 139.184 TiB and 74.841 million inodes available. The planned inode
+envelope is 18.223 million.
+
+The PVC's 2 Ti declaration is not the export-wide enforcement boundary
+(the observed export already holds more than 61 TiB). A per-UID/GID server
+quota remains unverified; the current coordinator explicitly authorized
+proceeding on the shared export, not a storage-owner quota attestation.
+`tools/watch_study_storage.py` supplies an independent finite CPU guardian:
+it samples every 60 seconds and publishes the existing fleet hold when free
+space is **below 20 TiB** or free inodes are **below 5,000,000**. Active attempts
+finish; no new claims start after the hold becomes visible. Stale/failed
+watched owners also hold the fleet, including failures whose quota prevented
+normal receipts. A preallocated hold inode supports EDQUOT/ENOSPC control
+publication. Nothing is deleted, downsampled or downloaded early.
+
+Four-hour footprint reports use finalized manifest-accounted logical bytes,
+including technical attempts, and identify unindexed native/in-flight bytes
+as unmeasured with a separate engineering allowance. They are not presented
+as a full allocated-disk census. Before intentional lane retirement or
+replacement, update the guardian's operational active-owner index so a
+deliberately stopped owner is not mistaken for an infrastructure failure.
+The guardian never changes the running model source or clears a hold.
+
 **Preserved hold and repair:** the first five A40 attempts completed 15 genuine
 requests and 450 physical actions each: 75 requests and 2,250 actions total.
 All five native simulator children exited zero with their process groups

@@ -1,0 +1,297 @@
+{
+  "assumptions": [
+    "All1566 future cells charged conservatively without subtracting already completed cells.",
+    "Full450-action episodes and15 requests; partial/censored attempts cannot increase these protocol caps.",
+    "One additional complete raw-master volume is reserved for unindexed native outputs and allocation overhead; this is an engineering allowance, not a measured native-directory footprint.",
+    "Derivative cap is twice retained viewport RGB bytes plus decoded forecast RGB bytes, plus1MiB per each of16 videos, following the existing encoder cap; no compression ratio is assumed.",
+    "All raw masters coexist with viewing copies; five already-preserved technical attempts receive an extra derivative reserve.",
+    "50percent extra nonmanifest objects plus34 viewing objects per attempt,25percent margin and10000 fixed objects bound inode demand.",
+    "4698 is the protocol-ceiling stress estimate, not a request to run4698 attempts.",
+    "Shared-team free space can change; no per-UID quota guarantee is inferred from statvfs."
+  ],
+  "authority": {
+    "parent_session": "c230f3cd-3fe9-4f1f-9ee4-e8b857151a60",
+    "scope": "Keep all raw masters, no early downloads, no recording downgrade; report study footprint every~4hours",
+    "type": "current_orchestrator_direction_not_storage_owner_attestation"
+  },
+  "cases": [
+    {
+      "additional_native_output_allowance_bytes": 13373555213628,
+      "attempt_count": 1566,
+      "derivative_size_cap_bytes": 5551121521152,
+      "growth_including_25_percent_margin_and_existing_failed_attempt_derivatives": 40390513822870,
+      "inode_budget_including_50_percent_unindexed_allowance_and_25_percent_margin": 18222580,
+      "raw_master_bytes": 13373555213628,
+      "requirement_preserving_20_tib_export_floor": 62380746378390,
+      "requirement_with_100_gib_operational_reserve": 40497888005270,
+      "visible_byte_headroom_after_requirement_and_20_tib_floor": 90653883462506,
+      "visible_inode_headroom_after_requirement": 56618117
+    },
+    {
+      "additional_native_output_allowance_bytes": 40120665640884,
+      "attempt_count": 4698,
+      "derivative_size_cap_bytes": 16653364563456,
+      "growth_including_25_percent_margin_and_existing_failed_attempt_derivatives": 121136093693890,
+      "inode_budget_including_50_percent_unindexed_allowance_and_25_percent_margin": 54647740,
+      "raw_master_bytes": 40120665640884,
+      "requirement_preserving_20_tib_export_floor": 143126326249410,
+      "requirement_with_100_gib_operational_reserve": 121243467876290,
+      "visible_byte_headroom_after_requirement_and_20_tib_floor": 9908303591486,
+      "visible_inode_headroom_after_requirement": 20192957
+    }
+  ],
+  "decision": "Proceed with one-attempt-per-cell plan under current coordinator-relayed shared-export authority, with20TiB/5M-inode guardian and N=1 EDQUOT/ENOSPC hold",
+  "filesystem_observation": {
+    "filesystem": {
+      "available_bytes": 153034629840896,
+      "available_inodes": 74840697,
+      "fragment_size": 524288,
+      "free_bytes": 153034629840896,
+      "free_inodes": 74840697,
+      "total_bytes": 219902325555200,
+      "total_inodes": 134217728
+    },
+    "gid": 2518800,
+    "mounts": [
+      "7698 7697 0:522 / /data rw,noatime - nfs dcwipvfhpc033.edc.nam.gm.com:/gmscr02/data/aisw01/nbak/00211247 rw,vers=3,rsize=131072,wsize=524288,namlen=255,hard,noacl,proto=tcp,timeo=600,retrans=2,sec=sys,mountaddr=10.206.128.63,mountvers=3,mountport=46397,mountproto=tcp,local_lock=none,addr=10.206.128.63"
+    ],
+    "observed_at_utc": "2026-09-25T00:48:16.751435+00:00",
+    "path": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2",
+    "uid": 816149040,
+    "user_quota_query": {
+      "reason": "quota executable is not installed; no quota value inferred from filesystem totals",
+      "status": "unavailable"
+    }
+  },
+  "guard": {
+    "comparison": "hold strictly below either threshold",
+    "edquot_enospc": "N=1 hold; never delete originals or disable recording",
+    "in_flight_attempts": "finish and preserve; no replay",
+    "minimum_free_bytes": 21990232555520,
+    "minimum_free_inodes": 5000000,
+    "new_claims": "existing fleet-hold.json",
+    "poll_seconds": 60
+  },
+  "measurement_scope": {
+    "metadata_manifests_read": 3,
+    "new_inference_or_scene_runs": 0,
+    "note": "Reuses completed450-action/15-request episodes, avoiding extrapolation from the shorter64-action qualification gate",
+    "raw_array_or_video_reads": 0,
+    "recursive_filesystem_scans": 0
+  },
+  "namespace_resource_quota_count": 0,
+  "per_attempt_envelope": {
+    "encoder_cap_bytes": 3544777472,
+    "maximum_decoded_future_rgb_bytes_per15_requests": 517017600,
+    "maximum_manifested_files_and_directories": 6180,
+    "maximum_manifested_master_bytes_including_manifest": 8539945858,
+    "viewing_copy_count": 16,
+    "viewport_frame_bytes_including_npy_headers": 1246982528
+  },
+  "pv_detail_read": "RBAC forbidden; not retried",
+  "pvc": {
+    "declared_capacity": "2Ti",
+    "declared_request": "2Ti",
+    "name": "211247-prod-pvc",
+    "pv": "211247-prod-pv",
+    "storage_class": null,
+    "uid": "535f884e-3add-4d0b-ae6c-ba6cb0cc3c98"
+  },
+  "quota_status": "Per-UID/GID server quota unverified; visible NFS export exceeds declarative2Ti PVC capacity",
+  "recorded_at_utc": "2026-09-25T00:59:46.443788+00:00",
+  "samples": [
+    {
+      "artifact_bytes": 8500787966,
+      "artifact_directories": 28,
+      "artifact_files": 6136,
+      "groups": {
+        "actions": {
+          "bytes": 72000,
+          "files": 450
+        },
+        "events.jsonl": {
+          "bytes": 362,
+          "files": 1
+        },
+        "intent.json": {
+          "bytes": 986,
+          "files": 1
+        },
+        "observations": {
+          "bytes": 1246982528,
+          "files": 451
+        },
+        "predictions": {
+          "bytes": 631686069,
+          "files": 120
+        },
+        "request_index.jsonl": {
+          "bytes": 6515,
+          "files": 1
+        },
+        "result.json": {
+          "bytes": 5257708,
+          "files": 1
+        },
+        "run-admission.json": {
+          "bytes": 1959,
+          "files": 1
+        },
+        "simulator": {
+          "bytes": 5363099605,
+          "files": 4207
+        },
+        "states": {
+          "bytes": 5531794,
+          "files": 451
+        },
+        "videos": {
+          "bytes": 1248148440,
+          "files": 452
+        }
+      },
+      "manifest_bytes": 6105349,
+      "manifest_path": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/attempts/LAT-P01-N3-I-POS/attempt-002/manifest.json",
+      "manifest_sha256": "1ecc351bfecae5b28cba064fb5b9ea5d4576562cbff615e77ee7ca01360f7532",
+      "model": "N3",
+      "prediction_request_count": 15,
+      "viewport_metadata": {
+        "bytes": 1165912,
+        "fps": 15.0,
+        "frame_count": 451,
+        "path": "videos/viewport.mp4",
+        "sha256": "105317fca84dac9239441a02cc20e13f81cafe5bcdceb882f9762152e43b40fb"
+      },
+      "viewport_raw_frame_bytes_including_npy_headers": 1246982528
+    },
+    {
+      "artifact_bytes": 8500830709,
+      "artifact_directories": 28,
+      "artifact_files": 6136,
+      "groups": {
+        "actions": {
+          "bytes": 72000,
+          "files": 450
+        },
+        "events.jsonl": {
+          "bytes": 362,
+          "files": 1
+        },
+        "intent.json": {
+          "bytes": 986,
+          "files": 1
+        },
+        "observations": {
+          "bytes": 1246982528,
+          "files": 451
+        },
+        "predictions": {
+          "bytes": 631661130,
+          "files": 120
+        },
+        "request_index.jsonl": {
+          "bytes": 6515,
+          "files": 1
+        },
+        "result.json": {
+          "bytes": 5232157,
+          "files": 1
+        },
+        "run-admission.json": {
+          "bytes": 1959,
+          "files": 1
+        },
+        "simulator": {
+          "bytes": 5363074299,
+          "files": 4207
+        },
+        "states": {
+          "bytes": 5506235,
+          "files": 451
+        },
+        "videos": {
+          "bytes": 1248292538,
+          "files": 452
+        }
+      },
+      "manifest_bytes": 6079798,
+      "manifest_path": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/attempts/LAT-P01-E3-I-POS/attempt-002/manifest.json",
+      "manifest_sha256": "0aaaf5671b932d981af961155ba044148d6d61561ef7b9f18551237997e131dc",
+      "model": "E3",
+      "prediction_request_count": 15,
+      "viewport_metadata": {
+        "bytes": 1310010,
+        "fps": 15.0,
+        "frame_count": 451,
+        "path": "videos/viewport.mp4",
+        "sha256": "edd3a2e6d8c468c9823f8279d8d15cb32498fbb955fe3c6d82542e14154aae50"
+      },
+      "viewport_raw_frame_bytes_including_npy_headers": 1246982528
+    },
+    {
+      "artifact_bytes": 8533844132,
+      "artifact_directories": 28,
+      "artifact_files": 6151,
+      "groups": {
+        "actions": {
+          "bytes": 72000,
+          "files": 450
+        },
+        "events.jsonl": {
+          "bytes": 362,
+          "files": 1
+        },
+        "intent.json": {
+          "bytes": 986,
+          "files": 1
+        },
+        "observations": {
+          "bytes": 1246982528,
+          "files": 451
+        },
+        "predictions": {
+          "bytes": 664536226,
+          "files": 135
+        },
+        "request_index.jsonl": {
+          "bytes": 6515,
+          "files": 1
+        },
+        "result.json": {
+          "bytes": 5251925,
+          "files": 1
+        },
+        "run-admission.json": {
+          "bytes": 1959,
+          "files": 1
+        },
+        "simulator": {
+          "bytes": 5363092971,
+          "files": 4207
+        },
+        "states": {
+          "bytes": 5526013,
+          "files": 451
+        },
+        "videos": {
+          "bytes": 1248372647,
+          "files": 452
+        }
+      },
+      "manifest_bytes": 6101726,
+      "manifest_path": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/attempts/LAT-P01-F3-I-POS/attempt-002/manifest.json",
+      "manifest_sha256": "2ce74af7e486c259a193a07e7b637f19c667d2a62f71e6e294afb3113c833607",
+      "model": "F3",
+      "prediction_request_count": 15,
+      "viewport_metadata": {
+        "bytes": 1390119,
+        "fps": 15.0,
+        "frame_count": 451,
+        "path": "videos/viewport.mp4",
+        "sha256": "9cb146c4b15bd56a49417ce3b4d21db5ca897547764515764118abf21fee577c"
+      },
+      "viewport_raw_frame_bytes_including_npy_headers": 1246982528
+    }
+  ],
+  "schema_version": "sgw-01-storage-capacity-sanity-v1"
+}
