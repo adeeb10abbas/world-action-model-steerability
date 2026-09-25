@@ -1,0 +1,91 @@
+{
+  "schema_version": "sgw-01-general-lane-loan-authorization-v1",
+  "received_at_utc": "2026-09-25T03:07:45.900Z",
+  "status": "approved",
+  "authority": {
+    "kind": "current_orchestrator_instruction",
+    "parent_project_session_id": "c230f3cd-3fe9-4f1f-9ee4-e8b857151a60",
+    "instruction": "At any intact partition boundary, a quiescent lane may restart as the policy for whichever family has the most remaining claimable work.",
+    "later_stage_barriers_included": true
+  },
+  "execution_source_commit": "a94696d3fa75c78a4f756536b988cead607e53b8",
+  "cohort_root": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2",
+  "policy_families": ["N3", "E3", "F3"],
+  "scene_families": ["LAT", "HEIGHT", "DIST"],
+  "constraints": {
+    "hardware": "NVIDIA A40",
+    "same_execution_source_required": true,
+    "destination_policy_own_frozen_binding_required": true,
+    "intact_partition_boundary_required": true,
+    "no_in_flight_attempt_required": true,
+    "no_owned_worker_or_native_child_required": true,
+    "verified_controller_retirement_required": true,
+    "fresh_pod_process_gpu_uuid_and_exclusive_lock_checks_required": true,
+    "guardian_active_owner_index_must_be_updated_before_intentional_retirement": true,
+    "new_immutable_plans_and_identity_receipts_required": true,
+    "interrupt_in_flight_work": false,
+    "replay_completed_cells": false,
+    "change_stage_barriers": false,
+    "change_simulator_lifecycle": false,
+    "change_prompts_scoring_splits_or_matching": false
+  },
+  "loan_receipt_required_fields": [
+    "lane",
+    "from_policy_family",
+    "to_policy_family",
+    "completed_boundary_partition",
+    "destination_claimable_partition",
+    "decision_time_utc",
+    "remaining_claimable_work_by_policy_family",
+    "old_supervisor_identities_and_terminal_receipts",
+    "new_supervisor_identities_and_launch_receipts",
+    "physical_gpu_uuids",
+    "guardian_owner_index_before_and_after",
+    "execution_source_commit",
+    "frozen_binding_references"
+  ],
+  "applied_loans_at_authorization": 0,
+  "remaining_frozen_barriers": {
+    "D_to_C": {
+      "required_development_completions": 216,
+      "required_development_partitions": 9,
+      "cumulative_unique_completions": 270,
+      "scope": "All models and all scene families; not dependent on favorable behavior."
+    },
+    "within_C": {
+      "new_global_stage_barriers": 0,
+      "confirmation_episodes": 1296,
+      "confirmation_partitions": 9,
+      "episodes_per_intact_partition": 144,
+      "six_condition_blocks_remain_intact": true
+    },
+    "final_analysis": {
+      "required_unique_cell_accounting": 1566,
+      "required_authoritative_partitions": 27,
+      "required": "Explicit authoritative release index, completion/attempt accounting and artifact validation before final global analysis.",
+      "technical_missingness_must_not_be_scored_zero": true
+    },
+    "final_local_delivery": {
+      "early_download_allowed": false,
+      "required": "Full study/output accounting, verified derivative geometry/frame counts/PTS and hashes, and sufficient local capacity."
+    }
+  },
+  "continuous_operational_guards": [
+    "Immutable source, model configuration and release/admission identities.",
+    "Exclusive physical GPU and partition ownership, finite owner deadlines and verified process-tree drain.",
+    "Existing measured-pilot runtime/storage admission plus20TiB/5M-inode guardian floors.",
+    "N=1 infrastructure-failure hold; no automatic hold clearing, retries or successful-result replay."
+  ],
+  "scientific_freeze": {
+    "behavioral_confirmation": "Preserve existing prompts, scorer, condition matching, model settings, A40 cohort and analysis plan.",
+    "physical_forecast_scoring": "Unavailable: no qualified camera/time mapping or frozen physical forecast horizon. This blocks forecast claims, not valid behavioral confirmation.",
+    "semantic_forecast_claims": "Unavailable without the separately required decoder validation; do not launch new rendering or inference tests from this authorization.",
+    "equivalence_claims": "No positive equivalence claim without the prospectively specified valid procedure; retain the existing safeguard."
+  },
+  "next_four_hour_report": [
+    "Completed unique episodes/522 for each of N3, E3 and F3.",
+    "Finalized manifest-accounted footprint, separately labeled unmeasured native/in-flight bytes and current capacity.",
+    "Projected collection ETA conditional on observed per-model episode/partition timing and claimable whole partitions; derivative/delivery time separate.",
+    "Remaining frozen barriers and every actual lane loan."
+  ]
+}

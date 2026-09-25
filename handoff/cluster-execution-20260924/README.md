@@ -89,9 +89,39 @@ pilot timing with the idle F3 lane taking E3-DIST would have released the
 barrier **32 min 34 s earlier**, conditional on unchanged recorded costs.
 Resident-simulator work could save at most 53-57 s per episode before
 subtracting still-required physical reset work; it is not a 2.4x remedy and
-requires a prospective lifecycle change. Both remain subject to new approval.
+requires a prospective lifecycle change and remains unapproved.
 The missed hourly receipt was not backfilled: the next actual snapshot was
 captured at 03:02, and hourly monitoring is re-armed.
+
+**General lane loans approved at 03:07 UTC:** the
+[current authorization](lane-loan-authorization.json) allows an idle A40 pair
+to restart for N3, E3 or F3, whichever has the most remaining claimable work,
+at an intact partition boundary. Here "policy family" means N3/E3/F3, not the
+LAT/HEIGHT/DIST scene family. Use unchanged execution source `a94696d` and
+the destination policy's own frozen binding. First verify no in-flight attempt
+or owned worker/native child, then retire the old controllers with exact
+identities and preserve their terminal receipts. Prevent a new-claim race;
+never infer quiescence from low GPU utilization or a stale lane status.
+Update the guardian's owner index before intentional retirement, use new
+immutable control/launch identities, and record the lane, from/to policy
+family, completed boundary and selected claimable work. No loan has occurred
+at the authorization snapshot; it does not change any running plan.
+A [metadata-only boundary observer](lane-boundary-observer-start.json) on q
+notifies this coordinator about possible eligibility. It is not another
+launcher and cannot substitute for fresh quiescence or lock checks.
+
+The remaining global execution barrier is **all 216 development episodes
+(nine D partitions; 270 cumulative P+D cells) before any confirmation**.
+There is no further global stage barrier within the 1,296 confirmation
+episodes, but nine whole 144-cell partitions and their six-condition blocks
+remain intact. Final analysis requires all 1,566 cells and the explicit 27
+authoritative release identities with complete accounting; final local video
+delivery remains gated on full study/output accounting, verified derivatives
+and local capacity. Resource/ownership checks and the N=1/storage holds remain
+continuous. Missing forecast camera/time alignment and semantic validation
+block prediction claims, not genuine behavioral episodes. The next roughly
+four-hour report will include these barriers, completed/522 for each policy
+family, footprint, recorded loans and a timing-based conditional ETA.
 
 **Preserved hold and repair:** the first five A40 attempts completed 15 genuine
 requests and 450 physical actions each: 75 requests and 2,250 actions total.

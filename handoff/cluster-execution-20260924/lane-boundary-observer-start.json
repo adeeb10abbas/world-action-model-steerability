@@ -1,0 +1,37 @@
+{
+  "actual_loans": 0,
+  "authorization": {
+    "path": "/data/users/ali/sgw-01/current-20260924a/deploy-boundary-20260925a/lane-loan-authorization.json",
+    "sha256": "abc57bb0cdb4a2f317665ff58f621eca43ed1fced2ae30939e46accf8c84156d"
+  },
+  "bash_shell_id": "sgw-boundary-loan-watch",
+  "maximum_observer_lifetime_seconds": 1209600,
+  "notification_lifetime": "Attached to this app session; existing study supervisors and storage guardian remain independently durable.",
+  "observed_at_utc": "2026-09-25T03:14:19.748143+00:00",
+  "pod": "211247-alia40q-a40-1gpu",
+  "poll_seconds": 60,
+  "process": {
+    "pid": 4280,
+    "command": [
+      "/data/users/ali/vla_wam/envs/robolab-v2-isaac50/bin/python",
+      "-u",
+      "/data/users/ali/sgw-01/current-20260924a/deploy-boundary-20260925a/watch_partition_boundary.py",
+      "--cohort",
+      "/data/users/ali/sgw-01/current-20260924a/study-a40-v2",
+      "--lane-index",
+      "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/inputs-a40-r4/initial-lanes.json",
+      "--seconds",
+      "1209600"
+    ],
+    "cwd": "/home/alia40q",
+    "ppid": 0,
+    "process_start_identity": "150805581",
+    "started_at_unix": 1790305982.81
+  },
+  "schema_version": "sgw-01-read-only-boundary-observer-v1",
+  "scope": "Metadata-only eligibility hints; never stops or launches. Sole coordinator must verify quiescence, claims and fresh identities before an actual loan.",
+  "script": {
+    "path": "/data/users/ali/sgw-01/current-20260924a/deploy-boundary-20260925a/watch_partition_boundary.py",
+    "sha256": "a296365ab46b73a10021c7556b5f630b1e5e399e75cc15d5f84a12871b3add80"
+  }
+}
