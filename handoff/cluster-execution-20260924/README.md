@@ -3,10 +3,13 @@
 The user separately authorized runtime integration, bounded checks, and the
 committed study on 24 September 2026. This supersedes the preparation-only
 permission recorded in the original delivery. **Genuine study execution is
-running on five A40 policy/simulator pairs.** All 54 pilot episodes were
-complete at 2026-09-25 03:02 UTC; the frozen pilot barrier released development
-startup at 03:01:35.850529 UTC. All 54 were valid model failures.
-See [the operational snapshot](progress-20260925-0302.json) and
+running on five A40 policy/simulator pairs.** At 2026-09-25 04:08 UTC,
+87 unique episodes were complete: N3 30/522, E3 26/522 and F3 31/522.
+These comprise all 54 pilots and 33 development episodes, with 86 valid model
+failures and one valid success; the five technical attempts remain separate.
+The frozen pilot barrier released development at 03:01:35.850529 UTC.
+See [the operational snapshot](progress-20260925-0408.json),
+[the periodic timing/capacity report](report-20260925-0408.json) and
 [first valid episode evidence for every model](first-valid-study-episodes.json).
 The execution source is `a94696d3fa75c78a4f756536b988cead607e53b8`;
 receipt-only commits do not change the running source or materialization.
@@ -29,6 +32,29 @@ protected B200 are untouched. Full 1,566-cell completion, final analysis and
 final-only local H.264 delivery remain pending. No local video transfer has
 started. Progress receipts are collected hourly; capacity can be reassigned
 only at a verified quiescent boundary without losing an in-flight attempt.
+
+**04:08 UTC progress:** 33 additional completions since 03:02 correspond to
+30.03 episodes/hour across the fleet, with 532 additional dispatched requests
+and 15,919 additional recorded actions. All five pairs had real requests and
+actions in flight; no lane was quiescent or loaned and no fleet hold existed.
+The independently running guardian retained its verified process identity.
+Its latest heartbeat reported 138.245 TiB and 74.221 million inodes available.
+Finalized manifests accounted for 729.992 GiB across 92 attempts, including
+the five technical attempts. Actual unindexed native and in-flight bytes
+remain unmeasured, with separate engineering allowances in the receipt.
+
+The current conditional collection projection is **about 56 hours remaining,
+around 27 September 12:02 UTC**, assuming approved whole-partition loans,
+unchanged observed costs and no infrastructure failures. It includes model
+startup, per-episode publication, scaled partition re-verification and the
+global D-to-C barrier; it does not simply divide by inference latency.
+Without loans the same calculation gives about 67 hours remaining.
+Confirmation-scene timing and future storage contention are unmeasured:
+a uniform 25% slowdown would increase the loaned estimate to about 70 hours.
+Final artifact revalidation, analysis, encoding and final-only local transfer
+are additional and currently unestimated, not included in that collection ETA.
+Projected loans in the report are simulation assumptions, not actual changes
+or instructions to claim a particular partition.
 
 **Storage retention:** the
 [metadata-only capacity sanity check](storage-capacity-sanity.json) reuses

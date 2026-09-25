@@ -1,0 +1,1010 @@
+{
+  "active_owner_index": {
+    "reference": {
+      "bytes": 1328,
+      "path": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/storage-guard/active-owners.json",
+      "sha256": "3c828546282c6ee4be8cad57fa8c498a2796247ced86e7d6b126011b67c71389"
+    },
+    "value": {
+      "schema_version": "sgw-01-storage-guard-owners-v1",
+      "supervisor_roots": [
+        "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/supervisors/n3-a40-r4-0-policy-fb61170f-6dc7-41b7-b6b8-c5dde70ed15e",
+        "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/supervisors/n3-a40-r4-0-simulator-2b78eb27-5cca-446d-b4ce-80107dd9a06f",
+        "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/supervisors/e3-a40-r4-0-policy-5c1e42a4-f9a8-417b-b944-a3377c2873ed",
+        "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/supervisors/e3-a40-r4-0-simulator-6bfa33ce-a436-4e9b-b2ba-66e39c056ed6",
+        "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/supervisors/f3-a40-r4-0-policy-48794e58-df43-4e08-8186-9d0540b4c9d0",
+        "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/supervisors/f3-a40-r4-0-simulator-7e964a21-4828-465a-992d-237b16f05c18",
+        "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/supervisors/n3-a40-r4-1-policy-a8bc0af8-016c-49bd-a0c9-2ac854703f8a",
+        "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/supervisors/n3-a40-r4-1-simulator-bd8a035c-b897-4769-af94-19912dc11127",
+        "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/supervisors/f3-a40-r4-1-policy-85b94c4c-81a4-46c5-a667-57135af7a95b",
+        "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/supervisors/f3-a40-r4-1-simulator-41fe11b3-f4b2-4483-825a-6eaedb219091"
+      ]
+    }
+  },
+  "boundary_observer": {
+    "pid": 4280,
+    "process": {
+      "command": [
+        "/data/users/ali/vla_wam/envs/robolab-v2-isaac50/bin/python",
+        "-u",
+        "/data/users/ali/sgw-01/current-20260924a/deploy-boundary-20260925a/watch_partition_boundary.py",
+        "--cohort",
+        "/data/users/ali/sgw-01/current-20260924a/study-a40-v2",
+        "--lane-index",
+        "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/inputs-a40-r4/initial-lanes.json",
+        "--seconds",
+        "1209600"
+      ],
+      "cwd": "/home/alia40q",
+      "ppid": 0,
+      "process_start_identity": "150805581",
+      "started_at_unix": 1790305982.81
+    }
+  },
+  "completed_development_timing": [
+    {
+      "cell_id": "HEIGHT-D01-F3-C-NEG",
+      "completion_pointer_file_mtime": 1790306810.2136261,
+      "family": "HEIGHT",
+      "intent_created": 1790306220.280974,
+      "model": "F3",
+      "operation": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/operations/f3-a40-r4-1-HEIGHT-D-74a6f37ed2fb41c08d66ea7e7ddb9480",
+      "pointer_reference": {
+        "bytes": 518,
+        "path": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/cells/HEIGHT-D01-F3-C-NEG.complete.json",
+        "sha256": "d4c8a24b7a2773a146fe90aab0982f52643f6c8ff0ee25693d9f3dfb7466af1f"
+      },
+      "result_completed": 1790306707.839179,
+      "result_reference": {
+        "bytes": 6027887,
+        "path": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/attempts/HEIGHT-D01-F3-C-NEG/attempt-001/result.json",
+        "sha256": "89c868d6e2bb2a49bd18f7390f26f622af317ee42bbd3f9e920d2e7baad01eb4"
+      },
+      "status": "valid_model_failure"
+    },
+    {
+      "cell_id": "HEIGHT-D01-F3-C-POS",
+      "completion_pointer_file_mtime": 1790308432.1187828,
+      "family": "HEIGHT",
+      "intent_created": 1790307899.867872,
+      "model": "F3",
+      "operation": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/operations/f3-a40-r4-1-HEIGHT-D-74a6f37ed2fb41c08d66ea7e7ddb9480",
+      "pointer_reference": {
+        "bytes": 518,
+        "path": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/cells/HEIGHT-D01-F3-C-POS.complete.json",
+        "sha256": "95acf21fbaea2628fb93e1ba32ef7bbda228206f07e780f90fc3cce928679d9e"
+      },
+      "result_completed": 1790308396.301908,
+      "result_reference": {
+        "bytes": 6050739,
+        "path": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/attempts/HEIGHT-D01-F3-C-POS/attempt-001/result.json",
+        "sha256": "17cd378479bdd585940594f2be493dd49e2efc66e788dccf63d7f64d36abc168"
+      },
+      "status": "valid_model_failure"
+    },
+    {
+      "cell_id": "HEIGHT-D01-F3-D-NEG",
+      "completion_pointer_file_mtime": 1790309012.4015546,
+      "family": "HEIGHT",
+      "intent_created": 1790308433.247224,
+      "model": "F3",
+      "operation": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/operations/f3-a40-r4-1-HEIGHT-D-74a6f37ed2fb41c08d66ea7e7ddb9480",
+      "pointer_reference": {
+        "bytes": 518,
+        "path": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/cells/HEIGHT-D01-F3-D-NEG.complete.json",
+        "sha256": "1dd4d249cee158fefc138c886e3f92ed17f7ae669da58c710169d6d5bdde3cea"
+      },
+      "result_completed": 1790308983.97246,
+      "result_reference": {
+        "bytes": 6037137,
+        "path": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/attempts/HEIGHT-D01-F3-D-NEG/attempt-001/result.json",
+        "sha256": "c0c93eec7526091f7ce80228b32b6a90cbc967ec2bead1a404bdd0d7857e8adf"
+      },
+      "status": "valid_model_failure"
+    },
+    {
+      "cell_id": "HEIGHT-D01-F3-D-POS",
+      "completion_pointer_file_mtime": 1790306219.003129,
+      "family": "HEIGHT",
+      "intent_created": 1790305664.688482,
+      "model": "F3",
+      "operation": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/operations/f3-a40-r4-1-HEIGHT-D-74a6f37ed2fb41c08d66ea7e7ddb9480",
+      "pointer_reference": {
+        "bytes": 518,
+        "path": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/cells/HEIGHT-D01-F3-D-POS.complete.json",
+        "sha256": "f211fb86dbe60d04e30ce9bac309f1c8e305b42ea3ec152a505c4e44fe6d5582"
+      },
+      "result_completed": 1790306173.296941,
+      "result_reference": {
+        "bytes": 6012180,
+        "path": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/attempts/HEIGHT-D01-F3-D-POS/attempt-001/result.json",
+        "sha256": "fd361bdc55dfde928f748a4d0f04897908b24e0901d9348d11a4e57839e5d63e"
+      },
+      "status": "valid_model_failure"
+    },
+    {
+      "cell_id": "HEIGHT-D01-F3-I-NEG",
+      "completion_pointer_file_mtime": 1790307341.4918876,
+      "family": "HEIGHT",
+      "intent_created": 1790306811.473958,
+      "model": "F3",
+      "operation": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/operations/f3-a40-r4-1-HEIGHT-D-74a6f37ed2fb41c08d66ea7e7ddb9480",
+      "pointer_reference": {
+        "bytes": 518,
+        "path": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/cells/HEIGHT-D01-F3-I-NEG.complete.json",
+        "sha256": "667c6e19ccac111b05716f477d3aac18bb2a0d651aa168ac3ac674fdf1cb97ef"
+      },
+      "result_completed": 1790307305.073633,
+      "result_reference": {
+        "bytes": 6017967,
+        "path": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/attempts/HEIGHT-D01-F3-I-NEG/attempt-001/result.json",
+        "sha256": "e7a83242dd9a1f5e697bcf20179f2493d0816e8c7414007988e28232a8d4f8bc"
+      },
+      "status": "valid_model_failure"
+    },
+    {
+      "cell_id": "HEIGHT-D01-F3-I-POS",
+      "completion_pointer_file_mtime": 1790307898.4930308,
+      "family": "HEIGHT",
+      "intent_created": 1790307342.616795,
+      "model": "F3",
+      "operation": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/operations/f3-a40-r4-1-HEIGHT-D-74a6f37ed2fb41c08d66ea7e7ddb9480",
+      "pointer_reference": {
+        "bytes": 518,
+        "path": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/cells/HEIGHT-D01-F3-I-POS.complete.json",
+        "sha256": "3180526cb03b26dcacc824a31c0ced92a62fe4996339092ab395b15b97322fa1"
+      },
+      "result_completed": 1790307853.079887,
+      "result_reference": {
+        "bytes": 6012570,
+        "path": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/attempts/HEIGHT-D01-F3-I-POS/attempt-001/result.json",
+        "sha256": "f1fb598372f9a05f6747e021ac85e550f12430ddf1da530afd028e5d52a79b44"
+      },
+      "status": "valid_model_failure"
+    },
+    {
+      "cell_id": "HEIGHT-D01-N3-C-NEG",
+      "completion_pointer_file_mtime": 1790306887.5032399,
+      "family": "HEIGHT",
+      "intent_created": 1790306300.368594,
+      "model": "N3",
+      "operation": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/operations/n3-a40-r4-1-HEIGHT-D-bb67192c5c834a67832681f8f20e2df0",
+      "pointer_reference": {
+        "bytes": 518,
+        "path": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/cells/HEIGHT-D01-N3-C-NEG.complete.json",
+        "sha256": "f18b8b2bb587bf5f1b3c7d7bbb792b359233f7e396560b28842960571d13ff24"
+      },
+      "result_completed": 1790306855.986554,
+      "result_reference": {
+        "bytes": 6046888,
+        "path": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/attempts/HEIGHT-D01-N3-C-NEG/attempt-001/result.json",
+        "sha256": "54396cff07091ad949cfab7e74689e1d52d9499f6ac7349310ef46657e31e676"
+      },
+      "status": "valid_success"
+    },
+    {
+      "cell_id": "HEIGHT-D01-N3-C-POS",
+      "completion_pointer_file_mtime": 1790308622.0240638,
+      "family": "HEIGHT",
+      "intent_created": 1790308044.92301,
+      "model": "N3",
+      "operation": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/operations/n3-a40-r4-1-HEIGHT-D-bb67192c5c834a67832681f8f20e2df0",
+      "pointer_reference": {
+        "bytes": 518,
+        "path": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/cells/HEIGHT-D01-N3-C-POS.complete.json",
+        "sha256": "4b25bf7c9a3034938f11a329acad308a17fdbdfbc69f21641ddae25104bf8ea6"
+      },
+      "result_completed": 1790308595.25781,
+      "result_reference": {
+        "bytes": 6045583,
+        "path": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/attempts/HEIGHT-D01-N3-C-POS/attempt-001/result.json",
+        "sha256": "a43eec1bb8c3bea004bcebb0f846097444cee261b42b2e7fda91d67a359a04c9"
+      },
+      "status": "valid_model_failure"
+    },
+    {
+      "cell_id": "HEIGHT-D01-N3-D-NEG",
+      "completion_pointer_file_mtime": 1790309206.5038462,
+      "family": "HEIGHT",
+      "intent_created": 1790308623.024883,
+      "model": "N3",
+      "operation": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/operations/n3-a40-r4-1-HEIGHT-D-bb67192c5c834a67832681f8f20e2df0",
+      "pointer_reference": {
+        "bytes": 518,
+        "path": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/cells/HEIGHT-D01-N3-D-NEG.complete.json",
+        "sha256": "684f8beb61fc8314408ad8f0df0ef738f42fcc9dec6b970b39543fdf04981fc3"
+      },
+      "result_completed": 1790309174.704724,
+      "result_reference": {
+        "bytes": 6044894,
+        "path": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/attempts/HEIGHT-D01-N3-D-NEG/attempt-001/result.json",
+        "sha256": "eca354b4e32b62625b7bc27d14c791edb700d24469025dac4253ae8a576b670c"
+      },
+      "status": "valid_model_failure"
+    },
+    {
+      "cell_id": "HEIGHT-D01-N3-D-POS",
+      "completion_pointer_file_mtime": 1790306299.1378121,
+      "family": "HEIGHT",
+      "intent_created": 1790305699.189865,
+      "model": "N3",
+      "operation": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/operations/n3-a40-r4-1-HEIGHT-D-bb67192c5c834a67832681f8f20e2df0",
+      "pointer_reference": {
+        "bytes": 518,
+        "path": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/cells/HEIGHT-D01-N3-D-POS.complete.json",
+        "sha256": "13861f02a35ae167ca852924c5c666dd0f1f4ff21b946b78f862de24d97896d4"
+      },
+      "result_completed": 1790306267.259455,
+      "result_reference": {
+        "bytes": 6048033,
+        "path": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/attempts/HEIGHT-D01-N3-D-POS/attempt-001/result.json",
+        "sha256": "098092e3387c703690d439aafe5f2ee72e9c0d0c1b3f352c43e071e021b0f150"
+      },
+      "status": "valid_model_failure"
+    },
+    {
+      "cell_id": "HEIGHT-D01-N3-I-NEG",
+      "completion_pointer_file_mtime": 1790307459.3190463,
+      "family": "HEIGHT",
+      "intent_created": 1790306888.547099,
+      "model": "N3",
+      "operation": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/operations/n3-a40-r4-1-HEIGHT-D-bb67192c5c834a67832681f8f20e2df0",
+      "pointer_reference": {
+        "bytes": 518,
+        "path": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/cells/HEIGHT-D01-N3-I-NEG.complete.json",
+        "sha256": "e5ff31a0ef006fd14e0df165d231ecb11bfeaf15bfb2ca076296d0400a43b2c6"
+      },
+      "result_completed": 1790307430.779272,
+      "result_reference": {
+        "bytes": 6054537,
+        "path": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/attempts/HEIGHT-D01-N3-I-NEG/attempt-001/result.json",
+        "sha256": "4fb4f780159fd99c3ecfab3f6f303707e570a72e44c8bb8451c631bf7c413990"
+      },
+      "status": "valid_model_failure"
+    },
+    {
+      "cell_id": "HEIGHT-D01-N3-I-POS",
+      "completion_pointer_file_mtime": 1790308043.884384,
+      "family": "HEIGHT",
+      "intent_created": 1790307460.428295,
+      "model": "N3",
+      "operation": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/operations/n3-a40-r4-1-HEIGHT-D-bb67192c5c834a67832681f8f20e2df0",
+      "pointer_reference": {
+        "bytes": 518,
+        "path": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/cells/HEIGHT-D01-N3-I-POS.complete.json",
+        "sha256": "2bd98703ed8826cb9bd58f009033996fde27d8e32c5ca40f4cd8504b6e922b3e"
+      },
+      "result_completed": 1790308011.829133,
+      "result_reference": {
+        "bytes": 6056364,
+        "path": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/attempts/HEIGHT-D01-N3-I-POS/attempt-001/result.json",
+        "sha256": "e7f5a40c9e2e18b64c1e400de4e079605135d9546591a2e1ac9d743bd54bf1b5"
+      },
+      "status": "valid_model_failure"
+    },
+    {
+      "cell_id": "LAT-D01-E3-C-NEG",
+      "completion_pointer_file_mtime": 1790306356.87403,
+      "family": "LAT",
+      "intent_created": 1790305906.727908,
+      "model": "E3",
+      "operation": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/operations/e3-a40-r4-0-LAT-D-e1de2d44cc62434c81fee39acdc69c15",
+      "pointer_reference": {
+        "bytes": 506,
+        "path": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/cells/LAT-D01-E3-C-NEG.complete.json",
+        "sha256": "d855adaab127f36ddbc012faf7cc195a57607ed09d4f55279ab125f90f8b2a48"
+      },
+      "result_completed": 1790306325.722288,
+      "result_reference": {
+        "bytes": 5228894,
+        "path": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/attempts/LAT-D01-E3-C-NEG/attempt-001/result.json",
+        "sha256": "ce42c6ce97e08a6a3be050909d5fe2f69509443f5063331d9d83f8a1b51e5b8b"
+      },
+      "status": "valid_model_failure"
+    },
+    {
+      "cell_id": "LAT-D01-E3-C-POS",
+      "completion_pointer_file_mtime": 1790305905.5227845,
+      "family": "LAT",
+      "intent_created": 1790305430.284396,
+      "model": "E3",
+      "operation": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/operations/e3-a40-r4-0-LAT-D-e1de2d44cc62434c81fee39acdc69c15",
+      "pointer_reference": {
+        "bytes": 506,
+        "path": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/cells/LAT-D01-E3-C-POS.complete.json",
+        "sha256": "8544a5fdd41e5881edf8bc34c56f783dde34c49902ed261630179f1f9cbc42f8"
+      },
+      "result_completed": 1790305874.517491,
+      "result_reference": {
+        "bytes": 5243451,
+        "path": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/attempts/LAT-D01-E3-C-POS/attempt-001/result.json",
+        "sha256": "ed66b304d2d18ee98efb26c3034923f69947b1c746e940ec565811b884ed325f"
+      },
+      "status": "valid_model_failure"
+    },
+    {
+      "cell_id": "LAT-D01-E3-D-NEG",
+      "completion_pointer_file_mtime": 1790307231.7267804,
+      "family": "LAT",
+      "intent_created": 1790306798.833782,
+      "model": "E3",
+      "operation": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/operations/e3-a40-r4-0-LAT-D-e1de2d44cc62434c81fee39acdc69c15",
+      "pointer_reference": {
+        "bytes": 506,
+        "path": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/cells/LAT-D01-E3-D-NEG.complete.json",
+        "sha256": "399e580a448e96aaec18cf5b5c5939b4a2fbba2690ee30802684795469e752d7"
+      },
+      "result_completed": 1790307200.816016,
+      "result_reference": {
+        "bytes": 5240708,
+        "path": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/attempts/LAT-D01-E3-D-NEG/attempt-001/result.json",
+        "sha256": "5164227973bd8f40d89393a6a3044a3e8d0a7a3bce1977aeec481a5852b99369"
+      },
+      "status": "valid_model_failure"
+    },
+    {
+      "cell_id": "LAT-D01-E3-D-POS",
+      "completion_pointer_file_mtime": 1790306797.7255933,
+      "family": "LAT",
+      "intent_created": 1790306358.015439,
+      "model": "E3",
+      "operation": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/operations/e3-a40-r4-0-LAT-D-e1de2d44cc62434c81fee39acdc69c15",
+      "pointer_reference": {
+        "bytes": 506,
+        "path": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/cells/LAT-D01-E3-D-POS.complete.json",
+        "sha256": "2f338074a93dfaf37d59944fa3aa5f49111c06691889ded7578599a7b05e89da"
+      },
+      "result_completed": 1790306768.873256,
+      "result_reference": {
+        "bytes": 5235559,
+        "path": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/attempts/LAT-D01-E3-D-POS/attempt-001/result.json",
+        "sha256": "d67e88eb8351cf259964955699d37cb9bf32d15e05533eafacebebb72c6bcd4b"
+      },
+      "status": "valid_model_failure"
+    },
+    {
+      "cell_id": "LAT-D01-E3-I-NEG",
+      "completion_pointer_file_mtime": 1790307667.913025,
+      "family": "LAT",
+      "intent_created": 1790307232.880903,
+      "model": "E3",
+      "operation": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/operations/e3-a40-r4-0-LAT-D-e1de2d44cc62434c81fee39acdc69c15",
+      "pointer_reference": {
+        "bytes": 506,
+        "path": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/cells/LAT-D01-E3-I-NEG.complete.json",
+        "sha256": "dceba8b88e1e5063a510f62c38fdf72abc136d942b363bacc012ad84ff9df9f1"
+      },
+      "result_completed": 1790307635.894352,
+      "result_reference": {
+        "bytes": 5242818,
+        "path": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/attempts/LAT-D01-E3-I-NEG/attempt-001/result.json",
+        "sha256": "c87831b006865976e269f6e92acf82685b87c866d2a336096ffceacd1b8180ed"
+      },
+      "status": "valid_model_failure"
+    },
+    {
+      "cell_id": "LAT-D01-E3-I-POS",
+      "completion_pointer_file_mtime": 1790308116.6472394,
+      "family": "LAT",
+      "intent_created": 1790307669.094903,
+      "model": "E3",
+      "operation": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/operations/e3-a40-r4-0-LAT-D-e1de2d44cc62434c81fee39acdc69c15",
+      "pointer_reference": {
+        "bytes": 506,
+        "path": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/cells/LAT-D01-E3-I-POS.complete.json",
+        "sha256": "fa27b995501e2ddc5700a3e16302f371d15cb1b120cdc875b558ed9c121bf9f4"
+      },
+      "result_completed": 1790308084.319136,
+      "result_reference": {
+        "bytes": 5245254,
+        "path": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/attempts/LAT-D01-E3-I-POS/attempt-001/result.json",
+        "sha256": "a70dbc0e17d209041d957ef3c0e11aabf9e9d10c5bac53bfba27ff5b8095c85e"
+      },
+      "status": "valid_model_failure"
+    },
+    {
+      "cell_id": "LAT-D01-F3-C-NEG",
+      "completion_pointer_file_mtime": 1790306635.4352798,
+      "family": "LAT",
+      "intent_created": 1790306188.042275,
+      "model": "F3",
+      "operation": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/operations/f3-a40-r4-0-LAT-D-92e7c6add4bb44909de9e5c40a7bea71",
+      "pointer_reference": {
+        "bytes": 506,
+        "path": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/cells/LAT-D01-F3-C-NEG.complete.json",
+        "sha256": "858b02ee85a362073bb318a55a5dcfc3d169ce33f4362da4e9ad426221b85f6d"
+      },
+      "result_completed": 1790306603.0286,
+      "result_reference": {
+        "bytes": 5249272,
+        "path": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/attempts/LAT-D01-F3-C-NEG/attempt-001/result.json",
+        "sha256": "72d3c1b77e31217d44b2a044235e16d6cd089f9c5f4ac3aaf8681bb0d8b296ff"
+      },
+      "status": "valid_model_failure"
+    },
+    {
+      "cell_id": "LAT-D01-F3-C-POS",
+      "completion_pointer_file_mtime": 1790306186.6814406,
+      "family": "LAT",
+      "intent_created": 1790305713.000648,
+      "model": "F3",
+      "operation": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/operations/f3-a40-r4-0-LAT-D-92e7c6add4bb44909de9e5c40a7bea71",
+      "pointer_reference": {
+        "bytes": 506,
+        "path": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/cells/LAT-D01-F3-C-POS.complete.json",
+        "sha256": "269905dcb97b2e15973c74864caa8cf02bf901b71866dc681969058b97e43d35"
+      },
+      "result_completed": 1790306142.017013,
+      "result_reference": {
+        "bytes": 5250319,
+        "path": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/attempts/LAT-D01-F3-C-POS/attempt-001/result.json",
+        "sha256": "bc0a6f61abfcb91ada34ad5d37b824eea8ffe923aca490665aca27fb2f30e9fc"
+      },
+      "status": "valid_model_failure"
+    },
+    {
+      "cell_id": "LAT-D01-F3-D-NEG",
+      "completion_pointer_file_mtime": 1790307599.5556355,
+      "family": "LAT",
+      "intent_created": 1790307143.442693,
+      "model": "F3",
+      "operation": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/operations/f3-a40-r4-0-LAT-D-92e7c6add4bb44909de9e5c40a7bea71",
+      "pointer_reference": {
+        "bytes": 506,
+        "path": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/cells/LAT-D01-F3-D-NEG.complete.json",
+        "sha256": "ae025920b877809300a82b63741e00bda5d1eea195741cf11df59efbf0c4efad"
+      },
+      "result_completed": 1790307561.018428,
+      "result_reference": {
+        "bytes": 5247065,
+        "path": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/attempts/LAT-D01-F3-D-NEG/attempt-001/result.json",
+        "sha256": "699217e3ebc197e3d9bc3dd30d0b10ee689a5d70de8df40614ac17716fb2d8b5"
+      },
+      "status": "valid_model_failure"
+    },
+    {
+      "cell_id": "LAT-D01-F3-D-POS",
+      "completion_pointer_file_mtime": 1790307142.2813168,
+      "family": "LAT",
+      "intent_created": 1790306636.666603,
+      "model": "F3",
+      "operation": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/operations/f3-a40-r4-0-LAT-D-92e7c6add4bb44909de9e5c40a7bea71",
+      "pointer_reference": {
+        "bytes": 506,
+        "path": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/cells/LAT-D01-F3-D-POS.complete.json",
+        "sha256": "d6ce90ad24ff11adf2a853fd5b382021dc99763bb2f0fd803c336c87a16418ff"
+      },
+      "result_completed": 1790307108.164032,
+      "result_reference": {
+        "bytes": 5251412,
+        "path": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/attempts/LAT-D01-F3-D-POS/attempt-001/result.json",
+        "sha256": "247e6970a6369956c46beeaa62ad261d6ecc1ce6568c14b8f1653dca5ef03a4e"
+      },
+      "status": "valid_model_failure"
+    },
+    {
+      "cell_id": "LAT-D01-F3-I-NEG",
+      "completion_pointer_file_mtime": 1790308076.2690518,
+      "family": "LAT",
+      "intent_created": 1790307600.883783,
+      "model": "F3",
+      "operation": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/operations/f3-a40-r4-0-LAT-D-92e7c6add4bb44909de9e5c40a7bea71",
+      "pointer_reference": {
+        "bytes": 506,
+        "path": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/cells/LAT-D01-F3-I-NEG.complete.json",
+        "sha256": "fefb8937c00d03882e60987d969e59281121af613e78d99147bcb262c6eca330"
+      },
+      "result_completed": 1790308037.629127,
+      "result_reference": {
+        "bytes": 5218821,
+        "path": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/attempts/LAT-D01-F3-I-NEG/attempt-001/result.json",
+        "sha256": "74113d08010efdbb9f94f7b76727376c0a57227f4588fc545d060a96c01221b9"
+      },
+      "status": "valid_model_failure"
+    },
+    {
+      "cell_id": "LAT-D01-F3-I-POS",
+      "completion_pointer_file_mtime": 1790308539.6952584,
+      "family": "LAT",
+      "intent_created": 1790308077.552867,
+      "model": "F3",
+      "operation": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/operations/f3-a40-r4-0-LAT-D-92e7c6add4bb44909de9e5c40a7bea71",
+      "pointer_reference": {
+        "bytes": 506,
+        "path": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/cells/LAT-D01-F3-I-POS.complete.json",
+        "sha256": "d93d0d9580816feca1e13ac4c0c09c78e9bddcebf4fc46562c962b318a9cf92e"
+      },
+      "result_completed": 1790308504.492859,
+      "result_reference": {
+        "bytes": 5216039,
+        "path": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/attempts/LAT-D01-F3-I-POS/attempt-001/result.json",
+        "sha256": "577494d18081335ea3e0756fe56b6150820c59ade4ceaefba8ea2b11b0bea915"
+      },
+      "status": "valid_model_failure"
+    },
+    {
+      "cell_id": "LAT-D01-N3-C-NEG",
+      "completion_pointer_file_mtime": 1790306901.3459406,
+      "family": "LAT",
+      "intent_created": 1790306319.169964,
+      "model": "N3",
+      "operation": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/operations/n3-a40-r4-0-LAT-D-a938d9efc2634ca8a0e0ed3e7ae76056",
+      "pointer_reference": {
+        "bytes": 506,
+        "path": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/cells/LAT-D01-N3-C-NEG.complete.json",
+        "sha256": "666f2e2a2e9e21b51850549e2461dcac3c5c6ee8282fb603c4e7a9b4c4183c3d"
+      },
+      "result_completed": 1790306868.852501,
+      "result_reference": {
+        "bytes": 5231454,
+        "path": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/attempts/LAT-D01-N3-C-NEG/attempt-001/result.json",
+        "sha256": "d1073d6fb3868416e88abc8ac9870c972c07806e19ca1f873d396263c2404a68"
+      },
+      "status": "valid_model_failure"
+    },
+    {
+      "cell_id": "LAT-D01-N3-C-POS",
+      "completion_pointer_file_mtime": 1790306318.3014233,
+      "family": "LAT",
+      "intent_created": 1790305791.257596,
+      "model": "N3",
+      "operation": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/operations/n3-a40-r4-0-LAT-D-a938d9efc2634ca8a0e0ed3e7ae76056",
+      "pointer_reference": {
+        "bytes": 506,
+        "path": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/cells/LAT-D01-N3-C-POS.complete.json",
+        "sha256": "eed9049b37371eac1c3264d3608caea625ef421a7f754337e4f81bac04b321b5"
+      },
+      "result_completed": 1790306303.562941,
+      "result_reference": {
+        "bytes": 5242078,
+        "path": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/attempts/LAT-D01-N3-C-POS/attempt-001/result.json",
+        "sha256": "726caf68b93fd65f70be0237777c79fa6443efe234deea019341c63303716f16"
+      },
+      "status": "valid_model_failure"
+    },
+    {
+      "cell_id": "LAT-D01-N3-D-NEG",
+      "completion_pointer_file_mtime": 1790307973.850097,
+      "family": "LAT",
+      "intent_created": 1790307421.894351,
+      "model": "N3",
+      "operation": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/operations/n3-a40-r4-0-LAT-D-a938d9efc2634ca8a0e0ed3e7ae76056",
+      "pointer_reference": {
+        "bytes": 506,
+        "path": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/cells/LAT-D01-N3-D-NEG.complete.json",
+        "sha256": "ec2a782d53441e7d77506cb52961a3c9817cfb0556b2602048f6a2b164ffad99"
+      },
+      "result_completed": 1790307937.654429,
+      "result_reference": {
+        "bytes": 5236092,
+        "path": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/attempts/LAT-D01-N3-D-NEG/attempt-001/result.json",
+        "sha256": "677446ac9e06d4088b0b379030b0aa165d47cb381501a43e748ea8d7b66b750b"
+      },
+      "status": "valid_model_failure"
+    },
+    {
+      "cell_id": "LAT-D01-N3-D-POS",
+      "completion_pointer_file_mtime": 1790307420.7223501,
+      "family": "LAT",
+      "intent_created": 1790306902.453529,
+      "model": "N3",
+      "operation": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/operations/n3-a40-r4-0-LAT-D-a938d9efc2634ca8a0e0ed3e7ae76056",
+      "pointer_reference": {
+        "bytes": 506,
+        "path": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/cells/LAT-D01-N3-D-POS.complete.json",
+        "sha256": "ff2b14da4b46f40df90dc0c08d129c1aad0f5e9102ae652410692d09f62f02a3"
+      },
+      "result_completed": 1790307392.018549,
+      "result_reference": {
+        "bytes": 5231691,
+        "path": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/attempts/LAT-D01-N3-D-POS/attempt-001/result.json",
+        "sha256": "acaf12d598b60cfbd1a5c601c985672468c6fa02993475ce90c1ce11cfb811a7"
+      },
+      "status": "valid_model_failure"
+    },
+    {
+      "cell_id": "LAT-D01-N3-I-NEG",
+      "completion_pointer_file_mtime": 1790308509.6050687,
+      "family": "LAT",
+      "intent_created": 1790307975.341223,
+      "model": "N3",
+      "operation": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/operations/n3-a40-r4-0-LAT-D-a938d9efc2634ca8a0e0ed3e7ae76056",
+      "pointer_reference": {
+        "bytes": 506,
+        "path": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/cells/LAT-D01-N3-I-NEG.complete.json",
+        "sha256": "1069c6913aca6d47d0fef60d8b393f27e548a56d06857e1832648bc7da45cc5d"
+      },
+      "result_completed": 1790308477.198983,
+      "result_reference": {
+        "bytes": 5238190,
+        "path": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/attempts/LAT-D01-N3-I-NEG/attempt-001/result.json",
+        "sha256": "68f115b955cc2c65d5433998a028096be95731b36a5207a25da27bc1028fe9df"
+      },
+      "status": "valid_model_failure"
+    },
+    {
+      "cell_id": "LAT-D01-N3-I-POS",
+      "completion_pointer_file_mtime": 1790309100.5834947,
+      "family": "LAT",
+      "intent_created": 1790308510.60232,
+      "model": "N3",
+      "operation": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/operations/n3-a40-r4-0-LAT-D-a938d9efc2634ca8a0e0ed3e7ae76056",
+      "pointer_reference": {
+        "bytes": 506,
+        "path": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/cells/LAT-D01-N3-I-POS.complete.json",
+        "sha256": "903597c4597947bf39c16615f570a896e6c7d0d1f81038cdc6388e720b810daf"
+      },
+      "result_completed": 1790309070.328527,
+      "result_reference": {
+        "bytes": 5234524,
+        "path": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/attempts/LAT-D01-N3-I-POS/attempt-001/result.json",
+        "sha256": "19186f798db7c6c5d327c37817774bb676265532687ab58cb096ab4aa4d38f0d"
+      },
+      "status": "valid_model_failure"
+    },
+    {
+      "cell_id": "LAT-D02-E3-C-NEG",
+      "completion_pointer_file_mtime": 1790308569.0505273,
+      "family": "LAT",
+      "intent_created": 1790308117.813923,
+      "model": "E3",
+      "operation": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/operations/e3-a40-r4-0-LAT-D-e1de2d44cc62434c81fee39acdc69c15",
+      "pointer_reference": {
+        "bytes": 506,
+        "path": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/cells/LAT-D02-E3-C-NEG.complete.json",
+        "sha256": "fe97f1b2283cf2fe314e3be53d3ab6f1f90ece1096053926fa1a1a560b193cbb"
+      },
+      "result_completed": 1790308533.45176,
+      "result_reference": {
+        "bytes": 5234947,
+        "path": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/attempts/LAT-D02-E3-C-NEG/attempt-001/result.json",
+        "sha256": "a926a64d93bbb93ed5fd5de08003d421b8247fc54be0921153a161c60b30ee33"
+      },
+      "status": "valid_model_failure"
+    },
+    {
+      "cell_id": "LAT-D02-E3-D-POS",
+      "completion_pointer_file_mtime": 1790309011.8920586,
+      "family": "LAT",
+      "intent_created": 1790308570.232758,
+      "model": "E3",
+      "operation": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/operations/e3-a40-r4-0-LAT-D-e1de2d44cc62434c81fee39acdc69c15",
+      "pointer_reference": {
+        "bytes": 506,
+        "path": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/cells/LAT-D02-E3-D-POS.complete.json",
+        "sha256": "fc92dc57fca9b87c66f4cd63ec153d1af279c740a0d97f6313a5311e6e9dca4a"
+      },
+      "result_completed": 1790308978.496646,
+      "result_reference": {
+        "bytes": 5230050,
+        "path": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/attempts/LAT-D02-E3-D-POS/attempt-001/result.json",
+        "sha256": "58c4ac80b34486d935c9b04bb8aa825b2d0721a75a6dddbbb2b109d278585c62"
+      },
+      "status": "valid_model_failure"
+    },
+    {
+      "cell_id": "LAT-D02-F3-C-NEG",
+      "completion_pointer_file_mtime": 1790309053.469519,
+      "family": "LAT",
+      "intent_created": 1790308540.916445,
+      "model": "F3",
+      "operation": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/operations/f3-a40-r4-0-LAT-D-92e7c6add4bb44909de9e5c40a7bea71",
+      "pointer_reference": {
+        "bytes": 506,
+        "path": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/cells/LAT-D02-F3-C-NEG.complete.json",
+        "sha256": "df78c966fedc4894d9fb8664ba1a476350783d1003f6785ff4d1b693c3bde65e"
+      },
+      "result_completed": 1790309017.664848,
+      "result_reference": {
+        "bytes": 5237297,
+        "path": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/attempts/LAT-D02-F3-C-NEG/attempt-001/result.json",
+        "sha256": "eb96530d21506ba43453de84ddd9f09be2f345c146d89eb9b433ff3cb8c7ea4c"
+      },
+      "status": "valid_model_failure"
+    }
+  ],
+  "execution_source_commit": "a94696d3fa75c78a4f756536b988cead607e53b8",
+  "guardian": {
+    "exit": null,
+    "heartbeat": {
+      "at_utc": "2026-09-25T04:08:26.828854Z",
+      "available_bytes": 152002298380288,
+      "available_inodes": 74220905,
+      "status": "watching",
+      "total_bytes": 219902325555200,
+      "total_inodes": 134217728
+    },
+    "pid": 4121,
+    "process": {
+      "command": [
+        "/data/users/ali/vla_wam/envs/robolab-v2-isaac50/bin/python",
+        "-u",
+        "/data/users/ali/sgw-01/current-20260924a/deploy-storage-502d720/watch_study_storage.py",
+        "--cohort",
+        "/data/users/ali/sgw-01/current-20260924a/study-a40-v2",
+        "--owners-index",
+        "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/storage-guard/active-owners.json",
+        "--run-root",
+        "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/storage-guard/guard-502d7208-f732b6579b6946dd8b97de290f9d5359",
+        "--source-commit",
+        "502d720856c9f7a88dd37acb53255ae2388f5071",
+        "--implementation-sha256",
+        "9aeca327677c4cd097fd3624f626953d8fa3ac357d16423de57ee1af92b3855e",
+        "--seconds",
+        "1209600",
+        "--poll-seconds",
+        "60"
+      ],
+      "cwd": "/home/alia40q",
+      "ppid": 1,
+      "process_start_identity": "150027267",
+      "started_at_unix": 1790298199.67
+    },
+    "start": {
+      "bytes": 1432,
+      "path": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/storage-guard/guard-502d7208-f732b6579b6946dd8b97de290f9d5359/start.json",
+      "sha256": "f9eebfc8427c7c174c5ae8cd5a24d81721e219a2d3cf299b99ea6a4c615c0a90"
+    }
+  },
+  "lane_statuses": {
+    "e3-a40-r4-0": {
+      "at_utc": "2026-09-25T03:01:42.885392Z",
+      "partition": "E3-LAT-D",
+      "status": "running"
+    },
+    "f3-a40-r4-0": {
+      "at_utc": "2026-09-25T03:01:43.784971Z",
+      "partition": "F3-LAT-D",
+      "status": "running"
+    },
+    "f3-a40-r4-1": {
+      "at_utc": "2026-09-25T03:02:27.071415Z",
+      "partition": "F3-HEIGHT-D",
+      "status": "running"
+    },
+    "n3-a40-r4-0": {
+      "at_utc": "2026-09-25T03:02:13.551724Z",
+      "partition": "N3-LAT-D",
+      "status": "running"
+    },
+    "n3-a40-r4-1": {
+      "at_utc": "2026-09-25T03:02:25.711069Z",
+      "partition": "N3-HEIGHT-D",
+      "status": "running"
+    }
+  },
+  "observed_at_utc": "2026-09-25T04:09:16.825757+00:00",
+  "operations": {
+    "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/operations/e3-a40-r4-0-LAT-D-e1de2d44cc62434c81fee39acdc69c15": {
+      "admission_file_mtime": 1790305309.4122188,
+      "launch_reference": {
+        "bytes": 979,
+        "path": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/operations/e3-a40-r4-0-LAT-D-e1de2d44cc62434c81fee39acdc69c15/runtime/launch.json",
+        "sha256": "f47e538f9f1ba6e9bd392317d3e61e38ea3e0111b565d366b671b13d9fbe461f"
+      },
+      "runtime_launch": {
+        "checkpoint_revision": "a7c7288f9b6ac1684e993007b0f9703dd26e58ef",
+        "config": {
+          "asset": "nvidia/Cosmos3-Edge-Policy-DROID",
+          "conditioning_fps": 15,
+          "denoising_steps": 4,
+          "executed_action_horizon": 32,
+          "format_prompt_as_json": true,
+          "guidance": 3.0,
+          "guidance_interval": [
+            960,
+            1001
+          ],
+          "history_length": 1,
+          "model": "E3",
+          "precision": "bfloat16",
+          "resolution": 480,
+          "returned_action_horizon": 32,
+          "revision": "a7c7288f9b6ac1684e993007b0f9703dd26e58ef",
+          "sampler": "unipc",
+          "shift": 5.0,
+          "source_commit": "cf5d68c00d97ccd2480a2320ed652b92dec63102"
+        },
+        "model": "E3",
+        "server_cmdline": [
+          "/data/users/ali/vla_wam/envs/cosmos-edge-a904d2d-v3-exact/bin/python",
+          "-m",
+          "experiments.workshops.spatial_grounding_v1.checkpoint_wrapper_entrypoint",
+          "E3"
+        ],
+        "server_pid": 10718,
+        "server_start_time": "150574057",
+        "source_commit": "cf5d68c00d97ccd2480a2320ed652b92dec63102"
+      }
+    },
+    "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/operations/f3-a40-r4-0-LAT-D-92e7c6add4bb44909de9e5c40a7bea71": {
+      "admission_file_mtime": 1790305310.2244148,
+      "launch_reference": {
+        "bytes": 1433,
+        "path": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/operations/f3-a40-r4-0-LAT-D-92e7c6add4bb44909de9e5c40a7bea71/runtime/launch.json",
+        "sha256": "2dd544daaa66c7a12799c5a2b67497000982bcd38de0dac2da544f48d39bbe7a"
+      },
+      "runtime_launch": {
+        "checkpoint_revision": "3d0887bdc7acee1686b19afac267125d519ff4f1",
+        "config": {
+          "action_guidance": 1.0,
+          "action_parameterization": "absolute",
+          "action_scale": 2.0,
+          "asset": "black-forest-labs/flux-3-action-droid",
+          "base_asset": "black-forest-labs/flux-3-action-base",
+          "base_revision": "62878e2925e59b7a89ec14463ce89932624c490d",
+          "camera_keys": [
+            "images.wrist",
+            "images.left",
+            "images.right"
+          ],
+          "canvas_hw": [
+            544,
+            736
+          ],
+          "compile": false,
+          "conditioning_fps": 15.0,
+          "denoising_steps": 4,
+          "executed_action_horizon": 32,
+          "gripper_flip_dims": [
+            -1
+          ],
+          "guidance": 4.0,
+          "history_length": 1,
+          "model": "F3",
+          "package": "root",
+          "precision": "bfloat16",
+          "prepared_inference": true,
+          "quantization": null,
+          "returned_action_horizon": 32,
+          "revision": "3d0887bdc7acee1686b19afac267125d519ff4f1",
+          "sampler": "cosmos_unipc",
+          "shift": 5.0,
+          "single_frame_encode": true,
+          "source_commit": "e2dd1d8dbc5977b54315d61f7548c63c043d6d4f",
+          "warmup": 0
+        },
+        "model": "F3",
+        "server_cmdline": [
+          "/data/users/ali/sgw-01/current-20260924a/envs/flux-e2dd1d8/bin/python",
+          "-m",
+          "experiments.workshops.spatial_grounding_v1.checkpoint_wrapper_entrypoint",
+          "F3"
+        ],
+        "server_pid": 7850,
+        "server_start_time": "148800838",
+        "source_commit": "e2dd1d8dbc5977b54315d61f7548c63c043d6d4f"
+      }
+    },
+    "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/operations/f3-a40-r4-1-HEIGHT-D-74a6f37ed2fb41c08d66ea7e7ddb9480": {
+      "admission_file_mtime": 1790305353.8307056,
+      "launch_reference": {
+        "bytes": 1433,
+        "path": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/operations/f3-a40-r4-1-HEIGHT-D-74a6f37ed2fb41c08d66ea7e7ddb9480/runtime/launch.json",
+        "sha256": "cc8d1623fbd02d8c7eb474c620a810cc7e57a6eb463a9dc776d4437d10d86edf"
+      },
+      "runtime_launch": {
+        "checkpoint_revision": "3d0887bdc7acee1686b19afac267125d519ff4f1",
+        "config": {
+          "action_guidance": 1.0,
+          "action_parameterization": "absolute",
+          "action_scale": 2.0,
+          "asset": "black-forest-labs/flux-3-action-droid",
+          "base_asset": "black-forest-labs/flux-3-action-base",
+          "base_revision": "62878e2925e59b7a89ec14463ce89932624c490d",
+          "camera_keys": [
+            "images.wrist",
+            "images.left",
+            "images.right"
+          ],
+          "canvas_hw": [
+            544,
+            736
+          ],
+          "compile": false,
+          "conditioning_fps": 15.0,
+          "denoising_steps": 4,
+          "executed_action_horizon": 32,
+          "gripper_flip_dims": [
+            -1
+          ],
+          "guidance": 4.0,
+          "history_length": 1,
+          "model": "F3",
+          "package": "root",
+          "precision": "bfloat16",
+          "prepared_inference": true,
+          "quantization": null,
+          "returned_action_horizon": 32,
+          "revision": "3d0887bdc7acee1686b19afac267125d519ff4f1",
+          "sampler": "cosmos_unipc",
+          "shift": 5.0,
+          "single_frame_encode": true,
+          "source_commit": "e2dd1d8dbc5977b54315d61f7548c63c043d6d4f",
+          "warmup": 0
+        },
+        "model": "F3",
+        "server_cmdline": [
+          "/data/users/ali/sgw-01/current-20260924a/envs/flux-e2dd1d8/bin/python",
+          "-m",
+          "experiments.workshops.spatial_grounding_v1.checkpoint_wrapper_entrypoint",
+          "F3"
+        ],
+        "server_pid": 5654,
+        "server_start_time": "150348642",
+        "source_commit": "e2dd1d8dbc5977b54315d61f7548c63c043d6d4f"
+      }
+    },
+    "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/operations/n3-a40-r4-0-LAT-D-a938d9efc2634ca8a0e0ed3e7ae76056": {
+      "admission_file_mtime": 1790305340.0626564,
+      "launch_reference": {
+        "bytes": 820,
+        "path": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/operations/n3-a40-r4-0-LAT-D-a938d9efc2634ca8a0e0ed3e7ae76056/runtime/launch.json",
+        "sha256": "aee31adfda711466a1283e720310c457c0042f5d3afeb7cad660b4ffdaa19839"
+      },
+      "runtime_launch": {
+        "checkpoint_revision": "6706d7680581c255ff61e0f3bb49d90eac55c79e",
+        "config": {
+          "asset": "nvidia/Cosmos3-Nano-Policy-DROID",
+          "conditioning_fps": 15.0,
+          "denoising_steps": 4,
+          "executed_action_horizon": 32,
+          "guidance": 3.0,
+          "history_length": 1,
+          "model": "N3",
+          "resolution": 480,
+          "returned_action_horizon": 32,
+          "revision": "6706d7680581c255ff61e0f3bb49d90eac55c79e",
+          "shift": 5.0,
+          "source_commit": "411d25b2e35bc441126f48c44a4b93e1c0564274"
+        },
+        "model": "N3",
+        "server_cmdline": [
+          "/data/users/ali/vla_wam/envs/cosmos-nano-411d25b-v3-exact/bin/python",
+          "-m",
+          "experiments.workshops.spatial_grounding_v1.nano_wrapper_entrypoint"
+        ],
+        "server_pid": 6309,
+        "server_start_time": "146780890",
+        "source_commit": "411d25b2e35bc441126f48c44a4b93e1c0564274"
+      }
+    },
+    "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/operations/n3-a40-r4-1-HEIGHT-D-bb67192c5c834a67832681f8f20e2df0": {
+      "admission_file_mtime": 1790305352.020739,
+      "launch_reference": {
+        "bytes": 820,
+        "path": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/operations/n3-a40-r4-1-HEIGHT-D-bb67192c5c834a67832681f8f20e2df0/runtime/launch.json",
+        "sha256": "9c1e502e83e4bef08b8914630e289eedfb3490424cde7a900c8b1c064e84252e"
+      },
+      "runtime_launch": {
+        "checkpoint_revision": "6706d7680581c255ff61e0f3bb49d90eac55c79e",
+        "config": {
+          "asset": "nvidia/Cosmos3-Nano-Policy-DROID",
+          "conditioning_fps": 15.0,
+          "denoising_steps": 4,
+          "executed_action_horizon": 32,
+          "guidance": 3.0,
+          "history_length": 1,
+          "model": "N3",
+          "resolution": 480,
+          "returned_action_horizon": 32,
+          "revision": "6706d7680581c255ff61e0f3bb49d90eac55c79e",
+          "shift": 5.0,
+          "source_commit": "411d25b2e35bc441126f48c44a4b93e1c0564274"
+        },
+        "model": "N3",
+        "server_cmdline": [
+          "/data/users/ali/vla_wam/envs/cosmos-nano-411d25b-v3-exact/bin/python",
+          "-m",
+          "experiments.workshops.spatial_grounding_v1.nano_wrapper_entrypoint"
+        ],
+        "server_pid": 8315,
+        "server_start_time": "149675779",
+        "source_commit": "411d25b2e35bc441126f48c44a4b93e1c0564274"
+      }
+    }
+  },
+  "schema_version": "sgw-01-hourly-control-timing-v1",
+  "scope": "Existing D result/intent/pointer/launch metadata and small control receipts only; no raw array/video reads or new inference",
+  "timing_limitation": "Pointer/admission times are explicitly NFS file-write mtimes, not independently instrumented latency components."
+}

@@ -2,7 +2,7 @@
 
 Do equivalent descriptions of a spatial goal produce the same predicted and executed behavior? This repository contains the clean-scene study for the [CoRL 2026 world-model workshop](https://do-robots-need-world-models.github.io/).
 
-**All 87 required scenes are physically validated: 29 LAT, 29 HEIGHT and 29 flat DIST layouts. Each passed both goals across three resets (522 selected scripted trials). All 54 learned-policy pilot episodes were complete at 2026-09-25 03:02 UTC, and the five A40 policy/simulator pairs have progressed to development-stage startup.**
+**All 87 required scenes are physically validated: 29 LAT, 29 HEIGHT and 29 flat DIST layouts. Each passed both goals across three resets (522 selected scripted trials). The learned-policy study had 87 of 1,566 unique episodes complete at 2026-09-25 04:08 UTC: all 54 pilots and 33 development episodes, with five A40 policy/simulator pairs executing.**
 
 The study compares Cosmos3 Nano Policy DROID (N3), Cosmos3 Edge Policy DROID (E3), and FLUX 3 Action DROID (F3) on left/right, higher/lower, and closer/farther placement. Each physical goal has direct, subject-first, and reference-inverted descriptions. All three checkpoints use the same clean layouts, robot, cameras, prompts and scoring rules. There are 29 layout slots per family: one pilot, four development and 24 confirmation layouts.
 

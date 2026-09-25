@@ -1,0 +1,133 @@
+{
+  "active_pairs_with_inflight_attempts": 5,
+  "actual_lane_loans": [],
+  "as_of_utc": "2026-09-25T04:08:34.867739+00:00",
+  "capacity": {
+    "at_utc": "2026-09-25T04:08:26.828854Z",
+    "available_bytes": 152002298380288,
+    "available_inodes": 74220905,
+    "status": "watching",
+    "total_bytes": 219902325555200,
+    "total_inodes": 134217728
+  },
+  "completed_by_policy_family": {
+    "E3": {
+      "completed": 26,
+      "development_timing_samples": 8,
+      "expected": 522,
+      "mean_intent_to_pointer_seconds": 446.6835033595562,
+      "mean_partition_startup_seconds": 120.87217712402344,
+      "pilot_reverification_seconds_per_episode": 35.20046126842499
+    },
+    "F3": {
+      "completed": 31,
+      "development_timing_samples": 13,
+      "expected": 522,
+      "mean_intent_to_pointer_seconds": 513.4176071790548,
+      "mean_partition_startup_seconds": 356.81700479984283,
+      "pilot_reverification_seconds_per_episode": 48.044915146297875
+    },
+    "N3": {
+      "completed": 30,
+      "development_timing_samples": 12,
+      "expected": 522,
+      "mean_intent_to_pointer_seconds": 567.1316697796186,
+      "mean_partition_startup_seconds": 399.1820328235626,
+      "pilot_reverification_seconds_per_episode": 39.56392935911814
+    }
+  },
+  "completed_status_counts": {
+    "valid_model_failure": 86,
+    "valid_success": 1
+  },
+  "conditional_collection_projection": {
+    "assumptions": [
+      "No infrastructure failures or retries; no additional resources.",
+      "Existing in-flight episode charged its full mean duration; no speculative partial-credit saving.",
+      "Use observed D model-specific mean intent-to-pointer time, one-second interepisode gaps and observed D startup.",
+      "Partition final re-verification scales linearly from retained six-episode pilot measurements.",
+      "At an intact boundary retain own-model claimable work; otherwise loan to a model with most unclaimed whole partitions.",
+      "Preserve global D-to-C barrier and every144-cell C partition; projected loan identities are not launch instructions.",
+      "Confirmation scene timing and future shared-storage contention are unmeasured; this is an engineering projection, not a guaranteed ETA."
+    ],
+    "collection_complete_utc": "2026-09-27T12:02:06.035661+00:00",
+    "delivery_limitation": "Collection ETA excludes final artifact revalidation, global analysis, derivative encoding and final-only local transfer.",
+    "development_barrier_utc": "2026-09-25T11:11:51.339044+00:00",
+    "development_seconds_remaining": 25396.471304887382,
+    "final_analysis_encoding_download_seconds": null,
+    "projected_loans": [
+      {
+        "from": "F3",
+        "kind": "conditional_projection_not_actual_loan",
+        "lane": "f3-a40-r4-1",
+        "seconds_from_snapshot": 10412.594892734136,
+        "stage": "D",
+        "to": "N3"
+      },
+      {
+        "from": "N3",
+        "kind": "conditional_projection_not_actual_loan",
+        "lane": "n3-a40-r4-0",
+        "seconds_from_snapshot": 11175.90436065197,
+        "stage": "D",
+        "to": "E3"
+      },
+      {
+        "from": "E3",
+        "kind": "conditional_projection_not_actual_loan",
+        "lane": "n3-a40-r4-0",
+        "seconds_from_snapshot": 95052.6343884407,
+        "stage": "C",
+        "to": "F3"
+      }
+    ],
+    "slowdown_sensitivity_25_percent_seconds_remaining": 251513.95990311337,
+    "study_collection_seconds_remaining": 201211.16792249068,
+    "unchanged_fixed_lanes_seconds_remaining": 240396.41103124619
+  },
+  "execution_source_commit": "a94696d3fa75c78a4f756536b988cead607e53b8",
+  "fleet_hold": null,
+  "footprint": {
+    "accounting_scope": "Immutable attempt manifests, including preserved technical failures; not a recursive allocated-disk scan",
+    "engineering_allowance_for_in_progress_bytes": 85443196790,
+    "engineering_allowance_for_unindexed_native_bytes": 783822779855,
+    "finalized_attempt_manifests": 92,
+    "finalized_manifest_accounted_files": 565099,
+    "finalized_manifest_accounted_logical_bytes": 783822779855,
+    "maximum_accounted_attempt_bytes": 8544319679,
+    "unindexed_native_and_in_progress_actual_bytes": null
+  },
+  "loan_eligibility": "All five lanes still have active D partitions; no intact quiescent boundary yet.",
+  "observed_since_previous_receipt": {
+    "completions_per_hour": 30.03483985297234,
+    "elapsed_seconds": 3955.406474,
+    "new_completions": 33,
+    "new_dispatched_requests": 532,
+    "new_recorded_actions": 15919
+  },
+  "preserved_technical_invalid_attempts": 5,
+  "remaining_barriers": {
+    "D_to_C": "All216 D episodes across9 partitions:270 cumulative P+D completions.",
+    "continuous_guards": "Source/binding/ownership/deadline, measured runtime/storage admission,20TiB/5M-inode floors and N=1 technical hold.",
+    "final_analysis": "All1566 cells and27 explicit authoritative release identities with complete accounting and artifact validation.",
+    "final_local_delivery": "Whole-study/output accounting, verified derivatives and sufficient local capacity; no early downloads.",
+    "prediction_claims": "Physical camera/time mapping, frozen horizon and semantic qualification unavailable; prediction claims blocked, behavioral execution retained.",
+    "within_confirmation": "No additional global stage barrier;9 whole144-cell partitions and intact6-condition blocks."
+  },
+  "schema_version": "sgw-01-periodic-progress-and-conditional-eta-v1",
+  "source_receipts": [
+    {
+      "path": "handoff/cluster-execution-20260924/progress-20260925-0408.json",
+      "sha256": "cc008bd0bbc157152dedfb215b071ab1bcd7dfa34460309fee956ee6450a5de9"
+    },
+    {
+      "path": "handoff/cluster-execution-20260924/control-timing-20260925-0410.json",
+      "sha256": "ff356035c4a4396ed037065c7668e82dd0afed5f49dab00a69510c273a8b58eb"
+    },
+    {
+      "path": "handoff/cluster-execution-20260924/throughput-20260925-pilot.json",
+      "sha256": "5a6f4170e7cde85a4cb4fb2f8eb931648b3b5ce946277dcec97591c5e508d20d"
+    }
+  ],
+  "unique_completed": 87
+}
