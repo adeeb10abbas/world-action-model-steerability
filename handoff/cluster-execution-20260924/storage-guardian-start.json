@@ -1,0 +1,37 @@
+{
+  "guardian_source_commit": "502d720856c9f7a88dd37acb53255ae2388f5071",
+  "heartbeat_snapshot": {
+    "at_utc": "2026-09-25T01:04:20.667245Z",
+    "available_bytes": 152920267948032,
+    "available_inodes": 74767517,
+    "status": "watching",
+    "total_bytes": 219902325555200,
+    "total_inodes": 134217728
+  },
+  "lifetime_seconds": 1209600,
+  "minimum_free_bytes": 21990232555520,
+  "minimum_free_inodes": 5000000,
+  "model_execution_source_unchanged": "a94696d3fa75c78a4f756536b988cead607e53b8",
+  "new_gpu_claims": 0,
+  "owners_index": {
+    "bytes": 1328,
+    "path": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/storage-guard/active-owners.json",
+    "sha256": "3c828546282c6ee4be8cad57fa8c498a2796247ced86e7d6b126011b67c71389"
+  },
+  "pid": 4121,
+  "pod": "211247-alia40q-a40-1gpu",
+  "poll_seconds": 60,
+  "process_start_identity": "150027267",
+  "reserved_hold": {
+    "bytes": 16384,
+    "path": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/storage-guard/guard-502d7208-f732b6579b6946dd8b97de290f9d5359/hold-reserve.json",
+    "sha256": "f756406f4198708cb73f9afab12865307bacf93ef36add0ed38e2158e0467955"
+  },
+  "schema_version": "sgw-01-storage-guardian-start-verification-v1",
+  "start": {
+    "bytes": 1432,
+    "path": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/storage-guard/guard-502d7208-f732b6579b6946dd8b97de290f9d5359/start.json",
+    "sha256": "f9eebfc8427c7c174c5ae8cd5a24d81721e219a2d3cf299b99ea6a4c615c0a90"
+  },
+  "verified_at_utc": "2026-09-25T01:04:55.501149+00:00"
+}

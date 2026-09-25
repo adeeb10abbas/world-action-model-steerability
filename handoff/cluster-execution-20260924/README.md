@@ -3,9 +3,9 @@
 The user separately authorized runtime integration, bounded checks, and the
 committed study on 24 September 2026. This supersedes the preparation-only
 permission recorded in the original delivery. **Genuine study execution is
-running on five A40 policy/simulator pairs.** Seven unique episodes were
-complete at 2026-09-25 00:43:21 UTC; subsequent cells were already executing.
-See [the operational snapshot](progress-first-valid.json) and
+running on five A40 policy/simulator pairs.** Twenty-one unique episodes were
+complete at 2026-09-25 01:05 UTC; subsequent cells were already executing.
+See [the operational snapshot](progress-storage-guard.json) and
 [first valid episode evidence for every model](first-valid-study-episodes.json).
 The execution source is `a94696d3fa75c78a4f756536b988cead607e53b8`;
 receipt-only commits do not change the running source or materialization.
@@ -57,6 +57,13 @@ as a full allocated-disk census. Before intentional lane retirement or
 replacement, update the guardian's operational active-owner index so a
 deliberately stopped owner is not mistaken for an infrastructure failure.
 The guardian never changes the running model source or clears a hold.
+Its [actual PID/start/heartbeat verification](storage-guardian-start.json)
+records guardian source `502d720856c9f7a88dd37acb53255ae2388f5071`, PID 4121
+on Pod q and a finite 14-day lifetime. The operational owner index is
+`study-a40-v2/storage-guard/active-owners.json`. At 01:05 UTC, finalized
+manifests accounted for 206.309 GiB across valid and preserved technical
+attempts, with five attempts in flight; unindexed native bytes remain
+separately unmeasured.
 
 **Preserved hold and repair:** the first five A40 attempts completed 15 genuine
 requests and 450 physical actions each: 75 requests and 2,250 actions total.
