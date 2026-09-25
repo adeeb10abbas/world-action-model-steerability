@@ -1,0 +1,57 @@
+{
+  "capacity": {
+    "at_utc": "2026-09-25T09:17:39.187138Z",
+    "available_bytes": 149922552741888,
+    "available_inodes": 72672648,
+    "status": "watching",
+    "total_bytes": 219902325555200,
+    "total_inodes": 134217728
+  },
+  "client_verification": {
+    "at_utc": "2026-09-25T09:19:05Z",
+    "local_time": "2026-09-25T05:19:05-0400 EDT",
+    "matching_new_notification_clients": 1,
+    "method": "Read-only process listing filtered to kubectl and these exact observer argv paths.",
+    "new_kubectl_elapsed": "01:38",
+    "new_kubectl_pid": 80027,
+    "new_kubectl_state": "Ss",
+    "startup_read_bash": "Interrupted by user steering; direct local process verification used instead.",
+    "unchanged_boundary_kubectl_pid": 49286,
+    "unchanged_boundary_kubectl_state": "Ss"
+  },
+  "completed_by_model": {
+    "E3": 73,
+    "F3": 83,
+    "N3": 77
+  },
+  "completions_per_hour": 27.312429806005444,
+  "elapsed_since_previous_progress_seconds": 3690.627334,
+  "footprint_note": "239 finalized manifests include5 technical attempts and a finishing attempt not yet in the233 completion pointers; finalized manifests are not unique completed cells.",
+  "further_loans": 0,
+  "new_actions": 12803,
+  "new_completed": 28,
+  "new_physical_pairs": 0,
+  "new_requests": 426,
+  "next_periodic_report_due_utc": "2026-09-25T12:10:00+00:00",
+  "progress": {
+    "path": "handoff/cluster-execution-20260924/progress-20260925-0912.json",
+    "sha256": "a0ba1a6d0f08533af9642db787f83b07b3ddfd7c2988795d88f41070af41c4f1"
+  },
+  "remaining_D_cells": 37,
+  "replacement": {
+    "path": "handoff/cluster-execution-20260924/notification-observer-start-v4.json",
+    "sha256": "551f18384529d193b1549779d43f586d959062f5186d8aa2e5f6bbac7cd65220"
+  },
+  "retirement": {
+    "path": "handoff/cluster-execution-20260924/notification-observer-retirement-20260925-0916.json",
+    "sha256": "6bc701939218da0fb078a192b3305d5d5648743520305d7fac2960d230c6570e"
+  },
+  "schema_version": "sgw-01-hourly-progress-and-notification-recovery-v1",
+  "scientific_or_model_execution_changes": 0,
+  "tls_error_timestamp": {
+    "interpretation": "Client stderr uses EDT, not UTC. Approximately four hours after observer registration, not a four-hour notification-delivery gap.",
+    "underlying_disconnect_cause": "Unproven; transport changed only for this notification client.",
+    "utc_using_observed_client_EDT_offset": "2026-09-25T09:11:31.456050+00:00",
+    "verbatim": "E0925 05:11:31.456050"
+  }
+}

@@ -3,12 +3,12 @@
 The user separately authorized runtime integration, bounded checks, and the
 committed study on 24 September 2026. This supersedes the preparation-only
 permission recorded in the original delivery. **Genuine study execution is
-running on five A40 policy/simulator pairs.** At 2026-09-25 08:12 UTC,
-205 unique episodes were complete: N3 71/522, E3 59/522 and F3 75/522.
-These comprise all 54 pilots and 151 development episodes, with 204 valid model
-failures and one valid success; the five technical attempts remain separate.
+running on five A40 policy/simulator pairs.** At 2026-09-25 09:13 UTC,
+233 unique episodes were complete: N3 77/522, E3 73/522 and F3 83/522.
+These comprise all 54 pilots and 179 development episodes, with 231 valid model
+failures and two valid successes; the five technical attempts remain separate.
 The frozen pilot barrier released development at 03:01:35.850529 UTC.
-See [the operational snapshot](progress-20260925-0810.json),
+See [the operational snapshot](progress-20260925-0912.json),
 [the applied boundary-loan evidence](lane-loan-20260925a.json),
 [the periodic timing/capacity report](report-20260925-0812.json) and
 [first valid episode evidence for every model](first-valid-study-episodes.json).
@@ -33,6 +33,45 @@ protected B200 are untouched. Full 1,566-cell completion, final analysis and
 final-only local H.264 delivery remain pending. No local video transfer has
 started. Progress receipts are collected hourly; capacity can be reassigned
 only at a verified quiescent boundary without losing an in-flight attempt.
+
+**09:13 UTC hourly progress and notification recovery:** 28 additional
+completions since 08:12 correspond to 27.31 episodes/hour, with 426 additional
+requests and 12,803 additional recorded actions. Four attempts are unfinished:
+one Nano attempt is at 450 actions awaiting publication, one Edge attempt is
+newly starting with zero requests, and two have recorded requests/actions.
+The 239 finalized manifests account for **1,896.495 GiB**; this includes the
+five technical attempts and a finishing attempt not yet represented by a
+completion pointer. Finalized manifests are not unique completed cells.
+Unindexed native/in-flight bytes remain separately unmeasured. The guardian
+reported **136.354 TiB and 72,672,648 inodes available**. All ten owners remain
+nonterminal, with no new technical attempt, OOM or fleet hold. No further
+loan or new physical pair was admitted; 37 D cells remain.
+
+The `storage-guard-events-v3` notification stream exited with
+`tls: bad record MAC`, while the independent guardian continued unchanged.
+Its stderr timestamp `05:11:31` is client-local EDT, corresponding to
+**09:11:31 UTC**, roughly four hours after observer registration; it is
+not evidence of a four-hour notification-delivery gap. The exact disconnect
+cause remains unproven. The orphaned read-only observer PID 6144/start
+`151516341` was retired through its verified pidfd after checking its exact
+argv and absence of children. Guardian, current owner/roster indexes and
+boundary observer remained unchanged before and after that retirement.
+
+The [replacement notification observer](notification-observer-start-v4.json)
+is PID **11261**, start identity **`152992038`**, using the unchanged observer
+script and a new immutable registration. The command-scoped setting
+`KUBECTL_REMOTE_COMMAND_WEBSOCKETS=false` selects SPDY for
+`storage-guard-events-v4`; it does not change cluster configuration or TLS
+security. Its singleton lock and remote identity were verified, and the
+single local kubectl client PID 80027 was still alive after 98 seconds.
+The startup `read_bash` was interrupted by steering, so that direct process
+check supplements the remote verification. This does not prove that the
+underlying intermittent transport fault is eliminated. No guardian, model,
+simulator, claim or raw output was restarted or changed. The boundary
+observer still uses PID 8142/start `152328157` and its original connection.
+See [the compact control record](control-20260925-0919.json) and
+[the exact orphan retirement](notification-observer-retirement-20260925-0916.json).
+The next roughly four-hour report remains due around 12:10 UTC.
 
 **08:12 UTC four-hour report:** since 04:08, 118 additional completions
 correspond to 29.06 episodes/hour, with 1,772 additional dispatched requests

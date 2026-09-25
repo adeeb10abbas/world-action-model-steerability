@@ -1,0 +1,98 @@
+{
+  "schema_version": "sgw-01-notification-observer-start-verification-v2",
+  "observed_at_utc": "2026-09-25T09:17:43.122870+00:00",
+  "bash_shell_id": "storage-guard-events-v4",
+  "pod": "211247-alia40q-a40-1gpu",
+  "pid": 11261,
+  "process": {
+    "ppid": 0,
+    "process_start_identity": "152992038",
+    "started_at_unix": 1790327847.38,
+    "command": [
+      "/data/users/ali/vla_wam/envs/robolab-v2-isaac50/bin/python",
+      "-u",
+      "/data/users/ali/sgw-01/current-20260924a/deploy-storage-502d720/event-watcher-v3.py",
+      "--registration",
+      "/data/users/ali/sgw-01/current-20260924a/deploy-storage-502d720/event-watcher-start-v4.json",
+      "--seconds",
+      "1209600"
+    ],
+    "cwd": "/home/alia40q"
+  },
+  "start_receipt": {
+    "path": "/data/users/ali/sgw-01/current-20260924a/deploy-storage-502d720/event-watcher-start-v4.json",
+    "sha256": "605e98f87ea8c19330a3f48fda2b502dd24f9ccd8b7f19dc69c8f12f2d8a24e2"
+  },
+  "script": {
+    "path": "/data/users/ali/sgw-01/current-20260924a/deploy-storage-502d720/event-watcher-v3.py",
+    "sha256": "9180f0562879b27c8edbf8fda616d62cc2f45cc923fff3628c5d36553c7782a5"
+  },
+  "single_observer_lock_held": true,
+  "retired_orphan_pid": 6144,
+  "guardian": {
+    "pid": 4121,
+    "process": {
+      "ppid": 1,
+      "process_start_identity": "150027267",
+      "started_at_unix": 1790298199.67,
+      "command": [
+        "/data/users/ali/vla_wam/envs/robolab-v2-isaac50/bin/python",
+        "-u",
+        "/data/users/ali/sgw-01/current-20260924a/deploy-storage-502d720/watch_study_storage.py",
+        "--cohort",
+        "/data/users/ali/sgw-01/current-20260924a/study-a40-v2",
+        "--owners-index",
+        "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/storage-guard/active-owners.json",
+        "--run-root",
+        "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/storage-guard/guard-502d7208-f732b6579b6946dd8b97de290f9d5359",
+        "--source-commit",
+        "502d720856c9f7a88dd37acb53255ae2388f5071",
+        "--implementation-sha256",
+        "9aeca327677c4cd097fd3624f626953d8fa3ac357d16423de57ee1af92b3855e",
+        "--seconds",
+        "1209600",
+        "--poll-seconds",
+        "60"
+      ],
+      "cwd": "/home/alia40q"
+    },
+    "heartbeat": {
+      "at_utc": "2026-09-25T09:17:39.187138Z",
+      "available_bytes": 149922552741888,
+      "available_inodes": 72672648,
+      "status": "watching",
+      "total_bytes": 219902325555200,
+      "total_inodes": 134217728
+    },
+    "exit": null
+  },
+  "boundary_observer": {
+    "pid": 8142,
+    "process": {
+      "ppid": 0,
+      "process_start_identity": "152328157",
+      "started_at_unix": 1790321208.57,
+      "command": [
+        "/data/users/ali/vla_wam/envs/robolab-v2-isaac50/bin/python",
+        "-u",
+        "/data/users/ali/sgw-01/current-20260924a/deploy-boundary-20260925a/watch_partition_boundary.py",
+        "--cohort",
+        "/data/users/ali/sgw-01/current-20260924a/study-a40-v2",
+        "--lane-index",
+        "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/active-lanes.json",
+        "--seconds",
+        "1209600"
+      ],
+      "cwd": "/home/alia40q"
+    }
+  },
+  "owner_index_sha256": "4155a5124305ab4cc98ddc14ad7e8310f990ca50f411a8ab98133603dae78c04",
+  "active_roster_sha256": "69696d1d23f9c7d1e2fb3d8eec66d862c0045b96a4a434e63f441d2b55f889a2",
+  "fleet_hold": null,
+  "client": "kubectl v1.31.0 darwin/amd64 go1.22.5",
+  "transport_setting": "KUBECTL_REMOTE_COMMAND_WEBSOCKETS=false",
+  "model_execution_source_unchanged": "a94696d3fa75c78a4f756536b988cead607e53b8",
+  "model_operations": 0,
+  "new_gpu_claims": 0,
+  "scope": "Read-only observer replacement and command-scoped SPDY selection; no proof that the underlying intermittent TLS fault is eliminated."
+}

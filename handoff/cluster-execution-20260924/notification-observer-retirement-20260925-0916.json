@@ -1,0 +1,171 @@
+{
+  "schema_version": "sgw-01-notification-observer-retirement-v2",
+  "observed_at_utc": "2026-09-25T09:16:49.273692+00:00",
+  "trigger": "storage-guard-events-v3 exited1: local error: tls: bad record MAC",
+  "error_log_timestamp_verbatim": "E0925 05:11:31.456050",
+  "error_observed_on_continuation": "09:12 UTC hourly continuation; exact delivery time unavailable",
+  "transport": "KUBECTL_REMOTE_COMMAND_WEBSOCKETS=false; SPDY finite command succeeded",
+  "observer_pid": 6144,
+  "observer_before": {
+    "ppid": 0,
+    "process_start_identity": "151516341",
+    "started_at_unix": 1790313090.41,
+    "command": [
+      "/data/users/ali/vla_wam/envs/robolab-v2-isaac50/bin/python",
+      "-u",
+      "/data/users/ali/sgw-01/current-20260924a/deploy-storage-502d720/event-watcher-v3.py",
+      "--registration",
+      "/data/users/ali/sgw-01/current-20260924a/deploy-storage-502d720/event-watcher-start-v3.json",
+      "--seconds",
+      "1209600"
+    ],
+    "cwd": "/home/alia40q"
+  },
+  "observer_registration": {
+    "path": "/data/users/ali/sgw-01/current-20260924a/deploy-storage-502d720/event-watcher-start-v3.json",
+    "sha256": "9ed02935758140f18dae5e8a5ae4edd7ea5e201a33fa9769a022afe18c84edbf"
+  },
+  "protection_before": {
+    "guardian": {
+      "pid": 4121,
+      "process": {
+        "ppid": 1,
+        "process_start_identity": "150027267",
+        "started_at_unix": 1790298199.67,
+        "command": [
+          "/data/users/ali/vla_wam/envs/robolab-v2-isaac50/bin/python",
+          "-u",
+          "/data/users/ali/sgw-01/current-20260924a/deploy-storage-502d720/watch_study_storage.py",
+          "--cohort",
+          "/data/users/ali/sgw-01/current-20260924a/study-a40-v2",
+          "--owners-index",
+          "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/storage-guard/active-owners.json",
+          "--run-root",
+          "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/storage-guard/guard-502d7208-f732b6579b6946dd8b97de290f9d5359",
+          "--source-commit",
+          "502d720856c9f7a88dd37acb53255ae2388f5071",
+          "--implementation-sha256",
+          "9aeca327677c4cd097fd3624f626953d8fa3ac357d16423de57ee1af92b3855e",
+          "--seconds",
+          "1209600",
+          "--poll-seconds",
+          "60"
+        ],
+        "cwd": "/home/alia40q"
+      },
+      "heartbeat": {
+        "at_utc": "2026-09-25T09:16:39.152653Z",
+        "available_bytes": 149927061618688,
+        "available_inodes": 72675811,
+        "status": "watching",
+        "total_bytes": 219902325555200,
+        "total_inodes": 134217728
+      },
+      "exit": null
+    },
+    "boundary_observer": {
+      "pid": 8142,
+      "process": {
+        "ppid": 0,
+        "process_start_identity": "152328157",
+        "started_at_unix": 1790321208.57,
+        "command": [
+          "/data/users/ali/vla_wam/envs/robolab-v2-isaac50/bin/python",
+          "-u",
+          "/data/users/ali/sgw-01/current-20260924a/deploy-boundary-20260925a/watch_partition_boundary.py",
+          "--cohort",
+          "/data/users/ali/sgw-01/current-20260924a/study-a40-v2",
+          "--lane-index",
+          "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/active-lanes.json",
+          "--seconds",
+          "1209600"
+        ],
+        "cwd": "/home/alia40q"
+      }
+    },
+    "owner_index": {
+      "path": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/storage-guard/active-owners.json",
+      "sha256": "4155a5124305ab4cc98ddc14ad7e8310f990ca50f411a8ab98133603dae78c04"
+    },
+    "active_roster": {
+      "path": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/active-lanes.json",
+      "sha256": "69696d1d23f9c7d1e2fb3d8eec66d862c0045b96a4a434e63f441d2b55f889a2"
+    },
+    "fleet_hold": null
+  },
+  "raw_artifact_reads": 0,
+  "model_runtime_operations": 0,
+  "new_gpu_claims": 0,
+  "completed_at_utc": "2026-09-25T09:16:49.281721+00:00",
+  "observer_after": "identity-bound pidfd reported process exit after SIGTERM",
+  "single_observer_lock_available_after_exit": true,
+  "protection_after": {
+    "guardian": {
+      "pid": 4121,
+      "process": {
+        "ppid": 1,
+        "process_start_identity": "150027267",
+        "started_at_unix": 1790298199.67,
+        "command": [
+          "/data/users/ali/vla_wam/envs/robolab-v2-isaac50/bin/python",
+          "-u",
+          "/data/users/ali/sgw-01/current-20260924a/deploy-storage-502d720/watch_study_storage.py",
+          "--cohort",
+          "/data/users/ali/sgw-01/current-20260924a/study-a40-v2",
+          "--owners-index",
+          "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/storage-guard/active-owners.json",
+          "--run-root",
+          "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/storage-guard/guard-502d7208-f732b6579b6946dd8b97de290f9d5359",
+          "--source-commit",
+          "502d720856c9f7a88dd37acb53255ae2388f5071",
+          "--implementation-sha256",
+          "9aeca327677c4cd097fd3624f626953d8fa3ac357d16423de57ee1af92b3855e",
+          "--seconds",
+          "1209600",
+          "--poll-seconds",
+          "60"
+        ],
+        "cwd": "/home/alia40q"
+      },
+      "heartbeat": {
+        "at_utc": "2026-09-25T09:16:39.152653Z",
+        "available_bytes": 149927061618688,
+        "available_inodes": 72675811,
+        "status": "watching",
+        "total_bytes": 219902325555200,
+        "total_inodes": 134217728
+      },
+      "exit": null
+    },
+    "boundary_observer": {
+      "pid": 8142,
+      "process": {
+        "ppid": 0,
+        "process_start_identity": "152328157",
+        "started_at_unix": 1790321208.57,
+        "command": [
+          "/data/users/ali/vla_wam/envs/robolab-v2-isaac50/bin/python",
+          "-u",
+          "/data/users/ali/sgw-01/current-20260924a/deploy-boundary-20260925a/watch_partition_boundary.py",
+          "--cohort",
+          "/data/users/ali/sgw-01/current-20260924a/study-a40-v2",
+          "--lane-index",
+          "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/active-lanes.json",
+          "--seconds",
+          "1209600"
+        ],
+        "cwd": "/home/alia40q"
+      }
+    },
+    "owner_index": {
+      "path": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/storage-guard/active-owners.json",
+      "sha256": "4155a5124305ab4cc98ddc14ad7e8310f990ca50f411a8ab98133603dae78c04"
+    },
+    "active_roster": {
+      "path": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/active-lanes.json",
+      "sha256": "69696d1d23f9c7d1e2fb3d8eec66d862c0045b96a4a434e63f441d2b55f889a2"
+    },
+    "fleet_hold": null
+  },
+  "replacement_started": false
+}
