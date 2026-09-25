@@ -199,6 +199,18 @@
     "execution_source_commit": "a94696d3fa75c78a4f756536b988cead607e53b8",
     "receipt": "handoff/cluster-execution-20260924/progress-20260925-1516.json"
   },
-  "status": "USER_STOPPED_SUPERSEDED_DRAINING_NO_NEW_LAUNCH",
+  "stopped_cohort_final": {
+    "receipt": "handoff/cluster-execution-20260924/user-stop-final-20260925.json",
+    "completed_unique_episodes": 431,
+    "per_model": {"N3": 148, "E3": 158, "F3": 125},
+    "valid_successes": 5,
+    "valid_model_failures": 426,
+    "preserved_technical_attempts": 5,
+    "in_flight": 0,
+    "verified_released_gpus": 10,
+    "held_storage_guard": "handoff/cluster-execution-20260924/held-storage-guardian-start-20260925.json",
+    "old_release_may_resume": false
+  },
+  "status": "USER_STOPPED_SUPERSEDED_DRAIN_COMPLETE_NEW_REVISION_PENDING",
   "study_id": "SGW-01"
 }

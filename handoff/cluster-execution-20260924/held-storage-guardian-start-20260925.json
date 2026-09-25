@@ -1,0 +1,60 @@
+{
+  "gpu_claims": 0,
+  "heartbeat": {
+    "at_utc": "2026-09-25T16:12:37.286877Z",
+    "available_bytes": 147337154396160,
+    "available_inodes": 71286363,
+    "status": "watching_preserved_cohort",
+    "total_bytes": 219902325555200,
+    "total_inodes": 134217728
+  },
+  "model_execution_source_unchanged": "a94696d3fa75c78a4f756536b988cead607e53b8",
+  "pod": "211247-alia40q-a40-1gpu",
+  "prior_guardian_exit": {
+    "at_utc": "2026-09-25T16:05:53.766572Z",
+    "returncode": 0,
+    "status": "existing_fleet_hold_preserved"
+  },
+  "root": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/storage-guard/guard-held-a1374ea-20260925",
+  "start": {
+    "cohort_root": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2",
+    "command": [
+      "/data/users/ali/vla_wam/envs/robolab-v2-isaac50/bin/python",
+      "-u",
+      "/data/users/ali/sgw-01/current-20260924a/deploy-storage-held-a1374ea/watch_study_storage.py",
+      "--cohort",
+      "/data/users/ali/sgw-01/current-20260924a/study-a40-v2",
+      "--run-root",
+      "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/storage-guard/guard-held-a1374ea-20260925",
+      "--owners-index",
+      "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/storage-guard/active-owners.json",
+      "--source-commit",
+      "a1374ea4d55733496312fa066995827c87023fff",
+      "--implementation-sha256",
+      "94af4edb00a32cd3da3214731bafb6feb704aeabf0b25ee511ea57d173d7aab2",
+      "--preserved-hold-sha256",
+      "7e2a9ce3f24b07f61475bb22a2b9db98216fb9acb23b1dc218418ce7e77ad578",
+      "--seconds",
+      "1209600",
+      "--poll-seconds",
+      "60"
+    ],
+    "cwd": "/data/users/ali/sgw-01/current-20260924a/source-a94696d",
+    "deadline_seconds": 1209600,
+    "implementation_sha256": "94af4edb00a32cd3da3214731bafb6feb704aeabf0b25ee511ea57d173d7aab2",
+    "minimum_free_bytes": 21990232555520,
+    "minimum_free_inodes": 5000000,
+    "observation_scope": "preserved_cohort_capacity_only",
+    "operator_pinned_source_commit": "a1374ea4d55733496312fa066995827c87023fff",
+    "owners_index": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/storage-guard/active-owners.json",
+    "pid": 23153,
+    "poll_seconds": 60,
+    "ppid": 23147,
+    "preserved_hold_sha256": "7e2a9ce3f24b07f61475bb22a2b9db98216fb9acb23b1dc218418ce7e77ad578",
+    "process_start_identity": "155482934",
+    "reserved_hold": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/storage-guard/guard-held-a1374ea-20260925/hold-reserve.json",
+    "started_at_unix": 1790352756.34,
+    "started_at_utc": "2026-09-25T16:12:37.281700Z"
+  },
+  "verified_at_utc": "2026-09-25T16:12:37.359384+00:00"
+}

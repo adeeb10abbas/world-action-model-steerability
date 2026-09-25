@@ -2,9 +2,14 @@
 
 **USER STOP, 25 September 16:05:40 UTC:** the current close-camera cohort is
 superseded and under a durable user-attributed fleet hold. No new claims or
-attempts are authorized. Existing episodes are draining to their normal
-completion before GPU release; the counts below are historical snapshots,
-not a final stop count. See [the stop and future-revision authority](user-stop-authorization-20260925.json)
+attempts are authorized for that cohort. All five in-flight episodes finalized
+naturally, with no attempt started after the hold: **431 unique completions**
+(N3 148, E3 158, F3 125), comprising 426 valid failures and five successes.
+All five original technical attempts remain separate. All ten owners exited
+without interrupted work or surviving children; their isolated GPUs were
+verified at zero memory. See [final stop accounting and release evidence](user-stop-final-20260925.json).
+The counts below are historical snapshots.
+See [the stop and future-revision authority](user-stop-authorization-20260925.json)
 and [verified hold](user-stop-hold-20260925.json). Raw data, outcomes and old
 protocol/release records remain unchanged. The latest override cancels the
 separate diagnostic and permits a new front/side-camera N3-only revision
@@ -16,6 +21,13 @@ receipt is preserved; a separately versioned replacement uses
 cohort. This mode verifies the hold identity on every cycle, never clears
 it, and records capacity faults without relabeling intentionally retired
 owners as research failures. Active-cohort guard behavior is unchanged.
+The replacement is live on q, PID23153/start155482934, since 16:12:37 UTC;
+[its launch receipt](held-storage-guardian-start-20260925.json) binds the
+unchanged hold and implementation from source `a1374ea`. It is CPU-only and
+does not claim q's GPU. Previous hourly automation and the 16:10 report were
+cancelled by the stop; old completion estimates no longer apply.
+
+## Historical execution snapshots (superseded)
 
 The user separately authorized runtime integration, bounded checks, and the
 committed study on 24 September 2026. This supersedes the preparation-only

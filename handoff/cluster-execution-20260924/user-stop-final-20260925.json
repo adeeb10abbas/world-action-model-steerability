@@ -1,0 +1,1149 @@
+{
+  "all_original_outcomes_preserved": true,
+  "at_hold_timing_scope": "Retrospective intent timestamps and retained manifest/pointer publication mtimes; not an atomic live snapshot. Final counts are taken after all10 owners terminated.",
+  "final_progress": {
+    "active_lane_index": {
+      "path": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/active-lanes.json",
+      "sha256": "69696d1d23f9c7d1e2fb3d8eec66d862c0045b96a4a434e63f441d2b55f889a2"
+    },
+    "cohort_root": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2",
+    "completed_by_partition": {
+      "E3-DIST-D": 24,
+      "E3-DIST-P": 6,
+      "E3-HEIGHT-C": 33,
+      "E3-HEIGHT-D": 24,
+      "E3-HEIGHT-P": 6,
+      "E3-LAT-C": 35,
+      "E3-LAT-D": 24,
+      "E3-LAT-P": 6,
+      "F3-DIST-D": 24,
+      "F3-DIST-P": 6,
+      "F3-HEIGHT-D": 24,
+      "F3-HEIGHT-P": 6,
+      "F3-LAT-C": 35,
+      "F3-LAT-D": 24,
+      "F3-LAT-P": 6,
+      "N3-DIST-D": 24,
+      "N3-DIST-P": 6,
+      "N3-HEIGHT-C": 28,
+      "N3-HEIGHT-D": 24,
+      "N3-HEIGHT-P": 6,
+      "N3-LAT-C": 30,
+      "N3-LAT-D": 24,
+      "N3-LAT-P": 6
+    },
+    "completed_status_counts": {
+      "valid_model_failure": 426,
+      "valid_success": 5
+    },
+    "completion_identity_catalogue_sha256": "1eeee79212b5a18236e1941d0b1a355dd6adf01d42c8cc5a612974a3098aed32",
+    "execution_source_commit": "a94696d3fa75c78a4f756536b988cead607e53b8",
+    "expected_unique_episodes": 1566,
+    "fleet_hold": {
+      "authority": {
+        "coordinator_project_session_id": "5ed7dc81-68d8-493f-a8c4-81a4b6cb59f6",
+        "kind": "explicit_user_instruction_relayed_by_orchestrator",
+        "relay_project_session_id": "c230f3cd-3fe9-4f1f-9ee4-e8b857151a60",
+        "user_quote": "please stop it and re run this thing, I think there's something missing"
+      },
+      "automatic_technical_invalid_threshold": 1,
+      "created_at_utc": "2026-09-25T16:05:40.756901Z",
+      "drain_policy": "No new dispatches/claims/attempts; allow already in-flight episodes to finish normally and finalize. No replay of this release.",
+      "phase": "user_requested_stop_supersede",
+      "preserve_raw_masters": true,
+      "reason": "User suspects setup/integration problem after low P+D competence; preserve this run and diagnose before any new revision.",
+      "rerun_gate": "Identified and fixed root cause plus disclosed new protocol/runtime revision restarting at P; never relaunch current release.",
+      "schema_version": "sgw-01-fleet-hold-v1",
+      "source_commit": "a94696d3fa75c78a4f756536b988cead607e53b8"
+    },
+    "not_yet_completed_unique_episodes": 1135,
+    "observed_at_utc": "2026-09-25T16:16:36.125829+00:00",
+    "owners": [
+      {
+        "lane": "n3-a40-r4-0",
+        "pod": "211247-alia40i-a40-1gpu",
+        "receipt": {
+          "at_utc": "2026-09-25T16:12:44.896821Z",
+          "child_returncode": 44,
+          "host_memory": {
+            "anon_bytes": 18296832,
+            "anon_plus_shmem_bytes": 18296832,
+            "current_bytes": 27804307456,
+            "events": {
+              "high": 0,
+              "low": 0,
+              "max": 3764135,
+              "oom": 0,
+              "oom_kill": 0
+            },
+            "kernel_peak_bytes": null,
+            "limit_bytes": 34359738368,
+            "sampled_anon_plus_shmem_peak_bytes": 6957015040,
+            "sampled_peak_bytes": 34359742464,
+            "sampling_interval_seconds": 0.2,
+            "shmem_bytes": 0
+          },
+          "interrupted": false,
+          "owned_descendants_remaining": {},
+          "returncode": 44,
+          "status": "failed_preserve_no_automatic_retry"
+        },
+        "role": "policy",
+        "terminal": true
+      },
+      {
+        "lane": "n3-a40-r4-0",
+        "pod": "211247-alia40m-a40-1gpu",
+        "receipt": {
+          "at_utc": "2026-09-25T16:12:45.053800Z",
+          "child_returncode": 0,
+          "host_memory": {
+            "anon_bytes": 17133568,
+            "anon_plus_shmem_bytes": 17137664,
+            "current_bytes": 27739324416,
+            "events": {
+              "high": 0,
+              "low": 0,
+              "max": 455976,
+              "oom": 0,
+              "oom_kill": 0
+            },
+            "kernel_peak_bytes": null,
+            "limit_bytes": 34359738368,
+            "sampled_anon_plus_shmem_peak_bytes": 7025909760,
+            "sampled_peak_bytes": 34359742464,
+            "sampling_interval_seconds": 0.2,
+            "shmem_bytes": 4096
+          },
+          "interrupted": false,
+          "owned_descendants_remaining": {},
+          "returncode": 0,
+          "status": "complete"
+        },
+        "role": "simulator",
+        "terminal": true
+      },
+      {
+        "lane": "e3-a40-r4-0",
+        "pod": "211247-alia40j-a40-1gpu",
+        "receipt": {
+          "at_utc": "2026-09-25T16:11:08.871395Z",
+          "child_returncode": 44,
+          "host_memory": {
+            "anon_bytes": 18767872,
+            "anon_plus_shmem_bytes": 18767872,
+            "current_bytes": 24146817024,
+            "events": {
+              "high": 0,
+              "low": 0,
+              "max": 4726218,
+              "oom": 0,
+              "oom_kill": 0
+            },
+            "kernel_peak_bytes": null,
+            "limit_bytes": 34359738368,
+            "sampled_anon_plus_shmem_peak_bytes": 10619297792,
+            "sampled_peak_bytes": 34359742464,
+            "sampling_interval_seconds": 0.2,
+            "shmem_bytes": 0
+          },
+          "interrupted": false,
+          "owned_descendants_remaining": {},
+          "returncode": 44,
+          "status": "failed_preserve_no_automatic_retry"
+        },
+        "role": "policy",
+        "terminal": true
+      },
+      {
+        "lane": "e3-a40-r4-0",
+        "pod": "211247-alia40g-a40-1gpu",
+        "receipt": {
+          "at_utc": "2026-09-25T16:11:09.025065Z",
+          "child_returncode": 0,
+          "host_memory": {
+            "anon_bytes": 15179776,
+            "anon_plus_shmem_bytes": 15183872,
+            "current_bytes": 27724873728,
+            "events": {
+              "high": 0,
+              "low": 0,
+              "max": 736320,
+              "oom": 0,
+              "oom_kill": 0
+            },
+            "kernel_peak_bytes": null,
+            "limit_bytes": 34359738368,
+            "sampled_anon_plus_shmem_peak_bytes": 7057051648,
+            "sampled_peak_bytes": 34359742464,
+            "sampling_interval_seconds": 0.2,
+            "shmem_bytes": 4096
+          },
+          "interrupted": false,
+          "owned_descendants_remaining": {},
+          "returncode": 0,
+          "status": "complete"
+        },
+        "role": "simulator",
+        "terminal": true
+      },
+      {
+        "lane": "f3-a40-r4-0",
+        "pod": "211247-alia40k-a40-1gpu",
+        "receipt": {
+          "at_utc": "2026-09-25T16:13:24.663603Z",
+          "child_returncode": 44,
+          "host_memory": {
+            "anon_bytes": 17543168,
+            "anon_plus_shmem_bytes": 17543168,
+            "current_bytes": 30177456128,
+            "events": {
+              "high": 0,
+              "low": 0,
+              "max": 6219615,
+              "oom": 0,
+              "oom_kill": 0
+            },
+            "kernel_peak_bytes": null,
+            "limit_bytes": 34359738368,
+            "sampled_anon_plus_shmem_peak_bytes": 5488340992,
+            "sampled_peak_bytes": 34359775232,
+            "sampling_interval_seconds": 0.2,
+            "shmem_bytes": 0
+          },
+          "interrupted": false,
+          "owned_descendants_remaining": {},
+          "returncode": 44,
+          "status": "failed_preserve_no_automatic_retry"
+        },
+        "role": "policy",
+        "terminal": true
+      },
+      {
+        "lane": "f3-a40-r4-0",
+        "pod": "211247-alia40h-a40-1gpu",
+        "receipt": {
+          "at_utc": "2026-09-25T16:13:24.671124Z",
+          "child_returncode": 0,
+          "host_memory": {
+            "anon_bytes": 15179776,
+            "anon_plus_shmem_bytes": 15183872,
+            "current_bytes": 27717795840,
+            "events": {
+              "high": 0,
+              "low": 0,
+              "max": 659632,
+              "oom": 0,
+              "oom_kill": 0
+            },
+            "kernel_peak_bytes": null,
+            "limit_bytes": 34359738368,
+            "sampled_anon_plus_shmem_peak_bytes": 7043174400,
+            "sampled_peak_bytes": 34359742464,
+            "sampling_interval_seconds": 0.2,
+            "shmem_bytes": 4096
+          },
+          "interrupted": false,
+          "owned_descendants_remaining": {},
+          "returncode": 0,
+          "status": "complete"
+        },
+        "role": "simulator",
+        "terminal": true
+      },
+      {
+        "lane": "n3-a40-r4-1",
+        "pod": "211247-alia40l-a40-1gpu",
+        "receipt": {
+          "at_utc": "2026-09-25T16:11:11.333963Z",
+          "child_returncode": 44,
+          "host_memory": {
+            "anon_bytes": 18292736,
+            "anon_plus_shmem_bytes": 18292736,
+            "current_bytes": 28063846400,
+            "events": {
+              "high": 0,
+              "low": 0,
+              "max": 3669074,
+              "oom": 0,
+              "oom_kill": 0
+            },
+            "kernel_peak_bytes": null,
+            "limit_bytes": 34359738368,
+            "sampled_anon_plus_shmem_peak_bytes": 6741803008,
+            "sampled_peak_bytes": 34359861248,
+            "sampling_interval_seconds": 0.2,
+            "shmem_bytes": 0
+          },
+          "interrupted": false,
+          "owned_descendants_remaining": {},
+          "returncode": 44,
+          "status": "failed_preserve_no_automatic_retry"
+        },
+        "role": "policy",
+        "terminal": true
+      },
+      {
+        "lane": "n3-a40-r4-1",
+        "pod": "211247-alia40n-a40-1gpu",
+        "receipt": {
+          "at_utc": "2026-09-25T16:11:11.465850Z",
+          "child_returncode": 0,
+          "host_memory": {
+            "anon_bytes": 15179776,
+            "anon_plus_shmem_bytes": 15183872,
+            "current_bytes": 27741114368,
+            "events": {
+              "high": 0,
+              "low": 0,
+              "max": 455690,
+              "oom": 0,
+              "oom_kill": 0
+            },
+            "kernel_peak_bytes": null,
+            "limit_bytes": 34359738368,
+            "sampled_anon_plus_shmem_peak_bytes": 7033192448,
+            "sampled_peak_bytes": 34359828480,
+            "sampling_interval_seconds": 0.2,
+            "shmem_bytes": 4096
+          },
+          "interrupted": false,
+          "owned_descendants_remaining": {},
+          "returncode": 0,
+          "status": "complete"
+        },
+        "role": "simulator",
+        "terminal": true
+      },
+      {
+        "lane": "e3-a40-loan-20260925a",
+        "pod": "211247-alia40o-a40-1gpu",
+        "receipt": {
+          "at_utc": "2026-09-25T16:11:40.163882Z",
+          "child_returncode": 44,
+          "host_memory": {
+            "anon_bytes": 18321408,
+            "anon_plus_shmem_bytes": 18321408,
+            "current_bytes": 28020174848,
+            "events": {
+              "high": 0,
+              "low": 0,
+              "max": 3279523,
+              "oom": 0,
+              "oom_kill": 0
+            },
+            "kernel_peak_bytes": null,
+            "limit_bytes": 34359738368,
+            "sampled_anon_plus_shmem_peak_bytes": 7718490112,
+            "sampled_peak_bytes": 34359742464,
+            "sampling_interval_seconds": 0.2,
+            "shmem_bytes": 0
+          },
+          "interrupted": false,
+          "owned_descendants_remaining": {},
+          "returncode": 44,
+          "status": "failed_preserve_no_automatic_retry"
+        },
+        "role": "policy",
+        "terminal": true
+      },
+      {
+        "lane": "e3-a40-loan-20260925a",
+        "pod": "211247-alia40p-a40-1gpu",
+        "receipt": {
+          "at_utc": "2026-09-25T16:11:40.373422Z",
+          "child_returncode": 0,
+          "host_memory": {
+            "anon_bytes": 15298560,
+            "anon_plus_shmem_bytes": 15302656,
+            "current_bytes": 27693346816,
+            "events": {
+              "high": 0,
+              "low": 0,
+              "max": 361752,
+              "oom": 0,
+              "oom_kill": 0
+            },
+            "kernel_peak_bytes": null,
+            "limit_bytes": 34359738368,
+            "sampled_anon_plus_shmem_peak_bytes": 7176130560,
+            "sampled_peak_bytes": 34359746560,
+            "sampling_interval_seconds": 0.2,
+            "shmem_bytes": 4096
+          },
+          "interrupted": false,
+          "owned_descendants_remaining": {},
+          "returncode": 0,
+          "status": "complete"
+        },
+        "role": "simulator",
+        "terminal": true
+      }
+    ],
+    "schema_version": "sgw-01-operational-progress-v1",
+    "study_footprint": {
+      "accounting_scope": "Immutable attempt manifests, including preserved technical failures; not a recursive allocated-disk scan",
+      "engineering_allowance_for_in_progress_bytes": 0,
+      "engineering_allowance_for_unindexed_native_bytes": 3713925532568,
+      "finalized_attempt_manifests": 436,
+      "finalized_manifest_accounted_files": 2677637,
+      "finalized_manifest_accounted_logical_bytes": 3713925532568,
+      "maximum_accounted_attempt_bytes": 8544319679,
+      "unindexed_native_and_in_progress_actual_bytes": null
+    },
+    "technical_invalid_attempts": 5,
+    "total_dispatched_study_requests_including_preserved_attempts": 6540,
+    "total_recorded_study_actions_including_preserved_attempts": 196200,
+    "unfinished_attempts": [],
+    "valid_completed_unique_episodes": 431,
+    "validation_scope": "Completion identity and manifest digest; final compiler performs full raw-artifact validation"
+  },
+  "gpu_release_verification": [
+    {
+      "full_nvidia_smi": "Fri Sep 25 16:14:08 2026       \n+-----------------------------------------------------------------------------------------+\n| NVIDIA-SMI 580.95.05              Driver Version: 580.95.05      CUDA Version: 13.0     |\n+-----------------------------------------+------------------------+----------------------+\n| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |\n| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |\n|                                         |                        |               MIG M. |\n|=========================================+========================+======================|\n|   0  NVIDIA A40                     On  |   00000000:81:00.0 Off |                    0 |\n|  0%   28C    P8             21W /  300W |       0MiB /  46068MiB |      0%      Default |\n|                                         |                        |                  N/A |\n+-----------------------------------------+------------------------+----------------------+\n\n+-----------------------------------------------------------------------------------------+\n| Processes:                                                                              |\n|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |\n|        ID   ID                                                               Usage      |\n|=========================================================================================|\n|  No running processes found                                                             |\n+-----------------------------------------------------------------------------------------+\n",
+      "gpu_inventory": "GPU-c3747c87-38c7-06ff-1787-db180f8680b1, NVIDIA A40, 0, 0\n",
+      "gpu_uuid": "GPU-c3747c87-38c7-06ff-1787-db180f8680b1",
+      "lane": "n3-a40-r4-0",
+      "observed_at_utc": "2026-09-25T16:14:09.144111+00:00",
+      "original_process_states": [
+        {
+          "command": [],
+          "pid": 4045,
+          "ppid": 1,
+          "process_start_identity": "145835242",
+          "state": "Z"
+        },
+        null
+      ],
+      "other_live_processes": [],
+      "pod": "211247-alia40i-a40-1gpu",
+      "pod_uid": "a482b245-98ae-473f-ba8f-3c8da9a7a9eb",
+      "process_signals_sent": false,
+      "role": "policy",
+      "source_receipt_sha256": "a332df59d3d55db4b1a87678161aafcec5da9eb9553e50116ad6ae10de081ba7",
+      "terminal": {
+        "at_utc": "2026-09-25T16:12:44.896821Z",
+        "child_returncode": 44,
+        "host_memory": {
+          "anon_bytes": 18296832,
+          "anon_plus_shmem_bytes": 18296832,
+          "current_bytes": 27804307456,
+          "events": {
+            "high": 0,
+            "low": 0,
+            "max": 3764135,
+            "oom": 0,
+            "oom_kill": 0
+          },
+          "kernel_peak_bytes": null,
+          "limit_bytes": 34359738368,
+          "sampled_anon_plus_shmem_peak_bytes": 6957015040,
+          "sampled_peak_bytes": 34359742464,
+          "sampling_interval_seconds": 0.2,
+          "shmem_bytes": 0
+        },
+        "interrupted": false,
+        "owned_descendants_remaining": {},
+        "returncode": 44,
+        "status": "failed_preserve_no_automatic_retry"
+      }
+    },
+    {
+      "full_nvidia_smi": "Fri Sep 25 16:14:08 2026       \n+-----------------------------------------------------------------------------------------+\n| NVIDIA-SMI 580.95.05              Driver Version: 580.95.05      CUDA Version: 13.0     |\n+-----------------------------------------+------------------------+----------------------+\n| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |\n| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |\n|                                         |                        |               MIG M. |\n|=========================================+========================+======================|\n|   0  NVIDIA A40                     On  |   00000000:25:00.0 Off |                    0 |\n|  0%   30C    P8             21W /  300W |       0MiB /  46068MiB |      0%      Default |\n|                                         |                        |                  N/A |\n+-----------------------------------------+------------------------+----------------------+\n\n+-----------------------------------------------------------------------------------------+\n| Processes:                                                                              |\n|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |\n|        ID   ID                                                               Usage      |\n|=========================================================================================|\n|  No running processes found                                                             |\n+-----------------------------------------------------------------------------------------+\n",
+      "gpu_inventory": "GPU-8773b1c9-df29-a37a-e165-8f68986cdb88, NVIDIA A40, 0, 0\n",
+      "gpu_uuid": "GPU-8773b1c9-df29-a37a-e165-8f68986cdb88",
+      "lane": "n3-a40-r4-0",
+      "observed_at_utc": "2026-09-25T16:14:09.035275+00:00",
+      "original_process_states": [
+        {
+          "command": [],
+          "pid": 3912,
+          "ppid": 1,
+          "process_start_identity": "142077568",
+          "state": "Z"
+        },
+        null
+      ],
+      "other_live_processes": [],
+      "pod": "211247-alia40m-a40-1gpu",
+      "pod_uid": "942c5373-d204-440e-a6f7-cf329c15b53f",
+      "process_signals_sent": false,
+      "role": "simulator",
+      "source_receipt_sha256": "c7558524713008370c738e4d8fd013d11185294dfc42df0cea62c2393f0d7819",
+      "terminal": {
+        "at_utc": "2026-09-25T16:12:45.053800Z",
+        "child_returncode": 0,
+        "host_memory": {
+          "anon_bytes": 17133568,
+          "anon_plus_shmem_bytes": 17137664,
+          "current_bytes": 27739324416,
+          "events": {
+            "high": 0,
+            "low": 0,
+            "max": 455976,
+            "oom": 0,
+            "oom_kill": 0
+          },
+          "kernel_peak_bytes": null,
+          "limit_bytes": 34359738368,
+          "sampled_anon_plus_shmem_peak_bytes": 7025909760,
+          "sampled_peak_bytes": 34359742464,
+          "sampling_interval_seconds": 0.2,
+          "shmem_bytes": 4096
+        },
+        "interrupted": false,
+        "owned_descendants_remaining": {},
+        "returncode": 0,
+        "status": "complete"
+      }
+    },
+    {
+      "full_nvidia_smi": "Fri Sep 25 16:14:08 2026       \n+-----------------------------------------------------------------------------------------+\n| NVIDIA-SMI 580.95.05              Driver Version: 580.95.05      CUDA Version: 13.0     |\n+-----------------------------------------+------------------------+----------------------+\n| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |\n| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |\n|                                         |                        |               MIG M. |\n|=========================================+========================+======================|\n|   0  NVIDIA A40                     On  |   00000000:25:00.0 Off |                    0 |\n|  0%   30C    P8             21W /  300W |       0MiB /  46068MiB |      0%      Default |\n|                                         |                        |                  N/A |\n+-----------------------------------------+------------------------+----------------------+\n\n+-----------------------------------------------------------------------------------------+\n| Processes:                                                                              |\n|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |\n|        ID   ID                                                               Usage      |\n|=========================================================================================|\n|  No running processes found                                                             |\n+-----------------------------------------------------------------------------------------+\n",
+      "gpu_inventory": "GPU-8fcaadc2-f836-2077-c879-c0ee94c6a205, NVIDIA A40, 0, 0\n",
+      "gpu_uuid": "GPU-8fcaadc2-f836-2077-c879-c0ee94c6a205",
+      "lane": "n3-a40-r4-1",
+      "observed_at_utc": "2026-09-25T16:14:09.200270+00:00",
+      "original_process_states": [
+        {
+          "command": [],
+          "pid": 3877,
+          "ppid": 1,
+          "process_start_identity": "148728884",
+          "state": "Z"
+        },
+        null
+      ],
+      "other_live_processes": [],
+      "pod": "211247-alia40l-a40-1gpu",
+      "pod_uid": "acdc8cc0-a7f8-4f01-b94b-34191d5d9834",
+      "process_signals_sent": false,
+      "role": "policy",
+      "source_receipt_sha256": "fdb0534674fb099151ac91799493c20895f8310e0b959853478f7befbf86c95d",
+      "terminal": {
+        "at_utc": "2026-09-25T16:11:11.333963Z",
+        "child_returncode": 44,
+        "host_memory": {
+          "anon_bytes": 18292736,
+          "anon_plus_shmem_bytes": 18292736,
+          "current_bytes": 28063846400,
+          "events": {
+            "high": 0,
+            "low": 0,
+            "max": 3669074,
+            "oom": 0,
+            "oom_kill": 0
+          },
+          "kernel_peak_bytes": null,
+          "limit_bytes": 34359738368,
+          "sampled_anon_plus_shmem_peak_bytes": 6741803008,
+          "sampled_peak_bytes": 34359861248,
+          "sampling_interval_seconds": 0.2,
+          "shmem_bytes": 0
+        },
+        "interrupted": false,
+        "owned_descendants_remaining": {},
+        "returncode": 44,
+        "status": "failed_preserve_no_automatic_retry"
+      }
+    },
+    {
+      "full_nvidia_smi": "Fri Sep 25 16:14:08 2026       \n+-----------------------------------------------------------------------------------------+\n| NVIDIA-SMI 580.95.05              Driver Version: 580.95.05      CUDA Version: 13.0     |\n+-----------------------------------------+------------------------+----------------------+\n| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |\n| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |\n|                                         |                        |               MIG M. |\n|=========================================+========================+======================|\n|   0  NVIDIA A40                     On  |   00000000:81:00.0 Off |                    0 |\n|  0%   27C    P8             21W /  300W |       0MiB /  46068MiB |      0%      Default |\n|                                         |                        |                  N/A |\n+-----------------------------------------+------------------------+----------------------+\n\n+-----------------------------------------------------------------------------------------+\n| Processes:                                                                              |\n|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |\n|        ID   ID                                                               Usage      |\n|=========================================================================================|\n|  No running processes found                                                             |\n+-----------------------------------------------------------------------------------------+\n",
+      "gpu_inventory": "GPU-738deba4-99b9-f756-a246-6395a8a2c720, NVIDIA A40, 0, 0\n",
+      "gpu_uuid": "GPU-738deba4-99b9-f756-a246-6395a8a2c720",
+      "lane": "n3-a40-r4-1",
+      "observed_at_utc": "2026-09-25T16:14:09.077614+00:00",
+      "original_process_states": [
+        {
+          "command": [],
+          "pid": 3843,
+          "ppid": 1,
+          "process_start_identity": "149645034",
+          "state": "Z"
+        },
+        null
+      ],
+      "other_live_processes": [],
+      "pod": "211247-alia40n-a40-1gpu",
+      "pod_uid": "56ce509d-c978-4360-b8c8-f0f40ef87380",
+      "process_signals_sent": false,
+      "role": "simulator",
+      "source_receipt_sha256": "529f99eb3a7f6db2395276d7f5e26fb89e50d1aa39afea3a4c19fc83664775b8",
+      "terminal": {
+        "at_utc": "2026-09-25T16:11:11.465850Z",
+        "child_returncode": 0,
+        "host_memory": {
+          "anon_bytes": 15179776,
+          "anon_plus_shmem_bytes": 15183872,
+          "current_bytes": 27741114368,
+          "events": {
+            "high": 0,
+            "low": 0,
+            "max": 455690,
+            "oom": 0,
+            "oom_kill": 0
+          },
+          "kernel_peak_bytes": null,
+          "limit_bytes": 34359738368,
+          "sampled_anon_plus_shmem_peak_bytes": 7033192448,
+          "sampled_peak_bytes": 34359828480,
+          "sampling_interval_seconds": 0.2,
+          "shmem_bytes": 4096
+        },
+        "interrupted": false,
+        "owned_descendants_remaining": {},
+        "returncode": 0,
+        "status": "complete"
+      }
+    },
+    {
+      "full_nvidia_smi": "Fri Sep 25 16:14:09 2026       \n+-----------------------------------------------------------------------------------------+\n| NVIDIA-SMI 580.95.05              Driver Version: 580.95.05      CUDA Version: 13.0     |\n+-----------------------------------------+------------------------+----------------------+\n| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |\n| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |\n|                                         |                        |               MIG M. |\n|=========================================+========================+======================|\n|   0  NVIDIA A40                     On  |   00000000:81:00.0 Off |                    0 |\n|  0%   26C    P8             21W /  300W |       0MiB /  46068MiB |      0%      Default |\n|                                         |                        |                  N/A |\n+-----------------------------------------+------------------------+----------------------+\n\n+-----------------------------------------------------------------------------------------+\n| Processes:                                                                              |\n|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |\n|        ID   ID                                                               Usage      |\n|=========================================================================================|\n|  No running processes found                                                             |\n+-----------------------------------------------------------------------------------------+\n",
+      "gpu_inventory": "GPU-d06ff1b3-0d35-7aa7-a7f2-9d16a37fc397, NVIDIA A40, 0, 0\n",
+      "gpu_uuid": "GPU-d06ff1b3-0d35-7aa7-a7f2-9d16a37fc397",
+      "lane": "e3-a40-r4-0",
+      "observed_at_utc": "2026-09-25T16:14:09.337204+00:00",
+      "original_process_states": [
+        {
+          "command": [],
+          "pid": 4101,
+          "ppid": 1,
+          "process_start_identity": "149636503",
+          "state": "Z"
+        },
+        null
+      ],
+      "other_live_processes": [],
+      "pod": "211247-alia40j-a40-1gpu",
+      "pod_uid": "6a332c4b-54b1-4ff9-b676-9d35b401bddf",
+      "process_signals_sent": false,
+      "role": "policy",
+      "source_receipt_sha256": "2b1670d542899c80ebb76c0f0b9bea6544f1019509e638b6f7f2389e3a3d16b7",
+      "terminal": {
+        "at_utc": "2026-09-25T16:11:08.871395Z",
+        "child_returncode": 44,
+        "host_memory": {
+          "anon_bytes": 18767872,
+          "anon_plus_shmem_bytes": 18767872,
+          "current_bytes": 24146817024,
+          "events": {
+            "high": 0,
+            "low": 0,
+            "max": 4726218,
+            "oom": 0,
+            "oom_kill": 0
+          },
+          "kernel_peak_bytes": null,
+          "limit_bytes": 34359738368,
+          "sampled_anon_plus_shmem_peak_bytes": 10619297792,
+          "sampled_peak_bytes": 34359742464,
+          "sampling_interval_seconds": 0.2,
+          "shmem_bytes": 0
+        },
+        "interrupted": false,
+        "owned_descendants_remaining": {},
+        "returncode": 44,
+        "status": "failed_preserve_no_automatic_retry"
+      }
+    },
+    {
+      "full_nvidia_smi": "Fri Sep 25 16:14:08 2026       \n+-----------------------------------------------------------------------------------------+\n| NVIDIA-SMI 580.95.05              Driver Version: 580.95.05      CUDA Version: 13.0     |\n+-----------------------------------------+------------------------+----------------------+\n| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |\n| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |\n|                                         |                        |               MIG M. |\n|=========================================+========================+======================|\n|   0  NVIDIA A40                     On  |   00000000:81:00.0 Off |                    0 |\n|  0%   27C    P8             21W /  300W |       0MiB /  46068MiB |      0%      Default |\n|                                         |                        |                  N/A |\n+-----------------------------------------+------------------------+----------------------+\n\n+-----------------------------------------------------------------------------------------+\n| Processes:                                                                              |\n|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |\n|        ID   ID                                                               Usage      |\n|=========================================================================================|\n|  No running processes found                                                             |\n+-----------------------------------------------------------------------------------------+\n",
+      "gpu_inventory": "GPU-cf7ce957-9226-b4e4-07c7-999e48bf97fa, NVIDIA A40, 0, 0\n",
+      "gpu_uuid": "GPU-cf7ce957-9226-b4e4-07c7-999e48bf97fa",
+      "lane": "e3-a40-r4-0",
+      "observed_at_utc": "2026-09-25T16:14:09.202299+00:00",
+      "original_process_states": [
+        {
+          "command": [],
+          "pid": 4294,
+          "ppid": 1,
+          "process_start_identity": "149362788",
+          "state": "Z"
+        },
+        null
+      ],
+      "other_live_processes": [],
+      "pod": "211247-alia40g-a40-1gpu",
+      "pod_uid": "2b8a5ab5-4836-4b4f-9a00-6fffe3fa27b4",
+      "process_signals_sent": false,
+      "role": "simulator",
+      "source_receipt_sha256": "788ac5a10e72bbf26a9936ae9239cc99f0ee71d0f8fa4f6b5ba3a4300d69a68f",
+      "terminal": {
+        "at_utc": "2026-09-25T16:11:09.025065Z",
+        "child_returncode": 0,
+        "host_memory": {
+          "anon_bytes": 15179776,
+          "anon_plus_shmem_bytes": 15183872,
+          "current_bytes": 27724873728,
+          "events": {
+            "high": 0,
+            "low": 0,
+            "max": 736320,
+            "oom": 0,
+            "oom_kill": 0
+          },
+          "kernel_peak_bytes": null,
+          "limit_bytes": 34359738368,
+          "sampled_anon_plus_shmem_peak_bytes": 7057051648,
+          "sampled_peak_bytes": 34359742464,
+          "sampling_interval_seconds": 0.2,
+          "shmem_bytes": 4096
+        },
+        "interrupted": false,
+        "owned_descendants_remaining": {},
+        "returncode": 0,
+        "status": "complete"
+      }
+    },
+    {
+      "full_nvidia_smi": "Fri Sep 25 16:14:08 2026       \n+-----------------------------------------------------------------------------------------+\n| NVIDIA-SMI 580.95.05              Driver Version: 580.95.05      CUDA Version: 13.0     |\n+-----------------------------------------+------------------------+----------------------+\n| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |\n| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |\n|                                         |                        |               MIG M. |\n|=========================================+========================+======================|\n|   0  NVIDIA A40                     On  |   00000000:25:00.0 Off |                    0 |\n|  0%   29C    P8             21W /  300W |       0MiB /  46068MiB |      0%      Default |\n|                                         |                        |                  N/A |\n+-----------------------------------------+------------------------+----------------------+\n\n+-----------------------------------------------------------------------------------------+\n| Processes:                                                                              |\n|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |\n|        ID   ID                                                               Usage      |\n|=========================================================================================|\n|  No running processes found                                                             |\n+-----------------------------------------------------------------------------------------+\n",
+      "gpu_inventory": "GPU-b089ea9d-c01e-56de-f33f-5a0e71d3581a, NVIDIA A40, 0, 0\n",
+      "gpu_uuid": "GPU-b089ea9d-c01e-56de-f33f-5a0e71d3581a",
+      "lane": "e3-a40-loan-20260925a",
+      "observed_at_utc": "2026-09-25T16:14:09.205759+00:00",
+      "original_process_states": [
+        {
+          "command": [],
+          "pid": 16749,
+          "ppid": 1,
+          "process_start_identity": "151918700",
+          "state": "Z"
+        },
+        null
+      ],
+      "other_live_processes": [],
+      "pod": "211247-alia40o-a40-1gpu",
+      "pod_uid": "f9e72f20-4a39-4d7b-aa5f-838ba2d16330",
+      "process_signals_sent": false,
+      "role": "policy",
+      "source_receipt_sha256": "7f009755885cb98195bb9bb8842a921a61e7540cead6414337c49afb0489bcec",
+      "terminal": {
+        "at_utc": "2026-09-25T16:11:40.163882Z",
+        "child_returncode": 44,
+        "host_memory": {
+          "anon_bytes": 18321408,
+          "anon_plus_shmem_bytes": 18321408,
+          "current_bytes": 28020174848,
+          "events": {
+            "high": 0,
+            "low": 0,
+            "max": 3279523,
+            "oom": 0,
+            "oom_kill": 0
+          },
+          "kernel_peak_bytes": null,
+          "limit_bytes": 34359738368,
+          "sampled_anon_plus_shmem_peak_bytes": 7718490112,
+          "sampled_peak_bytes": 34359742464,
+          "sampling_interval_seconds": 0.2,
+          "shmem_bytes": 0
+        },
+        "interrupted": false,
+        "owned_descendants_remaining": {},
+        "returncode": 44,
+        "status": "failed_preserve_no_automatic_retry"
+      }
+    },
+    {
+      "full_nvidia_smi": "Fri Sep 25 16:14:08 2026       \n+-----------------------------------------------------------------------------------------+\n| NVIDIA-SMI 580.95.05              Driver Version: 580.95.05      CUDA Version: 13.0     |\n+-----------------------------------------+------------------------+----------------------+\n| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |\n| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |\n|                                         |                        |               MIG M. |\n|=========================================+========================+======================|\n|   0  NVIDIA A40                     On  |   00000000:81:00.0 Off |                    0 |\n|  0%   27C    P8             21W /  300W |       0MiB /  46068MiB |      0%      Default |\n|                                         |                        |                  N/A |\n+-----------------------------------------+------------------------+----------------------+\n\n+-----------------------------------------------------------------------------------------+\n| Processes:                                                                              |\n|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |\n|        ID   ID                                                               Usage      |\n|=========================================================================================|\n|  No running processes found                                                             |\n+-----------------------------------------------------------------------------------------+\n",
+      "gpu_inventory": "GPU-07dd8eee-ceb3-fb2b-0269-ec07cf5aab7c, NVIDIA A40, 0, 0\n",
+      "gpu_uuid": "GPU-07dd8eee-ceb3-fb2b-0269-ec07cf5aab7c",
+      "lane": "e3-a40-loan-20260925a",
+      "observed_at_utc": "2026-09-25T16:14:09.213719+00:00",
+      "original_process_states": [
+        {
+          "command": [],
+          "pid": 26505,
+          "ppid": 1,
+          "process_start_identity": "149166406",
+          "state": "Z"
+        },
+        null
+      ],
+      "other_live_processes": [],
+      "pod": "211247-alia40p-a40-1gpu",
+      "pod_uid": "6f6089e8-77ab-46a4-9467-f89ec9aeff10",
+      "process_signals_sent": false,
+      "role": "simulator",
+      "source_receipt_sha256": "140304512e0f6fb1d82e61d89b0b36003686ff74b35319bac5ff1ffcddeebbc7",
+      "terminal": {
+        "at_utc": "2026-09-25T16:11:40.373422Z",
+        "child_returncode": 0,
+        "host_memory": {
+          "anon_bytes": 15298560,
+          "anon_plus_shmem_bytes": 15302656,
+          "current_bytes": 27693346816,
+          "events": {
+            "high": 0,
+            "low": 0,
+            "max": 361752,
+            "oom": 0,
+            "oom_kill": 0
+          },
+          "kernel_peak_bytes": null,
+          "limit_bytes": 34359738368,
+          "sampled_anon_plus_shmem_peak_bytes": 7176130560,
+          "sampled_peak_bytes": 34359746560,
+          "sampling_interval_seconds": 0.2,
+          "shmem_bytes": 4096
+        },
+        "interrupted": false,
+        "owned_descendants_remaining": {},
+        "returncode": 0,
+        "status": "complete"
+      }
+    },
+    {
+      "full_nvidia_smi": "Fri Sep 25 16:14:31 2026       \n+-----------------------------------------------------------------------------------------+\n| NVIDIA-SMI 580.95.05              Driver Version: 580.95.05      CUDA Version: 13.0     |\n+-----------------------------------------+------------------------+----------------------+\n| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |\n| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |\n|                                         |                        |               MIG M. |\n|=========================================+========================+======================|\n|   0  NVIDIA A40                     On  |   00000000:81:00.0 Off |                    0 |\n|  0%   30C    P8             22W /  300W |       0MiB /  46068MiB |      0%      Default |\n|                                         |                        |                  N/A |\n+-----------------------------------------+------------------------+----------------------+\n\n+-----------------------------------------------------------------------------------------+\n| Processes:                                                                              |\n|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |\n|        ID   ID                                                               Usage      |\n|=========================================================================================|\n|  No running processes found                                                             |\n+-----------------------------------------------------------------------------------------+\n",
+      "gpu_inventory": "GPU-0d10aff1-6627-2fde-a1b4-15064c5a0fb0, NVIDIA A40, 0, 0\n",
+      "gpu_uuid": "GPU-0d10aff1-6627-2fde-a1b4-15064c5a0fb0",
+      "lane": "f3-a40-r4-0",
+      "observed_at_utc": "2026-09-25T16:14:31.962134+00:00",
+      "original_process_states": [
+        {
+          "command": [],
+          "pid": 3606,
+          "ppid": 1,
+          "process_start_identity": "147858778",
+          "state": "Z"
+        },
+        null
+      ],
+      "other_live_processes": [],
+      "pod": "211247-alia40k-a40-1gpu",
+      "pod_uid": "4a2ef7d9-7c56-4455-9dbe-914b1576bbe1",
+      "process_signals_sent": false,
+      "role": "policy",
+      "source_receipt_sha256": "3419f2c897e819055dc48d740bf8c5e94f3e4fa337c26fea014dcc828b39d275",
+      "terminal": {
+        "at_utc": "2026-09-25T16:13:24.663603Z",
+        "child_returncode": 44,
+        "host_memory": {
+          "anon_bytes": 17543168,
+          "anon_plus_shmem_bytes": 17543168,
+          "current_bytes": 30177456128,
+          "events": {
+            "high": 0,
+            "low": 0,
+            "max": 6219615,
+            "oom": 0,
+            "oom_kill": 0
+          },
+          "kernel_peak_bytes": null,
+          "limit_bytes": 34359738368,
+          "sampled_anon_plus_shmem_peak_bytes": 5488340992,
+          "sampled_peak_bytes": 34359775232,
+          "sampling_interval_seconds": 0.2,
+          "shmem_bytes": 0
+        },
+        "interrupted": false,
+        "owned_descendants_remaining": {},
+        "returncode": 44,
+        "status": "failed_preserve_no_automatic_retry"
+      }
+    },
+    {
+      "full_nvidia_smi": "Fri Sep 25 16:14:31 2026       \n+-----------------------------------------------------------------------------------------+\n| NVIDIA-SMI 580.95.05              Driver Version: 580.95.05      CUDA Version: 13.0     |\n+-----------------------------------------+------------------------+----------------------+\n| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |\n| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |\n|                                         |                        |               MIG M. |\n|=========================================+========================+======================|\n|   0  NVIDIA A40                     On  |   00000000:81:00.0 Off |                    0 |\n|  0%   27C    P8             21W /  300W |       0MiB /  46068MiB |      0%      Default |\n|                                         |                        |                  N/A |\n+-----------------------------------------+------------------------+----------------------+\n\n+-----------------------------------------------------------------------------------------+\n| Processes:                                                                              |\n|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |\n|        ID   ID                                                               Usage      |\n|=========================================================================================|\n|  No running processes found                                                             |\n+-----------------------------------------------------------------------------------------+\n",
+      "gpu_inventory": "GPU-c25113ff-078d-6edd-f284-6723a02fca5f, NVIDIA A40, 0, 0\n",
+      "gpu_uuid": "GPU-c25113ff-078d-6edd-f284-6723a02fca5f",
+      "lane": "f3-a40-r4-0",
+      "observed_at_utc": "2026-09-25T16:14:31.984497+00:00",
+      "original_process_states": [
+        {
+          "command": [],
+          "pid": 3934,
+          "ppid": 1,
+          "process_start_identity": "149940618",
+          "state": "Z"
+        },
+        null
+      ],
+      "other_live_processes": [],
+      "pod": "211247-alia40h-a40-1gpu",
+      "pod_uid": "39c06d0c-13d6-4c46-ad3a-41f590de726d",
+      "process_signals_sent": false,
+      "role": "simulator",
+      "source_receipt_sha256": "8ec2d27c3766336410aa8aede6166a2f56ddb3bc5a65539c4d085640c4e2b808",
+      "terminal": {
+        "at_utc": "2026-09-25T16:13:24.671124Z",
+        "child_returncode": 0,
+        "host_memory": {
+          "anon_bytes": 15179776,
+          "anon_plus_shmem_bytes": 15183872,
+          "current_bytes": 27717795840,
+          "events": {
+            "high": 0,
+            "low": 0,
+            "max": 659632,
+            "oom": 0,
+            "oom_kill": 0
+          },
+          "kernel_peak_bytes": null,
+          "limit_bytes": 34359738368,
+          "sampled_anon_plus_shmem_peak_bytes": 7043174400,
+          "sampled_peak_bytes": 34359742464,
+          "sampling_interval_seconds": 0.2,
+          "shmem_bytes": 4096
+        },
+        "interrupted": false,
+        "owned_descendants_remaining": {},
+        "returncode": 0,
+        "status": "complete"
+      }
+    }
+  ],
+  "hold": {
+    "authority": {
+      "coordinator_project_session_id": "5ed7dc81-68d8-493f-a8c4-81a4b6cb59f6",
+      "kind": "explicit_user_instruction_relayed_by_orchestrator",
+      "relay_project_session_id": "c230f3cd-3fe9-4f1f-9ee4-e8b857151a60",
+      "user_quote": "please stop it and re run this thing, I think there's something missing"
+    },
+    "automatic_technical_invalid_threshold": 1,
+    "created_at_utc": "2026-09-25T16:05:40.756901Z",
+    "drain_policy": "No new dispatches/claims/attempts; allow already in-flight episodes to finish normally and finalize. No replay of this release.",
+    "phase": "user_requested_stop_supersede",
+    "preserve_raw_masters": true,
+    "reason": "User suspects setup/integration problem after low P+D competence; preserve this run and diagnose before any new revision.",
+    "rerun_gate": "Identified and fixed root cause plus disclosed new protocol/runtime revision restarting at P; never relaunch current release.",
+    "schema_version": "sgw-01-fleet-hold-v1",
+    "source_commit": "a94696d3fa75c78a4f756536b988cead607e53b8"
+  },
+  "interpretation": {
+    "cohort_status": "USER_STOPPED_SUPERSEDED_PARTIAL_PRESERVED",
+    "completed_by_stage": {
+      "C": 161,
+      "D": 216,
+      "P": 54
+    },
+    "completed_unique_episodes": 431,
+    "completion_pointers_present_at_hold": 426,
+    "diagnostic": "Cancelled before GPU execution; u/q explicitly released by its coordinator.",
+    "finalized_attempts": 436,
+    "in_flight_at_hold_finalized_naturally": 5,
+    "in_flight_final": 0,
+    "intentional_control_exits": "Policy44 and simulator0 with interrupted:false and no remaining children; not additional technical episodes.",
+    "no_diagnosed_cause": true,
+    "old_eta_obsolete": true,
+    "old_release_must_not_resume": true,
+    "per_model_completed": {
+      "E3": 158,
+      "F3": 125,
+      "N3": 148
+    },
+    "raw_masters_retained_remote": true,
+    "technical_invalid_attempts": 5,
+    "valid_model_failures": 426,
+    "valid_successes": 5
+  },
+  "no_attempt_started_after_hold": true,
+  "observed_at_utc": "2026-09-25T16:17:50.556659+00:00",
+  "per_model_stage": {
+    "E3": {
+      "C": {
+        "completed_unique_cells": 68,
+        "completion_pointers_published_by_hold": 66,
+        "finalized_attempts": 68,
+        "finalized_status_counts": {
+          "valid_model_failure": 68
+        },
+        "in_flight_final": 0,
+        "manifests_published_by_hold": 66,
+        "started_unfinalized_at_hold": 2
+      },
+      "D": {
+        "completed_unique_cells": 72,
+        "completion_pointers_published_by_hold": 72,
+        "finalized_attempts": 72,
+        "finalized_status_counts": {
+          "valid_model_failure": 72
+        },
+        "in_flight_final": 0,
+        "manifests_published_by_hold": 72,
+        "started_unfinalized_at_hold": 0
+      },
+      "P": {
+        "completed_unique_cells": 18,
+        "completion_pointers_published_by_hold": 18,
+        "finalized_attempts": 19,
+        "finalized_status_counts": {
+          "technical_invalid": 1,
+          "valid_model_failure": 18
+        },
+        "in_flight_final": 0,
+        "manifests_published_by_hold": 19,
+        "started_unfinalized_at_hold": 0
+      }
+    },
+    "F3": {
+      "C": {
+        "completed_unique_cells": 35,
+        "completion_pointers_published_by_hold": 34,
+        "finalized_attempts": 35,
+        "finalized_status_counts": {
+          "valid_model_failure": 35
+        },
+        "in_flight_final": 0,
+        "manifests_published_by_hold": 34,
+        "started_unfinalized_at_hold": 1
+      },
+      "D": {
+        "completed_unique_cells": 72,
+        "completion_pointers_published_by_hold": 72,
+        "finalized_attempts": 72,
+        "finalized_status_counts": {
+          "valid_model_failure": 72
+        },
+        "in_flight_final": 0,
+        "manifests_published_by_hold": 72,
+        "started_unfinalized_at_hold": 0
+      },
+      "P": {
+        "completed_unique_cells": 18,
+        "completion_pointers_published_by_hold": 18,
+        "finalized_attempts": 20,
+        "finalized_status_counts": {
+          "technical_invalid": 2,
+          "valid_model_failure": 18
+        },
+        "in_flight_final": 0,
+        "manifests_published_by_hold": 20,
+        "started_unfinalized_at_hold": 0
+      }
+    },
+    "N3": {
+      "C": {
+        "completed_unique_cells": 58,
+        "completion_pointers_published_by_hold": 56,
+        "finalized_attempts": 58,
+        "finalized_status_counts": {
+          "valid_model_failure": 56,
+          "valid_success": 2
+        },
+        "in_flight_final": 0,
+        "manifests_published_by_hold": 56,
+        "started_unfinalized_at_hold": 2
+      },
+      "D": {
+        "completed_unique_cells": 72,
+        "completion_pointers_published_by_hold": 72,
+        "finalized_attempts": 72,
+        "finalized_status_counts": {
+          "valid_model_failure": 69,
+          "valid_success": 3
+        },
+        "in_flight_final": 0,
+        "manifests_published_by_hold": 72,
+        "started_unfinalized_at_hold": 0
+      },
+      "P": {
+        "completed_unique_cells": 18,
+        "completion_pointers_published_by_hold": 18,
+        "finalized_attempts": 20,
+        "finalized_status_counts": {
+          "technical_invalid": 2,
+          "valid_model_failure": 18
+        },
+        "in_flight_final": 0,
+        "manifests_published_by_hold": 20,
+        "started_unfinalized_at_hold": 0
+      }
+    }
+  },
+  "raw_arrays_videos_read": false,
+  "raw_metadata": {
+    "attempts.json": {
+      "path": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/stop-receipts/user-stop-20260925/attempts.json",
+      "sha256": "859cc14b9effdf999b7d948035a092572151e458cef317a21022c06c63170ddb"
+    },
+    "catalogue.json": {
+      "path": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/stop-receipts/user-stop-20260925/catalogue.json",
+      "sha256": "1eeee79212b5a18236e1941d0b1a355dd6adf01d42c8cc5a612974a3098aed32"
+    },
+    "progress.json": {
+      "path": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/stop-receipts/user-stop-20260925/progress.json",
+      "sha256": "d36e16feeb4e2efdb8561c3cd67feb124aaf1f00ed664057dc0ebde9cc85af86"
+    }
+  },
+  "schema": "sgw-user-stop-final-v1",
+  "started_unfinalized_at_hold": [
+    {
+      "actions_recorded": 450,
+      "attempt_id": "attempt-001",
+      "cell_id": "HEIGHT-C05-N3-C-NEG",
+      "completion_pointer_file_mtime": 1790352669.3643827,
+      "family": "HEIGHT",
+      "intent_created_at_utc": "2026-09-25T16:01:17.631429Z",
+      "manifest_file_mtime": 1790352669.3172317,
+      "model": "N3",
+      "requests_dispatched": 15,
+      "result_completed_at_utc": "2026-09-25T16:10:32.357660Z",
+      "stage": "C",
+      "started_after_user_hold": false,
+      "status": "valid_model_failure",
+      "unfinalized_at_user_hold": true
+    },
+    {
+      "actions_recorded": 450,
+      "attempt_id": "attempt-001",
+      "cell_id": "HEIGHT-C06-E3-C-NEG",
+      "completion_pointer_file_mtime": 1790352665.8407836,
+      "family": "HEIGHT",
+      "intent_created_at_utc": "2026-09-25T16:02:39.079100Z",
+      "manifest_file_mtime": 1790352665.7965548,
+      "model": "E3",
+      "requests_dispatched": 15,
+      "result_completed_at_utc": "2026-09-25T16:10:24.382391Z",
+      "stage": "C",
+      "started_after_user_hold": false,
+      "status": "valid_model_failure",
+      "unfinalized_at_user_hold": true
+    },
+    {
+      "actions_recorded": 450,
+      "attempt_id": "attempt-001",
+      "cell_id": "LAT-C05-N3-C-POS",
+      "completion_pointer_file_mtime": 1790352762.7210214,
+      "family": "LAT",
+      "intent_created_at_utc": "2026-09-25T16:03:50.209707Z",
+      "manifest_file_mtime": 1790352762.701519,
+      "model": "N3",
+      "requests_dispatched": 15,
+      "result_completed_at_utc": "2026-09-25T16:12:08.911343Z",
+      "stage": "C",
+      "started_after_user_hold": false,
+      "status": "valid_model_failure",
+      "unfinalized_at_user_hold": true
+    },
+    {
+      "actions_recorded": 450,
+      "attempt_id": "attempt-001",
+      "cell_id": "LAT-C06-E3-C-POS",
+      "completion_pointer_file_mtime": 1790352698.4376948,
+      "family": "LAT",
+      "intent_created_at_utc": "2026-09-25T16:03:41.924878Z",
+      "manifest_file_mtime": 1790352698.415733,
+      "model": "E3",
+      "requests_dispatched": 15,
+      "result_completed_at_utc": "2026-09-25T16:10:58.982585Z",
+      "stage": "C",
+      "started_after_user_hold": false,
+      "status": "valid_model_failure",
+      "unfinalized_at_user_hold": true
+    },
+    {
+      "actions_recorded": 450,
+      "attempt_id": "attempt-001",
+      "cell_id": "LAT-C06-F3-C-POS",
+      "completion_pointer_file_mtime": 1790352802.8540826,
+      "family": "LAT",
+      "intent_created_at_utc": "2026-09-25T16:05:40.593374Z",
+      "manifest_file_mtime": 1790352802.8219905,
+      "model": "F3",
+      "requests_dispatched": 15,
+      "result_completed_at_utc": "2026-09-25T16:12:44.073018Z",
+      "stage": "C",
+      "started_after_user_hold": false,
+      "status": "valid_model_failure",
+      "unfinalized_at_user_hold": true
+    }
+  ]
+}

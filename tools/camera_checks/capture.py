@@ -6,6 +6,7 @@ One process per layout; two resets and three hold-position steps only.
 """
 from __future__ import annotations
 import argparse
+import copy
 from dataclasses import asdict
 import hashlib
 import json
@@ -25,6 +26,8 @@ def main():
     parser.add_argument('--layout', required=True)
     parser.add_argument('--output', type=Path, required=True)
     parser.add_argument('--study-root', type=Path, required=True)
+    parser.add_argument('--reset-only', action='store_true')
+    parser.add_argument('--stock-front-candidates', action='store_true')
     from isaaclab.app import AppLauncher
     from robolab.eval.runner import add_common_eval_args
     add_common_eval_args(parser)
@@ -48,7 +51,9 @@ def main():
                'candidate_sha256': sha(candidate_path), 'candidate_id': candidate.candidate_id,
                'source_commit': subprocess.check_output(['git', '-C', str(args.study_root), 'rev-parse', 'HEAD'], text=True).strip(),
                'script_sha256': sha(__file__), 'model_requests': 0, 'learned_policy_episodes': 0,
-               'physical_qualification_trials': 0, 'hold_steps': 3, 'resets': 2,
+               'physical_qualification_trials': 0,
+               'hold_steps': 0 if args.reset_only else 3,
+               'resets': 1 if args.reset_only else 2,
                'purpose': 'camera diagnostics only; not a study release', 'snapshots': []}
     atomic_json(args.output / 'started.json', receipt)
     args.enable_cameras = True
@@ -75,8 +80,27 @@ def main():
         cfg = parse_env_cfg('SGWJointPositionTask', device=args.device, seed=record['scene_seed'], num_envs=1)
         configure_clean_appearance(cfg, candidate)
         from experiments.workshops.spatial_grounding_v1.camera_configuration import configure_study_cameras, camera_configuration_identity
-        configure_study_cameras(cfg, candidate)
-        receipt['camera_configuration'] = camera_configuration_identity()
+        extra_cameras = []
+        if args.stock_front_candidates:
+            from robolab.variations import camera as presets
+            classes = (
+                ('HeadCameraCfg', 'head_camera'),
+                ('EgocentricMirroredCameraCfg', 'egocentric_mirrored_camera'),
+                ('EgocentricMirroredWideAngleCameraCfg', 'egocentric_mirrored_wide_angle_camera'),
+                ('EgocentricMirroredWideAngleHighCameraCfg', 'egocentric_mirrored_wide_angle_high_camera'),
+            )
+            for cls, name in classes:
+                setattr(cfg.scene, name, copy.deepcopy(getattr(getattr(presets, cls), name)))
+                extra_cameras.append(name)
+            receipt['camera_configuration'] = {
+                'revision': 'unselected-stock-front-candidates-no-study',
+                'source_sha256': sha(presets.__file__),
+                'preset_classes': [cls for cls, _ in classes],
+                'selection_rule': 'Initial arm, cube, reference/support and destination visibility only; no model outcomes.',
+            }
+        else:
+            configure_study_cameras(cfg, candidate)
+            receipt['camera_configuration'] = camera_configuration_identity()
         env, _ = create_env(cfg, device=args.device, seed=record['scene_seed'], num_envs=1,
                             instruction_type='default', policy='camera_diagnostic_no_model', renderer='realtime', rendering_mode='balanced')
         wrapper = JointPositionEnvironment(env, candidate=candidate, cell_id='camera-check:'+args.layout, evidence_root=args.output / 'reset-evidence')
@@ -88,13 +112,13 @@ def main():
             folder.mkdir()
             images = obs['image_obs']
             cameras = {}
-            for name in CAMERAS:
+            for name in (*CAMERAS, *extra_cameras):
                 camera = env.scene[name]
                 data = camera.data
-                rgb = images[name][0]
                 sensor_rgb = to_np(data.output['rgb'])[0, :, :, :3]
+                rgb = images[name][0] if name in CAMERAS else sensor_rgb
                 assert np.array_equal(sensor_rgb, rgb), name+' observation/sensor mismatch'
-                assert rgb.shape == (720, 1280, 3) and rgb.dtype == np.uint8 and np.ptp(rgb)
+                assert rgb.shape == (camera.cfg.height, camera.cfg.width, 3) and rgb.dtype == np.uint8 and np.ptp(rgb)
                 Image.fromarray(rgb).save(folder / (name+'.png'))
                 cameras[name] = {
                     'K': to_np(data.intrinsic_matrices[0]).tolist(),
@@ -132,13 +156,14 @@ def main():
         reset = wrapper.reset()
         receipt['first_reset'] = dict(reset.receipt)
         obs = capture('reset-1')
-        hold = np.concatenate([obs['proprio_obs']['arm_joint_pos'][0], obs['proprio_obs']['gripper_pos'][0]])
-        for step in range(1, 4):
-            wrapper.step(hold)
-            capture(f'hold-{step}')
-        reset = wrapper.reset()
-        receipt['second_reset'] = dict(reset.receipt)
-        capture('reset-2')
+        if not args.reset_only:
+            hold = np.concatenate([obs['proprio_obs']['arm_joint_pos'][0], obs['proprio_obs']['gripper_pos'][0]])
+            for step in range(1, 4):
+                wrapper.step(hold)
+                capture(f'hold-{step}')
+            reset = wrapper.reset()
+            receipt['second_reset'] = dict(reset.receipt)
+            capture('reset-2')
         receipt['status'] = 'captured'
         atomic_json(args.output / 'receipt.json', receipt)
         print(json.dumps({'layout': args.layout, 'status': receipt['status']}), flush=True)

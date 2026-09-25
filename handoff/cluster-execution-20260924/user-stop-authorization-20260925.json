@@ -45,6 +45,15 @@
     "side_slot": "over_shoulder_right_camera",
     "side_preset": "Unchanged stock OverShoulderLeftCameraCfg or OverShoulderRightCameraCfg, selected by cube/reference and arm visibility.",
     "wrist_changed": false,
+    "policy_input_revision": {
+      "authority": "Parent additionally requested official client per-view resize_with_pad before existing Cosmos service composition.",
+      "official_client": "Pinned RoboLab 0aef241 policies/cosmos3/client.py",
+      "per_view_height": 360,
+      "per_view_width": 640,
+      "helper": "openpi_client.image_tools.resize_with_pad, default PIL bilinear",
+      "helper_sha256": "d48b4bd7f44e79fe6db8a8e07c9161144fa250be686e1245014a8b47e6171977",
+      "disclosure": "Input preprocessing changes in addition to cameras and scheduling; not a diagnosed explanation for earlier outcomes."
+    },
     "minimum_gates": [
       "Render LAT/HEIGHT/DIST P01 reset frames: arm, cube, references and destinations visible in front; arm visible in side.",
       "Check N3 three-view input packing and slot order once.",

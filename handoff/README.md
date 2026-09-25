@@ -1,19 +1,21 @@
 # Start here: SGW-01 cluster handoff
 
 **Current user stop:** the close-camera cohort is superseded under a durable
-hold from 2026-09-25 16:05:40 UTC. Do not resume its releases. Finalize
-already in-flight episodes, preserve all data, and release only verified
-drained resources. The later front/side-camera override permits a new
+hold from 2026-09-25 16:05:40 UTC. Do not resume its releases. The natural
+drain is complete: 431 unique episodes, five preserved technical attempts,
+zero in flight, all ten GPUs verified released. Preserve all data; see
+[the final stop receipt](cluster-execution-20260924/user-stop-final-20260925.json).
+The later front/side-camera override permits a new
 N3-only run after minimal reset-view and input-packing gates; the separate
 diagnostic is cancelled. Read
 [the stop/new-revision authority](cluster-execution-20260924/user-stop-authorization-20260925.json)
 before the historical continuation below.
 
-**Current execution continuation:** the user has since authorized cluster
+**Historical execution continuation (now stopped):** the user authorized cluster
 integration and launch subject to the runtime gates. See
 [the current cluster record](cluster-execution-20260924/README.md) for deployed
 source, destination materialization, actual owners and preserved failures.
-Genuine A40 study execution is running on five policy/simulator pairs. All
+Genuine A40 study execution ran on five policy/simulator pairs. All
 three models have valid recorded episodes after the verified recovery; 396
 unique episodes (54 pilot, 216 development and 126 confirmation) were complete
 at 2026-09-25 15:18 UTC. The development barrier released at 11:28:27 UTC;

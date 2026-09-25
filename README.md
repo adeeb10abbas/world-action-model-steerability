@@ -3,12 +3,17 @@
 Do equivalent descriptions of a spatial goal produce the same predicted and executed behavior? This repository contains the clean-scene study for the [CoRL 2026 world-model workshop](https://do-robots-need-world-models.github.io/).
 
 **User stop, 25 September 16:05 UTC:** the close-camera study is held and
-superseded pending a setup/integration diagnostic. In-flight episodes are
-being finalized before resource release. All existing data and frozen
-records are preserved; historical progress below is not a completed study.
+superseded. All five in-flight episodes finalized naturally: **431 unique
+episodes** (N3 148, E3 158, F3 125), five successes and 426 valid failures,
+plus the five preserved technical attempts. All ten GPUs were verified
+released without interrupting work. All data and frozen records remain
+preserved; this is a partial stopped cohort, not a completed study.
 The new front/side-camera N3-only revision requires its minimal reset-view
 and input-packing gates before launch.
 See [stop authority](handoff/cluster-execution-20260924/user-stop-authorization-20260925.json).
+The separate competence diagnostic is cancelled; the
+[final stop receipt](handoff/cluster-execution-20260924/user-stop-final-20260925.json)
+records exact counts, control exits and GPU release evidence.
 
 **All 87 required scenes are physically validated: 29 LAT, 29 HEIGHT and 29 flat DIST layouts. Each passed both goals across three resets (522 selected scripted trials). The learned-policy study had 396 of 1,566 unique episodes complete at 2026-09-25 15:18 UTC: all 54 pilots, 216 development episodes and 126 genuine confirmation episodes. All five supervised A40 policy/simulator pairs have completed confirmation episodes after the development barrier released at 11:28:27 UTC.**
 
