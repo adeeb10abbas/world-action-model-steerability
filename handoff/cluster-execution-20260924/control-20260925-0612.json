@@ -1,0 +1,173 @@
+{
+  "active_owner_index_sha256": "3c828546282c6ee4be8cad57fa8c498a2796247ced86e7d6b126011b67c71389",
+  "actual_lane_loans": [],
+  "additional_pairs_launched": 0,
+  "boundary_interpretation": "E3-LAT-D has 24 completion pointers but no partition-completion receipt at this read. No quiescent boundary was certified and no owner was retired. Other four pairs have unfinished attempts; lane status timestamps are not owner heartbeats.",
+  "completed_by_model": {
+    "E3": 42,
+    "F3": 60,
+    "N3": 55
+  },
+  "fleet_hold": null,
+  "guardian_heartbeat": {
+    "at_utc": "2026-09-25T06:11:32.567154Z",
+    "available_bytes": 151163760541696,
+    "available_inodes": 73695527,
+    "status": "watching",
+    "total_bytes": 219902325555200,
+    "total_inodes": 134217728
+  },
+  "guardian_terminal": null,
+  "lane_statuses": {
+    "e3-a40-r4-0": {
+      "at_utc": "2026-09-25T03:01:42.885392Z",
+      "partition": "E3-LAT-D",
+      "status": "running"
+    },
+    "f3-a40-r4-0": {
+      "at_utc": "2026-09-25T03:01:43.784971Z",
+      "partition": "F3-LAT-D",
+      "status": "running"
+    },
+    "f3-a40-r4-1": {
+      "at_utc": "2026-09-25T03:02:27.071415Z",
+      "partition": "F3-HEIGHT-D",
+      "status": "running"
+    },
+    "n3-a40-r4-0": {
+      "at_utc": "2026-09-25T03:02:13.551724Z",
+      "partition": "N3-LAT-D",
+      "status": "running"
+    },
+    "n3-a40-r4-1": {
+      "at_utc": "2026-09-25T03:02:25.711069Z",
+      "partition": "N3-HEIGHT-D",
+      "status": "running"
+    }
+  },
+  "new_completions": 34,
+  "observed_at_utc": "2026-09-25T06:12:19.508858+00:00",
+  "partition_completions": {
+    "E3-DIST-P": {
+      "completed_at_utc": "2026-09-25T03:01:35.850529Z",
+      "episodes": 6,
+      "release_id": "sgw-current-E3-DIST-P-r4",
+      "status": "complete"
+    },
+    "E3-HEIGHT-P": {
+      "completed_at_utc": "2026-09-25T02:10:02.107994Z",
+      "episodes": 6,
+      "release_id": "sgw-current-E3-HEIGHT-P-r4",
+      "status": "complete"
+    },
+    "E3-LAT-P": {
+      "completed_at_utc": "2026-09-25T01:15:30.262926Z",
+      "episodes": 6,
+      "release_id": "sgw-current-E3-LAT-P-r4",
+      "status": "complete"
+    },
+    "F3-DIST-P": {
+      "completed_at_utc": "2026-09-25T02:16:56.689401Z",
+      "episodes": 6,
+      "release_id": "sgw-current-F3-DIST-P-r4",
+      "status": "complete"
+    },
+    "F3-HEIGHT-P": {
+      "completed_at_utc": "2026-09-25T01:25:13.044765Z",
+      "episodes": 6,
+      "release_id": "sgw-current-F3-HEIGHT-P-r4",
+      "status": "complete"
+    },
+    "F3-LAT-P": {
+      "completed_at_utc": "2026-09-25T01:16:37.145823Z",
+      "episodes": 6,
+      "release_id": "sgw-current-F3-LAT-P-r4",
+      "status": "complete"
+    },
+    "N3-DIST-P": {
+      "completed_at_utc": "2026-09-25T02:29:01.864518Z",
+      "episodes": 6,
+      "release_id": "sgw-current-N3-DIST-P-r4",
+      "status": "complete"
+    },
+    "N3-HEIGHT-P": {
+      "completed_at_utc": "2026-09-25T01:32:51.972915Z",
+      "episodes": 6,
+      "release_id": "sgw-current-N3-HEIGHT-P-r4",
+      "status": "complete"
+    },
+    "N3-LAT-P": {
+      "completed_at_utc": "2026-09-25T01:25:37.798350Z",
+      "episodes": 6,
+      "release_id": "sgw-current-N3-LAT-P-r4",
+      "status": "complete"
+    }
+  },
+  "previous_progress_receipt": "handoff/cluster-execution-20260924/progress-20260925-0510.json",
+  "processes": {
+    "boundary_observer": {
+      "command": [
+        "/data/users/ali/vla_wam/envs/robolab-v2-isaac50/bin/python",
+        "-u",
+        "/data/users/ali/sgw-01/current-20260924a/deploy-boundary-20260925a/watch_partition_boundary.py",
+        "--cohort",
+        "/data/users/ali/sgw-01/current-20260924a/study-a40-v2",
+        "--lane-index",
+        "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/inputs-a40-r4/initial-lanes.json",
+        "--seconds",
+        "1209600"
+      ],
+      "cwd": "/home/alia40q",
+      "pid": 4280,
+      "ppid": 0,
+      "process_start_identity": "150805581",
+      "started_at_unix": 1790305982.81
+    },
+    "guardian": {
+      "command": [
+        "/data/users/ali/vla_wam/envs/robolab-v2-isaac50/bin/python",
+        "-u",
+        "/data/users/ali/sgw-01/current-20260924a/deploy-storage-502d720/watch_study_storage.py",
+        "--cohort",
+        "/data/users/ali/sgw-01/current-20260924a/study-a40-v2",
+        "--owners-index",
+        "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/storage-guard/active-owners.json",
+        "--run-root",
+        "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/storage-guard/guard-502d7208-f732b6579b6946dd8b97de290f9d5359",
+        "--source-commit",
+        "502d720856c9f7a88dd37acb53255ae2388f5071",
+        "--implementation-sha256",
+        "9aeca327677c4cd097fd3624f626953d8fa3ac357d16423de57ee1af92b3855e",
+        "--seconds",
+        "1209600",
+        "--poll-seconds",
+        "60"
+      ],
+      "cwd": "/home/alia40q",
+      "pid": 4121,
+      "ppid": 1,
+      "process_start_identity": "150027267",
+      "started_at_unix": 1790298199.67
+    },
+    "notification_observer": {
+      "command": [
+        "/data/users/ali/vla_wam/envs/robolab-v2-isaac50/bin/python",
+        "-u",
+        "/data/users/ali/sgw-01/current-20260924a/deploy-storage-502d720/event-watcher-v3.py",
+        "--registration",
+        "/data/users/ali/sgw-01/current-20260924a/deploy-storage-502d720/event-watcher-start-v3.json",
+        "--seconds",
+        "1209600"
+      ],
+      "cwd": "/home/alia40q",
+      "pid": 6144,
+      "ppid": 0,
+      "process_start_identity": "151516341",
+      "started_at_unix": 1790313090.41
+    }
+  },
+  "progress_receipt": "handoff/cluster-execution-20260924/progress-20260925-0610.json",
+  "raw_metadata_sha256": "be3e5a3e2cbd777640e5b69d7c5aec4da74e21f405a8efe32f116dbb354c787e",
+  "schema_version": "sgw-01-hourly-control-v1",
+  "scope": "Existing control metadata only; no raw media, new GPU checks or study launches."
+}

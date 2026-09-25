@@ -3,12 +3,13 @@
 The user separately authorized runtime integration, bounded checks, and the
 committed study on 24 September 2026. This supersedes the preparation-only
 permission recorded in the original delivery. **Genuine study execution is
-running on five A40 policy/simulator pairs.** At 2026-09-25 05:09 UTC,
-123 unique episodes were complete: N3 43/522, E3 34/522 and F3 46/522.
-These comprise all 54 pilots and 69 development episodes, with 122 valid model
+running on five A40 policy/simulator pairs.** At 2026-09-25 06:11 UTC,
+157 unique episodes were complete: N3 55/522, E3 42/522 and F3 60/522.
+These comprise all 54 pilots and 103 development episodes, with 156 valid model
 failures and one valid success; the five technical attempts remain separate.
 The frozen pilot barrier released development at 03:01:35.850529 UTC.
-See [the operational snapshot](progress-20260925-0510.json),
+See [the operational snapshot](progress-20260925-0610.json),
+[the current owner and boundary evidence](control-20260925-0612.json),
 [the periodic timing/capacity report](report-20260925-0408.json) and
 [first valid episode evidence for every model](first-valid-study-episodes.json).
 The execution source is `a94696d3fa75c78a4f756536b988cead607e53b8`;
@@ -32,6 +33,24 @@ protected B200 are untouched. Full 1,566-cell completion, final analysis and
 final-only local H.264 delivery remain pending. No local video transfer has
 started. Progress receipts are collected hourly; capacity can be reassigned
 only at a verified quiescent boundary without losing an in-flight attempt.
+
+**06:11 UTC progress:** 34 additional completions since 05:09 correspond to
+33.03 episodes/hour, with 516 additional dispatched requests and 15,509
+additional recorded actions. Four attempts had genuine requests/actions
+in flight. E3 had all 24 LAT development completion pointers, but no
+partition-completion receipt had been published at the 06:12 control read.
+This is not sufficient evidence to certify a quiescent boundary or retire
+its controllers. No lane was loaned or restarted. All ten current owner
+heartbeats were fresh, with no new technical attempt, OOM or fleet hold.
+The guardian and both notification observers retained their exact process
+identities; the active-owner index was unchanged.
+
+Finalized manifests account for 1,285.576 GiB across 162 attempts, including
+the five preserved technical attempts. Native/in-flight bytes not indexed
+by those manifests remain separately unmeasured. The guardian reported
+137.483 TiB and 73,695,527 inodes available. No media was downloaded and no
+new capacity was polled or bound; the isolation-only expansion still awaits
+the parent's recreated-Pod-name relay.
 
 **Current expansion decision, 05:38 UTC:** the
 [isolation-only authorization](isolated-a40-expansion-authorization.json)
