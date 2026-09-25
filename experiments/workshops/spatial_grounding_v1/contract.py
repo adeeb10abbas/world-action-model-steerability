@@ -179,7 +179,24 @@ def load_release(release: Path) -> Release:
     if binding.get("resource_owner") != receipt.get("resource_owner"):
         raise ContractError("release receipt resource owner differs from binding")
     cells = _load_cells(root / "queue.jsonl", release_id)
-    return Release(root, release_id, hashes, cells, binding)
+    release = Release(root, release_id, hashes, cells, binding)
+    from .block_scheduling import frozen_blocks, registration
+    registered = registration(binding, cohort=root.parent, protocol_sha256=hashes["protocol.json"],
+                              prompts_sha256=hashes["prompts.json"])
+    if registered is not None:
+        protocol = load_json(root / "protocol.json", "block protocol")
+        if protocol.get("protocol_runtime") != binding["protocol_runtime"]:
+            raise ContractError("protocol_runtime differs between the protocol and runtime binding")
+        if receipt.get("source_queue_sha256") != registered["source_queue_sha256"]:
+            raise ContractError("block release source queue differs from registration")
+        if {cell.model for cell in cells} != {"N3"}:
+            raise ContractError("block release must remain N3-only")
+        frozen_blocks(cells)
+        partitions = {(cell.model, cell.family, cell.stage) for cell in cells}
+        if len(partitions) != 1:
+            raise ContractError("block-mode release must retain one whole authoritative partition")
+        release.partition(*next(iter(partitions)))
+    return release
 
 
 def verify_completion_pointer(release: Release, pointer: Path) -> dict[str, Any]:

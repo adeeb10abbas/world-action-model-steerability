@@ -12,8 +12,12 @@ The counts below are historical snapshots.
 See [the stop and future-revision authority](user-stop-authorization-20260925.json)
 and [verified hold](user-stop-hold-20260925.json). Raw data, outcomes and old
 protocol/release records remain unchanged. The latest override cancels the
-separate diagnostic and permits a new front/side-camera N3-only revision
+separate diagnostic and permits a new stock-left/right-camera N3-only revision
 after minimal reset-view/input-packing gates, starting again from P.
+The requested front/side pair was explicitly replaced with unchanged stock
+left/right/wrist views after candidate inspection. Official per-view
+360 x 640 resize-with-pad is separately disclosed. No existing outcome
+was reclassified; no camera revision has demonstrated restored competence.
 
 The existing storage guardian exits cleanly on any fleet hold. Its terminal
 receipt is preserved; a separately versioned replacement uses

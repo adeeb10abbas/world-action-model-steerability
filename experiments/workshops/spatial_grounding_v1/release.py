@@ -58,6 +58,13 @@ def create_release(*, output: Path, release_id: str, protocol: Path, prompts: Pa
     if model not in {"N3", "E3", "F3"} or family not in {"LAT", "HEIGHT", "DIST"}:
         raise ContractError("release must select one registered model/family branch")
     binding = load_json(runtime_binding, "runtime binding")
+    from .block_scheduling import registration
+    registered = registration(binding, model=model, cohort=output.parent,
+                              protocol_sha256=sha256_file(protocol), prompts_sha256=sha256_file(prompts))
+    if registered is not None and sha256_file(planned_queue) != registered["source_queue_sha256"]:
+        raise ContractError("block release requires the frozen planned queue")
+    if registered is not None and load_json(protocol, "block protocol").get("protocol_runtime") != binding["protocol_runtime"]:
+        raise ContractError("protocol_runtime differs between the protocol and runtime binding")
     missing = REQUIRED_BINDING_FIELDS - set(binding)
     if (missing or any(binding.get(key) in (None, "", {}, []) for key in REQUIRED_BINDING_FIELDS)
             or binding.get("resource_owner") != resource_owner or "@sha256:" not in str(binding.get("worker_image_digest"))):
@@ -105,6 +112,8 @@ def create_release(*, output: Path, release_id: str, protocol: Path, prompts: Pa
     atomic_json(output / "release_receipt.json", receipt)
     hashes = {name: sha256_file(output / name) for name in ("protocol.json", "prompts.json", "queue.jsonl", "fixtures.json", "runtime_binding.json", "release_receipt.json")}
     atomic_json(output / "hashes.json", hashes)
+    if registered is not None:
+        load_release(output)
     return output
 
 
@@ -112,6 +121,8 @@ def render_job(*, release: Path, template: Path, output: Path, model: str, famil
     loaded = load_release(release)
     loaded.partition(model, family, stage)
     binding = loaded.binding
+    if binding.get("scheduling_mode") is not None:
+        raise ContractError("registered block mode uses the isolated Pod lane/admission workflow, not partition Jobs")
     if model not in {"N3", "E3", "F3"} or family not in {"LAT", "HEIGHT", "DIST"} or stage not in STAGE_EPISODES:
         raise ContractError("invalid Job partition")
     limits = binding.get("cpu_memory_limits")

@@ -4,6 +4,14 @@
 registry** into destination-specific scene overlays and 1,566 planned cell
 bindings. It runs no simulator, model, network request or release operation.
 
+For the newly authorized stock-camera rerun, explicitly set
+`SGW01_CAMERA_REVISION=stock-over-shoulder-official-input-v1-20260925`
+when rematerializing and in both runtime roles. Use a new destination;
+never modify or reuse the stopped cohort's bindings. The 87-layout geometry,
+1,566-cell original queue and 18 prompts stay unchanged. Release registration
+uses the separate `protocol_stock_camera_r5.json`; only N3 is currently
+authorized. See [camera revision disclosure](CAMERA_ALIGNMENT.md).
+
 Use the [complete registry](../artifacts/workshops/spatial_grounding_v1/scene_package_20260924/scene-registry.json),
 the current N3/E3/F3 queue and camera revision
 `close-oblique-v3-full-objects-20260924`. The [delivery index](../handoff/delivery.json)

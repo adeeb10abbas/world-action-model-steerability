@@ -34,6 +34,7 @@ import uuid
 from .contract import Cell, ContractError, Release, load_release, validate_stage_authorizations, verify_completion_pointer
 from .gpu_idle_probe import select_idle
 from .recorder import AttemptRecorder, atomic_json, fleet_is_held, next_attempt_number, request_fleet_hold, utc_now
+from .block_scheduling import MODE as BLOCK_MODE, begin_once, protocol_runtime, registration, selected_cells
 
 EXIT_RELEASE_INVALID, EXIT_ATTEMPTS_EXHAUSTED, EXIT_STORAGE_BUDGET_BLOCKED = 42, 43, 44
 SOURCE_QUEUE_EPISODE_COUNT = 1566
@@ -294,11 +295,13 @@ def verify_existing_pod_supervisor(reference: Any, *, source_commit: str, entryp
 
 
 def _run_admission(release: Release, *, model: str | None = None, family: str | None = None,
-                   stage: str | None = None) -> Mapping[str, Any] | None:
+                   stage: str | None = None, block_id: str | None = None) -> Mapping[str, Any] | None:
     """Refresh expiring operational evidence without rewriting a scientific release."""
     path = os.environ.get("SGW01_RUN_ADMISSION")
     digest = os.environ.get("SGW01_RUN_ADMISSION_SHA256")
     if path is None and digest is None:
+        if release.binding.get("scheduling_mode") == BLOCK_MODE:
+            raise ResourceBlocked("block execution requires exact hash-bound Pod admission")
         return None
     if (release.binding.get("allow_operational_receipt_refresh") is not True
             or not path or not digest or not Path(path).is_absolute()):
@@ -334,6 +337,14 @@ def _run_admission(release: Release, *, model: str | None = None, family: str | 
         _pod_owner(value)
         _pod_hardware_check(release, value["model"], value)
         _supervisor_check(release, value.get("supervisor_identity_receipt"))
+        if release.binding.get("scheduling_mode") == BLOCK_MODE:
+            selected_cells(release, value["model"], value["family"], value["stage"], value.get("block_id"))
+            if block_id is not None and value.get("block_id") != block_id:
+                raise ResourceBlocked("run admission differs from the selected block_id")
+            _protocol_runtime_check(release)
+            _block_operation_check(release, value)
+        elif block_id is not None or "block_id" in value:
+            raise ResourceBlocked("block admission requires explicit registration")
     elif release.binding.get("allow_parallel_existing_pod_lanes") is True:
         raise ResourceBlocked("existing Pod lane opt-in requires v2 admission, never a substituted Job")
     receipts = value.get("receipts")
@@ -349,13 +360,74 @@ def _run_admission(release: Release, *, model: str | None = None, family: str | 
     return value
 
 
+def _protocol_runtime_check(release: Release) -> None:
+    from .camera_configuration import camera_configuration_identity
+    from .policy_observations import policy_input_identity
+
+    declared = protocol_runtime(release.binding)
+    try:
+        camera, policy = camera_configuration_identity(), policy_input_identity()
+    except (OSError, ValueError, KeyError, TypeError) as exc:
+        raise ResourceBlocked(f"active camera/input identity unavailable: {exc}") from exc
+    if (declared["camera_configuration"] != camera
+            or declared["policy_input_revision"] != policy.get("revision")):
+        raise ResourceBlocked("active camera/input identity differs from immutable protocol_runtime")
+
+
+def _block_operation_check(release: Release, admission: Mapping[str, Any]) -> None:
+    root = Path(str(admission.get("operation_root", "")))
+    if (not root.is_absolute() or root != root.resolve() or not root.is_dir()
+            or root.parent != release.root.parent / "operations"):
+        raise ResourceBlocked("block operation must have an isolated canonical cohort operation_root")
+    paths = {
+        "SGW01_RUNTIME_RECEIPT": "launch.json", "SGW01_SERVER_ATTESTATION": "attestation.json",
+        "SGW01_TRACE_SIDECAR": "trace.jsonl", "SGW01_FUTURE_DIR": "futures",
+        "SGW01_SERVER_LOG_DIR": "logs", "SGW01_NANO_OUTPUT_DIR": "native",
+    }
+    for variable, suffix in paths.items():
+        expected = root / "runtime" / suffix
+        if expected != expected.resolve() or os.environ.get(variable) != str(expected):
+            raise ResourceBlocked("block runtime paths must be private to the admitted operation")
+    if (os.environ.get("SGW01_NANO_PORT") != os.environ.get("SGW01_N3_PORT")
+            or not str(os.environ.get("SGW01_N3_PORT", "")).isdigit()
+            or not 1024 <= int(os.environ["SGW01_N3_PORT"]) <= 65535
+            or os.environ.get("SGW01_N3_HOST") != "127.0.0.1"
+            or os.environ.get("SGW01_NANO_HOST") != "127.0.0.1"):
+        raise ResourceBlocked("block operation requires its exact local policy endpoint")
+    ref = admission.get("simulator_lane_identity")
+    simulator = _receipt(ref, "block simulator identity")
+    if (not isinstance(ref, Mapping)
+            or ref.get("path") != os.environ.get("SGW01_SIMULATOR_LANE_IDENTITY")
+            or ref.get("sha256") != os.environ.get("SGW01_SIMULATOR_LANE_IDENTITY_SHA256")
+            or simulator.get("schema_version") != "sgw-01-simulator-lane-v3"
+            or simulator.get("model") != admission["model"]
+            or simulator.get("cohort_root") != str(release.root.parent)
+            or simulator.get("source_root") != release.binding["source_root"]
+            or simulator.get("source_commit") != release.binding["source_commit"]
+            or simulator.get("policy_pod_uid") != admission["pod_uid"]
+            or simulator.get("policy_pod_name") != admission["pod_name"]
+            or simulator.get("policy_owner_kind") != "Pod" or simulator.get("simulator_owner_kind") != "Pod"
+            or not _canonical_uuid(simulator.get("simulator_pod_uid"))
+            or simulator.get("simulator_pod_uid") == admission["pod_uid"]
+            or not _gpu_uuid(simulator.get("simulator_gpu_uuid"))
+            or simulator["simulator_gpu_uuid"] == admission["selected_gpu_uuid"]):
+        raise ResourceBlocked("block operation must bind its distinct isolated policy/simulator pair")
+    control = Path(str(simulator.get("control_root", "")))
+    if (not control.is_absolute() or control != control.resolve()
+            or control == release.root.parent or not control.is_relative_to(release.root.parent)):
+        raise ResourceBlocked("block simulator control root is not private to this cohort")
+
+
 @contextmanager
-def partition_lock(release: Release, model: str, family: str, stage: str):
+def partition_lock(release: Release, model: str, family: str, stage: str, block_id: str | None = None):
+    registered = registration(release.binding, model=model)
+    if registered is not None or block_id is not None:
+        selected_cells(release, model, family, stage, block_id)
     if release.binding.get("allow_parallel_existing_pod_lanes") is not True:
         with model_lock(release, model):
             yield
         return
-    admission = _run_admission(release, model=model, family=family, stage=stage)
+    admission = _run_admission(release, model=model, family=family, stage=stage, block_id=block_id)
     if admission is None:
         raise ResourceBlocked("existing Pod lane requires a hash-bound v2 admission before claiming")
     root = Path(_study_root(release)) / "locks" / "existing-pod-lanes"
@@ -364,8 +436,18 @@ def partition_lock(release: Release, model: str, family: str, stage: str):
     if model not in {"N3", "E3", "F3"} or family not in {"LAT", "HEIGHT", "DIST"} or stage not in {"P", "D", "C"}:
         raise ResourceBlocked("invalid existing Pod partition lock identity")
     root.mkdir(parents=True, exist_ok=True)
+    names = [f"gpu-{admission['selected_gpu_uuid']}", f"partition-{model}-{family}-{stage}"]
+    if registered is not None:
+        simulator = _receipt(admission["simulator_lane_identity"], "block simulator identity")
+        names = [
+            names[0], f"block-{block_id}",
+            f"simulator-pair-{simulator['simulator_gpu_uuid']}",
+            f"policy-endpoint-{admission['pod_uid']}-{os.environ['SGW01_N3_PORT']}",
+            f"operation-{hashlib.sha256(admission['operation_root'].encode()).hexdigest()}",
+            f"simulator-control-{hashlib.sha256(simulator['control_root'].encode()).hexdigest()}",
+        ]
     with ExitStack() as stack:
-        for name in (f"gpu-{admission['selected_gpu_uuid']}", f"partition-{model}-{family}-{stage}"):
+        for name in names:
             stream = stack.enter_context((root / f"{name}.lock").open("a+"))
             try:
                 fcntl.flock(stream.fileno(), fcntl.LOCK_EX | fcntl.LOCK_NB)
@@ -829,11 +911,18 @@ def _out_of_memory(value: Any) -> bool:
 
 def run_partition(release: Release, *, model: str, family: str, stage: str, max_valid: int,
                   max_attempts: int, worker_id: str, adapter: Adapter | None = None,
-                  heartbeat_seconds: int = 60, scorer: ScoreFn | None = None) -> int:
-    cells = release.partition(model, family, stage)
+                  heartbeat_seconds: int = 60, scorer: ScoreFn | None = None,
+                  block_id: str | None = None) -> int:
+    cells = selected_cells(release, model, family, stage, block_id)
+    if block_id is not None:
+        _protocol_runtime_check(release)
     if max_valid != len(cells) or max_attempts != 3:
         raise ContractError("partition limits must equal the frozen stage ceiling and three total attempts")
     _stage_authorized(release, stage)
+    if block_id is not None:
+        from .study_lane import stage_ready
+        if not stage_ready(release.root.parent, stage, model):
+            raise ContractError("per-model stage barrier is not complete")
     if release.binding.get("allow_parallel_existing_pod_lanes") is True and all(_completion(release, cell) for cell in cells):
         _status(release, worker_id, state="complete", valid=len(cells), expected=len(cells))
         return 0
@@ -846,7 +935,7 @@ def run_partition(release: Release, *, model: str, family: str, stage: str, max_
     close_registered = False
     try:
         with ExitStack() as lifetime:
-            lifetime.enter_context(partition_lock(release, model, family, stage))
+            lifetime.enter_context(partition_lock(release, model, family, stage, block_id))
             pending = [cell for cell in cells if not _completion(release, cell)]
             if not pending:
                 _status(release, worker_id, state="complete", valid=len(cells), expected=len(cells))
@@ -863,6 +952,16 @@ def run_partition(release: Release, *, model: str, family: str, stage: str, max_
             if release.binding.get("hold_on_technical_invalid") is True and fleet_is_held(release.root.parent):
                 _status(release, worker_id, state="held", reason="fleet hold forbids new attempts", valid=valid)
                 return EXIT_STORAGE_BUDGET_BLOCKED
+            if block_id is not None:
+                if STOP_REQUESTED:
+                    return EXIT_ATTEMPTS_EXHAUSTED
+                if len(pending) != 6 or any((release.root.parent / "attempts" / cell.cell_id).exists() for cell in cells):
+                    request_fleet_hold(release.root.parent, block_id=block_id,
+                                       reason="prior or partial block attempts; no automatic replay")
+                    raise ContractError("prior or partial block attempts preserved; no automatic replay")
+                begin_once(release.root.parent, "block-executions", block_id,
+                           release_id=release.release_id, worker_id=worker_id,
+                           release_hashes=dict(release.hashes))
             try:
                 adapter = adapter or load_adapter(model)
             except Exception as exc:
@@ -989,6 +1088,7 @@ def main() -> None:
     parser.add_argument("--model", choices=("N3", "E3", "F3"), required=True)
     parser.add_argument("--family", choices=("LAT", "HEIGHT", "DIST"), required=True)
     parser.add_argument("--stage", choices=("P", "D", "C"), required=True)
+    parser.add_argument("--block-id", help="exact intact block; requires registered six-cell-block-v1 binding")
     parser.add_argument("--resume", action="store_true")
     parser.add_argument("--max-valid-episodes", type=int, required=True)
     parser.add_argument("--max-cell-attempts", type=int, default=3)
@@ -1000,7 +1100,7 @@ def main() -> None:
         code = run_partition(release, model=args.model, family=args.family, stage=args.stage,
                              max_valid=args.max_valid_episodes, max_attempts=args.max_cell_attempts,
                              worker_id=f"{args.model}-{args.family}-{args.stage}-{os.getpid()}",
-                             heartbeat_seconds=args.heartbeat_seconds)
+                             heartbeat_seconds=args.heartbeat_seconds, block_id=args.block_id)
     except OSError as exc:
         print(str(exc), file=sys.stderr)
         code = EXIT_STORAGE_BUDGET_BLOCKED

@@ -8,8 +8,10 @@ episodes** (N3 148, E3 158, F3 125), five successes and 426 valid failures,
 plus the five preserved technical attempts. All ten GPUs were verified
 released without interrupting work. All data and frozen records remain
 preserved; this is a partial stopped cohort, not a completed study.
-The new front/side-camera N3-only revision requires its minimal reset-view
-and input-packing gates before launch.
+The new stock-left/right-camera N3-only revision requires minimal reset-view
+and official per-view input-packing gates before launch. This explicitly
+substitutes stock views for the requested front/side pair after visibility
+inspection; no pinned stock pose is corrected or changed.
 See [stop authority](handoff/cluster-execution-20260924/user-stop-authorization-20260925.json).
 The separate competence diagnostic is cancelled; the
 [final stop receipt](handoff/cluster-execution-20260924/user-stop-final-20260925.json)

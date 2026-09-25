@@ -12,6 +12,7 @@ from experiments.workshops.spatial_grounding_v1.adapters import AdapterError
 from experiments.workshops.spatial_grounding_v1.policy_observations import (
     CAMERAS, dreamzero_observation, nano_observation, native_policy_observation,
 )
+from experiments.workshops.spatial_grounding_v1 import policy_observations as packing
 
 
 def observation():
@@ -43,6 +44,54 @@ def test_observation_whitelist_preserves_batched_arrays_and_distinct_model_slots
     bad["image_obs"]["wrist_cam"] = bad["image_obs"]["wrist_cam"].astype(float)
     with pytest.raises(AdapterError, match="uint8"):
         native_policy_observation(bad)
+
+
+def test_official_revision_applies_per_view_helper_without_slot_or_state_changes(monkeypatch):
+    from types import SimpleNamespace
+
+    calls = []
+
+    def resize(image, height, width):
+        calls.append((image.copy(), height, width))
+        return np.broadcast_to(image[:, :1, :1], (1, height, width, 3)).copy()
+
+    monkeypatch.setenv("SGW01_POLICY_INPUT_REVISION", packing.OFFICIAL_INPUT_REVISION)
+    monkeypatch.setattr(packing, "_official_image_tools", lambda: SimpleNamespace(resize_with_pad=resize))
+    raw = observation()
+    result = nano_observation(raw)
+    for camera, key in (
+        ("wrist_cam", "observation/wrist_image_left"),
+        ("over_shoulder_left_camera", "observation/exterior_image_1_left"),
+        ("over_shoulder_right_camera", "observation/exterior_image_2_left"),
+    ):
+        assert result[key].shape == (360, 640, 3)
+        np.testing.assert_array_equal(result[key][0, 0], raw["image_obs"][camera][0, 0, 0])
+    assert len(calls) == 3
+    assert all((height, width) == (360, 640) for _, height, width in calls)
+    np.testing.assert_array_equal(result["observation/joint_position"], raw["proprio_obs"]["arm_joint_pos"][0])
+    np.testing.assert_array_equal(result["observation/gripper_position"], raw["proprio_obs"]["gripper_pos"][0])
+    assert "observation/image" not in result
+    assert packing.policy_input_identity()["helper_sha256"] == packing.OFFICIAL_IMAGE_TOOLS_SHA256
+
+
+def test_unregistered_input_revision_fails_closed(monkeypatch):
+    monkeypatch.setenv("SGW01_POLICY_INPUT_REVISION", "guessed-resize")
+    with pytest.raises(AdapterError, match="Unregistered policy input revision"):
+        nano_observation(observation())
+
+
+def test_official_revision_rejects_changed_helper(monkeypatch, tmp_path):
+    import sys
+    from types import SimpleNamespace
+
+    helper = tmp_path / "image_tools.py"
+    helper.write_text("changed helper")
+    monkeypatch.setitem(sys.modules, "openpi_client", SimpleNamespace(
+        image_tools=SimpleNamespace(__file__=str(helper))))
+    packing._official_image_tools.cache_clear()
+    with pytest.raises(AdapterError, match="differs from the registered source"):
+        packing._official_image_tools()
+    packing._official_image_tools.cache_clear()
 
 
 def native_nano_helpers():

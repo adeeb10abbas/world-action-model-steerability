@@ -36,7 +36,7 @@
     "requested_projection": "N3-only ETA when the revision is staged",
     "old_protocol_and_frozen_records_must_remain_unchanged": true
   },
-  "current_revision_instructions": {
+  "superseded_front_side_revision_instructions": {
     "authority": "Later explicit user override relayed by the same parent: do not over-collect; change cameras and rerun N3 quickly",
     "diagnostic_cancelled": true,
     "diagnostic_gate_required": false,
@@ -68,5 +68,32 @@
     "first_results_report": "First finished N3 pilot episode outcome, failure stage and persistent video path.",
     "old_release_may_restart": false,
     "old_protocol_and_frozen_records_must_remain_unchanged": true
+  },
+  "current_revision_instructions": {
+    "authority": "Orchestrator CAMERA DECISION, relayed by c230f3cd-3fe9-4f1f-9ee4-e8b857151a60 on 2026-09-25; made for absent user prioritizing speed.",
+    "requested_camera": "Front-facing view plus stock side",
+    "disclosed_substitution": "Unchanged stock RoboLab WRIST_LEFT_RIGHT cameras, because literal Head is rolled and mirrored candidates clip arm or references.",
+    "exterior_1": "OverShoulderLeftCameraCfg, exact pinned tuples",
+    "exterior_2": "OverShoulderRightCameraCfg, exact pinned tuples",
+    "wrist_changed": false,
+    "pose_edits_allowed": false,
+    "policy_input_revision": "Official openpi resize_with_pad360x640 per view before unchanged Cosmos service composition",
+    "diagnostic_cancelled": true,
+    "minimum_gates": [
+      "Reuse literal stock LAT-P01 reset frames already captured; preserve the original candidate receipt.",
+      "Render HEIGHT/DIST P01 with stock views. Arm and references/destinations must appear in at least one exterior; report any reference missing from both before launch.",
+      "Run one official resize_with_pad packing check."
+    ],
+    "camera_selection_record": "experiments/workshops/spatial_grounding_v1/stock_cameras.json",
+    "protocol": "experiments/workshops/spatial_grounding_v1/spec/protocol_stock_camera_r5.json",
+    "allowed_models_now": ["N3"],
+    "models_waiting_for_new_user_call": ["E3", "F3"],
+    "capacity": "Six verified-released isolated policy/simulator pairs, including u/q after diagnostic release",
+    "execution_revision": "Intact six-cell blocks, N3-only P18 then D72 then C432 barriers, N=1 technical hold, persistent all-video recording and storage guard",
+    "launch_after_minimum_gates": true,
+    "first_results_report": "First completed N3 P outcome, failure stage, persistent video path",
+    "old_release_may_restart": false,
+    "preserve": ["all old outcomes and raw masters", "87 layouts", "18 prompts", "scorer", "450-action cap", "model pins/settings", "A40 admission rules"],
+    "no_competence_or_causal_claim": true
   }
 }

@@ -346,6 +346,11 @@ def _write_launch_receipt(
         "source_commit": attestation["source_commit"],
         "checkpoint_revision": attestation["checkpoint_revision"],
     }
+    from .policy_observations import RAW_INPUT_REVISION, policy_input_identity
+
+    input_identity = policy_input_identity()
+    if input_identity["revision"] != RAW_INPUT_REVISION:
+        receipt["policy_input"] = input_identity
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(json.dumps(receipt, indent=2, sort_keys=True) + "\n", encoding="utf-8")
 
@@ -835,11 +840,16 @@ def create_runtime(*, model: str, config: Mapping[str, Any]) -> NativeRuntime:
     """Construct the real native client and simulator binding for one model."""
 
     from .adapters import MODEL_ADAPTERS, require_implemented_model
+    from .policy_observations import (
+        OFFICIAL_INPUT_REVISION, _official_image_tools, policy_input_identity,
+    )
 
     require_implemented_model(model)
     expected = MODEL_ADAPTERS[model].config
     if dict(config) != dict(expected):
         raise AdapterError("runtime config does not match the exact SGW-01 model identity")
+    if policy_input_identity()["revision"] == OFFICIAL_INPUT_REVISION:
+        _official_image_tools()
     host = _required_env(f"SGW01_{model}_HOST")
     try:
         port = int(_required_env(f"SGW01_{model}_PORT"))

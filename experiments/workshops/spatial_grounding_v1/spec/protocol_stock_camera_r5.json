@@ -1,0 +1,177 @@
+{
+  "authoring_base_commit": "e67e6c4f",
+  "date": "2026-09-24",
+  "episodes": {
+    "C": 1296,
+    "D": 216,
+    "P": 54,
+    "total": 1566
+  },
+  "families": [
+    "LAT",
+    "HEIGHT",
+    "DIST"
+  ],
+  "forms": [
+    "D",
+    "C",
+    "I"
+  ],
+  "goal_signs": [
+    1,
+    -1
+  ],
+  "historical_sources": {
+    "edge_wording": {
+      "path": "artifacts/vla_wam_shared_v3/phase_c/four_phrasings_v3c001/results/cosmos3_edge_policy_droid/cosmos3_edge_policy_droid_phase_c_summary.json",
+      "url": "https://github.com/adeeb10abbas/steerable/blob/ce561e66f82e95055e39d3d7711691982f6b2086/artifacts/vla_wam_shared_v3/phase_c/four_phrasings_v3c001/results/cosmos3_edge_policy_droid/cosmos3_edge_policy_droid_phase_c_summary.json"
+    },
+    "exact_historical_wording": {
+      "path": "artifacts/vla_wam_shared_v3/phase_c/four_phrasings_v3c001/prospective_phase_c_v3c001_registration.json",
+      "url": "https://github.com/adeeb10abbas/steerable/blob/ce561e66f82e95055e39d3d7711691982f6b2086/artifacts/vla_wam_shared_v3/phase_c/four_phrasings_v3c001/prospective_phase_c_v3c001_registration.json"
+    },
+    "failed_grasp_fixture": {
+      "path": "artifacts/vla_wam_shared_v3/phase_e/canonical_stage_localization_v3e006/results/DECISION_MEMO.md",
+      "url": "https://github.com/adeeb10abbas/steerable/blob/ce561e66f82e95055e39d3d7711691982f6b2086/artifacts/vla_wam_shared_v3/phase_e/canonical_stage_localization_v3e006/results/DECISION_MEMO.md"
+    },
+    "nano_wording": {
+      "path": "artifacts/vla_wam_shared_v3/phase_c/four_phrasings_v3c001/results/cosmos3_nano_policy_droid/cosmos3_nano_policy_droid_phase_c_summary.json",
+      "url": "https://github.com/adeeb10abbas/steerable/blob/ce561e66f82e95055e39d3d7711691982f6b2086/artifacts/vla_wam_shared_v3/phase_c/four_phrasings_v3c001/results/cosmos3_nano_policy_droid/cosmos3_nano_policy_droid_phase_c_summary.json"
+    },
+    "pi05_reference_inversion": {
+      "path": "artifacts/vla_wam_shared_v3/phase_c/semantic_equivalence_v3c002r001/activation_v4/final_analysis_v3/results/results.json",
+      "url": "https://github.com/adeeb10abbas/steerable/blob/ce561e66f82e95055e39d3d7711691982f6b2086/artifacts/vla_wam_shared_v3/phase_c/semantic_equivalence_v3c002r001/activation_v4/final_analysis_v3/results/results.json"
+    }
+  },
+  "launch_prerequisites": [
+    "implemented_and_tested_worker",
+    "qualified_runtime_binding",
+    "qualified_family_fixtures",
+    "persistent_recording_and_recovery_receipts",
+    "physical_time_alignment_receipts",
+    "existing_user_resource_budget",
+    "immutable_release_hashes"
+  ],
+  "layouts_per_family": {
+    "C": 24,
+    "D": 4,
+    "P": 1
+  },
+  "model_configs": {
+    "E3": {
+      "asset": "nvidia/Cosmos3-Edge-Policy-DROID",
+      "inference_settings": "pin official Edge settings before qualification; do not inherit Nano settings",
+      "planned_policy_seed_not_yet_verified": true,
+      "precision": "BF16",
+      "revision": null,
+      "source_commit": null,
+      "status": "PENDING_INTEGRATION_AND_QUALIFICATION"
+    },
+    "F3": {
+      "asset": "black-forest-labs/flux-3-action-droid",
+      "forecast_capture": "pending_same_request_latent_capture_and_rgb_decode",
+      "planned_policy_seed_not_yet_verified": true,
+      "precision": "BF16",
+      "revision": null,
+      "source_commit": null,
+      "status": "PENDING_INTEGRATION_AND_QUALIFICATION",
+      "subfolder": null,
+      "variant": "root_base_not_distilled"
+    },
+    "N3": {
+      "asset": "nvidia/Cosmos3-Nano-Policy-DROID",
+      "conditioning_fps": 15,
+      "denoising_steps": 4,
+      "executed_action_horizon": 32,
+      "guidance": 3,
+      "history_length": 1,
+      "resolution_setting": 480,
+      "revision": "6706d7680581c255ff61e0f3bb49d90eac55c79e",
+      "shift": 5
+    }
+  },
+  "operations": {
+    "heartbeat_seconds": 60,
+    "max_attempts_per_cell": 3,
+    "max_concurrent_workers": 2,
+    "max_possible_behavioral_attempts": 4698,
+    "max_total_allocated_gpus": 4,
+    "persistent_completion_required": true,
+    "resource_budget": null,
+    "resource_budget_status": "resolve_existing_user_allocation_before_launch",
+    "termination_grace_seconds": 180
+  },
+  "optional_extensions_queued": [],
+  "overleaf_project": "https://www.overleaf.com/project/6ab2bdb39b30df4bbc98a15e",
+  "prediction_annotation": {
+    "adjudication_distance_image_diagonals": 0.02,
+    "max_confirmation_selected_requests": 2592,
+    "max_initial_frame_judgments": 15552,
+    "moving_threshold_image_diagonals": 0.02,
+    "raters": 2,
+    "selected_request_fractions": [
+      0.25,
+      0.75
+    ]
+  },
+  "primary_comparison": "I minus C, averaged over both physical goals within a layout",
+  "primary_execution_endpoint": "fixed_endpoint_success_risk_difference",
+  "primary_question": "Do generated futures remain reliable under changes in spatial goals and equivalent descriptions?",
+  "protocol_runtime": {
+    "camera_configuration": {
+      "revision": "stock-over-shoulder-official-input-v1-20260925",
+      "sha256": "4c5663875693c98d265cfd42b9c1d8b2dec6a43b92ad7f09151e49b2ea889023"
+    },
+    "policy_input_revision": "robolab-cosmos-client-pad-360x640-v1"
+  },
+  "scoring": {
+    "action_cap": 450,
+    "angular_speed_limit_rad_s": 0.2,
+    "final_stability_seconds": 0.5,
+    "goal_termination": false,
+    "initial_neutral_tolerance_m": 0.005,
+    "linear_speed_limit_m_s": 0.02,
+    "pickup_consecutive_steps": 3,
+    "pickup_height_m": 0.03,
+    "reference_motion_limit_m": 0.005,
+    "relation_margin_m": 0.03,
+    "reset_angle_tolerance_degrees": 2,
+    "reset_position_tolerance_m": 0.003
+  },
+  "source_evidence_commit": "ce561e66f82e95055e39d3d7711691982f6b2086",
+  "statistics": {
+    "bootstrap_draws": 20000,
+    "bootstrap_seed": 20260922,
+    "equivalence_ci": 0.9,
+    "equivalence_relation_margin_m": 0.02,
+    "equivalence_success_margin": 0.1,
+    "multiplicity": "Holm over nine primary model-family tests",
+    "paired_sign_flip_draws": 100000,
+    "paired_sign_flip_seed": 20260923,
+    "unit": "independent_layout"
+  },
+  "status": "MODEL_ROSTER_REVISED_RUNTIME_INTEGRATION_PENDING",
+  "study_id": "SGW-01",
+  "technical_qualification": {
+    "base_nonbehavioral_requests": 18,
+    "max_fixture_candidates_per_family": 100,
+    "scripted_checks_per_candidate": 6,
+    "semantic_label_calibration_states_per_family": 50
+  },
+  "version": "1.2",
+  "workshop_focus": {
+    "checked_on": "2026-09-22",
+    "optional_pi05_lat_baseline": {
+      "causal_world_model_ablation": false,
+      "episodes": 261,
+      "queued": false
+    },
+    "page_limit_as_checked": 4,
+    "pi05_historical_role": "background_only_not_matched_control",
+    "primary_motion": 6,
+    "secondary_motion": 4,
+    "secondary_scope": "own prediction reliability, not arbitrary policy simulation",
+    "source": "https://do-robots-need-world-models.github.io/",
+    "submission_deadline_as_checked": "2026-10-12"
+  }
+}

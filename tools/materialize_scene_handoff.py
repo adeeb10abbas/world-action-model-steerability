@@ -38,6 +38,7 @@ AUTHORING_SOURCES = (
     Path('experiments/workshops/spatial_grounding_v1/prospective_family_scene.py'),
     Path('experiments/workshops/spatial_grounding_v1/camera_configuration.py'),
     Path('experiments/workshops/spatial_grounding_v1/close_cameras.json'),
+    Path('experiments/workshops/spatial_grounding_v1/stock_cameras.json'),
 )
 STATUS = 'physical_qualified_runtime_pending'
 

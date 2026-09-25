@@ -21,8 +21,9 @@ from .contract import (
     ContractError, STAGE_EPISODES, load_json, load_release, sha256_file,
     verify_completion_pointer,
 )
-from .recorder import atomic_json, request_fleet_hold, utc_now
+from .recorder import atomic_json, fleet_is_held, request_fleet_hold, utc_now
 from .release import create_release
+from .block_scheduling import MODE as BLOCK_MODE, begin_once, frozen_blocks, registration, selected_cells
 
 MODELS = ("N3", "E3", "F3")
 FAMILIES = ("LAT", "HEIGHT", "DIST")
@@ -70,6 +71,7 @@ def load_plan(path: Path, digest: str) -> dict[str, Any]:
             or binding.get("allow_parallel_existing_pod_lanes") is not True
             or binding.get("allow_operational_receipt_refresh") is not True):
         raise ContractError("lane binding differs from its code/cohort or lacks explicit Pod admission opt-in")
+    _block_registration(value, binding)
     interpreter = Path(value["model_interpreter"])
     if not interpreter.is_absolute() or not interpreter.is_file():
         raise ContractError("lane requires its existing pinned model interpreter")
@@ -91,6 +93,27 @@ def load_plan(path: Path, digest: str) -> dict[str, Any]:
         raise ContractError("release revision must be an explicit short alphanumeric identifier")
     value["hold_on_technical_invalid"] = binding.get("hold_on_technical_invalid") is True
     return value
+
+
+def _block_registration(plan: Mapping[str, Any], binding: Mapping[str, Any] | None = None):
+    binding = read_reference(plan["inputs"]["binding"]) if binding is None else binding
+    registered = registration(binding, model=plan["model"], cohort=Path(plan["cohort_root"]),
+                              protocol_sha256=plan["inputs"]["protocol"]["sha256"],
+                              prompts_sha256=plan["inputs"]["prompts"]["sha256"])
+    if registered is None:
+        if "scheduling_mode" in plan:
+            raise ContractError("plan block mode lacks binding registration")
+        return None
+    if (plan.get("scheduling_mode") != BLOCK_MODE or plan.get("allowed_models") != ["N3"]
+            or plan.get("release_revision") != registered["release_revision"]):
+        raise ContractError("plan must explicitly opt into registered r5 N3-only block scheduling")
+    environment = plan.get("runtime_environment")
+    declared = binding["protocol_runtime"]
+    if (not isinstance(environment, Mapping)
+            or environment.get("SGW01_CAMERA_REVISION") != declared["camera_configuration"]["revision"]
+            or environment.get("SGW01_POLICY_INPUT_REVISION") != declared["policy_input_revision"]):
+        raise ContractError("block plan must explicitly propagate its declared camera/input revisions")
+    return registered
 
 
 def release_path(cohort: Path, model: str, family: str, stage: str, revision: str = "") -> Path:
@@ -120,13 +143,13 @@ def assert_replacement_uncompleted(cohort: Path, model: str, family: str, stage:
 
 
 @contextmanager
-def dispatch_claim(cohort: Path, partition: str):
+def dispatch_claim(cohort: Path, partition: str, *, wait: bool = False):
     """Hold across release creation and worker exit; never turn a crash into success."""
     directory = cohort / "dispatch-locks"
     directory.mkdir(parents=True, exist_ok=True)
     with (directory / f"{partition}.lock").open("a+") as stream:
         try:
-            fcntl.flock(stream.fileno(), fcntl.LOCK_EX | fcntl.LOCK_NB)
+            fcntl.flock(stream.fileno(), fcntl.LOCK_EX | (0 if wait else fcntl.LOCK_NB))
         except BlockingIOError:
             yield False
             return
@@ -136,10 +159,14 @@ def dispatch_claim(cohort: Path, partition: str):
             fcntl.flock(stream.fileno(), fcntl.LOCK_UN)
 
 
-def verified_partition_summary(path: Path) -> dict[str, Any]:
+def verified_partition_summary(path: Path, block_id: str | None = None) -> dict[str, Any]:
     release = load_release(path)
     results = []
-    for cell in release.cells:
+    cells = release.cells
+    if block_id is not None:
+        first = cells[0]
+        cells = selected_cells(release, first.model, first.family, first.stage, block_id)
+    for cell in cells:
         pointer = path.parent / "cells" / f"{cell.cell_id}.complete.json"
         value = verify_completion_pointer(release, pointer)
         manifest_path = Path(value["manifest_path"])
@@ -167,8 +194,9 @@ def verified_partition_summary(path: Path) -> dict[str, Any]:
     }
 
 
-def read_partition_summary(cohort: Path, model: str, family: str, stage: str):
-    path = cohort / "partition-completions" / f"{model}-{family}-{stage}.json"
+def read_partition_summary(cohort: Path, model: str, family: str, stage: str, block_id: str | None = None):
+    path = (cohort / "partition-completions" / f"{model}-{family}-{stage}.json" if block_id is None
+            else cohort / "block-completions" / f"{block_id}.json")
     if not path.exists():
         return None
     value = load_json(path, "partition completion")
@@ -176,9 +204,11 @@ def read_partition_summary(cohort: Path, model: str, family: str, stage: str):
     if not release_root.is_absolute() or release_root.resolve().parent != cohort.resolve():
         raise ContractError("partition completion must reference an immutable release in this cohort")
     release = load_release(release_root)
-    cells = release.partition(model, family, stage)
+    cells = (release.partition(model, family, stage) if block_id is None
+             else selected_cells(release, model, family, stage, block_id))
     episodes = value.get("episodes", [])
-    if (len(cells) != STAGE_EPISODES[stage] or value.get("status") != "complete" or value.get("release_id") != release.release_id
+    if (value.get("status") != "complete" or value.get("release_id") != release.release_id
+            or (block_id is not None and value.get("block_id") != block_id)
             or value.get("release_hashes") != dict(release.hashes)
             or len(episodes) != len(cells)
             or {episode["cell_id"] for episode in episodes} != {cell.cell_id for cell in cells}):
@@ -202,22 +232,26 @@ def read_partition_summary(cohort: Path, model: str, family: str, stage: str):
     return value
 
 
-def stage_ready(cohort: Path, stage: str) -> bool:
+def stage_ready(cohort: Path, stage: str, model: str | None = None) -> bool:
     if stage == "P":
         return True
     previous = STAGES[STAGES.index(stage) - 1]
-    return all(read_partition_summary(cohort, model, family, previous) is not None
-               for model in MODELS for family in FAMILIES)
+    models = MODELS if model is None else (model,)
+    stages = (previous,) if model is None else STAGES[:STAGES.index(stage)]
+    return all(read_partition_summary(cohort, candidate, family, prior) is not None
+               for candidate in models for family in FAMILIES for prior in stages)
 
 
-def measured_pilots(cohort: Path) -> dict[str, Any]:
+def measured_pilots(cohort: Path, model: str | None = None) -> dict[str, Any]:
+    models = MODELS if model is None else (model,)
     summaries = [read_partition_summary(cohort, model, family, "P")
-                 for model in MODELS for family in FAMILIES]
+                 for model in models for family in FAMILIES]
     if any(summary is None for summary in summaries):
-        raise ContractError("all nine complete pilot partitions are required for measured budgeting")
+        raise ContractError("all required model/family pilot partitions are needed for measured budgeting")
     episodes = [episode for summary in summaries for episode in summary["episodes"]]
-    if len(episodes) != 54 or len({episode["cell_id"] for episode in episodes}) != 54:
-        raise ContractError("pilot budget evidence must contain exactly 54 unique completed cells")
+    count = 18 * len(models)
+    if len(episodes) != count or len({episode["cell_id"] for episode in episodes}) != count:
+        raise ContractError(f"pilot budget evidence must contain exactly {count} unique completed cells")
     # Native server-side arrays remain outside the attempt manifests. Include
     # the largest measured per-episode pilot operation overhead.
     overheads = []
@@ -283,9 +317,10 @@ def prepare_operation(plan: Mapping[str, Any], family: str, stage: str, root: Pa
         "estimate_basis": "all1566 cells, three total attempts, policy+simulator, full configured deadlines",
     }
     if stage != "P":
-        pilots = measured_pilots(Path(plan["cohort_root"]))
+        pilots = (measured_pilots(Path(plan["cohort_root"]), plan["model"])
+                  if plan.get("scheduling_mode") == BLOCK_MODE else measured_pilots(Path(plan["cohort_root"])))
         runtime = {
-            **identity, **pilots, "model": "all_models",
+            **identity, **pilots, "model": plan["model"] if plan.get("scheduling_mode") == BLOCK_MODE else "all_models",
             "expires_at_utc": supervisor["deadline_utc"], "max_cell_attempts": 3,
             "request_deadline_seconds": binding["request_deadline_seconds"],
             "episode_deadline_seconds": binding["episode_deadline_seconds"],
@@ -360,30 +395,55 @@ def stop_remote_lane(plan: Mapping[str, Any]) -> None:
     atomic_json(path, value)
 
 
-def run_one(plan: Mapping[str, Any], family: str, stage: str) -> int:
+def run_one(plan: Mapping[str, Any], family: str, stage: str, block_id: str | None = None) -> int:
     cohort = Path(plan["cohort_root"])
+    block_mode = plan.get("scheduling_mode") == BLOCK_MODE
+    if block_mode:
+        _block_registration(plan)
+        if block_id not in planned_blocks(plan, family, stage):
+            raise ContractError("dispatch must select a whole frozen layout block")
+        if fleet_is_held(cohort):
+            return 44
+        if not stage_ready(cohort, stage, plan["model"]):
+            raise ContractError("per-model stage barrier is not complete")
+        begin_once(cohort, "block-claims", block_id, lane_id=plan["lane_id"],
+                   release_id=partition_release_id(plan, family, stage))
+    elif block_id is not None:
+        raise ContractError("block dispatch requires explicit registration")
     root = cohort / "operations" / f"{plan['lane_id']}-{family}-{stage}-{uuid.uuid4().hex}"
     root.mkdir(parents=True, exist_ok=False)
     binding = prepare_operation(plan, family, stage, root)
     revision = plan.get("release_revision", "")
     path = release_path(cohort, plan["model"], family, stage, revision)
     inputs = plan["inputs"]
-    if not path.exists():
-        if revision:
-            assert_replacement_uncompleted(cohort, plan["model"], family, stage)
-        create_release(
-            output=path, release_id=partition_release_id(plan, family, stage),
-            protocol=Path(inputs["protocol"]["path"]), prompts=Path(inputs["prompts"]["path"]),
-            planned_queue=Path(inputs["queue"]["path"]), fixtures=Path(inputs["fixtures"]["path"]),
-            runtime_binding=root / "binding.json", resource_owner=binding["resource_owner"],
-            stage=stage, model=plan["model"], family=family,
-        )
-    release = load_release(path)
+    # Publication is serialized briefly, not for the worker lifetime. Every
+    # block keeps the same authoritative full-partition release and cell IDs.
+    with dispatch_claim(cohort, f"release-{plan['model']}-{family}-{stage}", wait=True):
+        if block_mode:
+            from .mailbox_visibility import DirectoryRefresher
+            DirectoryRefresher()(cohort)
+        if not path.exists():
+            if revision:
+                assert_replacement_uncompleted(cohort, plan["model"], family, stage)
+            create_release(
+                output=path, release_id=partition_release_id(plan, family, stage),
+                protocol=Path(inputs["protocol"]["path"]), prompts=Path(inputs["prompts"]["path"]),
+                planned_queue=Path(inputs["queue"]["path"]), fixtures=Path(inputs["fixtures"]["path"]),
+                runtime_binding=root / "binding.json", resource_owner=binding["resource_owner"],
+                stage=stage, model=plan["model"], family=family,
+            )
+        release = load_release(path)
     for key, filename in (("protocol", "protocol.json"), ("prompts", "prompts.json"), ("fixtures", "fixtures.json")):
         if release.hashes[filename] != inputs[key]["sha256"]:
             raise ContractError("existing release differs from the lane's scientific inputs")
     if release.binding["source_commit"] != plan["source_commit"]:
         raise ContractError("resume must retain the original released executable source")
+    if block_mode:
+        selected_cells(release, plan["model"], family, stage, block_id)
+        operational = {"external_allocation_receipt", "resource_budget_receipt", "storage_budget_receipt"}
+        if ({k: v for k, v in release.binding.items() if k not in operational}
+                != {k: v for k, v in binding.items() if k not in operational}):
+            raise ContractError("parallel block operation changed the immutable runtime binding")
     receipts = {key: binding[key] for key in (
         "external_allocation_receipt", "resource_budget_receipt", "storage_budget_receipt",
     ) if key in binding}
@@ -399,6 +459,12 @@ def run_one(plan: Mapping[str, Any], family: str, stage: str) -> int:
         "job_uid": None, "job_name": None,
         "supervisor_identity_receipt": reference(Path(os.environ["SGW01_SUPERVISOR_RECEIPT"])),
     }
+    if block_mode:
+        admission.update(block_id=block_id, operation_root=str(root),
+                         simulator_lane_identity={
+                             "path": plan["runtime_environment"]["SGW01_SIMULATOR_LANE_IDENTITY"],
+                             "sha256": plan["runtime_environment"]["SGW01_SIMULATOR_LANE_IDENTITY_SHA256"],
+                         })
     atomic_json(root / "admission.json", admission)
     environment = worker_environment(plan, root)
     environment["SGW01_RUN_ADMISSION"] = str(root / "admission.json")
@@ -407,20 +473,135 @@ def run_one(plan: Mapping[str, Any], family: str, stage: str) -> int:
         completed = subprocess.run([
             sys.executable, "-u", "-m", "experiments.workshops.spatial_grounding_v1.worker",
             "--release", str(path), "--model", plan["model"], "--family", family, "--stage", stage,
-            "--resume", "--max-valid-episodes", str(STAGE_EPISODES[stage]), "--max-cell-attempts", "3",
+            "--resume", "--max-valid-episodes", str(6 if block_mode else STAGE_EPISODES[stage]),
+            "--max-cell-attempts", "3", *([] if block_id is None else ["--block-id", block_id]),
         ], env=environment, stdin=subprocess.DEVNULL, stdout=log, stderr=subprocess.STDOUT)
     atomic_json(root / "exit.json", {"returncode": completed.returncode, "at_utc": utc_now()})
     if completed.returncode != 0:
         return completed.returncode
-    summary = verified_partition_summary(path)
+    summary = verified_partition_summary(path, block_id)
     summary["operation"] = str(root)
-    atomic_json(cohort / "partition-completions" / f"{plan['model']}-{family}-{stage}.json", summary)
+    if block_mode:
+        summary.update(schema="sgw-01-block-completion-v1", block_id=block_id)
+        atomic_json(cohort / "block-completions" / f"{block_id}.json", summary)
+        publish_block_partition(cohort, release, plan["model"], family, stage)
+    else:
+        atomic_json(cohort / "partition-completions" / f"{plan['model']}-{family}-{stage}.json", summary)
     return 0
+
+
+def planned_blocks(plan: Mapping[str, Any], family: str, stage: str) -> tuple[str, ...]:
+    from .contract import Cell
+    from .release import _queue_rows
+
+    ref = plan["inputs"]["queue"]
+    if ref["sha256"] != QUEUE_SHA256 or sha256_file(Path(ref["path"])) != QUEUE_SHA256:
+        raise ContractError("block plan queue changed")
+    cells = tuple(Cell(row) for row in _queue_rows(Path(ref["path"]))
+                  if (row["model"], row["family"], row["stage"]) == (plan["model"], family, stage))
+    if len(cells) != STAGE_EPISODES[stage]:
+        raise ContractError("block plan requires the whole frozen partition")
+    return tuple(frozen_blocks(cells))
+
+
+def publish_block_partition(cohort, release, model, family, stage):
+    from .mailbox_visibility import DirectoryRefresher
+
+    for name in ("block-completions", "partition-completions"):
+        (cohort / name).mkdir(parents=True, exist_ok=True)
+    with dispatch_claim(cohort, f"publish-{model}-{family}-{stage}", wait=True):
+        refresh = DirectoryRefresher()
+        refresh(cohort / "block-completions")
+        refresh(cohort / "partition-completions")
+        if read_partition_summary(cohort, model, family, stage) is not None:
+            return
+        blocks = frozen_blocks(release.partition(model, family, stage))
+        summaries = [read_partition_summary(cohort, model, family, stage, block) for block in blocks]
+        if any(summary is None for summary in summaries):
+            return
+        if any(summary["release_hashes"] != dict(release.hashes) for summary in summaries):
+            raise ContractError("block completion releases differ within a partition")
+        value = {
+            **summaries[0], "schema": "sgw-01-partition-completion-v1",
+            "episodes": [episode for summary in summaries for episode in summary["episodes"]],
+            "blocks": [reference(cohort / "block-completions" / f"{block}.json") for block in blocks],
+            "operations": [summary["operation"] for summary in summaries], "completed_at_utc": utc_now(),
+        }
+        value.pop("block_id")
+        atomic_json(cohort / "partition-completions" / f"{model}-{family}-{stage}.json", value)
+
+
+def run_blocks(plan: Mapping[str, Any]) -> int:
+    from .mailbox_visibility import DirectoryRefresher
+
+    _block_registration(plan)
+    cohort, model = Path(plan["cohort_root"]), plan["model"]
+    for name in ("block-completions", "partition-completions"):
+        (cohort / name).mkdir(parents=True, exist_ok=True)
+    refresh = DirectoryRefresher()
+    status_path = cohort / "lane-status" / f"{plan['lane_id']}.json"
+    assignments = [(family, stage, block) for stage in STAGES for family in FAMILIES
+                   if f"{family}-{stage}" in plan["partitions"]
+                   for block in planned_blocks(plan, family, stage)]
+    while True:
+        if fleet_is_held(cohort):
+            stop_remote_lane(plan)
+            atomic_json(status_path, {"status": "held_no_new_claims", "at_utc": utc_now(), "model": model})
+            return 44
+        refresh(cohort / "block-completions")
+        # Recover publication only, never execution, if a controller died after
+        # publishing the last complete block but before the partition summary.
+        for family, stage in dict.fromkeys((f, s) for f, s, _ in assignments):
+            blocks = [b for f, s, b in assignments if (f, s) == (family, stage)]
+            if all((cohort / "block-completions" / f"{block}.json").exists() for block in blocks):
+                release = load_release(release_path(cohort, model, family, stage, plan["release_revision"]))
+                publish_block_partition(cohort, release, model, family, stage)
+        remaining = [(f, s, b) for f, s, b in assignments if read_partition_summary(cohort, model, f, s, b) is None]
+        if not remaining:
+            stop_remote_lane(plan)
+            atomic_json(status_path, {"status": "complete", "at_utc": utc_now(), "model": model})
+            return 0
+        dispatched = False
+        for family, stage, block in remaining:
+            if fleet_is_held(cohort):
+                break
+            refresh(cohort / "partition-completions")
+            if not stage_ready(cohort, stage, model):
+                continue
+            with dispatch_claim(cohort, block) as acquired:
+                if not acquired:
+                    continue
+                refresh(cohort / "block-completions")
+                if read_partition_summary(cohort, model, family, stage, block) is not None:
+                    continue
+                if fleet_is_held(cohort):
+                    break
+                atomic_json(status_path, {"status": "running", "block_id": block, "at_utc": utc_now()})
+                try:
+                    result = run_one(plan, family, stage, block)
+                except Exception as exc:
+                    request_fleet_hold(cohort, lane_id=plan["lane_id"], block_id=block,
+                                       reason=f"{type(exc).__name__}: {exc}; no automatic retry")
+                    stop_remote_lane(plan)
+                    raise
+                if result != 0:
+                    request_fleet_hold(cohort, lane_id=plan["lane_id"], block_id=block,
+                                       reason=f"worker exited {result}; no automatic retry")
+                    stop_remote_lane(plan)
+                    atomic_json(status_path, {"status": "blocked_preserve_no_automatic_retry",
+                                             "block_id": block, "returncode": result, "at_utc": utc_now()})
+                    return result
+                dispatched = True
+        if not dispatched:
+            atomic_json(status_path, {"status": "waiting_for_stage_or_block", "at_utc": utc_now()})
+            time.sleep(30)
 
 
 def run(plan: Mapping[str, Any]) -> int:
     from .mailbox_visibility import DirectoryRefresher
 
+    if "scheduling_mode" in plan:
+        return run_blocks(plan)
     cohort = Path(plan["cohort_root"])
     (cohort / "partition-completions").mkdir(parents=True, exist_ok=True)
     refresh = DirectoryRefresher()

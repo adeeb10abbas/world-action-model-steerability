@@ -51,7 +51,7 @@ class JointPositionBinding:
             raise AdapterError("joint-position environment binding is absent or hash-mismatched")
         value = json.loads(path.read_text())
         if value.get("camera_configuration") != camera_configuration_identity():
-            raise AdapterError("Environment binding lacks the current close camera revision; rematerialize it")
+            raise AdapterError("Environment binding lacks the selected camera revision; rematerialize it")
         source_root = Path(value["source_root"]).resolve()
         robolab_root = Path(value["robolab_root"]).resolve()
         _verify_git_checkout(source_root, value["source_commit"], "SGW simulator")

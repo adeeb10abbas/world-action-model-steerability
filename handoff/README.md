@@ -5,8 +5,9 @@ hold from 2026-09-25 16:05:40 UTC. Do not resume its releases. The natural
 drain is complete: 431 unique episodes, five preserved technical attempts,
 zero in flight, all ten GPUs verified released. Preserve all data; see
 [the final stop receipt](cluster-execution-20260924/user-stop-final-20260925.json).
-The later front/side-camera override permits a new
-N3-only run after minimal reset-view and input-packing gates; the separate
+The latest decision substitutes unchanged stock left/right/wrist cameras
+for the requested front/side views and permits a new
+N3-only run after minimal reset-view and official input-packing gates; the separate
 diagnostic is cancelled. Read
 [the stop/new-revision authority](cluster-execution-20260924/user-stop-authorization-20260925.json)
 before the historical continuation below.

@@ -1,6 +1,42 @@
 # Closer cameras and alignment checks
 
-The active exterior-camera revision is **`close-oblique-v3-full-objects-20260924`**.
+## Prospective stock-camera rerun, 25 September
+
+The close-camera cohort is user-stopped and preserved. The requested new
+front/side pair was inspected once on LAT-P01: the literal stock Head view
+is rolled, and mirrored presets crop the arm or banana. The orchestrator
+substituted the unchanged **OverShoulderLeftCameraCfg,
+OverShoulderRightCameraCfg and wrist** views rather than altering any pinned
+pose. This is a disclosed substitution, not a diagnosed cause of the old
+outcomes. See [candidate reset images](../artifacts/workshops/spatial_grounding_v1/camera_checks_20260925/front-side-candidates/candidates.jpg)
+and [current authority](../handoff/cluster-execution-20260924/user-stop-authorization-20260925.json).
+
+The new opt-in revision is `stock-over-shoulder-official-input-v1-20260925`,
+registered in `stock_cameras.json`. Both exterior sensors stay 1280 x 720;
+wrist and geometry are unchanged. LAT reuses the captured stock sensor
+facts; only HEIGHT/DIST P01 require new resets. This checks visibility at
+reset, not throughout a trajectory. The three-decimal stock quaternion
+tuples stay exact; measured comparisons reproduce USD's axis normalization
+instead of altering the tuples or relaxing a tolerance.
+
+`SGW01_POLICY_INPUT_REVISION=robolab-cosmos-client-pad-360x640-v1` selects
+the pinned official OpenPI client helper, Pillow bilinear resize-with-pad
+to 360 x 640 per view, before unchanged Cosmos service composition.
+The offline gate compares the entire resulting 540 x 640 image pixelwise
+with the pinned official RoboLab client. Legacy raw-view packing remains
+the default; new releases must explicitly bind and propagate both revisions.
+This is an input-processing change in addition to the camera, scheduling
+and model-order revision. No inference or competence is implied by that gate.
+
+New protocol `spec/protocol_stock_camera_r5.json` preserves the original
+scientific fields and adds the camera/input identity. Six-cell layout blocks
+and N3-only P18 -> D72 -> C432 progression are separately registered.
+The old `protocol.json`, `close_cameras.json`, queue and receipts remain
+untouched. E3/F3 cannot start without another user call.
+
+## Preserved close-camera qualification
+
+The superseded exterior-camera revision is **`close-oblique-v3-full-objects-20260924`**.
 Both views look down across the table from its far side. The wrist camera,
 robot, clean lighting, objects, supports, physical goals, prompts and scoring
 are unchanged. [Figure 10, page 14 of the TRI LBM paper](https://arxiv.org/html/2507.05331v1)

@@ -52,3 +52,41 @@ def test_incomplete_or_inconsistent_clock_rejected(tmp_path, defect):
     write_rows(path, values)
     with pytest.raises(ContractError):
         observed_clock(path)
+
+
+def test_prospective_gate_requires_selected_stock_inputs_and_all_three_captures(tmp_path, monkeypatch):
+    from pathlib import Path
+    from experiments.workshops.spatial_grounding_v1.camera_configuration import STOCK_REVISION, camera_configuration_identity
+    from experiments.workshops.spatial_grounding_v1.policy_observations import OFFICIAL_INPUT_REVISION, policy_input_identity
+    from experiments.workshops.spatial_grounding_v1.study_lane import reference
+    from tools.prepare_study_clock_fixtures import revision_evidence
+
+    monkeypatch.setenv("SGW01_CAMERA_REVISION", STOCK_REVISION)
+    monkeypatch.setenv("SGW01_POLICY_INPUT_REVISION", OFFICIAL_INPUT_REVISION)
+    original = Path(__file__).resolve().parents[1] / "artifacts/workshops/spatial_grounding_v1/camera_checks_20260925/front-side-candidates/receipt.json"
+    captures = {}
+    for layout in ("LAT-P01", "HEIGHT-P01", "DIST-P01"):
+        # Synthetic contract fixtures, not new physical reset evidence.
+        capture = json.loads(original.read_text())
+        capture["layout_id"] = layout
+        path = tmp_path / f"{layout}.json"
+        path.write_text(json.dumps(capture))
+        captures[layout] = reference(path)
+    packing = tmp_path / "packing.json"
+    packing.write_text(json.dumps({
+        "status": "passed", "camera_configuration": camera_configuration_identity(),
+        "policy_input": policy_input_identity(), "native_reset_inputs": 1, "model_requests": 0,
+    }))
+    gate = {
+        "schema": "sgw-stock-camera-rerun-gates-v1", "status": "passed",
+        "allowed_models": ["N3"], "camera_configuration": camera_configuration_identity(),
+        "policy_input": policy_input_identity(), "layouts": ["LAT-P01", "HEIGHT-P01", "DIST-P01"],
+        "model_requests": 0, "reset_captures": captures, "packing": reference(packing),
+    }
+    path = tmp_path / "gates.json"
+    path.write_text(json.dumps(gate))
+    assert revision_evidence(path) == gate
+    del gate["reset_captures"]["DIST-P01"]
+    path.write_text(json.dumps(gate))
+    with pytest.raises(ContractError, match="all three reset captures"):
+        revision_evidence(path)
