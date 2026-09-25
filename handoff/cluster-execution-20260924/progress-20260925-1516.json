@@ -1,0 +1,397 @@
+{
+  "active_lane_index": {
+    "path": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2/active-lanes.json",
+    "sha256": "69696d1d23f9c7d1e2fb3d8eec66d862c0045b96a4a434e63f441d2b55f889a2"
+  },
+  "cohort_root": "/data/users/ali/sgw-01/current-20260924a/study-a40-v2",
+  "completed_by_partition": {
+    "E3-DIST-D": 24,
+    "E3-DIST-P": 6,
+    "E3-HEIGHT-C": 26,
+    "E3-HEIGHT-D": 24,
+    "E3-HEIGHT-P": 6,
+    "E3-LAT-C": 28,
+    "E3-LAT-D": 24,
+    "E3-LAT-P": 6,
+    "F3-DIST-D": 24,
+    "F3-DIST-P": 6,
+    "F3-HEIGHT-D": 24,
+    "F3-HEIGHT-P": 6,
+    "F3-LAT-C": 27,
+    "F3-LAT-D": 24,
+    "F3-LAT-P": 6,
+    "N3-DIST-D": 24,
+    "N3-DIST-P": 6,
+    "N3-HEIGHT-C": 22,
+    "N3-HEIGHT-D": 24,
+    "N3-HEIGHT-P": 6,
+    "N3-LAT-C": 23,
+    "N3-LAT-D": 24,
+    "N3-LAT-P": 6
+  },
+  "completed_status_counts": {
+    "valid_model_failure": 392,
+    "valid_success": 4
+  },
+  "completion_identity_catalogue_sha256": "8fd7d740ac7f705e43e13ef33adbebb8417e0bf59308943bb58426eaa149f03e",
+  "execution_source_commit": "a94696d3fa75c78a4f756536b988cead607e53b8",
+  "expected_unique_episodes": 1566,
+  "fleet_hold": null,
+  "not_yet_completed_unique_episodes": 1170,
+  "observed_at_utc": "2026-09-25T15:18:44.681163+00:00",
+  "owners": [
+    {
+      "lane": "n3-a40-r4-0",
+      "pod": "211247-alia40i-a40-1gpu",
+      "receipt": {
+        "at_utc": "2026-09-25T15:17:46.852273Z",
+        "child_pid": 4052,
+        "deadline_utc": "2026-10-09T00:22:49.420000+00:00",
+        "host_memory": {
+          "anon_bytes": 6436470784,
+          "anon_plus_shmem_bytes": 6453256192,
+          "current_bytes": 34359238656,
+          "events": {
+            "high": 0,
+            "low": 0,
+            "max": 3673650,
+            "oom": 0,
+            "oom_kill": 0
+          },
+          "kernel_peak_bytes": null,
+          "limit_bytes": 34359738368,
+          "sampled_anon_plus_shmem_peak_bytes": 6873112576,
+          "sampled_peak_bytes": 34359742464,
+          "sampling_interval_seconds": 0.2,
+          "shmem_bytes": 16785408
+        },
+        "status": "supervising"
+      },
+      "role": "policy",
+      "terminal": false
+    },
+    {
+      "lane": "n3-a40-r4-0",
+      "pod": "211247-alia40m-a40-1gpu",
+      "receipt": {
+        "at_utc": "2026-09-25T15:17:50.986111Z",
+        "child_pid": 3924,
+        "deadline_utc": "2026-10-09T00:22:43.680000+00:00",
+        "host_memory": {
+          "anon_bytes": 49328128,
+          "anon_plus_shmem_bytes": 49332224,
+          "current_bytes": 27774828544,
+          "events": {
+            "high": 0,
+            "low": 0,
+            "max": 424558,
+            "oom": 0,
+            "oom_kill": 0
+          },
+          "kernel_peak_bytes": null,
+          "limit_bytes": 34359738368,
+          "sampled_anon_plus_shmem_peak_bytes": 7025909760,
+          "sampled_peak_bytes": 34359742464,
+          "sampling_interval_seconds": 0.2,
+          "shmem_bytes": 4096
+        },
+        "status": "supervising"
+      },
+      "role": "simulator",
+      "terminal": false
+    },
+    {
+      "lane": "e3-a40-r4-0",
+      "pod": "211247-alia40j-a40-1gpu",
+      "receipt": {
+        "at_utc": "2026-09-25T15:18:20.676712Z",
+        "child_pid": 4108,
+        "deadline_utc": "2026-10-09T00:23:13.030000+00:00",
+        "host_memory": {
+          "anon_bytes": 9290067968,
+          "anon_plus_shmem_bytes": 9306853376,
+          "current_bytes": 34069716992,
+          "events": {
+            "high": 0,
+            "low": 0,
+            "max": 4409807,
+            "oom": 0,
+            "oom_kill": 0
+          },
+          "kernel_peak_bytes": null,
+          "limit_bytes": 34359738368,
+          "sampled_anon_plus_shmem_peak_bytes": 9512562688,
+          "sampled_peak_bytes": 34359742464,
+          "sampling_interval_seconds": 0.2,
+          "shmem_bytes": 16785408
+        },
+        "status": "supervising"
+      },
+      "role": "policy",
+      "terminal": false
+    },
+    {
+      "lane": "e3-a40-r4-0",
+      "pod": "211247-alia40g-a40-1gpu",
+      "receipt": {
+        "at_utc": "2026-09-25T15:18:18.361756Z",
+        "child_pid": 4306,
+        "deadline_utc": "2026-10-09T00:22:43.880000+00:00",
+        "host_memory": {
+          "anon_bytes": 4021391360,
+          "anon_plus_shmem_bytes": 6554923008,
+          "current_bytes": 34343432192,
+          "events": {
+            "high": 0,
+            "low": 0,
+            "max": 683380,
+            "oom": 0,
+            "oom_kill": 0
+          },
+          "kernel_peak_bytes": null,
+          "limit_bytes": 34359738368,
+          "sampled_anon_plus_shmem_peak_bytes": 7057051648,
+          "sampled_peak_bytes": 34359742464,
+          "sampling_interval_seconds": 0.2,
+          "shmem_bytes": 2533531648
+        },
+        "status": "supervising"
+      },
+      "role": "simulator",
+      "terminal": false
+    },
+    {
+      "lane": "f3-a40-r4-0",
+      "pod": "211247-alia40k-a40-1gpu",
+      "receipt": {
+        "at_utc": "2026-09-25T15:17:55.360084Z",
+        "child_pid": 3613,
+        "deadline_utc": "2026-10-09T00:22:54.780000+00:00",
+        "host_memory": {
+          "anon_bytes": 4174835712,
+          "anon_plus_shmem_bytes": 4191555584,
+          "current_bytes": 34359472128,
+          "events": {
+            "high": 0,
+            "low": 0,
+            "max": 6003924,
+            "oom": 0,
+            "oom_kill": 0
+          },
+          "kernel_peak_bytes": null,
+          "limit_bytes": 34359738368,
+          "sampled_anon_plus_shmem_peak_bytes": 5488340992,
+          "sampled_peak_bytes": 34359775232,
+          "sampling_interval_seconds": 0.2,
+          "shmem_bytes": 16719872
+        },
+        "status": "supervising"
+      },
+      "role": "policy",
+      "terminal": false
+    },
+    {
+      "lane": "f3-a40-r4-0",
+      "pod": "211247-alia40h-a40-1gpu",
+      "receipt": {
+        "at_utc": "2026-09-25T15:18:17.120668Z",
+        "child_pid": 3946,
+        "deadline_utc": "2026-10-09T00:22:43.180000+00:00",
+        "host_memory": {
+          "anon_bytes": 49176576,
+          "anon_plus_shmem_bytes": 49180672,
+          "current_bytes": 27768320000,
+          "events": {
+            "high": 0,
+            "low": 0,
+            "max": 605608,
+            "oom": 0,
+            "oom_kill": 0
+          },
+          "kernel_peak_bytes": null,
+          "limit_bytes": 34359738368,
+          "sampled_anon_plus_shmem_peak_bytes": 7043174400,
+          "sampled_peak_bytes": 34359742464,
+          "sampling_interval_seconds": 0.2,
+          "shmem_bytes": 4096
+        },
+        "status": "supervising"
+      },
+      "role": "simulator",
+      "terminal": false
+    },
+    {
+      "lane": "n3-a40-r4-1",
+      "pod": "211247-alia40l-a40-1gpu",
+      "receipt": {
+        "at_utc": "2026-09-25T15:17:51.497645Z",
+        "child_pid": 3884,
+        "deadline_utc": "2026-10-09T00:22:48.840000+00:00",
+        "host_memory": {
+          "anon_bytes": 6054383616,
+          "anon_plus_shmem_bytes": 6071169024,
+          "current_bytes": 34321686528,
+          "events": {
+            "high": 0,
+            "low": 0,
+            "max": 3455809,
+            "oom": 0,
+            "oom_kill": 0
+          },
+          "kernel_peak_bytes": null,
+          "limit_bytes": 34359738368,
+          "sampled_anon_plus_shmem_peak_bytes": 6741803008,
+          "sampled_peak_bytes": 34359861248,
+          "sampling_interval_seconds": 0.2,
+          "shmem_bytes": 16785408
+        },
+        "status": "supervising"
+      },
+      "role": "policy",
+      "terminal": false
+    },
+    {
+      "lane": "n3-a40-r4-1",
+      "pod": "211247-alia40n-a40-1gpu",
+      "receipt": {
+        "at_utc": "2026-09-25T15:18:22.932541Z",
+        "child_pid": 3855,
+        "deadline_utc": "2026-10-09T00:22:44.340000+00:00",
+        "host_memory": {
+          "anon_bytes": 4100444160,
+          "anon_plus_shmem_bytes": 6633975808,
+          "current_bytes": 34359681024,
+          "events": {
+            "high": 0,
+            "low": 0,
+            "max": 416035,
+            "oom": 0,
+            "oom_kill": 0
+          },
+          "kernel_peak_bytes": null,
+          "limit_bytes": 34359738368,
+          "sampled_anon_plus_shmem_peak_bytes": 7033192448,
+          "sampled_peak_bytes": 34359738368,
+          "sampling_interval_seconds": 0.2,
+          "shmem_bytes": 2533531648
+        },
+        "status": "supervising"
+      },
+      "role": "simulator",
+      "terminal": false
+    },
+    {
+      "lane": "e3-a40-loan-20260925a",
+      "pod": "211247-alia40o-a40-1gpu",
+      "receipt": {
+        "at_utc": "2026-09-25T15:17:52.997324Z",
+        "child_pid": 16756,
+        "deadline_utc": "2026-10-09T00:23:06+00:00",
+        "host_memory": {
+          "anon_bytes": 5748031488,
+          "anon_plus_shmem_bytes": 5764816896,
+          "current_bytes": 34359664640,
+          "events": {
+            "high": 0,
+            "low": 0,
+            "max": 3181995,
+            "oom": 0,
+            "oom_kill": 0
+          },
+          "kernel_peak_bytes": null,
+          "limit_bytes": 34359738368,
+          "sampled_anon_plus_shmem_peak_bytes": 7718490112,
+          "sampled_peak_bytes": 34359742464,
+          "sampling_interval_seconds": 0.2,
+          "shmem_bytes": 16785408
+        },
+        "status": "supervising"
+      },
+      "role": "policy",
+      "terminal": false
+    },
+    {
+      "lane": "e3-a40-loan-20260925a",
+      "pod": "211247-alia40p-a40-1gpu",
+      "receipt": {
+        "at_utc": "2026-09-25T15:17:55.238388Z",
+        "child_pid": 26517,
+        "deadline_utc": "2026-10-09T00:22:50.060000+00:00",
+        "host_memory": {
+          "anon_bytes": 4052062208,
+          "anon_plus_shmem_bytes": 6585593856,
+          "current_bytes": 34359312384,
+          "events": {
+            "high": 0,
+            "low": 0,
+            "max": 330969,
+            "oom": 0,
+            "oom_kill": 0
+          },
+          "kernel_peak_bytes": null,
+          "limit_bytes": 34359738368,
+          "sampled_anon_plus_shmem_peak_bytes": 7176130560,
+          "sampled_peak_bytes": 34359738368,
+          "sampling_interval_seconds": 0.2,
+          "shmem_bytes": 2533531648
+        },
+        "status": "supervising"
+      },
+      "role": "simulator",
+      "terminal": false
+    }
+  ],
+  "schema_version": "sgw-01-operational-progress-v1",
+  "study_footprint": {
+    "accounting_scope": "Immutable attempt manifests, including preserved technical failures; not a recursive allocated-disk scan",
+    "engineering_allowance_for_in_progress_bytes": 85443196790,
+    "engineering_allowance_for_unindexed_native_bytes": 3432907807407,
+    "finalized_attempt_manifests": 403,
+    "finalized_manifest_accounted_files": 2475011,
+    "finalized_manifest_accounted_logical_bytes": 3432907807407,
+    "maximum_accounted_attempt_bytes": 8544319679,
+    "unindexed_native_and_in_progress_actual_bytes": null
+  },
+  "technical_invalid_attempts": 5,
+  "total_dispatched_study_requests_including_preserved_attempts": 6074,
+  "total_recorded_study_actions_including_preserved_attempts": 182244,
+  "unfinished_attempts": [
+    {
+      "actions_recorded": 326,
+      "attempt_id": "attempt-001",
+      "cell_id": "HEIGHT-C04-N3-C-NEG",
+      "requests_dispatched": 11,
+      "status": "in_progress_or_unfinished"
+    },
+    {
+      "actions_recorded": 445,
+      "attempt_id": "attempt-001",
+      "cell_id": "HEIGHT-C05-E3-I-POS",
+      "requests_dispatched": 14,
+      "status": "in_progress_or_unfinished"
+    },
+    {
+      "actions_recorded": 123,
+      "attempt_id": "attempt-001",
+      "cell_id": "LAT-C05-E3-I-NEG",
+      "requests_dispatched": 4,
+      "status": "in_progress_or_unfinished"
+    },
+    {
+      "actions_recorded": 0,
+      "attempt_id": "attempt-001",
+      "cell_id": "LAT-C05-F3-I-NEG",
+      "requests_dispatched": 0,
+      "status": "in_progress_or_unfinished"
+    },
+    {
+      "actions_recorded": 0,
+      "attempt_id": "attempt-001",
+      "cell_id": "LAT-C05-N3-D-POS",
+      "requests_dispatched": 0,
+      "status": "in_progress_or_unfinished"
+    }
+  ],
+  "valid_completed_unique_episodes": 396,
+  "validation_scope": "Completion identity and manifest digest; final compiler performs full raw-artifact validation"
+}

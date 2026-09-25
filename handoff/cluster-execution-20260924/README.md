@@ -3,13 +3,13 @@
 The user separately authorized runtime integration, bounded checks, and the
 committed study on 24 September 2026. This supersedes the preparation-only
 permission recorded in the original delivery. **Genuine study execution is
-running on five A40 policy/simulator pairs.** At 2026-09-25 14:16 UTC,
-362 unique episodes were complete: N3 123/522, E3 129/522 and F3 110/522.
-These comprise all 54 pilots, 216 development and 92 confirmation episodes,
-with 358 valid model failures and four valid successes; the five technical
+running on five A40 policy/simulator pairs.** At 2026-09-25 15:18 UTC,
+396 unique episodes were complete: N3 135/522, E3 144/522 and F3 117/522.
+These comprise all 54 pilots, 216 development and 126 confirmation episodes,
+with 392 valid model failures and four valid successes; the five technical
 attempts remain separate.
 The frozen pilot barrier released development at 03:01:35.850529 UTC.
-See [the operational snapshot](progress-20260925-1414.json),
+See [the operational snapshot](progress-20260925-1516.json),
 [first completed confirmation evidence for all five pairs](first-confirmation-completions-20260925.json),
 [the applied boundary-loan evidence](lane-loan-20260925a.json),
 [the periodic timing/capacity report](report-20260925-1212.json) and
@@ -35,6 +35,31 @@ protected B200 are untouched. Full 1,566-cell completion, final analysis and
 final-only local H.264 delivery remain pending. No local video transfer has
 started. Progress receipts are collected hourly; capacity can be reassigned
 only at a verified quiescent boundary without losing an in-flight attempt.
+
+**15:18 UTC hourly progress:** 34 additional unique completions since 14:16
+correspond to **32.90 episodes/hour**, with 529 additional requests and
+15,909 additional recorded actions. Three unfinished attempts have genuine
+requests/actions; two are starting with zero requests. There are **1,170 C
+cells remaining**. All five lanes retain their current C partitions, none
+of which has completed. No boundary loan, restart or new pair was introduced.
+
+The [control receipt](control-20260925-1517.json), captured at 15:17 UTC,
+verifies unchanged guardian, notification-observer, roster and owner-index
+identities. All ten owner heartbeats in the progress capture are fresh.
+No new technical attempt, OOM, terminal owner or fleet hold was observed;
+execution remains on `a94696d`. Only bounded metadata was read, not raw
+artifacts or another timing census.
+
+The 403 finalized manifests account for **3,197.145 GiB**. They include
+the five preserved technical attempts and two further finalized results
+outside the initial 396-cell completion-pointer enumeration. Unindexed
+native/in-flight actual bytes remain separately unmeasured. The guardian
+reported **134.283 TiB and 71,485,524 inodes available**; per-UID/GID quota
+remains unverified and raw masters remain remote. Isolated expansion still
+awaits explicit replacement-Pod names; shared a-f remain untouched.
+The next full capacity/conditional-ETA/barriers report is due around
+**16:10 UTC**, even though this preceding hourly snapshot will be less than
+55 minutes old.
 
 **14:16 UTC hourly progress:** 37 additional unique completions since 13:14
 correspond to **35.74 episodes/hour**, with 542 additional requests and
