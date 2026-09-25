@@ -5,9 +5,9 @@ integration and launch subject to the runtime gates. See
 [the current cluster record](cluster-execution-20260924/README.md) for deployed
 source, destination materialization, actual owners and preserved failures.
 Genuine A40 study execution is running on five policy/simulator pairs. All
-three models have valid recorded episodes after the verified recovery; 288
-unique episodes (54 pilot, 216 development and 18 confirmation) were complete
-at 2026-09-25 12:12 UTC. The development barrier released at 11:28:27 UTC;
+three models have valid recorded episodes after the verified recovery; 325
+unique episodes (54 pilot, 216 development and 55 confirmation) were complete
+at 2026-09-25 13:14 UTC. The development barrier released at 11:28:27 UTC;
 all five current pairs now have genuine completed confirmation episodes.
 The five original
 technical-invalid attempts remain unchanged. The
