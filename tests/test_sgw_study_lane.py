@@ -13,17 +13,22 @@ def test_supervisor_distinguishes_sampled_and_kernel_memory_peaks(tmp_path):
     (tmp_path / "memory.current").write_text("2048\n")
     (tmp_path / "memory.max").write_text("34359738368\n")
     (tmp_path / "memory.events").write_text("oom 0\noom_kill 0\n")
+    (tmp_path / "memory.stat").write_text("anon 1024\nshmem 128\nfile 896\n")
     first = supervisor.sample_memory(root=tmp_path)
     assert first["sampled_peak_bytes"] == 2048
     assert first["kernel_peak_bytes"] is None
     assert first["limit_bytes"] == 32 * 1024**3
+    assert first["anon_plus_shmem_bytes"] == first["sampled_anon_plus_shmem_peak_bytes"] == 1152
     (tmp_path / "memory.current").write_text("1024\n")
     (tmp_path / "memory.peak").write_text("4096\n")
     (tmp_path / "memory.events").write_text("oom 1\noom_kill 1\n")
-    final = supervisor.sample_memory(first["sampled_peak_bytes"], tmp_path)
+    (tmp_path / "memory.stat").write_text("anon 512\nshmem 64\nfile 448\n")
+    final = supervisor.sample_memory(first["sampled_peak_bytes"], tmp_path,
+                                     first["sampled_anon_plus_shmem_peak_bytes"])
     assert final["sampled_peak_bytes"] == 2048
     assert final["kernel_peak_bytes"] == 4096
     assert final["events"]["oom_kill"] == 1
+    assert final["anon_plus_shmem_bytes"] == 576 and final["sampled_anon_plus_shmem_peak_bytes"] == 1152
 
 
 def test_dispatch_claim_is_exclusive_and_partition_scoped(tmp_path):
@@ -96,6 +101,75 @@ def test_controller_stops_on_first_failure_without_retry(monkeypatch, tmp_path):
             "partitions": ["LAT-P", "HEIGHT-P"]}
     assert lane.run(plan) == 42
     assert calls == [("LAT", "P")]
+
+
+def test_controller_holds_all_new_claims_after_first_failure(monkeypatch, tmp_path):
+    from experiments.workshops.spatial_grounding_v1 import mailbox_visibility
+
+    monkeypatch.setattr(mailbox_visibility, "DirectoryRefresher", lambda: lambda path: None)
+    monkeypatch.setattr(lane, "read_partition_summary", lambda *_: None)
+    monkeypatch.setattr(lane, "stage_ready", lambda *_: True)
+    monkeypatch.setattr(lane, "stop_remote_lane", lambda *_: None)
+    calls = []
+    monkeypatch.setattr(lane, "run_one", lambda p, f, s: calls.append((f, s)) or 42)
+    plan = {"cohort_root": str(tmp_path), "lane_id": "n3-0", "model": "N3",
+            "partitions": ["LAT-P"], "hold_on_technical_invalid": True}
+    assert lane.run(plan) == 42
+    assert (tmp_path / "fleet-hold.json").exists()
+    assert lane.run({**plan, "lane_id": "other-lane"}) == 44
+    assert calls == [("LAT", "P")]
+
+
+def test_replacement_release_retains_attempt_number_and_rejects_valid_replay(tmp_path):
+    from dataclasses import replace
+    from experiments.workshops.spatial_grounding_v1.contract import load_release
+    from experiments.workshops.spatial_grounding_v1.recorder import AttemptRecorder, next_attempt_number
+    from tests.test_sgw_contract import make_release
+
+    original = make_release(tmp_path)
+    old_path = lane.release_path(tmp_path, "N3", "LAT", "P")
+    original.rename(old_path)
+    old = load_release(old_path)
+    cell = old.partition("N3", "LAT", "P")[0]
+    recorder = AttemptRecorder(old, cell, "attempt-001")
+    recorder.begin()
+    recorder.complete({"status": "technical_invalid", "technical_cause": "synthetic reader failure"})
+    preserved = (recorder.path / "manifest.json").read_bytes()
+    new_path = lane.release_path(tmp_path, "N3", "LAT", "P", "r3")
+    assert new_path != old_path
+    lane.assert_replacement_uncompleted(tmp_path, "N3", "LAT", "P")
+    assert next_attempt_number(replace(old, root=new_path), cell) == 2
+    assert (recorder.path / "manifest.json").read_bytes() == preserved
+    pointer = tmp_path / "cells" / f"{cell.cell_id}.complete.json"
+    pointer.parent.mkdir()
+    pointer.write_text("{}")
+    with pytest.raises(ContractError, match="already completed"):
+        lane.assert_replacement_uncompleted(tmp_path, "N3", "LAT", "P")
+    old_path.rename(lane.release_path(tmp_path, "N3", "LAT", "P", "r2"))
+    with pytest.raises(ContractError, match="already completed"):
+        lane.assert_replacement_uncompleted(tmp_path, "N3", "LAT", "P")
+
+
+def test_partition_summary_uses_its_versioned_immutable_release(tmp_path):
+    from experiments.workshops.spatial_grounding_v1.contract import load_release
+    from experiments.workshops.spatial_grounding_v1.recorder import AttemptRecorder, atomic_json
+    from tests.test_sgw_contract import make_release
+
+    original = make_release(tmp_path)
+    root = lane.release_path(tmp_path, "N3", "LAT", "P", "r3")
+    original.rename(root)
+    release = load_release(root)
+    for cell in release.partition("N3", "LAT", "P"):
+        recorder = AttemptRecorder(release, cell, "attempt-001")
+        recorder.begin()
+        for category in ("actions", "states", "observations", "videos"):
+            path = recorder.path / category / "synthetic.txt"
+            path.parent.mkdir()
+            path.write_text("CPU fixture")
+        recorder.complete({"status": "valid_model_failure", "executed_action_count": 450, "safety_terminated": False})
+    summary = lane.verified_partition_summary(root)
+    atomic_json(tmp_path / "partition-completions" / "N3-LAT-P.json", summary)
+    assert lane.read_partition_summary(tmp_path, "N3", "LAT", "P") == summary
 
 
 def _proc_stat(root: Path, pid: int, ppid: int, start: int, state="S"):

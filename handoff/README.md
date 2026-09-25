@@ -3,8 +3,9 @@
 **Current execution continuation:** the user has since authorized cluster
 integration and launch subject to the runtime gates. See
 [the current cluster record](cluster-execution-20260924/README.md) for deployed
-source, destination materialization, exact Jobs, preserved startup failures
-and the reproducible bootstrap repair. No study episode has started. The
+source, destination materialization, actual owners and preserved failures.
+Genuine A40 study attempts have started; the first five are retained as
+technical-invalid attempts pending a verified finalization repair. The
 original preparation-only handoff below does not itself grant that authority.
 
 **The scenes, camera configuration and experiment queue are ready to transfer.

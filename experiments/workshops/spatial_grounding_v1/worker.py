@@ -33,7 +33,7 @@ import uuid
 
 from .contract import Cell, ContractError, Release, load_release, validate_stage_authorizations, verify_completion_pointer
 from .gpu_idle_probe import select_idle
-from .recorder import AttemptRecorder, atomic_json, next_attempt_number, utc_now
+from .recorder import AttemptRecorder, atomic_json, fleet_is_held, next_attempt_number, request_fleet_hold, utc_now
 
 EXIT_RELEASE_INVALID, EXIT_ATTEMPTS_EXHAUSTED, EXIT_STORAGE_BUDGET_BLOCKED = 42, 43, 44
 SOURCE_QUEUE_EPISODE_COUNT = 1566
@@ -860,9 +860,16 @@ def run_partition(release: Release, *, model: str, family: str, stage: str, max_
                 return EXIT_STORAGE_BUDGET_BLOCKED
             # The global lock must cover model-server/factory construction, not
             # merely requests, so a duplicate Job cannot load a second policy.
+            if release.binding.get("hold_on_technical_invalid") is True and fleet_is_held(release.root.parent):
+                _status(release, worker_id, state="held", reason="fleet hold forbids new attempts", valid=valid)
+                return EXIT_STORAGE_BUDGET_BLOCKED
             try:
                 adapter = adapter or load_adapter(model)
             except Exception as exc:
+                if release.binding.get("hold_on_technical_invalid") is True:
+                    request_fleet_hold(release.root.parent, release_id=release.release_id,
+                                       source_commit=release.binding["source_commit"],
+                                       phase="model_construction", reason=f"{type(exc).__name__}: {exc}")
                 _status(release, worker_id, state="technical_invalid", phase="model_construction",
                         reason=f"{type(exc).__name__}: {exc}", traceback=traceback.format_exc(), valid=valid)
                 raise ContractError("model construction failed; partition aborted without replay") from exc
@@ -877,6 +884,9 @@ def run_partition(release: Release, *, model: str, family: str, stage: str, max_
                     valid += 1
                     continue
                 while not STOP_REQUESTED:
+                    if release.binding.get("hold_on_technical_invalid") is True and fleet_is_held(release.root.parent):
+                        _status(release, worker_id, state="held", reason="fleet hold forbids new attempts", valid=valid)
+                        return EXIT_STORAGE_BUDGET_BLOCKED
                     try:
                         _space_check(release, stage=stage)
                         _budget_check(release, stage=stage, model=model, minimum_runtime_seconds=bounded_operation_seconds)
@@ -921,7 +931,11 @@ def run_partition(release: Release, *, model: str, family: str, stage: str, max_
                         heartbeat.last_error = f"{type(exc).__name__}: {exc}"
                         recorder.event("technical_invalid", error_type=type(exc).__name__, error=str(exc))
                         published = recorder.complete({"status": "technical_invalid", "technical_cause": heartbeat.last_error})
-                    except ContractError:
+                    except ContractError as exc:
+                        if release.binding.get("hold_on_technical_invalid") is True:
+                            request_fleet_hold(release.root.parent, release_id=release.release_id,
+                                               cell_id=cell.cell_id, attempt_id=recorder.attempt_id,
+                                               reason=f"{type(exc).__name__}: {exc}")
                         raise
                     except OSError as exc:
                         heartbeat.last_error = f"{type(exc).__name__}: {exc}"
@@ -944,6 +958,10 @@ def run_partition(release: Release, *, model: str, family: str, stage: str, max_
                                       else "policy memory exhaustion")
                             raise ContractError(f"{reason}; partition aborted without replay") from exc
                         recorder.event("fatal_unclassified_error", error_type=type(exc).__name__, error=str(exc))
+                        if release.binding.get("hold_on_technical_invalid") is True:
+                            request_fleet_hold(release.root.parent, release_id=release.release_id,
+                                               cell_id=cell.cell_id, attempt_id=recorder.attempt_id,
+                                               reason=f"{type(exc).__name__}: {exc}")
                         raise ContractError(f"unclassified adapter failure; attempt preserved: {type(exc).__name__}") from exc
                     _status(release, worker_id, state="running", current_cell=cell.cell_id, valid=valid,
                             attempts=number, bytes_written=sum(p.stat().st_size for p in recorder.path.rglob("*") if p.is_file()))

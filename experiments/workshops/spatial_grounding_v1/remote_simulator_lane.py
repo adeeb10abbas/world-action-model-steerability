@@ -141,6 +141,12 @@ def _simulator_supervisor(value: Mapping[str, Any], role: str, env: Mapping[str,
         "source_commit": value["source_commit"], "entrypoint": entrypoint,
     }
     _require(all(record.get(key) == item for key, item in expected.items()), "simulator supervisor scope differs from lane")
+    command = record.get("command")
+    _require(isinstance(command, list) and len(command) >= 3
+             and all(isinstance(part, str) and part for part in command)
+             and Path(command[0]).is_absolute()
+             and command[1:3] == ["-m", "experiments.workshops.spatial_grounding_v1.study_supervisor"],
+             "simulator supervisor lacks its attested Python command")
     try:
         start = datetime.fromisoformat(record["started_at_utc"].replace("Z", "+00:00"))
         deadline = datetime.fromisoformat(record["deadline_utc"].replace("Z", "+00:00"))
@@ -309,6 +315,10 @@ def _result(metadata: Path, descriptor_path: Path, lane: Lane, identity: dict) -
     started = _bound(result["child_start"], metadata / "child-start.json")
     exited = _bound(result["child_exit"], metadata / "child-exit.json")
     descriptor = _read(descriptor_path)
+    expected_command = _command(descriptor, max(1, math.ceil(_seconds(started["deadline_seconds"]))))
+    if lane.value.get("schema_version") == POD_SIMULATOR_SCHEMA:
+        guardian = _simulator_supervisor(lane.value, "policy", {})
+        expected_command[0] = guardian["command"][0]
     _require(claim.get("descriptor_sha256") == started.get("descriptor_sha256") == exited.get("descriptor_sha256")
              == result["descriptor_sha256"] and claim.get("lane_identity_sha256") == lane.sha256
              and started.get("run_id") == claim.get("run_id") == exited.get("run_id")
@@ -317,7 +327,7 @@ def _result(metadata: Path, descriptor_path: Path, lane: Lane, identity: dict) -
              and started["pid"] == started.get("process_group_id") == exited.get("pid")
              and started.get("process_start_identity") == exited.get("process_start_identity")
              and isinstance(started.get("process_start_identity"), str) and bool(started["process_start_identity"])
-             and started.get("command") == _command(descriptor, max(1, math.ceil(_seconds(started["deadline_seconds"]))))
+             and started.get("command") == expected_command
              and type(exited.get("returncode")) is int and exited["returncode"] == 0 and exited.get("timed_out") is False
              and exited.get("interrupted") is False and exited.get("group_drained") is True,
              "owned child exit is absent or contradicts completion")

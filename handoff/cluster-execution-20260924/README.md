@@ -2,9 +2,28 @@
 
 The user separately authorized runtime integration, bounded checks, and the
 committed study on 24 September 2026. This supersedes the preparation-only
-permission recorded in the original delivery. **No behavioral release or study
-episode has started.** Do not equate the implemented adapters, model loading,
-or the destination check below with qualified model inference.
+permission recorded in the original delivery. **Genuine study execution has
+started on A40, but no valid completed episode is yet claimed.** Distinguish
+the retained technical attempts below from model failures and valid outcomes.
+
+**Current hold and repair:** the first five A40 attempts completed 15 genuine
+requests and 450 physical actions each: 75 requests and 2,250 actions total.
+All five native simulator children exited zero with their process groups
+drained, and every viewport video is retained. The policy-side verifier
+incorrectly reconstructed the simulator argv with the policy interpreter
+instead of the attested RoboLab interpreter. Their
+[technical-invalid manifests and clean native receipts](a40-attempt1-preservation.json)
+remain unchanged; they are not scored model failures. All five lanes were held
+after the in-flight attempts, without churning retries.
+
+The authorized repair retains the `study-a40-v2/` cohort and its attempt
+directories. Versioned replacement releases use the corrected common source;
+affected cells resume at `attempt-002`, not a reset counter. Frozen
+`spec/protocol.json` field `operations.max_attempts_per_cell` remains three.
+No completed valid/censored cell may be replayed through a replacement release.
+The new binding enables a durable fleet hold on the first technical-invalid
+attempt (N=1), checked before model construction, new attempts and dispatch.
+Only the coordinator clears the hold after verifying and deploying a fix.
 
 **All three actual pinned runtimes have now completed six fixed-input
 requests each (18 total), with zero executed actions or study episodes.**

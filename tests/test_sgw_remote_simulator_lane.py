@@ -517,6 +517,7 @@ def bare_simulator_identity(setup, monkeypatch, seconds=20):
     start = datetime.now(timezone.utc)
     supervisor = {
         "schema": "sgw-01-existing-pod-supervisor-v1", "role": "simulator",
+        "command": [sys.executable, "-m", "experiments.workshops.spatial_grounding_v1.study_supervisor", "run"],
         "pod_name": "a40e", "pod_uid": setup.identity["simulator_pod_uid"],
         "gpu_uuid": setup.identity["simulator_gpu_uuid"], "source_root": str(setup.source), "source_commit": "c" * 40,
         "entrypoint": setup.identity["simulator_supervisor_entrypoint"], "started_at_utc": start.isoformat(),
@@ -544,7 +545,8 @@ def bare_simulator_identity(setup, monkeypatch, seconds=20):
     return start_path, supervisor
 
 
-def test_both_bare_pods_exchange_native_v2_identity_and_verified_outer_exit(setup, monkeypatch):
+@pytest.mark.parametrize("different_policy_python", [False, True])
+def test_both_bare_pods_exchange_native_v2_identity_and_verified_outer_exit(setup, monkeypatch, different_policy_python):
     bare_simulator_identity(setup, monkeypatch)
     thread, errors, launches = supervise_thread(setup)
     try:
@@ -552,7 +554,10 @@ def test_both_bare_pods_exchange_native_v2_identity_and_verified_outer_exit(setu
         client = lane.create_environment(cell=setup.rows[0], evidence_root=root)
         client.reset()
         client.step(np.zeros(8, dtype=np.float32))
-        assert client.finish_episode()["status"] == "completed"
+        with monkeypatch.context() as policy_context:
+            if different_policy_python:
+                policy_context.setattr(lane.sys, "executable", "/different-policy-environment/bin/python")
+            assert client.finish_episode()["status"] == "completed"
         identity = _read(root / "lane/identity.json")
         assert identity["identity_schema"] == lane.POD_IDENTITY_SCHEMA
         assert identity["simulator_owner_kind"] == "Pod" and "simulator_job_uid" not in identity

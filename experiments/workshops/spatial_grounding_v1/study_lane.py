@@ -21,7 +21,7 @@ from .contract import (
     ContractError, STAGE_EPISODES, load_json, load_release, sha256_file,
     verify_completion_pointer,
 )
-from .recorder import atomic_json, utc_now
+from .recorder import atomic_json, request_fleet_hold, utc_now
 from .release import create_release
 
 MODELS = ("N3", "E3", "F3")
@@ -86,11 +86,32 @@ def load_plan(path: Path, digest: str) -> dict[str, Any]:
             or type(value.get("pod_gpu_count")) is not int or not 1 <= value["pod_gpu_count"] <= 4
             or not isinstance(value.get("gpu_uuid"), str) or not value["gpu_uuid"].startswith("GPU-")):
         raise ContractError("lane lacks its exact endpoint and physical GPU allocation")
+    revision = value.get("release_revision", "")
+    if not isinstance(revision, str) or (revision and re.fullmatch(r"[a-z][a-z0-9]{0,15}", revision) is None):
+        raise ContractError("release revision must be an explicit short alphanumeric identifier")
+    value["hold_on_technical_invalid"] = binding.get("hold_on_technical_invalid") is True
     return value
 
 
-def release_path(cohort: Path, model: str, family: str, stage: str) -> Path:
-    return cohort / f"release-{model}-{family}-{stage}"
+def release_path(cohort: Path, model: str, family: str, stage: str, revision: str = "") -> Path:
+    prefix = f"release-{revision}" if revision else "release"
+    return cohort / f"{prefix}-{model}-{family}-{stage}"
+
+
+def assert_replacement_uncompleted(cohort: Path, model: str, family: str, stage: str) -> None:
+    prior_paths = list(cohort.glob(f"release-*-{model}-{family}-{stage}"))
+    original = release_path(cohort, model, family, stage)
+    if original.exists():
+        prior_paths.append(original)
+    for prior_path in prior_paths:
+        prior = load_release(prior_path)
+        for cell in prior.partition(model, family, stage):
+            if (cohort / "cells" / f"{cell.cell_id}.complete.json").exists():
+                raise ContractError("replacement release cannot replay an already completed cell")
+            for path in (cohort / "attempts" / cell.cell_id).glob("*/manifest.json"):
+                manifest = load_json(path, "prior attempt manifest")
+                if manifest.get("result", {}).get("status") in {"valid_success", "valid_model_failure", "censored"}:
+                    raise ContractError("prior valid attempt requires completion recovery, not a replacement release")
 
 
 @contextmanager
@@ -146,10 +167,13 @@ def read_partition_summary(cohort: Path, model: str, family: str, stage: str):
     if not path.exists():
         return None
     value = load_json(path, "partition completion")
-    release = load_release(release_path(cohort, model, family, stage))
+    release_root = Path(value.get("release_path", ""))
+    if not release_root.is_absolute() or release_root.resolve().parent != cohort.resolve():
+        raise ContractError("partition completion must reference an immutable release in this cohort")
+    release = load_release(release_root)
     cells = release.partition(model, family, stage)
     episodes = value.get("episodes", [])
-    if (value.get("status") != "complete" or value.get("release_id") != release.release_id
+    if (len(cells) != STAGE_EPISODES[stage] or value.get("status") != "complete" or value.get("release_id") != release.release_id
             or value.get("release_hashes") != dict(release.hashes)
             or len(episodes) != len(cells)
             or {episode["cell_id"] for episode in episodes} != {cell.cell_id for cell in cells}):
@@ -337,11 +361,14 @@ def run_one(plan: Mapping[str, Any], family: str, stage: str) -> int:
     root = cohort / "operations" / f"{plan['lane_id']}-{family}-{stage}-{uuid.uuid4().hex}"
     root.mkdir(parents=True, exist_ok=False)
     binding = prepare_operation(plan, family, stage, root)
-    path = release_path(cohort, plan["model"], family, stage)
+    revision = plan.get("release_revision", "")
+    path = release_path(cohort, plan["model"], family, stage, revision)
     inputs = plan["inputs"]
     if not path.exists():
+        if revision:
+            assert_replacement_uncompleted(cohort, plan["model"], family, stage)
         create_release(
-            output=path, release_id=f"sgw-current-{plan['model']}-{family}-{stage}",
+            output=path, release_id=f"sgw-current-{plan['model']}-{family}-{stage}" + (f"-{revision}" if revision else ""),
             protocol=Path(inputs["protocol"]["path"]), prompts=Path(inputs["prompts"]["path"]),
             planned_queue=Path(inputs["queue"]["path"]), fixtures=Path(inputs["fixtures"]["path"]),
             runtime_binding=root / "binding.json", resource_owner=binding["resource_owner"],
@@ -395,6 +422,11 @@ def run(plan: Mapping[str, Any]) -> int:
     refresh = DirectoryRefresher()
     status_path = cohort / "lane-status" / f"{plan['lane_id']}.json"
     while True:
+        refresh(cohort)
+        if (cohort / "fleet-hold.json").exists():
+            stop_remote_lane(plan)
+            atomic_json(status_path, {"status": "held_no_new_claims", "at_utc": utc_now(), "model": plan["model"]})
+            return 44
         refresh(cohort / "partition-completions")
         remaining = []
         for stage in STAGES:
@@ -409,6 +441,9 @@ def run(plan: Mapping[str, Any]) -> int:
             return 0
         dispatched = False
         for family, stage in remaining:
+            refresh(cohort)
+            if (cohort / "fleet-hold.json").exists():
+                break
             if not stage_ready(cohort, stage):
                 continue
             partition = f"{plan['model']}-{family}-{stage}"
@@ -418,6 +453,9 @@ def run(plan: Mapping[str, Any]) -> int:
                 atomic_json(status_path, {"status": "running", "partition": partition, "at_utc": utc_now()})
                 result = run_one(plan, family, stage)
                 if result != 0:
+                    if plan.get("hold_on_technical_invalid") is True:
+                        request_fleet_hold(cohort, lane_id=plan["lane_id"], partition=partition,
+                                           reason=f"worker exited {result}; no automatic retry")
                     atomic_json(status_path, {
                         "status": "blocked_preserve_no_automatic_retry", "partition": partition,
                         "returncode": result, "at_utc": utc_now(),
@@ -438,6 +476,9 @@ def main() -> None:
     try:
         raise SystemExit(run(plan))
     except Exception as exc:
+        if plan.get("hold_on_technical_invalid") is True:
+            request_fleet_hold(Path(plan["cohort_root"]), lane_id=plan["lane_id"],
+                               reason=f"{type(exc).__name__}: {exc}")
         atomic_json(Path(plan["cohort_root"]) / "lane-status" / f"{plan['lane_id']}.json", {
             "status": "failed_preserve_no_automatic_retry", "at_utc": utc_now(),
             "error_type": type(exc).__name__, "error": str(exc),

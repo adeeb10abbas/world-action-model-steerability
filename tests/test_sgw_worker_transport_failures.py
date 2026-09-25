@@ -17,6 +17,39 @@ from tests.test_sgw_contract import make_release
 from tests.test_sgw_worker import FakeAdapter
 
 
+@pytest.mark.parametrize("error_type", [OSError, worker.DeadlineExceeded, ContractError, RuntimeError])
+def test_technical_io_failure_holds_before_another_attempt_or_worker(tmp_path, monkeypatch, error_type):
+    release = load_release(make_release(tmp_path))
+    release.binding["hold_on_technical_invalid"] = True
+    monkeypatch.setattr(worker, "fleet_is_held", lambda root: (root / "fleet-hold.json").exists())
+    calls = []
+
+    class IOFailure(FakeAdapter):
+        def run_episode(self, cell, recorder, reset):
+            calls.append(cell.cell_id)
+            raise error_type("synthetic infrastructure failure")
+
+    if error_type in (ContractError, RuntimeError):
+        with pytest.raises(ContractError):
+            worker.run_partition(release, model="N3", family="LAT", stage="P", max_valid=6, max_attempts=3,
+                                 worker_id="first-failure", adapter=IOFailure())
+    else:
+        assert worker.run_partition(
+            release, model="N3", family="LAT", stage="P", max_valid=6, max_attempts=3,
+            worker_id="first-failure", adapter=IOFailure(),
+        ) == worker.EXIT_STORAGE_BUDGET_BLOCKED
+    hold = release.root.parent / "fleet-hold.json"
+    preserved = hold.read_bytes()
+    assert json.loads(preserved)["automatic_technical_invalid_threshold"] == 1
+    assert worker.run_partition(
+        release, model="N3", family="LAT", stage="P", max_valid=6, max_attempts=3,
+        worker_id="held-worker", adapter=IOFailure(),
+    ) == worker.EXIT_STORAGE_BUDGET_BLOCKED
+    assert len(calls) == 1
+    assert len(list((release.root.parent / "attempts").glob("*/*"))) == 1
+    assert hold.read_bytes() == preserved
+
+
 @pytest.mark.parametrize("phase", ["construction", "reset", "request"])
 @pytest.mark.parametrize("server_error", ["OutOfMemoryError", "RuntimeError"])
 def test_disconnected_http_preserves_typed_server_error_and_stops_without_replay(

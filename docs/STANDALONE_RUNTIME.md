@@ -272,6 +272,27 @@ sampled memory peak in heartbeat/exit receipts. A missing kernel `memory.peak`
 is explicitly null; the sampled peak is not represented as a kernel high-water mark.
 IPv4-only namespaces may lack `/proc/net/tcp6`; socket ownership still requires
 the readable IPv4 table and an inode owned by the launched process group.
+Policy-side native completion verification uses the hash-attested simulator
+supervisor's interpreter, never the policy process's `sys.executable`.
+Process start identity, full remaining argv, process-group drain, receiver
+completion, faults and artifact hashes remain mandatory.
+
+An explicit `release_revision` on a lane plan creates a new immutable
+`release-<revision>-<model>-<family>-<stage>` directory and release identity.
+It preserves the shared cohort's attempt directories and three-attempt
+ceiling. Replacements reject any already valid/censored attempt or completion
+pointer; they cannot replay a valid failure. Completion summaries retain their
+exact release path, and final compilation uses the explicit 27-release index.
+
+Set `hold_on_technical_invalid: true` in the new immutable binding. The first
+technical invalidity durably publishes `fleet-hold.json` before artifact
+finalization; existing in-flight attempts finish, but no new attempt or
+partition claim starts. Infrastructure/fatal controller errors also hold the
+fleet. This is N=1, not an automatic three-attempt retry loop. The coordinator
+must preserve/archive the hold and deliberately clear it only after a verified
+fix. Supervisors also record current and sampled-peak `anon + shmem` separately
+from cache-inclusive cgroup usage, so file cache is not mistaken for resident
+policy-memory pressure.
 
 There is no extra qualification campaign. Preserve OOM as an infrastructure
 failure; the current A40 amendment forbids moving a cohort back to A100.

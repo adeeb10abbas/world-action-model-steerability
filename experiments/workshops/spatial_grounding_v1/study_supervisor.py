@@ -23,15 +23,20 @@ from .study_lane import read_reference, reference
 STOP = False
 
 
-def sample_memory(previous_peak: int = 0, root: Path = Path("/sys/fs/cgroup")) -> dict[str, Any]:
+def sample_memory(previous_peak: int = 0, root: Path = Path("/sys/fs/cgroup"),
+                  previous_anon_peak: int = 0) -> dict[str, Any]:
     current = int((root / "memory.current").read_text().strip())
     maximum = (root / "memory.max").read_text().strip()
     events = dict(line.split() for line in (root / "memory.events").read_text().splitlines())
+    statistics = dict(line.split() for line in (root / "memory.stat").read_text().splitlines())
+    anon, shmem = int(statistics["anon"]), int(statistics["shmem"])
     peak_path = root / "memory.peak"
     return {
         "current_bytes": current, "limit_bytes": None if maximum == "max" else int(maximum),
         "sampled_peak_bytes": max(previous_peak, current), "sampling_interval_seconds": 0.2,
         "kernel_peak_bytes": int(peak_path.read_text().strip()) if peak_path.exists() else None,
+        "anon_bytes": anon, "shmem_bytes": shmem, "anon_plus_shmem_bytes": anon + shmem,
+        "sampled_anon_plus_shmem_peak_bytes": max(previous_anon_peak, anon + shmem),
         "events": {key: int(value) for key, value in events.items()},
     }
 
@@ -240,7 +245,8 @@ def run_owned(args, plan) -> int:
             last_heartbeat = 0.0
             memory = sample_memory()
             while child.poll() is None and not STOP and datetime.now(timezone.utc) < deadline:
-                memory = sample_memory(memory["sampled_peak_bytes"])
+                memory = sample_memory(memory["sampled_peak_bytes"],
+                                       previous_anon_peak=memory["sampled_anon_plus_shmem_peak_bytes"])
                 if time.monotonic() - last_heartbeat >= 60:
                     atomic_json(args.run_root / "heartbeat.json", {
                         "at_utc": utc_now(), "status": "supervising", "child_pid": child.pid,
@@ -259,7 +265,8 @@ def run_owned(args, plan) -> int:
                 "at_utc": utc_now(), "returncode": code, "child_returncode": child.returncode,
                 "interrupted": STOP, "owned_descendants_remaining": descendants(os.getpid()),
                 "status": "complete" if code == 0 else "failed_preserve_no_automatic_retry",
-                "host_memory": sample_memory(memory["sampled_peak_bytes"]),
+                "host_memory": sample_memory(memory["sampled_peak_bytes"],
+                                            previous_anon_peak=memory["sampled_anon_plus_shmem_peak_bytes"]),
             })
             return code
     except BaseException as exc:

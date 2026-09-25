@@ -41,6 +41,28 @@ def atomic_json(path: Path, value: Mapping[str, Any]) -> None:
     _fsync_directory(path.parent)
 
 
+def request_fleet_hold(root: Path, **details: Any) -> None:
+    path = root / "fleet-hold.json"
+    try:
+        with path.open("xb") as stream:
+            stream.write(canonical_bytes({
+                "schema_version": "sgw-01-fleet-hold-v1", "created_at_utc": utc_now(),
+                "automatic_technical_invalid_threshold": 1, **details,
+            }))
+            stream.flush()
+            os.fsync(stream.fileno())
+        _fsync_directory(root)
+    except FileExistsError:
+        return
+
+
+def fleet_is_held(root: Path) -> bool:
+    from .mailbox_visibility import DirectoryRefresher
+
+    DirectoryRefresher()(root)
+    return (root / "fleet-hold.json").exists()
+
+
 def encode_viewport_video(frames: list[Path], output: Path, *, fps: float) -> dict[str, Any]:
     """Encode retained frames sequentially and verify the decoded frame count."""
     import math
@@ -305,6 +327,11 @@ class AttemptRecorder:
             raise ContractError("attempt outcome must classify success, model failure, technical invalidity, or censoring")
         if status == "technical_invalid" and not isinstance(outcome.get("technical_cause"), str):
             raise ContractError("technical invalidity needs a durable technical cause")
+        if status == "technical_invalid" and self.release.binding.get("hold_on_technical_invalid") is True:
+            request_fleet_hold(
+                self.root, release_id=self.release.release_id, source_commit=self.release.binding["source_commit"],
+                cell_id=self.cell.cell_id, attempt_id=self.attempt_id, reason=outcome["technical_cause"],
+            )
         result = {"schema_version": "sgw-01-result-v1", "release_id": self.release.release_id,
                   "cell_id": self.cell.cell_id, "attempt_id": self.attempt_id, "completed_at_utc": utc_now(),
                   **dict(outcome)}
