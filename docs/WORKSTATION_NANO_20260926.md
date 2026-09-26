@@ -52,8 +52,29 @@ be recorded from execution.
 ## Current state
 
 Workstation connectivity restored after the user's intervention. Both GPUs
-were idle at inspection. The pinned checkpoint download and a separate pinned
-Cosmos source checkout have been started. Model loading, requests and episodes
-have not yet been demonstrated; update this paragraph from actual receipts.
+were idle at inspection. All 43 checkpoint files have the registered byte sizes.
+The first transfer stalled; its partial files and logs were retained, and a
+standard HTTP transfer completed the download. Full weight hashes were not
+recomputed. The separate Cosmos checkout is pinned to the revision above.
+
+Startup attempts 001 and 002 failed before any inference requests or robot
+actions because auxiliary dependencies were missing. Their original logs and
+terminal records remain under the working directory. Attempt 003 starts after
+restoring the official dependencies below. Model requests and episodes are
+not yet demonstrated; update this statement from execution receipts.
+
+The native loader uses these external assets even though the Nano checkpoint
+also bundles tokenizer and VAE files:
+
+| Dependency | Revision | Use |
+| --- | --- | --- |
+| `nvidia/Cosmos-Guardrail1` | `d6d4bfa899a71454a700907664f3e88f503950cf` | Original blocklist and face filter |
+| `Qwen/Qwen3Guard-Gen-0.6B` | `fada3b2f655b89601929198343c94cd2f64d93cc` | Original text guardrail |
+| `Qwen/Qwen3-VL-8B-Instruct` | `0c351dd01ed87e9c1b53cbc748cba10e6187ff3b` | Tokenizer and processor only |
+| `Wan-AI/Wan2.2-TI2V-5B` | `921dbaf3f1674a56f47e83fb80a34bac8a8f203e` | `Wan2.2_VAE.pth` |
+
+The Qwen cached `main` references resolve to the recorded revisions, and the
+run uses offline mode. Dependency download receipts are in `logs/`. Guardrails
+remain enabled, using the official option to place them on CPU.
 
 No changes to Overleaf or numerical paper results are implied by this note.

@@ -67,7 +67,10 @@ while True:
 print('Nano server is ready; starting the six stock-scene cells.', flush=True)
 PY
 
-export CUDA_VISIBLE_DEVICES=1
+# Vulkan enumerates physical devices independently of CUDA masking. This host
+# also has duplicate NVIDIA ICD registrations; select one for this process.
+unset CUDA_VISIBLE_DEVICES
+export VK_ICD_FILENAMES=/usr/share/vulkan/icd.d/nvidia_icd.json
 export PYTHONPATH="$run_root/code:/home/ali/sgw-scene-design-20260923/RoboLab:/home/ali/openpi-robolab/packages/openpi-client/src"
 export OMNI_KIT_ACCEPT_EULA=YES ACCEPT_EULA=Y
 export XDG_CACHE_HOME=/home/ali/sgw-scene-design-20260923/cache/xdg
@@ -79,7 +82,7 @@ env -u DISPLAY -u WAYLAND_DISPLAY timeout --signal=TERM --kill-after=30s 10800 \
   --robolab-root /home/ali/sgw-scene-design-20260923/RoboLab \
   --output-root "$attempt_root/episodes" \
   --server-receipt "$attempt_root/server/ready.json" \
-  --remote-host 127.0.0.1 --remote-port 18026 --device cuda:0 --headless \
+  --remote-host 127.0.0.1 --remote-port 18026 --device cuda:1 --headless \
   "--kit_args=--portable-root=$attempt_root/kit --/rtx/verifyDriverVersion/enabled=false --/renderer/multiGpu/enabled=false --/renderer/activeGpu=1" \
   > "$attempt_root/episodes.log" 2>&1
 date -u
