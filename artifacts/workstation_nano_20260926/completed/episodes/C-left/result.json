@@ -1,0 +1,175 @@
+{
+  "cell_id": "C-left",
+  "claim_boundary": "Endpoint predicates can hold at reset; this is a fixed-scene wording diagnostic, not an independent-trial success estimate.",
+  "cube_endpoint_displacement_m": 0.38415391918534103,
+  "endpoint_requested_relation": true,
+  "environment_seed": 6100,
+  "ever_grabbed": true,
+  "final": {
+    "cube_grabbed": false,
+    "cube_minus_bowl_robot_xyz_m": [
+      0.12271302938461304,
+      0.1357579380273819,
+      0.003771275281906128
+    ],
+    "left_predicate": true,
+    "poses": {
+      "banana": {
+        "position_env_local_m": [
+          0.539053738117218,
+          -0.07562615722417831,
+          0.06818260997533798
+        ],
+        "quaternion_world_wxyz": [
+          0.9999990463256836,
+          -0.0006497798021882772,
+          -0.001197997247800231,
+          0.00016947748372331262
+        ]
+      },
+      "bowl": {
+        "position_env_local_m": [
+          0.4425785541534424,
+          0.12660090625286102,
+          0.07734959572553635
+        ],
+        "quaternion_world_wxyz": [
+          0.9999998211860657,
+          -0.0003997291496489197,
+          -0.0004283004382159561,
+          -0.00010098711936734617
+        ]
+      },
+      "robot": {
+        "position_env_local_m": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "quaternion_world_wxyz": [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "rubiks_cube": {
+        "position_env_local_m": [
+          0.5652915835380554,
+          0.2623588442802429,
+          0.08112087100744247
+        ],
+        "quaternion_world_wxyz": [
+          0.9937207698822021,
+          -0.000578265346121043,
+          0.0010503784287720919,
+          -0.11188165098428726
+        ]
+      },
+      "table": {
+        "position_env_local_m": [
+          0.1985848844051361,
+          0.02206818386912346,
+          0.04999985545873642
+        ],
+        "quaternion_world_wxyz": [
+          0.9999999403953552,
+          2.6500072181079304e-07,
+          -6.30129548540026e-09,
+          -3.7569063415787696e-09
+        ]
+      }
+    },
+    "right_predicate": false,
+    "sim_time_s": 30.0,
+    "step": 450
+  },
+  "finished_at_utc": "2026-09-26T07:36:18.493107+00:00",
+  "future_count": 15,
+  "initial": {
+    "cube_grabbed": false,
+    "cube_minus_bowl_robot_xyz_m": [
+      -0.011930644512176514,
+      -0.22401030361652374,
+      0.0038044750690460205
+    ],
+    "left_predicate": false,
+    "poses": {
+      "banana": {
+        "position_env_local_m": [
+          0.538878858089447,
+          -0.07555567473173141,
+          0.0684281587600708
+        ],
+        "quaternion_world_wxyz": [
+          0.9999781250953674,
+          -0.0026648887433111668,
+          -0.006051987875252962,
+          0.0001454032608307898
+        ]
+      },
+      "bowl": {
+        "position_env_local_m": [
+          0.44258353114128113,
+          0.12658219039440155,
+          0.07732785493135452
+        ],
+        "quaternion_world_wxyz": [
+          0.9999999403953552,
+          -5.8753543271450326e-05,
+          -0.00032362030469812453,
+          -0.00010501052747713402
+        ]
+      },
+      "robot": {
+        "position_env_local_m": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "quaternion_world_wxyz": [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "rubiks_cube": {
+        "position_env_local_m": [
+          0.4306528866291046,
+          -0.09742811322212219,
+          0.08113233000040054
+        ],
+        "quaternion_world_wxyz": [
+          0.9999990463256836,
+          -0.0009071399690583348,
+          0.001037940033711493,
+          8.44117093947716e-05
+        ]
+      },
+      "table": {
+        "position_env_local_m": [
+          0.19858434796333313,
+          0.02206825464963913,
+          0.05000072345137596
+        ],
+        "quaternion_world_wxyz": [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      }
+    },
+    "right_predicate": true,
+    "sim_time_s": 0.0,
+    "step": 0
+  },
+  "initial_requested_relation": false,
+  "policy_seed": 6100,
+  "prompt": "Place the Rubik's cube so that the Rubik's cube is to the left of the bowl.",
+  "release_after_grasp_observed": true,
+  "request_count": 15,
+  "status": "complete",
+  "steps": 450
+}

@@ -1,5 +1,9 @@
 # Nano stock-scene workstation run
 
+**Attempt 006 completed all six episodes.** `completed/summary.json` contains
+the outcomes and recording checks; see `docs/WORKSTATION_NANO_RESULTS_20260926.md`
+for interpretation. Earlier snapshots below describe startup history.
+
 This folder retains compact records from the separately scoped six-condition
 workstation run. See `docs/WORKSTATION_NANO_20260926.md` for the experiment and
 runtime details.

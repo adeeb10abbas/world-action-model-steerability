@@ -1,5 +1,9 @@
 # Nano on stock RoboLab tasks: first workstation run
 
+**Completed:** attempt 006 finished all six episodes at 08:27 UTC on
+26 September. See [the results](WORKSTATION_NANO_RESULTS_20260926.md).
+The startup and first-execution notes below are retained as history.
+
 The user explicitly requested Cosmos Nano experiments on the local workstation
 on 26 September 2026. This is a separate exploratory run using existing RoboLab
 tasks, not a continuation or replacement of the registered 1,566-cell cohort.
@@ -49,7 +53,7 @@ operational. No quantization or substitute checkpoint is authorized by this
 plan. Runtime memory, latency, request counts and exact source identities will
 be recorded from execution.
 
-## Current state
+## Startup and first-execution history
 
 Workstation connectivity restored after the user's intervention. Both GPUs
 were idle at inspection. All 43 checkpoint files have the registered byte sizes.

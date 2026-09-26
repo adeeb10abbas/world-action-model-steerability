@@ -1,0 +1,192 @@
+{
+  "status": "complete",
+  "attempt": "attempt-006",
+  "source_commit": "1994116",
+  "launch_utc": "2026-09-26T06:42:17Z",
+  "finish_utc": "2026-09-26T08:27:00Z",
+  "completed_episodes": 6,
+  "executed_actions": 2700,
+  "completed_model_requests": 90,
+  "recorded_predicted_videos": 90,
+  "recorded_native_videos": 12,
+  "partial_episodes": 0,
+  "rows": [
+    {
+      "cell_id": "D-left",
+      "prompt": "Put the Rubik's cube to the left of the bowl.",
+      "steps": 450,
+      "initial_requested_relation": false,
+      "endpoint_requested_relation": true,
+      "ever_grabbed": true,
+      "release_after_grasp_observed": true,
+      "cube_endpoint_displacement_m": 0.3958230994809719,
+      "future_count": 15,
+      "request_count": 15,
+      "finished_at_utc": "2026-09-26T07:02:24.597661+00:00",
+      "final_cube_minus_bowl_robot_xyz_m": [
+        -0.05166018009185791,
+        0.16971035301685333,
+        0.010769136250019073
+      ],
+      "final_bowl_position_m": [
+        0.4425676763057709,
+        0.12662215530872345,
+        0.07734910398721695
+      ]
+    },
+    {
+      "cell_id": "D-right",
+      "prompt": "Put the Rubik's cube to the right of the bowl.",
+      "steps": 450,
+      "initial_requested_relation": true,
+      "endpoint_requested_relation": true,
+      "ever_grabbed": true,
+      "release_after_grasp_observed": true,
+      "cube_endpoint_displacement_m": 0.23414155407035972,
+      "future_count": 15,
+      "request_count": 15,
+      "finished_at_utc": "2026-09-26T07:19:20.045932+00:00",
+      "final_cube_minus_bowl_robot_xyz_m": [
+        -0.07687127590179443,
+        -0.44887447357177734,
+        0.010766901075839996
+      ],
+      "final_bowl_position_m": [
+        0.44257810711860657,
+        0.12660087645053864,
+        0.07734961807727814
+      ]
+    },
+    {
+      "cell_id": "C-left",
+      "prompt": "Place the Rubik's cube so that the Rubik's cube is to the left of the bowl.",
+      "steps": 450,
+      "initial_requested_relation": false,
+      "endpoint_requested_relation": true,
+      "ever_grabbed": true,
+      "release_after_grasp_observed": true,
+      "cube_endpoint_displacement_m": 0.38415391918534103,
+      "future_count": 15,
+      "request_count": 15,
+      "finished_at_utc": "2026-09-26T07:36:18.493107+00:00",
+      "final_cube_minus_bowl_robot_xyz_m": [
+        0.12271302938461304,
+        0.1357579380273819,
+        0.003771275281906128
+      ],
+      "final_bowl_position_m": [
+        0.4425785541534424,
+        0.12660090625286102,
+        0.07734959572553635
+      ]
+    },
+    {
+      "cell_id": "C-right",
+      "prompt": "Place the Rubik's cube so that the Rubik's cube is to the right of the bowl.",
+      "steps": 450,
+      "initial_requested_relation": true,
+      "endpoint_requested_relation": true,
+      "ever_grabbed": true,
+      "release_after_grasp_observed": true,
+      "cube_endpoint_displacement_m": 0.0630603600417606,
+      "future_count": 15,
+      "request_count": 15,
+      "finished_at_utc": "2026-09-26T07:53:09.108584+00:00",
+      "final_cube_minus_bowl_robot_xyz_m": [
+        -0.013620078563690186,
+        -0.1613798588514328,
+        0.010768130421638489
+      ],
+      "final_bowl_position_m": [
+        0.44257852435112,
+        0.12660109996795654,
+        0.07734963297843933
+      ]
+    },
+    {
+      "cell_id": "I-left",
+      "prompt": "Place the Rubik's cube so that the bowl is to the right of the Rubik's cube.",
+      "steps": 450,
+      "initial_requested_relation": false,
+      "endpoint_requested_relation": false,
+      "ever_grabbed": true,
+      "release_after_grasp_observed": true,
+      "cube_endpoint_displacement_m": 0.23291107164918246,
+      "future_count": 15,
+      "request_count": 15,
+      "finished_at_utc": "2026-09-26T08:10:06.751045+00:00",
+      "final_cube_minus_bowl_robot_xyz_m": [
+        0.13005781173706055,
+        -0.03767654299736023,
+        0.6920817494392395
+      ],
+      "final_bowl_position_m": [
+        0.1586955487728119,
+        -0.24444615840911865,
+        -0.6109790802001953
+      ]
+    },
+    {
+      "cell_id": "I-right",
+      "prompt": "Place the Rubik's cube so that the bowl is to the left of the Rubik's cube.",
+      "steps": 450,
+      "initial_requested_relation": true,
+      "endpoint_requested_relation": false,
+      "ever_grabbed": true,
+      "release_after_grasp_observed": true,
+      "cube_endpoint_displacement_m": 0.3509653496742888,
+      "future_count": 15,
+      "request_count": 15,
+      "finished_at_utc": "2026-09-26T08:26:58.245835+00:00",
+      "final_cube_minus_bowl_robot_xyz_m": [
+        -0.04560670256614685,
+        0.12522472441196442,
+        0.01178712397813797
+      ],
+      "final_bowl_position_m": [
+        0.44257834553718567,
+        0.12660090625286102,
+        0.07734975963830948
+      ]
+    }
+  ],
+  "verification": {
+    "physical_initial_states_bitwise_equal": true,
+    "hdf5_actions_match_requested_bitwise": true,
+    "actions_per_episode": 450,
+    "pose_records_per_episode": 451,
+    "futures_per_episode": 15,
+    "executed_chunk_lengths": [
+      32,
+      32,
+      32,
+      32,
+      32,
+      32,
+      32,
+      32,
+      32,
+      32,
+      32,
+      32,
+      32,
+      32,
+      2
+    ],
+    "camera_pixels_identical": false,
+    "initial_raw_shoulder_mean_abs_diff_range_255": [
+      1.06,
+      1.13
+    ],
+    "initial_raw_wrist_mean_abs_diff_range_255": [
+      3.02,
+      3.23
+    ]
+  },
+  "limitations": [
+    "One physical layout and one fixed seed; six related conditions, not six independent scenes.",
+    "Right predicate already held at reset; manipulation traces must accompany endpoint reporting.",
+    "Small initial rendering differences remain; this is not an identical-pixel intervention.",
+    "Predicted videos retained but camera/time alignment and error scoring not yet established."
+  ]
+}
