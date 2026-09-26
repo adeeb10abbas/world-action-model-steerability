@@ -56,6 +56,8 @@ def run_cells(args, output: Path, receipt: dict) -> None:
     import numpy as np
     import robolab
     import robolab.constants
+    from openpi_client import msgpack_numpy, websocket_client_policy
+    import websockets.sync.client
     from policies.cosmos3.client import Cosmos3Client
     from robolab.constants import set_output_dir
     from robolab.core.environments.config import parse_env_cfg
@@ -129,6 +131,20 @@ def run_cells(args, output: Path, receipt: dict) -> None:
         pose_file = (cell_dir / "poses.jsonl").open("w")
 
         class EvidenceClient(Cosmos3Client):
+            def _connect(self):
+                class LocalOffloadConnection(websocket_client_policy.WebsocketClientPolicy):
+                    def _wait_for_server(self):
+                        # Native inference blocks the server event loop. CPU
+                        # offload can exceed the library's 20 s ping timeout.
+                        # The server still bounds each request at 900 seconds.
+                        connection = websockets.sync.client.connect(
+                            self._uri, compression=None, max_size=None,
+                            ping_interval=None, open_timeout=30,
+                        )
+                        return connection, msgpack_numpy.unpackb(connection.recv(timeout=30))
+
+                return LocalOffloadConnection(self._remote_host, self._remote_port)
+
             def __init__(self):
                 super().__init__(remote_host=args.remote_host, remote_port=args.remote_port)
                 self.requests = []
@@ -142,6 +158,12 @@ def run_cells(args, output: Path, receipt: dict) -> None:
                 if observed != receipt:
                     raise RuntimeError("Connected server metadata differs from the launch receipt")
                 dump(cell_dir / "server_receipt.json", observed)
+                dump(cell_dir / "transport.json", {
+                    "client_keepalive_interval": None,
+                    "reason": "Local CPU-offloaded inference exceeds the default 20-second keepalive timeout",
+                    "server_request_timeout_seconds": 900,
+                    "automatic_request_retries": 0,
+                })
                 reset_ack = self.client.infer({"_workstation_control": "reset"})
                 if (reset_ack.get("status") != "reset" or reset_ack.get("policy_seed") != SEED
                         or reset_ack.get("history_length") != 1):

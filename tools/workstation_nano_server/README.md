@@ -9,10 +9,31 @@ immediately; torchrun owns and terminates its peer. A watchdog bounds native
 requests and total process lifetime. There are no retries.
 
 The pinned source defaults to full FSDP across `WORLD_SIZE`. It does not expose
-core-model CPU offload or `device_map`. Auxiliary guardrails remain enabled and
-use the official `offload_guardrail_models=True` setup option. This placement
-change is recorded. Two-rank GPU fit and numerical behavior require native
-qualification; the small CPU tests are transport checks only.
+core-model CPU offload or `device_map`. The wrapper's opt-in `--offload-fsdp`
+uses PyTorch `CPUOffloadPolicy(pin_memory=True)` at the two native FSDP call
+sites. It materializes FSDP DTensor shards in pinned CPU memory while retaining
+the native CUDA placement of buffers and unsharded parameters. The unchanged
+native DCP safetensors reader loads directly into those CPU-backed shards.
+PyTorch transfers shards to CUDA before each all-gather; explicit
+`reshard_after_forward=True` also releases the root network's gathered weights
+after its forward. This trades host RAM and transfer time for GPU memory.
+The pinned Cosmos files, BF16 precision, complete checkpoint, sampling settings,
+and cameras are unchanged. The hooks are removed after model construction.
+
+The server defaults to no core offload; the workstation launcher below explicitly
+passes `--offload-fsdp`. Both rank runtime records and websocket metadata include
+`fsdp_placement`, with policy, materialization count, and verified CPU/pinned/BF16
+shard placement after checkpoint loading. Auxiliary guardrails remain enabled
+and use the official `offload_guardrail_models=True` setup option.
+
+A tiny two-GPU test passed on installed PyTorch 2.10.0+cu128 using the pinned
+Cosmos safetensors reader/planner, native-style initialization, and this same
+placement hook. Three forwards matched the unsharded BF16 reference exactly;
+shards returned to pinned CPU memory and ordinary buffers stayed on CUDA.
+Evidence is under `/home/ali/wam-nano-stock-20260926/offload-qualification-003/`
+with the adjacent `.log`. This qualifies the placement mechanism, not full Nano
+memory use, inference latency, or policy quality. The small CPU tests below
+qualify transport only.
 
 Use a separate clean pinned Cosmos checkout with the existing Cosmos Python
 environment. The downloaded checkpoint must have the exact registered file
@@ -55,4 +76,15 @@ python tools/workstation_nano_server/test_server.py
 CUDA_VISIBLE_DEVICES='' /home/ali/cosmos-framework/.venv/bin/python \
   -m torch.distributed.run --standalone --nproc-per-node=2 \
   tools/workstation_nano_server/cpu_gloo_check.py
+```
+
+The optional toy GPU qualification uses no Nano weights or simulator. Run it
+only when both GPUs are available, with a fresh output path:
+
+```sh
+PYTHONPATH=/home/ali/wam-nano-stock-20260926/cosmos-framework \
+  HF_HUB_OFFLINE=1 TRANSFORMERS_OFFLINE=1 CUDA_VISIBLE_DEVICES=0,1 \
+  /home/ali/cosmos-framework/.venv/bin/torchrun --standalone --nproc_per_node=2 \
+  tools/workstation_nano_server/offload_gloo_nccl_check.py \
+  --output /home/ali/wam-nano-stock-20260926/offload-qualification-NEW
 ```

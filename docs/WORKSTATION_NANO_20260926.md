@@ -68,9 +68,16 @@ were made.
 Attempt 004 created the stock scene and captured its first observations, but
 the first model request exhausted GPU 1 memory: approximately 15.94 GiB for the
 model process plus 7.66 GiB for the simulator. No actions were returned or
-executed. The next hardware adaptation under investigation is PyTorch FSDP2
-CPU offloading of BF16 parameter shards; the checkpoint, sampling settings and
-scene cameras stay fixed. No completed episodes are claimed.
+executed.
+
+Attempt 005 enables PyTorch FSDP2 CPU offloading of BF16 parameter shards;
+the checkpoint, sampling settings and scene cameras stay fixed. The separate
+two-GPU toy qualification matched its unsharded BF16 reference exactly over
+three forwards using the native checkpoint reader. The full Nano load then
+validated 809 pinned CPU parameter shards per rank (15,173,136,576 local bytes),
+with other parameters and buffers retaining native CUDA placement. Idle GPU
+residency after loading was approximately 2.3 GB per GPU. First inference began
+at 06:40 UTC on 26 September; no completed episodes are claimed yet.
 
 The native loader uses these external assets even though the Nano checkpoint
 also bundles tokenizer and VAE files:

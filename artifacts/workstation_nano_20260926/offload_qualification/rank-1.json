@@ -1,0 +1,24 @@
+{
+  "rank": 1,
+  "status": "passed",
+  "torch": "2.10.0+cu128",
+  "placement": {
+    "enabled": true,
+    "policy": "torch.distributed.fsdp.CPUOffloadPolicy",
+    "pin_memory": true,
+    "reshard_after_forward": true,
+    "fully_shard_calls": 3,
+    "materialization_calls": 1,
+    "checkpoint_load": "unchanged native DCP reader fills CPU-backed DTensor shards",
+    "scope": "native FSDP network parameters; other parameters and buffers retain native placement",
+    "validated_after_native_checkpoint_load": true,
+    "parameter_tensors": 4,
+    "local_parameter_bytes": 16576,
+    "parameter_device": "cpu",
+    "parameter_dtype": "torch.bfloat16"
+  },
+  "exact_reference_match": true,
+  "repeated_forwards": 3,
+  "peak_cuda_allocated_bytes": 9657856,
+  "scope": "toy; native safetensors reader/planner, BF16, 2 NCCL ranks; no Nano weights"
+}
