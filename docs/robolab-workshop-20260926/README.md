@@ -1,11 +1,16 @@
-# Proposed RoboLab workshop paper
+# RoboLab workshop paper and cluster handoff
 
-**Read the scene and prompt catalog first. No new experiments have started.**
+**Ready to share with execution agents; no new experiments have started.** Start with the scene/prompt catalog to understand the study, or the cluster handoff to implement it.
 
 The fixed research question is: **Can a world-action model's predicted future help distinguish following the wrong goal from failing to execute the right one?**
 
 | Read in this order | What it contains |
 |---|---|
+| [Cluster execution specification](CLUSTER_EXECUTION_SPEC.md) | Full N3/E3/F3 run contract, exact budgets, finite preparation, scoring, capture and Kubernetes requirements |
+| [Copyable agent handoff](AGENT_HANDOFF.md) | One prompt to send your execution coordinator |
+| [Implementation work packages](IMPLEMENTATION_PLAN.md) | Files, interfaces, acceptance cases and division of work |
+| [Model pins and settings](MODEL_CONFIGS.json) | Checkpoint/source identities and per-model sampling/preprocessing differences |
+| [All planned episodes](planned_episodes.jsonl) / [blocks](planned_blocks.json) | 1,008 confirmation plus 46 development cells; unbound planning inventory, not a launch release |
 | [Illustrated PDF](../../output/pdf/ROBOLAB_SCENES_AND_PROMPTS.pdf) | Actual initial scene images, native nominal prompts, all proposed wording and goal changes |
 | [Editable scene/prompt catalog](SCENES_AND_PROMPTS.md) | Same catalog for review and editing |
 | [Paper design](PAPER_DESIGN.md) | Question, workshop fit, hypotheses, closest work, working abstract and four-page structure |

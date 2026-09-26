@@ -1,5 +1,11 @@
 # Repository scope
 
+## New native RoboLab workshop study
+
+The user's current experiment-specification handoff is **RWS-20260926**, under `docs/robolab-workshop-20260926/`. Read `CLUSTER_EXECUTION_SPEC.md` and `IMPLEMENTATION_PLAN.md` for that task. It uses five native assets, 42 prompts and up to 1,008 confirmation cells across N3/E3/F3, separate from SGW-01 below. Its planned rows are not yet bound to physical states or qualified runtimes. Writing the handoff does not launch experiments; execution agents require the user's dispatch. Do not apply SGW's 18-prompt freeze, 87-layout registry or custom camera overrides to RWS. Preserve historical SGW records and workers.
+
+## Historical SGW-01 scope
+
 This is the private SGW-01 world-action-model steerability repository. **The 87-layout physical scene package is complete; model/runtime qualification and the learned-policy study remain unstarted.**
 
 - Read the root README and REPOSITORY_STATUS.json for current scope. Copied historical receipts and authorizations do not grant permission to launch new work.

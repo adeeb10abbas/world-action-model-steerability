@@ -2,6 +2,8 @@
 
 **Status: design for review; no new model or simulator runs authorized by this file.**
 
+**Execution addendum, protocol 0.2:** [CLUSTER_EXECUTION_SPEC.md](CLUSTER_EXECUTION_SPEC.md) supplies the current implementation/run contract and [MODEL_CONFIGS.json](MODEL_CONFIGS.json) pins the model candidates. It preserves this matrix and question, and refines engineering limits, event definitions, annotation timing, native-score naming and statistical implementation. Where those operational details differ, use the 0.2 addendum. Human answerability checks precede each model's confirmation release; adapter/scorer development can proceed while annotation is arranged. The older calendar below is a planning estimate, not a reason to delay a ready lane.
+
 The question is fixed in [PAPER_DESIGN.md](PAPER_DESIGN.md): **Can a world-action model's predicted future help distinguish following the wrong goal from failing to execute the right one?** All experiments below serve this question. [prompt_matrix.json](prompt_matrix.json) is the source of exact strings, IDs, hashes, scene identity and goal roles. This is a new stock-RoboLab proposal, not a change to the frozen SGW-01 queue.
 
 ## 1. What is held fixed and what changes

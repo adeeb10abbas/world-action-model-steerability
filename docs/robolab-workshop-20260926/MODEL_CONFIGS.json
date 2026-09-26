@@ -1,0 +1,155 @@
+{
+  "schema_version": "1.0",
+  "protocol_version": "0.2",
+  "study_id": "RWS-20260926",
+  "checked_date": "2026-09-26",
+  "status": "requested_settings_not_runtime_qualification",
+  "robolab_commit": "0aef241fb088ca21bb4ebd24448940ed56620d17",
+  "model_order": [
+    "N3",
+    "E3",
+    "F3"
+  ],
+  "models": {
+    "N3": {
+      "name": "Cosmos3 Nano Policy DROID",
+      "checkpoint_repo": "nvidia/Cosmos3-Nano-Policy-DROID",
+      "checkpoint_revision": "6706d7680581c255ff61e0f3bb49d90eac55c79e",
+      "source_repo": "https://github.com/NVIDIA/cosmos-framework",
+      "source_commit": "411d25b2e35bc441126f48c44a4b93e1c0564274",
+      "source_provenance": "retained working workstation checkout; public pinned documentation URL did not resolve during this handoff",
+      "qualification": "pilot actions and RGB captured; cluster runtime and frame mapping pending",
+      "settings": {
+        "precision": "bfloat16",
+        "seed": 6100,
+        "control_hz": 15,
+        "action_chunk_size": 32,
+        "execute_actions_per_chunk": 32,
+        "action_dim": 8,
+        "automatic_request_retries": 0,
+        "guidance": 3.0,
+        "num_steps": 4,
+        "shift": 5.0,
+        "resolution": "480",
+        "conditioning_fps": 15.0,
+        "action_space": "joint_pos",
+        "history_length": 1,
+        "use_state": true,
+        "domain_name": "droid_lerobot",
+        "image_height": 540,
+        "image_width": 640,
+        "deterministic_seed": true,
+        "decode_video": true,
+        "guidance_interval": null,
+        "format_prompt_as_json": "retain_and_record_effective_pilot_transform"
+      },
+      "reference_adapter": "tools/workstation_nano_server/server.py",
+      "allow_cpu_offload": true
+    },
+    "E3": {
+      "name": "Cosmos3 Edge Policy DROID",
+      "checkpoint_repo": "nvidia/Cosmos3-Edge-Policy-DROID",
+      "checkpoint_revision": "a7c7288f9b6ac1684e993007b0f9703dd26e58ef",
+      "source_repo": "https://github.com/NVIDIA/cosmos-framework",
+      "source_commit": "cf5d68c00d97ccd2480a2320ed652b92dec63102",
+      "source_provenance": "official GitHub commit and Hugging Face metadata read on checked_date",
+      "qualification": "not run in this repository",
+      "settings": {
+        "precision": "bfloat16",
+        "seed": 6100,
+        "control_hz": 15,
+        "action_chunk_size": 32,
+        "execute_actions_per_chunk": 32,
+        "action_dim": 8,
+        "automatic_request_retries": 0,
+        "guidance": 3.0,
+        "num_steps": 4,
+        "shift": 5.0,
+        "resolution": "480",
+        "conditioning_fps": 15.0,
+        "action_space": "joint_pos",
+        "history_length": 1,
+        "use_state": true,
+        "domain_name": "droid_lerobot",
+        "image_height": 540,
+        "image_width": 640,
+        "deterministic_seed": true,
+        "decode_video": true,
+        "guidance_interval": [
+          960,
+          1001
+        ],
+        "format_prompt_as_json": true,
+        "sampler": "unipc"
+      },
+      "reference_entrypoint": "cosmos_framework.scripts.action_policy_server_robolab"
+    },
+    "F3": {
+      "name": "FLUX 3 Action DROID",
+      "checkpoint_repo": "black-forest-labs/flux-3-action-droid",
+      "checkpoint_revision": "3d0887bdc7acee1686b19afac267125d519ff4f1",
+      "checkpoint_subfolder": null,
+      "source_repo": "https://github.com/black-forest-labs/flux-action",
+      "source_commit": "e2dd1d8dbc5977b54315d61f7548c63c043d6d4f",
+      "source_provenance": "official GitHub commit and pinned root config.native.json read on checked_date",
+      "qualification": "not run; same-sample RGB export unavailable in documented API",
+      "settings": {
+        "precision": "bfloat16",
+        "seed": 6100,
+        "control_hz": 15,
+        "action_chunk_size": 32,
+        "execute_actions_per_chunk": 32,
+        "action_dim": 8,
+        "automatic_request_retries": 0,
+        "inference_seed": 6100,
+        "sampler": "cosmos_unipc",
+        "sampler_order": 2,
+        "num_inference_steps": 4,
+        "sampler_shift": 5.0,
+        "guidance_scale": 4.0,
+        "guidance_scale_action": 1.0,
+        "n_action_steps": 32,
+        "action_parameterization": "absolute",
+        "action_modality": "action_prediction_droid",
+        "camera_layout": "droid",
+        "camera_keys": [
+          "images.wrist",
+          "images.left",
+          "images.right"
+        ],
+        "canvas_hw": [
+          544,
+          736
+        ],
+        "input_image_hw": [
+          360,
+          640
+        ],
+        "quantization": null,
+        "prepare_inference_compile": false
+      },
+      "shared_encoder_repo": "black-forest-labs/flux-3-action-base",
+      "shared_encoder_revision": "62878e2925e59b7a89ec14463ce89932624c490d",
+      "original_native_inference_seed": 0,
+      "seed_change": "Prospective study override to 6100; keep source package immutable and record effective override.",
+      "export_timebox_engineer_hours": 4,
+      "export_action_check": "exact array equality in eager mode on two fixed observation/RNG fixtures",
+      "on_export_blocker": "integration only; confirmation blocked, N3/E3 continue"
+    }
+  },
+  "confirmation_eligibility_requires": [
+    "immutable_source_and_weight_receipt",
+    "verified_reset_and_native_preprocessing",
+    "same_request_actions_and_future",
+    "physical_frame_time_and_view_map",
+    "engineering_annotation_answerability_check",
+    "fixed_state_and_scoring_release"
+  ],
+  "sources": [
+    "https://huggingface.co/api/models/nvidia/Cosmos3-Edge-Policy-DROID",
+    "https://huggingface.co/api/models/black-forest-labs/flux-3-action-droid",
+    "https://github.com/NVIDIA/cosmos-framework/blob/cf5d68c00d97ccd2480a2320ed652b92dec63102/docs/action_policy_droid_server.md",
+    "https://github.com/black-forest-labs/flux-action/blob/e2dd1d8dbc5977b54315d61f7548c63c043d6d4f/docs/setup.md",
+    "https://huggingface.co/black-forest-labs/flux-3-action-droid/blob/3d0887bdc7acee1686b19afac267125d519ff4f1/config.native.json"
+  ]
+}

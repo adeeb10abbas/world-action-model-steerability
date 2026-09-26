@@ -1,5 +1,7 @@
 # Start here: SGW-01 cluster handoff
 
+> **For the current native RoboLab paper:** use [the RWS cluster specification](../docs/robolab-workshop-20260926/CLUSTER_EXECUTION_SPEC.md) and [agent prompt](../docs/robolab-workshop-20260926/AGENT_HANDOFF.md). The SGW-01 package below is historical and separate; do not apply its scene/camera/queue settings to RWS.
+
 **The scenes, camera configuration and experiment queue are ready to transfer.
 Model integration and cluster runtime qualification remain. No learned-policy
 episodes have started, and this handoff does not authorize a study launch.**

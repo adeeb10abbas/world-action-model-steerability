@@ -1,6 +1,6 @@
 {
-  "proposal_version": "draft-0.1",
-  "status": "design_only_not_launch_ready",
+  "proposal_version": "0.2",
+  "status": "execution_spec_complete_runtime_and_state_binding_pending",
   "learned_policy_launch_authorized": false,
   "research_question": "Can a world-action model's predicted future help distinguish following the wrong goal from failing to execute the right one?",
   "primary_endpoint": "Held-out Brier-error reduction for next-prefix wrong-object or contradictory released-placement events after adding blinded forecast labels to the fixed state/action baseline; coverage reported.",
@@ -34,8 +34,8 @@
   ],
   "model_eligibility": {
     "N3": "RGB retained; time/view/annotation qualification pending",
-    "E3": "runtime, immutable pins and forecast qualification pending",
-    "F3": "public API actions only; export and action-preservation qualification pending"
+    "E3": "Public source/checkpoint pins resolved; runtime and forecast qualification pending",
+    "F3": "Current root BF16 source/checkpoint pins resolved; same-sample export and action-preservation qualification pending"
   },
   "confirmation_episode_ceilings": {
     "N3": 336,
@@ -69,5 +69,23 @@
     "per-model camera/time correspondence",
     "blinded annotation workflow",
     "held-out diagnostic analysis"
-  ]
+  ],
+  "execution_spec": "CLUSTER_EXECUTION_SPEC.md",
+  "implementation_plan": "IMPLEMENTATION_PLAN.md",
+  "model_configs": "MODEL_CONFIGS.json",
+  "planned_episodes": "planned_episodes.jsonl",
+  "planned_blocks": "planned_blocks.json",
+  "agent_handoff": "AGENT_HANDOFF.md",
+  "confirmation_blocks_per_model": 40,
+  "confirmation_blocks_total": 120,
+  "scripted_canonical_attempt_cap": 14,
+  "scripted_confirmation_candidate_attempt_cap": 140,
+  "offline_adapter_request_cap_per_model": 6,
+  "scene_engineering_timebox_hours": 6,
+  "flux_export_engineering_timebox_hours": 4,
+  "automatic_policy_retries": 0,
+  "confirmation_model_gates_are_independent": true,
+  "total_control_action_cap": 519000,
+  "total_episode_request_cap": 16850,
+  "total_request_cap_including_offline": 16868
 }

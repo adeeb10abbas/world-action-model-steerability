@@ -1,0 +1,2489 @@
+{
+  "study_id": "RWS-20260926",
+  "protocol_version": "0.2",
+  "status": "planned_unbound_not_executable",
+  "launch_authorized_by_this_file": false,
+  "order_algorithm": "Ascending SHA256 of UTF-8 '8300:' + phase/scene/slot key, then goal key, then prompt key; model ID excluded so paired orders match.",
+  "model_configs_sha256": "6ed716e42c10d850b9c688b89c7b16bf817da49aa79b0312d9f556880c03fb04",
+  "confirmation_episode_count": 1008,
+  "development_episode_count": 46,
+  "confirmation_block_count": 120,
+  "development_block_count": 9,
+  "blocks": [
+    {
+      "block_id": "N3-S1-D00",
+      "phase": "development",
+      "model_id": "N3",
+      "scene_id": "S1",
+      "state_slot": "S1-D00",
+      "episode_ids": [
+        "RWS-N3-S1-D00-B-I",
+        "RWS-N3-S1-D00-B-D",
+        "RWS-N3-S1-D00-B-S",
+        "RWS-N3-S1-D00-R-D",
+        "RWS-N3-S1-D00-R-I",
+        "RWS-N3-S1-D00-R-S",
+        "RWS-N3-S1-D00-L-I",
+        "RWS-N3-S1-D00-L-S",
+        "RWS-N3-S1-D00-L-D",
+        "RWS-N3-S1-D00-F-D",
+        "RWS-N3-S1-D00-F-S",
+        "RWS-N3-S1-D00-F-I"
+      ],
+      "maximum_control_actions": 5400,
+      "maximum_requests": 180
+    },
+    {
+      "block_id": "N3-S2-D00",
+      "phase": "development",
+      "model_id": "N3",
+      "scene_id": "S2",
+      "state_slot": "S2-D00",
+      "episode_ids": [
+        "RWS-N3-S2-D00-R-I",
+        "RWS-N3-S2-D00-R-D",
+        "RWS-N3-S2-D00-R-S",
+        "RWS-N3-S2-D00-L-S",
+        "RWS-N3-S2-D00-L-I",
+        "RWS-N3-S2-D00-L-D"
+      ],
+      "maximum_control_actions": 2700,
+      "maximum_requests": 90
+    },
+    {
+      "block_id": "N3-S3-D00",
+      "phase": "development",
+      "model_id": "N3",
+      "scene_id": "S3",
+      "state_slot": "S3-D00",
+      "episode_ids": [
+        "RWS-N3-S3-D00-R-D",
+        "RWS-N3-S3-D00-R-I",
+        "RWS-N3-S3-D00-R-S",
+        "RWS-N3-S3-D00-L-D",
+        "RWS-N3-S3-D00-L-S",
+        "RWS-N3-S3-D00-L-I",
+        "RWS-N3-S3-D00-TOP-S",
+        "RWS-N3-S3-D00-TOP-D",
+        "RWS-N3-S3-D00-TOP-I"
+      ],
+      "maximum_control_actions": 5400,
+      "maximum_requests": 171
+    },
+    {
+      "block_id": "N3-S4-D00",
+      "phase": "development",
+      "model_id": "N3",
+      "scene_id": "S4",
+      "state_slot": "S4-D00",
+      "episode_ids": [
+        "RWS-N3-S4-D00-L-D",
+        "RWS-N3-S4-D00-L-I",
+        "RWS-N3-S4-D00-L-S",
+        "RWS-N3-S4-D00-TOP-I",
+        "RWS-N3-S4-D00-TOP-S",
+        "RWS-N3-S4-D00-TOP-D",
+        "RWS-N3-S4-D00-R-I",
+        "RWS-N3-S4-D00-R-D",
+        "RWS-N3-S4-D00-R-S"
+      ],
+      "maximum_control_actions": 5400,
+      "maximum_requests": 171
+    },
+    {
+      "block_id": "N3-S5-D00",
+      "phase": "development",
+      "model_id": "N3",
+      "scene_id": "S5",
+      "state_slot": "S5-D00",
+      "episode_ids": [
+        "RWS-N3-S5-D00-LR-I",
+        "RWS-N3-S5-D00-LR-D",
+        "RWS-N3-S5-D00-LR-S",
+        "RWS-N3-S5-D00-RL-I",
+        "RWS-N3-S5-D00-RL-D",
+        "RWS-N3-S5-D00-RL-S"
+      ],
+      "maximum_control_actions": 1800,
+      "maximum_requests": 60
+    },
+    {
+      "block_id": "N3-S2-C07",
+      "phase": "confirmation",
+      "model_id": "N3",
+      "scene_id": "S2",
+      "state_slot": "S2-C07",
+      "episode_ids": [
+        "RWS-N3-S2-C07-L-S",
+        "RWS-N3-S2-C07-L-D",
+        "RWS-N3-S2-C07-L-I",
+        "RWS-N3-S2-C07-R-D",
+        "RWS-N3-S2-C07-R-I",
+        "RWS-N3-S2-C07-R-S"
+      ],
+      "maximum_control_actions": 2700,
+      "maximum_requests": 90
+    },
+    {
+      "block_id": "N3-S4-C07",
+      "phase": "confirmation",
+      "model_id": "N3",
+      "scene_id": "S4",
+      "state_slot": "S4-C07",
+      "episode_ids": [
+        "RWS-N3-S4-C07-TOP-S",
+        "RWS-N3-S4-C07-TOP-D",
+        "RWS-N3-S4-C07-TOP-I",
+        "RWS-N3-S4-C07-L-D",
+        "RWS-N3-S4-C07-L-S",
+        "RWS-N3-S4-C07-L-I",
+        "RWS-N3-S4-C07-R-D",
+        "RWS-N3-S4-C07-R-I",
+        "RWS-N3-S4-C07-R-S"
+      ],
+      "maximum_control_actions": 5400,
+      "maximum_requests": 171
+    },
+    {
+      "block_id": "N3-S4-C05",
+      "phase": "confirmation",
+      "model_id": "N3",
+      "scene_id": "S4",
+      "state_slot": "S4-C05",
+      "episode_ids": [
+        "RWS-N3-S4-C05-L-I",
+        "RWS-N3-S4-C05-L-D",
+        "RWS-N3-S4-C05-L-S",
+        "RWS-N3-S4-C05-TOP-D",
+        "RWS-N3-S4-C05-TOP-S",
+        "RWS-N3-S4-C05-TOP-I",
+        "RWS-N3-S4-C05-R-D",
+        "RWS-N3-S4-C05-R-S",
+        "RWS-N3-S4-C05-R-I"
+      ],
+      "maximum_control_actions": 5400,
+      "maximum_requests": 171
+    },
+    {
+      "block_id": "N3-S5-C08",
+      "phase": "confirmation",
+      "model_id": "N3",
+      "scene_id": "S5",
+      "state_slot": "S5-C08",
+      "episode_ids": [
+        "RWS-N3-S5-C08-LR-I",
+        "RWS-N3-S5-C08-LR-S",
+        "RWS-N3-S5-C08-LR-D",
+        "RWS-N3-S5-C08-RL-I",
+        "RWS-N3-S5-C08-RL-S",
+        "RWS-N3-S5-C08-RL-D"
+      ],
+      "maximum_control_actions": 1800,
+      "maximum_requests": 60
+    },
+    {
+      "block_id": "N3-S3-C01",
+      "phase": "confirmation",
+      "model_id": "N3",
+      "scene_id": "S3",
+      "state_slot": "S3-C01",
+      "episode_ids": [
+        "RWS-N3-S3-C01-TOP-I",
+        "RWS-N3-S3-C01-TOP-S",
+        "RWS-N3-S3-C01-TOP-D",
+        "RWS-N3-S3-C01-L-D",
+        "RWS-N3-S3-C01-L-S",
+        "RWS-N3-S3-C01-L-I",
+        "RWS-N3-S3-C01-R-S",
+        "RWS-N3-S3-C01-R-I",
+        "RWS-N3-S3-C01-R-D"
+      ],
+      "maximum_control_actions": 5400,
+      "maximum_requests": 171
+    },
+    {
+      "block_id": "N3-S5-C06",
+      "phase": "confirmation",
+      "model_id": "N3",
+      "scene_id": "S5",
+      "state_slot": "S5-C06",
+      "episode_ids": [
+        "RWS-N3-S5-C06-LR-I",
+        "RWS-N3-S5-C06-LR-S",
+        "RWS-N3-S5-C06-LR-D",
+        "RWS-N3-S5-C06-RL-D",
+        "RWS-N3-S5-C06-RL-S",
+        "RWS-N3-S5-C06-RL-I"
+      ],
+      "maximum_control_actions": 1800,
+      "maximum_requests": 60
+    },
+    {
+      "block_id": "N3-S4-C08",
+      "phase": "confirmation",
+      "model_id": "N3",
+      "scene_id": "S4",
+      "state_slot": "S4-C08",
+      "episode_ids": [
+        "RWS-N3-S4-C08-TOP-I",
+        "RWS-N3-S4-C08-TOP-S",
+        "RWS-N3-S4-C08-TOP-D",
+        "RWS-N3-S4-C08-R-D",
+        "RWS-N3-S4-C08-R-I",
+        "RWS-N3-S4-C08-R-S",
+        "RWS-N3-S4-C08-L-D",
+        "RWS-N3-S4-C08-L-I",
+        "RWS-N3-S4-C08-L-S"
+      ],
+      "maximum_control_actions": 5400,
+      "maximum_requests": 171
+    },
+    {
+      "block_id": "N3-S5-C05",
+      "phase": "confirmation",
+      "model_id": "N3",
+      "scene_id": "S5",
+      "state_slot": "S5-C05",
+      "episode_ids": [
+        "RWS-N3-S5-C05-LR-S",
+        "RWS-N3-S5-C05-LR-I",
+        "RWS-N3-S5-C05-LR-D",
+        "RWS-N3-S5-C05-RL-D",
+        "RWS-N3-S5-C05-RL-I",
+        "RWS-N3-S5-C05-RL-S"
+      ],
+      "maximum_control_actions": 1800,
+      "maximum_requests": 60
+    },
+    {
+      "block_id": "N3-S4-C02",
+      "phase": "confirmation",
+      "model_id": "N3",
+      "scene_id": "S4",
+      "state_slot": "S4-C02",
+      "episode_ids": [
+        "RWS-N3-S4-C02-R-I",
+        "RWS-N3-S4-C02-R-S",
+        "RWS-N3-S4-C02-R-D",
+        "RWS-N3-S4-C02-TOP-D",
+        "RWS-N3-S4-C02-TOP-S",
+        "RWS-N3-S4-C02-TOP-I",
+        "RWS-N3-S4-C02-L-S",
+        "RWS-N3-S4-C02-L-D",
+        "RWS-N3-S4-C02-L-I"
+      ],
+      "maximum_control_actions": 5400,
+      "maximum_requests": 171
+    },
+    {
+      "block_id": "N3-S4-C03",
+      "phase": "confirmation",
+      "model_id": "N3",
+      "scene_id": "S4",
+      "state_slot": "S4-C03",
+      "episode_ids": [
+        "RWS-N3-S4-C03-R-D",
+        "RWS-N3-S4-C03-R-S",
+        "RWS-N3-S4-C03-R-I",
+        "RWS-N3-S4-C03-TOP-I",
+        "RWS-N3-S4-C03-TOP-S",
+        "RWS-N3-S4-C03-TOP-D",
+        "RWS-N3-S4-C03-L-D",
+        "RWS-N3-S4-C03-L-I",
+        "RWS-N3-S4-C03-L-S"
+      ],
+      "maximum_control_actions": 5400,
+      "maximum_requests": 171
+    },
+    {
+      "block_id": "N3-S1-C06",
+      "phase": "confirmation",
+      "model_id": "N3",
+      "scene_id": "S1",
+      "state_slot": "S1-C06",
+      "episode_ids": [
+        "RWS-N3-S1-C06-B-I",
+        "RWS-N3-S1-C06-B-S",
+        "RWS-N3-S1-C06-B-D",
+        "RWS-N3-S1-C06-F-I",
+        "RWS-N3-S1-C06-F-D",
+        "RWS-N3-S1-C06-F-S",
+        "RWS-N3-S1-C06-L-S",
+        "RWS-N3-S1-C06-L-I",
+        "RWS-N3-S1-C06-L-D",
+        "RWS-N3-S1-C06-R-I",
+        "RWS-N3-S1-C06-R-D",
+        "RWS-N3-S1-C06-R-S"
+      ],
+      "maximum_control_actions": 5400,
+      "maximum_requests": 180
+    },
+    {
+      "block_id": "N3-S3-C03",
+      "phase": "confirmation",
+      "model_id": "N3",
+      "scene_id": "S3",
+      "state_slot": "S3-C03",
+      "episode_ids": [
+        "RWS-N3-S3-C03-R-I",
+        "RWS-N3-S3-C03-R-D",
+        "RWS-N3-S3-C03-R-S",
+        "RWS-N3-S3-C03-TOP-S",
+        "RWS-N3-S3-C03-TOP-D",
+        "RWS-N3-S3-C03-TOP-I",
+        "RWS-N3-S3-C03-L-D",
+        "RWS-N3-S3-C03-L-S",
+        "RWS-N3-S3-C03-L-I"
+      ],
+      "maximum_control_actions": 5400,
+      "maximum_requests": 171
+    },
+    {
+      "block_id": "N3-S5-C01",
+      "phase": "confirmation",
+      "model_id": "N3",
+      "scene_id": "S5",
+      "state_slot": "S5-C01",
+      "episode_ids": [
+        "RWS-N3-S5-C01-RL-D",
+        "RWS-N3-S5-C01-RL-I",
+        "RWS-N3-S5-C01-RL-S",
+        "RWS-N3-S5-C01-LR-I",
+        "RWS-N3-S5-C01-LR-D",
+        "RWS-N3-S5-C01-LR-S"
+      ],
+      "maximum_control_actions": 1800,
+      "maximum_requests": 60
+    },
+    {
+      "block_id": "N3-S1-C02",
+      "phase": "confirmation",
+      "model_id": "N3",
+      "scene_id": "S1",
+      "state_slot": "S1-C02",
+      "episode_ids": [
+        "RWS-N3-S1-C02-L-S",
+        "RWS-N3-S1-C02-L-I",
+        "RWS-N3-S1-C02-L-D",
+        "RWS-N3-S1-C02-B-D",
+        "RWS-N3-S1-C02-B-I",
+        "RWS-N3-S1-C02-B-S",
+        "RWS-N3-S1-C02-R-D",
+        "RWS-N3-S1-C02-R-I",
+        "RWS-N3-S1-C02-R-S",
+        "RWS-N3-S1-C02-F-I",
+        "RWS-N3-S1-C02-F-D",
+        "RWS-N3-S1-C02-F-S"
+      ],
+      "maximum_control_actions": 5400,
+      "maximum_requests": 180
+    },
+    {
+      "block_id": "N3-S2-C05",
+      "phase": "confirmation",
+      "model_id": "N3",
+      "scene_id": "S2",
+      "state_slot": "S2-C05",
+      "episode_ids": [
+        "RWS-N3-S2-C05-L-D",
+        "RWS-N3-S2-C05-L-S",
+        "RWS-N3-S2-C05-L-I",
+        "RWS-N3-S2-C05-R-D",
+        "RWS-N3-S2-C05-R-S",
+        "RWS-N3-S2-C05-R-I"
+      ],
+      "maximum_control_actions": 2700,
+      "maximum_requests": 90
+    },
+    {
+      "block_id": "N3-S2-C01",
+      "phase": "confirmation",
+      "model_id": "N3",
+      "scene_id": "S2",
+      "state_slot": "S2-C01",
+      "episode_ids": [
+        "RWS-N3-S2-C01-R-I",
+        "RWS-N3-S2-C01-R-S",
+        "RWS-N3-S2-C01-R-D",
+        "RWS-N3-S2-C01-L-I",
+        "RWS-N3-S2-C01-L-S",
+        "RWS-N3-S2-C01-L-D"
+      ],
+      "maximum_control_actions": 2700,
+      "maximum_requests": 90
+    },
+    {
+      "block_id": "N3-S1-C07",
+      "phase": "confirmation",
+      "model_id": "N3",
+      "scene_id": "S1",
+      "state_slot": "S1-C07",
+      "episode_ids": [
+        "RWS-N3-S1-C07-R-I",
+        "RWS-N3-S1-C07-R-S",
+        "RWS-N3-S1-C07-R-D",
+        "RWS-N3-S1-C07-F-S",
+        "RWS-N3-S1-C07-F-I",
+        "RWS-N3-S1-C07-F-D",
+        "RWS-N3-S1-C07-L-S",
+        "RWS-N3-S1-C07-L-D",
+        "RWS-N3-S1-C07-L-I",
+        "RWS-N3-S1-C07-B-I",
+        "RWS-N3-S1-C07-B-D",
+        "RWS-N3-S1-C07-B-S"
+      ],
+      "maximum_control_actions": 5400,
+      "maximum_requests": 180
+    },
+    {
+      "block_id": "N3-S5-C07",
+      "phase": "confirmation",
+      "model_id": "N3",
+      "scene_id": "S5",
+      "state_slot": "S5-C07",
+      "episode_ids": [
+        "RWS-N3-S5-C07-RL-D",
+        "RWS-N3-S5-C07-RL-I",
+        "RWS-N3-S5-C07-RL-S",
+        "RWS-N3-S5-C07-LR-I",
+        "RWS-N3-S5-C07-LR-S",
+        "RWS-N3-S5-C07-LR-D"
+      ],
+      "maximum_control_actions": 1800,
+      "maximum_requests": 60
+    },
+    {
+      "block_id": "N3-S2-C03",
+      "phase": "confirmation",
+      "model_id": "N3",
+      "scene_id": "S2",
+      "state_slot": "S2-C03",
+      "episode_ids": [
+        "RWS-N3-S2-C03-R-S",
+        "RWS-N3-S2-C03-R-I",
+        "RWS-N3-S2-C03-R-D",
+        "RWS-N3-S2-C03-L-D",
+        "RWS-N3-S2-C03-L-I",
+        "RWS-N3-S2-C03-L-S"
+      ],
+      "maximum_control_actions": 2700,
+      "maximum_requests": 90
+    },
+    {
+      "block_id": "N3-S5-C03",
+      "phase": "confirmation",
+      "model_id": "N3",
+      "scene_id": "S5",
+      "state_slot": "S5-C03",
+      "episode_ids": [
+        "RWS-N3-S5-C03-RL-S",
+        "RWS-N3-S5-C03-RL-D",
+        "RWS-N3-S5-C03-RL-I",
+        "RWS-N3-S5-C03-LR-D",
+        "RWS-N3-S5-C03-LR-I",
+        "RWS-N3-S5-C03-LR-S"
+      ],
+      "maximum_control_actions": 1800,
+      "maximum_requests": 60
+    },
+    {
+      "block_id": "N3-S1-C08",
+      "phase": "confirmation",
+      "model_id": "N3",
+      "scene_id": "S1",
+      "state_slot": "S1-C08",
+      "episode_ids": [
+        "RWS-N3-S1-C08-B-D",
+        "RWS-N3-S1-C08-B-S",
+        "RWS-N3-S1-C08-B-I",
+        "RWS-N3-S1-C08-F-S",
+        "RWS-N3-S1-C08-F-D",
+        "RWS-N3-S1-C08-F-I",
+        "RWS-N3-S1-C08-L-D",
+        "RWS-N3-S1-C08-L-S",
+        "RWS-N3-S1-C08-L-I",
+        "RWS-N3-S1-C08-R-S",
+        "RWS-N3-S1-C08-R-I",
+        "RWS-N3-S1-C08-R-D"
+      ],
+      "maximum_control_actions": 5400,
+      "maximum_requests": 180
+    },
+    {
+      "block_id": "N3-S3-C06",
+      "phase": "confirmation",
+      "model_id": "N3",
+      "scene_id": "S3",
+      "state_slot": "S3-C06",
+      "episode_ids": [
+        "RWS-N3-S3-C06-R-S",
+        "RWS-N3-S3-C06-R-I",
+        "RWS-N3-S3-C06-R-D",
+        "RWS-N3-S3-C06-TOP-S",
+        "RWS-N3-S3-C06-TOP-D",
+        "RWS-N3-S3-C06-TOP-I",
+        "RWS-N3-S3-C06-L-D",
+        "RWS-N3-S3-C06-L-I",
+        "RWS-N3-S3-C06-L-S"
+      ],
+      "maximum_control_actions": 5400,
+      "maximum_requests": 171
+    },
+    {
+      "block_id": "N3-S3-C05",
+      "phase": "confirmation",
+      "model_id": "N3",
+      "scene_id": "S3",
+      "state_slot": "S3-C05",
+      "episode_ids": [
+        "RWS-N3-S3-C05-R-S",
+        "RWS-N3-S3-C05-R-I",
+        "RWS-N3-S3-C05-R-D",
+        "RWS-N3-S3-C05-L-I",
+        "RWS-N3-S3-C05-L-S",
+        "RWS-N3-S3-C05-L-D",
+        "RWS-N3-S3-C05-TOP-D",
+        "RWS-N3-S3-C05-TOP-S",
+        "RWS-N3-S3-C05-TOP-I"
+      ],
+      "maximum_control_actions": 5400,
+      "maximum_requests": 171
+    },
+    {
+      "block_id": "N3-S2-C04",
+      "phase": "confirmation",
+      "model_id": "N3",
+      "scene_id": "S2",
+      "state_slot": "S2-C04",
+      "episode_ids": [
+        "RWS-N3-S2-C04-L-I",
+        "RWS-N3-S2-C04-L-S",
+        "RWS-N3-S2-C04-L-D",
+        "RWS-N3-S2-C04-R-I",
+        "RWS-N3-S2-C04-R-D",
+        "RWS-N3-S2-C04-R-S"
+      ],
+      "maximum_control_actions": 2700,
+      "maximum_requests": 90
+    },
+    {
+      "block_id": "N3-S2-C06",
+      "phase": "confirmation",
+      "model_id": "N3",
+      "scene_id": "S2",
+      "state_slot": "S2-C06",
+      "episode_ids": [
+        "RWS-N3-S2-C06-L-D",
+        "RWS-N3-S2-C06-L-I",
+        "RWS-N3-S2-C06-L-S",
+        "RWS-N3-S2-C06-R-D",
+        "RWS-N3-S2-C06-R-S",
+        "RWS-N3-S2-C06-R-I"
+      ],
+      "maximum_control_actions": 2700,
+      "maximum_requests": 90
+    },
+    {
+      "block_id": "N3-S1-C05",
+      "phase": "confirmation",
+      "model_id": "N3",
+      "scene_id": "S1",
+      "state_slot": "S1-C05",
+      "episode_ids": [
+        "RWS-N3-S1-C05-R-S",
+        "RWS-N3-S1-C05-R-I",
+        "RWS-N3-S1-C05-R-D",
+        "RWS-N3-S1-C05-B-S",
+        "RWS-N3-S1-C05-B-D",
+        "RWS-N3-S1-C05-B-I",
+        "RWS-N3-S1-C05-F-I",
+        "RWS-N3-S1-C05-F-D",
+        "RWS-N3-S1-C05-F-S",
+        "RWS-N3-S1-C05-L-S",
+        "RWS-N3-S1-C05-L-I",
+        "RWS-N3-S1-C05-L-D"
+      ],
+      "maximum_control_actions": 5400,
+      "maximum_requests": 180
+    },
+    {
+      "block_id": "N3-S2-C08",
+      "phase": "confirmation",
+      "model_id": "N3",
+      "scene_id": "S2",
+      "state_slot": "S2-C08",
+      "episode_ids": [
+        "RWS-N3-S2-C08-L-I",
+        "RWS-N3-S2-C08-L-S",
+        "RWS-N3-S2-C08-L-D",
+        "RWS-N3-S2-C08-R-I",
+        "RWS-N3-S2-C08-R-S",
+        "RWS-N3-S2-C08-R-D"
+      ],
+      "maximum_control_actions": 2700,
+      "maximum_requests": 90
+    },
+    {
+      "block_id": "N3-S1-C04",
+      "phase": "confirmation",
+      "model_id": "N3",
+      "scene_id": "S1",
+      "state_slot": "S1-C04",
+      "episode_ids": [
+        "RWS-N3-S1-C04-R-S",
+        "RWS-N3-S1-C04-R-I",
+        "RWS-N3-S1-C04-R-D",
+        "RWS-N3-S1-C04-B-I",
+        "RWS-N3-S1-C04-B-D",
+        "RWS-N3-S1-C04-B-S",
+        "RWS-N3-S1-C04-F-S",
+        "RWS-N3-S1-C04-F-D",
+        "RWS-N3-S1-C04-F-I",
+        "RWS-N3-S1-C04-L-D",
+        "RWS-N3-S1-C04-L-I",
+        "RWS-N3-S1-C04-L-S"
+      ],
+      "maximum_control_actions": 5400,
+      "maximum_requests": 180
+    },
+    {
+      "block_id": "N3-S4-C01",
+      "phase": "confirmation",
+      "model_id": "N3",
+      "scene_id": "S4",
+      "state_slot": "S4-C01",
+      "episode_ids": [
+        "RWS-N3-S4-C01-R-S",
+        "RWS-N3-S4-C01-R-I",
+        "RWS-N3-S4-C01-R-D",
+        "RWS-N3-S4-C01-L-D",
+        "RWS-N3-S4-C01-L-S",
+        "RWS-N3-S4-C01-L-I",
+        "RWS-N3-S4-C01-TOP-S",
+        "RWS-N3-S4-C01-TOP-I",
+        "RWS-N3-S4-C01-TOP-D"
+      ],
+      "maximum_control_actions": 5400,
+      "maximum_requests": 171
+    },
+    {
+      "block_id": "N3-S3-C08",
+      "phase": "confirmation",
+      "model_id": "N3",
+      "scene_id": "S3",
+      "state_slot": "S3-C08",
+      "episode_ids": [
+        "RWS-N3-S3-C08-L-S",
+        "RWS-N3-S3-C08-L-I",
+        "RWS-N3-S3-C08-L-D",
+        "RWS-N3-S3-C08-R-I",
+        "RWS-N3-S3-C08-R-D",
+        "RWS-N3-S3-C08-R-S",
+        "RWS-N3-S3-C08-TOP-S",
+        "RWS-N3-S3-C08-TOP-D",
+        "RWS-N3-S3-C08-TOP-I"
+      ],
+      "maximum_control_actions": 5400,
+      "maximum_requests": 171
+    },
+    {
+      "block_id": "N3-S4-C04",
+      "phase": "confirmation",
+      "model_id": "N3",
+      "scene_id": "S4",
+      "state_slot": "S4-C04",
+      "episode_ids": [
+        "RWS-N3-S4-C04-TOP-S",
+        "RWS-N3-S4-C04-TOP-I",
+        "RWS-N3-S4-C04-TOP-D",
+        "RWS-N3-S4-C04-R-I",
+        "RWS-N3-S4-C04-R-D",
+        "RWS-N3-S4-C04-R-S",
+        "RWS-N3-S4-C04-L-I",
+        "RWS-N3-S4-C04-L-S",
+        "RWS-N3-S4-C04-L-D"
+      ],
+      "maximum_control_actions": 5400,
+      "maximum_requests": 171
+    },
+    {
+      "block_id": "N3-S5-C04",
+      "phase": "confirmation",
+      "model_id": "N3",
+      "scene_id": "S5",
+      "state_slot": "S5-C04",
+      "episode_ids": [
+        "RWS-N3-S5-C04-RL-S",
+        "RWS-N3-S5-C04-RL-D",
+        "RWS-N3-S5-C04-RL-I",
+        "RWS-N3-S5-C04-LR-D",
+        "RWS-N3-S5-C04-LR-S",
+        "RWS-N3-S5-C04-LR-I"
+      ],
+      "maximum_control_actions": 1800,
+      "maximum_requests": 60
+    },
+    {
+      "block_id": "N3-S3-C07",
+      "phase": "confirmation",
+      "model_id": "N3",
+      "scene_id": "S3",
+      "state_slot": "S3-C07",
+      "episode_ids": [
+        "RWS-N3-S3-C07-L-I",
+        "RWS-N3-S3-C07-L-S",
+        "RWS-N3-S3-C07-L-D",
+        "RWS-N3-S3-C07-TOP-I",
+        "RWS-N3-S3-C07-TOP-S",
+        "RWS-N3-S3-C07-TOP-D",
+        "RWS-N3-S3-C07-R-D",
+        "RWS-N3-S3-C07-R-I",
+        "RWS-N3-S3-C07-R-S"
+      ],
+      "maximum_control_actions": 5400,
+      "maximum_requests": 171
+    },
+    {
+      "block_id": "N3-S1-C03",
+      "phase": "confirmation",
+      "model_id": "N3",
+      "scene_id": "S1",
+      "state_slot": "S1-C03",
+      "episode_ids": [
+        "RWS-N3-S1-C03-R-S",
+        "RWS-N3-S1-C03-R-I",
+        "RWS-N3-S1-C03-R-D",
+        "RWS-N3-S1-C03-F-S",
+        "RWS-N3-S1-C03-F-I",
+        "RWS-N3-S1-C03-F-D",
+        "RWS-N3-S1-C03-L-I",
+        "RWS-N3-S1-C03-L-D",
+        "RWS-N3-S1-C03-L-S",
+        "RWS-N3-S1-C03-B-S",
+        "RWS-N3-S1-C03-B-D",
+        "RWS-N3-S1-C03-B-I"
+      ],
+      "maximum_control_actions": 5400,
+      "maximum_requests": 180
+    },
+    {
+      "block_id": "N3-S3-C02",
+      "phase": "confirmation",
+      "model_id": "N3",
+      "scene_id": "S3",
+      "state_slot": "S3-C02",
+      "episode_ids": [
+        "RWS-N3-S3-C02-R-D",
+        "RWS-N3-S3-C02-R-I",
+        "RWS-N3-S3-C02-R-S",
+        "RWS-N3-S3-C02-L-D",
+        "RWS-N3-S3-C02-L-S",
+        "RWS-N3-S3-C02-L-I",
+        "RWS-N3-S3-C02-TOP-S",
+        "RWS-N3-S3-C02-TOP-I",
+        "RWS-N3-S3-C02-TOP-D"
+      ],
+      "maximum_control_actions": 5400,
+      "maximum_requests": 171
+    },
+    {
+      "block_id": "N3-S4-C06",
+      "phase": "confirmation",
+      "model_id": "N3",
+      "scene_id": "S4",
+      "state_slot": "S4-C06",
+      "episode_ids": [
+        "RWS-N3-S4-C06-R-S",
+        "RWS-N3-S4-C06-R-I",
+        "RWS-N3-S4-C06-R-D",
+        "RWS-N3-S4-C06-L-S",
+        "RWS-N3-S4-C06-L-D",
+        "RWS-N3-S4-C06-L-I",
+        "RWS-N3-S4-C06-TOP-D",
+        "RWS-N3-S4-C06-TOP-S",
+        "RWS-N3-S4-C06-TOP-I"
+      ],
+      "maximum_control_actions": 5400,
+      "maximum_requests": 171
+    },
+    {
+      "block_id": "N3-S2-C02",
+      "phase": "confirmation",
+      "model_id": "N3",
+      "scene_id": "S2",
+      "state_slot": "S2-C02",
+      "episode_ids": [
+        "RWS-N3-S2-C02-R-S",
+        "RWS-N3-S2-C02-R-D",
+        "RWS-N3-S2-C02-R-I",
+        "RWS-N3-S2-C02-L-I",
+        "RWS-N3-S2-C02-L-D",
+        "RWS-N3-S2-C02-L-S"
+      ],
+      "maximum_control_actions": 2700,
+      "maximum_requests": 90
+    },
+    {
+      "block_id": "N3-S5-C02",
+      "phase": "confirmation",
+      "model_id": "N3",
+      "scene_id": "S5",
+      "state_slot": "S5-C02",
+      "episode_ids": [
+        "RWS-N3-S5-C02-RL-I",
+        "RWS-N3-S5-C02-RL-S",
+        "RWS-N3-S5-C02-RL-D",
+        "RWS-N3-S5-C02-LR-D",
+        "RWS-N3-S5-C02-LR-S",
+        "RWS-N3-S5-C02-LR-I"
+      ],
+      "maximum_control_actions": 1800,
+      "maximum_requests": 60
+    },
+    {
+      "block_id": "N3-S1-C01",
+      "phase": "confirmation",
+      "model_id": "N3",
+      "scene_id": "S1",
+      "state_slot": "S1-C01",
+      "episode_ids": [
+        "RWS-N3-S1-C01-L-D",
+        "RWS-N3-S1-C01-L-S",
+        "RWS-N3-S1-C01-L-I",
+        "RWS-N3-S1-C01-R-D",
+        "RWS-N3-S1-C01-R-S",
+        "RWS-N3-S1-C01-R-I",
+        "RWS-N3-S1-C01-B-I",
+        "RWS-N3-S1-C01-B-D",
+        "RWS-N3-S1-C01-B-S",
+        "RWS-N3-S1-C01-F-I",
+        "RWS-N3-S1-C01-F-S",
+        "RWS-N3-S1-C01-F-D"
+      ],
+      "maximum_control_actions": 5400,
+      "maximum_requests": 180
+    },
+    {
+      "block_id": "N3-S3-C04",
+      "phase": "confirmation",
+      "model_id": "N3",
+      "scene_id": "S3",
+      "state_slot": "S3-C04",
+      "episode_ids": [
+        "RWS-N3-S3-C04-TOP-S",
+        "RWS-N3-S3-C04-TOP-D",
+        "RWS-N3-S3-C04-TOP-I",
+        "RWS-N3-S3-C04-L-I",
+        "RWS-N3-S3-C04-L-S",
+        "RWS-N3-S3-C04-L-D",
+        "RWS-N3-S3-C04-R-I",
+        "RWS-N3-S3-C04-R-D",
+        "RWS-N3-S3-C04-R-S"
+      ],
+      "maximum_control_actions": 5400,
+      "maximum_requests": 171
+    },
+    {
+      "block_id": "E3-S1-D00",
+      "phase": "development",
+      "model_id": "E3",
+      "scene_id": "S1",
+      "state_slot": "S1-D00",
+      "episode_ids": [
+        "RWS-E3-S1-D00-L-S"
+      ],
+      "maximum_control_actions": 450,
+      "maximum_requests": 15
+    },
+    {
+      "block_id": "E3-S5-D00",
+      "phase": "development",
+      "model_id": "E3",
+      "scene_id": "S5",
+      "state_slot": "S5-D00",
+      "episode_ids": [
+        "RWS-E3-S5-D00-LR-I"
+      ],
+      "maximum_control_actions": 300,
+      "maximum_requests": 10
+    },
+    {
+      "block_id": "E3-S2-C07",
+      "phase": "confirmation",
+      "model_id": "E3",
+      "scene_id": "S2",
+      "state_slot": "S2-C07",
+      "episode_ids": [
+        "RWS-E3-S2-C07-L-S",
+        "RWS-E3-S2-C07-L-D",
+        "RWS-E3-S2-C07-L-I",
+        "RWS-E3-S2-C07-R-D",
+        "RWS-E3-S2-C07-R-I",
+        "RWS-E3-S2-C07-R-S"
+      ],
+      "maximum_control_actions": 2700,
+      "maximum_requests": 90
+    },
+    {
+      "block_id": "E3-S4-C07",
+      "phase": "confirmation",
+      "model_id": "E3",
+      "scene_id": "S4",
+      "state_slot": "S4-C07",
+      "episode_ids": [
+        "RWS-E3-S4-C07-TOP-S",
+        "RWS-E3-S4-C07-TOP-D",
+        "RWS-E3-S4-C07-TOP-I",
+        "RWS-E3-S4-C07-L-D",
+        "RWS-E3-S4-C07-L-S",
+        "RWS-E3-S4-C07-L-I",
+        "RWS-E3-S4-C07-R-D",
+        "RWS-E3-S4-C07-R-I",
+        "RWS-E3-S4-C07-R-S"
+      ],
+      "maximum_control_actions": 5400,
+      "maximum_requests": 171
+    },
+    {
+      "block_id": "E3-S4-C05",
+      "phase": "confirmation",
+      "model_id": "E3",
+      "scene_id": "S4",
+      "state_slot": "S4-C05",
+      "episode_ids": [
+        "RWS-E3-S4-C05-L-I",
+        "RWS-E3-S4-C05-L-D",
+        "RWS-E3-S4-C05-L-S",
+        "RWS-E3-S4-C05-TOP-D",
+        "RWS-E3-S4-C05-TOP-S",
+        "RWS-E3-S4-C05-TOP-I",
+        "RWS-E3-S4-C05-R-D",
+        "RWS-E3-S4-C05-R-S",
+        "RWS-E3-S4-C05-R-I"
+      ],
+      "maximum_control_actions": 5400,
+      "maximum_requests": 171
+    },
+    {
+      "block_id": "E3-S5-C08",
+      "phase": "confirmation",
+      "model_id": "E3",
+      "scene_id": "S5",
+      "state_slot": "S5-C08",
+      "episode_ids": [
+        "RWS-E3-S5-C08-LR-I",
+        "RWS-E3-S5-C08-LR-S",
+        "RWS-E3-S5-C08-LR-D",
+        "RWS-E3-S5-C08-RL-I",
+        "RWS-E3-S5-C08-RL-S",
+        "RWS-E3-S5-C08-RL-D"
+      ],
+      "maximum_control_actions": 1800,
+      "maximum_requests": 60
+    },
+    {
+      "block_id": "E3-S3-C01",
+      "phase": "confirmation",
+      "model_id": "E3",
+      "scene_id": "S3",
+      "state_slot": "S3-C01",
+      "episode_ids": [
+        "RWS-E3-S3-C01-TOP-I",
+        "RWS-E3-S3-C01-TOP-S",
+        "RWS-E3-S3-C01-TOP-D",
+        "RWS-E3-S3-C01-L-D",
+        "RWS-E3-S3-C01-L-S",
+        "RWS-E3-S3-C01-L-I",
+        "RWS-E3-S3-C01-R-S",
+        "RWS-E3-S3-C01-R-I",
+        "RWS-E3-S3-C01-R-D"
+      ],
+      "maximum_control_actions": 5400,
+      "maximum_requests": 171
+    },
+    {
+      "block_id": "E3-S5-C06",
+      "phase": "confirmation",
+      "model_id": "E3",
+      "scene_id": "S5",
+      "state_slot": "S5-C06",
+      "episode_ids": [
+        "RWS-E3-S5-C06-LR-I",
+        "RWS-E3-S5-C06-LR-S",
+        "RWS-E3-S5-C06-LR-D",
+        "RWS-E3-S5-C06-RL-D",
+        "RWS-E3-S5-C06-RL-S",
+        "RWS-E3-S5-C06-RL-I"
+      ],
+      "maximum_control_actions": 1800,
+      "maximum_requests": 60
+    },
+    {
+      "block_id": "E3-S4-C08",
+      "phase": "confirmation",
+      "model_id": "E3",
+      "scene_id": "S4",
+      "state_slot": "S4-C08",
+      "episode_ids": [
+        "RWS-E3-S4-C08-TOP-I",
+        "RWS-E3-S4-C08-TOP-S",
+        "RWS-E3-S4-C08-TOP-D",
+        "RWS-E3-S4-C08-R-D",
+        "RWS-E3-S4-C08-R-I",
+        "RWS-E3-S4-C08-R-S",
+        "RWS-E3-S4-C08-L-D",
+        "RWS-E3-S4-C08-L-I",
+        "RWS-E3-S4-C08-L-S"
+      ],
+      "maximum_control_actions": 5400,
+      "maximum_requests": 171
+    },
+    {
+      "block_id": "E3-S5-C05",
+      "phase": "confirmation",
+      "model_id": "E3",
+      "scene_id": "S5",
+      "state_slot": "S5-C05",
+      "episode_ids": [
+        "RWS-E3-S5-C05-LR-S",
+        "RWS-E3-S5-C05-LR-I",
+        "RWS-E3-S5-C05-LR-D",
+        "RWS-E3-S5-C05-RL-D",
+        "RWS-E3-S5-C05-RL-I",
+        "RWS-E3-S5-C05-RL-S"
+      ],
+      "maximum_control_actions": 1800,
+      "maximum_requests": 60
+    },
+    {
+      "block_id": "E3-S4-C02",
+      "phase": "confirmation",
+      "model_id": "E3",
+      "scene_id": "S4",
+      "state_slot": "S4-C02",
+      "episode_ids": [
+        "RWS-E3-S4-C02-R-I",
+        "RWS-E3-S4-C02-R-S",
+        "RWS-E3-S4-C02-R-D",
+        "RWS-E3-S4-C02-TOP-D",
+        "RWS-E3-S4-C02-TOP-S",
+        "RWS-E3-S4-C02-TOP-I",
+        "RWS-E3-S4-C02-L-S",
+        "RWS-E3-S4-C02-L-D",
+        "RWS-E3-S4-C02-L-I"
+      ],
+      "maximum_control_actions": 5400,
+      "maximum_requests": 171
+    },
+    {
+      "block_id": "E3-S4-C03",
+      "phase": "confirmation",
+      "model_id": "E3",
+      "scene_id": "S4",
+      "state_slot": "S4-C03",
+      "episode_ids": [
+        "RWS-E3-S4-C03-R-D",
+        "RWS-E3-S4-C03-R-S",
+        "RWS-E3-S4-C03-R-I",
+        "RWS-E3-S4-C03-TOP-I",
+        "RWS-E3-S4-C03-TOP-S",
+        "RWS-E3-S4-C03-TOP-D",
+        "RWS-E3-S4-C03-L-D",
+        "RWS-E3-S4-C03-L-I",
+        "RWS-E3-S4-C03-L-S"
+      ],
+      "maximum_control_actions": 5400,
+      "maximum_requests": 171
+    },
+    {
+      "block_id": "E3-S1-C06",
+      "phase": "confirmation",
+      "model_id": "E3",
+      "scene_id": "S1",
+      "state_slot": "S1-C06",
+      "episode_ids": [
+        "RWS-E3-S1-C06-B-I",
+        "RWS-E3-S1-C06-B-S",
+        "RWS-E3-S1-C06-B-D",
+        "RWS-E3-S1-C06-F-I",
+        "RWS-E3-S1-C06-F-D",
+        "RWS-E3-S1-C06-F-S",
+        "RWS-E3-S1-C06-L-S",
+        "RWS-E3-S1-C06-L-I",
+        "RWS-E3-S1-C06-L-D",
+        "RWS-E3-S1-C06-R-I",
+        "RWS-E3-S1-C06-R-D",
+        "RWS-E3-S1-C06-R-S"
+      ],
+      "maximum_control_actions": 5400,
+      "maximum_requests": 180
+    },
+    {
+      "block_id": "E3-S3-C03",
+      "phase": "confirmation",
+      "model_id": "E3",
+      "scene_id": "S3",
+      "state_slot": "S3-C03",
+      "episode_ids": [
+        "RWS-E3-S3-C03-R-I",
+        "RWS-E3-S3-C03-R-D",
+        "RWS-E3-S3-C03-R-S",
+        "RWS-E3-S3-C03-TOP-S",
+        "RWS-E3-S3-C03-TOP-D",
+        "RWS-E3-S3-C03-TOP-I",
+        "RWS-E3-S3-C03-L-D",
+        "RWS-E3-S3-C03-L-S",
+        "RWS-E3-S3-C03-L-I"
+      ],
+      "maximum_control_actions": 5400,
+      "maximum_requests": 171
+    },
+    {
+      "block_id": "E3-S5-C01",
+      "phase": "confirmation",
+      "model_id": "E3",
+      "scene_id": "S5",
+      "state_slot": "S5-C01",
+      "episode_ids": [
+        "RWS-E3-S5-C01-RL-D",
+        "RWS-E3-S5-C01-RL-I",
+        "RWS-E3-S5-C01-RL-S",
+        "RWS-E3-S5-C01-LR-I",
+        "RWS-E3-S5-C01-LR-D",
+        "RWS-E3-S5-C01-LR-S"
+      ],
+      "maximum_control_actions": 1800,
+      "maximum_requests": 60
+    },
+    {
+      "block_id": "E3-S1-C02",
+      "phase": "confirmation",
+      "model_id": "E3",
+      "scene_id": "S1",
+      "state_slot": "S1-C02",
+      "episode_ids": [
+        "RWS-E3-S1-C02-L-S",
+        "RWS-E3-S1-C02-L-I",
+        "RWS-E3-S1-C02-L-D",
+        "RWS-E3-S1-C02-B-D",
+        "RWS-E3-S1-C02-B-I",
+        "RWS-E3-S1-C02-B-S",
+        "RWS-E3-S1-C02-R-D",
+        "RWS-E3-S1-C02-R-I",
+        "RWS-E3-S1-C02-R-S",
+        "RWS-E3-S1-C02-F-I",
+        "RWS-E3-S1-C02-F-D",
+        "RWS-E3-S1-C02-F-S"
+      ],
+      "maximum_control_actions": 5400,
+      "maximum_requests": 180
+    },
+    {
+      "block_id": "E3-S2-C05",
+      "phase": "confirmation",
+      "model_id": "E3",
+      "scene_id": "S2",
+      "state_slot": "S2-C05",
+      "episode_ids": [
+        "RWS-E3-S2-C05-L-D",
+        "RWS-E3-S2-C05-L-S",
+        "RWS-E3-S2-C05-L-I",
+        "RWS-E3-S2-C05-R-D",
+        "RWS-E3-S2-C05-R-S",
+        "RWS-E3-S2-C05-R-I"
+      ],
+      "maximum_control_actions": 2700,
+      "maximum_requests": 90
+    },
+    {
+      "block_id": "E3-S2-C01",
+      "phase": "confirmation",
+      "model_id": "E3",
+      "scene_id": "S2",
+      "state_slot": "S2-C01",
+      "episode_ids": [
+        "RWS-E3-S2-C01-R-I",
+        "RWS-E3-S2-C01-R-S",
+        "RWS-E3-S2-C01-R-D",
+        "RWS-E3-S2-C01-L-I",
+        "RWS-E3-S2-C01-L-S",
+        "RWS-E3-S2-C01-L-D"
+      ],
+      "maximum_control_actions": 2700,
+      "maximum_requests": 90
+    },
+    {
+      "block_id": "E3-S1-C07",
+      "phase": "confirmation",
+      "model_id": "E3",
+      "scene_id": "S1",
+      "state_slot": "S1-C07",
+      "episode_ids": [
+        "RWS-E3-S1-C07-R-I",
+        "RWS-E3-S1-C07-R-S",
+        "RWS-E3-S1-C07-R-D",
+        "RWS-E3-S1-C07-F-S",
+        "RWS-E3-S1-C07-F-I",
+        "RWS-E3-S1-C07-F-D",
+        "RWS-E3-S1-C07-L-S",
+        "RWS-E3-S1-C07-L-D",
+        "RWS-E3-S1-C07-L-I",
+        "RWS-E3-S1-C07-B-I",
+        "RWS-E3-S1-C07-B-D",
+        "RWS-E3-S1-C07-B-S"
+      ],
+      "maximum_control_actions": 5400,
+      "maximum_requests": 180
+    },
+    {
+      "block_id": "E3-S5-C07",
+      "phase": "confirmation",
+      "model_id": "E3",
+      "scene_id": "S5",
+      "state_slot": "S5-C07",
+      "episode_ids": [
+        "RWS-E3-S5-C07-RL-D",
+        "RWS-E3-S5-C07-RL-I",
+        "RWS-E3-S5-C07-RL-S",
+        "RWS-E3-S5-C07-LR-I",
+        "RWS-E3-S5-C07-LR-S",
+        "RWS-E3-S5-C07-LR-D"
+      ],
+      "maximum_control_actions": 1800,
+      "maximum_requests": 60
+    },
+    {
+      "block_id": "E3-S2-C03",
+      "phase": "confirmation",
+      "model_id": "E3",
+      "scene_id": "S2",
+      "state_slot": "S2-C03",
+      "episode_ids": [
+        "RWS-E3-S2-C03-R-S",
+        "RWS-E3-S2-C03-R-I",
+        "RWS-E3-S2-C03-R-D",
+        "RWS-E3-S2-C03-L-D",
+        "RWS-E3-S2-C03-L-I",
+        "RWS-E3-S2-C03-L-S"
+      ],
+      "maximum_control_actions": 2700,
+      "maximum_requests": 90
+    },
+    {
+      "block_id": "E3-S5-C03",
+      "phase": "confirmation",
+      "model_id": "E3",
+      "scene_id": "S5",
+      "state_slot": "S5-C03",
+      "episode_ids": [
+        "RWS-E3-S5-C03-RL-S",
+        "RWS-E3-S5-C03-RL-D",
+        "RWS-E3-S5-C03-RL-I",
+        "RWS-E3-S5-C03-LR-D",
+        "RWS-E3-S5-C03-LR-I",
+        "RWS-E3-S5-C03-LR-S"
+      ],
+      "maximum_control_actions": 1800,
+      "maximum_requests": 60
+    },
+    {
+      "block_id": "E3-S1-C08",
+      "phase": "confirmation",
+      "model_id": "E3",
+      "scene_id": "S1",
+      "state_slot": "S1-C08",
+      "episode_ids": [
+        "RWS-E3-S1-C08-B-D",
+        "RWS-E3-S1-C08-B-S",
+        "RWS-E3-S1-C08-B-I",
+        "RWS-E3-S1-C08-F-S",
+        "RWS-E3-S1-C08-F-D",
+        "RWS-E3-S1-C08-F-I",
+        "RWS-E3-S1-C08-L-D",
+        "RWS-E3-S1-C08-L-S",
+        "RWS-E3-S1-C08-L-I",
+        "RWS-E3-S1-C08-R-S",
+        "RWS-E3-S1-C08-R-I",
+        "RWS-E3-S1-C08-R-D"
+      ],
+      "maximum_control_actions": 5400,
+      "maximum_requests": 180
+    },
+    {
+      "block_id": "E3-S3-C06",
+      "phase": "confirmation",
+      "model_id": "E3",
+      "scene_id": "S3",
+      "state_slot": "S3-C06",
+      "episode_ids": [
+        "RWS-E3-S3-C06-R-S",
+        "RWS-E3-S3-C06-R-I",
+        "RWS-E3-S3-C06-R-D",
+        "RWS-E3-S3-C06-TOP-S",
+        "RWS-E3-S3-C06-TOP-D",
+        "RWS-E3-S3-C06-TOP-I",
+        "RWS-E3-S3-C06-L-D",
+        "RWS-E3-S3-C06-L-I",
+        "RWS-E3-S3-C06-L-S"
+      ],
+      "maximum_control_actions": 5400,
+      "maximum_requests": 171
+    },
+    {
+      "block_id": "E3-S3-C05",
+      "phase": "confirmation",
+      "model_id": "E3",
+      "scene_id": "S3",
+      "state_slot": "S3-C05",
+      "episode_ids": [
+        "RWS-E3-S3-C05-R-S",
+        "RWS-E3-S3-C05-R-I",
+        "RWS-E3-S3-C05-R-D",
+        "RWS-E3-S3-C05-L-I",
+        "RWS-E3-S3-C05-L-S",
+        "RWS-E3-S3-C05-L-D",
+        "RWS-E3-S3-C05-TOP-D",
+        "RWS-E3-S3-C05-TOP-S",
+        "RWS-E3-S3-C05-TOP-I"
+      ],
+      "maximum_control_actions": 5400,
+      "maximum_requests": 171
+    },
+    {
+      "block_id": "E3-S2-C04",
+      "phase": "confirmation",
+      "model_id": "E3",
+      "scene_id": "S2",
+      "state_slot": "S2-C04",
+      "episode_ids": [
+        "RWS-E3-S2-C04-L-I",
+        "RWS-E3-S2-C04-L-S",
+        "RWS-E3-S2-C04-L-D",
+        "RWS-E3-S2-C04-R-I",
+        "RWS-E3-S2-C04-R-D",
+        "RWS-E3-S2-C04-R-S"
+      ],
+      "maximum_control_actions": 2700,
+      "maximum_requests": 90
+    },
+    {
+      "block_id": "E3-S2-C06",
+      "phase": "confirmation",
+      "model_id": "E3",
+      "scene_id": "S2",
+      "state_slot": "S2-C06",
+      "episode_ids": [
+        "RWS-E3-S2-C06-L-D",
+        "RWS-E3-S2-C06-L-I",
+        "RWS-E3-S2-C06-L-S",
+        "RWS-E3-S2-C06-R-D",
+        "RWS-E3-S2-C06-R-S",
+        "RWS-E3-S2-C06-R-I"
+      ],
+      "maximum_control_actions": 2700,
+      "maximum_requests": 90
+    },
+    {
+      "block_id": "E3-S1-C05",
+      "phase": "confirmation",
+      "model_id": "E3",
+      "scene_id": "S1",
+      "state_slot": "S1-C05",
+      "episode_ids": [
+        "RWS-E3-S1-C05-R-S",
+        "RWS-E3-S1-C05-R-I",
+        "RWS-E3-S1-C05-R-D",
+        "RWS-E3-S1-C05-B-S",
+        "RWS-E3-S1-C05-B-D",
+        "RWS-E3-S1-C05-B-I",
+        "RWS-E3-S1-C05-F-I",
+        "RWS-E3-S1-C05-F-D",
+        "RWS-E3-S1-C05-F-S",
+        "RWS-E3-S1-C05-L-S",
+        "RWS-E3-S1-C05-L-I",
+        "RWS-E3-S1-C05-L-D"
+      ],
+      "maximum_control_actions": 5400,
+      "maximum_requests": 180
+    },
+    {
+      "block_id": "E3-S2-C08",
+      "phase": "confirmation",
+      "model_id": "E3",
+      "scene_id": "S2",
+      "state_slot": "S2-C08",
+      "episode_ids": [
+        "RWS-E3-S2-C08-L-I",
+        "RWS-E3-S2-C08-L-S",
+        "RWS-E3-S2-C08-L-D",
+        "RWS-E3-S2-C08-R-I",
+        "RWS-E3-S2-C08-R-S",
+        "RWS-E3-S2-C08-R-D"
+      ],
+      "maximum_control_actions": 2700,
+      "maximum_requests": 90
+    },
+    {
+      "block_id": "E3-S1-C04",
+      "phase": "confirmation",
+      "model_id": "E3",
+      "scene_id": "S1",
+      "state_slot": "S1-C04",
+      "episode_ids": [
+        "RWS-E3-S1-C04-R-S",
+        "RWS-E3-S1-C04-R-I",
+        "RWS-E3-S1-C04-R-D",
+        "RWS-E3-S1-C04-B-I",
+        "RWS-E3-S1-C04-B-D",
+        "RWS-E3-S1-C04-B-S",
+        "RWS-E3-S1-C04-F-S",
+        "RWS-E3-S1-C04-F-D",
+        "RWS-E3-S1-C04-F-I",
+        "RWS-E3-S1-C04-L-D",
+        "RWS-E3-S1-C04-L-I",
+        "RWS-E3-S1-C04-L-S"
+      ],
+      "maximum_control_actions": 5400,
+      "maximum_requests": 180
+    },
+    {
+      "block_id": "E3-S4-C01",
+      "phase": "confirmation",
+      "model_id": "E3",
+      "scene_id": "S4",
+      "state_slot": "S4-C01",
+      "episode_ids": [
+        "RWS-E3-S4-C01-R-S",
+        "RWS-E3-S4-C01-R-I",
+        "RWS-E3-S4-C01-R-D",
+        "RWS-E3-S4-C01-L-D",
+        "RWS-E3-S4-C01-L-S",
+        "RWS-E3-S4-C01-L-I",
+        "RWS-E3-S4-C01-TOP-S",
+        "RWS-E3-S4-C01-TOP-I",
+        "RWS-E3-S4-C01-TOP-D"
+      ],
+      "maximum_control_actions": 5400,
+      "maximum_requests": 171
+    },
+    {
+      "block_id": "E3-S3-C08",
+      "phase": "confirmation",
+      "model_id": "E3",
+      "scene_id": "S3",
+      "state_slot": "S3-C08",
+      "episode_ids": [
+        "RWS-E3-S3-C08-L-S",
+        "RWS-E3-S3-C08-L-I",
+        "RWS-E3-S3-C08-L-D",
+        "RWS-E3-S3-C08-R-I",
+        "RWS-E3-S3-C08-R-D",
+        "RWS-E3-S3-C08-R-S",
+        "RWS-E3-S3-C08-TOP-S",
+        "RWS-E3-S3-C08-TOP-D",
+        "RWS-E3-S3-C08-TOP-I"
+      ],
+      "maximum_control_actions": 5400,
+      "maximum_requests": 171
+    },
+    {
+      "block_id": "E3-S4-C04",
+      "phase": "confirmation",
+      "model_id": "E3",
+      "scene_id": "S4",
+      "state_slot": "S4-C04",
+      "episode_ids": [
+        "RWS-E3-S4-C04-TOP-S",
+        "RWS-E3-S4-C04-TOP-I",
+        "RWS-E3-S4-C04-TOP-D",
+        "RWS-E3-S4-C04-R-I",
+        "RWS-E3-S4-C04-R-D",
+        "RWS-E3-S4-C04-R-S",
+        "RWS-E3-S4-C04-L-I",
+        "RWS-E3-S4-C04-L-S",
+        "RWS-E3-S4-C04-L-D"
+      ],
+      "maximum_control_actions": 5400,
+      "maximum_requests": 171
+    },
+    {
+      "block_id": "E3-S5-C04",
+      "phase": "confirmation",
+      "model_id": "E3",
+      "scene_id": "S5",
+      "state_slot": "S5-C04",
+      "episode_ids": [
+        "RWS-E3-S5-C04-RL-S",
+        "RWS-E3-S5-C04-RL-D",
+        "RWS-E3-S5-C04-RL-I",
+        "RWS-E3-S5-C04-LR-D",
+        "RWS-E3-S5-C04-LR-S",
+        "RWS-E3-S5-C04-LR-I"
+      ],
+      "maximum_control_actions": 1800,
+      "maximum_requests": 60
+    },
+    {
+      "block_id": "E3-S3-C07",
+      "phase": "confirmation",
+      "model_id": "E3",
+      "scene_id": "S3",
+      "state_slot": "S3-C07",
+      "episode_ids": [
+        "RWS-E3-S3-C07-L-I",
+        "RWS-E3-S3-C07-L-S",
+        "RWS-E3-S3-C07-L-D",
+        "RWS-E3-S3-C07-TOP-I",
+        "RWS-E3-S3-C07-TOP-S",
+        "RWS-E3-S3-C07-TOP-D",
+        "RWS-E3-S3-C07-R-D",
+        "RWS-E3-S3-C07-R-I",
+        "RWS-E3-S3-C07-R-S"
+      ],
+      "maximum_control_actions": 5400,
+      "maximum_requests": 171
+    },
+    {
+      "block_id": "E3-S1-C03",
+      "phase": "confirmation",
+      "model_id": "E3",
+      "scene_id": "S1",
+      "state_slot": "S1-C03",
+      "episode_ids": [
+        "RWS-E3-S1-C03-R-S",
+        "RWS-E3-S1-C03-R-I",
+        "RWS-E3-S1-C03-R-D",
+        "RWS-E3-S1-C03-F-S",
+        "RWS-E3-S1-C03-F-I",
+        "RWS-E3-S1-C03-F-D",
+        "RWS-E3-S1-C03-L-I",
+        "RWS-E3-S1-C03-L-D",
+        "RWS-E3-S1-C03-L-S",
+        "RWS-E3-S1-C03-B-S",
+        "RWS-E3-S1-C03-B-D",
+        "RWS-E3-S1-C03-B-I"
+      ],
+      "maximum_control_actions": 5400,
+      "maximum_requests": 180
+    },
+    {
+      "block_id": "E3-S3-C02",
+      "phase": "confirmation",
+      "model_id": "E3",
+      "scene_id": "S3",
+      "state_slot": "S3-C02",
+      "episode_ids": [
+        "RWS-E3-S3-C02-R-D",
+        "RWS-E3-S3-C02-R-I",
+        "RWS-E3-S3-C02-R-S",
+        "RWS-E3-S3-C02-L-D",
+        "RWS-E3-S3-C02-L-S",
+        "RWS-E3-S3-C02-L-I",
+        "RWS-E3-S3-C02-TOP-S",
+        "RWS-E3-S3-C02-TOP-I",
+        "RWS-E3-S3-C02-TOP-D"
+      ],
+      "maximum_control_actions": 5400,
+      "maximum_requests": 171
+    },
+    {
+      "block_id": "E3-S4-C06",
+      "phase": "confirmation",
+      "model_id": "E3",
+      "scene_id": "S4",
+      "state_slot": "S4-C06",
+      "episode_ids": [
+        "RWS-E3-S4-C06-R-S",
+        "RWS-E3-S4-C06-R-I",
+        "RWS-E3-S4-C06-R-D",
+        "RWS-E3-S4-C06-L-S",
+        "RWS-E3-S4-C06-L-D",
+        "RWS-E3-S4-C06-L-I",
+        "RWS-E3-S4-C06-TOP-D",
+        "RWS-E3-S4-C06-TOP-S",
+        "RWS-E3-S4-C06-TOP-I"
+      ],
+      "maximum_control_actions": 5400,
+      "maximum_requests": 171
+    },
+    {
+      "block_id": "E3-S2-C02",
+      "phase": "confirmation",
+      "model_id": "E3",
+      "scene_id": "S2",
+      "state_slot": "S2-C02",
+      "episode_ids": [
+        "RWS-E3-S2-C02-R-S",
+        "RWS-E3-S2-C02-R-D",
+        "RWS-E3-S2-C02-R-I",
+        "RWS-E3-S2-C02-L-I",
+        "RWS-E3-S2-C02-L-D",
+        "RWS-E3-S2-C02-L-S"
+      ],
+      "maximum_control_actions": 2700,
+      "maximum_requests": 90
+    },
+    {
+      "block_id": "E3-S5-C02",
+      "phase": "confirmation",
+      "model_id": "E3",
+      "scene_id": "S5",
+      "state_slot": "S5-C02",
+      "episode_ids": [
+        "RWS-E3-S5-C02-RL-I",
+        "RWS-E3-S5-C02-RL-S",
+        "RWS-E3-S5-C02-RL-D",
+        "RWS-E3-S5-C02-LR-D",
+        "RWS-E3-S5-C02-LR-S",
+        "RWS-E3-S5-C02-LR-I"
+      ],
+      "maximum_control_actions": 1800,
+      "maximum_requests": 60
+    },
+    {
+      "block_id": "E3-S1-C01",
+      "phase": "confirmation",
+      "model_id": "E3",
+      "scene_id": "S1",
+      "state_slot": "S1-C01",
+      "episode_ids": [
+        "RWS-E3-S1-C01-L-D",
+        "RWS-E3-S1-C01-L-S",
+        "RWS-E3-S1-C01-L-I",
+        "RWS-E3-S1-C01-R-D",
+        "RWS-E3-S1-C01-R-S",
+        "RWS-E3-S1-C01-R-I",
+        "RWS-E3-S1-C01-B-I",
+        "RWS-E3-S1-C01-B-D",
+        "RWS-E3-S1-C01-B-S",
+        "RWS-E3-S1-C01-F-I",
+        "RWS-E3-S1-C01-F-S",
+        "RWS-E3-S1-C01-F-D"
+      ],
+      "maximum_control_actions": 5400,
+      "maximum_requests": 180
+    },
+    {
+      "block_id": "E3-S3-C04",
+      "phase": "confirmation",
+      "model_id": "E3",
+      "scene_id": "S3",
+      "state_slot": "S3-C04",
+      "episode_ids": [
+        "RWS-E3-S3-C04-TOP-S",
+        "RWS-E3-S3-C04-TOP-D",
+        "RWS-E3-S3-C04-TOP-I",
+        "RWS-E3-S3-C04-L-I",
+        "RWS-E3-S3-C04-L-S",
+        "RWS-E3-S3-C04-L-D",
+        "RWS-E3-S3-C04-R-I",
+        "RWS-E3-S3-C04-R-D",
+        "RWS-E3-S3-C04-R-S"
+      ],
+      "maximum_control_actions": 5400,
+      "maximum_requests": 171
+    },
+    {
+      "block_id": "F3-S1-D00",
+      "phase": "development",
+      "model_id": "F3",
+      "scene_id": "S1",
+      "state_slot": "S1-D00",
+      "episode_ids": [
+        "RWS-F3-S1-D00-L-S"
+      ],
+      "maximum_control_actions": 450,
+      "maximum_requests": 15
+    },
+    {
+      "block_id": "F3-S5-D00",
+      "phase": "development",
+      "model_id": "F3",
+      "scene_id": "S5",
+      "state_slot": "S5-D00",
+      "episode_ids": [
+        "RWS-F3-S5-D00-LR-I"
+      ],
+      "maximum_control_actions": 300,
+      "maximum_requests": 10
+    },
+    {
+      "block_id": "F3-S2-C07",
+      "phase": "confirmation",
+      "model_id": "F3",
+      "scene_id": "S2",
+      "state_slot": "S2-C07",
+      "episode_ids": [
+        "RWS-F3-S2-C07-L-S",
+        "RWS-F3-S2-C07-L-D",
+        "RWS-F3-S2-C07-L-I",
+        "RWS-F3-S2-C07-R-D",
+        "RWS-F3-S2-C07-R-I",
+        "RWS-F3-S2-C07-R-S"
+      ],
+      "maximum_control_actions": 2700,
+      "maximum_requests": 90
+    },
+    {
+      "block_id": "F3-S4-C07",
+      "phase": "confirmation",
+      "model_id": "F3",
+      "scene_id": "S4",
+      "state_slot": "S4-C07",
+      "episode_ids": [
+        "RWS-F3-S4-C07-TOP-S",
+        "RWS-F3-S4-C07-TOP-D",
+        "RWS-F3-S4-C07-TOP-I",
+        "RWS-F3-S4-C07-L-D",
+        "RWS-F3-S4-C07-L-S",
+        "RWS-F3-S4-C07-L-I",
+        "RWS-F3-S4-C07-R-D",
+        "RWS-F3-S4-C07-R-I",
+        "RWS-F3-S4-C07-R-S"
+      ],
+      "maximum_control_actions": 5400,
+      "maximum_requests": 171
+    },
+    {
+      "block_id": "F3-S4-C05",
+      "phase": "confirmation",
+      "model_id": "F3",
+      "scene_id": "S4",
+      "state_slot": "S4-C05",
+      "episode_ids": [
+        "RWS-F3-S4-C05-L-I",
+        "RWS-F3-S4-C05-L-D",
+        "RWS-F3-S4-C05-L-S",
+        "RWS-F3-S4-C05-TOP-D",
+        "RWS-F3-S4-C05-TOP-S",
+        "RWS-F3-S4-C05-TOP-I",
+        "RWS-F3-S4-C05-R-D",
+        "RWS-F3-S4-C05-R-S",
+        "RWS-F3-S4-C05-R-I"
+      ],
+      "maximum_control_actions": 5400,
+      "maximum_requests": 171
+    },
+    {
+      "block_id": "F3-S5-C08",
+      "phase": "confirmation",
+      "model_id": "F3",
+      "scene_id": "S5",
+      "state_slot": "S5-C08",
+      "episode_ids": [
+        "RWS-F3-S5-C08-LR-I",
+        "RWS-F3-S5-C08-LR-S",
+        "RWS-F3-S5-C08-LR-D",
+        "RWS-F3-S5-C08-RL-I",
+        "RWS-F3-S5-C08-RL-S",
+        "RWS-F3-S5-C08-RL-D"
+      ],
+      "maximum_control_actions": 1800,
+      "maximum_requests": 60
+    },
+    {
+      "block_id": "F3-S3-C01",
+      "phase": "confirmation",
+      "model_id": "F3",
+      "scene_id": "S3",
+      "state_slot": "S3-C01",
+      "episode_ids": [
+        "RWS-F3-S3-C01-TOP-I",
+        "RWS-F3-S3-C01-TOP-S",
+        "RWS-F3-S3-C01-TOP-D",
+        "RWS-F3-S3-C01-L-D",
+        "RWS-F3-S3-C01-L-S",
+        "RWS-F3-S3-C01-L-I",
+        "RWS-F3-S3-C01-R-S",
+        "RWS-F3-S3-C01-R-I",
+        "RWS-F3-S3-C01-R-D"
+      ],
+      "maximum_control_actions": 5400,
+      "maximum_requests": 171
+    },
+    {
+      "block_id": "F3-S5-C06",
+      "phase": "confirmation",
+      "model_id": "F3",
+      "scene_id": "S5",
+      "state_slot": "S5-C06",
+      "episode_ids": [
+        "RWS-F3-S5-C06-LR-I",
+        "RWS-F3-S5-C06-LR-S",
+        "RWS-F3-S5-C06-LR-D",
+        "RWS-F3-S5-C06-RL-D",
+        "RWS-F3-S5-C06-RL-S",
+        "RWS-F3-S5-C06-RL-I"
+      ],
+      "maximum_control_actions": 1800,
+      "maximum_requests": 60
+    },
+    {
+      "block_id": "F3-S4-C08",
+      "phase": "confirmation",
+      "model_id": "F3",
+      "scene_id": "S4",
+      "state_slot": "S4-C08",
+      "episode_ids": [
+        "RWS-F3-S4-C08-TOP-I",
+        "RWS-F3-S4-C08-TOP-S",
+        "RWS-F3-S4-C08-TOP-D",
+        "RWS-F3-S4-C08-R-D",
+        "RWS-F3-S4-C08-R-I",
+        "RWS-F3-S4-C08-R-S",
+        "RWS-F3-S4-C08-L-D",
+        "RWS-F3-S4-C08-L-I",
+        "RWS-F3-S4-C08-L-S"
+      ],
+      "maximum_control_actions": 5400,
+      "maximum_requests": 171
+    },
+    {
+      "block_id": "F3-S5-C05",
+      "phase": "confirmation",
+      "model_id": "F3",
+      "scene_id": "S5",
+      "state_slot": "S5-C05",
+      "episode_ids": [
+        "RWS-F3-S5-C05-LR-S",
+        "RWS-F3-S5-C05-LR-I",
+        "RWS-F3-S5-C05-LR-D",
+        "RWS-F3-S5-C05-RL-D",
+        "RWS-F3-S5-C05-RL-I",
+        "RWS-F3-S5-C05-RL-S"
+      ],
+      "maximum_control_actions": 1800,
+      "maximum_requests": 60
+    },
+    {
+      "block_id": "F3-S4-C02",
+      "phase": "confirmation",
+      "model_id": "F3",
+      "scene_id": "S4",
+      "state_slot": "S4-C02",
+      "episode_ids": [
+        "RWS-F3-S4-C02-R-I",
+        "RWS-F3-S4-C02-R-S",
+        "RWS-F3-S4-C02-R-D",
+        "RWS-F3-S4-C02-TOP-D",
+        "RWS-F3-S4-C02-TOP-S",
+        "RWS-F3-S4-C02-TOP-I",
+        "RWS-F3-S4-C02-L-S",
+        "RWS-F3-S4-C02-L-D",
+        "RWS-F3-S4-C02-L-I"
+      ],
+      "maximum_control_actions": 5400,
+      "maximum_requests": 171
+    },
+    {
+      "block_id": "F3-S4-C03",
+      "phase": "confirmation",
+      "model_id": "F3",
+      "scene_id": "S4",
+      "state_slot": "S4-C03",
+      "episode_ids": [
+        "RWS-F3-S4-C03-R-D",
+        "RWS-F3-S4-C03-R-S",
+        "RWS-F3-S4-C03-R-I",
+        "RWS-F3-S4-C03-TOP-I",
+        "RWS-F3-S4-C03-TOP-S",
+        "RWS-F3-S4-C03-TOP-D",
+        "RWS-F3-S4-C03-L-D",
+        "RWS-F3-S4-C03-L-I",
+        "RWS-F3-S4-C03-L-S"
+      ],
+      "maximum_control_actions": 5400,
+      "maximum_requests": 171
+    },
+    {
+      "block_id": "F3-S1-C06",
+      "phase": "confirmation",
+      "model_id": "F3",
+      "scene_id": "S1",
+      "state_slot": "S1-C06",
+      "episode_ids": [
+        "RWS-F3-S1-C06-B-I",
+        "RWS-F3-S1-C06-B-S",
+        "RWS-F3-S1-C06-B-D",
+        "RWS-F3-S1-C06-F-I",
+        "RWS-F3-S1-C06-F-D",
+        "RWS-F3-S1-C06-F-S",
+        "RWS-F3-S1-C06-L-S",
+        "RWS-F3-S1-C06-L-I",
+        "RWS-F3-S1-C06-L-D",
+        "RWS-F3-S1-C06-R-I",
+        "RWS-F3-S1-C06-R-D",
+        "RWS-F3-S1-C06-R-S"
+      ],
+      "maximum_control_actions": 5400,
+      "maximum_requests": 180
+    },
+    {
+      "block_id": "F3-S3-C03",
+      "phase": "confirmation",
+      "model_id": "F3",
+      "scene_id": "S3",
+      "state_slot": "S3-C03",
+      "episode_ids": [
+        "RWS-F3-S3-C03-R-I",
+        "RWS-F3-S3-C03-R-D",
+        "RWS-F3-S3-C03-R-S",
+        "RWS-F3-S3-C03-TOP-S",
+        "RWS-F3-S3-C03-TOP-D",
+        "RWS-F3-S3-C03-TOP-I",
+        "RWS-F3-S3-C03-L-D",
+        "RWS-F3-S3-C03-L-S",
+        "RWS-F3-S3-C03-L-I"
+      ],
+      "maximum_control_actions": 5400,
+      "maximum_requests": 171
+    },
+    {
+      "block_id": "F3-S5-C01",
+      "phase": "confirmation",
+      "model_id": "F3",
+      "scene_id": "S5",
+      "state_slot": "S5-C01",
+      "episode_ids": [
+        "RWS-F3-S5-C01-RL-D",
+        "RWS-F3-S5-C01-RL-I",
+        "RWS-F3-S5-C01-RL-S",
+        "RWS-F3-S5-C01-LR-I",
+        "RWS-F3-S5-C01-LR-D",
+        "RWS-F3-S5-C01-LR-S"
+      ],
+      "maximum_control_actions": 1800,
+      "maximum_requests": 60
+    },
+    {
+      "block_id": "F3-S1-C02",
+      "phase": "confirmation",
+      "model_id": "F3",
+      "scene_id": "S1",
+      "state_slot": "S1-C02",
+      "episode_ids": [
+        "RWS-F3-S1-C02-L-S",
+        "RWS-F3-S1-C02-L-I",
+        "RWS-F3-S1-C02-L-D",
+        "RWS-F3-S1-C02-B-D",
+        "RWS-F3-S1-C02-B-I",
+        "RWS-F3-S1-C02-B-S",
+        "RWS-F3-S1-C02-R-D",
+        "RWS-F3-S1-C02-R-I",
+        "RWS-F3-S1-C02-R-S",
+        "RWS-F3-S1-C02-F-I",
+        "RWS-F3-S1-C02-F-D",
+        "RWS-F3-S1-C02-F-S"
+      ],
+      "maximum_control_actions": 5400,
+      "maximum_requests": 180
+    },
+    {
+      "block_id": "F3-S2-C05",
+      "phase": "confirmation",
+      "model_id": "F3",
+      "scene_id": "S2",
+      "state_slot": "S2-C05",
+      "episode_ids": [
+        "RWS-F3-S2-C05-L-D",
+        "RWS-F3-S2-C05-L-S",
+        "RWS-F3-S2-C05-L-I",
+        "RWS-F3-S2-C05-R-D",
+        "RWS-F3-S2-C05-R-S",
+        "RWS-F3-S2-C05-R-I"
+      ],
+      "maximum_control_actions": 2700,
+      "maximum_requests": 90
+    },
+    {
+      "block_id": "F3-S2-C01",
+      "phase": "confirmation",
+      "model_id": "F3",
+      "scene_id": "S2",
+      "state_slot": "S2-C01",
+      "episode_ids": [
+        "RWS-F3-S2-C01-R-I",
+        "RWS-F3-S2-C01-R-S",
+        "RWS-F3-S2-C01-R-D",
+        "RWS-F3-S2-C01-L-I",
+        "RWS-F3-S2-C01-L-S",
+        "RWS-F3-S2-C01-L-D"
+      ],
+      "maximum_control_actions": 2700,
+      "maximum_requests": 90
+    },
+    {
+      "block_id": "F3-S1-C07",
+      "phase": "confirmation",
+      "model_id": "F3",
+      "scene_id": "S1",
+      "state_slot": "S1-C07",
+      "episode_ids": [
+        "RWS-F3-S1-C07-R-I",
+        "RWS-F3-S1-C07-R-S",
+        "RWS-F3-S1-C07-R-D",
+        "RWS-F3-S1-C07-F-S",
+        "RWS-F3-S1-C07-F-I",
+        "RWS-F3-S1-C07-F-D",
+        "RWS-F3-S1-C07-L-S",
+        "RWS-F3-S1-C07-L-D",
+        "RWS-F3-S1-C07-L-I",
+        "RWS-F3-S1-C07-B-I",
+        "RWS-F3-S1-C07-B-D",
+        "RWS-F3-S1-C07-B-S"
+      ],
+      "maximum_control_actions": 5400,
+      "maximum_requests": 180
+    },
+    {
+      "block_id": "F3-S5-C07",
+      "phase": "confirmation",
+      "model_id": "F3",
+      "scene_id": "S5",
+      "state_slot": "S5-C07",
+      "episode_ids": [
+        "RWS-F3-S5-C07-RL-D",
+        "RWS-F3-S5-C07-RL-I",
+        "RWS-F3-S5-C07-RL-S",
+        "RWS-F3-S5-C07-LR-I",
+        "RWS-F3-S5-C07-LR-S",
+        "RWS-F3-S5-C07-LR-D"
+      ],
+      "maximum_control_actions": 1800,
+      "maximum_requests": 60
+    },
+    {
+      "block_id": "F3-S2-C03",
+      "phase": "confirmation",
+      "model_id": "F3",
+      "scene_id": "S2",
+      "state_slot": "S2-C03",
+      "episode_ids": [
+        "RWS-F3-S2-C03-R-S",
+        "RWS-F3-S2-C03-R-I",
+        "RWS-F3-S2-C03-R-D",
+        "RWS-F3-S2-C03-L-D",
+        "RWS-F3-S2-C03-L-I",
+        "RWS-F3-S2-C03-L-S"
+      ],
+      "maximum_control_actions": 2700,
+      "maximum_requests": 90
+    },
+    {
+      "block_id": "F3-S5-C03",
+      "phase": "confirmation",
+      "model_id": "F3",
+      "scene_id": "S5",
+      "state_slot": "S5-C03",
+      "episode_ids": [
+        "RWS-F3-S5-C03-RL-S",
+        "RWS-F3-S5-C03-RL-D",
+        "RWS-F3-S5-C03-RL-I",
+        "RWS-F3-S5-C03-LR-D",
+        "RWS-F3-S5-C03-LR-I",
+        "RWS-F3-S5-C03-LR-S"
+      ],
+      "maximum_control_actions": 1800,
+      "maximum_requests": 60
+    },
+    {
+      "block_id": "F3-S1-C08",
+      "phase": "confirmation",
+      "model_id": "F3",
+      "scene_id": "S1",
+      "state_slot": "S1-C08",
+      "episode_ids": [
+        "RWS-F3-S1-C08-B-D",
+        "RWS-F3-S1-C08-B-S",
+        "RWS-F3-S1-C08-B-I",
+        "RWS-F3-S1-C08-F-S",
+        "RWS-F3-S1-C08-F-D",
+        "RWS-F3-S1-C08-F-I",
+        "RWS-F3-S1-C08-L-D",
+        "RWS-F3-S1-C08-L-S",
+        "RWS-F3-S1-C08-L-I",
+        "RWS-F3-S1-C08-R-S",
+        "RWS-F3-S1-C08-R-I",
+        "RWS-F3-S1-C08-R-D"
+      ],
+      "maximum_control_actions": 5400,
+      "maximum_requests": 180
+    },
+    {
+      "block_id": "F3-S3-C06",
+      "phase": "confirmation",
+      "model_id": "F3",
+      "scene_id": "S3",
+      "state_slot": "S3-C06",
+      "episode_ids": [
+        "RWS-F3-S3-C06-R-S",
+        "RWS-F3-S3-C06-R-I",
+        "RWS-F3-S3-C06-R-D",
+        "RWS-F3-S3-C06-TOP-S",
+        "RWS-F3-S3-C06-TOP-D",
+        "RWS-F3-S3-C06-TOP-I",
+        "RWS-F3-S3-C06-L-D",
+        "RWS-F3-S3-C06-L-I",
+        "RWS-F3-S3-C06-L-S"
+      ],
+      "maximum_control_actions": 5400,
+      "maximum_requests": 171
+    },
+    {
+      "block_id": "F3-S3-C05",
+      "phase": "confirmation",
+      "model_id": "F3",
+      "scene_id": "S3",
+      "state_slot": "S3-C05",
+      "episode_ids": [
+        "RWS-F3-S3-C05-R-S",
+        "RWS-F3-S3-C05-R-I",
+        "RWS-F3-S3-C05-R-D",
+        "RWS-F3-S3-C05-L-I",
+        "RWS-F3-S3-C05-L-S",
+        "RWS-F3-S3-C05-L-D",
+        "RWS-F3-S3-C05-TOP-D",
+        "RWS-F3-S3-C05-TOP-S",
+        "RWS-F3-S3-C05-TOP-I"
+      ],
+      "maximum_control_actions": 5400,
+      "maximum_requests": 171
+    },
+    {
+      "block_id": "F3-S2-C04",
+      "phase": "confirmation",
+      "model_id": "F3",
+      "scene_id": "S2",
+      "state_slot": "S2-C04",
+      "episode_ids": [
+        "RWS-F3-S2-C04-L-I",
+        "RWS-F3-S2-C04-L-S",
+        "RWS-F3-S2-C04-L-D",
+        "RWS-F3-S2-C04-R-I",
+        "RWS-F3-S2-C04-R-D",
+        "RWS-F3-S2-C04-R-S"
+      ],
+      "maximum_control_actions": 2700,
+      "maximum_requests": 90
+    },
+    {
+      "block_id": "F3-S2-C06",
+      "phase": "confirmation",
+      "model_id": "F3",
+      "scene_id": "S2",
+      "state_slot": "S2-C06",
+      "episode_ids": [
+        "RWS-F3-S2-C06-L-D",
+        "RWS-F3-S2-C06-L-I",
+        "RWS-F3-S2-C06-L-S",
+        "RWS-F3-S2-C06-R-D",
+        "RWS-F3-S2-C06-R-S",
+        "RWS-F3-S2-C06-R-I"
+      ],
+      "maximum_control_actions": 2700,
+      "maximum_requests": 90
+    },
+    {
+      "block_id": "F3-S1-C05",
+      "phase": "confirmation",
+      "model_id": "F3",
+      "scene_id": "S1",
+      "state_slot": "S1-C05",
+      "episode_ids": [
+        "RWS-F3-S1-C05-R-S",
+        "RWS-F3-S1-C05-R-I",
+        "RWS-F3-S1-C05-R-D",
+        "RWS-F3-S1-C05-B-S",
+        "RWS-F3-S1-C05-B-D",
+        "RWS-F3-S1-C05-B-I",
+        "RWS-F3-S1-C05-F-I",
+        "RWS-F3-S1-C05-F-D",
+        "RWS-F3-S1-C05-F-S",
+        "RWS-F3-S1-C05-L-S",
+        "RWS-F3-S1-C05-L-I",
+        "RWS-F3-S1-C05-L-D"
+      ],
+      "maximum_control_actions": 5400,
+      "maximum_requests": 180
+    },
+    {
+      "block_id": "F3-S2-C08",
+      "phase": "confirmation",
+      "model_id": "F3",
+      "scene_id": "S2",
+      "state_slot": "S2-C08",
+      "episode_ids": [
+        "RWS-F3-S2-C08-L-I",
+        "RWS-F3-S2-C08-L-S",
+        "RWS-F3-S2-C08-L-D",
+        "RWS-F3-S2-C08-R-I",
+        "RWS-F3-S2-C08-R-S",
+        "RWS-F3-S2-C08-R-D"
+      ],
+      "maximum_control_actions": 2700,
+      "maximum_requests": 90
+    },
+    {
+      "block_id": "F3-S1-C04",
+      "phase": "confirmation",
+      "model_id": "F3",
+      "scene_id": "S1",
+      "state_slot": "S1-C04",
+      "episode_ids": [
+        "RWS-F3-S1-C04-R-S",
+        "RWS-F3-S1-C04-R-I",
+        "RWS-F3-S1-C04-R-D",
+        "RWS-F3-S1-C04-B-I",
+        "RWS-F3-S1-C04-B-D",
+        "RWS-F3-S1-C04-B-S",
+        "RWS-F3-S1-C04-F-S",
+        "RWS-F3-S1-C04-F-D",
+        "RWS-F3-S1-C04-F-I",
+        "RWS-F3-S1-C04-L-D",
+        "RWS-F3-S1-C04-L-I",
+        "RWS-F3-S1-C04-L-S"
+      ],
+      "maximum_control_actions": 5400,
+      "maximum_requests": 180
+    },
+    {
+      "block_id": "F3-S4-C01",
+      "phase": "confirmation",
+      "model_id": "F3",
+      "scene_id": "S4",
+      "state_slot": "S4-C01",
+      "episode_ids": [
+        "RWS-F3-S4-C01-R-S",
+        "RWS-F3-S4-C01-R-I",
+        "RWS-F3-S4-C01-R-D",
+        "RWS-F3-S4-C01-L-D",
+        "RWS-F3-S4-C01-L-S",
+        "RWS-F3-S4-C01-L-I",
+        "RWS-F3-S4-C01-TOP-S",
+        "RWS-F3-S4-C01-TOP-I",
+        "RWS-F3-S4-C01-TOP-D"
+      ],
+      "maximum_control_actions": 5400,
+      "maximum_requests": 171
+    },
+    {
+      "block_id": "F3-S3-C08",
+      "phase": "confirmation",
+      "model_id": "F3",
+      "scene_id": "S3",
+      "state_slot": "S3-C08",
+      "episode_ids": [
+        "RWS-F3-S3-C08-L-S",
+        "RWS-F3-S3-C08-L-I",
+        "RWS-F3-S3-C08-L-D",
+        "RWS-F3-S3-C08-R-I",
+        "RWS-F3-S3-C08-R-D",
+        "RWS-F3-S3-C08-R-S",
+        "RWS-F3-S3-C08-TOP-S",
+        "RWS-F3-S3-C08-TOP-D",
+        "RWS-F3-S3-C08-TOP-I"
+      ],
+      "maximum_control_actions": 5400,
+      "maximum_requests": 171
+    },
+    {
+      "block_id": "F3-S4-C04",
+      "phase": "confirmation",
+      "model_id": "F3",
+      "scene_id": "S4",
+      "state_slot": "S4-C04",
+      "episode_ids": [
+        "RWS-F3-S4-C04-TOP-S",
+        "RWS-F3-S4-C04-TOP-I",
+        "RWS-F3-S4-C04-TOP-D",
+        "RWS-F3-S4-C04-R-I",
+        "RWS-F3-S4-C04-R-D",
+        "RWS-F3-S4-C04-R-S",
+        "RWS-F3-S4-C04-L-I",
+        "RWS-F3-S4-C04-L-S",
+        "RWS-F3-S4-C04-L-D"
+      ],
+      "maximum_control_actions": 5400,
+      "maximum_requests": 171
+    },
+    {
+      "block_id": "F3-S5-C04",
+      "phase": "confirmation",
+      "model_id": "F3",
+      "scene_id": "S5",
+      "state_slot": "S5-C04",
+      "episode_ids": [
+        "RWS-F3-S5-C04-RL-S",
+        "RWS-F3-S5-C04-RL-D",
+        "RWS-F3-S5-C04-RL-I",
+        "RWS-F3-S5-C04-LR-D",
+        "RWS-F3-S5-C04-LR-S",
+        "RWS-F3-S5-C04-LR-I"
+      ],
+      "maximum_control_actions": 1800,
+      "maximum_requests": 60
+    },
+    {
+      "block_id": "F3-S3-C07",
+      "phase": "confirmation",
+      "model_id": "F3",
+      "scene_id": "S3",
+      "state_slot": "S3-C07",
+      "episode_ids": [
+        "RWS-F3-S3-C07-L-I",
+        "RWS-F3-S3-C07-L-S",
+        "RWS-F3-S3-C07-L-D",
+        "RWS-F3-S3-C07-TOP-I",
+        "RWS-F3-S3-C07-TOP-S",
+        "RWS-F3-S3-C07-TOP-D",
+        "RWS-F3-S3-C07-R-D",
+        "RWS-F3-S3-C07-R-I",
+        "RWS-F3-S3-C07-R-S"
+      ],
+      "maximum_control_actions": 5400,
+      "maximum_requests": 171
+    },
+    {
+      "block_id": "F3-S1-C03",
+      "phase": "confirmation",
+      "model_id": "F3",
+      "scene_id": "S1",
+      "state_slot": "S1-C03",
+      "episode_ids": [
+        "RWS-F3-S1-C03-R-S",
+        "RWS-F3-S1-C03-R-I",
+        "RWS-F3-S1-C03-R-D",
+        "RWS-F3-S1-C03-F-S",
+        "RWS-F3-S1-C03-F-I",
+        "RWS-F3-S1-C03-F-D",
+        "RWS-F3-S1-C03-L-I",
+        "RWS-F3-S1-C03-L-D",
+        "RWS-F3-S1-C03-L-S",
+        "RWS-F3-S1-C03-B-S",
+        "RWS-F3-S1-C03-B-D",
+        "RWS-F3-S1-C03-B-I"
+      ],
+      "maximum_control_actions": 5400,
+      "maximum_requests": 180
+    },
+    {
+      "block_id": "F3-S3-C02",
+      "phase": "confirmation",
+      "model_id": "F3",
+      "scene_id": "S3",
+      "state_slot": "S3-C02",
+      "episode_ids": [
+        "RWS-F3-S3-C02-R-D",
+        "RWS-F3-S3-C02-R-I",
+        "RWS-F3-S3-C02-R-S",
+        "RWS-F3-S3-C02-L-D",
+        "RWS-F3-S3-C02-L-S",
+        "RWS-F3-S3-C02-L-I",
+        "RWS-F3-S3-C02-TOP-S",
+        "RWS-F3-S3-C02-TOP-I",
+        "RWS-F3-S3-C02-TOP-D"
+      ],
+      "maximum_control_actions": 5400,
+      "maximum_requests": 171
+    },
+    {
+      "block_id": "F3-S4-C06",
+      "phase": "confirmation",
+      "model_id": "F3",
+      "scene_id": "S4",
+      "state_slot": "S4-C06",
+      "episode_ids": [
+        "RWS-F3-S4-C06-R-S",
+        "RWS-F3-S4-C06-R-I",
+        "RWS-F3-S4-C06-R-D",
+        "RWS-F3-S4-C06-L-S",
+        "RWS-F3-S4-C06-L-D",
+        "RWS-F3-S4-C06-L-I",
+        "RWS-F3-S4-C06-TOP-D",
+        "RWS-F3-S4-C06-TOP-S",
+        "RWS-F3-S4-C06-TOP-I"
+      ],
+      "maximum_control_actions": 5400,
+      "maximum_requests": 171
+    },
+    {
+      "block_id": "F3-S2-C02",
+      "phase": "confirmation",
+      "model_id": "F3",
+      "scene_id": "S2",
+      "state_slot": "S2-C02",
+      "episode_ids": [
+        "RWS-F3-S2-C02-R-S",
+        "RWS-F3-S2-C02-R-D",
+        "RWS-F3-S2-C02-R-I",
+        "RWS-F3-S2-C02-L-I",
+        "RWS-F3-S2-C02-L-D",
+        "RWS-F3-S2-C02-L-S"
+      ],
+      "maximum_control_actions": 2700,
+      "maximum_requests": 90
+    },
+    {
+      "block_id": "F3-S5-C02",
+      "phase": "confirmation",
+      "model_id": "F3",
+      "scene_id": "S5",
+      "state_slot": "S5-C02",
+      "episode_ids": [
+        "RWS-F3-S5-C02-RL-I",
+        "RWS-F3-S5-C02-RL-S",
+        "RWS-F3-S5-C02-RL-D",
+        "RWS-F3-S5-C02-LR-D",
+        "RWS-F3-S5-C02-LR-S",
+        "RWS-F3-S5-C02-LR-I"
+      ],
+      "maximum_control_actions": 1800,
+      "maximum_requests": 60
+    },
+    {
+      "block_id": "F3-S1-C01",
+      "phase": "confirmation",
+      "model_id": "F3",
+      "scene_id": "S1",
+      "state_slot": "S1-C01",
+      "episode_ids": [
+        "RWS-F3-S1-C01-L-D",
+        "RWS-F3-S1-C01-L-S",
+        "RWS-F3-S1-C01-L-I",
+        "RWS-F3-S1-C01-R-D",
+        "RWS-F3-S1-C01-R-S",
+        "RWS-F3-S1-C01-R-I",
+        "RWS-F3-S1-C01-B-I",
+        "RWS-F3-S1-C01-B-D",
+        "RWS-F3-S1-C01-B-S",
+        "RWS-F3-S1-C01-F-I",
+        "RWS-F3-S1-C01-F-S",
+        "RWS-F3-S1-C01-F-D"
+      ],
+      "maximum_control_actions": 5400,
+      "maximum_requests": 180
+    },
+    {
+      "block_id": "F3-S3-C04",
+      "phase": "confirmation",
+      "model_id": "F3",
+      "scene_id": "S3",
+      "state_slot": "S3-C04",
+      "episode_ids": [
+        "RWS-F3-S3-C04-TOP-S",
+        "RWS-F3-S3-C04-TOP-D",
+        "RWS-F3-S3-C04-TOP-I",
+        "RWS-F3-S3-C04-L-I",
+        "RWS-F3-S3-C04-L-S",
+        "RWS-F3-S3-C04-L-D",
+        "RWS-F3-S3-C04-R-I",
+        "RWS-F3-S3-C04-R-D",
+        "RWS-F3-S3-C04-R-S"
+      ],
+      "maximum_control_actions": 5400,
+      "maximum_requests": 171
+    }
+  ],
+  "prompt_matrix_sha256": "bfa090ab14f1e9bcad70b97f1e5c4d67f423663091301a97098c8c60a6b38f51",
+  "planned_episodes_sha256": "efd09215368f5cc28f22ab073e0ebf48e2a70747717032c8ed651fcdcd121017"
+}

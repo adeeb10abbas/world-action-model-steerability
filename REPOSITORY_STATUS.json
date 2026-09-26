@@ -117,5 +117,26 @@
     "valid_physical_rejections": 8
   },
   "status": "PHYSICAL_SCENES_COMPLETE_RUNTIME_PENDING",
-  "study_id": "SGW-01"
+  "study_id": "SGW-01",
+  "status_record_scope": "Existing top-level geometry, counts and receipts describe historical SGW-01. Current native RoboLab handoff is listed separately below.",
+  "native_robolab_workshop": {
+    "study_id": "RWS-20260926",
+    "protocol_version": "0.2",
+    "status": "SPECIFICATION_COMPLETE_RUNTIME_PENDING",
+    "handoff_entrypoint": "docs/robolab-workshop-20260926/CLUSTER_EXECUTION_SPEC.md",
+    "agent_prompt": "docs/robolab-workshop-20260926/AGENT_HANDOFF.md",
+    "active_models": [
+      "N3",
+      "E3",
+      "F3"
+    ],
+    "core_scenes": 5,
+    "core_prompts": 42,
+    "physical_confirmation_state_slots": 40,
+    "planned_confirmation_episodes": 1008,
+    "development_episode_cap": 46,
+    "new_episodes_launched": 0,
+    "physical_state_binding_complete": false,
+    "runtime_qualified": false
+  }
 }

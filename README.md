@@ -2,7 +2,7 @@
 
 Do equivalent descriptions of a spatial goal produce the same predicted and executed behavior? This repository contains the clean-scene study for the [CoRL 2026 world-model workshop](https://do-robots-need-world-models.github.io/).
 
-**New workshop-paper proposal:** Start with the [illustrated scenes and exact prompts](docs/robolab-workshop-20260926/README.md), then the fixed research question and experiment design. This is a design for review; no new study has started.
+**Current native RoboLab workshop handoff:** Start with the [cluster experiment specification](docs/robolab-workshop-20260926/CLUSTER_EXECUTION_SPEC.md) and [copyable agent prompt](docs/robolab-workshop-20260926/AGENT_HANDOFF.md). Exact model settings, all 1,054 planned development/confirmation rows, bounded preparation, recordings and analysis are specified. The [illustrated scenes and exact prompts](docs/robolab-workshop-20260926/README.md) show what each episode tests. State binding and runtime integration remain execution work; no new study has started. The SGW-01 material below is a separate historical design.
 
 **Separate stock RoboLab pilots:** The [six-cell Nano wording pilot](docs/WORKSTATION_NANO_RESULTS_20260926.md) is complete. The [nine-task spatial pilot](docs/WORKSTATION_NANO_SPATIAL_RESULTS_20260926.md) completed on September 26 with 2/9 native successes; the mug trial has a recorded reset-scene caveat. These exploratory runs are separate from the clean-scene cluster study below.
 
