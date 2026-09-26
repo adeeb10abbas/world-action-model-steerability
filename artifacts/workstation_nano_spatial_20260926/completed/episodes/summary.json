@@ -1,0 +1,1885 @@
+{
+  "plan": {
+    "cameras": "Original WRIST_LEFT_RIGHT_HEAD; policy receives wrist, left and right.",
+    "checkpoint": "nvidia/Cosmos3-Nano-Policy-DROID",
+    "checkpoint_revision": "6706d7680581c255ff61e0f3bb49d90eac55c79e",
+    "comparison": "Same Nano configuration as the earlier wording pilot; native scenes and horizons differ.",
+    "cosmos_commit": "411d25b2e35bc441126f48c44a4b93e1c0564274",
+    "environment_seed": 6100,
+    "forecast_scoring": "Raw futures retained; camera and physical-time correspondence remain unqualified.",
+    "maximum_control_steps": 4050,
+    "maximum_requests": 133,
+    "policy_seed": 6100,
+    "robolab_commit": "0aef241fb088ca21bb4ebd24448940ed56620d17",
+    "scope": "One episode per stock task, selected before outcomes; not a success-rate estimate.",
+    "server_config": {
+      "action_chunk_size": 32,
+      "action_dim": 8,
+      "action_space": "joint_pos",
+      "conditioning_fps": 15.0,
+      "decode_video": true,
+      "deterministic_seed": true,
+      "domain_name": "droid_lerobot",
+      "guidance": 3.0,
+      "history_length": 1,
+      "image_height": 540,
+      "image_width": 640,
+      "num_steps": 4,
+      "resolution": "480",
+      "seed": 6100,
+      "shift": 5.0,
+      "use_state": true
+    },
+    "study": "stock-nano-spatial-task-pilot-20260926",
+    "tasks": [
+      {
+        "maximum_control_steps": 450,
+        "maximum_requests": 15,
+        "native_horizon_seconds": 30,
+        "prompt": "Put the rubiks cube in front of the bowl",
+        "task": "RubiksCubeInFrontOfBowlTask"
+      },
+      {
+        "maximum_control_steps": 450,
+        "maximum_requests": 15,
+        "native_horizon_seconds": 30,
+        "prompt": "Put the rubiks cube behind the bowl",
+        "task": "RubiksCubeBehindBowlTask"
+      },
+      {
+        "maximum_control_steps": 600,
+        "maximum_requests": 19,
+        "native_horizon_seconds": 40,
+        "prompt": "Pick up the butter box and place it on top of the raisin box",
+        "task": "ButterAboveRaisinTask"
+      },
+      {
+        "maximum_control_steps": 600,
+        "maximum_requests": 19,
+        "native_horizon_seconds": 40,
+        "prompt": "Place the mustard on the raisin box. ",
+        "task": "MustardAboveRaisinTask"
+      },
+      {
+        "maximum_control_steps": 450,
+        "maximum_requests": 15,
+        "native_horizon_seconds": 30,
+        "prompt": "Put the mustard in the left bin",
+        "task": "MustardInLeftBinTask"
+      },
+      {
+        "maximum_control_steps": 450,
+        "maximum_requests": 15,
+        "native_horizon_seconds": 30,
+        "prompt": "Put the mustard in the right bin",
+        "task": "MustardInRightBinTask"
+      },
+      {
+        "maximum_control_steps": 300,
+        "maximum_requests": 10,
+        "native_horizon_seconds": 20,
+        "prompt": "Stack the left bowl on the right bowl",
+        "task": "BowlStackingLeftOnRightTask"
+      },
+      {
+        "maximum_control_steps": 300,
+        "maximum_requests": 10,
+        "native_horizon_seconds": 20,
+        "prompt": "Stack the right bowl on the left bowl",
+        "task": "BowlStackingRightOnLeftTask"
+      },
+      {
+        "maximum_control_steps": 450,
+        "maximum_requests": 15,
+        "native_horizon_seconds": 30,
+        "prompt": "Put the white mug in the center of the table.",
+        "task": "WhiteMugInCenterOfTableTask"
+      }
+    ],
+    "termination": "Unmodified native success and timeout conditions; early success enabled."
+  },
+  "results": [
+    {
+      "claim_boundary": "One episode per task, not a success-rate estimate. Check initial_goal_satisfied before attributing native success to the policy.",
+      "environment_seed": 6100,
+      "ever_grabbed_target": true,
+      "final": {
+        "native_goal_predicate": false,
+        "poses": {
+          "banana": {
+            "position_env_local_m": [
+              0.5390526652336121,
+              -0.0756259337067604,
+              0.06818380951881409
+            ],
+            "quaternion_world_wxyz": [
+              0.9999991059303284,
+              -0.0006574577419087291,
+              -0.0012183007784187794,
+              0.00016881049668882042
+            ]
+          },
+          "bowl": {
+            "position_env_local_m": [
+              0.4406292140483856,
+              0.12713707983493805,
+              0.0773506611585617
+            ],
+            "quaternion_world_wxyz": [
+              0.9998794198036194,
+              -0.0003700588131323457,
+              -0.0004388054949231446,
+              -0.015526012517511845
+            ]
+          },
+          "robot": {
+            "position_env_local_m": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "quaternion_world_wxyz": [
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          "rubiks_cube": {
+            "position_env_local_m": [
+              0.4036702811717987,
+              0.23364947736263275,
+              0.24714048206806183
+            ],
+            "quaternion_world_wxyz": [
+              0.6998689770698547,
+              -0.7127526998519897,
+              -0.010586344636976719,
+              0.04533236846327782
+            ]
+          },
+          "table": {
+            "position_env_local_m": [
+              0.19858461618423462,
+              0.022068263962864876,
+              0.050000064074993134
+            ],
+            "quaternion_world_wxyz": [
+              1.0,
+              2.869055322207714e-07,
+              5.275423831108128e-08,
+              -1.032483538665474e-07
+            ]
+          }
+        },
+        "sim_time_s": 30.0,
+        "step": 450,
+        "target_grabbed": {
+          "rubiks_cube": true
+        }
+      },
+      "final_goal_satisfied": false,
+      "finished_at_utc": "2026-09-26T10:01:34.935306+00:00",
+      "future_count": 15,
+      "initial": {
+        "native_goal_predicate": false,
+        "poses": {
+          "banana": {
+            "position_env_local_m": [
+              0.538878858089447,
+              -0.07555567473173141,
+              0.0684281587600708
+            ],
+            "quaternion_world_wxyz": [
+              0.9999781250953674,
+              -0.0026648887433111668,
+              -0.006051987875252962,
+              0.0001454032608307898
+            ]
+          },
+          "bowl": {
+            "position_env_local_m": [
+              0.44258353114128113,
+              0.12658219039440155,
+              0.07732785493135452
+            ],
+            "quaternion_world_wxyz": [
+              0.9999999403953552,
+              -5.8753543271450326e-05,
+              -0.00032362030469812453,
+              -0.00010501052747713402
+            ]
+          },
+          "robot": {
+            "position_env_local_m": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "quaternion_world_wxyz": [
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          "rubiks_cube": {
+            "position_env_local_m": [
+              0.4306528866291046,
+              -0.09742811322212219,
+              0.08113233000040054
+            ],
+            "quaternion_world_wxyz": [
+              0.9999990463256836,
+              -0.0009071399690583348,
+              0.001037940033711493,
+              8.44117093947716e-05
+            ]
+          },
+          "table": {
+            "position_env_local_m": [
+              0.19858434796333313,
+              0.02206825464963913,
+              0.05000072345137596
+            ],
+            "quaternion_world_wxyz": [
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          }
+        },
+        "sim_time_s": 0.0,
+        "step": 0,
+        "target_grabbed": {
+          "rubiks_cube": false
+        }
+      },
+      "initial_goal_satisfied": false,
+      "maximum_control_steps": 450,
+      "native_actions_match_policy": true,
+      "native_results": [
+        {
+          "env_id": 0,
+          "step": 450,
+          "success": false
+        }
+      ],
+      "native_success": false,
+      "policy_seed": 6100,
+      "prompt": "Put the rubiks cube in front of the bowl",
+      "request_count": 15,
+      "status": "complete",
+      "steps": 450,
+      "task": "RubiksCubeInFrontOfBowlTask",
+      "timing": {
+        "env_step_avg_ms": 171.9,
+        "env_step_s": 77.338,
+        "it_per_sec": 0.44,
+        "policy_inference_avg_ms": 2071.0,
+        "policy_inference_s": 931.948,
+        "video_write_avg_ms": 8.2,
+        "video_write_s": 3.706,
+        "wall_total_s": 1012.992
+      },
+      "videos": [
+        {
+          "bytes": 11217042,
+          "path": "native/Put_the_rubiks_cube_in_front_of_the_bowl_0.mp4"
+        },
+        {
+          "bytes": 1633256,
+          "path": "native/Put_the_rubiks_cube_in_front_of_the_bowl_0_viewport.mp4"
+        }
+      ]
+    },
+    {
+      "claim_boundary": "One episode per task, not a success-rate estimate. Check initial_goal_satisfied before attributing native success to the policy.",
+      "environment_seed": 6100,
+      "ever_grabbed_target": true,
+      "final": {
+        "native_goal_predicate": false,
+        "poses": {
+          "banana": {
+            "position_env_local_m": [
+              0.5390532612800598,
+              -0.0756259337067604,
+              0.06818336993455887
+            ],
+            "quaternion_world_wxyz": [
+              0.9999990463256836,
+              -0.0006557212327606976,
+              -0.0012113337870687246,
+              0.00016884169599507004
+            ]
+          },
+          "bowl": {
+            "position_env_local_m": [
+              0.44551998376846313,
+              0.11901117116212845,
+              0.07734793424606323
+            ],
+            "quaternion_world_wxyz": [
+              0.9986085295677185,
+              -0.0003934112028218806,
+              -0.0004489908751565963,
+              0.05273350700736046
+            ]
+          },
+          "robot": {
+            "position_env_local_m": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "quaternion_world_wxyz": [
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          "rubiks_cube": {
+            "position_env_local_m": [
+              0.4728725850582123,
+              0.0987614169716835,
+              0.08394843339920044
+            ],
+            "quaternion_world_wxyz": [
+              0.9800690412521362,
+              -0.0003502534527797252,
+              -0.01161997951567173,
+              0.19831639528274536
+            ]
+          },
+          "table": {
+            "position_env_local_m": [
+              0.19858485460281372,
+              0.02206823229789734,
+              0.04999976605176926
+            ],
+            "quaternion_world_wxyz": [
+              0.9999999403953552,
+              1.5149741727782384e-07,
+              -2.5846523499239993e-07,
+              1.1253815657141786e-08
+            ]
+          }
+        },
+        "sim_time_s": 30.0,
+        "step": 450,
+        "target_grabbed": {
+          "rubiks_cube": false
+        }
+      },
+      "final_goal_satisfied": false,
+      "finished_at_utc": "2026-09-26T10:18:26.018770+00:00",
+      "future_count": 15,
+      "initial": {
+        "native_goal_predicate": false,
+        "poses": {
+          "banana": {
+            "position_env_local_m": [
+              0.538878858089447,
+              -0.07555567473173141,
+              0.0684281587600708
+            ],
+            "quaternion_world_wxyz": [
+              0.9999781250953674,
+              -0.0026648887433111668,
+              -0.006051987875252962,
+              0.0001454032608307898
+            ]
+          },
+          "bowl": {
+            "position_env_local_m": [
+              0.44258353114128113,
+              0.12658219039440155,
+              0.07732785493135452
+            ],
+            "quaternion_world_wxyz": [
+              0.9999999403953552,
+              -5.8753543271450326e-05,
+              -0.00032362030469812453,
+              -0.00010501052747713402
+            ]
+          },
+          "robot": {
+            "position_env_local_m": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "quaternion_world_wxyz": [
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          "rubiks_cube": {
+            "position_env_local_m": [
+              0.4306528866291046,
+              -0.09742811322212219,
+              0.08113233000040054
+            ],
+            "quaternion_world_wxyz": [
+              0.9999990463256836,
+              -0.0009071399690583348,
+              0.001037940033711493,
+              8.44117093947716e-05
+            ]
+          },
+          "table": {
+            "position_env_local_m": [
+              0.19858434796333313,
+              0.02206825464963913,
+              0.05000072345137596
+            ],
+            "quaternion_world_wxyz": [
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          }
+        },
+        "sim_time_s": 0.0,
+        "step": 0,
+        "target_grabbed": {
+          "rubiks_cube": false
+        }
+      },
+      "initial_goal_satisfied": false,
+      "maximum_control_steps": 450,
+      "native_actions_match_policy": true,
+      "native_results": [
+        {
+          "env_id": 0,
+          "step": 450,
+          "success": false
+        }
+      ],
+      "native_success": false,
+      "policy_seed": 6100,
+      "prompt": "Put the rubiks cube behind the bowl",
+      "request_count": 15,
+      "status": "complete",
+      "steps": 450,
+      "task": "RubiksCubeBehindBowlTask",
+      "timing": {
+        "env_step_avg_ms": 171.1,
+        "env_step_s": 77.004,
+        "it_per_sec": 0.45,
+        "policy_inference_avg_ms": 2055.9,
+        "policy_inference_s": 925.157,
+        "video_write_avg_ms": 8.3,
+        "video_write_s": 3.723,
+        "wall_total_s": 1005.883
+      },
+      "videos": [
+        {
+          "bytes": 11056533,
+          "path": "native/Put_the_rubiks_cube_behind_the_bowl_0.mp4"
+        },
+        {
+          "bytes": 1766883,
+          "path": "native/Put_the_rubiks_cube_behind_the_bowl_0_viewport.mp4"
+        }
+      ]
+    },
+    {
+      "claim_boundary": "One episode per task, not a success-rate estimate. Check initial_goal_satisfied before attributing native success to the policy.",
+      "environment_seed": 6100,
+      "ever_grabbed_target": true,
+      "final": {
+        "native_goal_predicate": true,
+        "poses": {
+          "butter": {
+            "position_env_local_m": [
+              0.4323904514312744,
+              0.19373731315135956,
+              0.020746424794197083
+            ],
+            "quaternion_world_wxyz": [
+              -0.19485250115394592,
+              0.700800359249115,
+              -0.3746646046638489,
+              0.5749241709709167
+            ]
+          },
+          "raisin_box": {
+            "position_env_local_m": [
+              0.40079349279403687,
+              0.2512453496456146,
+              0.021491458639502525
+            ],
+            "quaternion_world_wxyz": [
+              0.7117996215820312,
+              -0.005932703614234924,
+              0.7023462057113647,
+              -0.003990798257291317
+            ]
+          },
+          "robot": {
+            "position_env_local_m": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "quaternion_world_wxyz": [
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          "table": {
+            "position_env_local_m": [
+              0.5471958518028259,
+              -5.7582226872909814e-05,
+              -0.34700000286102295
+            ],
+            "quaternion_world_wxyz": [
+              1.0,
+              -1.8903552501114973e-08,
+              -1.3270222609662596e-07,
+              3.5621336991198405e-08
+            ]
+          }
+        },
+        "sim_time_s": 11.533333333333333,
+        "step": 173,
+        "target_grabbed": {
+          "butter": false
+        }
+      },
+      "final_goal_satisfied": true,
+      "finished_at_utc": "2026-09-26T10:25:17.272623+00:00",
+      "future_count": 6,
+      "initial": {
+        "native_goal_predicate": false,
+        "poses": {
+          "butter": {
+            "position_env_local_m": [
+              0.30301183462142944,
+              0.048409316688776016,
+              -0.02287965640425682
+            ],
+            "quaternion_world_wxyz": [
+              0.14209763705730438,
+              0.9237223267555237,
+              -0.3548627197742462,
+              -0.02485467866063118
+            ]
+          },
+          "raisin_box": {
+            "position_env_local_m": [
+              0.4008031487464905,
+              0.25123170018196106,
+              0.02150517888367176
+            ],
+            "quaternion_world_wxyz": [
+              0.7115547060966492,
+              -0.0055539244785904884,
+              0.7025997638702393,
+              -0.003549134125933051
+            ]
+          },
+          "robot": {
+            "position_env_local_m": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "quaternion_world_wxyz": [
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          "table": {
+            "position_env_local_m": [
+              0.5471954941749573,
+              -5.750182754127309e-05,
+              -0.3470015823841095
+            ],
+            "quaternion_world_wxyz": [
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          }
+        },
+        "sim_time_s": 0.0,
+        "step": 0,
+        "target_grabbed": {
+          "butter": false
+        }
+      },
+      "initial_goal_satisfied": false,
+      "maximum_control_steps": 600,
+      "native_actions_match_policy": true,
+      "native_results": [
+        {
+          "env_id": 0,
+          "step": 173,
+          "success": true
+        }
+      ],
+      "native_success": true,
+      "policy_seed": 6100,
+      "prompt": "Pick up the butter box and place it on top of the raisin box",
+      "request_count": 6,
+      "status": "complete",
+      "steps": 173,
+      "task": "ButterAboveRaisinTask",
+      "timing": {
+        "env_step_avg_ms": 176.1,
+        "env_step_s": 30.463,
+        "it_per_sec": 0.43,
+        "policy_inference_avg_ms": 2151.9,
+        "policy_inference_s": 372.28,
+        "video_write_avg_ms": 9.3,
+        "video_write_s": 1.612,
+        "wall_total_s": 404.355
+      },
+      "videos": [
+        {
+          "bytes": 6123140,
+          "path": "native/Pick_up_the_butter_box_and_place_it_on_top_of_the_raisin_box_0.mp4"
+        },
+        {
+          "bytes": 791941,
+          "path": "native/Pick_up_the_butter_box_and_place_it_on_top_of_the_raisin_box_0_viewport.mp4"
+        }
+      ]
+    },
+    {
+      "claim_boundary": "One episode per task, not a success-rate estimate. Check initial_goal_satisfied before attributing native success to the policy.",
+      "environment_seed": 6100,
+      "ever_grabbed_target": true,
+      "final": {
+        "native_goal_predicate": false,
+        "poses": {
+          "mustard_bottle": {
+            "position_env_local_m": [
+              0.34098079800605774,
+              0.22829967737197876,
+              0.027158604934811592
+            ],
+            "quaternion_world_wxyz": [
+              0.21728116273880005,
+              -0.6740080118179321,
+              0.2148093730211258,
+              0.6725766062736511
+            ]
+          },
+          "raisin_box": {
+            "position_env_local_m": [
+              0.40074265003204346,
+              0.1315026432275772,
+              0.02150019071996212
+            ],
+            "quaternion_world_wxyz": [
+              0.7115611433982849,
+              -0.006843032781034708,
+              0.7025870084762573,
+              -0.0023214954417198896
+            ]
+          },
+          "robot": {
+            "position_env_local_m": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "quaternion_world_wxyz": [
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          "table": {
+            "position_env_local_m": [
+              0.5472205281257629,
+              -6.996126467129216e-05,
+              -0.34700000286102295
+            ],
+            "quaternion_world_wxyz": [
+              1.0,
+              5.199449315540505e-09,
+              -1.1102896735337708e-07,
+              1.0405552863801404e-08
+            ]
+          }
+        },
+        "sim_time_s": 40.0,
+        "step": 600,
+        "target_grabbed": {
+          "mustard_bottle": false
+        }
+      },
+      "final_goal_satisfied": false,
+      "finished_at_utc": "2026-09-26T10:46:41.600040+00:00",
+      "future_count": 19,
+      "initial": {
+        "native_goal_predicate": false,
+        "poses": {
+          "mustard_bottle": {
+            "position_env_local_m": [
+              0.40427717566490173,
+              0.21475614607334137,
+              0.08231113851070404
+            ],
+            "quaternion_world_wxyz": [
+              0.4984035789966583,
+              -0.0056839208118617535,
+              0.015757551416754723,
+              0.8667832612991333
+            ]
+          },
+          "raisin_box": {
+            "position_env_local_m": [
+              0.400798499584198,
+              0.13165715336799622,
+              0.021507641300559044
+            ],
+            "quaternion_world_wxyz": [
+              0.7115554809570312,
+              -0.005640743765980005,
+              0.7025987505912781,
+              -0.003458616090938449
+            ]
+          },
+          "robot": {
+            "position_env_local_m": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "quaternion_world_wxyz": [
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          "table": {
+            "position_env_local_m": [
+              0.5472202301025391,
+              -6.994768045842648e-05,
+              -0.34699881076812744
+            ],
+            "quaternion_world_wxyz": [
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          }
+        },
+        "sim_time_s": 0.0,
+        "step": 0,
+        "target_grabbed": {
+          "mustard_bottle": false
+        }
+      },
+      "initial_goal_satisfied": false,
+      "maximum_control_steps": 600,
+      "native_actions_match_policy": true,
+      "native_results": [
+        {
+          "env_id": 0,
+          "step": 600,
+          "success": false
+        }
+      ],
+      "native_success": false,
+      "policy_seed": 6100,
+      "prompt": "Place the mustard on the raisin box. ",
+      "request_count": 19,
+      "status": "complete",
+      "steps": 600,
+      "task": "MustardAboveRaisinTask",
+      "timing": {
+        "env_step_avg_ms": 163.5,
+        "env_step_s": 98.104,
+        "it_per_sec": 0.47,
+        "policy_inference_avg_ms": 1959.0,
+        "policy_inference_s": 1175.375,
+        "video_write_avg_ms": 8.3,
+        "video_write_s": 4.955,
+        "wall_total_s": 1278.434
+      },
+      "videos": [
+        {
+          "bytes": 18614897,
+          "path": "native/Place_the_mustard_on_the_raisin_box__0.mp4"
+        },
+        {
+          "bytes": 2096220,
+          "path": "native/Place_the_mustard_on_the_raisin_box__0_viewport.mp4"
+        }
+      ]
+    },
+    {
+      "claim_boundary": "One episode per task, not a success-rate estimate. Check initial_goal_satisfied before attributing native success to the policy.",
+      "environment_seed": 6100,
+      "ever_grabbed_target": true,
+      "final": {
+        "native_goal_predicate": false,
+        "poses": {
+          "grey_bin_left": {
+            "position_env_local_m": [
+              0.5185225009918213,
+              0.28829771280288696,
+              0.004999998956918716
+            ],
+            "quaternion_world_wxyz": [
+              0.9999998211860657,
+              -3.5771387274508015e-07,
+              -4.6603904024777876e-07,
+              0.0006279328372329473
+            ]
+          },
+          "grey_bin_right": {
+            "position_env_local_m": [
+              0.5183427929878235,
+              -0.292489618062973,
+              0.004999913275241852
+            ],
+            "quaternion_world_wxyz": [
+              1.0,
+              -5.409632990449609e-07,
+              -1.768363802057138e-07,
+              -3.047983227588702e-06
+            ]
+          },
+          "mustard": {
+            "position_env_local_m": [
+              0.5622074007987976,
+              0.07898111641407013,
+              0.1015562117099762
+            ],
+            "quaternion_world_wxyz": [
+              0.9990525245666504,
+              -0.04149004444479942,
+              0.012931049801409245,
+              0.002293315250426531
+            ]
+          },
+          "robot": {
+            "position_env_local_m": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "quaternion_world_wxyz": [
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          "table": {
+            "position_env_local_m": [
+              0.5471370220184326,
+              2.4079042759694858e-08,
+              -0.3450000584125519
+            ],
+            "quaternion_world_wxyz": [
+              1.0,
+              2.004786381348822e-07,
+              1.3253198005713784e-07,
+              7.3476886797152474e-09
+            ]
+          }
+        },
+        "sim_time_s": 30.0,
+        "step": 450,
+        "target_grabbed": {
+          "mustard": false
+        }
+      },
+      "final_goal_satisfied": false,
+      "finished_at_utc": "2026-09-26T11:03:37.327901+00:00",
+      "future_count": 15,
+      "initial": {
+        "native_goal_predicate": false,
+        "poses": {
+          "grey_bin_left": {
+            "position_env_local_m": [
+              0.5183117985725403,
+              0.28813636302948,
+              0.005000028759241104
+            ],
+            "quaternion_world_wxyz": [
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          "grey_bin_right": {
+            "position_env_local_m": [
+              0.5183118581771851,
+              -0.29250726103782654,
+              0.005000010132789612
+            ],
+            "quaternion_world_wxyz": [
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          "mustard": {
+            "position_env_local_m": [
+              0.5899075865745544,
+              3.1596486223861575e-05,
+              0.10049273818731308
+            ],
+            "quaternion_world_wxyz": [
+              0.9999995827674866,
+              -0.00016255438094958663,
+              -0.0008989080088213086,
+              2.3059724298946094e-06
+            ]
+          },
+          "robot": {
+            "position_env_local_m": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "quaternion_world_wxyz": [
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          "table": {
+            "position_env_local_m": [
+              0.5471368432044983,
+              1.2532538562481932e-08,
+              -0.3449999988079071
+            ],
+            "quaternion_world_wxyz": [
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          }
+        },
+        "sim_time_s": 0.0,
+        "step": 0,
+        "target_grabbed": {
+          "mustard": false
+        }
+      },
+      "initial_goal_satisfied": false,
+      "maximum_control_steps": 450,
+      "native_actions_match_policy": true,
+      "native_results": [
+        {
+          "env_id": 0,
+          "step": 450,
+          "success": false
+        }
+      ],
+      "native_success": false,
+      "policy_seed": 6100,
+      "prompt": "Put the mustard in the left bin",
+      "request_count": 15,
+      "status": "complete",
+      "steps": 450,
+      "task": "MustardInLeftBinTask",
+      "timing": {
+        "env_step_avg_ms": 173.5,
+        "env_step_s": 78.097,
+        "it_per_sec": 0.45,
+        "policy_inference_avg_ms": 2058.2,
+        "policy_inference_s": 926.208,
+        "video_write_avg_ms": 8.5,
+        "video_write_s": 3.807,
+        "wall_total_s": 1008.113
+      },
+      "videos": [
+        {
+          "bytes": 11870779,
+          "path": "native/Put_the_mustard_in_the_left_bin_0.mp4"
+        },
+        {
+          "bytes": 2083741,
+          "path": "native/Put_the_mustard_in_the_left_bin_0_viewport.mp4"
+        }
+      ]
+    },
+    {
+      "claim_boundary": "One episode per task, not a success-rate estimate. Check initial_goal_satisfied before attributing native success to the policy.",
+      "environment_seed": 6100,
+      "ever_grabbed_target": true,
+      "final": {
+        "native_goal_predicate": false,
+        "poses": {
+          "grey_bin_left": {
+            "position_env_local_m": [
+              0.5183849334716797,
+              0.28809741139411926,
+              0.004999931901693344
+            ],
+            "quaternion_world_wxyz": [
+              1.0,
+              -4.2886648543571937e-07,
+              -1.306345165374978e-08,
+              -3.5242650483269244e-05
+            ]
+          },
+          "grey_bin_right": {
+            "position_env_local_m": [
+              0.5183476209640503,
+              -0.2924867570400238,
+              0.004999913275241852
+            ],
+            "quaternion_world_wxyz": [
+              0.9999999403953552,
+              5.091633781262317e-08,
+              1.3535546372622775e-07,
+              -6.959480288060149e-06
+            ]
+          },
+          "mustard": {
+            "position_env_local_m": [
+              0.4430721700191498,
+              -0.05771218612790108,
+              0.03291670233011246
+            ],
+            "quaternion_world_wxyz": [
+              0.6773291826248169,
+              0.5581166744232178,
+              -0.43702641129493713,
+              -0.19682198762893677
+            ]
+          },
+          "robot": {
+            "position_env_local_m": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "quaternion_world_wxyz": [
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          "table": {
+            "position_env_local_m": [
+              0.5471373200416565,
+              5.020778104380952e-08,
+              -0.34500008821487427
+            ],
+            "quaternion_world_wxyz": [
+              1.0,
+              2.458760377521685e-07,
+              -2.1610465239518817e-07,
+              2.5322449914710887e-08
+            ]
+          }
+        },
+        "sim_time_s": 30.0,
+        "step": 450,
+        "target_grabbed": {
+          "mustard": false
+        }
+      },
+      "final_goal_satisfied": false,
+      "finished_at_utc": "2026-09-26T11:20:27.323050+00:00",
+      "future_count": 15,
+      "initial": {
+        "native_goal_predicate": false,
+        "poses": {
+          "grey_bin_left": {
+            "position_env_local_m": [
+              0.5183117985725403,
+              0.28813636302948,
+              0.005000028759241104
+            ],
+            "quaternion_world_wxyz": [
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          "grey_bin_right": {
+            "position_env_local_m": [
+              0.5183118581771851,
+              -0.29250726103782654,
+              0.005000010132789612
+            ],
+            "quaternion_world_wxyz": [
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          "mustard": {
+            "position_env_local_m": [
+              0.5899075865745544,
+              3.1596486223861575e-05,
+              0.10049273818731308
+            ],
+            "quaternion_world_wxyz": [
+              0.9999995827674866,
+              -0.00016255438094958663,
+              -0.0008989080088213086,
+              2.3059724298946094e-06
+            ]
+          },
+          "robot": {
+            "position_env_local_m": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "quaternion_world_wxyz": [
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          "table": {
+            "position_env_local_m": [
+              0.5471368432044983,
+              1.2532538562481932e-08,
+              -0.3449999988079071
+            ],
+            "quaternion_world_wxyz": [
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          }
+        },
+        "sim_time_s": 0.0,
+        "step": 0,
+        "target_grabbed": {
+          "mustard": false
+        }
+      },
+      "initial_goal_satisfied": false,
+      "maximum_control_steps": 450,
+      "native_actions_match_policy": true,
+      "native_results": [
+        {
+          "env_id": 0,
+          "step": 450,
+          "success": false
+        }
+      ],
+      "native_success": false,
+      "policy_seed": 6100,
+      "prompt": "Put the mustard in the right bin",
+      "request_count": 15,
+      "status": "complete",
+      "steps": 450,
+      "task": "MustardInRightBinTask",
+      "timing": {
+        "env_step_avg_ms": 170.9,
+        "env_step_s": 76.888,
+        "it_per_sec": 0.45,
+        "policy_inference_avg_ms": 2057.6,
+        "policy_inference_s": 925.934,
+        "video_write_avg_ms": 8.5,
+        "video_write_s": 3.827,
+        "wall_total_s": 1006.649
+      },
+      "videos": [
+        {
+          "bytes": 13328669,
+          "path": "native/Put_the_mustard_in_the_right_bin_0.mp4"
+        },
+        {
+          "bytes": 1871233,
+          "path": "native/Put_the_mustard_in_the_right_bin_0_viewport.mp4"
+        }
+      ]
+    },
+    {
+      "claim_boundary": "One episode per task, not a success-rate estimate. Check initial_goal_satisfied before attributing native success to the policy.",
+      "environment_seed": 6100,
+      "ever_grabbed_target": true,
+      "final": {
+        "native_goal_predicate": false,
+        "poses": {
+          "bowl_1": {
+            "position_env_local_m": [
+              0.48928090929985046,
+              -0.1884048730134964,
+              0.03035101480782032
+            ],
+            "quaternion_world_wxyz": [
+              0.9999997615814209,
+              -0.0003805575252044946,
+              -0.00044522961252368987,
+              3.5967974554296234e-07
+            ]
+          },
+          "bowl_2": {
+            "position_env_local_m": [
+              0.34674277901649475,
+              -0.007868697866797447,
+              0.03034868836402893
+            ],
+            "quaternion_world_wxyz": [
+              0.9988599419593811,
+              -0.00043325015576556325,
+              -0.00040971970884129405,
+              -0.04773256182670593
+            ]
+          },
+          "robot": {
+            "position_env_local_m": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "quaternion_world_wxyz": [
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          "table": {
+            "position_env_local_m": [
+              0.48840540647506714,
+              -5.762212094850838e-05,
+              -0.3470001220703125
+            ],
+            "quaternion_world_wxyz": [
+              1.0,
+              7.924916189949727e-08,
+              -1.4628022881879588e-07,
+              5.669354052884046e-08
+            ]
+          }
+        },
+        "sim_time_s": 20.0,
+        "step": 300,
+        "target_grabbed": {
+          "bowl_2": false
+        }
+      },
+      "final_goal_satisfied": false,
+      "finished_at_utc": "2026-09-26T11:31:41.359327+00:00",
+      "future_count": 10,
+      "initial": {
+        "native_goal_predicate": false,
+        "poses": {
+          "bowl_1": {
+            "position_env_local_m": [
+              0.4893045127391815,
+              -0.18842542171478271,
+              0.0303815845400095
+            ],
+            "quaternion_world_wxyz": [
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          "bowl_2": {
+            "position_env_local_m": [
+              0.33596667647361755,
+              0.00012400129344314337,
+              0.030381567776203156
+            ],
+            "quaternion_world_wxyz": [
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          "robot": {
+            "position_env_local_m": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "quaternion_world_wxyz": [
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          "table": {
+            "position_env_local_m": [
+              0.4884050190448761,
+              -5.765136666013859e-05,
+              -0.34700125455856323
+            ],
+            "quaternion_world_wxyz": [
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          }
+        },
+        "sim_time_s": 0.0,
+        "step": 0,
+        "target_grabbed": {
+          "bowl_2": false
+        }
+      },
+      "initial_goal_satisfied": false,
+      "maximum_control_steps": 300,
+      "native_actions_match_policy": true,
+      "native_results": [
+        {
+          "env_id": 0,
+          "step": 300,
+          "success": false
+        }
+      ],
+      "native_success": false,
+      "policy_seed": 6100,
+      "prompt": "Stack the left bowl on the right bowl",
+      "request_count": 10,
+      "status": "complete",
+      "steps": 300,
+      "task": "BowlStackingLeftOnRightTask",
+      "timing": {
+        "env_step_avg_ms": 164.5,
+        "env_step_s": 49.354,
+        "it_per_sec": 0.45,
+        "policy_inference_avg_ms": 2062.8,
+        "policy_inference_s": 618.836,
+        "video_write_avg_ms": 8.7,
+        "video_write_s": 2.619,
+        "wall_total_s": 670.808
+      },
+      "videos": [
+        {
+          "bytes": 6754582,
+          "path": "native/Stack_the_left_bowl_on_the_right_bowl_0.mp4"
+        },
+        {
+          "bytes": 1057879,
+          "path": "native/Stack_the_left_bowl_on_the_right_bowl_0_viewport.mp4"
+        }
+      ]
+    },
+    {
+      "claim_boundary": "One episode per task, not a success-rate estimate. Check initial_goal_satisfied before attributing native success to the policy.",
+      "environment_seed": 6100,
+      "ever_grabbed_target": false,
+      "final": {
+        "native_goal_predicate": false,
+        "poses": {
+          "bowl_1": {
+            "position_env_local_m": [
+              0.489280641078949,
+              -0.18840521574020386,
+              0.030351052060723305
+            ],
+            "quaternion_world_wxyz": [
+              0.9999998211860657,
+              -0.00037729492760263383,
+              -0.0004473624867387116,
+              -2.2029921353805548e-07
+            ]
+          },
+          "bowl_2": {
+            "position_env_local_m": [
+              0.34242701530456543,
+              -0.005576618015766144,
+              0.030350562185049057
+            ],
+            "quaternion_world_wxyz": [
+              0.9996248483657837,
+              -0.00035930125159211457,
+              -0.00044373818673193455,
+              -0.027385005727410316
+            ]
+          },
+          "robot": {
+            "position_env_local_m": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "quaternion_world_wxyz": [
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          "table": {
+            "position_env_local_m": [
+              0.4884052872657776,
+              -5.777458500233479e-05,
+              -0.34700000286102295
+            ],
+            "quaternion_world_wxyz": [
+              0.9999999403953552,
+              -8.500918369236388e-08,
+              -1.092034978000811e-07,
+              4.2258946564288635e-08
+            ]
+          }
+        },
+        "sim_time_s": 20.0,
+        "step": 300,
+        "target_grabbed": {
+          "bowl_1": false
+        }
+      },
+      "final_goal_satisfied": false,
+      "finished_at_utc": "2026-09-26T11:42:53.539983+00:00",
+      "future_count": 10,
+      "initial": {
+        "native_goal_predicate": false,
+        "poses": {
+          "bowl_1": {
+            "position_env_local_m": [
+              0.4893045127391815,
+              -0.18842542171478271,
+              0.0303815845400095
+            ],
+            "quaternion_world_wxyz": [
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          "bowl_2": {
+            "position_env_local_m": [
+              0.33596667647361755,
+              0.00012400129344314337,
+              0.030381567776203156
+            ],
+            "quaternion_world_wxyz": [
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          "robot": {
+            "position_env_local_m": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "quaternion_world_wxyz": [
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          "table": {
+            "position_env_local_m": [
+              0.4884050190448761,
+              -5.765136666013859e-05,
+              -0.34700125455856323
+            ],
+            "quaternion_world_wxyz": [
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          }
+        },
+        "sim_time_s": 0.0,
+        "step": 0,
+        "target_grabbed": {
+          "bowl_1": false
+        }
+      },
+      "initial_goal_satisfied": false,
+      "maximum_control_steps": 300,
+      "native_actions_match_policy": true,
+      "native_results": [
+        {
+          "env_id": 0,
+          "step": 300,
+          "success": false
+        }
+      ],
+      "native_success": false,
+      "policy_seed": 6100,
+      "prompt": "Stack the right bowl on the left bowl",
+      "request_count": 10,
+      "status": "complete",
+      "steps": 300,
+      "task": "BowlStackingRightOnLeftTask",
+      "timing": {
+        "env_step_avg_ms": 163.9,
+        "env_step_s": 49.155,
+        "it_per_sec": 0.45,
+        "policy_inference_avg_ms": 2057.2,
+        "policy_inference_s": 617.173,
+        "video_write_avg_ms": 8.8,
+        "video_write_s": 2.638,
+        "wall_total_s": 668.967
+      },
+      "videos": [
+        {
+          "bytes": 6819496,
+          "path": "native/Stack_the_right_bowl_on_the_left_bowl_0.mp4"
+        },
+        {
+          "bytes": 1094452,
+          "path": "native/Stack_the_right_bowl_on_the_left_bowl_0_viewport.mp4"
+        }
+      ]
+    },
+    {
+      "claim_boundary": "One episode per task, not a success-rate estimate. Check initial_goal_satisfied before attributing native success to the policy.",
+      "environment_seed": 6100,
+      "ever_grabbed_target": true,
+      "final": {
+        "native_goal_predicate": true,
+        "poses": {
+          "alphabet_soup_can": {
+            "position_env_local_m": [
+              0.6395987868309021,
+              0.34155502915382385,
+              0.002970535308122635
+            ],
+            "quaternion_world_wxyz": [
+              0.9999986290931702,
+              -0.001078421832062304,
+              0.0011690006358548999,
+              6.879458669573069e-05
+            ]
+          },
+          "banana": {
+            "position_env_local_m": [
+              0.517730176448822,
+              -0.1380043923854828,
+              -33.247894287109375
+            ],
+            "quaternion_world_wxyz": [
+              0.9850191473960876,
+              -0.15937171876430511,
+              -0.06485077738761902,
+              0.01149698905646801
+            ]
+          },
+          "bowl": {
+            "position_env_local_m": [
+              0.5317674875259399,
+              0.13773788511753082,
+              -33.362396240234375
+            ],
+            "quaternion_world_wxyz": [
+              -0.7049402594566345,
+              0.7092648148536682,
+              0.0013161679962649941,
+              0.0010049886768683791
+            ]
+          },
+          "milk_carton": {
+            "position_env_local_m": [
+              0.36235150694847107,
+              0.31455281376838684,
+              0.1522371470928192
+            ],
+            "quaternion_world_wxyz": [
+              0.9999421238899231,
+              -0.010389416478574276,
+              -0.0027940538711845875,
+              0.00018656460451893508
+            ]
+          },
+          "mug": {
+            "position_env_local_m": [
+              0.4932191073894501,
+              0.047285012900829315,
+              0.009457789361476898
+            ],
+            "quaternion_world_wxyz": [
+              0.5564473271369934,
+              0.1354154795408249,
+              0.04216122627258301,
+              0.8186889886856079
+            ]
+          },
+          "orange_juice_carton": {
+            "position_env_local_m": [
+              0.39457881450653076,
+              -0.25560033321380615,
+              0.22667017579078674
+            ],
+            "quaternion_world_wxyz": [
+              0.9999855160713196,
+              -0.0012260297080501914,
+              0.004350649192929268,
+              0.0029231675434857607
+            ]
+          },
+          "robot": {
+            "position_env_local_m": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "quaternion_world_wxyz": [
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          "rubiks_cube": {
+            "position_env_local_m": [
+              0.7490017414093018,
+              0.12092413753271103,
+              0.034104809165000916
+            ],
+            "quaternion_world_wxyz": [
+              0.9999992847442627,
+              -0.000518582237418741,
+              0.0009299531811848283,
+              6.939473678357899e-06
+            ]
+          },
+          "smartphone": {
+            "position_env_local_m": [
+              0.6958948969841003,
+              -0.03976830840110779,
+              0.007963323965668678
+            ],
+            "quaternion_world_wxyz": [
+              0.0028668600134551525,
+              -0.0002788374258670956,
+              0.9999955296516418,
+              -0.0007778140134178102
+            ]
+          },
+          "table": {
+            "position_env_local_m": [
+              0.5472126603126526,
+              -7.30369210941717e-05,
+              -0.3470000624656677
+            ],
+            "quaternion_world_wxyz": [
+              0.9999999403953552,
+              6.804665986237524e-08,
+              3.5618394900183148e-09,
+              -2.198054893653989e-08
+            ]
+          }
+        },
+        "sim_time_s": 29.8,
+        "step": 447,
+        "target_grabbed": {
+          "mug": false
+        }
+      },
+      "final_goal_satisfied": true,
+      "finished_at_utc": "2026-09-26T11:59:23.981536+00:00",
+      "future_count": 14,
+      "initial": {
+        "native_goal_predicate": false,
+        "poses": {
+          "alphabet_soup_can": {
+            "position_env_local_m": [
+              0.6396018862724304,
+              0.3415576219558716,
+              0.08489856868982315
+            ],
+            "quaternion_world_wxyz": [
+              0.9999968409538269,
+              0.0024666693061590195,
+              0.0004826326039619744,
+              2.628687070682645e-05
+            ]
+          },
+          "banana": {
+            "position_env_local_m": [
+              0.5188158750534058,
+              -0.140828937292099,
+              -123.09932708740234
+            ],
+            "quaternion_world_wxyz": [
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          "bowl": {
+            "position_env_local_m": [
+              0.5317624807357788,
+              0.13779696822166443,
+              -123.10004425048828
+            ],
+            "quaternion_world_wxyz": [
+              -0.7063235640525818,
+              0.7078891396522522,
+              0.0,
+              0.0
+            ]
+          },
+          "milk_carton": {
+            "position_env_local_m": [
+              0.3623560965061188,
+              0.31454890966415405,
+              0.15223421156406403
+            ],
+            "quaternion_world_wxyz": [
+              0.9999422430992126,
+              -0.01037963293492794,
+              -0.0027811622712761164,
+              0.00019701977726072073
+            ]
+          },
+          "mug": {
+            "position_env_local_m": [
+              0.27348268032073975,
+              -0.0766787976026535,
+              0.0030350498855113983
+            ],
+            "quaternion_world_wxyz": [
+              0.9999938011169434,
+              -0.002405473729595542,
+              0.000915521930437535,
+              0.0024027572944760323
+            ]
+          },
+          "orange_juice_carton": {
+            "position_env_local_m": [
+              0.39458540081977844,
+              -0.25560301542282104,
+              0.22666937112808228
+            ],
+            "quaternion_world_wxyz": [
+              0.9999854564666748,
+              -0.0012194394366815686,
+              0.0043627070263028145,
+              0.002926877001300454
+            ]
+          },
+          "robot": {
+            "position_env_local_m": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "quaternion_world_wxyz": [
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          "rubiks_cube": {
+            "position_env_local_m": [
+              0.7489990592002869,
+              0.12092402577400208,
+              0.034104786813259125
+            ],
+            "quaternion_world_wxyz": [
+              0.999999463558197,
+              -0.0005165907787159085,
+              0.0008977817487902939,
+              2.2912465738045285e-06
+            ]
+          },
+          "smartphone": {
+            "position_env_local_m": [
+              0.6958954334259033,
+              -0.03976857289671898,
+              0.007956158369779587
+            ],
+            "quaternion_world_wxyz": [
+              0.0028313088696449995,
+              -0.00027982803294435143,
+              0.9999956488609314,
+              -0.0007403400959447026
+            ]
+          },
+          "table": {
+            "position_env_local_m": [
+              0.5472126603126526,
+              -7.303908932954073e-05,
+              -0.3470013439655304
+            ],
+            "quaternion_world_wxyz": [
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          }
+        },
+        "sim_time_s": 0.0,
+        "step": 0,
+        "target_grabbed": {
+          "mug": false
+        }
+      },
+      "initial_goal_satisfied": false,
+      "maximum_control_steps": 450,
+      "native_actions_match_policy": true,
+      "native_results": [
+        {
+          "env_id": 0,
+          "step": 447,
+          "success": true
+        }
+      ],
+      "native_success": true,
+      "policy_seed": 6100,
+      "prompt": "Put the white mug in the center of the table.",
+      "request_count": 14,
+      "status": "complete",
+      "steps": 447,
+      "task": "WhiteMugInCenterOfTableTask",
+      "timing": {
+        "env_step_avg_ms": 248.3,
+        "env_step_s": 111.011,
+        "it_per_sec": 0.46,
+        "policy_inference_avg_ms": 1935.6,
+        "policy_inference_s": 865.2,
+        "video_write_avg_ms": 8.7,
+        "video_write_s": 3.895,
+        "wall_total_s": 980.106
+      },
+      "videos": [
+        {
+          "bytes": 14046134,
+          "path": "native/Put_the_white_mug_in_the_center_of_the_table_0.mp4"
+        },
+        {
+          "bytes": 2054647,
+          "path": "native/Put_the_white_mug_in_the_center_of_the_table_0_viewport.mp4"
+        }
+      ]
+    }
+  ],
+  "status": "complete"
+}

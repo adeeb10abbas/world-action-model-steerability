@@ -1,0 +1,17 @@
+{
+  "maximum_control_steps": 300,
+  "native_horizon_seconds": 20,
+  "prompt": "Stack the left bowl on the right bowl",
+  "started_at_utc": "2026-09-26T11:20:29.851385+00:00",
+  "success_function": "object_in_container",
+  "success_parameters": {
+    "container": "bowl_1",
+    "gripper_name": "gripper",
+    "object": [
+      "bowl_2"
+    ],
+    "require_contact_with": true,
+    "require_gripper_detached": true
+  },
+  "task": "BowlStackingLeftOnRightTask"
+}

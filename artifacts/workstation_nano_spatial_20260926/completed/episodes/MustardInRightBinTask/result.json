@@ -1,0 +1,195 @@
+{
+  "claim_boundary": "One episode per task, not a success-rate estimate. Check initial_goal_satisfied before attributing native success to the policy.",
+  "environment_seed": 6100,
+  "ever_grabbed_target": true,
+  "final": {
+    "native_goal_predicate": false,
+    "poses": {
+      "grey_bin_left": {
+        "position_env_local_m": [
+          0.5183849334716797,
+          0.28809741139411926,
+          0.004999931901693344
+        ],
+        "quaternion_world_wxyz": [
+          1.0,
+          -4.2886648543571937e-07,
+          -1.306345165374978e-08,
+          -3.5242650483269244e-05
+        ]
+      },
+      "grey_bin_right": {
+        "position_env_local_m": [
+          0.5183476209640503,
+          -0.2924867570400238,
+          0.004999913275241852
+        ],
+        "quaternion_world_wxyz": [
+          0.9999999403953552,
+          5.091633781262317e-08,
+          1.3535546372622775e-07,
+          -6.959480288060149e-06
+        ]
+      },
+      "mustard": {
+        "position_env_local_m": [
+          0.4430721700191498,
+          -0.05771218612790108,
+          0.03291670233011246
+        ],
+        "quaternion_world_wxyz": [
+          0.6773291826248169,
+          0.5581166744232178,
+          -0.43702641129493713,
+          -0.19682198762893677
+        ]
+      },
+      "robot": {
+        "position_env_local_m": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "quaternion_world_wxyz": [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "table": {
+        "position_env_local_m": [
+          0.5471373200416565,
+          5.020778104380952e-08,
+          -0.34500008821487427
+        ],
+        "quaternion_world_wxyz": [
+          1.0,
+          2.458760377521685e-07,
+          -2.1610465239518817e-07,
+          2.5322449914710887e-08
+        ]
+      }
+    },
+    "sim_time_s": 30.0,
+    "step": 450,
+    "target_grabbed": {
+      "mustard": false
+    }
+  },
+  "final_goal_satisfied": false,
+  "finished_at_utc": "2026-09-26T11:20:27.323050+00:00",
+  "future_count": 15,
+  "initial": {
+    "native_goal_predicate": false,
+    "poses": {
+      "grey_bin_left": {
+        "position_env_local_m": [
+          0.5183117985725403,
+          0.28813636302948,
+          0.005000028759241104
+        ],
+        "quaternion_world_wxyz": [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "grey_bin_right": {
+        "position_env_local_m": [
+          0.5183118581771851,
+          -0.29250726103782654,
+          0.005000010132789612
+        ],
+        "quaternion_world_wxyz": [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "mustard": {
+        "position_env_local_m": [
+          0.5899075865745544,
+          3.1596486223861575e-05,
+          0.10049273818731308
+        ],
+        "quaternion_world_wxyz": [
+          0.9999995827674866,
+          -0.00016255438094958663,
+          -0.0008989080088213086,
+          2.3059724298946094e-06
+        ]
+      },
+      "robot": {
+        "position_env_local_m": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "quaternion_world_wxyz": [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "table": {
+        "position_env_local_m": [
+          0.5471368432044983,
+          1.2532538562481932e-08,
+          -0.3449999988079071
+        ],
+        "quaternion_world_wxyz": [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      }
+    },
+    "sim_time_s": 0.0,
+    "step": 0,
+    "target_grabbed": {
+      "mustard": false
+    }
+  },
+  "initial_goal_satisfied": false,
+  "maximum_control_steps": 450,
+  "native_actions_match_policy": true,
+  "native_results": [
+    {
+      "env_id": 0,
+      "step": 450,
+      "success": false
+    }
+  ],
+  "native_success": false,
+  "policy_seed": 6100,
+  "prompt": "Put the mustard in the right bin",
+  "request_count": 15,
+  "status": "complete",
+  "steps": 450,
+  "task": "MustardInRightBinTask",
+  "timing": {
+    "env_step_avg_ms": 170.9,
+    "env_step_s": 76.888,
+    "it_per_sec": 0.45,
+    "policy_inference_avg_ms": 2057.6,
+    "policy_inference_s": 925.934,
+    "video_write_avg_ms": 8.5,
+    "video_write_s": 3.827,
+    "wall_total_s": 1006.649
+  },
+  "videos": [
+    {
+      "bytes": 13328669,
+      "path": "native/Put_the_mustard_in_the_right_bin_0.mp4"
+    },
+    {
+      "bytes": 1871233,
+      "path": "native/Put_the_mustard_in_the_right_bin_0_viewport.mp4"
+    }
+  ]
+}

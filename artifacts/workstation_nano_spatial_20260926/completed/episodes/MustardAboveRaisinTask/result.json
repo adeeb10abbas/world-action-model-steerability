@@ -1,0 +1,169 @@
+{
+  "claim_boundary": "One episode per task, not a success-rate estimate. Check initial_goal_satisfied before attributing native success to the policy.",
+  "environment_seed": 6100,
+  "ever_grabbed_target": true,
+  "final": {
+    "native_goal_predicate": false,
+    "poses": {
+      "mustard_bottle": {
+        "position_env_local_m": [
+          0.34098079800605774,
+          0.22829967737197876,
+          0.027158604934811592
+        ],
+        "quaternion_world_wxyz": [
+          0.21728116273880005,
+          -0.6740080118179321,
+          0.2148093730211258,
+          0.6725766062736511
+        ]
+      },
+      "raisin_box": {
+        "position_env_local_m": [
+          0.40074265003204346,
+          0.1315026432275772,
+          0.02150019071996212
+        ],
+        "quaternion_world_wxyz": [
+          0.7115611433982849,
+          -0.006843032781034708,
+          0.7025870084762573,
+          -0.0023214954417198896
+        ]
+      },
+      "robot": {
+        "position_env_local_m": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "quaternion_world_wxyz": [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "table": {
+        "position_env_local_m": [
+          0.5472205281257629,
+          -6.996126467129216e-05,
+          -0.34700000286102295
+        ],
+        "quaternion_world_wxyz": [
+          1.0,
+          5.199449315540505e-09,
+          -1.1102896735337708e-07,
+          1.0405552863801404e-08
+        ]
+      }
+    },
+    "sim_time_s": 40.0,
+    "step": 600,
+    "target_grabbed": {
+      "mustard_bottle": false
+    }
+  },
+  "final_goal_satisfied": false,
+  "finished_at_utc": "2026-09-26T10:46:41.600040+00:00",
+  "future_count": 19,
+  "initial": {
+    "native_goal_predicate": false,
+    "poses": {
+      "mustard_bottle": {
+        "position_env_local_m": [
+          0.40427717566490173,
+          0.21475614607334137,
+          0.08231113851070404
+        ],
+        "quaternion_world_wxyz": [
+          0.4984035789966583,
+          -0.0056839208118617535,
+          0.015757551416754723,
+          0.8667832612991333
+        ]
+      },
+      "raisin_box": {
+        "position_env_local_m": [
+          0.400798499584198,
+          0.13165715336799622,
+          0.021507641300559044
+        ],
+        "quaternion_world_wxyz": [
+          0.7115554809570312,
+          -0.005640743765980005,
+          0.7025987505912781,
+          -0.003458616090938449
+        ]
+      },
+      "robot": {
+        "position_env_local_m": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "quaternion_world_wxyz": [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "table": {
+        "position_env_local_m": [
+          0.5472202301025391,
+          -6.994768045842648e-05,
+          -0.34699881076812744
+        ],
+        "quaternion_world_wxyz": [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      }
+    },
+    "sim_time_s": 0.0,
+    "step": 0,
+    "target_grabbed": {
+      "mustard_bottle": false
+    }
+  },
+  "initial_goal_satisfied": false,
+  "maximum_control_steps": 600,
+  "native_actions_match_policy": true,
+  "native_results": [
+    {
+      "env_id": 0,
+      "step": 600,
+      "success": false
+    }
+  ],
+  "native_success": false,
+  "policy_seed": 6100,
+  "prompt": "Place the mustard on the raisin box. ",
+  "request_count": 19,
+  "status": "complete",
+  "steps": 600,
+  "task": "MustardAboveRaisinTask",
+  "timing": {
+    "env_step_avg_ms": 163.5,
+    "env_step_s": 98.104,
+    "it_per_sec": 0.47,
+    "policy_inference_avg_ms": 1959.0,
+    "policy_inference_s": 1175.375,
+    "video_write_avg_ms": 8.3,
+    "video_write_s": 4.955,
+    "wall_total_s": 1278.434
+  },
+  "videos": [
+    {
+      "bytes": 18614897,
+      "path": "native/Place_the_mustard_on_the_raisin_box__0.mp4"
+    },
+    {
+      "bytes": 2096220,
+      "path": "native/Place_the_mustard_on_the_raisin_box__0_viewport.mp4"
+    }
+  ]
+}

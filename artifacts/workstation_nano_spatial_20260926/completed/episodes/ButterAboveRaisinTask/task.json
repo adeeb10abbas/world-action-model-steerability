@@ -1,0 +1,13 @@
+{
+  "maximum_control_steps": 600,
+  "native_horizon_seconds": 40,
+  "prompt": "Pick up the butter box and place it on top of the raisin box",
+  "started_at_utc": "2026-09-26T10:18:32.262976+00:00",
+  "success_function": "object_on_top",
+  "success_parameters": {
+    "object": "butter",
+    "reference_object": "raisin_box",
+    "require_gripper_detached": true
+  },
+  "task": "ButterAboveRaisinTask"
+}

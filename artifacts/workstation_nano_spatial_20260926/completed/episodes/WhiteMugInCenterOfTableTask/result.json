@@ -1,0 +1,325 @@
+{
+  "claim_boundary": "One episode per task, not a success-rate estimate. Check initial_goal_satisfied before attributing native success to the policy.",
+  "environment_seed": 6100,
+  "ever_grabbed_target": true,
+  "final": {
+    "native_goal_predicate": true,
+    "poses": {
+      "alphabet_soup_can": {
+        "position_env_local_m": [
+          0.6395987868309021,
+          0.34155502915382385,
+          0.002970535308122635
+        ],
+        "quaternion_world_wxyz": [
+          0.9999986290931702,
+          -0.001078421832062304,
+          0.0011690006358548999,
+          6.879458669573069e-05
+        ]
+      },
+      "banana": {
+        "position_env_local_m": [
+          0.517730176448822,
+          -0.1380043923854828,
+          -33.247894287109375
+        ],
+        "quaternion_world_wxyz": [
+          0.9850191473960876,
+          -0.15937171876430511,
+          -0.06485077738761902,
+          0.01149698905646801
+        ]
+      },
+      "bowl": {
+        "position_env_local_m": [
+          0.5317674875259399,
+          0.13773788511753082,
+          -33.362396240234375
+        ],
+        "quaternion_world_wxyz": [
+          -0.7049402594566345,
+          0.7092648148536682,
+          0.0013161679962649941,
+          0.0010049886768683791
+        ]
+      },
+      "milk_carton": {
+        "position_env_local_m": [
+          0.36235150694847107,
+          0.31455281376838684,
+          0.1522371470928192
+        ],
+        "quaternion_world_wxyz": [
+          0.9999421238899231,
+          -0.010389416478574276,
+          -0.0027940538711845875,
+          0.00018656460451893508
+        ]
+      },
+      "mug": {
+        "position_env_local_m": [
+          0.4932191073894501,
+          0.047285012900829315,
+          0.009457789361476898
+        ],
+        "quaternion_world_wxyz": [
+          0.5564473271369934,
+          0.1354154795408249,
+          0.04216122627258301,
+          0.8186889886856079
+        ]
+      },
+      "orange_juice_carton": {
+        "position_env_local_m": [
+          0.39457881450653076,
+          -0.25560033321380615,
+          0.22667017579078674
+        ],
+        "quaternion_world_wxyz": [
+          0.9999855160713196,
+          -0.0012260297080501914,
+          0.004350649192929268,
+          0.0029231675434857607
+        ]
+      },
+      "robot": {
+        "position_env_local_m": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "quaternion_world_wxyz": [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "rubiks_cube": {
+        "position_env_local_m": [
+          0.7490017414093018,
+          0.12092413753271103,
+          0.034104809165000916
+        ],
+        "quaternion_world_wxyz": [
+          0.9999992847442627,
+          -0.000518582237418741,
+          0.0009299531811848283,
+          6.939473678357899e-06
+        ]
+      },
+      "smartphone": {
+        "position_env_local_m": [
+          0.6958948969841003,
+          -0.03976830840110779,
+          0.007963323965668678
+        ],
+        "quaternion_world_wxyz": [
+          0.0028668600134551525,
+          -0.0002788374258670956,
+          0.9999955296516418,
+          -0.0007778140134178102
+        ]
+      },
+      "table": {
+        "position_env_local_m": [
+          0.5472126603126526,
+          -7.30369210941717e-05,
+          -0.3470000624656677
+        ],
+        "quaternion_world_wxyz": [
+          0.9999999403953552,
+          6.804665986237524e-08,
+          3.5618394900183148e-09,
+          -2.198054893653989e-08
+        ]
+      }
+    },
+    "sim_time_s": 29.8,
+    "step": 447,
+    "target_grabbed": {
+      "mug": false
+    }
+  },
+  "final_goal_satisfied": true,
+  "finished_at_utc": "2026-09-26T11:59:23.981536+00:00",
+  "future_count": 14,
+  "initial": {
+    "native_goal_predicate": false,
+    "poses": {
+      "alphabet_soup_can": {
+        "position_env_local_m": [
+          0.6396018862724304,
+          0.3415576219558716,
+          0.08489856868982315
+        ],
+        "quaternion_world_wxyz": [
+          0.9999968409538269,
+          0.0024666693061590195,
+          0.0004826326039619744,
+          2.628687070682645e-05
+        ]
+      },
+      "banana": {
+        "position_env_local_m": [
+          0.5188158750534058,
+          -0.140828937292099,
+          -123.09932708740234
+        ],
+        "quaternion_world_wxyz": [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "bowl": {
+        "position_env_local_m": [
+          0.5317624807357788,
+          0.13779696822166443,
+          -123.10004425048828
+        ],
+        "quaternion_world_wxyz": [
+          -0.7063235640525818,
+          0.7078891396522522,
+          0.0,
+          0.0
+        ]
+      },
+      "milk_carton": {
+        "position_env_local_m": [
+          0.3623560965061188,
+          0.31454890966415405,
+          0.15223421156406403
+        ],
+        "quaternion_world_wxyz": [
+          0.9999422430992126,
+          -0.01037963293492794,
+          -0.0027811622712761164,
+          0.00019701977726072073
+        ]
+      },
+      "mug": {
+        "position_env_local_m": [
+          0.27348268032073975,
+          -0.0766787976026535,
+          0.0030350498855113983
+        ],
+        "quaternion_world_wxyz": [
+          0.9999938011169434,
+          -0.002405473729595542,
+          0.000915521930437535,
+          0.0024027572944760323
+        ]
+      },
+      "orange_juice_carton": {
+        "position_env_local_m": [
+          0.39458540081977844,
+          -0.25560301542282104,
+          0.22666937112808228
+        ],
+        "quaternion_world_wxyz": [
+          0.9999854564666748,
+          -0.0012194394366815686,
+          0.0043627070263028145,
+          0.002926877001300454
+        ]
+      },
+      "robot": {
+        "position_env_local_m": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "quaternion_world_wxyz": [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "rubiks_cube": {
+        "position_env_local_m": [
+          0.7489990592002869,
+          0.12092402577400208,
+          0.034104786813259125
+        ],
+        "quaternion_world_wxyz": [
+          0.999999463558197,
+          -0.0005165907787159085,
+          0.0008977817487902939,
+          2.2912465738045285e-06
+        ]
+      },
+      "smartphone": {
+        "position_env_local_m": [
+          0.6958954334259033,
+          -0.03976857289671898,
+          0.007956158369779587
+        ],
+        "quaternion_world_wxyz": [
+          0.0028313088696449995,
+          -0.00027982803294435143,
+          0.9999956488609314,
+          -0.0007403400959447026
+        ]
+      },
+      "table": {
+        "position_env_local_m": [
+          0.5472126603126526,
+          -7.303908932954073e-05,
+          -0.3470013439655304
+        ],
+        "quaternion_world_wxyz": [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      }
+    },
+    "sim_time_s": 0.0,
+    "step": 0,
+    "target_grabbed": {
+      "mug": false
+    }
+  },
+  "initial_goal_satisfied": false,
+  "maximum_control_steps": 450,
+  "native_actions_match_policy": true,
+  "native_results": [
+    {
+      "env_id": 0,
+      "step": 447,
+      "success": true
+    }
+  ],
+  "native_success": true,
+  "policy_seed": 6100,
+  "prompt": "Put the white mug in the center of the table.",
+  "request_count": 14,
+  "status": "complete",
+  "steps": 447,
+  "task": "WhiteMugInCenterOfTableTask",
+  "timing": {
+    "env_step_avg_ms": 248.3,
+    "env_step_s": 111.011,
+    "it_per_sec": 0.46,
+    "policy_inference_avg_ms": 1935.6,
+    "policy_inference_s": 865.2,
+    "video_write_avg_ms": 8.7,
+    "video_write_s": 3.895,
+    "wall_total_s": 980.106
+  },
+  "videos": [
+    {
+      "bytes": 14046134,
+      "path": "native/Put_the_white_mug_in_the_center_of_the_table_0.mp4"
+    },
+    {
+      "bytes": 2054647,
+      "path": "native/Put_the_white_mug_in_the_center_of_the_table_0_viewport.mp4"
+    }
+  ]
+}

@@ -1,0 +1,139 @@
+{
+  "native_successes": 2,
+  "completed_episodes": 9,
+  "control_steps": 3620,
+  "requests_and_retained_futures": 119,
+  "videos": 18,
+  "all_initial_goals_false": true,
+  "validation": "All per-task pose lengths, request counts, retained-future counts and executed chunk totals agree with completed results. Runner recorded exact native HDF5 action equality.",
+  "contact_semantics": "RoboLab object_grabbed is gripper contact, not proof of secure grasp.",
+  "scene_caveat": "Mug trial bowl and banana were already about 123 m below the table at the first policy observation; cannot attribute their absence to policy action. Preserve native result and flag the trial.",
+  "results": [
+    {
+      "task": "RubiksCubeInFrontOfBowlTask",
+      "native_success": false,
+      "control_steps": 450,
+      "simulated_seconds": 30.0,
+      "requests": 15,
+      "target_contact": {
+        "rubiks_cube": {
+          "contact_steps": 83,
+          "final_contact": true,
+          "maximum_origin_height_change_m": 0.18098168820142746
+        }
+      }
+    },
+    {
+      "task": "RubiksCubeBehindBowlTask",
+      "native_success": false,
+      "control_steps": 450,
+      "simulated_seconds": 30.0,
+      "requests": 15,
+      "target_contact": {
+        "rubiks_cube": {
+          "contact_steps": 131,
+          "final_contact": false,
+          "maximum_origin_height_change_m": 0.18768643587827682
+        }
+      }
+    },
+    {
+      "task": "ButterAboveRaisinTask",
+      "native_success": true,
+      "control_steps": 173,
+      "simulated_seconds": 11.533333333333333,
+      "requests": 6,
+      "target_contact": {
+        "butter": {
+          "contact_steps": 78,
+          "final_contact": false,
+          "maximum_origin_height_change_m": 0.07714175805449486
+        }
+      }
+    },
+    {
+      "task": "MustardAboveRaisinTask",
+      "native_success": false,
+      "control_steps": 600,
+      "simulated_seconds": 40.0,
+      "requests": 19,
+      "target_contact": {
+        "mustard_bottle": {
+          "contact_steps": 13,
+          "final_contact": false,
+          "maximum_origin_height_change_m": 0.028771519660949707
+        }
+      }
+    },
+    {
+      "task": "MustardInLeftBinTask",
+      "native_success": false,
+      "control_steps": 450,
+      "simulated_seconds": 30.0,
+      "requests": 15,
+      "target_contact": {
+        "mustard": {
+          "contact_steps": 109,
+          "final_contact": false,
+          "maximum_origin_height_change_m": 0.13623901456594467
+        }
+      }
+    },
+    {
+      "task": "MustardInRightBinTask",
+      "native_success": false,
+      "control_steps": 450,
+      "simulated_seconds": 30.0,
+      "requests": 15,
+      "target_contact": {
+        "mustard": {
+          "contact_steps": 78,
+          "final_contact": false,
+          "maximum_origin_height_change_m": 0.18554801493883133
+        }
+      }
+    },
+    {
+      "task": "BowlStackingLeftOnRightTask",
+      "native_success": false,
+      "control_steps": 300,
+      "simulated_seconds": 20.0,
+      "requests": 10,
+      "target_contact": {
+        "bowl_2": {
+          "contact_steps": 44,
+          "final_contact": false,
+          "maximum_origin_height_change_m": 0.004830177873373032
+        }
+      }
+    },
+    {
+      "task": "BowlStackingRightOnLeftTask",
+      "native_success": false,
+      "control_steps": 300,
+      "simulated_seconds": 20.0,
+      "requests": 10,
+      "target_contact": {
+        "bowl_1": {
+          "contact_steps": 0,
+          "final_contact": false,
+          "maximum_origin_height_change_m": 0.0
+        }
+      }
+    },
+    {
+      "task": "WhiteMugInCenterOfTableTask",
+      "native_success": true,
+      "control_steps": 447,
+      "simulated_seconds": 29.8,
+      "requests": 14,
+      "target_contact": {
+        "mug": {
+          "contact_steps": 272,
+          "final_contact": false,
+          "maximum_origin_height_change_m": 0.050711944699287415
+        }
+      }
+    }
+  ]
+}

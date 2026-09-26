@@ -1,0 +1,169 @@
+{
+  "claim_boundary": "One episode per task, not a success-rate estimate. Check initial_goal_satisfied before attributing native success to the policy.",
+  "environment_seed": 6100,
+  "ever_grabbed_target": false,
+  "final": {
+    "native_goal_predicate": false,
+    "poses": {
+      "bowl_1": {
+        "position_env_local_m": [
+          0.489280641078949,
+          -0.18840521574020386,
+          0.030351052060723305
+        ],
+        "quaternion_world_wxyz": [
+          0.9999998211860657,
+          -0.00037729492760263383,
+          -0.0004473624867387116,
+          -2.2029921353805548e-07
+        ]
+      },
+      "bowl_2": {
+        "position_env_local_m": [
+          0.34242701530456543,
+          -0.005576618015766144,
+          0.030350562185049057
+        ],
+        "quaternion_world_wxyz": [
+          0.9996248483657837,
+          -0.00035930125159211457,
+          -0.00044373818673193455,
+          -0.027385005727410316
+        ]
+      },
+      "robot": {
+        "position_env_local_m": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "quaternion_world_wxyz": [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "table": {
+        "position_env_local_m": [
+          0.4884052872657776,
+          -5.777458500233479e-05,
+          -0.34700000286102295
+        ],
+        "quaternion_world_wxyz": [
+          0.9999999403953552,
+          -8.500918369236388e-08,
+          -1.092034978000811e-07,
+          4.2258946564288635e-08
+        ]
+      }
+    },
+    "sim_time_s": 20.0,
+    "step": 300,
+    "target_grabbed": {
+      "bowl_1": false
+    }
+  },
+  "final_goal_satisfied": false,
+  "finished_at_utc": "2026-09-26T11:42:53.539983+00:00",
+  "future_count": 10,
+  "initial": {
+    "native_goal_predicate": false,
+    "poses": {
+      "bowl_1": {
+        "position_env_local_m": [
+          0.4893045127391815,
+          -0.18842542171478271,
+          0.0303815845400095
+        ],
+        "quaternion_world_wxyz": [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "bowl_2": {
+        "position_env_local_m": [
+          0.33596667647361755,
+          0.00012400129344314337,
+          0.030381567776203156
+        ],
+        "quaternion_world_wxyz": [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "robot": {
+        "position_env_local_m": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "quaternion_world_wxyz": [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "table": {
+        "position_env_local_m": [
+          0.4884050190448761,
+          -5.765136666013859e-05,
+          -0.34700125455856323
+        ],
+        "quaternion_world_wxyz": [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      }
+    },
+    "sim_time_s": 0.0,
+    "step": 0,
+    "target_grabbed": {
+      "bowl_1": false
+    }
+  },
+  "initial_goal_satisfied": false,
+  "maximum_control_steps": 300,
+  "native_actions_match_policy": true,
+  "native_results": [
+    {
+      "env_id": 0,
+      "step": 300,
+      "success": false
+    }
+  ],
+  "native_success": false,
+  "policy_seed": 6100,
+  "prompt": "Stack the right bowl on the left bowl",
+  "request_count": 10,
+  "status": "complete",
+  "steps": 300,
+  "task": "BowlStackingRightOnLeftTask",
+  "timing": {
+    "env_step_avg_ms": 163.9,
+    "env_step_s": 49.155,
+    "it_per_sec": 0.45,
+    "policy_inference_avg_ms": 2057.2,
+    "policy_inference_s": 617.173,
+    "video_write_avg_ms": 8.8,
+    "video_write_s": 2.638,
+    "wall_total_s": 668.967
+  },
+  "videos": [
+    {
+      "bytes": 6819496,
+      "path": "native/Stack_the_right_bowl_on_the_left_bowl_0.mp4"
+    },
+    {
+      "bytes": 1094452,
+      "path": "native/Stack_the_right_bowl_on_the_left_bowl_0_viewport.mp4"
+    }
+  ]
+}

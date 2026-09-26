@@ -49,6 +49,8 @@ The launcher writes `prospective-plan.json` and `SOURCE_COMMIT` before loading t
 
 ## Status
 
+**Completed:** All nine episodes finished with exit code zero at approximately 12:00 UTC on September 26. Native successes were butter-on-raisin and mug-at-center (2/9); the latter has a recorded scene caveat. See the [results and evidence](WORKSTATION_NANO_SPATIAL_RESULTS_20260926.md). The launch record below is historical.
+
 Launched on 2026-09-26 at 09:41 UTC from commit `a3535b3`. The first task executed at least 32 policy actions and retained its first predicted video; its initial goal predicate was false. The batch was still running at the [recorded check](../artifacts/workstation_nano_spatial_20260926/launch_receipt.json), with no completed task outcomes asserted yet.
 
 The task names, instructions, horizons, and native predicates were read from the pinned RoboLab source. Python compilation, launcher syntax, and the 9-task / 4,050-action / 133-request budget checks passed.

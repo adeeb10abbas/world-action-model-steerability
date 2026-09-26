@@ -1,0 +1,169 @@
+{
+  "claim_boundary": "One episode per task, not a success-rate estimate. Check initial_goal_satisfied before attributing native success to the policy.",
+  "environment_seed": 6100,
+  "ever_grabbed_target": true,
+  "final": {
+    "native_goal_predicate": true,
+    "poses": {
+      "butter": {
+        "position_env_local_m": [
+          0.4323904514312744,
+          0.19373731315135956,
+          0.020746424794197083
+        ],
+        "quaternion_world_wxyz": [
+          -0.19485250115394592,
+          0.700800359249115,
+          -0.3746646046638489,
+          0.5749241709709167
+        ]
+      },
+      "raisin_box": {
+        "position_env_local_m": [
+          0.40079349279403687,
+          0.2512453496456146,
+          0.021491458639502525
+        ],
+        "quaternion_world_wxyz": [
+          0.7117996215820312,
+          -0.005932703614234924,
+          0.7023462057113647,
+          -0.003990798257291317
+        ]
+      },
+      "robot": {
+        "position_env_local_m": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "quaternion_world_wxyz": [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "table": {
+        "position_env_local_m": [
+          0.5471958518028259,
+          -5.7582226872909814e-05,
+          -0.34700000286102295
+        ],
+        "quaternion_world_wxyz": [
+          1.0,
+          -1.8903552501114973e-08,
+          -1.3270222609662596e-07,
+          3.5621336991198405e-08
+        ]
+      }
+    },
+    "sim_time_s": 11.533333333333333,
+    "step": 173,
+    "target_grabbed": {
+      "butter": false
+    }
+  },
+  "final_goal_satisfied": true,
+  "finished_at_utc": "2026-09-26T10:25:17.272623+00:00",
+  "future_count": 6,
+  "initial": {
+    "native_goal_predicate": false,
+    "poses": {
+      "butter": {
+        "position_env_local_m": [
+          0.30301183462142944,
+          0.048409316688776016,
+          -0.02287965640425682
+        ],
+        "quaternion_world_wxyz": [
+          0.14209763705730438,
+          0.9237223267555237,
+          -0.3548627197742462,
+          -0.02485467866063118
+        ]
+      },
+      "raisin_box": {
+        "position_env_local_m": [
+          0.4008031487464905,
+          0.25123170018196106,
+          0.02150517888367176
+        ],
+        "quaternion_world_wxyz": [
+          0.7115547060966492,
+          -0.0055539244785904884,
+          0.7025997638702393,
+          -0.003549134125933051
+        ]
+      },
+      "robot": {
+        "position_env_local_m": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "quaternion_world_wxyz": [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "table": {
+        "position_env_local_m": [
+          0.5471954941749573,
+          -5.750182754127309e-05,
+          -0.3470015823841095
+        ],
+        "quaternion_world_wxyz": [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      }
+    },
+    "sim_time_s": 0.0,
+    "step": 0,
+    "target_grabbed": {
+      "butter": false
+    }
+  },
+  "initial_goal_satisfied": false,
+  "maximum_control_steps": 600,
+  "native_actions_match_policy": true,
+  "native_results": [
+    {
+      "env_id": 0,
+      "step": 173,
+      "success": true
+    }
+  ],
+  "native_success": true,
+  "policy_seed": 6100,
+  "prompt": "Pick up the butter box and place it on top of the raisin box",
+  "request_count": 6,
+  "status": "complete",
+  "steps": 173,
+  "task": "ButterAboveRaisinTask",
+  "timing": {
+    "env_step_avg_ms": 176.1,
+    "env_step_s": 30.463,
+    "it_per_sec": 0.43,
+    "policy_inference_avg_ms": 2151.9,
+    "policy_inference_s": 372.28,
+    "video_write_avg_ms": 9.3,
+    "video_write_s": 1.612,
+    "wall_total_s": 404.355
+  },
+  "videos": [
+    {
+      "bytes": 6123140,
+      "path": "native/Pick_up_the_butter_box_and_place_it_on_top_of_the_raisin_box_0.mp4"
+    },
+    {
+      "bytes": 791941,
+      "path": "native/Pick_up_the_butter_box_and_place_it_on_top_of_the_raisin_box_0_viewport.mp4"
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "maximum_control_steps": 450,
+  "native_horizon_seconds": 30,
+  "prompt": "Put the rubiks cube in front of the bowl",
+  "started_at_utc": "2026-09-26T09:44:41.017735+00:00",
+  "success_function": "object_in_front_of",
+  "success_parameters": {
+    "frame_of_reference": "robot",
+    "mirrored": false,
+    "object": "rubiks_cube",
+    "reference_object": "bowl",
+    "require_gripper_detached": true
+  },
+  "task": "RubiksCubeInFrontOfBowlTask"
+}

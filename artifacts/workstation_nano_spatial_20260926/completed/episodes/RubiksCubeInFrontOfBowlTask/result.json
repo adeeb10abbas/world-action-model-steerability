@@ -1,0 +1,195 @@
+{
+  "claim_boundary": "One episode per task, not a success-rate estimate. Check initial_goal_satisfied before attributing native success to the policy.",
+  "environment_seed": 6100,
+  "ever_grabbed_target": true,
+  "final": {
+    "native_goal_predicate": false,
+    "poses": {
+      "banana": {
+        "position_env_local_m": [
+          0.5390526652336121,
+          -0.0756259337067604,
+          0.06818380951881409
+        ],
+        "quaternion_world_wxyz": [
+          0.9999991059303284,
+          -0.0006574577419087291,
+          -0.0012183007784187794,
+          0.00016881049668882042
+        ]
+      },
+      "bowl": {
+        "position_env_local_m": [
+          0.4406292140483856,
+          0.12713707983493805,
+          0.0773506611585617
+        ],
+        "quaternion_world_wxyz": [
+          0.9998794198036194,
+          -0.0003700588131323457,
+          -0.0004388054949231446,
+          -0.015526012517511845
+        ]
+      },
+      "robot": {
+        "position_env_local_m": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "quaternion_world_wxyz": [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "rubiks_cube": {
+        "position_env_local_m": [
+          0.4036702811717987,
+          0.23364947736263275,
+          0.24714048206806183
+        ],
+        "quaternion_world_wxyz": [
+          0.6998689770698547,
+          -0.7127526998519897,
+          -0.010586344636976719,
+          0.04533236846327782
+        ]
+      },
+      "table": {
+        "position_env_local_m": [
+          0.19858461618423462,
+          0.022068263962864876,
+          0.050000064074993134
+        ],
+        "quaternion_world_wxyz": [
+          1.0,
+          2.869055322207714e-07,
+          5.275423831108128e-08,
+          -1.032483538665474e-07
+        ]
+      }
+    },
+    "sim_time_s": 30.0,
+    "step": 450,
+    "target_grabbed": {
+      "rubiks_cube": true
+    }
+  },
+  "final_goal_satisfied": false,
+  "finished_at_utc": "2026-09-26T10:01:34.935306+00:00",
+  "future_count": 15,
+  "initial": {
+    "native_goal_predicate": false,
+    "poses": {
+      "banana": {
+        "position_env_local_m": [
+          0.538878858089447,
+          -0.07555567473173141,
+          0.0684281587600708
+        ],
+        "quaternion_world_wxyz": [
+          0.9999781250953674,
+          -0.0026648887433111668,
+          -0.006051987875252962,
+          0.0001454032608307898
+        ]
+      },
+      "bowl": {
+        "position_env_local_m": [
+          0.44258353114128113,
+          0.12658219039440155,
+          0.07732785493135452
+        ],
+        "quaternion_world_wxyz": [
+          0.9999999403953552,
+          -5.8753543271450326e-05,
+          -0.00032362030469812453,
+          -0.00010501052747713402
+        ]
+      },
+      "robot": {
+        "position_env_local_m": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "quaternion_world_wxyz": [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "rubiks_cube": {
+        "position_env_local_m": [
+          0.4306528866291046,
+          -0.09742811322212219,
+          0.08113233000040054
+        ],
+        "quaternion_world_wxyz": [
+          0.9999990463256836,
+          -0.0009071399690583348,
+          0.001037940033711493,
+          8.44117093947716e-05
+        ]
+      },
+      "table": {
+        "position_env_local_m": [
+          0.19858434796333313,
+          0.02206825464963913,
+          0.05000072345137596
+        ],
+        "quaternion_world_wxyz": [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      }
+    },
+    "sim_time_s": 0.0,
+    "step": 0,
+    "target_grabbed": {
+      "rubiks_cube": false
+    }
+  },
+  "initial_goal_satisfied": false,
+  "maximum_control_steps": 450,
+  "native_actions_match_policy": true,
+  "native_results": [
+    {
+      "env_id": 0,
+      "step": 450,
+      "success": false
+    }
+  ],
+  "native_success": false,
+  "policy_seed": 6100,
+  "prompt": "Put the rubiks cube in front of the bowl",
+  "request_count": 15,
+  "status": "complete",
+  "steps": 450,
+  "task": "RubiksCubeInFrontOfBowlTask",
+  "timing": {
+    "env_step_avg_ms": 171.9,
+    "env_step_s": 77.338,
+    "it_per_sec": 0.44,
+    "policy_inference_avg_ms": 2071.0,
+    "policy_inference_s": 931.948,
+    "video_write_avg_ms": 8.2,
+    "video_write_s": 3.706,
+    "wall_total_s": 1012.992
+  },
+  "videos": [
+    {
+      "bytes": 11217042,
+      "path": "native/Put_the_rubiks_cube_in_front_of_the_bowl_0.mp4"
+    },
+    {
+      "bytes": 1633256,
+      "path": "native/Put_the_rubiks_cube_in_front_of_the_bowl_0_viewport.mp4"
+    }
+  ]
+}
