@@ -1,0 +1,45 @@
+{
+  "attempts": [
+    {
+      "attempt": "attempt-001",
+      "reason": "Missing Cosmos Guardrail1 assets",
+      "remote_directory": "/home/ali/wam-nano-stock-20260926/attempt-001",
+      "model_loaded": false,
+      "requests_started": 0,
+      "requests_completed": 0,
+      "completed_episodes": 0,
+      "executed_actions": 0
+    },
+    {
+      "attempt": "attempt-002",
+      "reason": "Missing Qwen3-VL tokenizer cache",
+      "remote_directory": "/home/ali/wam-nano-stock-20260926/attempt-002",
+      "model_loaded": false,
+      "requests_started": 0,
+      "requests_completed": 0,
+      "completed_episodes": 0,
+      "executed_actions": 0
+    },
+    {
+      "attempt": "attempt-003",
+      "reason": "Duplicate Vulkan ICDs and incompatible GPU selection",
+      "remote_directory": "/home/ali/wam-nano-stock-20260926/attempt-003",
+      "model_loaded": true,
+      "requests_started": 0,
+      "requests_completed": 0,
+      "completed_episodes": 0,
+      "executed_actions": 0
+    },
+    {
+      "attempt": "attempt-004",
+      "reason": "First request exhausted GPU memory while sharing with simulator",
+      "remote_directory": "/home/ali/wam-nano-stock-20260926/attempt-004",
+      "model_loaded": true,
+      "requests_started": 1,
+      "requests_completed": 0,
+      "completed_episodes": 0,
+      "executed_actions": 0
+    }
+  ],
+  "note": "Infrastructure failures are preserved; none produced behavioral outcomes."
+}

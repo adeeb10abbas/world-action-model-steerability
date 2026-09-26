@@ -7,6 +7,7 @@ settings, transforms, or action postprocessing are replaced here.
 from __future__ import annotations
 
 import argparse
+from contextlib import contextmanager
 from dataclasses import asdict
 from datetime import timedelta
 import hashlib
@@ -22,6 +23,95 @@ import traceback
 SOURCE_PIN = "411d25b2e35bc441126f48c44a4b93e1c0564274"
 CHECKPOINT_PIN = "6706d7680581c255ff61e0f3bb49d90eac55c79e"
 CHECKPOINT_ID = "nvidia/Cosmos3-Nano-Policy-DROID"
+
+
+def materialize_offloaded_fsdp(module, *, device, recurse=True):
+    """Materialize only FSDP DTensors on CPU; native buffers stay on device."""
+    import torch
+    from torch.distributed.tensor import DTensor
+
+    return module._apply(
+        lambda tensor: torch.empty_like(
+            tensor, device="cpu" if isinstance(tensor, DTensor) else device
+        ),
+        recurse=recurse,
+    )
+
+
+@contextmanager
+def fsdp_cpu_offload(enabled):
+    """Scoped placement hooks at the pinned Cosmos module import sites."""
+    receipt = {"enabled": enabled}
+    if not enabled:
+        yield receipt
+        return
+    import importlib
+    from types import MethodType
+    import torch
+    from torch.distributed.fsdp import CPUOffloadPolicy
+    from torch.distributed.tensor import DTensor
+
+    block_module = importlib.import_module("cosmos_framework.model.vfm.mot.parallelize_unified_mot")
+    root_module = importlib.import_module("cosmos_framework.model.vfm.mot.parallelize_vfm_network")
+    originals = [(module, module.fully_shard) for module in (block_module, root_module)]
+    roots = []
+    receipt.update({
+        "policy": "torch.distributed.fsdp.CPUOffloadPolicy", "pin_memory": True,
+        "reshard_after_forward": True, "fully_shard_calls": 0,
+        "materialization_calls": 0,
+        "checkpoint_load": "unchanged native DCP reader fills CPU-backed DTensor shards",
+        "scope": "native FSDP network parameters; other parameters and buffers retain native placement",
+    })
+
+    def wrap(original, *, root):
+        def fully_shard(*args, **kwargs):
+            if "offload_policy" in kwargs or "reshard_after_forward" in kwargs:
+                raise RuntimeError("pinned fully_shard signature changed; refusing placement override")
+            kwargs.update(offload_policy=CPUOffloadPolicy(pin_memory=True), reshard_after_forward=True)
+            result = original(*args, **kwargs)
+            receipt["fully_shard_calls"] += 1
+            if root:
+                if "to_empty" in result.__dict__:
+                    raise RuntimeError("network already overrides to_empty")
+                roots.append(result)
+
+                def to_empty(self, *, device, recurse=True):
+                    receipt["materialization_calls"] += 1
+                    # This override is consumed by OmniMoTModel.build_net only.
+                    del self.to_empty
+                    return materialize_offloaded_fsdp(self, device=device, recurse=recurse)
+
+                result.to_empty = MethodType(to_empty, result)
+            return result
+        return fully_shard
+
+    block_module.fully_shard = wrap(originals[0][1], root=False)
+    root_module.fully_shard = wrap(originals[1][1], root=True)
+    try:
+        yield receipt
+        if len(roots) != 1 or receipt["materialization_calls"] != 1:
+            raise RuntimeError("expected one native FSDP network materialization")
+        shards = [parameter for parameter in roots[0].parameters() if isinstance(parameter, DTensor)]
+        if not shards or any(parameter.device.type != "cpu" or
+                             parameter.to_local().device.type != "cpu" or
+                             not parameter.to_local().is_pinned() or
+                             parameter.dtype != torch.bfloat16 for parameter in shards):
+            raise RuntimeError("loaded FSDP parameters must be pinned CPU BF16 shards")
+        receipt.update({
+            "validated_after_native_checkpoint_load": True,
+            "parameter_tensors": len(shards),
+            "local_parameter_bytes": sum(parameter.to_local().numel() * parameter.element_size()
+                                         for parameter in shards),
+            "parameter_device": "cpu", "parameter_dtype": "torch.bfloat16",
+        })
+        # CUDA's allocator can retain the temporary storage used by loading.
+        torch.cuda.empty_cache()
+    finally:
+        for module, original in originals:
+            module.fully_shard = original
+        for network in roots:
+            if "to_empty" in network.__dict__:
+                del network.to_empty
 
 
 class Coordinator:
@@ -139,6 +229,8 @@ def main():
     parser.add_argument("--wall-seconds", type=int, default=10800)
     parser.add_argument("--request-timeout", type=int, default=900)
     parser.add_argument("--offload-guardrails", action=argparse.BooleanOptionalAction, default=True)
+    parser.add_argument("--offload-fsdp", action=argparse.BooleanOptionalAction, default=False,
+                        help="Opt in to pinned CPU BF16 FSDP shards with layer-wise CUDA transfers")
     args = parser.parse_args()
     if min(args.max_requests, args.wall_seconds, args.request_timeout) <= 0:
         parser.error("budgets must be positive")
@@ -192,7 +284,8 @@ def main():
             guidance=3.0, num_steps=4, shift=5.0, resolution="480", conditioning_fps=15.0,
             action_chunk_size=32, action_dim=8, action_space="joint_pos", use_state=True, history_length=1,
         )
-        service = PlacementService(native_args)
+        with fsdp_cpu_offload(args.offload_fsdp) as fsdp_placement:
+            service = PlacementService(native_args)
         if service.setup_args.dp_shard_size != 2 or service.model.precision != torch.bfloat16:
             raise RuntimeError("runtime must resolve to two FSDP shards and native BF16 precision")
         control = dist.new_group(backend="gloo", timeout=timedelta(seconds=args.wall_seconds + 60))
@@ -201,6 +294,7 @@ def main():
             "cuda_device": torch.cuda.get_device_name(), "device": torch.cuda.current_device(),
             "native_config": asdict(service.cfg), "setup": service.setup_args.model_dump(mode="json"),
             "offload_guardrails": args.offload_guardrails, "max_requests": args.max_requests,
+            "fsdp_placement": fsdp_placement,
             "wall_seconds": args.wall_seconds, "request_timeout": args.request_timeout,
             "versions": {key: importlib.metadata.version(key) for key in ("torch", "numpy", "transformers")},
             "transport": "rank-zero websocket; Gloo observation broadcast; native two-rank FSDP",
@@ -272,6 +366,7 @@ def main():
             receipt = {**identity, "port": args.port, "host": args.host,
                        "world_size": 2, "time": time.time(), "maximum_model_requests": args.max_requests,
                        "config": asdict(service.cfg), "offload_guardrails": args.offload_guardrails,
+                       "fsdp_placement": fsdp_placement,
                        "resolved_dp_shard_size": service.setup_args.dp_shard_size,
                        "resolved_cp_size": service.setup_args.cp_size,
                        "resolved_cfgp_size": service.setup_args.cfgp_size,

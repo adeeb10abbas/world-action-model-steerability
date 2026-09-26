@@ -59,9 +59,18 @@ recomputed. The separate Cosmos checkout is pinned to the revision above.
 
 Startup attempts 001 and 002 failed before any inference requests or robot
 actions because auxiliary dependencies were missing. Their original logs and
-terminal records remain under the working directory. Attempt 003 starts after
-restoring the official dependencies below. Model requests and episodes are
-not yet demonstrated; update this statement from execution receipts.
+terminal records remain under the working directory. Attempt 003 loaded Nano
+on both GPUs but failed to initialize the simulator because Vulkan enumerated
+each GPU twice. Selecting one existing NVIDIA ICD per simulator process and
+using physical GPU 1 resolved that issue in attempt 004. No host driver changes
+were made.
+
+Attempt 004 created the stock scene and captured its first observations, but
+the first model request exhausted GPU 1 memory: approximately 15.94 GiB for the
+model process plus 7.66 GiB for the simulator. No actions were returned or
+executed. The next hardware adaptation under investigation is PyTorch FSDP2
+CPU offloading of BF16 parameter shards; the checkpoint, sampling settings and
+scene cameras stay fixed. No completed episodes are claimed.
 
 The native loader uses these external assets even though the Nano checkpoint
 also bundles tokenizer and VAE files:

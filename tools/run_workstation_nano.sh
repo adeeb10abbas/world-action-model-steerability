@@ -43,6 +43,7 @@ export TRANSFORMERS_OFFLINE=1
   --checkpoint-path "$run_root/checkpoints/nano" \
   --checkpoint-manifest "$run_root/checkpoint-manifest.json" \
   --output "$attempt_root/server" --port 18026 --seed 6100 \
+  --offload-fsdp \
   --max-requests 90 --wall-seconds 10800 --request-timeout 900 \
   > "$attempt_root/server.log" 2>&1 &
 server_pid=$!

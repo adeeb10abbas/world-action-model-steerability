@@ -19,23 +19,14 @@ environment. The downloaded checkpoint must have the exact registered file
 sizes, config hash, and Hugging Face revision metadata. Full weight SHA256s are
 not recomputed on every launch; the receipt states that limit explicitly.
 
-Example after copying this directory and the manifest to the workstation:
+The workstation launcher runs the server, waits for readiness, starts the six
+episodes, and stops its server when the client finishes. After deploying the
+code and the dependencies recorded in `docs/WORKSTATION_NANO_20260926.md`, use
+a new attempt name:
 
 ```sh
-CUDA_VISIBLE_DEVICES=0,1 \
-HF_HOME=/home/ali/cosmos-framework/.cache/huggingface \
-HF_HUB_OFFLINE=1 PYTHONDONTWRITEBYTECODE=1 PYTHONUNBUFFERED=1 \
-PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True \
-/home/ali/cosmos-framework/.venv/bin/python -m torch.distributed.run \
-  --standalone --nnodes=1 --nproc-per-node=2 \
-  /home/ali/wam-nano-stock-20260926/study/tools/workstation_nano_server/server.py \
-  --source-root /home/ali/wam-nano-stock-20260926/cosmos-framework \
-  --checkpoint-path /home/ali/wam-nano-stock-20260926/checkpoints/nano \
-  --checkpoint-manifest /home/ali/wam-nano-stock-20260926/study/artifacts/vla_wam_shared_v2/pilot/expansion/cosmos3_nano_policy_droid_v2a011_registry.json \
-  --output /home/ali/wam-nano-stock-20260926/server-attempt-01 \
-  --receipt /home/ali/wam-nano-stock-20260926/server-attempt-01/ready.json \
-  --port 18026 --seed 6100 --max-requests 96 --wall-seconds 10800 \
-  --request-timeout 900 --offload-guardrails
+bash /home/ali/wam-nano-stock-20260926/code/tools/run_workstation_nano.sh \
+  /home/ali/wam-nano-stock-20260926 attempt-NEW
 ```
 
 The receipt and websocket metadata are identical and include the resolved
