@@ -49,4 +49,6 @@ The launcher writes `prospective-plan.json` and `SOURCE_COMMIT` before loading t
 
 ## Status
 
-Prepared for launch. The task names, instructions, horizons, and native predicates were read from the pinned RoboLab source. Python compilation, launcher syntax, and the 9-task / 4,050-action / 133-request budget checks passed. No outcomes are asserted here.
+Launched on 2026-09-26 at 09:41 UTC from commit `a3535b3`. The first task executed at least 32 policy actions and retained its first predicted video; its initial goal predicate was false. The batch was still running at the [recorded check](../artifacts/workstation_nano_spatial_20260926/launch_receipt.json), with no completed task outcomes asserted yet.
+
+The task names, instructions, horizons, and native predicates were read from the pinned RoboLab source. Python compilation, launcher syntax, and the 9-task / 4,050-action / 133-request budget checks passed.

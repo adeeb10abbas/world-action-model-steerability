@@ -1,0 +1,132 @@
+{
+  "batch_exit_code": null,
+  "checked_at_utc": "2026-09-26T09:47:06.662371+00:00",
+  "checkpoint_revision": "6706d7680581c255ff61e0f3bb49d90eac55c79e",
+  "host": "workstation / ali-MS-7D25",
+  "initial_goal_satisfied": false,
+  "observed_control_steps": 64,
+  "observed_task": "RubiksCubeInFrontOfBowlTask",
+  "output_root": "/home/ali/wam-nano-stock-20260926/spatial-suite-001",
+  "prospective_plan": {
+    "cameras": "Original WRIST_LEFT_RIGHT_HEAD; policy receives wrist, left and right.",
+    "checkpoint": "nvidia/Cosmos3-Nano-Policy-DROID",
+    "checkpoint_revision": "6706d7680581c255ff61e0f3bb49d90eac55c79e",
+    "comparison": "Same Nano configuration as the earlier wording pilot; native scenes and horizons differ.",
+    "cosmos_commit": "411d25b2e35bc441126f48c44a4b93e1c0564274",
+    "environment_seed": 6100,
+    "forecast_scoring": "Raw futures retained; camera and physical-time correspondence remain unqualified.",
+    "maximum_control_steps": 4050,
+    "maximum_requests": 133,
+    "policy_seed": 6100,
+    "robolab_commit": "0aef241fb088ca21bb4ebd24448940ed56620d17",
+    "scope": "One episode per stock task, selected before outcomes; not a success-rate estimate.",
+    "server_config": {
+      "action_chunk_size": 32,
+      "action_dim": 8,
+      "action_space": "joint_pos",
+      "conditioning_fps": 15.0,
+      "decode_video": true,
+      "deterministic_seed": true,
+      "domain_name": "droid_lerobot",
+      "guidance": 3.0,
+      "history_length": 1,
+      "image_height": 540,
+      "image_width": 640,
+      "num_steps": 4,
+      "resolution": "480",
+      "seed": 6100,
+      "shift": 5.0,
+      "use_state": true
+    },
+    "study": "stock-nano-spatial-task-pilot-20260926",
+    "tasks": [
+      {
+        "maximum_control_steps": 450,
+        "maximum_requests": 15,
+        "native_horizon_seconds": 30,
+        "prompt": "Put the rubiks cube in front of the bowl",
+        "task": "RubiksCubeInFrontOfBowlTask"
+      },
+      {
+        "maximum_control_steps": 450,
+        "maximum_requests": 15,
+        "native_horizon_seconds": 30,
+        "prompt": "Put the rubiks cube behind the bowl",
+        "task": "RubiksCubeBehindBowlTask"
+      },
+      {
+        "maximum_control_steps": 600,
+        "maximum_requests": 19,
+        "native_horizon_seconds": 40,
+        "prompt": "Pick up the butter box and place it on top of the raisin box",
+        "task": "ButterAboveRaisinTask"
+      },
+      {
+        "maximum_control_steps": 600,
+        "maximum_requests": 19,
+        "native_horizon_seconds": 40,
+        "prompt": "Place the mustard on the raisin box. ",
+        "task": "MustardAboveRaisinTask"
+      },
+      {
+        "maximum_control_steps": 450,
+        "maximum_requests": 15,
+        "native_horizon_seconds": 30,
+        "prompt": "Put the mustard in the left bin",
+        "task": "MustardInLeftBinTask"
+      },
+      {
+        "maximum_control_steps": 450,
+        "maximum_requests": 15,
+        "native_horizon_seconds": 30,
+        "prompt": "Put the mustard in the right bin",
+        "task": "MustardInRightBinTask"
+      },
+      {
+        "maximum_control_steps": 300,
+        "maximum_requests": 10,
+        "native_horizon_seconds": 20,
+        "prompt": "Stack the left bowl on the right bowl",
+        "task": "BowlStackingLeftOnRightTask"
+      },
+      {
+        "maximum_control_steps": 300,
+        "maximum_requests": 10,
+        "native_horizon_seconds": 20,
+        "prompt": "Stack the right bowl on the left bowl",
+        "task": "BowlStackingRightOnLeftTask"
+      },
+      {
+        "maximum_control_steps": 450,
+        "maximum_requests": 15,
+        "native_horizon_seconds": 30,
+        "prompt": "Put the white mug in the center of the table.",
+        "task": "WhiteMugInCenterOfTableTask"
+      }
+    ],
+    "termination": "Unmodified native success and timeout conditions; early success enabled."
+  },
+  "retained_futures": 2,
+  "returned_action_chunks": 2,
+  "server_config": {
+    "action_chunk_size": 32,
+    "action_dim": 8,
+    "action_space": "joint_pos",
+    "checkpoint_path": "/home/ali/wam-nano-stock-20260926/checkpoints/nano",
+    "conditioning_fps": 15.0,
+    "decode_video": true,
+    "deterministic_seed": true,
+    "domain_name": "droid_lerobot",
+    "guidance": 3.0,
+    "history_length": 1,
+    "image_height": 540,
+    "image_width": 640,
+    "num_steps": 4,
+    "resolution": "480",
+    "seed": 6100,
+    "shift": 5.0,
+    "use_state": true
+  },
+  "source_commit": "a3535b3229ce56c1b5e6a972c9c487672fbd353b",
+  "status": "running"
+}
