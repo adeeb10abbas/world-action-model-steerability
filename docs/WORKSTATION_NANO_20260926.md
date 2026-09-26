@@ -1,0 +1,59 @@
+# Nano on stock RoboLab tasks: first workstation run
+
+The user explicitly requested Cosmos Nano experiments on the local workstation
+on 26 September 2026. This is a separate exploratory run using existing RoboLab
+tasks, not a continuation or replacement of the registered 1,566-cell cohort.
+Existing cluster records, queues and outcomes remain unchanged.
+
+## First batch
+
+Run six episodes on the unmodified `rubiks_cube_banana_bowl.usda` scene:
+left/right goals crossed with direct, syntax-matched and reference-inverted
+instructions. Always move the cube. Use the stock left-task scene for every
+condition; upstream's right task otherwise adds a mug and bin. Keep the original
+RoboLab DROID cameras, robot, object geometry and initial configuration. Do not
+rebuild scenes or reuse the close camera override.
+
+Each episode uses environment seed 6100 and deterministic policy seed 6100,
+32-action chunks and at most 450 executed actions. Disable goal-triggered early
+termination. Save the exact prompt, actual initial state and sensor images,
+returned and executed actions, object/robot trajectories, viewport video and
+same-request decoded futures. Compare actual reset states before describing
+conditions as matched. Preserve errors and partial attempts; no automatic
+episode retries or replacement of behavioral failures.
+
+This is one scene with six conditions, not six independent scene samples.
+The stock initial scene may already satisfy one relation. Record that fact and
+movement/grasp/release evidence; initial relation satisfaction alone is not
+successful instruction following. The first batch checks basic manipulation,
+wording response and recording. It cannot establish generalization or support
+paper-wide success-rate claims. Forecast timing must be checked before scoring
+prediction accuracy.
+
+## Model and hardware
+
+- Checkpoint: `nvidia/Cosmos3-Nano-Policy-DROID`, revision
+  `6706d7680581c255ff61e0f3bb49d90eac55c79e`.
+- Cosmos source: `411d25b2e35bc441126f48c44a4b93e1c0564274`.
+- RoboLab: `0aef241fb088ca21bb4ebd24448940ed56620d17`.
+- BF16 weights, guidance 3, four denoising steps, shift 5, history 1,
+  conditioning FPS 15, resolution 480, joint-position actions, video decoding.
+- Workstation: `ssh workstation`, two RTX 3090 GPUs with 24 GiB each.
+- Working directory: `/home/ali/wam-nano-stock-20260926`.
+
+The approximately 33 GB checkpoint does not fit on a single GPU. The planned
+server uses the framework's distributed sharding and broadcasts each request
+to both ranks, with only rank zero serving the WebSocket. This is a hardware
+adaptation requiring an actual successful model request before being called
+operational. No quantization or substitute checkpoint is authorized by this
+plan. Runtime memory, latency, request counts and exact source identities will
+be recorded from execution.
+
+## Current state
+
+Workstation connectivity restored after the user's intervention. Both GPUs
+were idle at inspection. The pinned checkpoint download and a separate pinned
+Cosmos source checkout have been started. Model loading, requests and episodes
+have not yet been demonstrated; update this paragraph from actual receipts.
+
+No changes to Overleaf or numerical paper results are implied by this note.
