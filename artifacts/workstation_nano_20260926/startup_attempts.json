@@ -39,6 +39,16 @@
       "requests_completed": 0,
       "completed_episodes": 0,
       "executed_actions": 0
+    },
+    {
+      "attempt": "attempt-005",
+      "reason": "CPU offload passed load and sampling began, but default client keepalive closed during the long request",
+      "remote_directory": "/home/ali/wam-nano-stock-20260926/attempt-005",
+      "model_loaded": true,
+      "requests_started": 1,
+      "requests_completed": 0,
+      "completed_episodes": 0,
+      "executed_actions": 0
     }
   ],
   "note": "Infrastructure failures are preserved; none produced behavioral outcomes."

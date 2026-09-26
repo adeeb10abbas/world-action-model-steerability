@@ -77,7 +77,24 @@ three forwards using the native checkpoint reader. The full Nano load then
 validated 809 pinned CPU parameter shards per rank (15,173,136,576 local bytes),
 with other parameters and buffers retaining native CUDA placement. Idle GPU
 residency after loading was approximately 2.3 GB per GPU. First inference began
-at 06:40 UTC on 26 September; no completed episodes are claimed yet.
+at 06:40 UTC on 26 September and completed two sampling steps before the
+client's default keepalive closed the connection. No actions were returned.
+Attempt 006 disables client keepalive pings for this slow local transport while
+retaining the server's 900-second request timeout and zero automatic retries.
+It completed its first native request and executed all 32 returned actions.
+The first future contains 33 RGB frames (528 x 640); all 32 x 8 actions are
+finite. The saved 33 pose records include reset and every executed step. The
+measured arm-joint change across this chunk is 0.527 rad in Euclidean norm,
+confirming physical simulator motion. This is execution evidence, not task
+success. The six-condition batch continues; no completed episodes are claimed
+in this first execution snapshot.
+
+The active attempt is `/home/ali/wam-nano-stock-20260926/attempt-006`, launched
+from code commit `1994116`. Its orchestrator PID is 1680408. The launcher bounds
+the server at 90 requests and three hours and stops its server when the client
+finishes or fails. Per-condition results appear only after all 450 actions and
+cleanup finish. Raw outputs remain on the workstation; compact runtime and
+first-execution receipts are in `artifacts/workstation_nano_20260926/`.
 
 The native loader uses these external assets even though the Nano checkpoint
 also bundles tokenizer and VAE files:
