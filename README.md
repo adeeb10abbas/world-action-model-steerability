@@ -2,6 +2,8 @@
 
 Do equivalent descriptions of a spatial goal produce the same predicted and executed behavior? This repository contains the clean-scene study for the [CoRL 2026 world-model workshop](https://do-robots-need-world-models.github.io/).
 
+**New workshop-paper proposal:** Start with the [illustrated scenes and exact prompts](docs/robolab-workshop-20260926/README.md), then the fixed research question and experiment design. This is a design for review; no new study has started.
+
 **Separate stock RoboLab pilots:** The [six-cell Nano wording pilot](docs/WORKSTATION_NANO_RESULTS_20260926.md) is complete. The [nine-task spatial pilot](docs/WORKSTATION_NANO_SPATIAL_RESULTS_20260926.md) completed on September 26 with 2/9 native successes; the mug trial has a recorded reset-scene caveat. These exploratory runs are separate from the clean-scene cluster study below.
 
 **All 87 required scenes are physically validated: 29 LAT, 29 HEIGHT and 29 flat DIST layouts. Each passed both goals across three resets (522 selected scripted trials). The 1,566-episode learned-policy study has not started.**

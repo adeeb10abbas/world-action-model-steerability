@@ -1,0 +1,47 @@
+{
+  "scene_images": [
+    {
+      "scene_id": "S1",
+      "task": "RubiksCubeInFrontOfBowlTask",
+      "image": "scene_images/S1.jpg",
+      "sha256": "61026ef08e9df11b667acfd05dd81cac08ca6a87ca1d01e1e1486114338e35ec"
+    },
+    {
+      "scene_id": "S2",
+      "task": "MustardInLeftBinTask",
+      "image": "scene_images/S2.jpg",
+      "sha256": "ee9472204fd4927aa1887899952c6f2850af80c718b7c0d60b50fb2c14e29843"
+    },
+    {
+      "scene_id": "S3",
+      "task": "ButterAboveRaisinTask",
+      "image": "scene_images/S3.jpg",
+      "sha256": "2b2d475feea19d483112698311584d5fc8e82a717833e68fd70a66424ad00eba"
+    },
+    {
+      "scene_id": "S4",
+      "task": "MustardAboveRaisinTask",
+      "image": "scene_images/S4.jpg",
+      "sha256": "95c1387c693fd79429e8304ec7715f5fc845451bc1d06bdf9d4ff4c0525fd189"
+    },
+    {
+      "scene_id": "S5",
+      "task": "BowlStackingLeftOnRightTask",
+      "image": "scene_images/S5.jpg",
+      "sha256": "50fd4cb5d4f4c883a37d49156561ea0441f176d679aff2a4cade2a46c8c4c848"
+    },
+    {
+      "scene_id": "S6",
+      "task": "WhiteMugInCenterOfTableTask",
+      "image": "scene_images/S6.jpg",
+      "sha256": "609addfe78396e8e2b5e4ced8a67971cfe3be58b3c39f5aa72eaa0e580cea44e"
+    }
+  ],
+  "source_run": "/home/ali/wam-nano-stock-20260926/spatial-suite-001",
+  "capture": "request_000_raw_observation.npz, first policy observation before action",
+  "views": [
+    "image_obs/over_shoulder_left_camera",
+    "image_obs/over_shoulder_right_camera"
+  ],
+  "format": "Each raw view resized to fit 640x360; two views side by side with labels. No camera or scene alteration."
+}

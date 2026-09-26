@@ -1,0 +1,671 @@
+{
+  "version": "draft-0.1",
+  "date": "2026-09-26",
+  "status": "design only; not executable authorization",
+  "research_question": "Can a world-action model's predicted future help distinguish following the wrong goal from failing to execute the right one?",
+  "operational_scope": "Compare visible object choice, motion direction and spatial relations in predicted videos with aligned executed prefixes. Predictions cannot establish physical support/contact or internal understanding by themselves.",
+  "robolab_commit": "0aef241fb088ca21bb4ebd24448940ed56620d17",
+  "prompt_forms": {
+    "D": "Direct instruction; native exact default where explicitly marked.",
+    "S": "Same physical goal, manipulated object appears first in the relation clause.",
+    "I": "Same physical goal, reference appears first using the converse relation. This changes phrasing and relation vocabulary, not an isolated token-order intervention."
+  },
+  "scenes": [
+    {
+      "id": "S1",
+      "title": "Cube, bowl and banana",
+      "asset": "rubiks_cube_banana_bowl.usda",
+      "base_task": "RubiksCubeLeftOfBowlTask",
+      "status": "core",
+      "image": "scene_images/S1.jpg",
+      "nominals": [
+        {
+          "task": "RubiksCubeLeftOfBowlTask",
+          "prompt": "Put the rubiks cube to the left of the bowl",
+          "source": "robolab/tasks/benchmark/rubiks_cube_left_of_bowl.py"
+        },
+        {
+          "task": "RubiksCubeInFrontOfBowlTask",
+          "prompt": "Put the rubiks cube in front of the bowl",
+          "source": "robolab/tasks/benchmark/rubiks_cube_in_front_of_bowl.py"
+        },
+        {
+          "task": "RubiksCubeBehindBowlTask",
+          "prompt": "Put the rubiks cube behind the bowl",
+          "source": "robolab/tasks/benchmark/rubiks_cube_behind_bowl.py"
+        }
+      ],
+      "question": "Does the predicted and executed cube placement follow four distinct directions, and survive an equivalent reversal of the reference wording?",
+      "note": "The stock RubiksCubeRightOfBowlTask loads rubiks_cube_banana_bowl_mug_bin.usda, a DIFFERENT scene. We use the simple scene shown here for all four goals. Right is a study-added goal on this scene; it is not a paired run of that stock task.",
+      "goals": [
+        {
+          "id": "L",
+          "label": "Cube left of bowl",
+          "mover": "rubiks_cube",
+          "reference": "bowl",
+          "relation": "L",
+          "origin": "native on this scene",
+          "prompts": [
+            {
+              "id": "S1-L-D",
+              "form": "D",
+              "text": "Put the rubiks cube to the left of the bowl",
+              "sha256": "c6a96e34a4df741c35c48f1c86c8d6db3ab5e50afbcd7cb553b2ff59cc816e29"
+            },
+            {
+              "id": "S1-L-S",
+              "form": "S",
+              "text": "Place the Rubik's cube so that the Rubik's cube is to the left of the bowl.",
+              "sha256": "0627baa29ac138ba59a7f8a9e19b78a31258b525c26545131047e39619e3215c"
+            },
+            {
+              "id": "S1-L-I",
+              "form": "I",
+              "text": "Place the Rubik's cube so that the bowl is to the right of the Rubik's cube.",
+              "sha256": "6ed00a80ed714a034daa682371ddf42c2e576e40ccc4345fa73053833b4e2d39"
+            }
+          ]
+        },
+        {
+          "id": "R",
+          "label": "Cube right of bowl",
+          "mover": "rubiks_cube",
+          "reference": "bowl",
+          "relation": "R",
+          "origin": "study-added goal; native right wording reused on fixed simple scene",
+          "prompts": [
+            {
+              "id": "S1-R-D",
+              "form": "D",
+              "text": "Put the rubiks cube to the right of the bowl",
+              "sha256": "38257024baaf0435c5571370f3fa5e0ac17499abca5ea6ab18340d04a5db4cf2"
+            },
+            {
+              "id": "S1-R-S",
+              "form": "S",
+              "text": "Place the Rubik's cube so that the Rubik's cube is to the right of the bowl.",
+              "sha256": "7b8582cd1340a540266f361902a3790fdd972ad704cfc3140ec6948f33b8f301"
+            },
+            {
+              "id": "S1-R-I",
+              "form": "I",
+              "text": "Place the Rubik's cube so that the bowl is to the left of the Rubik's cube.",
+              "sha256": "3c36eb09d55cf3875d3d5e49abd4571bdedddb069b328fcb62abd08fc6a515b0"
+            }
+          ]
+        },
+        {
+          "id": "F",
+          "label": "Cube in front of bowl",
+          "mover": "rubiks_cube",
+          "reference": "bowl",
+          "relation": "F",
+          "origin": "native on this scene",
+          "prompts": [
+            {
+              "id": "S1-F-D",
+              "form": "D",
+              "text": "Put the rubiks cube in front of the bowl",
+              "sha256": "01b8c6863318ecf09933fb71189b04eee04e76c7680a55f18a4c508156458274"
+            },
+            {
+              "id": "S1-F-S",
+              "form": "S",
+              "text": "Place the Rubik's cube so that the Rubik's cube is in front of the bowl.",
+              "sha256": "309dac515f1bdbe4c363d9ea65115525f08de5364c0251c43c78435dc7e2e56f"
+            },
+            {
+              "id": "S1-F-I",
+              "form": "I",
+              "text": "Place the Rubik's cube so that the bowl is behind the Rubik's cube.",
+              "sha256": "3f7335291e5894308ff9c5c6d18047c599624f7aa68ce20faa17a28e5841077a"
+            }
+          ]
+        },
+        {
+          "id": "B",
+          "label": "Cube behind bowl",
+          "mover": "rubiks_cube",
+          "reference": "bowl",
+          "relation": "B",
+          "origin": "native on this scene",
+          "prompts": [
+            {
+              "id": "S1-B-D",
+              "form": "D",
+              "text": "Put the rubiks cube behind the bowl",
+              "sha256": "59666020741b52d3c57e1714b25d911ae84267104715c5f7d98c8df9245c181e"
+            },
+            {
+              "id": "S1-B-S",
+              "form": "S",
+              "text": "Place the Rubik's cube so that the Rubik's cube is behind the bowl.",
+              "sha256": "4b2ad2845e2b86b6a1aeea0634d6c04b9cd6815fff9101a5f627f13e77fae2ba"
+            },
+            {
+              "id": "S1-B-I",
+              "form": "I",
+              "text": "Place the Rubik's cube so that the bowl is in front of the Rubik's cube.",
+              "sha256": "7152abbd06fbe43c26443a33579a3183e907788b692088831b8d39cbfb00df83"
+            }
+          ]
+        }
+      ],
+      "extras": [
+        {
+          "id": "S1-X-NEAR",
+          "text": "Move the Rubik's cube onto the table so that it is closer to the robot base than the bowl is.",
+          "test": "New radial-distance goal. Not an assumed synonym for in front of; requires its own distance predicate.",
+          "status": "optional; excluded from primary episode budget"
+        },
+        {
+          "id": "S1-X-FAR",
+          "text": "Move the Rubik's cube onto the table so that it is farther from the robot base than the bowl is.",
+          "test": "Opposite radial-distance goal. Hold the bowl fixed; use robot-base distance, not camera depth.",
+          "status": "optional; excluded from primary episode budget"
+        },
+        {
+          "id": "S1-X-OBJECT",
+          "text": "Put the banana to the left of the bowl.",
+          "test": "Change the manipulated object while preserving the left-of relation. Requires banana feasibility and object-specific scoring.",
+          "status": "optional; excluded from primary episode budget"
+        }
+      ]
+    },
+    {
+      "id": "S2",
+      "title": "Mustard and two bins",
+      "asset": "two_bin.usda",
+      "base_task": "MustardInLeftBinTask",
+      "status": "core",
+      "image": "scene_images/S2.jpg",
+      "nominals": [
+        {
+          "task": "MustardInLeftBinTask",
+          "prompt": "Put the mustard in the left bin",
+          "source": "robolab/tasks/benchmark/mustard_in_left_bin.py"
+        },
+        {
+          "task": "MustardInRightBinTask",
+          "prompt": "Put the mustard in the right bin",
+          "source": "robolab/tasks/benchmark/mustard_in_right_bin.py"
+        }
+      ],
+      "question": "Does language select the correct destination, and does the predicted transfer actually end in containment?",
+      "note": "Left and right identify the bins at reset in the robot frame. Both goals use the same physical reset. The pilot moved mustard in opposite directions but missed both bins.",
+      "goals": [
+        {
+          "id": "L",
+          "label": "Mustard in left bin",
+          "mover": "mustard",
+          "reference": "grey_bin_left",
+          "relation": "in",
+          "origin": "native",
+          "prompts": [
+            {
+              "id": "S2-L-D",
+              "form": "D",
+              "text": "Put the mustard in the left bin",
+              "sha256": "677cf558e0eb37ad47c2865d00d1b9c2af12412f6a1c8ca2aac32014687d1efc"
+            },
+            {
+              "id": "S2-L-S",
+              "form": "S",
+              "text": "Place the mustard so that the mustard is inside the left bin.",
+              "sha256": "51730037c7eeea768c232880fbcc4b9ec8dccbfbf54c2dcaa6aae1f33c9fa8de"
+            },
+            {
+              "id": "S2-L-I",
+              "form": "I",
+              "text": "Place the mustard so that the left bin contains the mustard.",
+              "sha256": "5863358f97514e39a57d11978ea5049ee3e2d105b779d8b814a2d1f2bb03c15d"
+            }
+          ]
+        },
+        {
+          "id": "R",
+          "label": "Mustard in right bin",
+          "mover": "mustard",
+          "reference": "grey_bin_right",
+          "relation": "in",
+          "origin": "native",
+          "prompts": [
+            {
+              "id": "S2-R-D",
+              "form": "D",
+              "text": "Put the mustard in the right bin",
+              "sha256": "e1dd247b0cb4e51230a18c024ae1a26a7b77a7998ea490563fb5964a2fa520a5"
+            },
+            {
+              "id": "S2-R-S",
+              "form": "S",
+              "text": "Place the mustard so that the mustard is inside the right bin.",
+              "sha256": "4146cecf22aa8fb50823f22d3924ff0c72015566a19fb050bd373c274034ef57"
+            },
+            {
+              "id": "S2-R-I",
+              "form": "I",
+              "text": "Place the mustard so that the right bin contains the mustard.",
+              "sha256": "4fb7be20dd46d8a70f654cb03c5d97a3b3dc13ae7e27531f138ee0d88a5af422"
+            }
+          ]
+        }
+      ],
+      "extras": [
+        {
+          "id": "S2-X-BETWEEN",
+          "text": "Place the mustard on the table between the two bins.",
+          "test": "New destination, not a paraphrase of either bin task. Tests two-reference localization; requires a predefined bounded between region.",
+          "status": "optional; excluded from primary episode budget"
+        }
+      ]
+    },
+    {
+      "id": "S3",
+      "title": "Butter box and raisin box",
+      "asset": "butter_raisin_box.usda",
+      "base_task": "ButterAboveRaisinTask",
+      "status": "core",
+      "image": "scene_images/S3.jpg",
+      "nominals": [
+        {
+          "task": "ButterAboveRaisinTask",
+          "prompt": "Pick up the butter box and place it on top of the raisin box",
+          "source": "robolab/tasks/benchmark/butter_above_raisin_task.py"
+        }
+      ],
+      "question": "Does the model distinguish supported placement on the box from placement beside it, and keep the intended object fixed under reversed wording?",
+      "note": "On top means supported placement, not hovering above. Left/right are new goals on the same existing scene; their physical feasibility and scoring must be checked before collection. This is not a pure height ablation: support and contact also change.",
+      "goals": [
+        {
+          "id": "TOP",
+          "label": "Butter box on raisin box",
+          "mover": "butter",
+          "reference": "raisin_box",
+          "relation": "supported_on",
+          "origin": "native",
+          "prompts": [
+            {
+              "id": "S3-TOP-D",
+              "form": "D",
+              "text": "Pick up the butter box and place it on top of the raisin box",
+              "sha256": "b48bed2e3a245cf5a6fc50500d5ae4ed6f178716d2dfdc0c4c9e1cabd3d575c5"
+            },
+            {
+              "id": "S3-TOP-S",
+              "form": "S",
+              "text": "Place the butter box so that the butter box is on top of and supported by the raisin box.",
+              "sha256": "76b7aaaf97cc41880d8e42dcd56c2d0784882de49268e86d9acceaa290f537dd"
+            },
+            {
+              "id": "S3-TOP-I",
+              "form": "I",
+              "text": "Place the butter box so that the raisin box is underneath and supporting the butter box.",
+              "sha256": "f1c87c56f337ad242eb10ca21b81791712e3dddad6d82236003c41fc9d265727"
+            }
+          ]
+        },
+        {
+          "id": "L",
+          "label": "Butter box left of raisin box",
+          "mover": "butter",
+          "reference": "raisin_box",
+          "relation": "L",
+          "origin": "study-added goal",
+          "prompts": [
+            {
+              "id": "S3-L-D",
+              "form": "D",
+              "text": "Place the butter box on the table to the left of the raisin box.",
+              "sha256": "4f276c1ca0989bf71da3cce128d181be5d8787e6bdaff6ed5c32a78a29ab52e5"
+            },
+            {
+              "id": "S3-L-S",
+              "form": "S",
+              "text": "Move the butter box on the table so that the butter box is to the left of the raisin box.",
+              "sha256": "d00edcb26ac1f629e9607d632acd9a5a639e231059b5331feb3091b9b1f90255"
+            },
+            {
+              "id": "S3-L-I",
+              "form": "I",
+              "text": "Move the butter box on the table so that the raisin box is to the right of the butter box.",
+              "sha256": "c8b17b137f3e2510c12d5a0211259aaef998f5325f91e20e75600a9807b159b7"
+            }
+          ]
+        },
+        {
+          "id": "R",
+          "label": "Butter box right of raisin box",
+          "mover": "butter",
+          "reference": "raisin_box",
+          "relation": "R",
+          "origin": "study-added goal",
+          "prompts": [
+            {
+              "id": "S3-R-D",
+              "form": "D",
+              "text": "Place the butter box on the table to the right of the raisin box.",
+              "sha256": "6f34a3070256218f3b21ad8a8e4dc4d27c0885e693cc5adfbee35df07fe352e9"
+            },
+            {
+              "id": "S3-R-S",
+              "form": "S",
+              "text": "Move the butter box on the table so that the butter box is to the right of the raisin box.",
+              "sha256": "067a2fb41fba1bab3e929a5d16b10a9e4b943ecae076d8bdeeb9bebfcc383cab"
+            },
+            {
+              "id": "S3-R-I",
+              "form": "I",
+              "text": "Move the butter box on the table so that the raisin box is to the left of the butter box.",
+              "sha256": "40e8ece7cc4f53cef9e8834765577e832c7bd5ede30f051c7fc0bc5886bb14a6"
+            }
+          ]
+        }
+      ],
+      "extras": []
+    },
+    {
+      "id": "S4",
+      "title": "Mustard bottle and raisin box",
+      "asset": "mustard_raisin_box.usda",
+      "base_task": "MustardAboveRaisinTask",
+      "status": "core",
+      "image": "scene_images/S4.jpg",
+      "nominals": [
+        {
+          "task": "MustardAboveRaisinTask",
+          "prompt": "Place the mustard on the raisin box. ",
+          "source": "robolab/tasks/benchmark/mustard_above_raisin_task.py"
+        }
+      ],
+      "question": "Does the model distinguish supported placement on the box from placement beside it, and keep the intended object fixed under reversed wording?",
+      "note": "On top means supported placement, not hovering above. Left/right are new goals on the same existing scene; their physical feasibility and scoring must be checked before collection. This is not a pure height ablation: support and contact also change.",
+      "goals": [
+        {
+          "id": "TOP",
+          "label": "Mustard bottle on raisin box",
+          "mover": "mustard_bottle",
+          "reference": "raisin_box",
+          "relation": "supported_on",
+          "origin": "native",
+          "prompts": [
+            {
+              "id": "S4-TOP-D",
+              "form": "D",
+              "text": "Place the mustard on the raisin box. ",
+              "sha256": "821f226c67f532a7445546203fa11416d7b6ac47fabaff8b7aab2dc8db73e442"
+            },
+            {
+              "id": "S4-TOP-S",
+              "form": "S",
+              "text": "Place the mustard bottle so that the mustard bottle is on top of and supported by the raisin box.",
+              "sha256": "798e5a9a6bbd5e990a01d1fcd2144636ae31087b0e48ee1bbd1b00de377daa7b"
+            },
+            {
+              "id": "S4-TOP-I",
+              "form": "I",
+              "text": "Place the mustard bottle so that the raisin box is underneath and supporting the mustard bottle.",
+              "sha256": "e55f64afe52b0663583b16201aabfabc8a8eb9e4330d1735737d14957d15c70e"
+            }
+          ]
+        },
+        {
+          "id": "L",
+          "label": "Mustard bottle left of raisin box",
+          "mover": "mustard_bottle",
+          "reference": "raisin_box",
+          "relation": "L",
+          "origin": "study-added goal",
+          "prompts": [
+            {
+              "id": "S4-L-D",
+              "form": "D",
+              "text": "Place the mustard bottle on the table to the left of the raisin box.",
+              "sha256": "686b8a4ebeb04f9e83e1d8c63918251f4db50ba34bae9b1bad78e67abb8cef75"
+            },
+            {
+              "id": "S4-L-S",
+              "form": "S",
+              "text": "Move the mustard bottle on the table so that the mustard bottle is to the left of the raisin box.",
+              "sha256": "fd5d82328c8668b75e0f924604b1d8e8918c45b75b5470411f85b242d69b5df1"
+            },
+            {
+              "id": "S4-L-I",
+              "form": "I",
+              "text": "Move the mustard bottle on the table so that the raisin box is to the right of the mustard bottle.",
+              "sha256": "53ab031d814e2c2fc7d4bf1c66c19a34deef6be79cf30dba752c3f8942dc48bf"
+            }
+          ]
+        },
+        {
+          "id": "R",
+          "label": "Mustard bottle right of raisin box",
+          "mover": "mustard_bottle",
+          "reference": "raisin_box",
+          "relation": "R",
+          "origin": "study-added goal",
+          "prompts": [
+            {
+              "id": "S4-R-D",
+              "form": "D",
+              "text": "Place the mustard bottle on the table to the right of the raisin box.",
+              "sha256": "a2832f632908da5a6cc43eeabfc8bbec9c2cf3f329d49019e4585d7517732f66"
+            },
+            {
+              "id": "S4-R-S",
+              "form": "S",
+              "text": "Move the mustard bottle on the table so that the mustard bottle is to the right of the raisin box.",
+              "sha256": "6dd52f11bb64179b042c78b9f81aa69b611d64c87a313a008a755bbb076d3719"
+            },
+            {
+              "id": "S4-R-I",
+              "form": "I",
+              "text": "Move the mustard bottle on the table so that the raisin box is to the left of the mustard bottle.",
+              "sha256": "79d4084e473a2d0e178879b53181d33f3600e626feea579815762cedf4808fb6"
+            }
+          ]
+        }
+      ],
+      "extras": []
+    },
+    {
+      "id": "S5",
+      "title": "Two bowls",
+      "asset": "bowls_2_table.usda",
+      "base_task": "BowlStackingLeftOnRightTask",
+      "status": "core",
+      "image": "scene_images/S5.jpg",
+      "nominals": [
+        {
+          "task": "BowlStackingLeftOnRightTask",
+          "prompt": "Stack the left bowl on the right bowl",
+          "source": "robolab/tasks/benchmark/bowl_stacking_left_on_right.py"
+        },
+        {
+          "task": "BowlStackingRightOnLeftTask",
+          "prompt": "Stack the right bowl on the left bowl",
+          "source": "robolab/tasks/benchmark/bowl_stacking_right_on_left.py"
+        }
+      ],
+      "question": "When the two objects look alike, does the model predict and move the requested bowl, or act on the other one?",
+      "note": "Bind left/right bowl identities at reset, using the robot frame. In the recorded layout left is bowl_2 and right is bowl_1; recompute bindings after any layout change. Opposite stacking goals change BOTH mover and support. They are not equivalent descriptions and are not a pure direction ablation.",
+      "goals": [
+        {
+          "id": "LR",
+          "label": "Left bowl onto right bowl",
+          "mover": "bowl_2",
+          "reference": "bowl_1",
+          "relation": "stacked_in",
+          "origin": "native",
+          "prompts": [
+            {
+              "id": "S5-LR-D",
+              "form": "D",
+              "text": "Stack the left bowl on the right bowl",
+              "sha256": "2033027a5dd8c0d0a54362071a565e06304a8f2c999a81b2ac4cb55fc8662408"
+            },
+            {
+              "id": "S5-LR-S",
+              "form": "S",
+              "text": "Move the left bowl so that the left bowl is stacked on the right bowl.",
+              "sha256": "389a581765d2828403cac9a0a1379e6cb5195ba9cbda9b8347129178e41c6d47"
+            },
+            {
+              "id": "S5-LR-I",
+              "form": "I",
+              "text": "Move the left bowl so that the right bowl is underneath and supporting the left bowl.",
+              "sha256": "61d8d0158fb50670c15ee129b4058f12e92ca7b36bd6a6bc4178d72a9c83a2a2"
+            }
+          ]
+        },
+        {
+          "id": "RL",
+          "label": "Right bowl onto left bowl",
+          "mover": "bowl_1",
+          "reference": "bowl_2",
+          "relation": "stacked_in",
+          "origin": "native",
+          "prompts": [
+            {
+              "id": "S5-RL-D",
+              "form": "D",
+              "text": "Stack the right bowl on the left bowl",
+              "sha256": "56b7172869c79a7bfc761d84caf52ef8855e3c9618192a199b50882773e0f062"
+            },
+            {
+              "id": "S5-RL-S",
+              "form": "S",
+              "text": "Move the right bowl so that the right bowl is stacked on the left bowl.",
+              "sha256": "7873e78a4e494a02d114945b42be7d1601dc57d61896aed144eb8ec37545ef2a"
+            },
+            {
+              "id": "S5-RL-I",
+              "form": "I",
+              "text": "Move the right bowl so that the left bowl is underneath and supporting the right bowl.",
+              "sha256": "fb2afbd0fa6259c277198ac9e949aa30b287571426ae2c1dd5fb6fbf15338773"
+            }
+          ]
+        }
+      ],
+      "extras": []
+    },
+    {
+      "id": "S6",
+      "title": "White mug and table center",
+      "asset": "objects_around_table.usda",
+      "base_task": "WhiteMugInCenterOfTableTask",
+      "status": "hold; excluded from primary study",
+      "image": "scene_images/S6.jpg",
+      "nominals": [
+        {
+          "task": "WhiteMugInCenterOfTableTask",
+          "prompt": "Put the white mug in the center of the table.",
+          "source": "robolab/tasks/benchmark/white_mug_in_center_of_table.py"
+        }
+      ],
+      "question": "Can the model target a region instead of another object, and preserve that target across descriptions?",
+      "note": "ON HOLD. In the pilot, the bowl and banana were already far below the table at the first policy observation. Keep the 1/1 native success as a pilot result with this caveat. No confirmation episodes until reset validity is repaired and versioned. Image shows the actual incomplete pilot reset.",
+      "goals": [
+        {
+          "id": "C",
+          "label": "Mug at center",
+          "mover": "mug",
+          "reference": "table",
+          "relation": "center",
+          "origin": "native",
+          "prompts": [
+            {
+              "id": "S6-C-D",
+              "form": "D",
+              "text": "Put the white mug in the center of the table.",
+              "sha256": "9426c51312e6757357019f7a75e710c7cd9ffee743953cfd648c04b2b931d5d6"
+            },
+            {
+              "id": "S6-C-S",
+              "form": "S",
+              "text": "Place the white mug so that the white mug rests at the center of the table.",
+              "sha256": "174281794d234d99810edf41fc4a32f97e686ae92677a4e2ed3577b148182625"
+            },
+            {
+              "id": "S6-C-I",
+              "form": "I",
+              "text": "Place the white mug so that the center of the table is directly underneath the white mug, with the mug resting on the table.",
+              "sha256": "b0cdce82964501b25ff77cd6a429840f6f19a192f92546509d5116fb817d0902"
+            }
+          ]
+        },
+        {
+          "id": "L",
+          "label": "Mug left of center",
+          "mover": "mug",
+          "reference": "table_center",
+          "relation": "L",
+          "origin": "study-added goal",
+          "prompts": [
+            {
+              "id": "S6-L-D",
+              "form": "D",
+              "text": "Place the white mug on the table to the left of its center.",
+              "sha256": "e829de1587f71b411400c145d8a2a712fb111bf866bde02830330fe81a9a89f7"
+            },
+            {
+              "id": "S6-L-S",
+              "form": "S",
+              "text": "Move the white mug on the table so that the white mug is to the left of the table center.",
+              "sha256": "73aac2c41f338691e058e1559e826f7a62bbed8f4e392d8ad1ec323fed58e493"
+            },
+            {
+              "id": "S6-L-I",
+              "form": "I",
+              "text": "Move the white mug on the table so that the table center is to the right of the white mug.",
+              "sha256": "9d5a12c47d50a6e90b5e05470286e12b7a5438eda41ea9cd30e9a07c41dc24f7"
+            }
+          ]
+        },
+        {
+          "id": "R",
+          "label": "Mug right of center",
+          "mover": "mug",
+          "reference": "table_center",
+          "relation": "R",
+          "origin": "study-added goal",
+          "prompts": [
+            {
+              "id": "S6-R-D",
+              "form": "D",
+              "text": "Place the white mug on the table to the right of its center.",
+              "sha256": "63cf14c443acd3985d4635e996823f7f5fe4c95309535afcf036ef67618b6c23"
+            },
+            {
+              "id": "S6-R-S",
+              "form": "S",
+              "text": "Move the white mug on the table so that the white mug is to the right of the table center.",
+              "sha256": "a49e26c61e698e3364f45897b3138fde36b8d1bf247dd073a178b97903cfb136"
+            },
+            {
+              "id": "S6-R-I",
+              "form": "I",
+              "text": "Move the white mug on the table so that the table center is to the left of the white mug.",
+              "sha256": "3a9188d3e3c9b23635523ae337371e77b50f17e385179ccba5ef185c216911de"
+            }
+          ]
+        }
+      ],
+      "extras": [
+        {
+          "id": "S6-X-OBJECT",
+          "text": "Put the Rubik's cube in the center of the table.",
+          "test": "Change the manipulated object while preserving the destination; held with this entire scene.",
+          "status": "optional; excluded from primary episode budget"
+        }
+      ]
+    }
+  ],
+  "counts": {
+    "core_scenes": 5,
+    "core_goals": 14,
+    "core_prompts": 42,
+    "held_prompts": 9,
+    "optional_single_prompts": 5
+  }
+}

@@ -1,0 +1,799 @@
+{
+  "robolab_commit": "0aef241fb088ca21bb4ebd24448940ed56620d17",
+  "tasks": [
+    {
+      "task": "BananasOutOfBinTask",
+      "source": "robolab/tasks/benchmark/bananas_out_of_bin.py",
+      "sha256": "e7bc770d1d98decf746ec42cb5d3d73e776b89d5218a030aff4fc2c1b6b72df4",
+      "contact_object_list": [
+        "banana",
+        "banana_01",
+        "banana_02",
+        "banana_03",
+        "banana_04",
+        "grey_bin",
+        "table"
+      ],
+      "scene": "import_scene('bananas_5_grey_bin.usda', contact_object_list)",
+      "terminations": "BananasOutOfBinTerminations",
+      "instruction": {
+        "specific": "Take all the bananas out of the grey bin and put it on the table.",
+        "default": "Take the bananas out",
+        "vague": "Empty the grey bin"
+      },
+      "episode_length_s": 90,
+      "attributes": [
+        "semantics",
+        "spatial"
+      ],
+      "subtasks": "[Subtask(name='bananas_out_of_bin', conditions={'banana_02': [partial(object_grabbed, object='banana_02'), partial(object_outside_of, object='banana_02', container='grey_bin', tolerance=0.0, require_gripper_detached=True), partial(object_dropped, object='banana_02')], 'banana_04': [partial(object_grabbed, object='banana_04'), partial(object_outside_of, object='banana_04', container='grey_bin', tolerance=0.0, require_gripper_detached=True), partial(object_dropped, object='banana_04')]}, logical='all', score=1.0)]"
+    },
+    {
+      "task": "BowlStackingLeftOnRightTask",
+      "source": "robolab/tasks/benchmark/bowl_stacking_left_on_right.py",
+      "sha256": "5f97aaf30c16459fcf138f02f665626204b0b60fac6cd06225974aaf8decbed3",
+      "contact_object_list": [
+        "bowl_1",
+        "bowl_2",
+        "table"
+      ],
+      "scene": "import_scene('bowls_2_table.usda', contact_object_list)",
+      "terminations": "BowlStackingLeftOnRightTerminations",
+      "instruction": {
+        "default": "Stack the left bowl on the right bowl",
+        "vague": "Stack the left bowl on the right",
+        "specific": "Pick up the bowl to the left of the robot and place it on top of the bowl to the right of the robot"
+      },
+      "episode_length_s": 20,
+      "attributes": [
+        "spatial"
+      ],
+      "subtasks": "[Subtask(name='stack_bowl_left_on_right', conditions=partial(object_in_container, object=['bowl_2'], container='bowl_1', gripper_name='gripper', require_contact_with=True, require_gripper_detached=True), logical='all', score=1.0)]"
+    },
+    {
+      "task": "BowlStackingRightOnLeftTask",
+      "source": "robolab/tasks/benchmark/bowl_stacking_right_on_left.py",
+      "sha256": "c64c46a825f097df4c69ef954efa7ea7ec018afbb03f1aaaa1cfffd6ce12b49b",
+      "contact_object_list": [
+        "bowl_1",
+        "bowl_2",
+        "table"
+      ],
+      "scene": "import_scene('bowls_2_table.usda', contact_object_list)",
+      "terminations": "BowlStackingRightOnLeftTerminations",
+      "instruction": {
+        "default": "Stack the right bowl on the left bowl",
+        "vague": "Stack the right bowl on the left",
+        "specific": "Pick up the bowl to the right of the robot and place it on top of the bowl to the left of the robot"
+      },
+      "episode_length_s": 20,
+      "attributes": [
+        "spatial"
+      ],
+      "subtasks": "[Subtask(name='stack_bowl_right_on_left', conditions=partial(object_in_container, object=['bowl_1'], container='bowl_2', gripper_name='gripper', require_contact_with=True, require_gripper_detached=True), logical='all', score=1.0)]"
+    },
+    {
+      "task": "ButterAboveRaisinTask",
+      "source": "robolab/tasks/benchmark/butter_above_raisin_task.py",
+      "sha256": "28173a5ad5dab5dfd0f0814897ea3154cdda19fd4db0969755e24ce0dc874f05",
+      "contact_object_list": [
+        "butter",
+        "raisin_box",
+        "table"
+      ],
+      "scene": "import_scene('butter_raisin_box.usda', contact_object_list)",
+      "terminations": "Terminations",
+      "instruction": {
+        "specific": "Place the butter on top of the raisin box. The butter should end up on the raisin box.",
+        "vague": "Put butter on raisin box",
+        "default": "Pick up the butter box and place it on top of the raisin box"
+      },
+      "episode_length_s": 40,
+      "attributes": [
+        "spatial"
+      ],
+      "subtasks": "[pick_and_place(object=['butter'], container='raisin_box', logical='all', score=1.0)]"
+    },
+    {
+      "task": "ClampInRightBinTask",
+      "source": "robolab/tasks/benchmark/clamp_in_right_bin.py",
+      "sha256": "521df10c8b31faf3c5c317b0f1b3cd65aa1653ec79dc1f2e8a774b9dc6bebc2a",
+      "contact_object_list": [
+        "left_bin",
+        "right_bin",
+        "red_hammer",
+        "husky_hammer",
+        "cordless_drill",
+        "spring_clamp",
+        "table"
+      ],
+      "scene": "import_scene('tools_container.usda', contact_object_list)",
+      "terminations": "ClampInRightBinTerminations",
+      "instruction": {
+        "default": "Put the spring clamp in the right bin",
+        "vague": "Put the clamp in the right bin",
+        "specific": "Pick up the spring clamp from the table and place it in the bin on the right side"
+      },
+      "episode_length_s": 60,
+      "attributes": [
+        "semantics",
+        "spatial"
+      ],
+      "subtasks": "[pick_and_place(object=['spring_clamp'], container='right_bin', logical='all', score=1.0)]"
+    },
+    {
+      "task": "CookingPickPastaToolTask",
+      "source": "robolab/tasks/benchmark/cooking_pick_pasta_tool.py",
+      "sha256": "e2b0a7c1ac3f0de99ebaa771f1b64a8eaeb9d4f76bea4a9dcdbc5e3f504e3f64",
+      "contact_object_list": [
+        "table",
+        "redonion",
+        "serving_bowl",
+        "clay_plates",
+        "wooden_spoons",
+        "spatula",
+        "storage_box",
+        "tomato_sauce_can",
+        "measuring_cups_1",
+        "pink_spaghetti_spoon",
+        "spoon_1",
+        "green_serving_spoon",
+        "storage_box_01",
+        "ladle",
+        "wooden_bowl",
+        "potato_masher"
+      ],
+      "scene": "import_scene('cooking_table.usda', contact_object_list)",
+      "terminations": "CookingPickPastaToolTerminations",
+      "instruction": {
+        "default": "Move the pink tool from this utensil container to the other utensil holder",
+        "vague": "Move the pink tool over to the other container",
+        "specific": "Remove the pink pasta tool from its current utensil container and place it in the other utensil holder"
+      },
+      "episode_length_s": 60,
+      "attributes": [
+        "spatial",
+        "vague",
+        "color"
+      ],
+      "subtasks": "[pick_and_place(object=['pink_spaghetti_spoon'], container='storage_box_01', logical='all', score=1.0)]"
+    },
+    {
+      "task": "FoodPackingByColorTask",
+      "source": "robolab/tasks/benchmark/food_packing_by_color_task.py",
+      "sha256": "bfa191a0876ec31ea019b49703a1b38887f4335302f55ab185c74f39898c08cb",
+      "contact_object_list": [
+        "bin_a06",
+        "cheez_it",
+        "chocolate_pudding",
+        "coffee_can",
+        "mustard",
+        "spam_can",
+        "sugar_box",
+        "tomato_soup_can",
+        "bin_b03",
+        "table"
+      ],
+      "scene": "import_scene('food_packing.usda', contact_object_list)",
+      "terminations": "FoodPackingByColorTerminations",
+      "instruction": {
+        "default": "Pack yellow objects in right container and blue object in the left container",
+        "vague": "Sort things by color",
+        "specific": "Pick up the yellow can and place it in the right container, then pick up the blue object and place it in the left container"
+      },
+      "episode_length_s": 120,
+      "attributes": [
+        "spatial",
+        "sorting",
+        "color"
+      ],
+      "subtasks": "[pick_and_place(object=['mustard'], container='bin_a06', logical='all', score=0.5), pick_and_place(object=['coffee_can'], container='bin_b03', logical='all', score=0.5)]"
+    },
+    {
+      "task": "KeyboardOutOfBinTask",
+      "source": "robolab/tasks/benchmark/keyboard_out_of_bin_task.py",
+      "sha256": "d7d359270bc397e03429624f235556cc294c38212d0977751ac142c82e2700da",
+      "contact_object_list": [
+        "ceramic_mug",
+        "glasses",
+        "keyboard",
+        "lizard_figurine",
+        "marker",
+        "remote_control",
+        "smartphone",
+        "wooden_bowl",
+        "spoon_big",
+        "computer_mouse",
+        "yogurt_cup",
+        "granola_bars",
+        "grey_bin",
+        "table"
+      ],
+      "scene": "import_scene('workdesk_bin.usda', contact_object_list)",
+      "terminations": "KeyboardOutOfBinTerminations",
+      "instruction": {
+        "default": "Take the keyboard out of the bin and put it on the table",
+        "vague": "Take the keyboard out",
+        "specific": "Reach into the bin, grasp the keyboard, lift it out, and place it on the table surface"
+      },
+      "episode_length_s": 60,
+      "attributes": [
+        "spatial"
+      ],
+      "subtasks": "[pick_and_place_on_surface(object=['keyboard'], surface='table', logical='all', score=1.0)]"
+    },
+    {
+      "task": "MustardAboveRaisinTask",
+      "source": "robolab/tasks/benchmark/mustard_above_raisin_task.py",
+      "sha256": "18320ac679014b6d1cfcc24765f66d0debf456c03a0cd38dc055db3b31ef8387",
+      "contact_object_list": [
+        "mustard_bottle",
+        "raisin_box",
+        "table"
+      ],
+      "scene": "import_scene('mustard_raisin_box.usda', contact_object_list)",
+      "terminations": "Terminations",
+      "instruction": {
+        "default": "Place the mustard on the raisin box. ",
+        "vague": "Put bottle on box",
+        "specific": "Pick up the mustard bottle and put it on top of the raisin box. The mustard should end up directly above the raisin box."
+      },
+      "episode_length_s": 40,
+      "attributes": [
+        "spatial"
+      ],
+      "subtasks": "[pick_and_place(object=['mustard_bottle'], container='raisin_box', logical='all', score=1.0)]"
+    },
+    {
+      "task": "MustardInLeftBinTask",
+      "source": "robolab/tasks/benchmark/mustard_in_left_bin.py",
+      "sha256": "026518480c0d5dc0a1f518a41a6bc6a4937ce320b41bd547dd9c95e3be3b5bb6",
+      "contact_object_list": [
+        "table",
+        "mustard",
+        "grey_bin_right",
+        "grey_bin_left"
+      ],
+      "scene": "import_scene('two_bin.usda', contact_object_list)",
+      "terminations": "Terminations",
+      "instruction": {
+        "default": "Put the mustard in the left bin",
+        "vague": "Use the left bin for mustard",
+        "specific": "Pick up the mustard bottle and place it in the bin on the left side"
+      },
+      "episode_length_s": 30,
+      "attributes": [
+        "spatial"
+      ],
+      "subtasks": "[pick_and_place(object=['mustard'], container='grey_bin_left', logical='all', score=1.0)]"
+    },
+    {
+      "task": "MustardInRightBinTask",
+      "source": "robolab/tasks/benchmark/mustard_in_right_bin.py",
+      "sha256": "b7c17a542d6bb5fc308766c0cd1fe0a8c3dc94dfecb3946a555259e82f5116f8",
+      "contact_object_list": [
+        "table",
+        "mustard",
+        "grey_bin_right",
+        "grey_bin_left"
+      ],
+      "scene": "import_scene('two_bin.usda', contact_object_list)",
+      "terminations": "Terminations",
+      "instruction": {
+        "default": "Put the mustard in the right bin",
+        "vague": "Use the right bin for mustard",
+        "specific": "Pick up the mustard bottle and place it in the bin on the right side"
+      },
+      "episode_length_s": 30,
+      "attributes": [
+        "spatial"
+      ],
+      "subtasks": "[pick_and_place(object=['mustard'], container='grey_bin_right', logical='all', score=1.0)]"
+    },
+    {
+      "task": "NonHammerToolsInRightBinTask",
+      "source": "robolab/tasks/benchmark/non_hammer_tools_in_right_bin.py",
+      "sha256": "da87e285ab3ad862b42d40ea3ad0af7247f5df4c9fb50c70a26cf4a0e5daeef9",
+      "contact_object_list": [
+        "left_bin",
+        "right_bin",
+        "red_hammer",
+        "husky_hammer",
+        "cordless_drill",
+        "spring_clamp",
+        "table"
+      ],
+      "scene": "import_scene('tools_container.usda', contact_object_list)",
+      "terminations": "NonHammerToolsInRightBinTerminations",
+      "instruction": {
+        "default": "Put the non-hammer tools in the right bin",
+        "vague": "Sort non-hammer tools to the right",
+        "specific": "Pick up the cordless drill and the spring clamp and place both in the bin on the right side, leaving the hammers untouched"
+      },
+      "episode_length_s": 180,
+      "attributes": [
+        "semantics",
+        "spatial",
+        "sorting"
+      ],
+      "subtasks": "[pick_and_place(object=['cordless_drill', 'spring_clamp'], container='right_bin', logical='all', score=1.0)]"
+    },
+    {
+      "task": "PutBowlOnShelfTopTask",
+      "source": "robolab/tasks/benchmark/put_bowl_on_shelf.py",
+      "sha256": "988efa001ed44628b52695f67eeb24f20d270f941a71e71a993670f550436674",
+      "contact_object_list": [
+        "ceramic_mug",
+        "mug",
+        "rack_l04",
+        "serving_bowl",
+        "utilityjug_a01",
+        "table"
+      ],
+      "scene": "import_scene('shelf_mugs_jug_bowl.usda', contact_object_list)",
+      "terminations": "PutBowlOnShelfTopTerminations",
+      "instruction": {
+        "default": "Put the serving bowl anywhere on the shelf in front of you",
+        "vague": "Put the bowl on shelf",
+        "specific": "Pick up the white serving bowl that's on the table to the right and place it on any open space on the shelf on the center of the table"
+      },
+      "episode_length_s": 60,
+      "attributes": [
+        "spatial"
+      ],
+      "subtasks": "[pick_and_place(object=['serving_bowl'], container='rack_l04', logical='all', score=1.0)]"
+    },
+    {
+      "task": "PutMugsOnShelfTask",
+      "source": "robolab/tasks/benchmark/put_mugs_on_shelf.py",
+      "sha256": "df4dd954652edd9860566ce712794b1a12cffa827f13ebd15ae1724175a10228",
+      "contact_object_list": [
+        "ceramic_mug",
+        "mug",
+        "rack_l04",
+        "serving_bowl",
+        "utilityjug_a01",
+        "table"
+      ],
+      "scene": "import_scene('shelf_mugs_jug_bowl.usda', contact_object_list)",
+      "terminations": "Terminations",
+      "instruction": {
+        "default": "Put the two mugs on the shelf",
+        "vague": "Put the mugs on shelf",
+        "specific": "Pick up the two mugs from the table and place them on the shelf in front of you"
+      },
+      "episode_length_s": 180,
+      "attributes": [
+        "affordance",
+        "spatial",
+        "counting"
+      ],
+      "subtasks": "[pick_and_place(object=['ceramic_mug', 'mug'], container='rack_l04', logical='all', score=1.0)]"
+    },
+    {
+      "task": "PutTwoMugsOnShelfTask",
+      "source": "robolab/tasks/benchmark/put_two_mugs_on_shelf.py",
+      "sha256": "80ecdde7b439fb03a4dbf46b6c35d56f354c3426c314303a581fb5a8c92828c5",
+      "contact_object_list": [
+        "table",
+        "wireshelving_a01",
+        "spatula_01",
+        "plate_small",
+        "fork_big",
+        "fork_small",
+        "ceramic_mug",
+        "mug",
+        "mug_01"
+      ],
+      "scene": "import_scene('wire_shelf_mugs_plate_spatula.usda', contact_object_list)",
+      "terminations": "Terminations",
+      "instruction": {
+        "default": "Put two (2) mugs on the wire shelf",
+        "vague": "Put the mugs on shelf",
+        "specific": "Select two mugs from the right side of the table and place them on the wire shelf in front of you"
+      },
+      "episode_length_s": 180,
+      "attributes": [
+        "affordance",
+        "spatial",
+        "counting"
+      ],
+      "subtasks": "[pick_and_place(object=['ceramic_mug', 'mug', 'mug_01'], container='wireshelving_a01', logical='choose', K=2, score=1.0)]"
+    },
+    {
+      "task": "RecycleCartonsVerticalCrateTask",
+      "source": "robolab/tasks/benchmark/recycle_cartons_vertical_crate.py",
+      "sha256": "63926482f1a11ff9952a4d867fb00aaa09b80df3667d94a06614749d5c045477",
+      "contact_object_list": [
+        "container_a01",
+        "milk_carton",
+        "orange_juice_carton",
+        "alphabet_soup_can",
+        "smartphone",
+        "mayonnaise_bottle",
+        "ketchup_bottle",
+        "mug",
+        "table"
+      ],
+      "scene": "import_scene('cartons_in_vertical_crate.usda', contact_object_list)",
+      "terminations": "RecycleCartonsVerticalCrateTerminations",
+      "instruction": {
+        "default": "Put the cartons that can be recycled in the vertical crate",
+        "vague": "Recycle the cartons in the crate",
+        "specific": "Pick up the food cartons that can be recycled and place them into the vertical crate in the center of the table"
+      },
+      "episode_length_s": 90,
+      "attributes": [
+        "semantics",
+        "spatial"
+      ],
+      "subtasks": "[pick_and_place(object=['milk_carton', 'orange_juice_carton'], container='container_a01', logical='all', score=1.0)]"
+    },
+    {
+      "task": "RubiksCubeBehindBowlTask",
+      "source": "robolab/tasks/benchmark/rubiks_cube_behind_bowl.py",
+      "sha256": "dfe37172549e336131ccf185f95a99add6dab75ba762ec5864b7bc778f95d193",
+      "contact_object_list": [
+        "rubiks_cube",
+        "banana",
+        "bowl",
+        "table"
+      ],
+      "scene": "import_scene('rubiks_cube_banana_bowl.usda', contact_object_list)",
+      "terminations": "RubiksCubeBehindBowlTermination",
+      "instruction": {
+        "default": "Put the rubiks cube behind the bowl",
+        "vague": "Put the cube behind the bowl",
+        "specific": "Pick up the rubiks cube and place it on the table directly behind the bowl, further from you"
+      },
+      "attributes": [
+        "spatial"
+      ],
+      "episode_length_s": 30,
+      "subtasks": "[Subtask(name='rubiks_cube_behind_bowl', conditions=[partial(object_grabbed, object='rubiks_cube'), partial(object_behind, object='rubiks_cube', reference_object='bowl', frame_of_reference='robot', mirrored=False), partial(object_dropped, object='rubiks_cube')], logical='all', score=1.0)]"
+    },
+    {
+      "task": "RubiksCubeInFrontOfBowlTask",
+      "source": "robolab/tasks/benchmark/rubiks_cube_in_front_of_bowl.py",
+      "sha256": "5833595378cd3f7464552a32877068c29489197a52701f13ae83e6a3278ac6a8",
+      "contact_object_list": [
+        "rubiks_cube",
+        "banana",
+        "bowl",
+        "table"
+      ],
+      "scene": "import_scene('rubiks_cube_banana_bowl.usda', contact_object_list)",
+      "terminations": "RubiksCubeInFrontOfBowlTermination",
+      "instruction": {
+        "default": "Put the rubiks cube in front of the bowl",
+        "vague": "Put the cube in front of the bowl",
+        "specific": "Pick up the rubiks cube and place it on the table directly in front of the bowl, closer to you"
+      },
+      "attributes": [
+        "spatial"
+      ],
+      "episode_length_s": 30,
+      "subtasks": "[Subtask(name='rubiks_cube_in_front_of_bowl', conditions=[partial(object_grabbed, object='rubiks_cube'), partial(object_in_front_of, object='rubiks_cube', reference_object='bowl', frame_of_reference='robot', mirrored=False), partial(object_dropped, object='rubiks_cube')], logical='all', score=1.0)]"
+    },
+    {
+      "task": "RubiksCubeLeftOfBowlTask",
+      "source": "robolab/tasks/benchmark/rubiks_cube_left_of_bowl.py",
+      "sha256": "5e5145c4f5507fdd923f95bd3ba61d5e24b99820a69472f5e4e3b2f11d104b3b",
+      "contact_object_list": [
+        "rubiks_cube",
+        "banana",
+        "bowl",
+        "table"
+      ],
+      "scene": "import_scene('rubiks_cube_banana_bowl.usda', contact_object_list)",
+      "terminations": "RubiksCubeLeftOfBowlTermination",
+      "instruction": {
+        "default": "Put the rubiks cube to the left of the bowl",
+        "vague": "Put the cube left of the bowl",
+        "specific": "Pick up the rubiks cube and place it on the table to the left side of the bowl"
+      },
+      "attributes": [
+        "spatial"
+      ],
+      "episode_length_s": 30,
+      "subtasks": "[Subtask(name='rubiks_cube_left_of_bowl', conditions=[partial(object_grabbed, object='rubiks_cube'), partial(object_left_of, object='rubiks_cube', reference_object='bowl', frame_of_reference='robot', mirrored=False), partial(object_dropped, object='rubiks_cube')], logical='all', score=1.0)]"
+    },
+    {
+      "task": "RubiksCubeRightOfBowlTask",
+      "source": "robolab/tasks/benchmark/rubiks_cube_right_of_bowl.py",
+      "sha256": "fb75bd3a69bb487058d18feac794b4dc2c15742039339f6eb2b0ec6ef305c3e6",
+      "contact_object_list": [
+        "rubiks_cube",
+        "banana",
+        "bowl",
+        "mug",
+        "grey_bin",
+        "table"
+      ],
+      "scene": "import_scene('rubiks_cube_banana_bowl_mug_bin.usda', contact_object_list)",
+      "terminations": "RubiksCubeRightOfBowlTermination",
+      "instruction": {
+        "default": "Put the rubiks cube to the right of the bowl",
+        "vague": "Put the cube right of the bowl",
+        "specific": "Pick up the rubiks cube and place it on the table to the right side of the bowl"
+      },
+      "attributes": [
+        "spatial"
+      ],
+      "episode_length_s": 30,
+      "subtasks": "[Subtask(name='rubiks_cube_right_of_bowl', conditions=[partial(object_grabbed, object='rubiks_cube'), partial(object_right_of, object='rubiks_cube', reference_object='bowl', frame_of_reference='robot', mirrored=False), partial(object_dropped, object='rubiks_cube')], logical='all', score=1.0)]"
+    },
+    {
+      "task": "SpoonInMugTask",
+      "source": "robolab/tasks/benchmark/spoon_in_mug_task.py",
+      "sha256": "be5879182d41a102b981478bd76a872c01309661853ba03e20bba1bdbd0e6b8f",
+      "contact_object_list": [
+        "ceramic_mug",
+        "glasses",
+        "keyboard",
+        "lizard_figurine",
+        "marker",
+        "remote_control",
+        "smartphone",
+        "wooden_bowl",
+        "spoon_big",
+        "computer_mouse",
+        "yogurt_cup",
+        "granola_bars",
+        "grey_bin",
+        "table"
+      ],
+      "scene": "import_scene('workdesk_bin.usda', contact_object_list)",
+      "terminations": "SpoonInMugTerminations",
+      "instruction": {
+        "default": "Put the metal spoon that's in the wooden bowl in the mug",
+        "vague": "Put the spoon in the mug",
+        "specific": "Take the metal spoon in the wooden bowl and place it inside the ceramic mug with the handle sticking out"
+      },
+      "episode_length_s": 60,
+      "attributes": [
+        "affordance",
+        "spatial"
+      ],
+      "subtasks": "[pick_and_place(object=['spoon_big'], container='ceramic_mug', logical='all', score=1.0)]"
+    },
+    {
+      "task": "TakeSpatulaOffShelfTask",
+      "source": "robolab/tasks/benchmark/take_spatula_off_shelf.py",
+      "sha256": "fe62dc7de036736f858f37e7cec9b1abaa5f3977acee8af8f1c63682a96053f1",
+      "contact_object_list": [
+        "table",
+        "wireshelving_a01",
+        "spatula_01",
+        "plate_small",
+        "fork_big",
+        "fork_small",
+        "ceramic_mug",
+        "mug",
+        "mug_01"
+      ],
+      "scene": "import_scene('wire_shelf_mugs_plate_spatula.usda', contact_object_list)",
+      "terminations": "Terminations",
+      "instruction": {
+        "default": "Take the spatula off the shelf and put it on the table",
+        "vague": "Take the spatula off the shelf",
+        "specific": "Reach up and remove the spatula from the shelf, then place it flat on the table surface"
+      },
+      "episode_length_s": 60,
+      "attributes": [
+        "affordance",
+        "spatial"
+      ],
+      "subtasks": "[pick_and_place_on_surface(object=['spatula_01'], surface='table', logical='all', K=2, score=1.0)]"
+    },
+    {
+      "task": "ToolOrganizationBothTask",
+      "source": "robolab/tasks/benchmark/tool_organization_both_task.py",
+      "sha256": "d124e3a74fd43af17258b67b8a84963764da4ebccf2308aba980fe422e03807a",
+      "contact_object_list": [
+        "left_bin",
+        "right_bin",
+        "red_hammer",
+        "husky_hammer",
+        "cordless_drill",
+        "spring_clamp",
+        "table"
+      ],
+      "scene": "import_scene('tools_container.usda', contact_object_list)",
+      "terminations": "ToolOrganizationBothTerminations",
+      "instruction": {
+        "default": "Put hammers in the right bin and do not touch anything else",
+        "vague": "Put hammers in the right bin",
+        "specific": "Pick up the red hammer and the black hammer and place them in the bin on the right side, leaving all other tools untouched"
+      },
+      "episode_length_s": 180,
+      "attributes": [
+        "semantics",
+        "spatial"
+      ],
+      "subtasks": "[pick_and_place(object=['red_hammer', 'husky_hammer'], container='right_bin', logical='all', score=0.5)]"
+    },
+    {
+      "task": "HammersInLeftBinTask",
+      "source": "robolab/tasks/benchmark/tool_organization_left_task.py",
+      "sha256": "7d0ce35a2d767cec0eaf94b4cd2121684b35a3354e52a3bf0b75434bb1d93629",
+      "contact_object_list": [
+        "left_bin",
+        "right_bin",
+        "red_hammer",
+        "husky_hammer",
+        "cordless_drill",
+        "spring_clamp",
+        "table"
+      ],
+      "scene": "import_scene('tools_container.usda', contact_object_list)",
+      "terminations": "Terminations",
+      "instruction": {
+        "default": "Put the red hammer and black hammer in the left bin",
+        "vague": "Put hammers in the left bin",
+        "specific": "Pick up the red-handled hammer and the black-handled hammer and place both in the left bin"
+      },
+      "episode_length_s": 180,
+      "attributes": [
+        "semantics",
+        "spatial",
+        "color"
+      ],
+      "subtasks": "[pick_and_place(object=['red_hammer', 'husky_hammer'], container='left_bin', logical='all', score=1.0)]"
+    },
+    {
+      "task": "ToolOrganizationTask",
+      "source": "robolab/tasks/benchmark/tool_organization_task.py",
+      "sha256": "a87758d67e781a8f7b1aaeab40939c6ef79605dce7c4e4ade6f104e2f987bce2",
+      "contact_object_list": [
+        "left_bin",
+        "right_bin",
+        "red_hammer",
+        "husky_hammer",
+        "cordless_drill",
+        "spring_clamp",
+        "table"
+      ],
+      "scene": "import_scene('tools_container.usda', contact_object_list)",
+      "terminations": "ToolOrganizationTerminations",
+      "instruction": {
+        "default": "Put the red hammer and black hammer in the left bin",
+        "vague": "Put hammers in the left bin",
+        "specific": "Pick up the red-handled hammer and the black-handled hammer and place both in the left bin"
+      },
+      "episode_length_s": 180,
+      "attributes": [
+        "semantics",
+        "spatial",
+        "color"
+      ],
+      "subtasks": "[pick_and_place(object=['red_hammer', 'husky_hammer'], container='left_bin', logical='all', score=1.0)]"
+    },
+    {
+      "task": "ToolsPickingAllHammersTask",
+      "source": "robolab/tasks/benchmark/tools_picking_all_hammers.py",
+      "sha256": "6c4799f53d76697a6b809453d023a95b25d52b7aa279575157274007d8df5e65",
+      "contact_object_list": [
+        "table",
+        "clamp",
+        "cordless_drill",
+        "spring_clamp",
+        "husky_hammer",
+        "blue_hammer",
+        "red_hammer",
+        "wood_hammer",
+        "left_bin",
+        "center_bin",
+        "right_bin",
+        "clamp_01"
+      ],
+      "scene": "import_scene('tools_picking.usda', contact_object_list)",
+      "terminations": "ToolsPickingAllHammersTerminations",
+      "instruction": {
+        "default": "Take out all the hammers and put them on the table",
+        "vague": "Empty the hammers bin",
+        "specific": "Remove every hammer from the left bin and place each one on the table in front of you"
+      },
+      "episode_length_s": 240,
+      "attributes": [
+        "semantics",
+        "spatial"
+      ],
+      "subtasks": "[pick_and_place_on_surface(object=['husky_hammer', 'blue_hammer', 'red_hammer', 'wood_hammer'], surface='table', logical='all', score=1.0)]"
+    },
+    {
+      "task": "ToolsPickingDrillTask",
+      "source": "robolab/tasks/benchmark/tools_picking_drill.py",
+      "sha256": "ebe3617aa758405b54f491b7a20a50a18d6d7857c241707e2b69bb194e2cbce2",
+      "contact_object_list": [
+        "table",
+        "clamp",
+        "cordless_drill",
+        "spring_clamp",
+        "husky_hammer",
+        "blue_hammer",
+        "red_hammer",
+        "wood_hammer",
+        "left_bin",
+        "center_bin",
+        "right_bin",
+        "clamp_01"
+      ],
+      "scene": "import_scene('tools_picking.usda', contact_object_list)",
+      "terminations": "ToolsPickingDrillTerminations",
+      "instruction": {
+        "default": "Select the cordless drill and put it on the table",
+        "vague": "Get the drill",
+        "specific": "Pick up the cordless electric drill and place it on the table surface"
+      },
+      "episode_length_s": 60,
+      "attributes": [
+        "spatial",
+        "semantics"
+      ],
+      "subtasks": "[pick_and_place_on_surface(object=['cordless_drill'], surface='table', logical='all', score=1.0)]"
+    },
+    {
+      "task": "ToolsPickingHammerTask",
+      "source": "robolab/tasks/benchmark/tools_picking_hammer.py",
+      "sha256": "51eb553be33b270c5571bda515d977a0ecff804d517fee615f0e0a292d27ba86",
+      "contact_object_list": [
+        "table",
+        "clamp",
+        "cordless_drill",
+        "spring_clamp",
+        "husky_hammer",
+        "blue_hammer",
+        "red_hammer",
+        "wood_hammer",
+        "left_bin",
+        "center_bin",
+        "right_bin",
+        "clamp_01"
+      ],
+      "scene": "import_scene('tools_picking.usda', contact_object_list)",
+      "terminations": "ToolsPickingHammerTerminations",
+      "instruction": {
+        "default": "Select the blue hammer and put it on the table",
+        "vague": "Get the blue hammer",
+        "specific": "Reach into the tool area, grasp the blue-handled hammer, and place it flat on the table surface"
+      },
+      "episode_length_s": 60,
+      "attributes": [
+        "semantics",
+        "spatial",
+        "color"
+      ],
+      "subtasks": "[pick_and_place_on_surface(object=['blue_hammer'], surface='table', logical='all', score=1.0)]"
+    },
+    {
+      "task": "WhiteMugInCenterOfTableTask",
+      "source": "robolab/tasks/benchmark/white_mug_in_center_of_table.py",
+      "sha256": "748afe94f9ff85255beb65a12e22ad661c93559cbe05d9bd509b483f5486a1aa",
+      "contact_object_list": [
+        "mug",
+        "bowl",
+        "table",
+        "alphabet_soup_can",
+        "orange_juice_carton",
+        "smartphone",
+        "milk_carton",
+        "banana",
+        "rubiks_cube"
+      ],
+      "scene": "import_scene('objects_around_table.usda', contact_object_list)",
+      "terminations": "WhiteMugInCenterOfTableTerminations",
+      "instruction": {
+        "default": "Put the white mug in the center of the table.",
+        "vague": "Move the mug to the center",
+        "specific": "Pick up the white ceramic mug and place it in the center of the table surface away from the other objects"
+      },
+      "episode_length_s": 30,
+      "attributes": [
+        "color",
+        "spatial"
+      ],
+      "subtasks": "[Subtask(name='white_mug_in_center_of_table', conditions=[partial(object_grabbed, object='mug'), partial(object_on_center, object='mug', reference_object='table', tolerance=0.05), partial(object_dropped, object='mug')], logical='all', score=1.0)]"
+    }
+  ]
+}

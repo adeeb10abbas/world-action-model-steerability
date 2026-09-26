@@ -1,0 +1,73 @@
+{
+  "proposal_version": "draft-0.1",
+  "status": "design_only_not_launch_ready",
+  "learned_policy_launch_authorized": false,
+  "research_question": "Can a world-action model's predicted future help distinguish following the wrong goal from failing to execute the right one?",
+  "primary_endpoint": "Held-out Brier-error reduction for next-prefix wrong-object or contradictory released-placement events after adding blinded forecast labels to the fixed state/action baseline; coverage reported.",
+  "primary_wording_contrast": [
+    "S",
+    "I"
+  ],
+  "secondary_wording_contrast": [
+    "D",
+    "S"
+  ],
+  "core_scene_ids": [
+    "S1",
+    "S2",
+    "S3",
+    "S4",
+    "S5"
+  ],
+  "held_scene_ids": [
+    "S6"
+  ],
+  "starts_per_core_scene": 8,
+  "physical_state_clusters": 40,
+  "core_goals_per_start_set": 14,
+  "core_prompts_per_start_set": 42,
+  "episodes_per_model": 336,
+  "planned_models": [
+    "N3",
+    "E3",
+    "F3"
+  ],
+  "model_eligibility": {
+    "N3": "RGB retained; time/view/annotation qualification pending",
+    "E3": "runtime, immutable pins and forecast qualification pending",
+    "F3": "public API actions only; export and action-preservation qualification pending"
+  },
+  "confirmation_episode_ceilings": {
+    "N3": 336,
+    "N3_E3": 672,
+    "N3_E3_F3": 1008
+  },
+  "development_episode_cap": 46,
+  "total_episode_cap_including_development": 1054,
+  "optional_seed_repeat_N3_episodes": 96,
+  "fixed_horizons_seconds": {
+    "S1": 30,
+    "S2": 30,
+    "S3": 40,
+    "S4": 40,
+    "S5": 20
+  },
+  "nano_max_confirmation_actions": 165600,
+  "nano_max_confirmation_requests": 5376,
+  "proposal_seed": 8200,
+  "execution_order_seed": 8300,
+  "policy_seed": 6100,
+  "frame": "robot",
+  "capture_requires_executed_prefix_alignment": true,
+  "initially_satisfied_goals": "maintenance stratum; never treated as newly achieved",
+  "existing_pilots_excluded_from_confirmation": true,
+  "prompt_matrix_sha256": "bfa090ab14f1e9bcad70b97f1e5c4d67f423663091301a97098c8c60a6b38f51",
+  "unimplemented_requirements": [
+    "bounded state sampler and accepted-state manifest",
+    "added-goal bindings and scorers",
+    "fixed-horizon event recorder",
+    "per-model camera/time correspondence",
+    "blinded annotation workflow",
+    "held-out diagnostic analysis"
+  ]
+}
