@@ -1,0 +1,595 @@
+{
+  "accepted_states_sha256": "34b0de1dd69b3ae36f92afa4a8f1b3abdbedb8388bf7eb17be37776d6478d6b9",
+  "amendments": {
+    "path": "docs/robolab-workshop-20260926/EXECUTION_RECORD.md",
+    "pre_confirmation": [
+      "A1-A9"
+    ],
+    "sha256": "5b093837813578c6e3b303910a2181f998835f68b43c02dc772fc2eeb769f3ab"
+  },
+  "annotation_rubric_sha256": "7c411a7b22bbf9adae10dd84f1e803ea3a98de36426fa5926319f9ca1d86aeea",
+  "bound_rows": {
+    "episodes": 864,
+    "omitted_episode_ids": [
+      "RWS-N3-S2-C07-L-S",
+      "RWS-N3-S2-C07-L-D",
+      "RWS-N3-S2-C07-L-I",
+      "RWS-N3-S2-C07-R-D",
+      "RWS-N3-S2-C07-R-I",
+      "RWS-N3-S2-C07-R-S",
+      "RWS-N3-S2-C05-L-D",
+      "RWS-N3-S2-C05-L-S",
+      "RWS-N3-S2-C05-L-I",
+      "RWS-N3-S2-C05-R-D",
+      "RWS-N3-S2-C05-R-S",
+      "RWS-N3-S2-C05-R-I",
+      "RWS-N3-S2-C01-R-I",
+      "RWS-N3-S2-C01-R-S",
+      "RWS-N3-S2-C01-R-D",
+      "RWS-N3-S2-C01-L-I",
+      "RWS-N3-S2-C01-L-S",
+      "RWS-N3-S2-C01-L-D",
+      "RWS-N3-S2-C03-R-S",
+      "RWS-N3-S2-C03-R-I",
+      "RWS-N3-S2-C03-R-D",
+      "RWS-N3-S2-C03-L-D",
+      "RWS-N3-S2-C03-L-I",
+      "RWS-N3-S2-C03-L-S",
+      "RWS-N3-S2-C04-L-I",
+      "RWS-N3-S2-C04-L-S",
+      "RWS-N3-S2-C04-L-D",
+      "RWS-N3-S2-C04-R-I",
+      "RWS-N3-S2-C04-R-D",
+      "RWS-N3-S2-C04-R-S",
+      "RWS-N3-S2-C06-L-D",
+      "RWS-N3-S2-C06-L-I",
+      "RWS-N3-S2-C06-L-S",
+      "RWS-N3-S2-C06-R-D",
+      "RWS-N3-S2-C06-R-S",
+      "RWS-N3-S2-C06-R-I",
+      "RWS-N3-S2-C08-L-I",
+      "RWS-N3-S2-C08-L-S",
+      "RWS-N3-S2-C08-L-D",
+      "RWS-N3-S2-C08-R-I",
+      "RWS-N3-S2-C08-R-S",
+      "RWS-N3-S2-C08-R-D",
+      "RWS-N3-S2-C02-R-S",
+      "RWS-N3-S2-C02-R-D",
+      "RWS-N3-S2-C02-R-I",
+      "RWS-N3-S2-C02-L-I",
+      "RWS-N3-S2-C02-L-D",
+      "RWS-N3-S2-C02-L-S",
+      "RWS-E3-S2-C07-L-S",
+      "RWS-E3-S2-C07-L-D",
+      "RWS-E3-S2-C07-L-I",
+      "RWS-E3-S2-C07-R-D",
+      "RWS-E3-S2-C07-R-I",
+      "RWS-E3-S2-C07-R-S",
+      "RWS-E3-S2-C05-L-D",
+      "RWS-E3-S2-C05-L-S",
+      "RWS-E3-S2-C05-L-I",
+      "RWS-E3-S2-C05-R-D",
+      "RWS-E3-S2-C05-R-S",
+      "RWS-E3-S2-C05-R-I",
+      "RWS-E3-S2-C01-R-I",
+      "RWS-E3-S2-C01-R-S",
+      "RWS-E3-S2-C01-R-D",
+      "RWS-E3-S2-C01-L-I",
+      "RWS-E3-S2-C01-L-S",
+      "RWS-E3-S2-C01-L-D",
+      "RWS-E3-S2-C03-R-S",
+      "RWS-E3-S2-C03-R-I",
+      "RWS-E3-S2-C03-R-D",
+      "RWS-E3-S2-C03-L-D",
+      "RWS-E3-S2-C03-L-I",
+      "RWS-E3-S2-C03-L-S",
+      "RWS-E3-S2-C04-L-I",
+      "RWS-E3-S2-C04-L-S",
+      "RWS-E3-S2-C04-L-D",
+      "RWS-E3-S2-C04-R-I",
+      "RWS-E3-S2-C04-R-D",
+      "RWS-E3-S2-C04-R-S",
+      "RWS-E3-S2-C06-L-D",
+      "RWS-E3-S2-C06-L-I",
+      "RWS-E3-S2-C06-L-S",
+      "RWS-E3-S2-C06-R-D",
+      "RWS-E3-S2-C06-R-S",
+      "RWS-E3-S2-C06-R-I",
+      "RWS-E3-S2-C08-L-I",
+      "RWS-E3-S2-C08-L-S",
+      "RWS-E3-S2-C08-L-D",
+      "RWS-E3-S2-C08-R-I",
+      "RWS-E3-S2-C08-R-S",
+      "RWS-E3-S2-C08-R-D",
+      "RWS-E3-S2-C02-R-S",
+      "RWS-E3-S2-C02-R-D",
+      "RWS-E3-S2-C02-R-I",
+      "RWS-E3-S2-C02-L-I",
+      "RWS-E3-S2-C02-L-D",
+      "RWS-E3-S2-C02-L-S",
+      "RWS-F3-S2-C07-L-S",
+      "RWS-F3-S2-C07-L-D",
+      "RWS-F3-S2-C07-L-I",
+      "RWS-F3-S2-C07-R-D",
+      "RWS-F3-S2-C07-R-I",
+      "RWS-F3-S2-C07-R-S",
+      "RWS-F3-S2-C05-L-D",
+      "RWS-F3-S2-C05-L-S",
+      "RWS-F3-S2-C05-L-I",
+      "RWS-F3-S2-C05-R-D",
+      "RWS-F3-S2-C05-R-S",
+      "RWS-F3-S2-C05-R-I",
+      "RWS-F3-S2-C01-R-I",
+      "RWS-F3-S2-C01-R-S",
+      "RWS-F3-S2-C01-R-D",
+      "RWS-F3-S2-C01-L-I",
+      "RWS-F3-S2-C01-L-S",
+      "RWS-F3-S2-C01-L-D",
+      "RWS-F3-S2-C03-R-S",
+      "RWS-F3-S2-C03-R-I",
+      "RWS-F3-S2-C03-R-D",
+      "RWS-F3-S2-C03-L-D",
+      "RWS-F3-S2-C03-L-I",
+      "RWS-F3-S2-C03-L-S",
+      "RWS-F3-S2-C04-L-I",
+      "RWS-F3-S2-C04-L-S",
+      "RWS-F3-S2-C04-L-D",
+      "RWS-F3-S2-C04-R-I",
+      "RWS-F3-S2-C04-R-D",
+      "RWS-F3-S2-C04-R-S",
+      "RWS-F3-S2-C06-L-D",
+      "RWS-F3-S2-C06-L-I",
+      "RWS-F3-S2-C06-L-S",
+      "RWS-F3-S2-C06-R-D",
+      "RWS-F3-S2-C06-R-S",
+      "RWS-F3-S2-C06-R-I",
+      "RWS-F3-S2-C08-L-I",
+      "RWS-F3-S2-C08-L-S",
+      "RWS-F3-S2-C08-L-D",
+      "RWS-F3-S2-C08-R-I",
+      "RWS-F3-S2-C08-R-S",
+      "RWS-F3-S2-C08-R-D",
+      "RWS-F3-S2-C02-R-S",
+      "RWS-F3-S2-C02-R-D",
+      "RWS-F3-S2-C02-R-I",
+      "RWS-F3-S2-C02-L-I",
+      "RWS-F3-S2-C02-L-D",
+      "RWS-F3-S2-C02-L-S"
+    ],
+    "omitted_for_start_shortfall": 144,
+    "omitted_reason": "no accepted start (EXECUTION_RECORD A1)",
+    "path": "bound_confirmation_episodes.jsonl",
+    "sha256": "b5c61cd465714a4c3ab33efa5e49e92bc3ba26ad5d416a30c15a2c814e9aac63"
+  },
+  "chunk": 32,
+  "code_sha256": {
+    "__init__.py": "d0cebb726fe71a98244b7016af9792cc1b90855dc0f30f0ff1a590e2eb92275f",
+    "analyze.py": "dc7823ab8b600ee25334c7c7f04078a5ad5138091c07da20e1f0d63efecbc1cd",
+    "annotation.py": "9a2504b4da764880cb9894e9c17515b470e6785d249f712e791fc78a09abe766",
+    "annotation_rubric.json": "7c411a7b22bbf9adae10dd84f1e803ea3a98de36426fa5926319f9ca1d86aeea",
+    "catalog.py": "a847c86db5efc610539247c1f8dece75fdd2eb015bde3f158e13a704b3ad0154",
+    "client.py": "33410a41bdd090e230f2233f6d2054864f1df536d0475378fa78bf5d7832bce3",
+    "feature_schema.json": "310f2bce596e71b3410bcaf4a3987ec07c84db9d44a2e5cdc4c101fd4fb1a20a",
+    "features.py": "e3b92385bb6f1e7fa3cf187e71b6bdcdfedae413a77ca5072e4c8a3b16f3d963",
+    "fixtures.py": "76723655ed90956b8e5fd73ac0597630b19c3357795a31122b31ac3ebfa1ce43",
+    "kinematics.py": "4771695e8d0a188cb254c43d65fa2bb22102a321100e10ff3e527c0af34afc82",
+    "policy_server.py": "3bfd9c7dfd5567449e7f68f2db377c0dd0b36e17aafbb9f43de294b0082388ac",
+    "policyrun.sh": "b0ad203be59d5ade81036c1761bf92f8014e18e3c29eb9131662b8b34d79367c",
+    "probe_sim.py": "b6e730e967586009ba2036bb136b99c72874d834d7187c8fbb9cd92d2233813b",
+    "recording.py": "aff3e9207b5eb1f8cad22d3fbdd43c5738471897e8d39e74ee8e3e31c2d354b8",
+    "registry.py": "cfbff5d110268e3991e99602ba9216f984f90ffcd4033e321a975d2fe683cb2e",
+    "release.py": "ac7383d20b92b4ec2b485bd622a632bb7a7e469e5b60b64c022083fe26571c69",
+    "scoring.py": "20bd66a53fee6ded8e38311393328631c36d77c114ad3ddafd698eb6900fadf6",
+    "scripted.py": "5b8d61bb89c946dc95046b14fa2ab8e17efe25f1e4f7b85f64543c1f3aa291bf",
+    "sim_env.py": "31510037d0d7d5ebc4adf6caf43f5756ce0727f7b24661d2de8610aa004b486a",
+    "simrun.sh": "a54fc53955e4972048e4f61b4fb40c291b87f1729f4a084b6a88bc501621eac6",
+    "states.py": "1c0f0417ca1873d51d919d864558d87ee59b51d6963fd403a4c17157803ec427",
+    "worker.py": "0ade7e1572ca4996fa67317373558c0cc353d8262944e59041baf09fb0cba356"
+  },
+  "control_hz": 15,
+  "created_unix": 1790478107.6948478,
+  "feature_schema_sha256": "310f2bce596e71b3410bcaf4a3987ec07c84db9d44a2e5cdc4c101fd4fb1a20a",
+  "model_receipts": {
+    "E3": {
+      "b7d66d005fae2dfe55afa8b4bfb90b430e61c28202bf3c99de95e84d144fe973": {
+        "config_sha256": "acd6350ce55c4a77fcc429bc9615fc0e5a4498c9d54ce690ffba0805e57b5b32",
+        "identity": {
+          "base": null,
+          "checkpoint": "/data/users/ali/sgw-01/current-20260924a/checkpoints/cosmos3-edge-a7c7288",
+          "model": "E3",
+          "revision": "a7c7288f9b6ac1684e993007b0f9703dd26e58ef",
+          "source_dirty": [],
+          "source_head": "cf5d68c00d97ccd2480a2320ed652b92dec63102"
+        },
+        "lanes": [
+          {
+            "host": "211247-alia100e-a100-4gpu",
+            "port": 8600,
+            "receipt_sha256": "802b4b9442a2cda779491c5d044fa04f889c0bd1cfefc37f27785ea0c540f3ac",
+            "server": "E3-alia100e-0"
+          },
+          {
+            "host": "211247-alia100e-a100-4gpu",
+            "port": 8602,
+            "receipt_sha256": "33046543f6a238aa4dc17c7e1077c7d6091e90c8311b74b8cd209997d8015fa4",
+            "server": "E3-alia100e-0-8602"
+          },
+          {
+            "host": "211247-alia100e-a100-4gpu",
+            "port": 8601,
+            "receipt_sha256": "9e002699a5fc7051338d1be1e0afa30589ca4d9145a47d0538db1ae3d5835b7d",
+            "server": "E3-alia100e-1-8601"
+          },
+          {
+            "host": "211247-alia100e-a100-4gpu",
+            "port": 8603,
+            "receipt_sha256": "80381519d12c3aa80bd5a23ec23a579c5291dc05eb9dcb747582983c0d0a58d5",
+            "server": "E3-alia100e-1-8603"
+          },
+          {
+            "host": "211247-alia100e-a100-4gpu",
+            "port": 8604,
+            "receipt_sha256": "8a5e6ef2c76d348b975a6f545d05aaf56335ea3494cfb32c9b95fb40f3526e41",
+            "server": "E3-alia100e-2-8604"
+          },
+          {
+            "host": "211247-alia100e-a100-4gpu",
+            "port": 8605,
+            "receipt_sha256": "b36371dce8be0f43e17179468315a571fcc3f571cbed23f4bd0ebbb4b01e042e",
+            "server": "E3-alia100e-2-8605"
+          },
+          {
+            "host": "211247-alia100e-a100-4gpu",
+            "port": 8606,
+            "receipt_sha256": "1c774eb0af443b71bf864382f4ebccdf545991a63a23f16139f54ed665923e98",
+            "server": "E3-alia100e-3-8606"
+          },
+          {
+            "host": "211247-alia100e-a100-4gpu",
+            "port": 8607,
+            "receipt_sha256": "6a19110bc919f323efb44522d7fc2eeebd074608aeff6e9c386b9e71fb3f154c",
+            "server": "E3-alia100e-3-8607"
+          },
+          {
+            "host": "211247-alia100p2-a100-2gpu",
+            "port": 8602,
+            "receipt_sha256": "dd8bd6ca2dbd5f292a113217ca4230e8015662217ac067238bcfb65296a3d73a",
+            "server": "E3-alia100p2-1-8602"
+          },
+          {
+            "host": "211247-alia100p2-a100-2gpu",
+            "port": 8603,
+            "receipt_sha256": "d67c8a49ef61ccf0b53ab2100e25f8e2d84165208eb817660d92eac9c67491e6",
+            "server": "E3-alia100p2-1-8603"
+          },
+          {
+            "host": "211247-alia100p2-a100-2gpu",
+            "port": 8604,
+            "receipt_sha256": "5207c1ea58f3f64505b7f41c434827fadab5358433b7b28888950d4d0f067d39",
+            "server": "E3-alia100p2-1-8604"
+          },
+          {
+            "host": "211247-alia100p2-a100-2gpu",
+            "port": 8605,
+            "receipt_sha256": "00e5f8a734cb8dac2bc2f885ae2e43dc5bffd505e5e4e2858ce19799ed2eafcb",
+            "server": "E3-alia100p2-1-8605"
+          },
+          {
+            "host": "211247-alia100p2-a100-2gpu",
+            "port": 8606,
+            "receipt_sha256": "61b42ffcb43ad41c1f2f83dd73111f02ed469efde099d9af600e5a36acda3255",
+            "server": "E3-alia100p2-1-8606"
+          }
+        ]
+      }
+    },
+    "F3": {
+      "de3d36cd88f8ed50fb3dd1593749d2388ef7dfcc5ec09cbcffa1910fa18c1c90": {
+        "config_sha256": "133bd141d80d5cdb4119eec012752e6e009271644f8643f9ddd652d70a2af33f",
+        "identity": {
+          "base": "/data/users/ali/sgw-01/current-20260924a/checkpoints/flux-3-action-base-62878e2",
+          "checkpoint": "/data/users/ali/sgw-01/current-20260924a/checkpoints/flux-3-action-droid-3d0887b",
+          "model": "F3",
+          "revision": null,
+          "source_dirty": [],
+          "source_head": "e2dd1d8dbc5977b54315d61f7548c63c043d6d4f"
+        },
+        "lanes": [
+          {
+            "host": "211247-alia100f-a100-4gpu",
+            "port": 8600,
+            "receipt_sha256": "90afa40ae8978a61fa4ae78cdfc38eb78d8477833255b80f11d7570e1da2e5fb",
+            "server": "F3-alia100f-0-cap1"
+          },
+          {
+            "host": "211247-alia100f-a100-4gpu",
+            "port": 8601,
+            "receipt_sha256": "8c42dccfbc4b12a1927cb1c4b11c642f037a223195bfbbb8fd2e1f18d11be655",
+            "server": "F3-alia100f-1-cap1-8601"
+          },
+          {
+            "host": "211247-alia100f-a100-4gpu",
+            "port": 8602,
+            "receipt_sha256": "05fb54fd40f9e0d409bb62d3e556d17ef3a8f2cd51d527b35e5b34f67b0b6918",
+            "server": "F3-alia100f-2-cap1-8602"
+          },
+          {
+            "host": "211247-alia100f-a100-4gpu",
+            "port": 8603,
+            "receipt_sha256": "75cd5059979785de7baa512358ca5e15fe9c032030cccd8d8e324e5185c9328b",
+            "server": "F3-alia100f-3-cap1-8603"
+          },
+          {
+            "host": "211247-alia100g-a100-4gpu",
+            "port": 8600,
+            "receipt_sha256": "3b621627f6f879aba9fd6a8f448eac6bac873a17d734d014e5e9a18647e96e40",
+            "server": "F3-alia100g-0-cap1-8600"
+          },
+          {
+            "host": "211247-alia100g-a100-4gpu",
+            "port": 8601,
+            "receipt_sha256": "63cb9a71c0e0276c909f81d3b8b10ad78e53d38ec1c4dcf81fed8c8ed7201da9",
+            "server": "F3-alia100g-1-cap1-8601"
+          },
+          {
+            "host": "211247-alia100g-a100-4gpu",
+            "port": 8602,
+            "receipt_sha256": "4a378164e58585f66efdae84948248f091e28bfb501a60d380ed7d38f407f536",
+            "server": "F3-alia100g-2-cap1-8602"
+          },
+          {
+            "host": "211247-alia100g-a100-4gpu",
+            "port": 8603,
+            "receipt_sha256": "99f56dfdd8cd75a331ae3f9e67168af0482528a565355c46302e103ee81352d9",
+            "server": "F3-alia100g-3-cap1-8603"
+          },
+          {
+            "host": "211247-alia100p1-a100-1gpu",
+            "port": 8600,
+            "receipt_sha256": "c67e211a9a7d100dbbac11b2b0087470366f68a324d87f27c9df70e909459fdb",
+            "server": "F3-alia100p1-0-cap1-8600"
+          },
+          {
+            "host": "211247-alia100p1-a100-1gpu",
+            "port": 8601,
+            "receipt_sha256": "6e1f6b32123012f10da533c9336e251f7f890b5763afe0668322503d69a2fdbd",
+            "server": "F3-alia100p1-0-cap1-8601"
+          },
+          {
+            "host": "211247-alia100p2-a100-2gpu",
+            "port": 8600,
+            "receipt_sha256": "200df91f72530f32aa9807a2898f2ca20618e239211a5909c53a60e7ebd0c6b5",
+            "server": "F3-alia100p2-0-cap1-8600"
+          },
+          {
+            "host": "211247-alia100p2-a100-2gpu",
+            "port": 8601,
+            "receipt_sha256": "12e2c239ebfee175fdd8e9e4cd7648d0954c5b6478829d51668ac231ea714e80",
+            "server": "F3-alia100p2-0-cap1-8601"
+          },
+          {
+            "host": "211247-alia100p3-a100-1gpu",
+            "port": 8600,
+            "receipt_sha256": "982314ace04d7a7268a3224d3d934b2c5b58a12b3aa1598823dea35811ec7f14",
+            "server": "F3-alia100p3-0-cap1-8600"
+          },
+          {
+            "host": "211247-alia100p3-a100-1gpu",
+            "port": 8601,
+            "receipt_sha256": "0e6c87270418cb5c12e0e9380f437a9bcdc86bdef386003a57d534164887f712",
+            "server": "F3-alia100p3-0-cap1-8601"
+          }
+        ]
+      }
+    },
+    "N3": {
+      "31471040feb4dcfd3f0bc5f4c1158c22b7410d4ea204d3b68d23b282bf058730": {
+        "config_sha256": "4e90b5ec8d29c9bdae09349cbeb145f5a46bbc489ed0862ecb8bd9f86b0a0640",
+        "identity": {
+          "base": null,
+          "checkpoint": "/data/users/ali/vla_wam/checkpoints/cosmos3_nano_policy_droid",
+          "model": "N3",
+          "revision": "6706d7680581c255ff61e0f3bb49d90eac55c79e",
+          "source_dirty": [],
+          "source_head": "411d25b2e35bc441126f48c44a4b93e1c0564274"
+        },
+        "lanes": [
+          {
+            "host": "211247-ali-b200-1gpu",
+            "port": 8600,
+            "receipt_sha256": "d869790c915c1ebe5095ecb7cf72499c27d5d3c4eb71d4e6612c148677a0475a",
+            "server": "N3-ali"
+          },
+          {
+            "host": "211247-ali-b200-1gpu",
+            "port": 8601,
+            "receipt_sha256": "463f6a82c8d703470f69b317f2fa8668bf8b2b4f683e6a64921a786389b0d28a",
+            "server": "N3-ali-8601"
+          },
+          {
+            "host": "211247-ali-b200-1gpu",
+            "port": 8602,
+            "receipt_sha256": "5220536fb6bfeaab06515c6dc77ac915956b28e4adc7abed13666dab4faaad86",
+            "server": "N3-ali-8602"
+          },
+          {
+            "host": "211247-ali-b200-1gpu",
+            "port": 8603,
+            "receipt_sha256": "cbce03afa5a044a32fa25b13810e114443549da0a7031877f8aad18aa5a10185",
+            "server": "N3-ali-8603"
+          },
+          {
+            "host": "211247-alicollect-b200-1gpu",
+            "port": 8600,
+            "receipt_sha256": "b30c99936f75e189463ae955fcfdba806ffc57b31094157d5eb80a080ddc7200",
+            "server": "N3-alicollect-8600"
+          },
+          {
+            "host": "211247-alicollect-b200-1gpu",
+            "port": 8601,
+            "receipt_sha256": "02dcb051a0d3f0f82d36b902f956696ba5d92ae64327991a770caf33b265b4c2",
+            "server": "N3-alicollect-8601"
+          },
+          {
+            "host": "211247-alicollect-b200-1gpu",
+            "port": 8602,
+            "receipt_sha256": "e9a4b8413dfad586350bd322d95cedfb1d24e1ad8fc804f7a3b45eb4e198c696",
+            "server": "N3-alicollect-8602"
+          },
+          {
+            "host": "211247-alicollect-b200-1gpu",
+            "port": 8603,
+            "receipt_sha256": "7a00e7594d6008f83c0b00eda9529550a7995a27c381a4ab1a2c261268adc216",
+            "server": "N3-alicollect-8603"
+          },
+          {
+            "host": "211247-alieval-b200-1gpu",
+            "port": 8600,
+            "receipt_sha256": "62d35a25f3b0737437e2f05635ee1488005d0ce5d625d9bd9ea7067a7f56722e",
+            "server": "N3-alieval-8600"
+          },
+          {
+            "host": "211247-alieval-b200-1gpu",
+            "port": 8601,
+            "receipt_sha256": "6050de4cb418b00548f40f8502b9256d89650436ae40e65d66f5fbed225049da",
+            "server": "N3-alieval-8601"
+          },
+          {
+            "host": "211247-alieval-b200-1gpu",
+            "port": 8602,
+            "receipt_sha256": "d653bd493f6ffa0050aca8d985689afda8e64885d69ffbd33891c89a8c432c70",
+            "server": "N3-alieval-8602"
+          },
+          {
+            "host": "211247-alieval-b200-1gpu",
+            "port": 8603,
+            "receipt_sha256": "e4178728562cd4c27fdde38ad8b27e28f7709d7204b0bdbf265b7c128e002221",
+            "server": "N3-alieval-8603"
+          },
+          {
+            "host": "211247-aligroot-b200-1gpu",
+            "port": 8600,
+            "receipt_sha256": "e87b98d3d02a2a84745cab1ebfc5d773905dab9bf948656f7ea4b793ec5e544b",
+            "server": "N3-aligroot-8600"
+          },
+          {
+            "host": "211247-aligroot-b200-1gpu",
+            "port": 8601,
+            "receipt_sha256": "da4f16451e96dfe39ced8301c1569012a9c662e87a6c82a67f371dbfc26e257d",
+            "server": "N3-aligroot-8601"
+          },
+          {
+            "host": "211247-aligroot-b200-1gpu",
+            "port": 8602,
+            "receipt_sha256": "749d6aff31b1f91fe1a3f055f378332f99361162ba0777074875b0212edb5532",
+            "server": "N3-aligroot-8602"
+          },
+          {
+            "host": "211247-aligroot-b200-1gpu",
+            "port": 8603,
+            "receipt_sha256": "9b403bad6107d9b57d9acdb8d69fc477f29f9ab23f1d20f8bf6e2026fd11b922",
+            "server": "N3-aligroot-8603"
+          }
+        ]
+      }
+    }
+  },
+  "policy_seed": 6100,
+  "protocol_version": "0.2",
+  "robolab_commit": "0aef241fb088ca21bb4ebd24448940ed56620d17",
+  "scorer": {
+    "source_sha256": "20bd66a53fee6ded8e38311393328631c36d77c114ad3ddafd698eb6900fadf6",
+    "speed_definition": "backward finite difference of the mover root position between consecutive 15 Hz ticks (|p_i - p_(i-1)| / (t_i - t_(i-1))); tick 0 uses 0. PhysX-reported rigid-body velocities of resting objects keep solver jitter of 1-3 cm/s at constant pose, so they are recorded but not used.",
+    "thresholds": {
+      "cone_deg": 45,
+      "contact_force_threshold_n": 0.1,
+      "container_tolerance_m": 0.01,
+      "contradictory_support_s": 0.2,
+      "footprint_tolerance_m": 0.01,
+      "lift_dwell_s": 0.2,
+      "lift_m": 0.02,
+      "primary_window_tcp_distance_m": 0.1,
+      "reference_disturbance_m": 0.02,
+      "stable_dwell_s": 1.0,
+      "stable_speed_mps": 0.02,
+      "wrong_object_contact_s": 0.2,
+      "wrong_object_move_m": 0.02
+    },
+    "version": 2
+  },
+  "spec_sha256": {
+    "CLUSTER_EXECUTION_SPEC.md": "321ad32a0f347cc068153d9d5a16828ca77ba1253be06ea561027fdc887409e6",
+    "EXPERIMENT_SPEC.md": "82d46b18ea4d7008975b549ececfff0c0143492dfcd40e208fa6b2245f24b911",
+    "MODEL_CONFIGS.json": "6ed716e42c10d850b9c688b89c7b16bf817da49aa79b0312d9f556880c03fb04",
+    "planned_blocks.json": "a72a8352b6a0ebc059d553570bad90d06f24df582cf971399fe9ae57caa7b215",
+    "planned_episodes.jsonl": "efd09215368f5cc28f22ab073e0ebf48e2a70747717032c8ed651fcdcd121017",
+    "prompt_matrix.json": "bfa090ab14f1e9bcad70b97f1e5c4d67f423663091301a97098c8c60a6b38f51",
+    "study_manifest.json": "115be5d25e94d252842f98e641f1d3588a404edaa7872d9e254bcf9925f7303a"
+  },
+  "starts": {
+    "S1": {
+      "accepted": 8,
+      "shortfall": 0,
+      "slots": {
+        "S1-C01": "d84146ae4be5a780d2bfc350c6c89b8f9efbe2a7b8fb4a04454f2cf5f79094cf",
+        "S1-C02": "d2df5ec7b656a5ee4b7fe0b6d429a2f2a76e80542ccd8e358e247e12e1342278",
+        "S1-C03": "c4d71695af35ef86d5ffc9f53709804323d398eeb6bfa534aa3c43d30af8a636",
+        "S1-C04": "431e8ad6c193ac928d6ab3bafe45002b8180d9300c61377ceeb3384a5d19aa97",
+        "S1-C05": "bdf4ecb6ca13b12bee99d5c72dd1c5f57838d5f680d866101936e4df09511cd1",
+        "S1-C06": "b32c4a2d3170302ade440c016257ad3343f9f9d49852828196288f8d2fae4d07",
+        "S1-C07": "5e1b2caea1240e0992fbff42f28dc672e49b0bfe3df396f1d1be9df33734e94f",
+        "S1-C08": "74f312a598ffed70382ffcb2026b61446fc756addf558e30d9e302661f3f32d0"
+      }
+    },
+    "S2": {
+      "accepted": 0,
+      "shortfall": 8,
+      "slots": {}
+    },
+    "S3": {
+      "accepted": 8,
+      "shortfall": 0,
+      "slots": {
+        "S3-C01": "97e7aeb6e48b6e3617b335a4ab877e8740891708de97e81f7ed340989560cd0b",
+        "S3-C02": "fce0d5c8d31d62e6bcf37526496d36ad786e1510c041c2cbc1a857b6d75861af",
+        "S3-C03": "9214a9520874b0dca5dba092933477353c1985224160cc0d8850036094164381",
+        "S3-C04": "d00bcc11254f3ed0642b853dab46da012fcb3da070505458146c1d1938bf99a7",
+        "S3-C05": "30afd6893bdbab4bce1742e5ed8acdd8484abf0b46944cacdfb2a36ebb7392cf",
+        "S3-C06": "e15d8b920b20e3c7f4cecf1de516fb303ddca3d524d1a02c303f58c057a8ff20",
+        "S3-C07": "3a910553b8171b580c6a5483d08d592ebff9b50a7dfe35768d202d4314241d7b",
+        "S3-C08": "8ad5fb0c299142f76e28d9c9ab9cb9af5b567348e93d248f4b35d2d106265404"
+      }
+    },
+    "S4": {
+      "accepted": 8,
+      "shortfall": 0,
+      "slots": {
+        "S4-C01": "31c6251ec15a94f995d55dd29c6d159c0c2142190654203ace2987ce8b1a532b",
+        "S4-C02": "34a4c38e6227c159192da71246bd0210e8396d017868194d383ccc1ad427b2bd",
+        "S4-C03": "ca6818e346e124d29ed0a912263e1f913ab63a5686e83e1e4e19959e59b0ed5f",
+        "S4-C04": "6a1d884460e956e8fc5c86485750d909b08df3748c11ec4892c9bb3929f69414",
+        "S4-C05": "06fa569a2ab0a09d70a8349bd774310eb4edc07d0ef8db594071f5316acc8a19",
+        "S4-C06": "73c26e7fd2593633f46847e0c02fa4e059364bcd20b312f718d7c2be3447ec99",
+        "S4-C07": "d95ca641483e4678ac24c94a5fc6107d8fb9626b6e7d01b9f736f6a6f2d6f960",
+        "S4-C08": "4f1bc3272f7e3f3c6ffe2122ede26cb2d143d2dd88d6c61cf62f166d8b873166"
+      }
+    },
+    "S5": {
+      "accepted": 8,
+      "shortfall": 0,
+      "slots": {
+        "S5-C01": "07cd285433092719b50cb2ffa98005b1880bfd4c13425750226b15b2537c0973",
+        "S5-C02": "9cf74d8df8c08c5a29700a0f7020bdea4dea7849f5c5af0c27814d29738bf8a8",
+        "S5-C03": "0c542a3330e241e1dac250223af69c04db81259f93ea58b59db7df022aa70cce",
+        "S5-C04": "5387530c5b547d51cca8b9f772e1561d0c2993093ac5ea9ae65ed478587fa9d1",
+        "S5-C05": "ae20e6ce741aae3e6abda92679037b1cfff899152a70d276370fc04e8105b90f",
+        "S5-C06": "8506b1cae9e2e2962504c63d02d82f45dbbccfe24ec6c79cd80ce6a7e0af916b",
+        "S5-C07": "41fb3157dbd776bc54babccce35dc31b8a0c111837b0a502baf39bc295b6df08",
+        "S5-C08": "4892b196de3937252f787cb018da3b442289af101ccd3d817a0b45f0b898cd01"
+      }
+    }
+  },
+  "state_candidates_sha256": "56b18be52db6f681ece077773a58c21357277e3f248f8059f3a4ea602def2fcd",
+  "state_seed": 8200,
+  "study_id": "RWS-20260926"
+}

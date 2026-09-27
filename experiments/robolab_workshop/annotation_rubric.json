@@ -1,0 +1,125 @@
+{
+  "rubric_id": "RWS-20260926-forecast-rubric-v2",
+  "applies_to": "decoded generated futures from the same sample as the executed action chunk, mapped frames at or before the last executed action only",
+  "blinding": {
+    "annotator_sees": [
+      "opaque annotation id",
+      "initial object-ID legend (first observation, exterior views, numbered object markers and robot-frame left/farther arrows)",
+      "calibrated forecast views (wrist pane on top, two exterior panes below; all models resampled to one 544x640 layout)"
+    ],
+    "annotator_never_sees": [
+      "prompt text",
+      "prompt form (D/S/I)",
+      "model id",
+      "scene goal",
+      "task success",
+      "execution clip",
+      "identifying filenames"
+    ]
+  },
+  "fields": {
+    "moving_object": {
+      "type": "enum",
+      "values": [
+        "<legend number>",
+        "none",
+        "multiple",
+        "unknown"
+      ],
+      "question": "Which legend object is displaced by the robot in the forecast?"
+    },
+    "direction": {
+      "type": "enum",
+      "values": [
+        "left",
+        "right",
+        "closer_to_robot",
+        "farther_from_robot",
+        "up_only",
+        "none",
+        "unknown"
+      ],
+      "question": "Dominant horizontal displacement of the moving object in the robot frame, using the legend arrows (left = robot-left arrow, farther = away-from-robot arrow). up_only if it is lifted without clear horizontal travel."
+    },
+    "visible_final_relation": {
+      "type": "enum",
+      "values": [
+        "left_of",
+        "right_of",
+        "closer_to_robot_than",
+        "farther_from_robot_than",
+        "on_top_of",
+        "inside",
+        "stacked_in",
+        "none",
+        "ambiguous",
+        "unknown"
+      ],
+      "question": "At the last mapped forecast frame, what spatial relation between the moving object and relation_object is visible?"
+    },
+    "relation_object": {
+      "type": "enum",
+      "values": [
+        "<legend number>",
+        "none",
+        "unknown"
+      ],
+      "question": "The legend object that visible_final_relation refers to."
+    },
+    "possible_release": {
+      "type": "enum",
+      "values": [
+        "yes",
+        "no",
+        "unknown"
+      ],
+      "question": "Does the gripper visibly open and separate from the moving object within the mapped frames?"
+    },
+    "missing_object": {
+      "type": "enum",
+      "values": [
+        "yes",
+        "no",
+        "unknown"
+      ],
+      "question": "Does any legend object vanish or become unrecognisable while not occluded?"
+    },
+    "hallucinated_object": {
+      "type": "enum",
+      "values": [
+        "yes",
+        "no",
+        "unknown"
+      ],
+      "question": "Does a new object appear that is not in the legend?"
+    },
+    "unknown_reason": {
+      "type": "enum",
+      "values": [
+        "none",
+        "occluded",
+        "blurred_or_degenerate",
+        "no_motion_resolvable"
+      ],
+      "question": "If any field is unknown, why?"
+    }
+  },
+  "rules": [
+    "RGB cannot establish support forces or 3D containment under occlusion: use ambiguous/unknown rather than guessing.",
+    "Intended-goal semantics are applied only after labels are frozen.",
+    "Two independent annotators; adjudicate disagreements afterwards and preserve both original labels.",
+    "A missing future is recorded as future_not_decodable, never converted to a label or a zero.",
+    "Forecasts that were not decodable get no packet; their features are 'missing', never a label."
+  ],
+  "windows": [
+    "primary (first request with pre-request TCP within 10 cm of a movable task object surface; request 0 fallback flagged)",
+    "request 0 (descriptive, not double counted)"
+  ],
+  "semantics_after_freeze": {
+    "fc_moving_object_role": "legend number -> mover / reference / other via the episode's role binding; none, multiple, unknown pass through",
+    "fc_direction": "lateral goals: goal_direction if direction equals the goal direction (L=left, R=right, F=closer_to_robot, B=farther_from_robot) else other_direction; non-lateral goals: lateral for any horizontal direction; up_only, none, unknown pass through",
+    "fc_visible_final_relation": "goal if moving object is the mover, relation_object is the reference and the relation matches the goal kind; alternative_goal if it matches another predefined alternative goal of the scene; ambiguous/unknown pass through; otherwise not_goal",
+    "fc_possible_release, fc_missing_object, fc_hallucinated_object": "yes/no/unknown pass through",
+    "adjudication": "adjudicated label if the two annotators disagree, else the agreed label; both originals preserved"
+  }
+}

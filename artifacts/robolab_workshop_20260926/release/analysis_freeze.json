@@ -1,0 +1,29 @@
+{
+  "created_unix": 1790478596.9177039,
+  "purpose": "analysis code frozen after release, before any confirmation outcome was read (EXECUTION_RECORD A10)",
+  "sha256": {
+    "analyze.py": "a4d4544f8ff03bb90653384e8401990b5c7719e496301c76856a25b499ab1b31",
+    "features.py": "e3b92385bb6f1e7fa3cf187e71b6bdcdfedae413a77ca5072e4c8a3b16f3d963",
+    "kinematics.py": "4771695e8d0a188cb254c43d65fa2bb22102a321100e10ff3e527c0af34afc82",
+    "annotation.py": "9a2504b4da764880cb9894e9c17515b470e6785d249f712e791fc78a09abe766",
+    "report.py": "c6de4865365869b3c8f32cc05222c58a6d0f6b652e4e154d782a0932cec96060",
+    "scoring.py": "20bd66a53fee6ded8e38311393328631c36d77c114ad3ddafd698eb6900fadf6",
+    "catalog.py": "a847c86db5efc610539247c1f8dece75fdd2eb015bde3f158e13a704b3ad0154",
+    "annotation_rubric.json": "7c411a7b22bbf9adae10dd84f1e803ea3a98de36426fa5926319f9ca1d86aeea",
+    "feature_schema.json": "310f2bce596e71b3410bcaf4a3987ec07c84db9d44a2e5cdc4c101fd4fb1a20a"
+  },
+  "differs_from_release": {
+    "analyze.py": true,
+    "features.py": false,
+    "kinematics.py": false,
+    "annotation.py": false,
+    "report.py": true,
+    "scoring.py": false,
+    "catalog.py": false,
+    "annotation_rubric.json": false,
+    "feature_schema.json": false
+  },
+  "confirmation_complete_markers_at_freeze": 26,
+  "test": "tests/robolab_workshop/test_analysis.py 9 passed",
+  "release_sha256": "cd0d478313e692fea6499d07aea16a67c363d02b4fcdfd3bd33fd2566d635e88"
+}

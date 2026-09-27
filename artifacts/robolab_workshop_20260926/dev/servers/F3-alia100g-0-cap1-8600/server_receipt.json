@@ -1,0 +1,59 @@
+{
+  "model": "F3",
+  "host": "211247-alia100g-a100-4gpu",
+  "ip": "10.244.227.174",
+  "port": 8600,
+  "pid": 37682,
+  "cold_start_s": 183.43776607513428,
+  "source": "/data/users/ali/sgw-01/current-20260924a/external/flux-action-e2dd1d8",
+  "source_head": "e2dd1d8dbc5977b54315d61f7548c63c043d6d4f",
+  "source_dirty": [],
+  "native_module_file": "/data/users/ali/sgw-01/current-20260924a/external/flux-action-e2dd1d8/src/flux_action/serving/robolab.py",
+  "checkpoint": "/data/users/ali/sgw-01/current-20260924a/checkpoints/flux-3-action-droid-3d0887b",
+  "base": "/data/users/ali/sgw-01/current-20260924a/checkpoints/flux-3-action-base-62878e2",
+  "revision": null,
+  "config": {
+    "torch_dtype": "bfloat16",
+    "quantization": null,
+    "sampler": "cosmos_unipc",
+    "sampler_order": null,
+    "num_inference_steps": 4,
+    "guidance_scale": 4.0,
+    "guidance_scale_action": 1.0,
+    "sampler_shift": 5.0,
+    "fps": 15.0,
+    "camera_keys": [
+      "images.wrist",
+      "images.left",
+      "images.right"
+    ],
+    "canvas_hw": [
+      544,
+      736
+    ],
+    "action_scale": 2.0,
+    "action_parameterization": "absolute",
+    "gripper_flip_dims": [
+      -1
+    ],
+    "single_frame_encode": true,
+    "chunk_size": 32,
+    "n_action_steps": 32,
+    "n_obs_steps": 1,
+    "inference_seed": 0,
+    "action_modality": "action_prediction_droid",
+    "camera_layout": "droid",
+    "compile_model": false,
+    "serving_setup": {
+      "prepared": true,
+      "compile_dit": false,
+      "offload_text_encoder": false
+    }
+  },
+  "seed": 6100,
+  "gpu": "NVIDIA A100-SXM4-40GB",
+  "torch": "2.10.0+cu128",
+  "cuda_visible_devices": "0",
+  "flux_capture": true,
+  "automatic_retries": 0
+}

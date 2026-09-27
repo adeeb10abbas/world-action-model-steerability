@@ -1,0 +1,29 @@
+{
+  "schema_id": "RWS-20260926-features-v1",
+  "unit": "one executed diagnostic window (primary request) per confirmation episode",
+  "target": {"name": "execution_event", "definition": "wrong-object manipulation OR contradictory released placement inside the mapped executed prefix (CLUSTER_EXECUTION_SPEC section 6); unknown targets excluded with denominator shown"},
+  "baseline_features": {
+    "categorical": ["model_id", "scene_id", "goal_id"],
+    "numeric": [
+      "mover_rel_ref_x_m", "mover_rel_ref_y_m", "mover_rel_ref_z_m",
+      "mover_dist_to_goal_region_m",
+      "goal_true_now",
+      "gripper_closed_fraction",
+      "chunk_fk_min_dist_m",
+      "prior_target_contact",
+      "prior_target_lift"
+    ],
+    "categorical_extra": ["chunk_fk_nearest_object_role"],
+    "excluded_by_design": ["actual future state", "final success", "prompt form", "future contact"]
+  },
+  "augmented_features": {
+    "added_categorical": ["fc_moving_object_role", "fc_direction", "fc_visible_final_relation", "fc_possible_release", "fc_missing_object", "fc_hallucinated_object"],
+    "unknown_handling": "explicit 'unknown' category per field; missing forecast -> 'missing' category",
+    "missingness_only_ablation": ["fc_missing_indicator"]
+  },
+  "learner": {"type": "L2 logistic regression", "C": 1.0, "class_weight": null, "solver_seed": 8400, "preprocessing": "train-fold standardization and one-hot"},
+  "cross_validation": {"folds": 8, "holdout": "state slot C0k across all scenes and models", "degenerate_fold": "Jeffreys constant (positives+0.5)/(n+1), flagged"},
+  "primary_score": "Brier(baseline) - Brier(+forecast), held-out",
+  "weights": "models equal; scenes equal within model; goals equal within scene",
+  "seeds": {"bootstrap": 8401, "wording_sign_flip": 8402, "A4_permutation": "8403-8502"}
+}

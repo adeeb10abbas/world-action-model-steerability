@@ -1,0 +1,15 @@
+{
+  "state_slot": "S5-D00",
+  "state_sha256": "977c0b588931b21babe2dc19d5ee830dc38930c7f774d25e64d2f554b8dcc688",
+  "first_obs_sha256": "1427e60e2cbf23f4aeb4c30936de76055b690d9381a1fea02cb87e56f0bae864",
+  "restore_max_abs_diff": 0.0,
+  "role_binding": {
+    "rule": "left=max_robot_frame_y_at_reset",
+    "left_bowl": "bowl_2",
+    "right_bowl": "bowl_1",
+    "robot_frame_y": {
+      "bowl_1": -0.18840520083904266,
+      "bowl_2": 0.00014419492799788713
+    }
+  }
+}

@@ -1,0 +1,221 @@
+{
+  "artifacts": {
+    "actions.npz": "a5fd5c81d658a3344759015fb928abb7159a0112328a6a0b69b6fdf816f4665c",
+    "exec_composite.mkv": "804757b84f7fd1a2a54a3ab46e09dfbe20da199d0f47f55fb662c24df9a6cae2",
+    "exec_head_camera.mkv": "b2718db5996550fa1d6670b5e4b986bcd62448d087f89601298ed36bb9149357",
+    "exec_viewport.mkv": "7bdad8ce1ca809226f3aabefee287221c750ad43fc6a3abf5f96166c9e29df58",
+    "first_observation.npz": "68ac5747ac5d24b3fcc52ee70c79d213c8bbcccb3fd37b846a10b70663c0b8b4",
+    "futures/r00.npz": "b9c5959cc7b845a0c3720bb48eb67edfb00fdf216408c9bacf366833aab5191c",
+    "futures/r01.npz": "59a82baca76bd497e58381c0e5dbbf8770a6e5dc067cd4d8d92e2e210be47546",
+    "futures/r02.npz": "0615e186fc4e8da9955bcb31744a3330706983087d50bcca89a049729ca3d9eb",
+    "futures/r03.npz": "a6cd00dbb7207193cdc1cbed97a9705e28151c1cd4e75fcd2979759c527961e3",
+    "futures/r04.npz": "1d5ca5a0bdd4f8672080cb241304557e099ff72f38a3d77503c2824bdd8bdd20",
+    "futures/r05.npz": "c27e5d0f77624c3437d0f192adf973f12be70cd22a32dbb50e5f099c8c7d4933",
+    "futures/r06.npz": "d8fb03cca31a64fac84112a3d4fa1719a6bc2f1ec0c2ae2b0b24ded007cd3e6d",
+    "futures/r07.npz": "3210866d3bf46f5fc219c490a65e4ee65a4be07f989d1e59a4072d784292ff5c",
+    "futures/r08.npz": "afad435ba022e2b001226f879a7ec5e99b86e7d752533bdb082cce19c31d6901",
+    "futures/r09.npz": "ca7f5abcd05cf2fe7af975a10d077302ecfba6cc0d7c7de99502266dedfadf59",
+    "futures/r10.npz": "b268d09b8648c8484c424a867fdc313378c59abddb60ee450434544d2b7f4712",
+    "futures/r11.npz": "db43e0fbc116083c4afe21c5379db0e2e1dab20d990853324c1632fe7705e6a5",
+    "futures/r12.npz": "5db0a9a5452c0e65c11e81f786ed6c05de8d5aa9e292efd223429e589595ffba",
+    "futures/r13.npz": "4df4c24c9a161a95bc4ef217458a5370ad222978e97e0b6b96b0fd9f98a96842",
+    "futures/r14.npz": "53550ea6d3b37ae603aa44feb6f2e5a969b183fffb35c84f3cd076bd6143a87f",
+    "initial_state.json": "a79f20fcd8a96e7836c6c37f102397088bfdd6df6b7cf1d3ceb24edb5e467f98",
+    "intent.json": "8cd0455207789fdeb0911de6830ea49ac7a3af653d1bed7613cd1d8ef7bde2b8",
+    "requests.jsonl": "344f870bc0154e8ba5716550d36e7a0a57ef8cfa664d3ade58011551096b0e73",
+    "requests/r00_input.npz": "39500701f417d610955a035d25c4d747c854cf49b778559777a0218a691dd457",
+    "requests/r01_input.npz": "dd3d2c0000173917572eb8a79dcd7b18e282be6a8be82914464d37f2fbffc269",
+    "requests/r02_input.npz": "54e6e75f93b63caf8b7a8ee1eed9a87372845d284674f461c2a294168e89ed8a",
+    "requests/r03_input.npz": "c08f80215d222b1082a8d9b6bd32025fb837e3b2af51357cdd2415dff81cdf15",
+    "requests/r04_input.npz": "5d241245f300fb3ab545c8a978debf538a48717da78be875f59b14bba591efdf",
+    "requests/r05_input.npz": "ba37ca0e2a938b5dee8a7fbf09306418e795dc76baba4e8ef0bd6d3041b9c6e7",
+    "requests/r06_input.npz": "41da4cb3b14d5c3a6c40a8892442a71185888d673434503b5224d47582e52132",
+    "requests/r07_input.npz": "04d0630985870b40455646b8d5a22df8d04c2d7d6861e3042d3183f4e2d278da",
+    "requests/r08_input.npz": "e23d74ee29282a3bf9a93f6686a447fab21f135c6d6054f11b3eab193d181094",
+    "requests/r09_input.npz": "0a913c058d6f9093a44db3e490fba9fd1a076b92ccac01c8f8a8b32cbba11323",
+    "requests/r10_input.npz": "e60af8b59c233c5d48090d5fb84907797b1603f1e79445b407c7df6eb65071ed",
+    "requests/r11_input.npz": "ef50177f16fce7a0a8bf51e5f108aa5aec3b31a77abe66612da288574358209b",
+    "requests/r12_input.npz": "b590c864b756adbefaea96d3b9450fb64badcc54bffe76836d1db89a5baf8e13",
+    "requests/r13_input.npz": "9842cf4e82d412465f03ee46135d36dd7ad26a91b9cad3615e818245746ba09c",
+    "requests/r14_input.npz": "442fe4774ff0754701e58e3795a764d3751a12e44319689ce899dc0110097cc4",
+    "states.jsonl.gz": "27358c626faa38fa0ba68edcb2a9d0ee84ccf8bb53b9c1b9a2986eca589cb6e3"
+  },
+  "attempt_id": "RWS-F3-S1-C02-B-S.20260927T032554.211247-alia40e-a40-2gpu.568063",
+  "block_id": "F3-S1-C02",
+  "denominators": {
+    "executed_actions": 450,
+    "futures_saved": 15,
+    "planned_actions": 450,
+    "planned_requests": 15,
+    "requests": 15
+  },
+  "episode_id": "RWS-F3-S1-C02-B-S",
+  "form": "S",
+  "goal_id": "B",
+  "lane": {
+    "cuda_visible_devices": "1",
+    "host": "211247-alia40e-a40-2gpu",
+    "lane_id": "conf-F3-alia100f-1-cap1-8601",
+    "pid": 568063,
+    "server_host": "211247-alia100f-a100-4gpu",
+    "server_pid": 34826,
+    "tcp_definition": {
+      "base_prim": "/World/envs/env_0/robot/Gripper/Robotiq_2F_85/base_link",
+      "finger_centres": {
+        "left_inner_finger": [
+          0.1214261203284418,
+          0.057332273901366554,
+          -6.353379813387947e-07
+        ],
+        "right_inner_finger": [
+          0.12166464410083663,
+          -0.057042976241255386,
+          -6.226638261741871e-07
+        ]
+      },
+      "kind": "inner_finger_geometry_midpoint_in_base_link",
+      "offset_m": [
+        0.12154538221463922,
+        0.000144648830055584,
+        -6.290009037564909e-07
+      ]
+    },
+    "url": "http://10.244.255.145:8601"
+  },
+  "model_id": "F3",
+  "phase": "confirmation",
+  "prompt_id": "S1-B-S",
+  "prompt_sha256": "4b2ad2845e2b86b6a1aeea0634d6c04b9cd6815fff9101a5f627f13e77fae2ba",
+  "restore_max_abs_diff": 0.0,
+  "scene_id": "S1",
+  "score": {
+    "complete_horizon": true,
+    "failure_stage": "lift_no_goal",
+    "final_goal_true": false,
+    "final_stable_run": null,
+    "horizon_ticks": 450,
+    "initial_goal_true": false,
+    "lift": {
+      "complete_t": 4.666666666666667,
+      "complete_tick": 70,
+      "run_end_tick": 111,
+      "run_span_s": 2.9333333333333327,
+      "start_t": 4.466666666666667,
+      "start_tick": 67
+    },
+    "lift_ever": true,
+    "mover": "rubiks_cube",
+    "mover_contact_ever": true,
+    "mover_final_displacement_m": 0.13339167467895927,
+    "mover_final_xy": [
+      0.320603609085083,
+      0.022551506757736206
+    ],
+    "n_ticks": 451,
+    "native_base_task": "RubiksCubeLeftOfBowlTask",
+    "native_base_task_first_hit": null,
+    "native_matched_task": "RubiksCubeBehindBowlTask",
+    "native_matched_task_first_hit": null,
+    "other_disturbance": {
+      "banana": {
+        "disturbed": false,
+        "max_displacement_m": 0.0017909117594374147
+      },
+      "bowl": {
+        "disturbed": true,
+        "max_displacement_m": 0.10086971778056879
+      }
+    },
+    "primary_window": {
+      "distance_m": 0.05751818919231211,
+      "fallback": false,
+      "nearest_object": "rubiks_cube",
+      "pre_tick": 32,
+      "request_index": 1
+    },
+    "reference": "bowl",
+    "reference_disturbance": {
+      "disturbed": true,
+      "max_displacement_m": 0.10086971778056879
+    },
+    "scorer_version": 2,
+    "stable": null,
+    "stable_at_final": false,
+    "stable_ever": false,
+    "stratum": "achievement",
+    "study_goal_first_hit": null,
+    "study_relation_first_hit": null,
+    "windows": {
+      "primary": {
+        "contradictory_release": [],
+        "event": 0,
+        "goal_consistent_interaction": true,
+        "n_executed": 32,
+        "neutral_no_decision": false,
+        "physical_failure": false,
+        "pre_tick": 32,
+        "request_index": 1,
+        "t_end": 4.266666666666667,
+        "t_start": 2.1333333333333333,
+        "wrong_object": []
+      },
+      "request0": {
+        "contradictory_release": [],
+        "event": 0,
+        "goal_consistent_interaction": false,
+        "n_executed": 32,
+        "neutral_no_decision": true,
+        "physical_failure": false,
+        "pre_tick": 0,
+        "request_index": 0,
+        "t_end": 2.1333333333333333,
+        "t_start": 0.0,
+        "wrong_object": []
+      }
+    }
+  },
+  "server_reset": {
+    "attempt_id": "RWS-F3-S1-C02-B-S.20260927T032554.211247-alia40e-a40-2gpu.568063",
+    "episode_id": "RWS-F3-S1-C02-B-S",
+    "ok": true,
+    "pid": 34826,
+    "reset": {
+      "action_queue": 0,
+      "ctx_cache": 0,
+      "last_command_none": true,
+      "prepared_text_cache": 0
+    }
+  },
+  "state_slot": "S1-C02",
+  "status": "valid",
+  "streams": {
+    "composite": {
+      "bytes": 140131742,
+      "codec": "libx264rgb qp0 (lossless rgb24)",
+      "fps": 15,
+      "frames": 451,
+      "height": 540,
+      "uri": "/data/users/ali/rws-20260926/runs/episodes/RWS-F3-S1-C02-B-S/attempts/RWS-F3-S1-C02-B-S.20260927T032554.211247-alia40e-a40-2gpu.568063/exec_composite.mkv",
+      "width": 640
+    },
+    "head_camera": {
+      "bytes": 169506428,
+      "codec": "libx264rgb qp0 (lossless rgb24)",
+      "fps": 15,
+      "frames": 451,
+      "height": 720,
+      "uri": "/data/users/ali/rws-20260926/runs/episodes/RWS-F3-S1-C02-B-S/attempts/RWS-F3-S1-C02-B-S.20260927T032554.211247-alia40e-a40-2gpu.568063/exec_head_camera.mkv",
+      "width": 1280
+    },
+    "viewport": {
+      "bytes": 101272529,
+      "codec": "libx264rgb qp0 (lossless rgb24)",
+      "fps": 15,
+      "frames": 451,
+      "height": 480,
+      "uri": "/data/users/ali/rws-20260926/runs/episodes/RWS-F3-S1-C02-B-S/attempts/RWS-F3-S1-C02-B-S.20260927T032554.211247-alia40e-a40-2gpu.568063/exec_viewport.mkv",
+      "width": 864
+    }
+  },
+  "wall_s": 253.93791341781616
+}
