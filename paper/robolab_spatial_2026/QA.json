@@ -5,7 +5,7 @@
   "normalized_pdf_text_matches": null,
   "overleaf_project": "https://www.overleaf.com/project/6ab2bdb39b30df4bbc98a15e",
   "overleaf_main": "main.tex",
-  "local_pdf_sha256": "f986d1741b9975f2da51f49a66492235a02fe69b3cd39fcc8de64e5705af090d",
+  "local_pdf_sha256": "ed6580b42ac7f7a253a54503da035c31d1e51247315434650ea81aa41fd5088f",
   "all_local_pages_visually_checked": true,
   "raw_results_modified": false,
   "new_policy_episodes_launched": 0,
@@ -52,7 +52,7 @@
     "current_package_source_and_figures_byte_match": true
   },
   "overleaf_verification": {
-    "method": "Direct Overleaf Source Editor edits, exact source readback, figure replacements, live compiler log and rendered PDF preview",
+    "method": "Direct Overleaf paragraph edit, exact full-source readback, successful live compilation and page-4 preview",
     "compiler": "pdfLaTeX / TeX Live 2026",
     "main_text_pages": 4,
     "reference_pages": 1,
@@ -60,9 +60,9 @@
     "references_start_page": 5,
     "errors": 0,
     "warnings": 0,
-    "proof": "output/pdf/overleaf_overall_rates.png",
+    "proof": "output/pdf/overleaf_discussion_rewrite.png",
     "pdf_download": "Not attempted; exact edited source was read back from Overleaf and compiled locally.",
-    "build": "1a0e4781bbe-cee2f4672ec75b0b",
+    "build": "1a0e4846150-9d12e86a3eb294d7",
     "raw_log_notes": [
       "Nonfatal missing Hfootnote.1 destination from the author-block footnote; Overleaf UI reports zero warnings."
     ]
@@ -137,5 +137,15 @@
     "montage_page": 4,
     "overleaf_edited_directly": true,
     "violin_density_guide_label_removed": true
+  },
+  "discussion_revision": {
+    "overleaf_edited_directly": true,
+    "only_final_discussion_paragraph_changed": true,
+    "focus": "Responsiveness to changed goals and consistency under equivalent descriptions; implications for evaluation",
+    "cited_source_count": 14,
+    "main_text_pages": 4,
+    "reference_pages": 1,
+    "montage_page": 4,
+    "raw_results_unchanged": true
   }
 }
