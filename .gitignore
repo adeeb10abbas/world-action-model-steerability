@@ -33,6 +33,17 @@ logs/
 *.tar.gz
 *.tar.zst
 
+# Local paper compilation, source backups, and upload staging.
+/tmp/
+/paper/robolab_spatial_2026/*.aux
+/paper/robolab_spatial_2026/*.bbl
+/paper/robolab_spatial_2026/*.blg
+/paper/robolab_spatial_2026/*.fdb_latexmk
+/paper/robolab_spatial_2026/*.fls
+/paper/robolab_spatial_2026/*.log
+/paper/robolab_spatial_2026/*.out
+/paper/robolab_spatial_2026/main.pdf
+
 # Retained compact JSON receipts live beneath artifact paths named evidence.
 !artifacts/**/evidence/
 !artifacts/**/evidence/**

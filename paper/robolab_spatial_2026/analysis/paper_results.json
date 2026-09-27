@@ -1,0 +1,4792 @@
+{
+  "provenance": {
+    "features_path": "artifacts/robolab_workshop_20260926/analysis/conf_features.jsonl",
+    "features_sha256": "2d79939316994767b15f09e93a23366da905416edfbb78913ecd3e6395949fac",
+    "accepted_states_path": "artifacts/robolab_workshop_20260926/states/accepted_states.json",
+    "accepted_states_sha256": "34b0de1dd69b3ae36f92afa4a8f1b3abdbedb8388bf7eb17be37776d6478d6b9",
+    "analysis_script_sha256": "2bf4a240ff6f56512bacadf7ee5d91450499e415dcecbb84439d3a178b0d10eb",
+    "initial_stratum_source": "accepted_states.scenes[scene].slots[state].initial_study[goal].goal",
+    "outcome_fields": "Original frozen stable_ever and stable_at_final values; not rescored.",
+    "weighting": "Equal models, scenes and goals within scene; paired physical states. Eight states per scene.",
+    "bootstrap": {
+      "draws": 10000,
+      "seed": 8401,
+      "unit": "scene x state; stratified by scene"
+    },
+    "sign_flip": {
+      "draws": 100000,
+      "seed": 8402,
+      "unit": "scene x state"
+    },
+    "multiple_testing": "Holm across S-I and D-S in the pooled confirmatory family. Per-model p-values are descriptive.",
+    "sensitivity_note": "Corrected-stratum subgroup and final-state analyses are post-hoc sensitivity analyses; they do not replace the original all-episode stable-ever tests.",
+    "violin_display": {
+      "unit": "One observed paired mean per physical state; 32 points per model/contrast; pooled points average models and goals within the same state.",
+      "support": "Discrete bounded paired means in [-1,1]; KDE is a display aid, not a continuous-response model.",
+      "density": "Gaussian KDE with bandwidth factor 0.4, clipped to observed data extrema (and thus to [-1,1]); constant distributions use a line without KDE.",
+      "jitter": "Vertical-only deterministic jitter, seed 8500; measured horizontal values are unchanged.",
+      "summary": "Diamond and horizontal interval: unchanged mean and stratified state-bootstrap 95% CI."
+    }
+  },
+  "coverage": {
+    "episodes": 864,
+    "models": 3,
+    "scenes": 4,
+    "physical_states": 32,
+    "goals": 12,
+    "forms_per_goal": 3,
+    "corrected_initially_satisfied": 216,
+    "corrected_achievement": 648,
+    "stratum_reclassifications": 44
+  },
+  "outcomes": {
+    "pooled": {
+      "all": {
+        "all": {
+          "stable_ever": {
+            "n": 864,
+            "successes": 383,
+            "raw_rate": 0.44328703703703703,
+            "scene_goal_weighted_rate": 0.43229166666666663
+          },
+          "stable_at_final": {
+            "n": 864,
+            "successes": 191,
+            "raw_rate": 0.22106481481481483,
+            "scene_goal_weighted_rate": 0.21817129629629628
+          }
+        },
+        "D": {
+          "stable_ever": {
+            "n": 288,
+            "successes": 146,
+            "raw_rate": 0.5069444444444444,
+            "scene_goal_weighted_rate": 0.5
+          },
+          "stable_at_final": {
+            "n": 288,
+            "successes": 79,
+            "raw_rate": 0.2743055555555556,
+            "scene_goal_weighted_rate": 0.2769097222222222
+          }
+        },
+        "S": {
+          "stable_ever": {
+            "n": 288,
+            "successes": 134,
+            "raw_rate": 0.4652777777777778,
+            "scene_goal_weighted_rate": 0.45920138888888884
+          },
+          "stable_at_final": {
+            "n": 288,
+            "successes": 70,
+            "raw_rate": 0.24305555555555555,
+            "scene_goal_weighted_rate": 0.24479166666666666
+          }
+        },
+        "I": {
+          "stable_ever": {
+            "n": 288,
+            "successes": 103,
+            "raw_rate": 0.3576388888888889,
+            "scene_goal_weighted_rate": 0.33767361111111116
+          },
+          "stable_at_final": {
+            "n": 288,
+            "successes": 42,
+            "raw_rate": 0.14583333333333334,
+            "scene_goal_weighted_rate": 0.1328125
+          }
+        }
+      },
+      "achievement": {
+        "all": {
+          "stable_ever": {
+            "n": 648,
+            "successes": 167,
+            "raw_rate": 0.25771604938271603,
+            "scene_goal_weighted_rate": 0.2679398148148148
+          },
+          "stable_at_final": {
+            "n": 648,
+            "successes": 94,
+            "raw_rate": 0.14506172839506173,
+            "scene_goal_weighted_rate": 0.1527777777777778
+          }
+        },
+        "D": {
+          "stable_ever": {
+            "n": 216,
+            "successes": 74,
+            "raw_rate": 0.3425925925925926,
+            "scene_goal_weighted_rate": 0.3576388888888889
+          },
+          "stable_at_final": {
+            "n": 216,
+            "successes": 42,
+            "raw_rate": 0.19444444444444445,
+            "scene_goal_weighted_rate": 0.21180555555555555
+          }
+        },
+        "S": {
+          "stable_ever": {
+            "n": 216,
+            "successes": 62,
+            "raw_rate": 0.28703703703703703,
+            "scene_goal_weighted_rate": 0.3038194444444444
+          },
+          "stable_at_final": {
+            "n": 216,
+            "successes": 37,
+            "raw_rate": 0.1712962962962963,
+            "scene_goal_weighted_rate": 0.1840277777777778
+          }
+        },
+        "I": {
+          "stable_ever": {
+            "n": 216,
+            "successes": 31,
+            "raw_rate": 0.14351851851851852,
+            "scene_goal_weighted_rate": 0.1423611111111111
+          },
+          "stable_at_final": {
+            "n": 216,
+            "successes": 15,
+            "raw_rate": 0.06944444444444445,
+            "scene_goal_weighted_rate": 0.0625
+          }
+        }
+      },
+      "maintenance": {
+        "all": {
+          "stable_ever": {
+            "n": 216,
+            "successes": 216,
+            "raw_rate": 1.0,
+            "scene_goal_weighted_rate": 1.0
+          },
+          "stable_at_final": {
+            "n": 216,
+            "successes": 97,
+            "raw_rate": 0.44907407407407407,
+            "scene_goal_weighted_rate": 0.4490740740740741
+          }
+        },
+        "D": {
+          "stable_ever": {
+            "n": 72,
+            "successes": 72,
+            "raw_rate": 1.0,
+            "scene_goal_weighted_rate": 1.0
+          },
+          "stable_at_final": {
+            "n": 72,
+            "successes": 37,
+            "raw_rate": 0.5138888888888888,
+            "scene_goal_weighted_rate": 0.5138888888888888
+          }
+        },
+        "S": {
+          "stable_ever": {
+            "n": 72,
+            "successes": 72,
+            "raw_rate": 1.0,
+            "scene_goal_weighted_rate": 1.0
+          },
+          "stable_at_final": {
+            "n": 72,
+            "successes": 33,
+            "raw_rate": 0.4583333333333333,
+            "scene_goal_weighted_rate": 0.4583333333333333
+          }
+        },
+        "I": {
+          "stable_ever": {
+            "n": 72,
+            "successes": 72,
+            "raw_rate": 1.0,
+            "scene_goal_weighted_rate": 1.0
+          },
+          "stable_at_final": {
+            "n": 72,
+            "successes": 27,
+            "raw_rate": 0.375,
+            "scene_goal_weighted_rate": 0.375
+          }
+        }
+      }
+    },
+    "N3": {
+      "all": {
+        "all": {
+          "stable_ever": {
+            "n": 288,
+            "successes": 142,
+            "raw_rate": 0.4930555555555556,
+            "scene_goal_weighted_rate": 0.4574652777777778
+          },
+          "stable_at_final": {
+            "n": 288,
+            "successes": 77,
+            "raw_rate": 0.2673611111111111,
+            "scene_goal_weighted_rate": 0.2552083333333333
+          }
+        },
+        "D": {
+          "stable_ever": {
+            "n": 96,
+            "successes": 52,
+            "raw_rate": 0.5416666666666666,
+            "scene_goal_weighted_rate": 0.5026041666666666
+          },
+          "stable_at_final": {
+            "n": 96,
+            "successes": 30,
+            "raw_rate": 0.3125,
+            "scene_goal_weighted_rate": 0.3020833333333333
+          }
+        },
+        "S": {
+          "stable_ever": {
+            "n": 96,
+            "successes": 52,
+            "raw_rate": 0.5416666666666666,
+            "scene_goal_weighted_rate": 0.5078125
+          },
+          "stable_at_final": {
+            "n": 96,
+            "successes": 32,
+            "raw_rate": 0.3333333333333333,
+            "scene_goal_weighted_rate": 0.32291666666666663
+          }
+        },
+        "I": {
+          "stable_ever": {
+            "n": 96,
+            "successes": 38,
+            "raw_rate": 0.3958333333333333,
+            "scene_goal_weighted_rate": 0.36197916666666663
+          },
+          "stable_at_final": {
+            "n": 96,
+            "successes": 15,
+            "raw_rate": 0.15625,
+            "scene_goal_weighted_rate": 0.140625
+          }
+        }
+      },
+      "achievement": {
+        "all": {
+          "stable_ever": {
+            "n": 216,
+            "successes": 70,
+            "raw_rate": 0.32407407407407407,
+            "scene_goal_weighted_rate": 0.3246527777777778
+          },
+          "stable_at_final": {
+            "n": 216,
+            "successes": 47,
+            "raw_rate": 0.2175925925925926,
+            "scene_goal_weighted_rate": 0.2222222222222222
+          }
+        },
+        "D": {
+          "stable_ever": {
+            "n": 72,
+            "successes": 28,
+            "raw_rate": 0.3888888888888889,
+            "scene_goal_weighted_rate": 0.390625
+          },
+          "stable_at_final": {
+            "n": 72,
+            "successes": 17,
+            "raw_rate": 0.2361111111111111,
+            "scene_goal_weighted_rate": 0.25
+          }
+        },
+        "S": {
+          "stable_ever": {
+            "n": 72,
+            "successes": 28,
+            "raw_rate": 0.3888888888888889,
+            "scene_goal_weighted_rate": 0.40104166666666663
+          },
+          "stable_at_final": {
+            "n": 72,
+            "successes": 21,
+            "raw_rate": 0.2916666666666667,
+            "scene_goal_weighted_rate": 0.30729166666666663
+          }
+        },
+        "I": {
+          "stable_ever": {
+            "n": 72,
+            "successes": 14,
+            "raw_rate": 0.19444444444444445,
+            "scene_goal_weighted_rate": 0.18229166666666666
+          },
+          "stable_at_final": {
+            "n": 72,
+            "successes": 9,
+            "raw_rate": 0.125,
+            "scene_goal_weighted_rate": 0.10937499999999999
+          }
+        }
+      },
+      "maintenance": {
+        "all": {
+          "stable_ever": {
+            "n": 72,
+            "successes": 72,
+            "raw_rate": 1.0,
+            "scene_goal_weighted_rate": 1.0
+          },
+          "stable_at_final": {
+            "n": 72,
+            "successes": 30,
+            "raw_rate": 0.4166666666666667,
+            "scene_goal_weighted_rate": 0.4166666666666667
+          }
+        },
+        "D": {
+          "stable_ever": {
+            "n": 24,
+            "successes": 24,
+            "raw_rate": 1.0,
+            "scene_goal_weighted_rate": 1.0
+          },
+          "stable_at_final": {
+            "n": 24,
+            "successes": 13,
+            "raw_rate": 0.5416666666666666,
+            "scene_goal_weighted_rate": 0.5416666666666666
+          }
+        },
+        "S": {
+          "stable_ever": {
+            "n": 24,
+            "successes": 24,
+            "raw_rate": 1.0,
+            "scene_goal_weighted_rate": 1.0
+          },
+          "stable_at_final": {
+            "n": 24,
+            "successes": 11,
+            "raw_rate": 0.4583333333333333,
+            "scene_goal_weighted_rate": 0.4583333333333333
+          }
+        },
+        "I": {
+          "stable_ever": {
+            "n": 24,
+            "successes": 24,
+            "raw_rate": 1.0,
+            "scene_goal_weighted_rate": 1.0
+          },
+          "stable_at_final": {
+            "n": 24,
+            "successes": 6,
+            "raw_rate": 0.25,
+            "scene_goal_weighted_rate": 0.25
+          }
+        }
+      }
+    },
+    "E3": {
+      "all": {
+        "all": {
+          "stable_ever": {
+            "n": 288,
+            "successes": 93,
+            "raw_rate": 0.3229166666666667,
+            "scene_goal_weighted_rate": 0.3012152777777778
+          },
+          "stable_at_final": {
+            "n": 288,
+            "successes": 45,
+            "raw_rate": 0.15625,
+            "scene_goal_weighted_rate": 0.1519097222222222
+          }
+        },
+        "D": {
+          "stable_ever": {
+            "n": 96,
+            "successes": 37,
+            "raw_rate": 0.3854166666666667,
+            "scene_goal_weighted_rate": 0.3645833333333333
+          },
+          "stable_at_final": {
+            "n": 96,
+            "successes": 19,
+            "raw_rate": 0.19791666666666666,
+            "scene_goal_weighted_rate": 0.19010416666666663
+          }
+        },
+        "S": {
+          "stable_ever": {
+            "n": 96,
+            "successes": 32,
+            "raw_rate": 0.3333333333333333,
+            "scene_goal_weighted_rate": 0.3098958333333333
+          },
+          "stable_at_final": {
+            "n": 96,
+            "successes": 16,
+            "raw_rate": 0.16666666666666666,
+            "scene_goal_weighted_rate": 0.16145833333333331
+          }
+        },
+        "I": {
+          "stable_ever": {
+            "n": 96,
+            "successes": 24,
+            "raw_rate": 0.25,
+            "scene_goal_weighted_rate": 0.22916666666666663
+          },
+          "stable_at_final": {
+            "n": 96,
+            "successes": 10,
+            "raw_rate": 0.10416666666666667,
+            "scene_goal_weighted_rate": 0.10416666666666666
+          }
+        }
+      },
+      "achievement": {
+        "all": {
+          "stable_ever": {
+            "n": 216,
+            "successes": 21,
+            "raw_rate": 0.09722222222222222,
+            "scene_goal_weighted_rate": 0.09722222222222221
+          },
+          "stable_at_final": {
+            "n": 216,
+            "successes": 13,
+            "raw_rate": 0.06018518518518518,
+            "scene_goal_weighted_rate": 0.0642361111111111
+          }
+        },
+        "D": {
+          "stable_ever": {
+            "n": 72,
+            "successes": 13,
+            "raw_rate": 0.18055555555555555,
+            "scene_goal_weighted_rate": 0.18229166666666666
+          },
+          "stable_at_final": {
+            "n": 72,
+            "successes": 7,
+            "raw_rate": 0.09722222222222222,
+            "scene_goal_weighted_rate": 0.10416666666666666
+          }
+        },
+        "S": {
+          "stable_ever": {
+            "n": 72,
+            "successes": 8,
+            "raw_rate": 0.1111111111111111,
+            "scene_goal_weighted_rate": 0.109375
+          },
+          "stable_at_final": {
+            "n": 72,
+            "successes": 6,
+            "raw_rate": 0.08333333333333333,
+            "scene_goal_weighted_rate": 0.08854166666666666
+          }
+        },
+        "I": {
+          "stable_ever": {
+            "n": 72,
+            "successes": 0,
+            "raw_rate": 0.0,
+            "scene_goal_weighted_rate": 0.0
+          },
+          "stable_at_final": {
+            "n": 72,
+            "successes": 0,
+            "raw_rate": 0.0,
+            "scene_goal_weighted_rate": 0.0
+          }
+        }
+      },
+      "maintenance": {
+        "all": {
+          "stable_ever": {
+            "n": 72,
+            "successes": 72,
+            "raw_rate": 1.0,
+            "scene_goal_weighted_rate": 1.0
+          },
+          "stable_at_final": {
+            "n": 72,
+            "successes": 32,
+            "raw_rate": 0.4444444444444444,
+            "scene_goal_weighted_rate": 0.4444444444444444
+          }
+        },
+        "D": {
+          "stable_ever": {
+            "n": 24,
+            "successes": 24,
+            "raw_rate": 1.0,
+            "scene_goal_weighted_rate": 1.0
+          },
+          "stable_at_final": {
+            "n": 24,
+            "successes": 12,
+            "raw_rate": 0.5,
+            "scene_goal_weighted_rate": 0.5
+          }
+        },
+        "S": {
+          "stable_ever": {
+            "n": 24,
+            "successes": 24,
+            "raw_rate": 1.0,
+            "scene_goal_weighted_rate": 1.0
+          },
+          "stable_at_final": {
+            "n": 24,
+            "successes": 10,
+            "raw_rate": 0.4166666666666667,
+            "scene_goal_weighted_rate": 0.4166666666666667
+          }
+        },
+        "I": {
+          "stable_ever": {
+            "n": 24,
+            "successes": 24,
+            "raw_rate": 1.0,
+            "scene_goal_weighted_rate": 1.0
+          },
+          "stable_at_final": {
+            "n": 24,
+            "successes": 10,
+            "raw_rate": 0.4166666666666667,
+            "scene_goal_weighted_rate": 0.4166666666666667
+          }
+        }
+      }
+    },
+    "F3": {
+      "all": {
+        "all": {
+          "stable_ever": {
+            "n": 288,
+            "successes": 148,
+            "raw_rate": 0.5138888888888888,
+            "scene_goal_weighted_rate": 0.5381944444444444
+          },
+          "stable_at_final": {
+            "n": 288,
+            "successes": 69,
+            "raw_rate": 0.23958333333333334,
+            "scene_goal_weighted_rate": 0.24739583333333331
+          }
+        },
+        "D": {
+          "stable_ever": {
+            "n": 96,
+            "successes": 57,
+            "raw_rate": 0.59375,
+            "scene_goal_weighted_rate": 0.6328125
+          },
+          "stable_at_final": {
+            "n": 96,
+            "successes": 30,
+            "raw_rate": 0.3125,
+            "scene_goal_weighted_rate": 0.33854166666666663
+          }
+        },
+        "S": {
+          "stable_ever": {
+            "n": 96,
+            "successes": 50,
+            "raw_rate": 0.5208333333333334,
+            "scene_goal_weighted_rate": 0.5598958333333333
+          },
+          "stable_at_final": {
+            "n": 96,
+            "successes": 22,
+            "raw_rate": 0.22916666666666666,
+            "scene_goal_weighted_rate": 0.24999999999999997
+          }
+        },
+        "I": {
+          "stable_ever": {
+            "n": 96,
+            "successes": 41,
+            "raw_rate": 0.4270833333333333,
+            "scene_goal_weighted_rate": 0.421875
+          },
+          "stable_at_final": {
+            "n": 96,
+            "successes": 17,
+            "raw_rate": 0.17708333333333334,
+            "scene_goal_weighted_rate": 0.15364583333333331
+          }
+        }
+      },
+      "achievement": {
+        "all": {
+          "stable_ever": {
+            "n": 216,
+            "successes": 76,
+            "raw_rate": 0.35185185185185186,
+            "scene_goal_weighted_rate": 0.3819444444444445
+          },
+          "stable_at_final": {
+            "n": 216,
+            "successes": 34,
+            "raw_rate": 0.1574074074074074,
+            "scene_goal_weighted_rate": 0.171875
+          }
+        },
+        "D": {
+          "stable_ever": {
+            "n": 72,
+            "successes": 33,
+            "raw_rate": 0.4583333333333333,
+            "scene_goal_weighted_rate": 0.5
+          },
+          "stable_at_final": {
+            "n": 72,
+            "successes": 18,
+            "raw_rate": 0.25,
+            "scene_goal_weighted_rate": 0.28125
+          }
+        },
+        "S": {
+          "stable_ever": {
+            "n": 72,
+            "successes": 26,
+            "raw_rate": 0.3611111111111111,
+            "scene_goal_weighted_rate": 0.40104166666666663
+          },
+          "stable_at_final": {
+            "n": 72,
+            "successes": 10,
+            "raw_rate": 0.1388888888888889,
+            "scene_goal_weighted_rate": 0.15625
+          }
+        },
+        "I": {
+          "stable_ever": {
+            "n": 72,
+            "successes": 17,
+            "raw_rate": 0.2361111111111111,
+            "scene_goal_weighted_rate": 0.24479166666666663
+          },
+          "stable_at_final": {
+            "n": 72,
+            "successes": 6,
+            "raw_rate": 0.08333333333333333,
+            "scene_goal_weighted_rate": 0.078125
+          }
+        }
+      },
+      "maintenance": {
+        "all": {
+          "stable_ever": {
+            "n": 72,
+            "successes": 72,
+            "raw_rate": 1.0,
+            "scene_goal_weighted_rate": 1.0
+          },
+          "stable_at_final": {
+            "n": 72,
+            "successes": 35,
+            "raw_rate": 0.4861111111111111,
+            "scene_goal_weighted_rate": 0.4861111111111111
+          }
+        },
+        "D": {
+          "stable_ever": {
+            "n": 24,
+            "successes": 24,
+            "raw_rate": 1.0,
+            "scene_goal_weighted_rate": 1.0
+          },
+          "stable_at_final": {
+            "n": 24,
+            "successes": 12,
+            "raw_rate": 0.5,
+            "scene_goal_weighted_rate": 0.5
+          }
+        },
+        "S": {
+          "stable_ever": {
+            "n": 24,
+            "successes": 24,
+            "raw_rate": 1.0,
+            "scene_goal_weighted_rate": 1.0
+          },
+          "stable_at_final": {
+            "n": 24,
+            "successes": 12,
+            "raw_rate": 0.5,
+            "scene_goal_weighted_rate": 0.5
+          }
+        },
+        "I": {
+          "stable_ever": {
+            "n": 24,
+            "successes": 24,
+            "raw_rate": 1.0,
+            "scene_goal_weighted_rate": 1.0
+          },
+          "stable_at_final": {
+            "n": 24,
+            "successes": 11,
+            "raw_rate": 0.4583333333333333,
+            "scene_goal_weighted_rate": 0.4583333333333333
+          }
+        }
+      }
+    }
+  },
+  "contrasts": {
+    "pooled": {
+      "all": {
+        "stable_ever": {
+          "S-I": {
+            "contrast": "S-I",
+            "endpoint": "stable_ever",
+            "n_pairs": 288,
+            "n_state_clusters": 32,
+            "difference": 0.12152777777777776,
+            "ci95_state_bootstrap": [
+              0.0859375,
+              0.15364583333333334
+            ],
+            "a_only": 45,
+            "b_only": 14,
+            "p_sign_flip": 5.999940000599994e-05,
+            "p_holm_two_contrasts": 0.00011999880001199988
+          },
+          "D-S": {
+            "contrast": "D-S",
+            "endpoint": "stable_ever",
+            "n_pairs": 288,
+            "n_state_clusters": 32,
+            "difference": 0.040798611111111105,
+            "ci95_state_bootstrap": [
+              -0.0017361111111111127,
+              0.08420138888888888
+            ],
+            "a_only": 25,
+            "b_only": 13,
+            "p_sign_flip": 0.0890491095089049,
+            "p_holm_two_contrasts": 0.0890491095089049
+          }
+        },
+        "stable_at_final": {
+          "S-I": {
+            "contrast": "S-I",
+            "endpoint": "stable_at_final",
+            "n_pairs": 288,
+            "n_state_clusters": 32,
+            "difference": 0.11197916666666666,
+            "ci95_state_bootstrap": [
+              0.0720486111111111,
+              0.1501736111111111
+            ],
+            "a_only": 52,
+            "b_only": 24,
+            "p_sign_flip": 0.0025499745002549976,
+            "p_holm_two_contrasts": 0.005099949000509995
+          },
+          "D-S": {
+            "contrast": "D-S",
+            "endpoint": "stable_at_final",
+            "n_pairs": 288,
+            "n_state_clusters": 32,
+            "difference": 0.03211805555555555,
+            "ci95_state_bootstrap": [
+              -0.020855034722222204,
+              0.0876736111111111
+            ],
+            "a_only": 40,
+            "b_only": 31,
+            "p_sign_flip": 0.2856771432285677,
+            "p_holm_two_contrasts": 0.2856771432285677
+          }
+        }
+      },
+      "achievement": {
+        "stable_ever": {
+          "S-I": {
+            "contrast": "S-I",
+            "endpoint": "stable_ever",
+            "n_pairs": 216,
+            "n_state_clusters": 32,
+            "difference": 0.16145833333333331,
+            "ci95_state_bootstrap": [
+              0.12152777777777778,
+              0.19965277777777773
+            ],
+            "a_only": 45,
+            "b_only": 14,
+            "p_sign_flip": 5.999940000599994e-05,
+            "p_holm_two_contrasts": 0.00011999880001199988
+          },
+          "D-S": {
+            "contrast": "D-S",
+            "endpoint": "stable_ever",
+            "n_pairs": 216,
+            "n_state_clusters": 32,
+            "difference": 0.05381944444444445,
+            "ci95_state_bootstrap": [
+              -0.0034722222222222142,
+              0.109375
+            ],
+            "a_only": 25,
+            "b_only": 13,
+            "p_sign_flip": 0.0905590944090559,
+            "p_holm_two_contrasts": 0.0905590944090559
+          }
+        },
+        "stable_at_final": {
+          "S-I": {
+            "contrast": "S-I",
+            "endpoint": "stable_at_final",
+            "n_pairs": 216,
+            "n_state_clusters": 32,
+            "difference": 0.12152777777777778,
+            "ci95_state_bootstrap": [
+              0.08680555555555555,
+              0.1579861111111111
+            ],
+            "a_only": 33,
+            "b_only": 11,
+            "p_sign_flip": 0.0005199948000519994,
+            "p_holm_two_contrasts": 0.0010399896001039989
+          },
+          "D-S": {
+            "contrast": "D-S",
+            "endpoint": "stable_at_final",
+            "n_pairs": 216,
+            "n_state_clusters": 32,
+            "difference": 0.027777777777777776,
+            "ci95_state_bootstrap": [
+              -0.02430555555555556,
+              0.08159722222222221
+            ],
+            "a_only": 20,
+            "b_only": 15,
+            "p_sign_flip": 0.36073639263607366,
+            "p_holm_two_contrasts": 0.36073639263607366
+          }
+        }
+      }
+    },
+    "N3": {
+      "all": {
+        "stable_ever": {
+          "S-I": {
+            "contrast": "S-I",
+            "endpoint": "stable_ever",
+            "n_pairs": 96,
+            "n_state_clusters": 32,
+            "difference": 0.14583333333333331,
+            "ci95_state_bootstrap": [
+              0.08072916666666666,
+              0.2109375
+            ],
+            "a_only": 22,
+            "b_only": 8,
+            "p_sign_flip": 0.003979960200397996
+          },
+          "D-S": {
+            "contrast": "D-S",
+            "endpoint": "stable_ever",
+            "n_pairs": 96,
+            "n_state_clusters": 32,
+            "difference": -0.0052083333333333304,
+            "ci95_state_bootstrap": [
+              -0.08072916666666666,
+              0.07291666666666666
+            ],
+            "a_only": 7,
+            "b_only": 7,
+            "p_sign_flip": 0.9389206107938921
+          }
+        },
+        "stable_at_final": {
+          "S-I": {
+            "contrast": "S-I",
+            "endpoint": "stable_at_final",
+            "n_pairs": 96,
+            "n_state_clusters": 32,
+            "difference": 0.18229166666666663,
+            "ci95_state_bootstrap": [
+              0.11458333333333331,
+              0.25
+            ],
+            "a_only": 25,
+            "b_only": 8,
+            "p_sign_flip": 0.001869981300186998
+          },
+          "D-S": {
+            "contrast": "D-S",
+            "endpoint": "stable_at_final",
+            "n_pairs": 96,
+            "n_state_clusters": 32,
+            "difference": -0.020833333333333325,
+            "ci95_state_bootstrap": [
+              -0.16145833333333334,
+              0.11979166666666666
+            ],
+            "a_only": 16,
+            "b_only": 18,
+            "p_sign_flip": 0.8035519644803552
+          }
+        }
+      },
+      "achievement": {
+        "stable_ever": {
+          "S-I": {
+            "contrast": "S-I",
+            "endpoint": "stable_ever",
+            "n_pairs": 72,
+            "n_state_clusters": 32,
+            "difference": 0.21875,
+            "ci95_state_bootstrap": [
+              0.13541666666666666,
+              0.3020833333333333
+            ],
+            "a_only": 22,
+            "b_only": 8,
+            "p_sign_flip": 0.0014399856001439985
+          },
+          "D-S": {
+            "contrast": "D-S",
+            "endpoint": "stable_ever",
+            "n_pairs": 72,
+            "n_state_clusters": 32,
+            "difference": -0.01041666666666667,
+            "ci95_state_bootstrap": [
+              -0.109375,
+              0.09375
+            ],
+            "a_only": 7,
+            "b_only": 7,
+            "p_sign_flip": 0.9070509294907051
+          }
+        },
+        "stable_at_final": {
+          "S-I": {
+            "contrast": "S-I",
+            "endpoint": "stable_at_final",
+            "n_pairs": 72,
+            "n_state_clusters": 32,
+            "difference": 0.19791666666666669,
+            "ci95_state_bootstrap": [
+              0.11979166666666666,
+              0.28125
+            ],
+            "a_only": 18,
+            "b_only": 6,
+            "p_sign_flip": 0.0034999650003499964
+          },
+          "D-S": {
+            "contrast": "D-S",
+            "endpoint": "stable_at_final",
+            "n_pairs": 72,
+            "n_state_clusters": 32,
+            "difference": -0.05729166666666666,
+            "ci95_state_bootstrap": [
+              -0.1875,
+              0.06770833333333334
+            ],
+            "a_only": 8,
+            "b_only": 12,
+            "p_sign_flip": 0.4353156468435316
+          }
+        }
+      }
+    },
+    "E3": {
+      "all": {
+        "stable_ever": {
+          "S-I": {
+            "contrast": "S-I",
+            "endpoint": "stable_ever",
+            "n_pairs": 96,
+            "n_state_clusters": 32,
+            "difference": 0.08072916666666666,
+            "ci95_state_bootstrap": [
+              0.03645833333333333,
+              0.12760416666666666
+            ],
+            "a_only": 8,
+            "b_only": 0,
+            "p_sign_flip": 0.007999920000799993
+          },
+          "D-S": {
+            "contrast": "D-S",
+            "endpoint": "stable_ever",
+            "n_pairs": 96,
+            "n_state_clusters": 32,
+            "difference": 0.05468749999999999,
+            "ci95_state_bootstrap": [
+              -0.002604166666666668,
+              0.11458333333333333
+            ],
+            "a_only": 8,
+            "b_only": 3,
+            "p_sign_flip": 0.14881851181488184
+          }
+        },
+        "stable_at_final": {
+          "S-I": {
+            "contrast": "S-I",
+            "endpoint": "stable_at_final",
+            "n_pairs": 96,
+            "n_state_clusters": 32,
+            "difference": 0.057291666666666664,
+            "ci95_state_bootstrap": [
+              -0.005208333333333334,
+              0.125
+            ],
+            "a_only": 11,
+            "b_only": 5,
+            "p_sign_flip": 0.2064279357206428
+          },
+          "D-S": {
+            "contrast": "D-S",
+            "endpoint": "stable_at_final",
+            "n_pairs": 96,
+            "n_state_clusters": 32,
+            "difference": 0.02864583333333334,
+            "ci95_state_bootstrap": [
+              -0.05468749999999999,
+              0.11458333333333333
+            ],
+            "a_only": 11,
+            "b_only": 8,
+            "p_sign_flip": 0.6221237787622124
+          }
+        }
+      },
+      "achievement": {
+        "stable_ever": {
+          "S-I": {
+            "contrast": "S-I",
+            "endpoint": "stable_ever",
+            "n_pairs": 72,
+            "n_state_clusters": 32,
+            "difference": 0.109375,
+            "ci95_state_bootstrap": [
+              0.05208333333333333,
+              0.16666666666666666
+            ],
+            "a_only": 8,
+            "b_only": 0,
+            "p_sign_flip": 0.007999920000799993
+          },
+          "D-S": {
+            "contrast": "D-S",
+            "endpoint": "stable_ever",
+            "n_pairs": 72,
+            "n_state_clusters": 32,
+            "difference": 0.07291666666666666,
+            "ci95_state_bootstrap": [
+              -0.005208333333333336,
+              0.15625
+            ],
+            "a_only": 8,
+            "b_only": 3,
+            "p_sign_flip": 0.18008819911800883
+          }
+        },
+        "stable_at_final": {
+          "S-I": {
+            "contrast": "S-I",
+            "endpoint": "stable_at_final",
+            "n_pairs": 72,
+            "n_state_clusters": 32,
+            "difference": 0.08854166666666666,
+            "ci95_state_bootstrap": [
+              0.03125,
+              0.14583333333333331
+            ],
+            "a_only": 6,
+            "b_only": 0,
+            "p_sign_flip": 0.03104968950310497
+          },
+          "D-S": {
+            "contrast": "D-S",
+            "endpoint": "stable_at_final",
+            "n_pairs": 72,
+            "n_state_clusters": 32,
+            "difference": 0.015625,
+            "ci95_state_bootstrap": [
+              -0.0625,
+              0.09375
+            ],
+            "a_only": 4,
+            "b_only": 3,
+            "p_sign_flip": 1.0
+          }
+        }
+      }
+    },
+    "F3": {
+      "all": {
+        "stable_ever": {
+          "S-I": {
+            "contrast": "S-I",
+            "endpoint": "stable_ever",
+            "n_pairs": 96,
+            "n_state_clusters": 32,
+            "difference": 0.13802083333333331,
+            "ci95_state_bootstrap": [
+              0.07552083333333333,
+              0.20052083333333331
+            ],
+            "a_only": 15,
+            "b_only": 6,
+            "p_sign_flip": 0.006789932100678993
+          },
+          "D-S": {
+            "contrast": "D-S",
+            "endpoint": "stable_ever",
+            "n_pairs": 96,
+            "n_state_clusters": 32,
+            "difference": 0.07291666666666666,
+            "ci95_state_bootstrap": [
+              -0.010416666666666668,
+              0.15364583333333331
+            ],
+            "a_only": 10,
+            "b_only": 3,
+            "p_sign_flip": 0.11440885591144088
+          }
+        },
+        "stable_at_final": {
+          "S-I": {
+            "contrast": "S-I",
+            "endpoint": "stable_at_final",
+            "n_pairs": 96,
+            "n_state_clusters": 32,
+            "difference": 0.09635416666666666,
+            "ci95_state_bootstrap": [
+              0.02083333333333333,
+              0.17447916666666666
+            ],
+            "a_only": 16,
+            "b_only": 11,
+            "p_sign_flip": 0.10886891131088688
+          },
+          "D-S": {
+            "contrast": "D-S",
+            "endpoint": "stable_at_final",
+            "n_pairs": 96,
+            "n_state_clusters": 32,
+            "difference": 0.08854166666666667,
+            "ci95_state_bootstrap": [
+              0.005208333333333336,
+              0.17447916666666666
+            ],
+            "a_only": 13,
+            "b_only": 5,
+            "p_sign_flip": 0.1001789982100179
+          }
+        }
+      },
+      "achievement": {
+        "stable_ever": {
+          "S-I": {
+            "contrast": "S-I",
+            "endpoint": "stable_ever",
+            "n_pairs": 72,
+            "n_state_clusters": 32,
+            "difference": 0.15625,
+            "ci95_state_bootstrap": [
+              0.08333333333333334,
+              0.22916666666666669
+            ],
+            "a_only": 15,
+            "b_only": 6,
+            "p_sign_flip": 0.011289887101128989
+          },
+          "D-S": {
+            "contrast": "D-S",
+            "endpoint": "stable_ever",
+            "n_pairs": 72,
+            "n_state_clusters": 32,
+            "difference": 0.09895833333333333,
+            "ci95_state_bootstrap": [
+              0.0,
+              0.19791666666666666
+            ],
+            "a_only": 10,
+            "b_only": 3,
+            "p_sign_flip": 0.09212907870921291
+          }
+        },
+        "stable_at_final": {
+          "S-I": {
+            "contrast": "S-I",
+            "endpoint": "stable_at_final",
+            "n_pairs": 72,
+            "n_state_clusters": 32,
+            "difference": 0.078125,
+            "ci95_state_bootstrap": [
+              0.010416666666666671,
+              0.14583333333333331
+            ],
+            "a_only": 9,
+            "b_only": 5,
+            "p_sign_flip": 0.11129888701112989
+          },
+          "D-S": {
+            "contrast": "D-S",
+            "endpoint": "stable_at_final",
+            "n_pairs": 72,
+            "n_state_clusters": 32,
+            "difference": 0.125,
+            "ci95_state_bootstrap": [
+              0.0625,
+              0.1875
+            ],
+            "a_only": 8,
+            "b_only": 0,
+            "p_sign_flip": 0.008179918200817992
+          }
+        }
+      }
+    }
+  },
+  "paired_state_effects": [
+    {
+      "model": "N3",
+      "scene": "S1",
+      "state": "S1-C01",
+      "contrast": "S-I",
+      "n_goal_model_pairs": 4,
+      "mean_paired_difference": -0.25
+    },
+    {
+      "model": "N3",
+      "scene": "S1",
+      "state": "S1-C02",
+      "contrast": "S-I",
+      "n_goal_model_pairs": 4,
+      "mean_paired_difference": 0.25
+    },
+    {
+      "model": "N3",
+      "scene": "S1",
+      "state": "S1-C03",
+      "contrast": "S-I",
+      "n_goal_model_pairs": 4,
+      "mean_paired_difference": 0.0
+    },
+    {
+      "model": "N3",
+      "scene": "S1",
+      "state": "S1-C04",
+      "contrast": "S-I",
+      "n_goal_model_pairs": 4,
+      "mean_paired_difference": -0.25
+    },
+    {
+      "model": "N3",
+      "scene": "S1",
+      "state": "S1-C05",
+      "contrast": "S-I",
+      "n_goal_model_pairs": 4,
+      "mean_paired_difference": 0.0
+    },
+    {
+      "model": "N3",
+      "scene": "S1",
+      "state": "S1-C06",
+      "contrast": "S-I",
+      "n_goal_model_pairs": 4,
+      "mean_paired_difference": 0.0
+    },
+    {
+      "model": "N3",
+      "scene": "S1",
+      "state": "S1-C07",
+      "contrast": "S-I",
+      "n_goal_model_pairs": 4,
+      "mean_paired_difference": 0.25
+    },
+    {
+      "model": "N3",
+      "scene": "S1",
+      "state": "S1-C08",
+      "contrast": "S-I",
+      "n_goal_model_pairs": 4,
+      "mean_paired_difference": 0.0
+    },
+    {
+      "model": "N3",
+      "scene": "S3",
+      "state": "S3-C01",
+      "contrast": "S-I",
+      "n_goal_model_pairs": 3,
+      "mean_paired_difference": 0.0
+    },
+    {
+      "model": "N3",
+      "scene": "S3",
+      "state": "S3-C02",
+      "contrast": "S-I",
+      "n_goal_model_pairs": 3,
+      "mean_paired_difference": 0.0
+    },
+    {
+      "model": "N3",
+      "scene": "S3",
+      "state": "S3-C03",
+      "contrast": "S-I",
+      "n_goal_model_pairs": 3,
+      "mean_paired_difference": 0.3333333333333333
+    },
+    {
+      "model": "N3",
+      "scene": "S3",
+      "state": "S3-C04",
+      "contrast": "S-I",
+      "n_goal_model_pairs": 3,
+      "mean_paired_difference": 0.0
+    },
+    {
+      "model": "N3",
+      "scene": "S3",
+      "state": "S3-C05",
+      "contrast": "S-I",
+      "n_goal_model_pairs": 3,
+      "mean_paired_difference": 0.0
+    },
+    {
+      "model": "N3",
+      "scene": "S3",
+      "state": "S3-C06",
+      "contrast": "S-I",
+      "n_goal_model_pairs": 3,
+      "mean_paired_difference": 0.3333333333333333
+    },
+    {
+      "model": "N3",
+      "scene": "S3",
+      "state": "S3-C07",
+      "contrast": "S-I",
+      "n_goal_model_pairs": 3,
+      "mean_paired_difference": 0.3333333333333333
+    },
+    {
+      "model": "N3",
+      "scene": "S3",
+      "state": "S3-C08",
+      "contrast": "S-I",
+      "n_goal_model_pairs": 3,
+      "mean_paired_difference": 0.3333333333333333
+    },
+    {
+      "model": "N3",
+      "scene": "S4",
+      "state": "S4-C01",
+      "contrast": "S-I",
+      "n_goal_model_pairs": 3,
+      "mean_paired_difference": 0.3333333333333333
+    },
+    {
+      "model": "N3",
+      "scene": "S4",
+      "state": "S4-C02",
+      "contrast": "S-I",
+      "n_goal_model_pairs": 3,
+      "mean_paired_difference": 0.3333333333333333
+    },
+    {
+      "model": "N3",
+      "scene": "S4",
+      "state": "S4-C03",
+      "contrast": "S-I",
+      "n_goal_model_pairs": 3,
+      "mean_paired_difference": 0.6666666666666666
+    },
+    {
+      "model": "N3",
+      "scene": "S4",
+      "state": "S4-C04",
+      "contrast": "S-I",
+      "n_goal_model_pairs": 3,
+      "mean_paired_difference": 0.3333333333333333
+    },
+    {
+      "model": "N3",
+      "scene": "S4",
+      "state": "S4-C05",
+      "contrast": "S-I",
+      "n_goal_model_pairs": 3,
+      "mean_paired_difference": 0.6666666666666666
+    },
+    {
+      "model": "N3",
+      "scene": "S4",
+      "state": "S4-C06",
+      "contrast": "S-I",
+      "n_goal_model_pairs": 3,
+      "mean_paired_difference": 0.3333333333333333
+    },
+    {
+      "model": "N3",
+      "scene": "S4",
+      "state": "S4-C07",
+      "contrast": "S-I",
+      "n_goal_model_pairs": 3,
+      "mean_paired_difference": 0.3333333333333333
+    },
+    {
+      "model": "N3",
+      "scene": "S4",
+      "state": "S4-C08",
+      "contrast": "S-I",
+      "n_goal_model_pairs": 3,
+      "mean_paired_difference": 0.3333333333333333
+    },
+    {
+      "model": "N3",
+      "scene": "S5",
+      "state": "S5-C01",
+      "contrast": "S-I",
+      "n_goal_model_pairs": 2,
+      "mean_paired_difference": 0.0
+    },
+    {
+      "model": "N3",
+      "scene": "S5",
+      "state": "S5-C02",
+      "contrast": "S-I",
+      "n_goal_model_pairs": 2,
+      "mean_paired_difference": 0.0
+    },
+    {
+      "model": "N3",
+      "scene": "S5",
+      "state": "S5-C03",
+      "contrast": "S-I",
+      "n_goal_model_pairs": 2,
+      "mean_paired_difference": 0.5
+    },
+    {
+      "model": "N3",
+      "scene": "S5",
+      "state": "S5-C04",
+      "contrast": "S-I",
+      "n_goal_model_pairs": 2,
+      "mean_paired_difference": 0.0
+    },
+    {
+      "model": "N3",
+      "scene": "S5",
+      "state": "S5-C05",
+      "contrast": "S-I",
+      "n_goal_model_pairs": 2,
+      "mean_paired_difference": 0.0
+    },
+    {
+      "model": "N3",
+      "scene": "S5",
+      "state": "S5-C06",
+      "contrast": "S-I",
+      "n_goal_model_pairs": 2,
+      "mean_paired_difference": 0.0
+    },
+    {
+      "model": "N3",
+      "scene": "S5",
+      "state": "S5-C07",
+      "contrast": "S-I",
+      "n_goal_model_pairs": 2,
+      "mean_paired_difference": -0.5
+    },
+    {
+      "model": "N3",
+      "scene": "S5",
+      "state": "S5-C08",
+      "contrast": "S-I",
+      "n_goal_model_pairs": 2,
+      "mean_paired_difference": 0.0
+    },
+    {
+      "model": "N3",
+      "scene": "S1",
+      "state": "S1-C01",
+      "contrast": "D-S",
+      "n_goal_model_pairs": 4,
+      "mean_paired_difference": 0.25
+    },
+    {
+      "model": "N3",
+      "scene": "S1",
+      "state": "S1-C02",
+      "contrast": "D-S",
+      "n_goal_model_pairs": 4,
+      "mean_paired_difference": -0.25
+    },
+    {
+      "model": "N3",
+      "scene": "S1",
+      "state": "S1-C03",
+      "contrast": "D-S",
+      "n_goal_model_pairs": 4,
+      "mean_paired_difference": 0.0
+    },
+    {
+      "model": "N3",
+      "scene": "S1",
+      "state": "S1-C04",
+      "contrast": "D-S",
+      "n_goal_model_pairs": 4,
+      "mean_paired_difference": 0.25
+    },
+    {
+      "model": "N3",
+      "scene": "S1",
+      "state": "S1-C05",
+      "contrast": "D-S",
+      "n_goal_model_pairs": 4,
+      "mean_paired_difference": 0.0
+    },
+    {
+      "model": "N3",
+      "scene": "S1",
+      "state": "S1-C06",
+      "contrast": "D-S",
+      "n_goal_model_pairs": 4,
+      "mean_paired_difference": 0.0
+    },
+    {
+      "model": "N3",
+      "scene": "S1",
+      "state": "S1-C07",
+      "contrast": "D-S",
+      "n_goal_model_pairs": 4,
+      "mean_paired_difference": 0.0
+    },
+    {
+      "model": "N3",
+      "scene": "S1",
+      "state": "S1-C08",
+      "contrast": "D-S",
+      "n_goal_model_pairs": 4,
+      "mean_paired_difference": 0.25
+    },
+    {
+      "model": "N3",
+      "scene": "S3",
+      "state": "S3-C01",
+      "contrast": "D-S",
+      "n_goal_model_pairs": 3,
+      "mean_paired_difference": 0.3333333333333333
+    },
+    {
+      "model": "N3",
+      "scene": "S3",
+      "state": "S3-C02",
+      "contrast": "D-S",
+      "n_goal_model_pairs": 3,
+      "mean_paired_difference": -0.3333333333333333
+    },
+    {
+      "model": "N3",
+      "scene": "S3",
+      "state": "S3-C03",
+      "contrast": "D-S",
+      "n_goal_model_pairs": 3,
+      "mean_paired_difference": -0.3333333333333333
+    },
+    {
+      "model": "N3",
+      "scene": "S3",
+      "state": "S3-C04",
+      "contrast": "D-S",
+      "n_goal_model_pairs": 3,
+      "mean_paired_difference": 0.3333333333333333
+    },
+    {
+      "model": "N3",
+      "scene": "S3",
+      "state": "S3-C05",
+      "contrast": "D-S",
+      "n_goal_model_pairs": 3,
+      "mean_paired_difference": 0.0
+    },
+    {
+      "model": "N3",
+      "scene": "S3",
+      "state": "S3-C06",
+      "contrast": "D-S",
+      "n_goal_model_pairs": 3,
+      "mean_paired_difference": 0.0
+    },
+    {
+      "model": "N3",
+      "scene": "S3",
+      "state": "S3-C07",
+      "contrast": "D-S",
+      "n_goal_model_pairs": 3,
+      "mean_paired_difference": 0.0
+    },
+    {
+      "model": "N3",
+      "scene": "S3",
+      "state": "S3-C08",
+      "contrast": "D-S",
+      "n_goal_model_pairs": 3,
+      "mean_paired_difference": 0.0
+    },
+    {
+      "model": "N3",
+      "scene": "S4",
+      "state": "S4-C01",
+      "contrast": "D-S",
+      "n_goal_model_pairs": 3,
+      "mean_paired_difference": 0.3333333333333333
+    },
+    {
+      "model": "N3",
+      "scene": "S4",
+      "state": "S4-C02",
+      "contrast": "D-S",
+      "n_goal_model_pairs": 3,
+      "mean_paired_difference": 0.0
+    },
+    {
+      "model": "N3",
+      "scene": "S4",
+      "state": "S4-C03",
+      "contrast": "D-S",
+      "n_goal_model_pairs": 3,
+      "mean_paired_difference": -0.3333333333333333
+    },
+    {
+      "model": "N3",
+      "scene": "S4",
+      "state": "S4-C04",
+      "contrast": "D-S",
+      "n_goal_model_pairs": 3,
+      "mean_paired_difference": -0.3333333333333333
+    },
+    {
+      "model": "N3",
+      "scene": "S4",
+      "state": "S4-C05",
+      "contrast": "D-S",
+      "n_goal_model_pairs": 3,
+      "mean_paired_difference": -0.3333333333333333
+    },
+    {
+      "model": "N3",
+      "scene": "S4",
+      "state": "S4-C06",
+      "contrast": "D-S",
+      "n_goal_model_pairs": 3,
+      "mean_paired_difference": 0.0
+    },
+    {
+      "model": "N3",
+      "scene": "S4",
+      "state": "S4-C07",
+      "contrast": "D-S",
+      "n_goal_model_pairs": 3,
+      "mean_paired_difference": 0.0
+    },
+    {
+      "model": "N3",
+      "scene": "S4",
+      "state": "S4-C08",
+      "contrast": "D-S",
+      "n_goal_model_pairs": 3,
+      "mean_paired_difference": 0.0
+    },
+    {
+      "model": "N3",
+      "scene": "S5",
+      "state": "S5-C01",
+      "contrast": "D-S",
+      "n_goal_model_pairs": 2,
+      "mean_paired_difference": 0.0
+    },
+    {
+      "model": "N3",
+      "scene": "S5",
+      "state": "S5-C02",
+      "contrast": "D-S",
+      "n_goal_model_pairs": 2,
+      "mean_paired_difference": 0.0
+    },
+    {
+      "model": "N3",
+      "scene": "S5",
+      "state": "S5-C03",
+      "contrast": "D-S",
+      "n_goal_model_pairs": 2,
+      "mean_paired_difference": -0.5
+    },
+    {
+      "model": "N3",
+      "scene": "S5",
+      "state": "S5-C04",
+      "contrast": "D-S",
+      "n_goal_model_pairs": 2,
+      "mean_paired_difference": 0.0
+    },
+    {
+      "model": "N3",
+      "scene": "S5",
+      "state": "S5-C05",
+      "contrast": "D-S",
+      "n_goal_model_pairs": 2,
+      "mean_paired_difference": 0.0
+    },
+    {
+      "model": "N3",
+      "scene": "S5",
+      "state": "S5-C06",
+      "contrast": "D-S",
+      "n_goal_model_pairs": 2,
+      "mean_paired_difference": 0.5
+    },
+    {
+      "model": "N3",
+      "scene": "S5",
+      "state": "S5-C07",
+      "contrast": "D-S",
+      "n_goal_model_pairs": 2,
+      "mean_paired_difference": 0.0
+    },
+    {
+      "model": "N3",
+      "scene": "S5",
+      "state": "S5-C08",
+      "contrast": "D-S",
+      "n_goal_model_pairs": 2,
+      "mean_paired_difference": 0.0
+    },
+    {
+      "model": "E3",
+      "scene": "S1",
+      "state": "S1-C01",
+      "contrast": "S-I",
+      "n_goal_model_pairs": 4,
+      "mean_paired_difference": 0.0
+    },
+    {
+      "model": "E3",
+      "scene": "S1",
+      "state": "S1-C02",
+      "contrast": "S-I",
+      "n_goal_model_pairs": 4,
+      "mean_paired_difference": 0.25
+    },
+    {
+      "model": "E3",
+      "scene": "S1",
+      "state": "S1-C03",
+      "contrast": "S-I",
+      "n_goal_model_pairs": 4,
+      "mean_paired_difference": 0.25
+    },
+    {
+      "model": "E3",
+      "scene": "S1",
+      "state": "S1-C04",
+      "contrast": "S-I",
+      "n_goal_model_pairs": 4,
+      "mean_paired_difference": 0.0
+    },
+    {
+      "model": "E3",
+      "scene": "S1",
+      "state": "S1-C05",
+      "contrast": "S-I",
+      "n_goal_model_pairs": 4,
+      "mean_paired_difference": 0.0
+    },
+    {
+      "model": "E3",
+      "scene": "S1",
+      "state": "S1-C06",
+      "contrast": "S-I",
+      "n_goal_model_pairs": 4,
+      "mean_paired_difference": 0.25
+    },
+    {
+      "model": "E3",
+      "scene": "S1",
+      "state": "S1-C07",
+      "contrast": "S-I",
+      "n_goal_model_pairs": 4,
+      "mean_paired_difference": 0.0
+    },
+    {
+      "model": "E3",
+      "scene": "S1",
+      "state": "S1-C08",
+      "contrast": "S-I",
+      "n_goal_model_pairs": 4,
+      "mean_paired_difference": 0.0
+    },
+    {
+      "model": "E3",
+      "scene": "S3",
+      "state": "S3-C01",
+      "contrast": "S-I",
+      "n_goal_model_pairs": 3,
+      "mean_paired_difference": 0.0
+    },
+    {
+      "model": "E3",
+      "scene": "S3",
+      "state": "S3-C02",
+      "contrast": "S-I",
+      "n_goal_model_pairs": 3,
+      "mean_paired_difference": 0.0
+    },
+    {
+      "model": "E3",
+      "scene": "S3",
+      "state": "S3-C03",
+      "contrast": "S-I",
+      "n_goal_model_pairs": 3,
+      "mean_paired_difference": 0.0
+    },
+    {
+      "model": "E3",
+      "scene": "S3",
+      "state": "S3-C04",
+      "contrast": "S-I",
+      "n_goal_model_pairs": 3,
+      "mean_paired_difference": 0.0
+    },
+    {
+      "model": "E3",
+      "scene": "S3",
+      "state": "S3-C05",
+      "contrast": "S-I",
+      "n_goal_model_pairs": 3,
+      "mean_paired_difference": 0.0
+    },
+    {
+      "model": "E3",
+      "scene": "S3",
+      "state": "S3-C06",
+      "contrast": "S-I",
+      "n_goal_model_pairs": 3,
+      "mean_paired_difference": 0.0
+    },
+    {
+      "model": "E3",
+      "scene": "S3",
+      "state": "S3-C07",
+      "contrast": "S-I",
+      "n_goal_model_pairs": 3,
+      "mean_paired_difference": 0.0
+    },
+    {
+      "model": "E3",
+      "scene": "S3",
+      "state": "S3-C08",
+      "contrast": "S-I",
+      "n_goal_model_pairs": 3,
+      "mean_paired_difference": 0.0
+    },
+    {
+      "model": "E3",
+      "scene": "S4",
+      "state": "S4-C01",
+      "contrast": "S-I",
+      "n_goal_model_pairs": 3,
+      "mean_paired_difference": 0.0
+    },
+    {
+      "model": "E3",
+      "scene": "S4",
+      "state": "S4-C02",
+      "contrast": "S-I",
+      "n_goal_model_pairs": 3,
+      "mean_paired_difference": 0.3333333333333333
+    },
+    {
+      "model": "E3",
+      "scene": "S4",
+      "state": "S4-C03",
+      "contrast": "S-I",
+      "n_goal_model_pairs": 3,
+      "mean_paired_difference": 0.0
+    },
+    {
+      "model": "E3",
+      "scene": "S4",
+      "state": "S4-C04",
+      "contrast": "S-I",
+      "n_goal_model_pairs": 3,
+      "mean_paired_difference": 0.3333333333333333
+    },
+    {
+      "model": "E3",
+      "scene": "S4",
+      "state": "S4-C05",
+      "contrast": "S-I",
+      "n_goal_model_pairs": 3,
+      "mean_paired_difference": 0.0
+    },
+    {
+      "model": "E3",
+      "scene": "S4",
+      "state": "S4-C06",
+      "contrast": "S-I",
+      "n_goal_model_pairs": 3,
+      "mean_paired_difference": 0.3333333333333333
+    },
+    {
+      "model": "E3",
+      "scene": "S4",
+      "state": "S4-C07",
+      "contrast": "S-I",
+      "n_goal_model_pairs": 3,
+      "mean_paired_difference": 0.3333333333333333
+    },
+    {
+      "model": "E3",
+      "scene": "S4",
+      "state": "S4-C08",
+      "contrast": "S-I",
+      "n_goal_model_pairs": 3,
+      "mean_paired_difference": 0.0
+    },
+    {
+      "model": "E3",
+      "scene": "S5",
+      "state": "S5-C01",
+      "contrast": "S-I",
+      "n_goal_model_pairs": 2,
+      "mean_paired_difference": 0.0
+    },
+    {
+      "model": "E3",
+      "scene": "S5",
+      "state": "S5-C02",
+      "contrast": "S-I",
+      "n_goal_model_pairs": 2,
+      "mean_paired_difference": 0.0
+    },
+    {
+      "model": "E3",
+      "scene": "S5",
+      "state": "S5-C03",
+      "contrast": "S-I",
+      "n_goal_model_pairs": 2,
+      "mean_paired_difference": 0.0
+    },
+    {
+      "model": "E3",
+      "scene": "S5",
+      "state": "S5-C04",
+      "contrast": "S-I",
+      "n_goal_model_pairs": 2,
+      "mean_paired_difference": 0.5
+    },
+    {
+      "model": "E3",
+      "scene": "S5",
+      "state": "S5-C05",
+      "contrast": "S-I",
+      "n_goal_model_pairs": 2,
+      "mean_paired_difference": 0.0
+    },
+    {
+      "model": "E3",
+      "scene": "S5",
+      "state": "S5-C06",
+      "contrast": "S-I",
+      "n_goal_model_pairs": 2,
+      "mean_paired_difference": 0.0
+    },
+    {
+      "model": "E3",
+      "scene": "S5",
+      "state": "S5-C07",
+      "contrast": "S-I",
+      "n_goal_model_pairs": 2,
+      "mean_paired_difference": 0.0
+    },
+    {
+      "model": "E3",
+      "scene": "S5",
+      "state": "S5-C08",
+      "contrast": "S-I",
+      "n_goal_model_pairs": 2,
+      "mean_paired_difference": 0.0
+    },
+    {
+      "model": "E3",
+      "scene": "S1",
+      "state": "S1-C01",
+      "contrast": "D-S",
+      "n_goal_model_pairs": 4,
+      "mean_paired_difference": 0.0
+    },
+    {
+      "model": "E3",
+      "scene": "S1",
+      "state": "S1-C02",
+      "contrast": "D-S",
+      "n_goal_model_pairs": 4,
+      "mean_paired_difference": 0.0
+    },
+    {
+      "model": "E3",
+      "scene": "S1",
+      "state": "S1-C03",
+      "contrast": "D-S",
+      "n_goal_model_pairs": 4,
+      "mean_paired_difference": 0.0
+    },
+    {
+      "model": "E3",
+      "scene": "S1",
+      "state": "S1-C04",
+      "contrast": "D-S",
+      "n_goal_model_pairs": 4,
+      "mean_paired_difference": 0.0
+    },
+    {
+      "model": "E3",
+      "scene": "S1",
+      "state": "S1-C05",
+      "contrast": "D-S",
+      "n_goal_model_pairs": 4,
+      "mean_paired_difference": 0.25
+    },
+    {
+      "model": "E3",
+      "scene": "S1",
+      "state": "S1-C06",
+      "contrast": "D-S",
+      "n_goal_model_pairs": 4,
+      "mean_paired_difference": 0.0
+    },
+    {
+      "model": "E3",
+      "scene": "S1",
+      "state": "S1-C07",
+      "contrast": "D-S",
+      "n_goal_model_pairs": 4,
+      "mean_paired_difference": 0.0
+    },
+    {
+      "model": "E3",
+      "scene": "S1",
+      "state": "S1-C08",
+      "contrast": "D-S",
+      "n_goal_model_pairs": 4,
+      "mean_paired_difference": 0.0
+    },
+    {
+      "model": "E3",
+      "scene": "S3",
+      "state": "S3-C01",
+      "contrast": "D-S",
+      "n_goal_model_pairs": 3,
+      "mean_paired_difference": 0.0
+    },
+    {
+      "model": "E3",
+      "scene": "S3",
+      "state": "S3-C02",
+      "contrast": "D-S",
+      "n_goal_model_pairs": 3,
+      "mean_paired_difference": 0.3333333333333333
+    },
+    {
+      "model": "E3",
+      "scene": "S3",
+      "state": "S3-C03",
+      "contrast": "D-S",
+      "n_goal_model_pairs": 3,
+      "mean_paired_difference": 0.0
+    },
+    {
+      "model": "E3",
+      "scene": "S3",
+      "state": "S3-C04",
+      "contrast": "D-S",
+      "n_goal_model_pairs": 3,
+      "mean_paired_difference": 0.3333333333333333
+    },
+    {
+      "model": "E3",
+      "scene": "S3",
+      "state": "S3-C05",
+      "contrast": "D-S",
+      "n_goal_model_pairs": 3,
+      "mean_paired_difference": 0.0
+    },
+    {
+      "model": "E3",
+      "scene": "S3",
+      "state": "S3-C06",
+      "contrast": "D-S",
+      "n_goal_model_pairs": 3,
+      "mean_paired_difference": 0.0
+    },
+    {
+      "model": "E3",
+      "scene": "S3",
+      "state": "S3-C07",
+      "contrast": "D-S",
+      "n_goal_model_pairs": 3,
+      "mean_paired_difference": 0.0
+    },
+    {
+      "model": "E3",
+      "scene": "S3",
+      "state": "S3-C08",
+      "contrast": "D-S",
+      "n_goal_model_pairs": 3,
+      "mean_paired_difference": 0.3333333333333333
+    },
+    {
+      "model": "E3",
+      "scene": "S4",
+      "state": "S4-C01",
+      "contrast": "D-S",
+      "n_goal_model_pairs": 3,
+      "mean_paired_difference": 0.0
+    },
+    {
+      "model": "E3",
+      "scene": "S4",
+      "state": "S4-C02",
+      "contrast": "D-S",
+      "n_goal_model_pairs": 3,
+      "mean_paired_difference": -0.3333333333333333
+    },
+    {
+      "model": "E3",
+      "scene": "S4",
+      "state": "S4-C03",
+      "contrast": "D-S",
+      "n_goal_model_pairs": 3,
+      "mean_paired_difference": 0.3333333333333333
+    },
+    {
+      "model": "E3",
+      "scene": "S4",
+      "state": "S4-C04",
+      "contrast": "D-S",
+      "n_goal_model_pairs": 3,
+      "mean_paired_difference": -0.3333333333333333
+    },
+    {
+      "model": "E3",
+      "scene": "S4",
+      "state": "S4-C05",
+      "contrast": "D-S",
+      "n_goal_model_pairs": 3,
+      "mean_paired_difference": 0.0
+    },
+    {
+      "model": "E3",
+      "scene": "S4",
+      "state": "S4-C06",
+      "contrast": "D-S",
+      "n_goal_model_pairs": 3,
+      "mean_paired_difference": 0.0
+    },
+    {
+      "model": "E3",
+      "scene": "S4",
+      "state": "S4-C07",
+      "contrast": "D-S",
+      "n_goal_model_pairs": 3,
+      "mean_paired_difference": 0.0
+    },
+    {
+      "model": "E3",
+      "scene": "S4",
+      "state": "S4-C08",
+      "contrast": "D-S",
+      "n_goal_model_pairs": 3,
+      "mean_paired_difference": 0.3333333333333333
+    },
+    {
+      "model": "E3",
+      "scene": "S5",
+      "state": "S5-C01",
+      "contrast": "D-S",
+      "n_goal_model_pairs": 2,
+      "mean_paired_difference": 0.0
+    },
+    {
+      "model": "E3",
+      "scene": "S5",
+      "state": "S5-C02",
+      "contrast": "D-S",
+      "n_goal_model_pairs": 2,
+      "mean_paired_difference": 0.0
+    },
+    {
+      "model": "E3",
+      "scene": "S5",
+      "state": "S5-C03",
+      "contrast": "D-S",
+      "n_goal_model_pairs": 2,
+      "mean_paired_difference": 0.0
+    },
+    {
+      "model": "E3",
+      "scene": "S5",
+      "state": "S5-C04",
+      "contrast": "D-S",
+      "n_goal_model_pairs": 2,
+      "mean_paired_difference": 0.0
+    },
+    {
+      "model": "E3",
+      "scene": "S5",
+      "state": "S5-C05",
+      "contrast": "D-S",
+      "n_goal_model_pairs": 2,
+      "mean_paired_difference": 0.0
+    },
+    {
+      "model": "E3",
+      "scene": "S5",
+      "state": "S5-C06",
+      "contrast": "D-S",
+      "n_goal_model_pairs": 2,
+      "mean_paired_difference": 0.0
+    },
+    {
+      "model": "E3",
+      "scene": "S5",
+      "state": "S5-C07",
+      "contrast": "D-S",
+      "n_goal_model_pairs": 2,
+      "mean_paired_difference": 0.5
+    },
+    {
+      "model": "E3",
+      "scene": "S5",
+      "state": "S5-C08",
+      "contrast": "D-S",
+      "n_goal_model_pairs": 2,
+      "mean_paired_difference": 0.0
+    },
+    {
+      "model": "F3",
+      "scene": "S1",
+      "state": "S1-C01",
+      "contrast": "S-I",
+      "n_goal_model_pairs": 4,
+      "mean_paired_difference": 0.0
+    },
+    {
+      "model": "F3",
+      "scene": "S1",
+      "state": "S1-C02",
+      "contrast": "S-I",
+      "n_goal_model_pairs": 4,
+      "mean_paired_difference": -0.25
+    },
+    {
+      "model": "F3",
+      "scene": "S1",
+      "state": "S1-C03",
+      "contrast": "S-I",
+      "n_goal_model_pairs": 4,
+      "mean_paired_difference": 0.0
+    },
+    {
+      "model": "F3",
+      "scene": "S1",
+      "state": "S1-C04",
+      "contrast": "S-I",
+      "n_goal_model_pairs": 4,
+      "mean_paired_difference": 0.0
+    },
+    {
+      "model": "F3",
+      "scene": "S1",
+      "state": "S1-C05",
+      "contrast": "S-I",
+      "n_goal_model_pairs": 4,
+      "mean_paired_difference": 0.0
+    },
+    {
+      "model": "F3",
+      "scene": "S1",
+      "state": "S1-C06",
+      "contrast": "S-I",
+      "n_goal_model_pairs": 4,
+      "mean_paired_difference": 0.0
+    },
+    {
+      "model": "F3",
+      "scene": "S1",
+      "state": "S1-C07",
+      "contrast": "S-I",
+      "n_goal_model_pairs": 4,
+      "mean_paired_difference": -0.25
+    },
+    {
+      "model": "F3",
+      "scene": "S1",
+      "state": "S1-C08",
+      "contrast": "S-I",
+      "n_goal_model_pairs": 4,
+      "mean_paired_difference": -0.25
+    },
+    {
+      "model": "F3",
+      "scene": "S3",
+      "state": "S3-C01",
+      "contrast": "S-I",
+      "n_goal_model_pairs": 3,
+      "mean_paired_difference": 0.0
+    },
+    {
+      "model": "F3",
+      "scene": "S3",
+      "state": "S3-C02",
+      "contrast": "S-I",
+      "n_goal_model_pairs": 3,
+      "mean_paired_difference": 0.0
+    },
+    {
+      "model": "F3",
+      "scene": "S3",
+      "state": "S3-C03",
+      "contrast": "S-I",
+      "n_goal_model_pairs": 3,
+      "mean_paired_difference": 0.0
+    },
+    {
+      "model": "F3",
+      "scene": "S3",
+      "state": "S3-C04",
+      "contrast": "S-I",
+      "n_goal_model_pairs": 3,
+      "mean_paired_difference": 0.0
+    },
+    {
+      "model": "F3",
+      "scene": "S3",
+      "state": "S3-C05",
+      "contrast": "S-I",
+      "n_goal_model_pairs": 3,
+      "mean_paired_difference": 0.0
+    },
+    {
+      "model": "F3",
+      "scene": "S3",
+      "state": "S3-C06",
+      "contrast": "S-I",
+      "n_goal_model_pairs": 3,
+      "mean_paired_difference": 0.0
+    },
+    {
+      "model": "F3",
+      "scene": "S3",
+      "state": "S3-C07",
+      "contrast": "S-I",
+      "n_goal_model_pairs": 3,
+      "mean_paired_difference": 0.0
+    },
+    {
+      "model": "F3",
+      "scene": "S3",
+      "state": "S3-C08",
+      "contrast": "S-I",
+      "n_goal_model_pairs": 3,
+      "mean_paired_difference": 0.0
+    },
+    {
+      "model": "F3",
+      "scene": "S4",
+      "state": "S4-C01",
+      "contrast": "S-I",
+      "n_goal_model_pairs": 3,
+      "mean_paired_difference": 0.3333333333333333
+    },
+    {
+      "model": "F3",
+      "scene": "S4",
+      "state": "S4-C02",
+      "contrast": "S-I",
+      "n_goal_model_pairs": 3,
+      "mean_paired_difference": 0.0
+    },
+    {
+      "model": "F3",
+      "scene": "S4",
+      "state": "S4-C03",
+      "contrast": "S-I",
+      "n_goal_model_pairs": 3,
+      "mean_paired_difference": 0.0
+    },
+    {
+      "model": "F3",
+      "scene": "S4",
+      "state": "S4-C04",
+      "contrast": "S-I",
+      "n_goal_model_pairs": 3,
+      "mean_paired_difference": 0.3333333333333333
+    },
+    {
+      "model": "F3",
+      "scene": "S4",
+      "state": "S4-C05",
+      "contrast": "S-I",
+      "n_goal_model_pairs": 3,
+      "mean_paired_difference": 0.0
+    },
+    {
+      "model": "F3",
+      "scene": "S4",
+      "state": "S4-C06",
+      "contrast": "S-I",
+      "n_goal_model_pairs": 3,
+      "mean_paired_difference": 0.3333333333333333
+    },
+    {
+      "model": "F3",
+      "scene": "S4",
+      "state": "S4-C07",
+      "contrast": "S-I",
+      "n_goal_model_pairs": 3,
+      "mean_paired_difference": 0.3333333333333333
+    },
+    {
+      "model": "F3",
+      "scene": "S4",
+      "state": "S4-C08",
+      "contrast": "S-I",
+      "n_goal_model_pairs": 3,
+      "mean_paired_difference": 0.3333333333333333
+    },
+    {
+      "model": "F3",
+      "scene": "S5",
+      "state": "S5-C01",
+      "contrast": "S-I",
+      "n_goal_model_pairs": 2,
+      "mean_paired_difference": 0.0
+    },
+    {
+      "model": "F3",
+      "scene": "S5",
+      "state": "S5-C02",
+      "contrast": "S-I",
+      "n_goal_model_pairs": 2,
+      "mean_paired_difference": 1.0
+    },
+    {
+      "model": "F3",
+      "scene": "S5",
+      "state": "S5-C03",
+      "contrast": "S-I",
+      "n_goal_model_pairs": 2,
+      "mean_paired_difference": 0.5
+    },
+    {
+      "model": "F3",
+      "scene": "S5",
+      "state": "S5-C04",
+      "contrast": "S-I",
+      "n_goal_model_pairs": 2,
+      "mean_paired_difference": 0.5
+    },
+    {
+      "model": "F3",
+      "scene": "S5",
+      "state": "S5-C05",
+      "contrast": "S-I",
+      "n_goal_model_pairs": 2,
+      "mean_paired_difference": 0.5
+    },
+    {
+      "model": "F3",
+      "scene": "S5",
+      "state": "S5-C06",
+      "contrast": "S-I",
+      "n_goal_model_pairs": 2,
+      "mean_paired_difference": 0.5
+    },
+    {
+      "model": "F3",
+      "scene": "S5",
+      "state": "S5-C07",
+      "contrast": "S-I",
+      "n_goal_model_pairs": 2,
+      "mean_paired_difference": 0.0
+    },
+    {
+      "model": "F3",
+      "scene": "S5",
+      "state": "S5-C08",
+      "contrast": "S-I",
+      "n_goal_model_pairs": 2,
+      "mean_paired_difference": 0.5
+    },
+    {
+      "model": "F3",
+      "scene": "S1",
+      "state": "S1-C01",
+      "contrast": "D-S",
+      "n_goal_model_pairs": 4,
+      "mean_paired_difference": 0.0
+    },
+    {
+      "model": "F3",
+      "scene": "S1",
+      "state": "S1-C02",
+      "contrast": "D-S",
+      "n_goal_model_pairs": 4,
+      "mean_paired_difference": 0.0
+    },
+    {
+      "model": "F3",
+      "scene": "S1",
+      "state": "S1-C03",
+      "contrast": "D-S",
+      "n_goal_model_pairs": 4,
+      "mean_paired_difference": 0.0
+    },
+    {
+      "model": "F3",
+      "scene": "S1",
+      "state": "S1-C04",
+      "contrast": "D-S",
+      "n_goal_model_pairs": 4,
+      "mean_paired_difference": 0.0
+    },
+    {
+      "model": "F3",
+      "scene": "S1",
+      "state": "S1-C05",
+      "contrast": "D-S",
+      "n_goal_model_pairs": 4,
+      "mean_paired_difference": 0.25
+    },
+    {
+      "model": "F3",
+      "scene": "S1",
+      "state": "S1-C06",
+      "contrast": "D-S",
+      "n_goal_model_pairs": 4,
+      "mean_paired_difference": 0.25
+    },
+    {
+      "model": "F3",
+      "scene": "S1",
+      "state": "S1-C07",
+      "contrast": "D-S",
+      "n_goal_model_pairs": 4,
+      "mean_paired_difference": 0.0
+    },
+    {
+      "model": "F3",
+      "scene": "S1",
+      "state": "S1-C08",
+      "contrast": "D-S",
+      "n_goal_model_pairs": 4,
+      "mean_paired_difference": 0.0
+    },
+    {
+      "model": "F3",
+      "scene": "S3",
+      "state": "S3-C01",
+      "contrast": "D-S",
+      "n_goal_model_pairs": 3,
+      "mean_paired_difference": 0.0
+    },
+    {
+      "model": "F3",
+      "scene": "S3",
+      "state": "S3-C02",
+      "contrast": "D-S",
+      "n_goal_model_pairs": 3,
+      "mean_paired_difference": 0.0
+    },
+    {
+      "model": "F3",
+      "scene": "S3",
+      "state": "S3-C03",
+      "contrast": "D-S",
+      "n_goal_model_pairs": 3,
+      "mean_paired_difference": 0.3333333333333333
+    },
+    {
+      "model": "F3",
+      "scene": "S3",
+      "state": "S3-C04",
+      "contrast": "D-S",
+      "n_goal_model_pairs": 3,
+      "mean_paired_difference": 0.0
+    },
+    {
+      "model": "F3",
+      "scene": "S3",
+      "state": "S3-C05",
+      "contrast": "D-S",
+      "n_goal_model_pairs": 3,
+      "mean_paired_difference": 0.0
+    },
+    {
+      "model": "F3",
+      "scene": "S3",
+      "state": "S3-C06",
+      "contrast": "D-S",
+      "n_goal_model_pairs": 3,
+      "mean_paired_difference": 0.0
+    },
+    {
+      "model": "F3",
+      "scene": "S3",
+      "state": "S3-C07",
+      "contrast": "D-S",
+      "n_goal_model_pairs": 3,
+      "mean_paired_difference": 0.3333333333333333
+    },
+    {
+      "model": "F3",
+      "scene": "S3",
+      "state": "S3-C08",
+      "contrast": "D-S",
+      "n_goal_model_pairs": 3,
+      "mean_paired_difference": 0.0
+    },
+    {
+      "model": "F3",
+      "scene": "S4",
+      "state": "S4-C01",
+      "contrast": "D-S",
+      "n_goal_model_pairs": 3,
+      "mean_paired_difference": 0.0
+    },
+    {
+      "model": "F3",
+      "scene": "S4",
+      "state": "S4-C02",
+      "contrast": "D-S",
+      "n_goal_model_pairs": 3,
+      "mean_paired_difference": -0.3333333333333333
+    },
+    {
+      "model": "F3",
+      "scene": "S4",
+      "state": "S4-C03",
+      "contrast": "D-S",
+      "n_goal_model_pairs": 3,
+      "mean_paired_difference": 0.3333333333333333
+    },
+    {
+      "model": "F3",
+      "scene": "S4",
+      "state": "S4-C04",
+      "contrast": "D-S",
+      "n_goal_model_pairs": 3,
+      "mean_paired_difference": 0.0
+    },
+    {
+      "model": "F3",
+      "scene": "S4",
+      "state": "S4-C05",
+      "contrast": "D-S",
+      "n_goal_model_pairs": 3,
+      "mean_paired_difference": 0.0
+    },
+    {
+      "model": "F3",
+      "scene": "S4",
+      "state": "S4-C06",
+      "contrast": "D-S",
+      "n_goal_model_pairs": 3,
+      "mean_paired_difference": 0.0
+    },
+    {
+      "model": "F3",
+      "scene": "S4",
+      "state": "S4-C07",
+      "contrast": "D-S",
+      "n_goal_model_pairs": 3,
+      "mean_paired_difference": 0.3333333333333333
+    },
+    {
+      "model": "F3",
+      "scene": "S4",
+      "state": "S4-C08",
+      "contrast": "D-S",
+      "n_goal_model_pairs": 3,
+      "mean_paired_difference": 0.3333333333333333
+    },
+    {
+      "model": "F3",
+      "scene": "S5",
+      "state": "S5-C01",
+      "contrast": "D-S",
+      "n_goal_model_pairs": 2,
+      "mean_paired_difference": -0.5
+    },
+    {
+      "model": "F3",
+      "scene": "S5",
+      "state": "S5-C02",
+      "contrast": "D-S",
+      "n_goal_model_pairs": 2,
+      "mean_paired_difference": -0.5
+    },
+    {
+      "model": "F3",
+      "scene": "S5",
+      "state": "S5-C03",
+      "contrast": "D-S",
+      "n_goal_model_pairs": 2,
+      "mean_paired_difference": 0.5
+    },
+    {
+      "model": "F3",
+      "scene": "S5",
+      "state": "S5-C04",
+      "contrast": "D-S",
+      "n_goal_model_pairs": 2,
+      "mean_paired_difference": 0.0
+    },
+    {
+      "model": "F3",
+      "scene": "S5",
+      "state": "S5-C05",
+      "contrast": "D-S",
+      "n_goal_model_pairs": 2,
+      "mean_paired_difference": 0.5
+    },
+    {
+      "model": "F3",
+      "scene": "S5",
+      "state": "S5-C06",
+      "contrast": "D-S",
+      "n_goal_model_pairs": 2,
+      "mean_paired_difference": 0.0
+    },
+    {
+      "model": "F3",
+      "scene": "S5",
+      "state": "S5-C07",
+      "contrast": "D-S",
+      "n_goal_model_pairs": 2,
+      "mean_paired_difference": 0.5
+    },
+    {
+      "model": "F3",
+      "scene": "S5",
+      "state": "S5-C08",
+      "contrast": "D-S",
+      "n_goal_model_pairs": 2,
+      "mean_paired_difference": 0.0
+    },
+    {
+      "model": "pooled",
+      "scene": "S1",
+      "state": "S1-C01",
+      "contrast": "S-I",
+      "n_goal_model_pairs": 12,
+      "mean_paired_difference": -0.08333333333333333
+    },
+    {
+      "model": "pooled",
+      "scene": "S1",
+      "state": "S1-C02",
+      "contrast": "S-I",
+      "n_goal_model_pairs": 12,
+      "mean_paired_difference": 0.08333333333333333
+    },
+    {
+      "model": "pooled",
+      "scene": "S1",
+      "state": "S1-C03",
+      "contrast": "S-I",
+      "n_goal_model_pairs": 12,
+      "mean_paired_difference": 0.08333333333333333
+    },
+    {
+      "model": "pooled",
+      "scene": "S1",
+      "state": "S1-C04",
+      "contrast": "S-I",
+      "n_goal_model_pairs": 12,
+      "mean_paired_difference": -0.08333333333333333
+    },
+    {
+      "model": "pooled",
+      "scene": "S1",
+      "state": "S1-C05",
+      "contrast": "S-I",
+      "n_goal_model_pairs": 12,
+      "mean_paired_difference": 0.0
+    },
+    {
+      "model": "pooled",
+      "scene": "S1",
+      "state": "S1-C06",
+      "contrast": "S-I",
+      "n_goal_model_pairs": 12,
+      "mean_paired_difference": 0.08333333333333333
+    },
+    {
+      "model": "pooled",
+      "scene": "S1",
+      "state": "S1-C07",
+      "contrast": "S-I",
+      "n_goal_model_pairs": 12,
+      "mean_paired_difference": 0.0
+    },
+    {
+      "model": "pooled",
+      "scene": "S1",
+      "state": "S1-C08",
+      "contrast": "S-I",
+      "n_goal_model_pairs": 12,
+      "mean_paired_difference": -0.08333333333333333
+    },
+    {
+      "model": "pooled",
+      "scene": "S3",
+      "state": "S3-C01",
+      "contrast": "S-I",
+      "n_goal_model_pairs": 9,
+      "mean_paired_difference": 0.0
+    },
+    {
+      "model": "pooled",
+      "scene": "S3",
+      "state": "S3-C02",
+      "contrast": "S-I",
+      "n_goal_model_pairs": 9,
+      "mean_paired_difference": 0.0
+    },
+    {
+      "model": "pooled",
+      "scene": "S3",
+      "state": "S3-C03",
+      "contrast": "S-I",
+      "n_goal_model_pairs": 9,
+      "mean_paired_difference": 0.1111111111111111
+    },
+    {
+      "model": "pooled",
+      "scene": "S3",
+      "state": "S3-C04",
+      "contrast": "S-I",
+      "n_goal_model_pairs": 9,
+      "mean_paired_difference": 0.0
+    },
+    {
+      "model": "pooled",
+      "scene": "S3",
+      "state": "S3-C05",
+      "contrast": "S-I",
+      "n_goal_model_pairs": 9,
+      "mean_paired_difference": 0.0
+    },
+    {
+      "model": "pooled",
+      "scene": "S3",
+      "state": "S3-C06",
+      "contrast": "S-I",
+      "n_goal_model_pairs": 9,
+      "mean_paired_difference": 0.1111111111111111
+    },
+    {
+      "model": "pooled",
+      "scene": "S3",
+      "state": "S3-C07",
+      "contrast": "S-I",
+      "n_goal_model_pairs": 9,
+      "mean_paired_difference": 0.1111111111111111
+    },
+    {
+      "model": "pooled",
+      "scene": "S3",
+      "state": "S3-C08",
+      "contrast": "S-I",
+      "n_goal_model_pairs": 9,
+      "mean_paired_difference": 0.1111111111111111
+    },
+    {
+      "model": "pooled",
+      "scene": "S4",
+      "state": "S4-C01",
+      "contrast": "S-I",
+      "n_goal_model_pairs": 9,
+      "mean_paired_difference": 0.2222222222222222
+    },
+    {
+      "model": "pooled",
+      "scene": "S4",
+      "state": "S4-C02",
+      "contrast": "S-I",
+      "n_goal_model_pairs": 9,
+      "mean_paired_difference": 0.2222222222222222
+    },
+    {
+      "model": "pooled",
+      "scene": "S4",
+      "state": "S4-C03",
+      "contrast": "S-I",
+      "n_goal_model_pairs": 9,
+      "mean_paired_difference": 0.2222222222222222
+    },
+    {
+      "model": "pooled",
+      "scene": "S4",
+      "state": "S4-C04",
+      "contrast": "S-I",
+      "n_goal_model_pairs": 9,
+      "mean_paired_difference": 0.3333333333333333
+    },
+    {
+      "model": "pooled",
+      "scene": "S4",
+      "state": "S4-C05",
+      "contrast": "S-I",
+      "n_goal_model_pairs": 9,
+      "mean_paired_difference": 0.2222222222222222
+    },
+    {
+      "model": "pooled",
+      "scene": "S4",
+      "state": "S4-C06",
+      "contrast": "S-I",
+      "n_goal_model_pairs": 9,
+      "mean_paired_difference": 0.3333333333333333
+    },
+    {
+      "model": "pooled",
+      "scene": "S4",
+      "state": "S4-C07",
+      "contrast": "S-I",
+      "n_goal_model_pairs": 9,
+      "mean_paired_difference": 0.3333333333333333
+    },
+    {
+      "model": "pooled",
+      "scene": "S4",
+      "state": "S4-C08",
+      "contrast": "S-I",
+      "n_goal_model_pairs": 9,
+      "mean_paired_difference": 0.2222222222222222
+    },
+    {
+      "model": "pooled",
+      "scene": "S5",
+      "state": "S5-C01",
+      "contrast": "S-I",
+      "n_goal_model_pairs": 6,
+      "mean_paired_difference": 0.0
+    },
+    {
+      "model": "pooled",
+      "scene": "S5",
+      "state": "S5-C02",
+      "contrast": "S-I",
+      "n_goal_model_pairs": 6,
+      "mean_paired_difference": 0.3333333333333333
+    },
+    {
+      "model": "pooled",
+      "scene": "S5",
+      "state": "S5-C03",
+      "contrast": "S-I",
+      "n_goal_model_pairs": 6,
+      "mean_paired_difference": 0.3333333333333333
+    },
+    {
+      "model": "pooled",
+      "scene": "S5",
+      "state": "S5-C04",
+      "contrast": "S-I",
+      "n_goal_model_pairs": 6,
+      "mean_paired_difference": 0.3333333333333333
+    },
+    {
+      "model": "pooled",
+      "scene": "S5",
+      "state": "S5-C05",
+      "contrast": "S-I",
+      "n_goal_model_pairs": 6,
+      "mean_paired_difference": 0.16666666666666666
+    },
+    {
+      "model": "pooled",
+      "scene": "S5",
+      "state": "S5-C06",
+      "contrast": "S-I",
+      "n_goal_model_pairs": 6,
+      "mean_paired_difference": 0.16666666666666666
+    },
+    {
+      "model": "pooled",
+      "scene": "S5",
+      "state": "S5-C07",
+      "contrast": "S-I",
+      "n_goal_model_pairs": 6,
+      "mean_paired_difference": -0.16666666666666666
+    },
+    {
+      "model": "pooled",
+      "scene": "S5",
+      "state": "S5-C08",
+      "contrast": "S-I",
+      "n_goal_model_pairs": 6,
+      "mean_paired_difference": 0.16666666666666666
+    },
+    {
+      "model": "pooled",
+      "scene": "S1",
+      "state": "S1-C01",
+      "contrast": "D-S",
+      "n_goal_model_pairs": 12,
+      "mean_paired_difference": 0.08333333333333333
+    },
+    {
+      "model": "pooled",
+      "scene": "S1",
+      "state": "S1-C02",
+      "contrast": "D-S",
+      "n_goal_model_pairs": 12,
+      "mean_paired_difference": -0.08333333333333333
+    },
+    {
+      "model": "pooled",
+      "scene": "S1",
+      "state": "S1-C03",
+      "contrast": "D-S",
+      "n_goal_model_pairs": 12,
+      "mean_paired_difference": 0.0
+    },
+    {
+      "model": "pooled",
+      "scene": "S1",
+      "state": "S1-C04",
+      "contrast": "D-S",
+      "n_goal_model_pairs": 12,
+      "mean_paired_difference": 0.08333333333333333
+    },
+    {
+      "model": "pooled",
+      "scene": "S1",
+      "state": "S1-C05",
+      "contrast": "D-S",
+      "n_goal_model_pairs": 12,
+      "mean_paired_difference": 0.16666666666666666
+    },
+    {
+      "model": "pooled",
+      "scene": "S1",
+      "state": "S1-C06",
+      "contrast": "D-S",
+      "n_goal_model_pairs": 12,
+      "mean_paired_difference": 0.08333333333333333
+    },
+    {
+      "model": "pooled",
+      "scene": "S1",
+      "state": "S1-C07",
+      "contrast": "D-S",
+      "n_goal_model_pairs": 12,
+      "mean_paired_difference": 0.0
+    },
+    {
+      "model": "pooled",
+      "scene": "S1",
+      "state": "S1-C08",
+      "contrast": "D-S",
+      "n_goal_model_pairs": 12,
+      "mean_paired_difference": 0.08333333333333333
+    },
+    {
+      "model": "pooled",
+      "scene": "S3",
+      "state": "S3-C01",
+      "contrast": "D-S",
+      "n_goal_model_pairs": 9,
+      "mean_paired_difference": 0.1111111111111111
+    },
+    {
+      "model": "pooled",
+      "scene": "S3",
+      "state": "S3-C02",
+      "contrast": "D-S",
+      "n_goal_model_pairs": 9,
+      "mean_paired_difference": 0.0
+    },
+    {
+      "model": "pooled",
+      "scene": "S3",
+      "state": "S3-C03",
+      "contrast": "D-S",
+      "n_goal_model_pairs": 9,
+      "mean_paired_difference": 0.0
+    },
+    {
+      "model": "pooled",
+      "scene": "S3",
+      "state": "S3-C04",
+      "contrast": "D-S",
+      "n_goal_model_pairs": 9,
+      "mean_paired_difference": 0.2222222222222222
+    },
+    {
+      "model": "pooled",
+      "scene": "S3",
+      "state": "S3-C05",
+      "contrast": "D-S",
+      "n_goal_model_pairs": 9,
+      "mean_paired_difference": 0.0
+    },
+    {
+      "model": "pooled",
+      "scene": "S3",
+      "state": "S3-C06",
+      "contrast": "D-S",
+      "n_goal_model_pairs": 9,
+      "mean_paired_difference": 0.0
+    },
+    {
+      "model": "pooled",
+      "scene": "S3",
+      "state": "S3-C07",
+      "contrast": "D-S",
+      "n_goal_model_pairs": 9,
+      "mean_paired_difference": 0.1111111111111111
+    },
+    {
+      "model": "pooled",
+      "scene": "S3",
+      "state": "S3-C08",
+      "contrast": "D-S",
+      "n_goal_model_pairs": 9,
+      "mean_paired_difference": 0.1111111111111111
+    },
+    {
+      "model": "pooled",
+      "scene": "S4",
+      "state": "S4-C01",
+      "contrast": "D-S",
+      "n_goal_model_pairs": 9,
+      "mean_paired_difference": 0.1111111111111111
+    },
+    {
+      "model": "pooled",
+      "scene": "S4",
+      "state": "S4-C02",
+      "contrast": "D-S",
+      "n_goal_model_pairs": 9,
+      "mean_paired_difference": -0.2222222222222222
+    },
+    {
+      "model": "pooled",
+      "scene": "S4",
+      "state": "S4-C03",
+      "contrast": "D-S",
+      "n_goal_model_pairs": 9,
+      "mean_paired_difference": 0.1111111111111111
+    },
+    {
+      "model": "pooled",
+      "scene": "S4",
+      "state": "S4-C04",
+      "contrast": "D-S",
+      "n_goal_model_pairs": 9,
+      "mean_paired_difference": -0.2222222222222222
+    },
+    {
+      "model": "pooled",
+      "scene": "S4",
+      "state": "S4-C05",
+      "contrast": "D-S",
+      "n_goal_model_pairs": 9,
+      "mean_paired_difference": -0.1111111111111111
+    },
+    {
+      "model": "pooled",
+      "scene": "S4",
+      "state": "S4-C06",
+      "contrast": "D-S",
+      "n_goal_model_pairs": 9,
+      "mean_paired_difference": 0.0
+    },
+    {
+      "model": "pooled",
+      "scene": "S4",
+      "state": "S4-C07",
+      "contrast": "D-S",
+      "n_goal_model_pairs": 9,
+      "mean_paired_difference": 0.1111111111111111
+    },
+    {
+      "model": "pooled",
+      "scene": "S4",
+      "state": "S4-C08",
+      "contrast": "D-S",
+      "n_goal_model_pairs": 9,
+      "mean_paired_difference": 0.2222222222222222
+    },
+    {
+      "model": "pooled",
+      "scene": "S5",
+      "state": "S5-C01",
+      "contrast": "D-S",
+      "n_goal_model_pairs": 6,
+      "mean_paired_difference": -0.16666666666666666
+    },
+    {
+      "model": "pooled",
+      "scene": "S5",
+      "state": "S5-C02",
+      "contrast": "D-S",
+      "n_goal_model_pairs": 6,
+      "mean_paired_difference": -0.16666666666666666
+    },
+    {
+      "model": "pooled",
+      "scene": "S5",
+      "state": "S5-C03",
+      "contrast": "D-S",
+      "n_goal_model_pairs": 6,
+      "mean_paired_difference": 0.0
+    },
+    {
+      "model": "pooled",
+      "scene": "S5",
+      "state": "S5-C04",
+      "contrast": "D-S",
+      "n_goal_model_pairs": 6,
+      "mean_paired_difference": 0.0
+    },
+    {
+      "model": "pooled",
+      "scene": "S5",
+      "state": "S5-C05",
+      "contrast": "D-S",
+      "n_goal_model_pairs": 6,
+      "mean_paired_difference": 0.16666666666666666
+    },
+    {
+      "model": "pooled",
+      "scene": "S5",
+      "state": "S5-C06",
+      "contrast": "D-S",
+      "n_goal_model_pairs": 6,
+      "mean_paired_difference": 0.16666666666666666
+    },
+    {
+      "model": "pooled",
+      "scene": "S5",
+      "state": "S5-C07",
+      "contrast": "D-S",
+      "n_goal_model_pairs": 6,
+      "mean_paired_difference": 0.3333333333333333
+    },
+    {
+      "model": "pooled",
+      "scene": "S5",
+      "state": "S5-C08",
+      "contrast": "D-S",
+      "n_goal_model_pairs": 6,
+      "mean_paired_difference": 0.0
+    }
+  ],
+  "goal_response": [
+    {
+      "model": "N3",
+      "scene": "S1",
+      "goal": "L",
+      "n_all": 24,
+      "n_achievement": 24,
+      "n_maintenance": 0,
+      "achievement_stable_ever": 14,
+      "achievement_stable_at_final": 5,
+      "achievement_rate": 0.5833333333333334
+    },
+    {
+      "model": "N3",
+      "scene": "S1",
+      "goal": "R",
+      "n_all": 24,
+      "n_achievement": 0,
+      "n_maintenance": 24,
+      "achievement_stable_ever": 0,
+      "achievement_stable_at_final": 0,
+      "achievement_rate": null
+    },
+    {
+      "model": "N3",
+      "scene": "S1",
+      "goal": "F",
+      "n_all": 24,
+      "n_achievement": 24,
+      "n_maintenance": 0,
+      "achievement_stable_ever": 2,
+      "achievement_stable_at_final": 2,
+      "achievement_rate": 0.08333333333333333
+    },
+    {
+      "model": "N3",
+      "scene": "S1",
+      "goal": "B",
+      "n_all": 24,
+      "n_achievement": 24,
+      "n_maintenance": 0,
+      "achievement_stable_ever": 7,
+      "achievement_stable_at_final": 6,
+      "achievement_rate": 0.2916666666666667
+    },
+    {
+      "model": "N3",
+      "scene": "S3",
+      "goal": "TOP",
+      "n_all": 24,
+      "n_achievement": 24,
+      "n_maintenance": 0,
+      "achievement_stable_ever": 14,
+      "achievement_stable_at_final": 11,
+      "achievement_rate": 0.5833333333333334
+    },
+    {
+      "model": "N3",
+      "scene": "S3",
+      "goal": "L",
+      "n_all": 24,
+      "n_achievement": 24,
+      "n_maintenance": 0,
+      "achievement_stable_ever": 0,
+      "achievement_stable_at_final": 0,
+      "achievement_rate": 0.0
+    },
+    {
+      "model": "N3",
+      "scene": "S3",
+      "goal": "R",
+      "n_all": 24,
+      "n_achievement": 0,
+      "n_maintenance": 24,
+      "achievement_stable_ever": 0,
+      "achievement_stable_at_final": 0,
+      "achievement_rate": null
+    },
+    {
+      "model": "N3",
+      "scene": "S4",
+      "goal": "TOP",
+      "n_all": 24,
+      "n_achievement": 24,
+      "n_maintenance": 0,
+      "achievement_stable_ever": 15,
+      "achievement_stable_at_final": 12,
+      "achievement_rate": 0.625
+    },
+    {
+      "model": "N3",
+      "scene": "S4",
+      "goal": "L",
+      "n_all": 24,
+      "n_achievement": 0,
+      "n_maintenance": 24,
+      "achievement_stable_ever": 0,
+      "achievement_stable_at_final": 0,
+      "achievement_rate": null
+    },
+    {
+      "model": "N3",
+      "scene": "S4",
+      "goal": "R",
+      "n_all": 24,
+      "n_achievement": 24,
+      "n_maintenance": 0,
+      "achievement_stable_ever": 15,
+      "achievement_stable_at_final": 9,
+      "achievement_rate": 0.625
+    },
+    {
+      "model": "N3",
+      "scene": "S5",
+      "goal": "LR",
+      "n_all": 24,
+      "n_achievement": 24,
+      "n_maintenance": 0,
+      "achievement_stable_ever": 0,
+      "achievement_stable_at_final": 0,
+      "achievement_rate": 0.0
+    },
+    {
+      "model": "N3",
+      "scene": "S5",
+      "goal": "RL",
+      "n_all": 24,
+      "n_achievement": 24,
+      "n_maintenance": 0,
+      "achievement_stable_ever": 3,
+      "achievement_stable_at_final": 2,
+      "achievement_rate": 0.125
+    },
+    {
+      "model": "E3",
+      "scene": "S1",
+      "goal": "L",
+      "n_all": 24,
+      "n_achievement": 24,
+      "n_maintenance": 0,
+      "achievement_stable_ever": 5,
+      "achievement_stable_at_final": 2,
+      "achievement_rate": 0.20833333333333334
+    },
+    {
+      "model": "E3",
+      "scene": "S1",
+      "goal": "R",
+      "n_all": 24,
+      "n_achievement": 0,
+      "n_maintenance": 24,
+      "achievement_stable_ever": 0,
+      "achievement_stable_at_final": 0,
+      "achievement_rate": null
+    },
+    {
+      "model": "E3",
+      "scene": "S1",
+      "goal": "F",
+      "n_all": 24,
+      "n_achievement": 24,
+      "n_maintenance": 0,
+      "achievement_stable_ever": 1,
+      "achievement_stable_at_final": 0,
+      "achievement_rate": 0.041666666666666664
+    },
+    {
+      "model": "E3",
+      "scene": "S1",
+      "goal": "B",
+      "n_all": 24,
+      "n_achievement": 24,
+      "n_maintenance": 0,
+      "achievement_stable_ever": 1,
+      "achievement_stable_at_final": 0,
+      "achievement_rate": 0.041666666666666664
+    },
+    {
+      "model": "E3",
+      "scene": "S3",
+      "goal": "TOP",
+      "n_all": 24,
+      "n_achievement": 24,
+      "n_maintenance": 0,
+      "achievement_stable_ever": 3,
+      "achievement_stable_at_final": 2,
+      "achievement_rate": 0.125
+    },
+    {
+      "model": "E3",
+      "scene": "S3",
+      "goal": "L",
+      "n_all": 24,
+      "n_achievement": 24,
+      "n_maintenance": 0,
+      "achievement_stable_ever": 0,
+      "achievement_stable_at_final": 0,
+      "achievement_rate": 0.0
+    },
+    {
+      "model": "E3",
+      "scene": "S3",
+      "goal": "R",
+      "n_all": 24,
+      "n_achievement": 0,
+      "n_maintenance": 24,
+      "achievement_stable_ever": 0,
+      "achievement_stable_at_final": 0,
+      "achievement_rate": null
+    },
+    {
+      "model": "E3",
+      "scene": "S4",
+      "goal": "TOP",
+      "n_all": 24,
+      "n_achievement": 24,
+      "n_maintenance": 0,
+      "achievement_stable_ever": 0,
+      "achievement_stable_at_final": 0,
+      "achievement_rate": 0.0
+    },
+    {
+      "model": "E3",
+      "scene": "S4",
+      "goal": "L",
+      "n_all": 24,
+      "n_achievement": 0,
+      "n_maintenance": 24,
+      "achievement_stable_ever": 0,
+      "achievement_stable_at_final": 0,
+      "achievement_rate": null
+    },
+    {
+      "model": "E3",
+      "scene": "S4",
+      "goal": "R",
+      "n_all": 24,
+      "n_achievement": 24,
+      "n_maintenance": 0,
+      "achievement_stable_ever": 8,
+      "achievement_stable_at_final": 7,
+      "achievement_rate": 0.3333333333333333
+    },
+    {
+      "model": "E3",
+      "scene": "S5",
+      "goal": "LR",
+      "n_all": 24,
+      "n_achievement": 24,
+      "n_maintenance": 0,
+      "achievement_stable_ever": 0,
+      "achievement_stable_at_final": 0,
+      "achievement_rate": 0.0
+    },
+    {
+      "model": "E3",
+      "scene": "S5",
+      "goal": "RL",
+      "n_all": 24,
+      "n_achievement": 24,
+      "n_maintenance": 0,
+      "achievement_stable_ever": 3,
+      "achievement_stable_at_final": 2,
+      "achievement_rate": 0.125
+    },
+    {
+      "model": "F3",
+      "scene": "S1",
+      "goal": "L",
+      "n_all": 24,
+      "n_achievement": 24,
+      "n_maintenance": 0,
+      "achievement_stable_ever": 5,
+      "achievement_stable_at_final": 3,
+      "achievement_rate": 0.20833333333333334
+    },
+    {
+      "model": "F3",
+      "scene": "S1",
+      "goal": "R",
+      "n_all": 24,
+      "n_achievement": 0,
+      "n_maintenance": 24,
+      "achievement_stable_ever": 0,
+      "achievement_stable_at_final": 0,
+      "achievement_rate": null
+    },
+    {
+      "model": "F3",
+      "scene": "S1",
+      "goal": "F",
+      "n_all": 24,
+      "n_achievement": 24,
+      "n_maintenance": 0,
+      "achievement_stable_ever": 0,
+      "achievement_stable_at_final": 0,
+      "achievement_rate": 0.0
+    },
+    {
+      "model": "F3",
+      "scene": "S1",
+      "goal": "B",
+      "n_all": 24,
+      "n_achievement": 24,
+      "n_maintenance": 0,
+      "achievement_stable_ever": 3,
+      "achievement_stable_at_final": 0,
+      "achievement_rate": 0.125
+    },
+    {
+      "model": "F3",
+      "scene": "S3",
+      "goal": "TOP",
+      "n_all": 24,
+      "n_achievement": 24,
+      "n_maintenance": 0,
+      "achievement_stable_ever": 2,
+      "achievement_stable_at_final": 2,
+      "achievement_rate": 0.08333333333333333
+    },
+    {
+      "model": "F3",
+      "scene": "S3",
+      "goal": "L",
+      "n_all": 24,
+      "n_achievement": 24,
+      "n_maintenance": 0,
+      "achievement_stable_ever": 0,
+      "achievement_stable_at_final": 0,
+      "achievement_rate": 0.0
+    },
+    {
+      "model": "F3",
+      "scene": "S3",
+      "goal": "R",
+      "n_all": 24,
+      "n_achievement": 0,
+      "n_maintenance": 24,
+      "achievement_stable_ever": 0,
+      "achievement_stable_at_final": 0,
+      "achievement_rate": null
+    },
+    {
+      "model": "F3",
+      "scene": "S4",
+      "goal": "TOP",
+      "n_all": 24,
+      "n_achievement": 24,
+      "n_maintenance": 0,
+      "achievement_stable_ever": 18,
+      "achievement_stable_at_final": 6,
+      "achievement_rate": 0.75
+    },
+    {
+      "model": "F3",
+      "scene": "S4",
+      "goal": "L",
+      "n_all": 24,
+      "n_achievement": 0,
+      "n_maintenance": 24,
+      "achievement_stable_ever": 0,
+      "achievement_stable_at_final": 0,
+      "achievement_rate": null
+    },
+    {
+      "model": "F3",
+      "scene": "S4",
+      "goal": "R",
+      "n_all": 24,
+      "n_achievement": 24,
+      "n_maintenance": 0,
+      "achievement_stable_ever": 18,
+      "achievement_stable_at_final": 11,
+      "achievement_rate": 0.75
+    },
+    {
+      "model": "F3",
+      "scene": "S5",
+      "goal": "LR",
+      "n_all": 24,
+      "n_achievement": 24,
+      "n_maintenance": 0,
+      "achievement_stable_ever": 16,
+      "achievement_stable_at_final": 12,
+      "achievement_rate": 0.6666666666666666
+    },
+    {
+      "model": "F3",
+      "scene": "S5",
+      "goal": "RL",
+      "n_all": 24,
+      "n_achievement": 24,
+      "n_maintenance": 0,
+      "achievement_stable_ever": 14,
+      "achievement_stable_at_final": 0,
+      "achievement_rate": 0.5833333333333334
+    }
+  ],
+  "goal_response_by_form": [
+    {
+      "model": "N3",
+      "scene": "S1",
+      "goal": "L",
+      "form": "D",
+      "n_achievement": 8,
+      "stable_ever": 8,
+      "stable_at_final": 2,
+      "rate": 1.0
+    },
+    {
+      "model": "N3",
+      "scene": "S1",
+      "goal": "L",
+      "form": "S",
+      "n_achievement": 8,
+      "stable_ever": 6,
+      "stable_at_final": 3,
+      "rate": 0.75
+    },
+    {
+      "model": "N3",
+      "scene": "S1",
+      "goal": "L",
+      "form": "I",
+      "n_achievement": 8,
+      "stable_ever": 0,
+      "stable_at_final": 0,
+      "rate": 0.0
+    },
+    {
+      "model": "N3",
+      "scene": "S1",
+      "goal": "R",
+      "form": "D",
+      "n_achievement": 0,
+      "stable_ever": 0,
+      "stable_at_final": 0,
+      "rate": null
+    },
+    {
+      "model": "N3",
+      "scene": "S1",
+      "goal": "R",
+      "form": "S",
+      "n_achievement": 0,
+      "stable_ever": 0,
+      "stable_at_final": 0,
+      "rate": null
+    },
+    {
+      "model": "N3",
+      "scene": "S1",
+      "goal": "R",
+      "form": "I",
+      "n_achievement": 0,
+      "stable_ever": 0,
+      "stable_at_final": 0,
+      "rate": null
+    },
+    {
+      "model": "N3",
+      "scene": "S1",
+      "goal": "F",
+      "form": "D",
+      "n_achievement": 8,
+      "stable_ever": 1,
+      "stable_at_final": 1,
+      "rate": 0.125
+    },
+    {
+      "model": "N3",
+      "scene": "S1",
+      "goal": "F",
+      "form": "S",
+      "n_achievement": 8,
+      "stable_ever": 1,
+      "stable_at_final": 1,
+      "rate": 0.125
+    },
+    {
+      "model": "N3",
+      "scene": "S1",
+      "goal": "F",
+      "form": "I",
+      "n_achievement": 8,
+      "stable_ever": 0,
+      "stable_at_final": 0,
+      "rate": 0.0
+    },
+    {
+      "model": "N3",
+      "scene": "S1",
+      "goal": "B",
+      "form": "D",
+      "n_achievement": 8,
+      "stable_ever": 0,
+      "stable_at_final": 0,
+      "rate": 0.0
+    },
+    {
+      "model": "N3",
+      "scene": "S1",
+      "goal": "B",
+      "form": "S",
+      "n_achievement": 8,
+      "stable_ever": 0,
+      "stable_at_final": 0,
+      "rate": 0.0
+    },
+    {
+      "model": "N3",
+      "scene": "S1",
+      "goal": "B",
+      "form": "I",
+      "n_achievement": 8,
+      "stable_ever": 7,
+      "stable_at_final": 6,
+      "rate": 0.875
+    },
+    {
+      "model": "N3",
+      "scene": "S3",
+      "goal": "TOP",
+      "form": "D",
+      "n_achievement": 8,
+      "stable_ever": 6,
+      "stable_at_final": 5,
+      "rate": 0.75
+    },
+    {
+      "model": "N3",
+      "scene": "S3",
+      "goal": "TOP",
+      "form": "S",
+      "n_achievement": 8,
+      "stable_ever": 6,
+      "stable_at_final": 5,
+      "rate": 0.75
+    },
+    {
+      "model": "N3",
+      "scene": "S3",
+      "goal": "TOP",
+      "form": "I",
+      "n_achievement": 8,
+      "stable_ever": 2,
+      "stable_at_final": 1,
+      "rate": 0.25
+    },
+    {
+      "model": "N3",
+      "scene": "S3",
+      "goal": "L",
+      "form": "D",
+      "n_achievement": 8,
+      "stable_ever": 0,
+      "stable_at_final": 0,
+      "rate": 0.0
+    },
+    {
+      "model": "N3",
+      "scene": "S3",
+      "goal": "L",
+      "form": "S",
+      "n_achievement": 8,
+      "stable_ever": 0,
+      "stable_at_final": 0,
+      "rate": 0.0
+    },
+    {
+      "model": "N3",
+      "scene": "S3",
+      "goal": "L",
+      "form": "I",
+      "n_achievement": 8,
+      "stable_ever": 0,
+      "stable_at_final": 0,
+      "rate": 0.0
+    },
+    {
+      "model": "N3",
+      "scene": "S3",
+      "goal": "R",
+      "form": "D",
+      "n_achievement": 0,
+      "stable_ever": 0,
+      "stable_at_final": 0,
+      "rate": null
+    },
+    {
+      "model": "N3",
+      "scene": "S3",
+      "goal": "R",
+      "form": "S",
+      "n_achievement": 0,
+      "stable_ever": 0,
+      "stable_at_final": 0,
+      "rate": null
+    },
+    {
+      "model": "N3",
+      "scene": "S3",
+      "goal": "R",
+      "form": "I",
+      "n_achievement": 0,
+      "stable_ever": 0,
+      "stable_at_final": 0,
+      "rate": null
+    },
+    {
+      "model": "N3",
+      "scene": "S4",
+      "goal": "TOP",
+      "form": "D",
+      "n_achievement": 8,
+      "stable_ever": 5,
+      "stable_at_final": 5,
+      "rate": 0.625
+    },
+    {
+      "model": "N3",
+      "scene": "S4",
+      "goal": "TOP",
+      "form": "S",
+      "n_achievement": 8,
+      "stable_ever": 6,
+      "stable_at_final": 5,
+      "rate": 0.75
+    },
+    {
+      "model": "N3",
+      "scene": "S4",
+      "goal": "TOP",
+      "form": "I",
+      "n_achievement": 8,
+      "stable_ever": 4,
+      "stable_at_final": 2,
+      "rate": 0.5
+    },
+    {
+      "model": "N3",
+      "scene": "S4",
+      "goal": "L",
+      "form": "D",
+      "n_achievement": 0,
+      "stable_ever": 0,
+      "stable_at_final": 0,
+      "rate": null
+    },
+    {
+      "model": "N3",
+      "scene": "S4",
+      "goal": "L",
+      "form": "S",
+      "n_achievement": 0,
+      "stable_ever": 0,
+      "stable_at_final": 0,
+      "rate": null
+    },
+    {
+      "model": "N3",
+      "scene": "S4",
+      "goal": "L",
+      "form": "I",
+      "n_achievement": 0,
+      "stable_ever": 0,
+      "stable_at_final": 0,
+      "rate": null
+    },
+    {
+      "model": "N3",
+      "scene": "S4",
+      "goal": "R",
+      "form": "D",
+      "n_achievement": 8,
+      "stable_ever": 7,
+      "stable_at_final": 3,
+      "rate": 0.875
+    },
+    {
+      "model": "N3",
+      "scene": "S4",
+      "goal": "R",
+      "form": "S",
+      "n_achievement": 8,
+      "stable_ever": 8,
+      "stable_at_final": 6,
+      "rate": 1.0
+    },
+    {
+      "model": "N3",
+      "scene": "S4",
+      "goal": "R",
+      "form": "I",
+      "n_achievement": 8,
+      "stable_ever": 0,
+      "stable_at_final": 0,
+      "rate": 0.0
+    },
+    {
+      "model": "N3",
+      "scene": "S5",
+      "goal": "LR",
+      "form": "D",
+      "n_achievement": 8,
+      "stable_ever": 0,
+      "stable_at_final": 0,
+      "rate": 0.0
+    },
+    {
+      "model": "N3",
+      "scene": "S5",
+      "goal": "LR",
+      "form": "S",
+      "n_achievement": 8,
+      "stable_ever": 0,
+      "stable_at_final": 0,
+      "rate": 0.0
+    },
+    {
+      "model": "N3",
+      "scene": "S5",
+      "goal": "LR",
+      "form": "I",
+      "n_achievement": 8,
+      "stable_ever": 0,
+      "stable_at_final": 0,
+      "rate": 0.0
+    },
+    {
+      "model": "N3",
+      "scene": "S5",
+      "goal": "RL",
+      "form": "D",
+      "n_achievement": 8,
+      "stable_ever": 1,
+      "stable_at_final": 1,
+      "rate": 0.125
+    },
+    {
+      "model": "N3",
+      "scene": "S5",
+      "goal": "RL",
+      "form": "S",
+      "n_achievement": 8,
+      "stable_ever": 1,
+      "stable_at_final": 1,
+      "rate": 0.125
+    },
+    {
+      "model": "N3",
+      "scene": "S5",
+      "goal": "RL",
+      "form": "I",
+      "n_achievement": 8,
+      "stable_ever": 1,
+      "stable_at_final": 0,
+      "rate": 0.125
+    },
+    {
+      "model": "E3",
+      "scene": "S1",
+      "goal": "L",
+      "form": "D",
+      "n_achievement": 8,
+      "stable_ever": 3,
+      "stable_at_final": 1,
+      "rate": 0.375
+    },
+    {
+      "model": "E3",
+      "scene": "S1",
+      "goal": "L",
+      "form": "S",
+      "n_achievement": 8,
+      "stable_ever": 2,
+      "stable_at_final": 1,
+      "rate": 0.25
+    },
+    {
+      "model": "E3",
+      "scene": "S1",
+      "goal": "L",
+      "form": "I",
+      "n_achievement": 8,
+      "stable_ever": 0,
+      "stable_at_final": 0,
+      "rate": 0.0
+    },
+    {
+      "model": "E3",
+      "scene": "S1",
+      "goal": "R",
+      "form": "D",
+      "n_achievement": 0,
+      "stable_ever": 0,
+      "stable_at_final": 0,
+      "rate": null
+    },
+    {
+      "model": "E3",
+      "scene": "S1",
+      "goal": "R",
+      "form": "S",
+      "n_achievement": 0,
+      "stable_ever": 0,
+      "stable_at_final": 0,
+      "rate": null
+    },
+    {
+      "model": "E3",
+      "scene": "S1",
+      "goal": "R",
+      "form": "I",
+      "n_achievement": 0,
+      "stable_ever": 0,
+      "stable_at_final": 0,
+      "rate": null
+    },
+    {
+      "model": "E3",
+      "scene": "S1",
+      "goal": "F",
+      "form": "D",
+      "n_achievement": 8,
+      "stable_ever": 0,
+      "stable_at_final": 0,
+      "rate": 0.0
+    },
+    {
+      "model": "E3",
+      "scene": "S1",
+      "goal": "F",
+      "form": "S",
+      "n_achievement": 8,
+      "stable_ever": 1,
+      "stable_at_final": 0,
+      "rate": 0.125
+    },
+    {
+      "model": "E3",
+      "scene": "S1",
+      "goal": "F",
+      "form": "I",
+      "n_achievement": 8,
+      "stable_ever": 0,
+      "stable_at_final": 0,
+      "rate": 0.0
+    },
+    {
+      "model": "E3",
+      "scene": "S1",
+      "goal": "B",
+      "form": "D",
+      "n_achievement": 8,
+      "stable_ever": 1,
+      "stable_at_final": 0,
+      "rate": 0.125
+    },
+    {
+      "model": "E3",
+      "scene": "S1",
+      "goal": "B",
+      "form": "S",
+      "n_achievement": 8,
+      "stable_ever": 0,
+      "stable_at_final": 0,
+      "rate": 0.0
+    },
+    {
+      "model": "E3",
+      "scene": "S1",
+      "goal": "B",
+      "form": "I",
+      "n_achievement": 8,
+      "stable_ever": 0,
+      "stable_at_final": 0,
+      "rate": 0.0
+    },
+    {
+      "model": "E3",
+      "scene": "S3",
+      "goal": "TOP",
+      "form": "D",
+      "n_achievement": 8,
+      "stable_ever": 3,
+      "stable_at_final": 2,
+      "rate": 0.375
+    },
+    {
+      "model": "E3",
+      "scene": "S3",
+      "goal": "TOP",
+      "form": "S",
+      "n_achievement": 8,
+      "stable_ever": 0,
+      "stable_at_final": 0,
+      "rate": 0.0
+    },
+    {
+      "model": "E3",
+      "scene": "S3",
+      "goal": "TOP",
+      "form": "I",
+      "n_achievement": 8,
+      "stable_ever": 0,
+      "stable_at_final": 0,
+      "rate": 0.0
+    },
+    {
+      "model": "E3",
+      "scene": "S3",
+      "goal": "L",
+      "form": "D",
+      "n_achievement": 8,
+      "stable_ever": 0,
+      "stable_at_final": 0,
+      "rate": 0.0
+    },
+    {
+      "model": "E3",
+      "scene": "S3",
+      "goal": "L",
+      "form": "S",
+      "n_achievement": 8,
+      "stable_ever": 0,
+      "stable_at_final": 0,
+      "rate": 0.0
+    },
+    {
+      "model": "E3",
+      "scene": "S3",
+      "goal": "L",
+      "form": "I",
+      "n_achievement": 8,
+      "stable_ever": 0,
+      "stable_at_final": 0,
+      "rate": 0.0
+    },
+    {
+      "model": "E3",
+      "scene": "S3",
+      "goal": "R",
+      "form": "D",
+      "n_achievement": 0,
+      "stable_ever": 0,
+      "stable_at_final": 0,
+      "rate": null
+    },
+    {
+      "model": "E3",
+      "scene": "S3",
+      "goal": "R",
+      "form": "S",
+      "n_achievement": 0,
+      "stable_ever": 0,
+      "stable_at_final": 0,
+      "rate": null
+    },
+    {
+      "model": "E3",
+      "scene": "S3",
+      "goal": "R",
+      "form": "I",
+      "n_achievement": 0,
+      "stable_ever": 0,
+      "stable_at_final": 0,
+      "rate": null
+    },
+    {
+      "model": "E3",
+      "scene": "S4",
+      "goal": "TOP",
+      "form": "D",
+      "n_achievement": 8,
+      "stable_ever": 0,
+      "stable_at_final": 0,
+      "rate": 0.0
+    },
+    {
+      "model": "E3",
+      "scene": "S4",
+      "goal": "TOP",
+      "form": "S",
+      "n_achievement": 8,
+      "stable_ever": 0,
+      "stable_at_final": 0,
+      "rate": 0.0
+    },
+    {
+      "model": "E3",
+      "scene": "S4",
+      "goal": "TOP",
+      "form": "I",
+      "n_achievement": 8,
+      "stable_ever": 0,
+      "stable_at_final": 0,
+      "rate": 0.0
+    },
+    {
+      "model": "E3",
+      "scene": "S4",
+      "goal": "L",
+      "form": "D",
+      "n_achievement": 0,
+      "stable_ever": 0,
+      "stable_at_final": 0,
+      "rate": null
+    },
+    {
+      "model": "E3",
+      "scene": "S4",
+      "goal": "L",
+      "form": "S",
+      "n_achievement": 0,
+      "stable_ever": 0,
+      "stable_at_final": 0,
+      "rate": null
+    },
+    {
+      "model": "E3",
+      "scene": "S4",
+      "goal": "L",
+      "form": "I",
+      "n_achievement": 0,
+      "stable_ever": 0,
+      "stable_at_final": 0,
+      "rate": null
+    },
+    {
+      "model": "E3",
+      "scene": "S4",
+      "goal": "R",
+      "form": "D",
+      "n_achievement": 8,
+      "stable_ever": 4,
+      "stable_at_final": 3,
+      "rate": 0.5
+    },
+    {
+      "model": "E3",
+      "scene": "S4",
+      "goal": "R",
+      "form": "S",
+      "n_achievement": 8,
+      "stable_ever": 4,
+      "stable_at_final": 4,
+      "rate": 0.5
+    },
+    {
+      "model": "E3",
+      "scene": "S4",
+      "goal": "R",
+      "form": "I",
+      "n_achievement": 8,
+      "stable_ever": 0,
+      "stable_at_final": 0,
+      "rate": 0.0
+    },
+    {
+      "model": "E3",
+      "scene": "S5",
+      "goal": "LR",
+      "form": "D",
+      "n_achievement": 8,
+      "stable_ever": 0,
+      "stable_at_final": 0,
+      "rate": 0.0
+    },
+    {
+      "model": "E3",
+      "scene": "S5",
+      "goal": "LR",
+      "form": "S",
+      "n_achievement": 8,
+      "stable_ever": 0,
+      "stable_at_final": 0,
+      "rate": 0.0
+    },
+    {
+      "model": "E3",
+      "scene": "S5",
+      "goal": "LR",
+      "form": "I",
+      "n_achievement": 8,
+      "stable_ever": 0,
+      "stable_at_final": 0,
+      "rate": 0.0
+    },
+    {
+      "model": "E3",
+      "scene": "S5",
+      "goal": "RL",
+      "form": "D",
+      "n_achievement": 8,
+      "stable_ever": 2,
+      "stable_at_final": 1,
+      "rate": 0.25
+    },
+    {
+      "model": "E3",
+      "scene": "S5",
+      "goal": "RL",
+      "form": "S",
+      "n_achievement": 8,
+      "stable_ever": 1,
+      "stable_at_final": 1,
+      "rate": 0.125
+    },
+    {
+      "model": "E3",
+      "scene": "S5",
+      "goal": "RL",
+      "form": "I",
+      "n_achievement": 8,
+      "stable_ever": 0,
+      "stable_at_final": 0,
+      "rate": 0.0
+    },
+    {
+      "model": "F3",
+      "scene": "S1",
+      "goal": "L",
+      "form": "D",
+      "n_achievement": 8,
+      "stable_ever": 1,
+      "stable_at_final": 0,
+      "rate": 0.125
+    },
+    {
+      "model": "F3",
+      "scene": "S1",
+      "goal": "L",
+      "form": "S",
+      "n_achievement": 8,
+      "stable_ever": 0,
+      "stable_at_final": 0,
+      "rate": 0.0
+    },
+    {
+      "model": "F3",
+      "scene": "S1",
+      "goal": "L",
+      "form": "I",
+      "n_achievement": 8,
+      "stable_ever": 4,
+      "stable_at_final": 3,
+      "rate": 0.5
+    },
+    {
+      "model": "F3",
+      "scene": "S1",
+      "goal": "R",
+      "form": "D",
+      "n_achievement": 0,
+      "stable_ever": 0,
+      "stable_at_final": 0,
+      "rate": null
+    },
+    {
+      "model": "F3",
+      "scene": "S1",
+      "goal": "R",
+      "form": "S",
+      "n_achievement": 0,
+      "stable_ever": 0,
+      "stable_at_final": 0,
+      "rate": null
+    },
+    {
+      "model": "F3",
+      "scene": "S1",
+      "goal": "R",
+      "form": "I",
+      "n_achievement": 0,
+      "stable_ever": 0,
+      "stable_at_final": 0,
+      "rate": null
+    },
+    {
+      "model": "F3",
+      "scene": "S1",
+      "goal": "F",
+      "form": "D",
+      "n_achievement": 8,
+      "stable_ever": 0,
+      "stable_at_final": 0,
+      "rate": 0.0
+    },
+    {
+      "model": "F3",
+      "scene": "S1",
+      "goal": "F",
+      "form": "S",
+      "n_achievement": 8,
+      "stable_ever": 0,
+      "stable_at_final": 0,
+      "rate": 0.0
+    },
+    {
+      "model": "F3",
+      "scene": "S1",
+      "goal": "F",
+      "form": "I",
+      "n_achievement": 8,
+      "stable_ever": 0,
+      "stable_at_final": 0,
+      "rate": 0.0
+    },
+    {
+      "model": "F3",
+      "scene": "S1",
+      "goal": "B",
+      "form": "D",
+      "n_achievement": 8,
+      "stable_ever": 2,
+      "stable_at_final": 0,
+      "rate": 0.25
+    },
+    {
+      "model": "F3",
+      "scene": "S1",
+      "goal": "B",
+      "form": "S",
+      "n_achievement": 8,
+      "stable_ever": 1,
+      "stable_at_final": 0,
+      "rate": 0.125
+    },
+    {
+      "model": "F3",
+      "scene": "S1",
+      "goal": "B",
+      "form": "I",
+      "n_achievement": 8,
+      "stable_ever": 0,
+      "stable_at_final": 0,
+      "rate": 0.0
+    },
+    {
+      "model": "F3",
+      "scene": "S3",
+      "goal": "TOP",
+      "form": "D",
+      "n_achievement": 8,
+      "stable_ever": 2,
+      "stable_at_final": 2,
+      "rate": 0.25
+    },
+    {
+      "model": "F3",
+      "scene": "S3",
+      "goal": "TOP",
+      "form": "S",
+      "n_achievement": 8,
+      "stable_ever": 0,
+      "stable_at_final": 0,
+      "rate": 0.0
+    },
+    {
+      "model": "F3",
+      "scene": "S3",
+      "goal": "TOP",
+      "form": "I",
+      "n_achievement": 8,
+      "stable_ever": 0,
+      "stable_at_final": 0,
+      "rate": 0.0
+    },
+    {
+      "model": "F3",
+      "scene": "S3",
+      "goal": "L",
+      "form": "D",
+      "n_achievement": 8,
+      "stable_ever": 0,
+      "stable_at_final": 0,
+      "rate": 0.0
+    },
+    {
+      "model": "F3",
+      "scene": "S3",
+      "goal": "L",
+      "form": "S",
+      "n_achievement": 8,
+      "stable_ever": 0,
+      "stable_at_final": 0,
+      "rate": 0.0
+    },
+    {
+      "model": "F3",
+      "scene": "S3",
+      "goal": "L",
+      "form": "I",
+      "n_achievement": 8,
+      "stable_ever": 0,
+      "stable_at_final": 0,
+      "rate": 0.0
+    },
+    {
+      "model": "F3",
+      "scene": "S3",
+      "goal": "R",
+      "form": "D",
+      "n_achievement": 0,
+      "stable_ever": 0,
+      "stable_at_final": 0,
+      "rate": null
+    },
+    {
+      "model": "F3",
+      "scene": "S3",
+      "goal": "R",
+      "form": "S",
+      "n_achievement": 0,
+      "stable_ever": 0,
+      "stable_at_final": 0,
+      "rate": null
+    },
+    {
+      "model": "F3",
+      "scene": "S3",
+      "goal": "R",
+      "form": "I",
+      "n_achievement": 0,
+      "stable_ever": 0,
+      "stable_at_final": 0,
+      "rate": null
+    },
+    {
+      "model": "F3",
+      "scene": "S4",
+      "goal": "TOP",
+      "form": "D",
+      "n_achievement": 8,
+      "stable_ever": 7,
+      "stable_at_final": 2,
+      "rate": 0.875
+    },
+    {
+      "model": "F3",
+      "scene": "S4",
+      "goal": "TOP",
+      "form": "S",
+      "n_achievement": 8,
+      "stable_ever": 5,
+      "stable_at_final": 2,
+      "rate": 0.625
+    },
+    {
+      "model": "F3",
+      "scene": "S4",
+      "goal": "TOP",
+      "form": "I",
+      "n_achievement": 8,
+      "stable_ever": 6,
+      "stable_at_final": 2,
+      "rate": 0.75
+    },
+    {
+      "model": "F3",
+      "scene": "S4",
+      "goal": "L",
+      "form": "D",
+      "n_achievement": 0,
+      "stable_ever": 0,
+      "stable_at_final": 0,
+      "rate": null
+    },
+    {
+      "model": "F3",
+      "scene": "S4",
+      "goal": "L",
+      "form": "S",
+      "n_achievement": 0,
+      "stable_ever": 0,
+      "stable_at_final": 0,
+      "rate": null
+    },
+    {
+      "model": "F3",
+      "scene": "S4",
+      "goal": "L",
+      "form": "I",
+      "n_achievement": 0,
+      "stable_ever": 0,
+      "stable_at_final": 0,
+      "rate": null
+    },
+    {
+      "model": "F3",
+      "scene": "S4",
+      "goal": "R",
+      "form": "D",
+      "n_achievement": 8,
+      "stable_ever": 8,
+      "stable_at_final": 8,
+      "rate": 1.0
+    },
+    {
+      "model": "F3",
+      "scene": "S4",
+      "goal": "R",
+      "form": "S",
+      "n_achievement": 8,
+      "stable_ever": 8,
+      "stable_at_final": 3,
+      "rate": 1.0
+    },
+    {
+      "model": "F3",
+      "scene": "S4",
+      "goal": "R",
+      "form": "I",
+      "n_achievement": 8,
+      "stable_ever": 2,
+      "stable_at_final": 0,
+      "rate": 0.25
+    },
+    {
+      "model": "F3",
+      "scene": "S5",
+      "goal": "LR",
+      "form": "D",
+      "n_achievement": 8,
+      "stable_ever": 7,
+      "stable_at_final": 6,
+      "rate": 0.875
+    },
+    {
+      "model": "F3",
+      "scene": "S5",
+      "goal": "LR",
+      "form": "S",
+      "n_achievement": 8,
+      "stable_ever": 8,
+      "stable_at_final": 5,
+      "rate": 1.0
+    },
+    {
+      "model": "F3",
+      "scene": "S5",
+      "goal": "LR",
+      "form": "I",
+      "n_achievement": 8,
+      "stable_ever": 1,
+      "stable_at_final": 1,
+      "rate": 0.125
+    },
+    {
+      "model": "F3",
+      "scene": "S5",
+      "goal": "RL",
+      "form": "D",
+      "n_achievement": 8,
+      "stable_ever": 6,
+      "stable_at_final": 0,
+      "rate": 0.75
+    },
+    {
+      "model": "F3",
+      "scene": "S5",
+      "goal": "RL",
+      "form": "S",
+      "n_achievement": 8,
+      "stable_ever": 4,
+      "stable_at_final": 0,
+      "rate": 0.5
+    },
+    {
+      "model": "F3",
+      "scene": "S5",
+      "goal": "RL",
+      "form": "I",
+      "n_achievement": 8,
+      "stable_ever": 4,
+      "stable_at_final": 0,
+      "rate": 0.5
+    }
+  ]
+}
