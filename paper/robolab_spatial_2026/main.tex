@@ -13,19 +13,23 @@
 \begin{document}
 \maketitle
 \begin{abstract}
-A robot should respond to the requested physical goal, not to one favored way of describing it. We test this requirement by asking three world--action models to perform the same placement while naming either the moved object or the reference object first in the spatial relation. Across 864 matched rollouts on four RoboLab scenes, reference-first descriptions produce fewer stable spatial outcomes, with an average gap of 12.2 percentage points. This gap is concentrated in particular relations rather than shared uniformly across scenes. We also find that reaching a spatial arrangement does not establish that it will be retained or that the intended object was moved. These findings motivate a more discriminating evaluation of world--action models: test alternative descriptions of the same goal, examine individual relations, and distinguish reaching a spatial arrangement from completing the instruction.
+A robot should respond consistently to equivalent descriptions of a physical goal. We test three world--action models by naming either the moved object or the reference object first in a spatial relation. Across 864 matched rollouts on four RoboLab scenes, reference-first descriptions produce fewer stable spatial outcomes, with an average gap of 12.2 percentage points concentrated in particular relations. Reaching an arrangement also does not establish that the intended object was moved or that the arrangement will be retained. Evaluating world--action models therefore requires both alternative descriptions of the same goal and checks that distinguish reaching a placement from completing the instruction.
 \end{abstract}
 \keywords{World--Action Models, Spatial Language, Robot Evaluation}
 
 \section{Introduction}
 Placing a mustard bottle to the right of a raisin box also leaves the box to the bottle's left. Both descriptions specify the same arrangement, and both instructions can explicitly identify the bottle as the object to move. If behavior changes from the same starting state, physical task difficulty alone cannot explain the difference.
 
-This is a useful test for world--action models, which generate actions alongside predictions of future observations. For robot control, predictive capability should be assessed alongside reliable goal conditioning. We ask: \emph{when the physical goal and initial state stay fixed, does reversing the description of the spatial relation change what the model accomplishes?}
+World--action models (WAMs) generate actions alongside predictions of future observations~\citep{kim2026cosmospolicy}. This predictive capability makes reliable goal conditioning especially important: a plausible future must also reflect the instruction. We ask: \emph{when the physical goal and initial state stay fixed, does reversing the description of the spatial relation change what the model accomplishes?}
 
-Instruction sensitivity is already established in robot learning. LIBERO-Plus evaluates language perturbations~\citep{fei2026liberoplus}, LIBERO-Para tests meaning-preserving paraphrases from shared starts~\citep{kim2026liberopara}, and semantic guidance for world--action models targets instruction alignment~\citep{he2026sgwam}. We test relational reference inversion across three world--action policies in RoboLab~\citep{yang2026robolab}, using shared starts to control scene difficulty~\citep{li2025simpler}.
+\paragraph{Language sensitivity in robot policies.}
+TRI's LBM study uses visually similar starting scenes to test language conditioning~\citep{tri2025lbm}. For vision--language--action models (VLAs), LIBERO-CF tests alternative goals in familiar scenes and exposes reliance on visual shortcuts~\citep{fang2026counterfactual}. A complementary question is whether behavior remains consistent when the goal is unchanged. LIBERO-Plus tests language perturbations~\citep{fei2026liberoplus}; LIBERO-Para isolates meaning-preserving paraphrases from shared starts~\citep{kim2026liberopara}; and Moskalenko et al.\ show sensitivity to paraphrasing and irrelevant context~\citep{moskalenko2026bring}.
+
+\paragraph{From VLA robustness to world--action models.}
+SG-WAM improves instruction alignment and evaluates language perturbations~\citep{he2026sgwam}, but does not report a paired test of reversing the spatial reference while preserving the goal. We focus on this question across three released WAMs in RoboLab~\citep{yang2026robolab}: with the placement, intended object to move, and starting scene fixed, does naming the reference object first change the executed outcome? We check both whether the arrangement is reached and whether it is retained.
 
 \begin{table}[!t]
-\caption{One goal, three instructions. Each instruction is tested in a separate run of the same model from the same starting scene. The requested placement and model settings stay fixed.}
+\caption{One goal, three instructions. Separate runs use the same model, starting scene, requested placement, and model settings.}
 \label{tab:setup}
 \small
 \begin{minipage}[c]{.28\linewidth}
@@ -55,23 +59,23 @@ Direct (D) & Place the mustard bottle on the table to the right of the raisin bo
 
 \section{Paired spatial evaluation}
 \paragraph{Change the description, hold the goal fixed.}
-We use four RoboLab scenes: a cube and bowl, butter and a raisin box, mustard and a raisin box, and two bowls. The cube has four directional goals: left, right, front, and behind. Butter and mustard each have left, right, and supported placement on top; the two bowls have both stacking orders. This gives twelve goals. Seven goals come from RoboLab; we add five alternative placements using the same scenes and objects.
+We use four RoboLab scenes: cube and bowl, butter and raisin box, mustard and raisin box, and two bowls. Goals are left/right/front/behind for the cube, left/right/supported placement on top for butter and mustard, and both bowl-stacking orders. Seven of the twelve goals come from RoboLab; we add five placements using the same scenes and objects.
 
-Each model runs each goal from each starting configuration under three instructions (Table~\ref{tab:setup}). The \emph{target} is the object to move; the \emph{reference} locates its destination. \emph{Direct} (D) states the placement briefly, using RoboLab wording where available. \emph{Mover-first} (S) names the target first in the spatial clause; \emph{reference-first} (I) names the reference first and reverses the relation. These labels refer to the clause after ``so that'': all three instructions still ask to move the same object.
+Table~\ref{tab:setup} defines the three instruction forms. Direct (D) uses RoboLab wording where available. Mover-first (S) and reference-first (I) refer to the object named first after ``so that,'' with the relation reversed in I. All forms explicitly ask to move the same object.
 
 For supported placement, ``on top of and supported by'' becomes ``underneath and supporting.'' For bowls, the latter does not explicitly require the nesting used by the success check. We show those results separately.
 
 \paragraph{Compare models from the same starts.}
-We evaluate the DROID versions of Cosmos3 Nano~\citep{nvidia2026nano}, Cosmos3 Edge~\citep{nvidia2026edge}, and FLUX 3 Action~\citep{bfl2026fluxaction}. Nano and FLUX are chosen for their strong performance on RoboLab's leaderboard, while Edge provides a smaller Cosmos-family comparison~\citep{robolab2026leaderboard}. All receive images from one wrist and two exterior cameras, together with the robot's state. We slightly vary object positions and orientations and retain the first eight starting configurations per scene that a scripted controller can solve. Each model runs every goal and description from these configurations, giving 864 evaluation episodes. Paired runs begin with identical scene states and observations.
+We evaluate the DROID versions of Cosmos3 Nano~\citep{nvidia2026nano}, Cosmos3 Edge~\citep{nvidia2026edge}, and FLUX 3 Action~\citep{bfl2026fluxaction}. Nano and FLUX perform strongly on RoboLab's leaderboard; Edge provides a smaller Cosmos-family comparison~\citep{robolab2026leaderboard}. Inputs are one wrist and two exterior cameras plus robot state. After small object-position and orientation changes, we retain the first eight starts per scene solvable by a scripted controller. Every model runs every goal and description from these starts: 864 episodes, with identical initial states and observations across paired runs.
 
 Policies execute 32 actions at a time at 15\,Hz, using the same inference seed and fixed settings for each model. Each episode lasts 20--40\,s, depending on the scene, and continues after the first successful placement. Full instructions and evaluation settings accompany the paper.
 
 \paragraph{Separate reaching a placement from completing the task.}
 We count a \emph{stable spatial outcome} when, for at least one second, the requested arrangement holds, the target object has the required support and moves slower than 2\,cm/s, and the gripper is no longer touching it. Spatial directions are defined relative to the robot. This outcome can occur at any point in the episode. An additional analysis checks whether it holds during the final second. Neither score verifies which object was moved: moving the reference may also make the relation true.
 
-Our main comparison is mover-first versus reference-first (S$-$I). For each matched pair, we subtract the reference-first outcome (1 if reached, 0 otherwise) from the mover-first outcome. A positive average means more runs reached the arrangement with mover-first wording. We also compare direct with mover-first wording (D$-$S) to test the effect of expanding the instruction. We average within each scene's goals and then equally across scenes and models; the reported gaps are percentage points.
+For each matched pair, we subtract the reference-first outcome (1 if reached, 0 otherwise) from the mover-first outcome: S$-$I. Positive differences favor mover-first wording. D$-$S tests expanding the direct instruction. We average over goals within each scene, then equally across scenes and models, reporting gaps in percentage points.
 
-Cube-right, butter-right, and mustard-left already hold in every saved starting scene. Under the at-any-time score, these goals pass with all three instructions and contribute zero to the differences; we show goals requiring a new arrangement separately. Confidence intervals resample starting configurations within each scene, keeping all models, goals, and descriptions paired; sign-flip tests use Holm correction for the two comparisons.
+Cube-right, butter-right, and mustard-left hold initially and pass under all instructions, contributing zero to the at-any-time differences. Goals requiring a new arrangement are shown separately. Confidence intervals resample starts within scenes, keeping models, goals, and descriptions paired. Sign-flip tests use Holm correction for the two comparisons.
 
 \clearpage
 \section{Results}
@@ -104,11 +108,11 @@ Mustard-right produces the largest pooled gap, with the same direction in all th
 \end{figure}
 
 \section{Discussion}
-An instruction specifies both a desired arrangement and which object should move to produce it. Equivalent descriptions should preserve both requirements, even when trajectories differ. Shared starts rule out scene difficulty as the sole explanation for the wording gap. They do not identify whether a model selects the wrong goal, selects the wrong object, or fails to execute a correct plan.
+An instruction specifies an arrangement and which object should move. Equivalent descriptions should preserve both requirements. Following controlled simulator evaluation~\citep{li2025simpler}, shared starts rule out scene difficulty as the sole explanation for our wording gap, but cannot distinguish wrong-goal selection, wrong-object selection, and execution failure. LIBERO-CF separately scores target-object contact and task success~\citep{fang2026counterfactual}; our placement score needs the same care in interpretation.
 
 Figure~\ref{fig:examples} illustrates why a higher placement score need not mean better instruction following: Nano reaches the relation by moving the bowl while the cube remains on the table. Roughly half of all episodes with a stable outcome also lose it before the end. Evaluation should distinguish reaching the arrangement, performing the intended manipulation, and retaining it under continued control.
 
-For world--action models, the next question is whether these failures already appear in predicted futures. Does wording change the predicted object or destination, or does execution depart from an appropriate prediction? Our behavioral results cannot distinguish those cases. Answering requires aligned predictions and executions, and separate changes to relation vocabulary and argument order. The bowl support/containment ambiguity further limits claims of equivalent instructions.
+CAST improves instruction following through counterfactual training in visual navigation~\citep{glossop2025cast}, while SG-WAM supplies semantic guidance for manipulation~\citep{he2026sgwam}. Whether these approaches preserve behavior under equivalent spatial descriptions deserves testing. For WAMs, does wording change the predicted goal, or does execution depart from an appropriate prediction? Answering requires aligned predictions and executions, plus separate changes to relation vocabulary and argument order. Our evidence establishes neither a WAM-specific mechanism nor a disadvantage relative to VLAs. Bowl support/containment ambiguity further limits claims of equivalent instructions.
 
 \clearpage
 \bibliography{references}

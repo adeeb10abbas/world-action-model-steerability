@@ -5,7 +5,7 @@
   "normalized_pdf_text_matches": null,
   "overleaf_project": "https://www.overleaf.com/project/6ab2bdb39b30df4bbc98a15e",
   "overleaf_main": "main.tex",
-  "local_pdf_sha256": "220ae3974ab936649d3c840f035ad20f33cd629796cf516acecd67a1ae45db5f",
+  "local_pdf_sha256": "3955545d6068932a863efd304a68e6ae53dff0dec64d20395d1b4ea2e2cf4972",
   "all_local_pages_visually_checked": true,
   "raw_results_modified": false,
   "new_policy_episodes_launched": 0,
@@ -59,8 +59,12 @@
     "references_start_page": 5,
     "errors": 0,
     "warnings": 0,
-    "proof": "output/pdf/overleaf_authors.png",
-    "pdf_download": "Browser download timed out; no new downloaded-PDF text comparison claimed."
+    "proof": "output/pdf/overleaf_related_work.png",
+    "pdf_download": "No PDF download attempted for this revision; verified the live source, compiler log, and rendered preview.",
+    "build": "1a0e4525ddd-423a2b7f8ddf137b",
+    "raw_log_notes": [
+      "Nonfatal missing Hfootnote.1 destination from the author-block footnote; Overleaf UI reports zero warnings."
+    ]
   },
   "authors": [
     "Ali-Adeeb Abbas",
@@ -77,5 +81,25 @@
     "proof": "output/pdf/overleaf_authors.png",
     "errors": 0,
     "warnings": 0
+  },
+  "cited_source_count": 14,
+  "related_work_revision": {
+    "verified_date": "2026-09-27",
+    "main_text_pages": 4,
+    "reference_pages": 1,
+    "sources_cited": 14,
+    "newly_cited": [
+      "TRI LBM",
+      "LIBERO-CF",
+      "CAST",
+      "Cosmos Policy",
+      "Bring the Apple, Not the Sofa"
+    ],
+    "novelty_scope": "Paired spatial-reference inversion across three released WAM policies, not the first WAM language-grounding study.",
+    "montage_preserved": true,
+    "results_unchanged": true,
+    "local_package_text_matches": true,
+    "overleaf_source_synced": true,
+    "all_pages_visually_checked": true
   }
 }
