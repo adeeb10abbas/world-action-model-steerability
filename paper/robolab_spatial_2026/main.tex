@@ -7,7 +7,7 @@
 \definecolor{mover}{HTML}{147D92}
 \definecolor{reference}{HTML}{C46635}
 \title{Same Goal, Different Words:\\Spatial Instruction Sensitivity in World--Action Models}
-\author{Ali-Adeeb Abbas$^{1,2}$, Esmaeil Seraj$^2$, Behrad Toghi$^2$, and Taskin Padir$^{1,3}$\thanks{$^1$RIVeR Laboratory, Northeastern University, Boston, MA, USA. $^2$General Motors, Mountain View, CA, USA. $^3$Amazon Robotics, North Reading, MA, USA. Correspondence: \texttt{abbas.a@northeastern.edu}.}}
+\author{Ali-Adeeb Abbas$^{1,2}$, Esmaeil Seraj$^2$ and Taskin Padir$^{1,3}$\thanks{$^1$RIVeR Laboratory, Northeastern University, Boston, MA, USA. $^2$General Motors, Mountain View, CA, USA. $^3$Amazon Robotics, North Reading, MA, USA. Correspondence: \texttt{abbas.a@northeastern.edu}.}}
 \hypersetup{pdftitle={Same Goal, Different Words: Spatial Instruction Sensitivity in World-Action Models},pdfsubject={Draft for Do Robots Need World Models? CoRL 2026 Workshop},pdfauthor={Ali-Adeeb Abbas, Esmaeil Seraj, Behrad Toghi, Taskin Padir}}
 
 \begin{document}
@@ -18,15 +18,13 @@ A robot should respond consistently to equivalent descriptions of a physical goa
 \keywords{World--Action Models, Spatial Language, Robot Evaluation}
 
 \section{Introduction}
-Placing a mustard bottle to the right of a raisin box also leaves the box to the bottle's left. Both descriptions specify the same arrangement, and both instructions can explicitly identify the bottle as the object to move. If behavior changes from the same starting state, physical task difficulty alone cannot explain the difference.
+World--action models (WAMs) generate robot actions together with predictions of future observations~\citep{kim2026cosmospolicy}. Their use for language-conditioned manipulation raises a basic question: how reliably do their actions reflect the requested goal? A robot must identify both which object to move and where to place it, and these choices should remain consistent across equivalent instructions.
 
-World--action models (WAMs) generate actions alongside predictions of future observations~\citep{kim2026cosmospolicy}. This predictive capability makes reliable goal conditioning especially important: a plausible future must also reflect the instruction. We ask: \emph{when the physical goal and initial state stay fixed, does reversing the description of the spatial relation change what the model accomplishes?}
+Prior work evaluates both responsiveness to changed goals and consistency under equivalent instructions. TRI's LBM study tests language conditioning in visually similar scenes~\citep{tri2025lbm}. CAST improves vision--language--action (VLA) instruction following by associating diverse descriptions with atomic commands and synthesizing actions for alternatives to recorded trajectories~\citep{glossop2025cast}. LIBERO-CF tests alternative goals in familiar scenes~\citep{fang2026counterfactual}, while other evaluations examine language perturbations~\citep{fei2026liberoplus}, meaning-preserving paraphrases from shared starts~\citep{kim2026liberopara}, and irrelevant context~\citep{moskalenko2026bring}.
 
-\paragraph{Language sensitivity in robot policies.}
-TRI's LBM study uses visually similar starting scenes to test language conditioning~\citep{tri2025lbm}. For vision--language--action models (VLAs), LIBERO-CF tests alternative goals in familiar scenes and exposes reliance on visual shortcuts~\citep{fang2026counterfactual}. A complementary question is whether behavior remains consistent when the goal is unchanged. LIBERO-Plus tests language perturbations~\citep{fei2026liberoplus}; LIBERO-Para isolates meaning-preserving paraphrases from shared starts~\citep{kim2026liberopara}; and Moskalenko et al.\ show sensitivity to paraphrasing and irrelevant context~\citep{moskalenko2026bring}.
+Within WAMs, SG-WAM studies instruction alignment and language perturbations~\citep{he2026sgwam}. We examine consistency under spatial reference reversal: ``mustard right of box'' and ``box left of mustard'' specify the same arrangement while both instructions require moving the mustard (Table~\ref{tab:setup}). This tests agreement on a complete placement goal, allowing different action sequences to reach it.
 
-\paragraph{From VLA robustness to world--action models.}
-SG-WAM improves instruction alignment and evaluates language perturbations~\citep{he2026sgwam}, but does not report a paired test of reversing the spatial reference while preserving the goal. We focus on this question across three released WAMs in RoboLab~\citep{yang2026robolab}: with the placement, intended object to move, and starting scene fixed, does naming the reference object first change the executed outcome? We check both whether the arrangement is reached and whether it is retained.
+We evaluate three released WAMs in RoboLab~\citep{yang2026robolab}, holding the initial scene, requested placement, and object to move fixed while changing the relational description. We measure whether the arrangement is reached and retained, and examine cases where the spatial score disagrees with the intended manipulation. This comparison separates wording sensitivity from physical task difficulty and clarifies what placement success reveals about instruction following.
 
 \begin{table}[!t]
 \caption{One goal, three instructions. Separate runs use the same model, starting scene, requested placement, and model settings.}

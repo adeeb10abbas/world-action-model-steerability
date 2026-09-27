@@ -81,4 +81,12 @@ The contribution is a controlled study of equivalent relational descriptions acr
 
 The wording gap alone cannot establish a WAM-specific failure mechanism or a disadvantage relative to VLAs. The methods retain the combined relation-vocabulary/argument-order intervention and bowl support/containment qualification. The manuscript does not borrow the mechanism claimed by LIBERO-CF as an explanation of our results.
 
-The final Introduction states the specific unreported comparison in SG-WAM: a paired test of spatial-reference reversal with the requested physical goal unchanged. This is a comparison with the inspected SG-WAM report, not a claim of absence across the entire WAM literature.
+The revised Introduction describes the study directly rather than defining it only through an unreported SG-WAM experiment. It acknowledges existing WAM grounding work and explains the complete-placement equivalence tested here.
+
+## Introduction rewrite and CAST clarification
+
+The opening now leads with WAM control and language conditioning. Four connected paragraphs replace the example-first opening and the two internal headings. CAST is discussed in the main related-work paragraph rather than only as a prospective mitigation in Discussion.
+
+[CAST Section IV](https://arxiv.org/html/2508.13446v1#S4) generates language/action alternatives to recorded trajectories and connects descriptive instructions to atomic commands. The shared motivation is language-conditioned steerability; associating diverse descriptions with actions is not our novelty. A shared atomic command is not sufficient evidence of an identical complete task goal. Our fixed-placement comparison permits different action sequences to achieve the same requested arrangement and specifies the same object to move.
+
+The manuscript was edited directly in the Overleaf Source Editor, read back through the editor, and then copied to the repository. Existing Overleaf edits outside Introduction were preserved. Future manuscript edits in this conversation should use Overleaf first, following the author's explicit instruction.

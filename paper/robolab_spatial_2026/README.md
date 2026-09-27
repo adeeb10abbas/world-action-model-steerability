@@ -74,3 +74,7 @@ The latest nine-file package is `output/pdf/same_goal_different_words_overleaf.z
 ## Related-work revision — September 27
 
 The manuscript now cites fourteen sources, adding TRI LBM, LIBERO-CF, CAST, Cosmos Policy, and the previously uncited Bring the Apple study. The introduction distinguishes changed-goal counterfactual tests from same-goal paraphrase tests and explicitly acknowledges SG-WAM's existing instruction-grounding evaluation. Discussion connects target-object selection to task success and identifies prior mitigation approaches without claiming they solve this study's failures. The paper makes no first-ever WAM language-grounding claim, no WAM-versus-VLA ranking, and no new forecast-analysis claim. Repetition was shortened to retain four main-text pages, the full execution montage, and a separate reference page.
+
+## Introduction rewrite
+
+The introduction now opens with the WAM instruction-following problem and develops the prior work, specific comparison, and contribution in connected paragraphs. CAST is a central prior work connecting descriptive language and atomic actions; this study evaluates consistency of complete placement goals in released WAMs. The latest edit was made directly in Overleaf and read back into `main.tex`, preserving live edits elsewhere in the manuscript. `output/pdf/overleaf_intro_rewrite.png` shows the current introduction. The main text remains four pages, followed by one reference page; the montage and all fourteen citations remain.
