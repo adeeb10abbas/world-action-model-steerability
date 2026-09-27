@@ -8,7 +8,7 @@ Spatial Instruction Sensitivity in World–Action Models
 - `references.bib` contains the bibliography.
 - `figures/` contains the scene illustration, wording-effect violins, goal breakdown, and paired execution examples.
 
-The current draft has four pages of main text and one reference page. The author list remains “Anonymous Authors” pending the agreed names and affiliations.
+The current draft has four pages of main text and one reference page. Authors: Ali-Adeeb Abbas, Esmaeil Seraj, Behrad Toghi, and Taskin Padir. Affiliations and author order follow the supplied author list.
 
 ## Build
 
