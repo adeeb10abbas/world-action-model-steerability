@@ -2,7 +2,7 @@
 
 **Same Goal, Different Words: Spatial Instruction Sensitivity in World–Action Models**
 
-Target: [Do Robots Need World Models? at CoRL 2026](https://do-robots-need-world-models.github.io/). This is an editable research draft, not a submission. The entire PDF, including references, is four pages. This is a conservative drafting choice: the workshop website says only “Up to 4 pages, CoRL template” and does not specify whether references count (rechecked September 27, 2026). The linked OpenReview page did not expose an additional rule. It uses the official CoRL 2026 style in `preprint` mode; authors remain anonymous until the author list is supplied. Before submission, confirm the workshop's anonymization and reference-page rules and use its requested mode. No authorship, acceptance, or award is implied.
+Target: [Do Robots Need World Models? at CoRL 2026](https://do-robots-need-world-models.github.io/). This is an editable research draft, not a submission. The paper uses four pages of main text, with references on a separate page, as requested by the author on September 27, 2026. The workshop website says only “Up to 4 pages, CoRL template” and does not specify whether references count; this layout choice is not a new verification of workshop policy. It uses the official CoRL 2026 style in `preprint` mode; authors remain anonymous until the author list is supplied. Before submission, confirm the workshop's anonymization and reference-page rules and use its requested mode. No authorship, acceptance, or award is implied.
 
 ## Files
 
@@ -32,7 +32,7 @@ The unmodified `corl_2026.sty` and `corlabbrvnat.bst` came from the [ZIP linked 
 
 ## Claim boundaries
 
-The scene/goal-weighted prespecified secondary S−I contrast is +12.15 percentage points for the original stable-ever endpoint. The manuscript makes it central after seeing results and explicitly discloses that scope change. It retains the unresolved original forecast-diagnosis question and post-result annotation amendment; it does not claim that predictions are uninformative.
+The scene/goal-weighted prespecified secondary S−I contrast is +12.15 percentage points for the original stable-ever endpoint. The paper focuses on this comparison after seeing results. The original forecast-diagnosis question remains unresolved: after outcomes were available, automated vision-language annotators replaced planned human annotations, with poor agreement and no detectable diagnostic improvement. This study history is retained here and in the original protocol and amendment, rather than in the main manuscript. The paper does not claim that predictions are uninformative.
 
 Achievement strata come from the frozen accepted-state registry, correcting 44 inconsistent per-episode labels. Raw episode outcomes and historical `RESULTS.md` remain untouched. This paper's derived achievement rates supersede the inconsistent values for its tables. Final-state sensitivity is explicitly post-hoc.
 
@@ -44,9 +44,17 @@ The exact declared official model revisions were verified. The compact FLUX runt
 
 - Recomputed paired contrasts and corrected strata from committed records.
 - Independent factual/editorial review of counts, native/added-goal scope, intervention semantics, and claims.
-- Local LaTeX build: four pages including references; no unresolved references or overfull boxes.
-- All four rendered pages inspected; scientific figures are vector PDFs.
-- Overleaf compiled successfully to four pages; downloaded PDF text matches the local draft after whitespace normalization. `QA.json` records this verification.
+- Local LaTeX build: four pages of main text plus references; no unresolved references or overfull boxes.
+- All five rendered pages inspected; scientific figures are vector PDFs.
+- Overleaf compilation and page counts are recorded in QA.json; downloaded PDF text matches the local draft after whitespace normalization. `QA.json` records this verification.
 - Old Overleaf source downloaded as a local backup before adding this draft. No experiment jobs or paper submissions launched.
 
 The current PDF is ready for author review. The requested videos can replace the small pilot illustration or support an optional workshop video, without changing the statistical results.
+
+## September 27 Methods edits
+
+The main text now explains the evaluation without implementation terms such as hashes and registry. The previously planned two-bin scene was excluded before learned-policy evaluation because the scripted feasibility check failed; this exclusion history remains in the committed protocol and results records. The removed forecast-history paragraph is preserved under Claim boundaries above.
+
+Model selection is qualified by the official RoboLab leaderboard checked on September 27: FLUX is first overall, Nano fifth, and Edge eleventh in the displayed overall table. Nano and FLUX motivate the strong-performance selection; Edge supplies a smaller Cosmos-family comparison. We do not describe all three as the best-performing models. See `RELATED_WORK_NOTES.md` for the source.
+
+The setup table now presents all three exact mustard-right instructions, defines the target and reference, and states what S−I and D−S test. Methods maps the twelve goals to the four scenes and explains paired outcome differences before Results. The main text occupies pages 1–4, with references beginning on page 5.

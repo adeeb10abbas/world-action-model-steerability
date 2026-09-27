@@ -60,3 +60,7 @@ F3's shared encoder source is `black-forest-labs/flux-3-action-base` at `62878e2
 ## Requested violin-plot presentation
 
 The user supplied [TRI LBM-1](https://toyotaresearchinstitute.github.io/lbm1/files/TRI-LBM-1.pdf) as a visual reference. Figure 2 on PDF page 5 and the statistical discussion on pages 10–11 were inspected. TRI uses Beta-posterior violins for binary success. Our figure instead shows observed paired-state effects, with all 32 physical starts and the unchanged cluster-bootstrap mean intervals. This preserves pairing and does not introduce a posterior interpretation or replace the original inferential analysis. The heatmap retains the goal-by-wording breakdown.
+
+## Model-selection rationale (September 27, 2026)
+
+The [official RoboLab leaderboard](https://research.nvidia.com/labs/srl/projects/robolab/leaderboard.html), Overall table checked today, lists FLUX 3 Action at rank 1 (515/1200, 42.9%), Cosmos3 Nano at rank 5 (441/1200, 36.8%), and Cosmos3 Edge at rank 11 (275/1200, 22.9%). Thus the manuscript motivates Nano and FLUX through strong benchmark performance and describes Edge separately as a smaller Cosmos-family comparison, not a top-ranked model. The leaderboard lists Nano at 16B and Edge at 4B, consistent with the official model cards. These are external benchmark results and are not pooled with our spatial study.

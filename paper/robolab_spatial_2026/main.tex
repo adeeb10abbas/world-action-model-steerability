@@ -22,44 +22,63 @@ Placing a mustard bottle to the right of a raisin box also leaves the box to the
 
 This is a useful test for world--action models, which generate actions alongside predictions of future observations. For robot control, predictive capability should be assessed alongside reliable goal conditioning. We ask: \emph{when the physical goal and initial state stay fixed, does reversing the description of the spatial relation change what the model accomplishes?}
 
-Instruction sensitivity is already established in robot learning. LIBERO-Plus evaluates language perturbations~\citep{fei2026liberoplus}, LIBERO-Para tests meaning-preserving paraphrases from shared starts~\citep{kim2026liberopara}, and semantic guidance for world--action models targets instruction alignment~\citep{he2026sgwam}. Our contribution is a focused comparison of relational reference inversion across three world--action policies in existing RoboLab scenes~\citep{yang2026robolab}. As in controlled simulation evaluations~\citep{li2025simpler}, shared starts help separate the intervention from scene difficulty.
+Instruction sensitivity is already established in robot learning. LIBERO-Plus evaluates language perturbations~\citep{fei2026liberoplus}, LIBERO-Para tests meaning-preserving paraphrases from shared starts~\citep{kim2026liberopara}, and semantic guidance for world--action models targets instruction alignment~\citep{he2026sgwam}. We test relational reference inversion across three world--action policies in RoboLab~\citep{yang2026robolab}, using shared starts to control scene difficulty~\citep{li2025simpler}.
 
-\begin{figure}[!b]
-\centering
-\begin{minipage}[c]{.40\linewidth}
+\begin{table}[!t]
+\caption{One goal, three instructions. Each instruction is tested in a separate run of the same model from the same starting scene. The requested placement and model settings stay fixed.}
+\label{tab:setup}
+\small
+\begin{minipage}[c]{.28\linewidth}
 \includegraphics[width=\linewidth]{scene_mustard.jpg}
 \end{minipage}\hfill
-\begin{minipage}[c]{.57\linewidth}
-\small
-\textbf{Same requested placement; same object to move}\par\smallskip
-\textcolor{mover}{\textbf{Mover-first (S):}} Move the mustard bottle on the table so that the mustard bottle is to the right of the raisin box.\par\smallskip
-\textcolor{reference}{\textbf{Reference-first (I):}} Move the mustard bottle on the table so that the raisin box is to the left of the mustard bottle.
-\end{minipage}
-\caption{Exact tested mustard-right prompts and two exterior views of the asset from a pilot reset. Confirmation pairs share a frozen start; policies also receive a wrist view. The intervention changes argument order and relation words, not merely token order.}
-\label{fig:prompt}
-\end{figure}
+\begin{minipage}[c]{.68\linewidth}
+\textbf{Example goal: mustard to the right of the box.}\par
+\textbf{Target:} the mustard bottle, which the robot should move.\par
+\textbf{Reference:} the raisin box, which defines the destination.
+\end{minipage}\par\medskip
+\begin{tabular}{@{}p{.21\linewidth}p{.75\linewidth}@{}}
+\toprule
+\textbf{Instruction form} & \textbf{Exact tested instruction} \\
+\midrule
+Direct (D) & Place the mustard bottle on the table to the right of the raisin box. \\
+\addlinespace
+\textcolor{mover}{Mover-first (S)} & Move the mustard bottle on the table so that \textbf{the mustard bottle} is to the right of the raisin box. \\
+\addlinespace
+\textcolor{reference}{Reference-first (I)} & Move the mustard bottle on the table so that \textbf{the raisin box} is to the left of the mustard bottle. \\
+\midrule
+\textbf{S versus I} & Does describing the same placement through the reference object change the outcome? \\
+\addlinespace
+\textbf{D versus S} & Does expanding the direct instruction change the outcome? \\
+\bottomrule
+\end{tabular}
+\end{table}
 
 \section{Paired spatial evaluation}
 \paragraph{Change the description, hold the goal fixed.}
-We use four RoboLab scenes: a cube and bowl, butter and a raisin box, mustard and a raisin box, and two bowls. Goals cover left/right, front/behind, supported placement on top, and stacking either bowl on the other. Seven goals are native to their scenes; five are added conditions on existing assets. A planned two-bin scene failed scripted feasibility qualification and was excluded before confirmation, independently of learned-policy outcomes.
+We use four RoboLab scenes: a cube and bowl, butter and a raisin box, mustard and a raisin box, and two bowls. The cube has four directional goals: left, right, front, and behind. Butter and mustard each have left, right, and supported placement on top; the two bowls have both stacking orders. This gives twelve goals. Seven goals come from RoboLab; we add five alternative placements using the same scenes and objects.
 
-Every goal has three descriptions: direct wording (D), native where available; an expanded description that names the moved object first in the relation (S); and a description that names the reference object first and uses the converse relation (I). Figure~\ref{fig:prompt} shows an exact pair. ``Reference-first'' refers to the spatial clause, not a change of viewpoint or of the object requested to move. For supported placement, ``on top of and supported by'' becomes ``underneath and supporting.'' Bowl wording is less exact: ``underneath and supporting'' does not explicitly require the nesting imposed by its scorer. Its results are shown separately.
+Each model runs each goal from each starting configuration under three instructions (Table~\ref{tab:setup}). The \emph{target} is the object to move; the \emph{reference} locates its destination. \emph{Direct} (D) states the placement briefly, using RoboLab wording where available. \emph{Mover-first} (S) names the target first in the spatial clause; \emph{reference-first} (I) names the reference first and reverses the relation. These labels refer to the clause after ``so that'': all three instructions still ask to move the same object.
+
+For supported placement, ``on top of and supported by'' becomes ``underneath and supporting.'' For bowls, the latter does not explicitly require the nesting used by the success check. We show those results separately.
 
 \paragraph{Compare models from the same starts.}
-We evaluate the DROID checkpoints of Cosmos3 Nano~\citep{nvidia2026nano}, Cosmos3 Edge~\citep{nvidia2026edge}, and FLUX 3 Action~\citep{bfl2026fluxaction}. Inputs comprise the native wrist and two exterior cameras and proprioception. We use the first eight controller-qualified starts per scene under small position and yaw perturbations. Every model runs each goal and description from these starts: 864 confirmation episodes, excluding development runs. Paired initial-state and first-observation hashes match.
+We evaluate the DROID versions of Cosmos3 Nano~\citep{nvidia2026nano}, Cosmos3 Edge~\citep{nvidia2026edge}, and FLUX 3 Action~\citep{bfl2026fluxaction}. Nano and FLUX are chosen for their strong performance on RoboLab's leaderboard, while Edge provides a smaller Cosmos-family comparison~\citep{robolab2026leaderboard}. All receive images from one wrist and two exterior cameras, together with the robot's state. We slightly vary object positions and orientations and retain the first eight starting configurations per scene that a scripted controller can solve. Each model runs every goal and description from these configurations, giving 864 evaluation episodes. Paired runs begin with identical scene states and observations.
 
-Policies execute 32-action chunks at 15\,Hz, with fixed inference seed 6100 and checkpoint-specific inference settings. Episodes run for their full scene-specific horizon (20--40\,s), without stopping at the first successful placement. Exact prompts, settings, states, and receipts accompany the paper. These prespecified secondary wording analyses became the paper's focus after outcomes were available. At that stage, automated vision-language annotators replaced planned human annotations; poor agreement and no detectable diagnostic improvement left the original forecast-diagnosis question unresolved. The protocol and amendment accompany the artifacts.
+Policies execute 32 actions at a time at 15\,Hz, using the same inference seed and fixed settings for each model. Each episode lasts 20--40\,s, depending on the scene, and continues after the first successful placement. Full instructions and evaluation settings accompany the paper.
 
 \paragraph{Separate reaching a placement from completing the task.}
-The prespecified measure checks whether the robot-frame relation, support, and gripper detachment hold for one continuous second while the designated mover remains below 0.02\,m/s. This \emph{stable spatial outcome} can occur anywhere in the episode. A post-hoc terminal check evaluates stability during the final second. Neither score verifies which object was moved: moving the reference may also make the relation true.
+We count a \emph{stable spatial outcome} when, for at least one second, the requested arrangement holds, the target object has the required support and moves slower than 2\,cm/s, and the gripper is no longer touching it. Spatial directions are defined relative to the robot. This outcome can occur at any point in the episode. An additional analysis checks whether it holds during the final second. Neither score verifies which object was moved: moving the reference may also make the relation true.
 
-We identify goals already satisfied at reset from the frozen state registry. Cube-right, butter-right, and mustard-left are initially satisfied at every start. The prespecified wording contrasts include both initially satisfied and unsatisfied goals, averaging paired differences equally across models, scenes, and goals within scene. Initially satisfied goals contribute zero differences to the stable-outcome contrasts; the goal-level breakdown isolates new-goal achievement. Confidence intervals resample physical starts within each scene, keeping their associated models, goals, and descriptions together; paired cluster sign-flip tests use Holm correction for the two contrasts.
+Our main comparison is mover-first versus reference-first (S$-$I). For each matched pair, we subtract the reference-first outcome (1 if reached, 0 otherwise) from the mover-first outcome. A positive average means more runs reached the arrangement with mover-first wording. We also compare direct with mover-first wording (D$-$S) to test the effect of expanding the instruction. We average within each scene's goals and then equally across scenes and models; the reported gaps are percentage points.
 
+Cube-right, butter-right, and mustard-left already hold in every saved starting scene. Under the at-any-time score, these goals pass with all three instructions and contribute zero to the differences; we show goals requiring a new arrangement separately. Confidence intervals resample starting configurations within each scene, keeping all models, goals, and descriptions paired; sign-flip tests use Holm correction for the two comparisons.
+
+\clearpage
 \section{Results}
 \paragraph{Reference-first descriptions produce fewer stable outcomes.}
-The mover-first form yields stable spatial outcomes more often than the reference-first form, with a weighted gap of 12.2 percentage points (95\% interval: 8.6--15.4; adjusted $p<0.001$). The average has the same sign for all three models (Figure~\ref{fig:wording}), while the direct-versus-expanded contrast is smaller and inconclusive. The post-hoc terminal check retains a similar reference-inversion gap, so the finding is not explained solely by transient placements.
+Naming the target first in the spatial relation leads to more stable outcomes than naming the reference first, with an average gap of 12.2 percentage points (95\% interval: 8.6--15.4; adjusted $p<0.001$). The average has the same sign for all three models (Figure~\ref{fig:wording}), while the direct-versus-expanded contrast is smaller and inconclusive. The additional check at the end of each episode gives a similar reference-inversion gap, so the finding is not explained solely by transient placements.
 
-\begin{figure}[!t]
+\begin{figure}[!ht]
 \centering
 \includegraphics[width=\linewidth]{wording_effect.pdf}
 \caption{Paired wording effects. Positive S$-$I favors mover-first descriptions; D$-$S compares direct and expanded wording. Each dot averages paired differences over goals within one start (also over models in the pooled row). Shading guides the eye; diamonds and bars show means and 95\% state-bootstrap intervals. Model-level intervals are descriptive.}
@@ -69,15 +88,18 @@ The mover-first form yields stable spatial outcomes more often than the referenc
 \paragraph{A few relations drive the average.}
 The largest pooled gap is for mustard-right, with the same direction in all three models. The pooled descriptive gap remains positive when bowl stacking is excluded. In contrast, the cube scene has no aggregate S/I difference, and cube-behind actually favors the reference-first form under the recorded metric. Figure~\ref{fig:goals} exposes these differences: performance varies with the particular scene, relation, and model. This does not establish a general inability to interpret spatial relations.
 
-\begin{figure}[!t]
+
+
+\paragraph{The success definition changes the interpretation.}
+Roughly half of episodes with a stable outcome no longer meet the same conditions at the end. This measures retention under continued control, not performance with success-triggered stopping. Object roles also matter. All seven reference-first cube-behind passes come from Nano episodes with no detected cube lift and substantial bowl displacement. These summaries establish the relation, not that the cube was moved as instructed. A relation score alone cannot distinguish the requested manipulation from movement of the reference.
+
+\clearpage
+\begin{figure}[!ht]
 \centering
 \includegraphics[width=\linewidth]{goal_response_by_form.pdf}
 \caption{Reaching a stable spatial arrangement, by goal and wording. Each colored cell has eight starts; hatching marks initially satisfied goals. Relation passes do not verify complete instruction execution, and bowl wording has a support/containment ambiguity.}
 \label{fig:goals}
 \end{figure}
-
-\paragraph{The success definition changes the interpretation.}
-Roughly half of episodes with a stable outcome fail the terminal check. This measures retention under continued control, not performance with success-triggered stopping. Object roles also matter. All seven reference-first cube-behind passes come from Nano episodes with no detected cube lift and substantial bowl displacement. These summaries establish the relation, not that the cube was moved as instructed. A relation score alone cannot distinguish the requested manipulation from movement of the reference.
 
 \section{Discussion}
 An instruction specifies both a desired arrangement and an intervention: which object to move to produce it. Equivalent descriptions should preserve these requirements, even when successful trajectories differ. Our paired comparisons show that this consistency cannot be assumed. Shared starts rule out scene difficulty as the sole explanation for the wording gap, but cannot separate a misinterpreted goal from different object selection or execution of an otherwise correct plan.
@@ -86,5 +108,6 @@ Mustard-right and cube-behind show why an average is insufficient. Inversion red
 
 For world--action models, this raises a question beyond whether predicted futures look plausible: do prediction and action remain consistent with the intended intervention across descriptions? Our behavioral measurements cannot answer it. A useful next test would determine whether wording changes the predicted goal or object motion, and whether execution agrees with that prediction. This requires aligned predictions and executions, with vocabulary and argument order tested separately. Bowl support/containment ambiguity further limits equivalence claims. The aim is to locate failures within instruction following, rather than infer understanding from a relation score alone.
 
+\clearpage
 \bibliography{references}
 \end{document}
