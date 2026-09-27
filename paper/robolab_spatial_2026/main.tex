@@ -77,23 +77,26 @@ Cube-right, butter-right, and mustard-left hold initially and pass under all ins
 
 \clearpage
 \section{Results}
+\paragraph{Overall placement performance.}
+Averaging scenes equally, the stable-placement rate is 43.2\% during the episode and 21.8\% at the end (Figure~\ref{fig:goals}). Excluding already-satisfied goals gives 26.8\% and 15.3\%, respectively.
+
 \paragraph{Reference-first descriptions produce fewer stable outcomes.}
-Naming the target first in the spatial relation leads to more stable outcomes than naming the reference first, with an average gap of 12.2 percentage points (95\% interval: 8.6--15.4; adjusted $p<0.001$). The average has the same sign for all three models (Figure~\ref{fig:wording}), while the direct-versus-expanded contrast is smaller and inconclusive. The additional check at the end of each episode gives a similar reference-inversion gap, so the finding is not explained solely by transient placements.
+Mover-first wording outperforms reference-first by 12.2 percentage points (95\% interval: 8.6--15.4; adjusted $p<0.001$), with the same direction for all three models (Figure~\ref{fig:wording}). D$-$S is smaller and inconclusive. The end-of-episode comparison gives a similar S$-$I gap.
 
 \begin{figure}[!ht]
 \centering
-\includegraphics[width=.94\linewidth]{wording_effect.pdf}
-\caption{Paired wording effects. Positive S$-$I favors mover-first descriptions; D$-$S compares direct and expanded wording. Each dot averages paired differences over goals within one start (also over models in the pooled row). Shading guides the eye; diamonds and bars show means and 95\% state-bootstrap intervals. Model-level intervals are descriptive.}
+\includegraphics[width=.88\linewidth]{wording_effect.pdf}
+\caption{Paired wording effects across 32 matched starts. Wider sections indicate more starts with similar effects. Dots show each start's average effect; diamonds and bars show means and 95\% confidence intervals. Model-level intervals are descriptive.}
 \label{fig:wording}
 \end{figure}
 
 \paragraph{A few relations drive the average.}
-Mustard-right produces the largest pooled gap, with the same direction in all three models. The pooled descriptive gap remains positive when bowl stacking is excluded. The cube scene, however, has no average S/I difference, and cube-behind favors reference-first wording under the recorded metric (Figure~\ref{fig:goals}).
+Mustard-right has the largest gap, consistently across models. The pooled gap remains positive without bowl stacking. The cube scene has no average S/I difference, while cube-behind favors reference-first wording (Figure~\ref{fig:goals}).
 
 \begin{figure}[!htb]
 \centering
-\includegraphics[width=.90\linewidth]{goal_response_by_form.pdf}
-\caption{Stable outcomes by goal and wording, with eight starts per cell. Hatching marks initially satisfied goals. Scores do not verify complete instruction following.}
+\includegraphics[width=\linewidth]{goal_response_by_form.pdf}
+\caption{Stable-placement rates (\%). Overall columns show success at any time and at episode end, averaging goals within scenes and weighting scenes equally (96 episodes per model and wording). Goal columns show any-time rates over eight starts; hatching marks already-satisfied goals, which are included in overall rates. Scores do not verify which object moved.}
 \label{fig:goals}
 \end{figure}
 

@@ -5,7 +5,7 @@
   "normalized_pdf_text_matches": null,
   "overleaf_project": "https://www.overleaf.com/project/6ab2bdb39b30df4bbc98a15e",
   "overleaf_main": "main.tex",
-  "local_pdf_sha256": "340530a78f5dfb069eb6a41f17409c9662aec0449f23bf76b0aee2c2a930392f",
+  "local_pdf_sha256": "f986d1741b9975f2da51f49a66492235a02fe69b3cd39fcc8de64e5705af090d",
   "all_local_pages_visually_checked": true,
   "raw_results_modified": false,
   "new_policy_episodes_launched": 0,
@@ -44,14 +44,15 @@
     "file_count": 9,
     "main_document": "main.tex",
     "main_source_unchanged": true,
-    "extracted_build_pages": 5,
+    "extracted_build_pages": null,
     "main_text_pages": 4,
     "reference_pages": 1,
-    "normalized_pdf_text_matches_current_local": true,
-    "execution_montage_included": true
+    "normalized_pdf_text_matches_current_local": null,
+    "execution_montage_included": true,
+    "current_package_source_and_figures_byte_match": true
   },
   "overleaf_verification": {
-    "method": "Direct Overleaf Source Editor edit, full source readback, live compiler log and PDF preview",
+    "method": "Direct Overleaf Source Editor edits, exact source readback, figure replacements, live compiler log and rendered PDF preview",
     "compiler": "pdfLaTeX / TeX Live 2026",
     "main_text_pages": 4,
     "reference_pages": 1,
@@ -59,9 +60,9 @@
     "references_start_page": 5,
     "errors": 0,
     "warnings": 0,
-    "proof": "output/pdf/overleaf_intro_rewrite.png",
+    "proof": "output/pdf/overleaf_overall_rates.png",
     "pdf_download": "Not attempted; exact edited source was read back from Overleaf and compiled locally.",
-    "build": "1a0e4604f6f-b8d6b0d8d69ca425",
+    "build": "1a0e4781bbe-cee2f4672ec75b0b",
     "raw_log_notes": [
       "Nonfatal missing Hfootnote.1 destination from the author-block footnote; Overleaf UI reports zero warnings."
     ]
@@ -111,5 +112,30 @@
     "reference_pages": 1,
     "cited_sources": 14,
     "montage_page": 4
+  },
+  "overall_rate_revision": {
+    "figure": "Figure 2",
+    "overall_columns": [
+      "Stable placement at any time",
+      "Stable placement at episode end"
+    ],
+    "overall_columns_include_initially_satisfied_goals": true,
+    "episodes_per_model_and_wording": 96,
+    "weighting": "Equal scenes; goals averaged within each scene",
+    "weighted_rates_pooled": [
+      43.2,
+      21.8
+    ],
+    "weighted_rates_initially_unmet": [
+      26.8,
+      15.3
+    ],
+    "displayed_rates_independently_verified": 18,
+    "raw_outcomes_unchanged": true,
+    "main_text_pages": 4,
+    "reference_pages": 1,
+    "montage_page": 4,
+    "overleaf_edited_directly": true,
+    "violin_density_guide_label_removed": true
   }
 }

@@ -8,4 +8,6 @@ All-episode stable-ever S-I and D-S are the original confirmatory contrasts, wit
 
 `outcome_counts.csv` includes raw numerators/denominators and equally weighted rates; they need not agree because scenes have different numbers of goals. The heatmap has no achievement observations for S1-R, S3-R or S4-L; these are hatched, never displayed as zero success.
 
+The first two columns of `goal_response_by_form.pdf` show overall stable-ever and final-state rates for every model and instruction form, including initially satisfied goals. These rates give equal weight to scenes, averaging goals within each scene; each model/form has 96 episodes. The remaining columns show the original eight-start per-goal stable-ever rates. No outcomes or paired effects are changed.
+
 `paired_state_effects.csv` contains the 32 physical-state paired mean differences for each model and contrast, plus pooled state means (256 rows). The violin figure shows these observed discrete bounded means, vertical-only deterministic jitter, and an illustrative Gaussian KDE restricted to each group's observed extrema. It does not treat individual Bernoulli outcomes as continuous observations. Diamonds and intervals retain the unchanged paired means and state-bootstrap 95% intervals. The original forest display is retained as `wording_effect_forest.pdf`.

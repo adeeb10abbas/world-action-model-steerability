@@ -282,7 +282,7 @@ def figures(results):
         ax.set_xlabel("Paired state difference (percentage points)", fontsize=7.7)
     axes[0].set_yticks(range(4), [DISPLAY[m] for m in (*MODELS, "pooled")])
     fig.text(.5, .985, "Requested arrangement held for at least one second", ha="center", va="top", fontsize=9)
-    fig.text(.115, .045, "32 observed states per row · density guide · ◇ mean and 95% CI", fontsize=7.7)
+    fig.text(.115, .045, "32 matched starts per row · ◇ mean and 95% confidence interval", fontsize=7.7)
     fig.subplots_adjust(left=.115, right=.985, top=.80, bottom=.265, wspace=.24)
     fig.savefig(HERE / "figures/wording_effect.pdf")
     fig.savefig(HERE / "figures/wording_effect.png", dpi=220)
@@ -338,19 +338,25 @@ def figures(results):
     fig.savefig(HERE / "figures/goal_response.png", dpi=220)
     plt.close(fig)
 
-    # Optional taller figure exposes D/S/I heterogeneity directly (eight starts per cell).
+    # Overall rates use the same equal-scene weighting as the paired contrasts.
+    # Goal cells retain the eight-start breakdown and mark initially true goals.
     by_form = {(r["model"], r["scene"], r["goal"], r["form"]): r
                for r in results["goal_response_by_form"]}
-    fig, axes = plt.subplots(3, 1, figsize=(5.5, 3.0), sharex=True)
+    fig, axes = plt.subplots(3, 1, figsize=(6.2, 3.0), sharex=True)
     for model, ax in zip(MODELS, axes):
-        values = np.array([[np.nan if by_form[model, s, g, f]["rate"] is None
-                            else by_form[model, s, g, f]["rate"] for s, g in goals] for f in ("D", "S", "I")])
+        overall = np.array([[results["outcomes"][model]["all"][f][endpoint]["scene_goal_weighted_rate"]
+                             for endpoint in ("stable_ever", "stable_at_final")] for f in ("D", "S", "I")])
+        per_goal = np.array([[np.nan if by_form[model, s, g, f]["rate"] is None
+                              else by_form[model, s, g, f]["rate"] for s, g in goals] for f in ("D", "S", "I")])
+        values = np.column_stack((overall, per_goal))
+        assert values.shape == (3, 14) and np.all(overall[:, 1] <= overall[:, 0])
         im = ax.imshow(values, cmap=cmap, vmin=0, vmax=1, aspect="auto")
         for i in range(3):
-            for j in range(len(goals)):
+            for j in range(values.shape[1]):
                 value = values[i, j]
                 if np.isfinite(value):
-                    ax.text(j, i, f"{int(100*value+.5)}", ha="center", va="center", fontsize=7.5,
+                    label = f"{100*value:.1f}" if j < 2 else f"{int(100*value+.5)}"
+                    ax.text(j, i, label, ha="center", va="center", fontsize=7.5,
                             color="white" if value >= .57 else "#17383D")
                 else:
                     ax.add_patch(Rectangle((j-.5, i-.5), 1, 1, fill=False, hatch="////", edgecolor="#B8B8B8", linewidth=0))
@@ -358,26 +364,28 @@ def figures(results):
         ax.set_ylabel(DISPLAY[model], rotation=0, ha="right", va="center", labelpad=12,
                       fontsize=9, color=COLORS[model], weight="medium")
         ax.tick_params(axis="both", length=0)
-        ax.set_xticks(np.arange(-.5, len(goals)), minor=True)
+        ax.set_xticks(np.arange(-.5, values.shape[1]), minor=True)
         ax.set_yticks(np.arange(-.5, 3), minor=True)
         ax.grid(which="minor", color="white", linewidth=.8)
         ax.tick_params(which="minor", bottom=False, left=False)
-        for boundary in (3.5, 6.5, 9.5):
+        for boundary in (1.5, 5.5, 8.5, 11.5):
             ax.axvline(boundary, color="white", lw=2.5)
+        ax.axvline(1.5, color="#52656B", lw=.7)
         for spine in ax.spines.values():
             spine.set_visible(False)
-    axes[-1].set_xticks(range(len(goals)), [labels[g] for _, g in goals], fontsize=7)
-    offset = 0
+    axes[-1].set_xticks(range(values.shape[1]), ["Any\ntime", "At\nend"] + [labels[g] for _, g in goals], fontsize=7)
+    axes[0].text(.5, -.9, "Overall", ha="center", va="bottom", fontsize=7.5, weight="bold")
+    offset = 2
     for scene, title in zip(SCENES, ("Cube / bowl", "Butter / raisin", "Mustard / raisin", "Bowl stacking")):
         n = len(GOALS[scene])
         axes[0].text(offset+(n-1)/2, -.9, title, ha="center", va="bottom", fontsize=7.5)
         offset += n
-    fig.subplots_adjust(left=.16, right=.88, top=.87, bottom=.25, hspace=.16)
-    cbax = fig.add_axes([.905, .25, .016, .62])
+    fig.subplots_adjust(left=.12, right=.905, top=.87, bottom=.25, hspace=.16)
+    cbax = fig.add_axes([.925, .25, .012, .62])
     cb = fig.colorbar(im, cax=cbax, ticks=(0, .5, 1))
     cb.ax.set_yticklabels(("0", "50", "100"), fontsize=7.5)
     cb.outline.set_visible(False)
-    fig.text(.16, .045, "Requested arrangement held for at least one second (%)", fontsize=8)
+    fig.text(.12, .045, "Stable-placement rate (%) · goal columns: any time during the episode", fontsize=8)
     fig.savefig(HERE / "figures/goal_response_by_form.pdf")
     fig.savefig(HERE / "figures/goal_response_by_form.png", dpi=220)
     plt.close(fig)
@@ -433,6 +441,10 @@ def main():
         "`outcome_counts.csv` includes raw numerators/denominators and equally weighted rates; they need not agree "
         "because scenes have different numbers of goals. The heatmap has no achievement observations for S1-R, "
         "S3-R or S4-L; these are hatched, never displayed as zero success.\n\n"
+        "The first two columns of `goal_response_by_form.pdf` show overall stable-ever and final-state rates "
+        "for every model and instruction form, including initially satisfied goals. These rates give equal weight "
+        "to scenes, averaging goals within each scene; each model/form has 96 episodes. The remaining columns "
+        "show the original eight-start per-goal stable-ever rates. No outcomes or paired effects are changed.\n\n"
         "`paired_state_effects.csv` contains the 32 physical-state paired mean differences for each model and "
         "contrast, plus pooled state means (256 rows). The violin figure shows these observed discrete bounded "
         "means, vertical-only deterministic jitter, and an illustrative Gaussian KDE restricted to each group's "
