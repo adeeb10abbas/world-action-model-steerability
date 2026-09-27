@@ -1,0 +1,114 @@
+{
+  "date": "2026-09-27",
+  "selection": "First lexicographic discordant pair per goal and direction specified in VIDEO_REQUEST.md before videos were inspected; examples are outcome-selected, not representative frequency estimates.",
+  "sources": [
+    {
+      "episode_id": "RWS-E3-S4-C02-R-S",
+      "remote_path": "/data/users/ali/rws-20260926/runs/episodes/RWS-E3-S4-C02-R-S/attempts/RWS-E3-S4-C02-R-S.20260927T030910.211247-alia40b-a40-2gpu.834826/exec_head_camera.mkv",
+      "sha256": "2e8abf6cc0b46d624548eafdb75aa4d70509062c9b970eeb5d0f6054a763337f",
+      "source_verified": true,
+      "video": {
+        "width": 1280,
+        "height": 720,
+        "r_frame_rate": "15/1",
+        "nb_read_frames": "601"
+      }
+    },
+    {
+      "episode_id": "RWS-E3-S4-C02-R-I",
+      "remote_path": "/data/users/ali/rws-20260926/runs/episodes/RWS-E3-S4-C02-R-I/attempts/RWS-E3-S4-C02-R-I.20260927T030304.211247-alia40b-a40-2gpu.834826/exec_head_camera.mkv",
+      "sha256": "d860f70a8f2d32fc4628aa73f7d7a9e9bffff5e849090c63efa7841f71852bf2",
+      "source_verified": true,
+      "video": {
+        "width": 1280,
+        "height": 720,
+        "r_frame_rate": "15/1",
+        "nb_read_frames": "601"
+      }
+    },
+    {
+      "episode_id": "RWS-N3-S1-C01-B-S",
+      "remote_path": "/data/users/ali/rws-20260926/runs/episodes/RWS-N3-S1-C01-B-S/attempts/RWS-N3-S1-C01-B-S.20260927T040651.211247-alia40i-a40-1gpu.114390/exec_head_camera.mkv",
+      "sha256": "786b538381a2a37fec9a8dd1e9cb844a926428c9f14cb17bad82a5e00a1b870a",
+      "source_verified": true,
+      "video": {
+        "width": 1280,
+        "height": 720,
+        "r_frame_rate": "15/1",
+        "nb_read_frames": "451"
+      }
+    },
+    {
+      "episode_id": "RWS-N3-S1-C01-B-I",
+      "remote_path": "/data/users/ali/rws-20260926/runs/episodes/RWS-N3-S1-C01-B-I/attempts/RWS-N3-S1-C01-B-I.20260927T035616.211247-alia40i-a40-1gpu.114390/exec_head_camera.mkv",
+      "sha256": "f3a663d7bfc6894b71212b1726825e672bc7a6ceeed90f334182118ba802790f",
+      "source_verified": true,
+      "video": {
+        "width": 1280,
+        "height": 720,
+        "r_frame_rate": "15/1",
+        "nb_read_frames": "451"
+      }
+    }
+  ],
+  "frames": [
+    {
+      "file": "figures/execution_frames/a_start.png",
+      "episode_id": "RWS-E3-S4-C02-R-S",
+      "frame_index": 0,
+      "time_s": 0.0,
+      "sha256": "976ce2360b81609bea0843f4a0af037520c27f5c35bc8b6a041da61aeaa33b6e"
+    },
+    {
+      "file": "figures/execution_frames/a_s.png",
+      "episode_id": "RWS-E3-S4-C02-R-S",
+      "frame_index": 600,
+      "time_s": 40.0,
+      "sha256": "fa2626c6dc59d543d770cdbcf086c9ee8d2c807675d4cfb5d7576d8976e1afed"
+    },
+    {
+      "file": "figures/execution_frames/a_i.png",
+      "episode_id": "RWS-E3-S4-C02-R-I",
+      "frame_index": 600,
+      "time_s": 40.0,
+      "sha256": "d5f90fd5459926b488b374dfcd417011c26ea54a1a9e1efcaf6a3cf0a20938a6"
+    },
+    {
+      "file": "figures/execution_frames/b_start.png",
+      "episode_id": "RWS-N3-S1-C01-B-S",
+      "frame_index": 0,
+      "time_s": 0.0,
+      "sha256": "e3d54074261099a3d3c362d9548aad811ae25f3c2d74ab5f0f397ce86c55b93d"
+    },
+    {
+      "file": "figures/execution_frames/b_s.png",
+      "episode_id": "RWS-N3-S1-C01-B-S",
+      "frame_index": 381,
+      "time_s": 25.4,
+      "sha256": "ddba058925c197cb812e9892db874c719177a16f5350f8feaccbb50e93b889f7"
+    },
+    {
+      "file": "figures/execution_frames/b_i.png",
+      "episode_id": "RWS-N3-S1-C01-B-I",
+      "frame_index": 381,
+      "time_s": 25.4,
+      "sha256": "786f5abd42d7d7189faf0b79d0c6c35cc9d7dd84b0fe8d89f79ec0da35f146a1"
+    }
+  ],
+  "display_transform": {
+    "crop_xyxy": [
+      380,
+      100,
+      920,
+      635
+    ],
+    "rotation_degrees_counterclockwise": 90,
+    "uniform_across_all_panels": true,
+    "objects_retouched": false
+  },
+  "notes": [
+    "Original full-frame PNGs retained in execution_frames; original MKVs retained under ignored tmp/paper_montage.",
+    "PairA uses final frame40s. PairB uses25.4s, completion of the first qualifying dwell in I; S shown at the same time.",
+    "Full-view contact sheets checked before captioning. No new simulator or policy episodes."
+  ]
+}

@@ -1,6 +1,6 @@
 # Matched execution videos requested for the paper
 
-Read-only extraction request for the cluster agent. Do not run policies, alter episodes, or regenerate simulator trajectories. Sources below come from the committed result receipts at branch commit `750e8a0`; actual recordings remain on the cluster. These videos have not yet been visually reviewed here.
+Read-only extraction request for the cluster agent. Do not run policies, alter episodes, or regenerate simulator trajectories. Sources below come from the committed result receipts at branch commit `750e8a0`; actual recordings remain on the cluster. The four original head-camera recordings were retrieved and their hashes verified on September 27, 2026. Full-view contact sheets and selected original frames were visually inspected for the paper montage.
 
 ## Selection rule
 
@@ -123,3 +123,9 @@ The registered stable endpoint checks the requested relation, support/containmen
 Exploratory counts from the existing committed results, using frozen-registry achievement strata: among 167 achievement episodes with a stable dwell, 12 have no recorded target-gripper contact, 15 have no detected target lift, and 50 move the reference by more than 2 cm. All 15 no-lift cases also exceed the reference-displacement threshold. Per-model `(stable passes, no target contact, no lift, reference >2 cm)` counts are N3 `(70, 9, 10, 13)`, E3 `(21, 1, 1, 3)`, and F3 `(76, 2, 4, 34)`. These are overlapping categories. Absence of lift alone is not failure: pushing may satisfy a lateral goal, and support objects may move through physical contact. Do not introduce these observations as retrospective exclusions from the registered endpoint.
 
 All seven cube-behind I passes are Nano episodes with no detected cube lift; six also have no recorded cube-gripper contact, while the bowl moves 23.3–38.9 cm. Pair B was selected before inspecting its video and must remain in the montage. Verify its actual motion from the full recording before attributing intent or a specific grasp failure.
+
+## Completed paper-figure extraction (September 27, 2026)
+
+Both pairs above are included in Figure 3. Pair A is shown at 0 and 40 s; Pair B at 0 and 25.4 s (the first I qualifying interval completion). Each S/I pair uses the same snapshot time. The selected Pair B I frame shows the gripper holding the bowl while the cube remains beside the banana; its S frame shows the cube inside the bowl. These visual observations are narrower than a complete account of the trajectory.
+
+For print legibility, the paper figure differs from the original full-video request: it uses the same crop `(380, 100, 920, 635)` in the original 1280×720 frame and a 90-degree counterclockwise rotation in every panel. Full-frame source PNGs remain in `figures/execution_frames/`, and original MKVs remain locally in ignored `tmp/paper_montage/`. All transformations and original hashes are recorded in `analysis/execution_examples_receipt.json`. Full-length MP4 derivatives, composites, and synchronized playback montages have not been produced in this figure revision.

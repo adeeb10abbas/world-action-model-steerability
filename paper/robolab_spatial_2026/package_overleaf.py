@@ -12,6 +12,7 @@ source = source.replace(r"\graphicspath{{figures/}}", "")
 source = source.replace("scene_mustard.jpg", "rws_scene_mustard.jpg")
 source = source.replace("wording_effect.pdf", "rws_wording_effect.pdf")
 source = source.replace("goal_response_by_form.pdf", "rws_goal_response.pdf")
+source = source.replace("execution_examples.pdf", "rws_execution_examples.pdf")
 source = source.replace(r"\bibliography{references}", r"\bibliography{rws_references}")
 (bundle / "rws_main.tex").write_text(source)
 files = {
@@ -19,6 +20,7 @@ files = {
     "corl_2026.sty": "corl_2026.sty",
     "corlabbrvnat.bst": "corlabbrvnat.bst",
     "scene_mustard.jpg": "rws_scene_mustard.jpg",
+    "figures/execution_examples.pdf": "rws_execution_examples.pdf",
     "figures/wording_effect.pdf": "rws_wording_effect.pdf",
     "figures/goal_response_by_form.pdf": "rws_goal_response.pdf",
 }

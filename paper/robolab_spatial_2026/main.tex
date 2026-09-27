@@ -80,33 +80,35 @@ Naming the target first in the spatial relation leads to more stable outcomes th
 
 \begin{figure}[!ht]
 \centering
-\includegraphics[width=\linewidth]{wording_effect.pdf}
+\includegraphics[width=.94\linewidth]{wording_effect.pdf}
 \caption{Paired wording effects. Positive S$-$I favors mover-first descriptions; D$-$S compares direct and expanded wording. Each dot averages paired differences over goals within one start (also over models in the pooled row). Shading guides the eye; diamonds and bars show means and 95\% state-bootstrap intervals. Model-level intervals are descriptive.}
 \label{fig:wording}
 \end{figure}
 
 \paragraph{A few relations drive the average.}
-The largest pooled gap is for mustard-right, with the same direction in all three models. The pooled descriptive gap remains positive when bowl stacking is excluded. In contrast, the cube scene has no aggregate S/I difference, and cube-behind actually favors the reference-first form under the recorded metric. Figure~\ref{fig:goals} exposes these differences: performance varies with the particular scene, relation, and model. This does not establish a general inability to interpret spatial relations.
+Mustard-right produces the largest pooled gap, with the same direction in all three models. The pooled descriptive gap remains positive when bowl stacking is excluded. The cube scene, however, has no average S/I difference, and cube-behind favors reference-first wording under the recorded metric (Figure~\ref{fig:goals}).
 
-
-
-\paragraph{The success definition changes the interpretation.}
-Roughly half of episodes with a stable outcome no longer meet the same conditions at the end. This measures retention under continued control, not performance with success-triggered stopping. Object roles also matter. All seven reference-first cube-behind passes come from Nano episodes with no detected cube lift and substantial bowl displacement. These summaries establish the relation, not that the cube was moved as instructed. A relation score alone cannot distinguish the requested manipulation from movement of the reference.
+\begin{figure}[!htb]
+\centering
+\includegraphics[width=.90\linewidth]{goal_response_by_form.pdf}
+\caption{Stable outcomes by goal and wording, with eight starts per cell. Hatching marks initially satisfied goals. Scores do not verify complete instruction following.}
+\label{fig:goals}
+\end{figure}
 
 \clearpage
 \begin{figure}[!ht]
 \centering
-\includegraphics[width=\linewidth]{goal_response_by_form.pdf}
-\caption{Reaching a stable spatial arrangement, by goal and wording. Each colored cell has eight starts; hatching marks initially satisfied goals. Relation passes do not verify complete instruction execution, and bowl wording has a support/containment ambiguity.}
-\label{fig:goals}
+\includegraphics[width=\linewidth]{execution_examples.pdf}
+\caption{Matched executions under two descriptions of the same goal. (a) Edge reaches mustard-right only with mover-first wording. (b) Nano reaches the scored cube-behind relation while moving the bowl; the relation is lost by episode end. Snapshots use the same times within each pair. A shared crop and rotation improve visibility; directions refer to the robot. Examples were selected for their contrasting scores.}
+\label{fig:examples}
 \end{figure}
 
 \section{Discussion}
-An instruction specifies both a desired arrangement and an intervention: which object to move to produce it. Equivalent descriptions should preserve these requirements, even when successful trajectories differ. Our paired comparisons show that this consistency cannot be assumed. Shared starts rule out scene difficulty as the sole explanation for the wording gap, but cannot separate a misinterpreted goal from different object selection or execution of an otherwise correct plan.
+An instruction specifies both a desired arrangement and which object should move to produce it. Equivalent descriptions should preserve both requirements, even when trajectories differ. Shared starts rule out scene difficulty as the sole explanation for the wording gap. They do not identify whether a model selects the wrong goal, selects the wrong object, or fails to execute a correct plan.
 
-Mustard-right and cube-behind show why an average is insufficient. Inversion reduces stable outcomes for the former yet improves the relation score for the latter, where passes coincide with substantial bowl displacement. Even a higher score need not establish better instruction following. Evaluation should distinguish whether the requested arrangement was reached, whether the intended manipulation was performed, and whether the arrangement was retained under continued control. These are distinct requirements for reliable behavior.
+Figure~\ref{fig:examples} illustrates why a higher placement score need not mean better instruction following: Nano reaches the relation by moving the bowl while the cube remains on the table. Roughly half of all episodes with a stable outcome also lose it before the end. Evaluation should distinguish reaching the arrangement, performing the intended manipulation, and retaining it under continued control.
 
-For world--action models, this raises a question beyond whether predicted futures look plausible: do prediction and action remain consistent with the intended intervention across descriptions? Our behavioral measurements cannot answer it. A useful next test would determine whether wording changes the predicted goal or object motion, and whether execution agrees with that prediction. This requires aligned predictions and executions, with vocabulary and argument order tested separately. Bowl support/containment ambiguity further limits equivalence claims. The aim is to locate failures within instruction following, rather than infer understanding from a relation score alone.
+For world--action models, the next question is whether these failures already appear in predicted futures. Does wording change the predicted object or destination, or does execution depart from an appropriate prediction? Our behavioral results cannot distinguish those cases. Answering requires aligned predictions and executions, and separate changes to relation vocabulary and argument order. The bowl support/containment ambiguity further limits claims of equivalent instructions.
 
 \clearpage
 \bibliography{references}
