@@ -12,6 +12,7 @@ Target: [Do Robots Need World Models? at CoRL 2026](https://do-robots-need-world
 - `scene_mustard.jpg`: unmodified pilot scene image from `docs/robolab-workshop-20260926/scene_images/S4.jpg`; illustrative asset view, not a claimed confirmation episode.
 - `analysis/`: corrected derived strata, unchanged physical outcomes, exact plot data and provenance.
 - `RELATED_WORK_NOTES.md`, `references.bib`: primary-source checks and published-paper structure examples.
+- `REVIEW_20260927.md`: reviewer assessment, communication fixes, and remaining evidence needed to strengthen the paper.
 - `VIDEO_REQUEST.md`: exact four server recordings and montage requirements. No videos have yet been inspected locally or incorporated into the paper.
 - `../../output/pdf/same_goal_different_words.pdf`: compiled draft.
 - `../../output/pdf/same_goal_different_words_overleaf.zip`: seven-file upload bundle.
