@@ -2,7 +2,7 @@
 
 **Same Goal, Different Words: Spatial Instruction Sensitivity in World–Action Models**
 
-Target: [Do Robots Need World Models? at CoRL 2026](https://do-robots-need-world-models.github.io/). This is an editable research draft, not a submission. The entire PDF, including references, is four pages. It uses the official CoRL 2026 style in `preprint` mode; authors remain anonymous until the author list is supplied. Before submission, confirm the workshop's anonymization and reference-page rules and use its requested mode. No authorship, acceptance, or award is implied.
+Target: [Do Robots Need World Models? at CoRL 2026](https://do-robots-need-world-models.github.io/). This is an editable research draft, not a submission. The entire PDF, including references, is four pages. This is a conservative drafting choice: the workshop website says only “Up to 4 pages, CoRL template” and does not specify whether references count (rechecked September 27, 2026). The linked OpenReview page did not expose an additional rule. It uses the official CoRL 2026 style in `preprint` mode; authors remain anonymous until the author list is supplied. Before submission, confirm the workshop's anonymization and reference-page rules and use its requested mode. No authorship, acceptance, or award is implied.
 
 ## Files
 
