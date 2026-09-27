@@ -66,7 +66,7 @@ def _png_b64(arr: np.ndarray) -> str:
 
 
 def forecast_frames(pdir: Path, n_total: int) -> tuple[list[int], list[np.ndarray]]:
-    raw = subprocess.run([FFMPEG, "-hide_banner", "-loglevel", "error", "-i", str(pdir / "forecast.mkv"), "-f", "rawvideo",
+    raw = subprocess.run([FFMPEG, "-nostdin", "-hide_banner", "-loglevel", "error", "-i", str(pdir / "forecast.mkv"), "-f", "rawvideo",
                           "-pix_fmt", "rgb24", "-"], capture_output=True, check=True).stdout
     video = np.frombuffer(raw, np.uint8).reshape(-1, H, W, 3)
     idx = sorted(set(np.linspace(0, len(video) - 1, min(N_FRAMES, len(video))).round().astype(int).tolist()))
@@ -98,9 +98,10 @@ class Client:
                 "messages": [{"role": "system", "content": SYSTEM}, {"role": "user", "content": parts}],
                 "response_format": {"type": "json_schema", "json_schema": {"name": "forecast_label", "schema": sch, "strict": True}},
                 **self.extra}
-        data = json.dumps(body).encode()
         err = None
         for attempt in range(retries):
+            # Retries after a failed deterministic call sample at low temperature with a new seed.
+            data = json.dumps(body if attempt == 0 else {**body, "temperature": 0.2, "seed": attempt}).encode()
             with self.lock:
                 ep = next(self.cycle)
             try:
@@ -147,6 +148,10 @@ def _packets(annotation: Path) -> list[Path]:
 def label(args) -> None:
     client = Client(args.endpoints.split(","), args.model, json.loads(args.extra_body))
     todo = [p for p in _packets(args.annotation) if p.name not in _done(args.out)]
+    if args.ids:
+        want = [x.strip() for x in args.ids.read_text().split() if x.strip()]
+        pos = {a: i for i, a in enumerate(want)}
+        todo = sorted((p for p in todo if p.name in pos), key=lambda p: pos[p.name])
     if args.limit:
         todo = todo[:args.limit]
     print(f"{len(todo)} packets to label with {args.model}", flush=True)
@@ -206,6 +211,36 @@ def adjudicate(args) -> None:
     _run(todo, one, args.out, args.concurrency)
 
 
+def clean(args) -> None:
+    """Latest successful record per annotation id, rubric fields only, for annotation.py unblind."""
+    recs = _load(args.src)
+    with open(args.dest, "w") as f:
+        for aid in sorted(recs):
+            f.write(json.dumps({"annotation_id": aid, **{k: recs[aid][k] for k in FIELDS}}, sort_keys=True) + "\n")
+    print(f"{len(recs)} labels -> {args.dest}")
+
+
+def agreement(args) -> None:
+    """Per-field raw agreement and Cohen's kappa between the two independent labelers, by window."""
+    a, b = (_load(p) for p in args.labels)
+    key = {k["annotation_id"]: k for k in (json.loads(x) for x in (args.annotation / "_key" / "key.jsonl").read_text().splitlines())
+           if k.get("annotation_id")}
+    out = {}
+    for window in ("primary", "request0", "all"):
+        ids = [i for i in sorted(set(a) & set(b)) if window == "all" or key[i]["window"] == window]
+        res = {"n": len(ids)}
+        for f in FIELDS:
+            xa, xb = [a[i][f] for i in ids], [b[i][f] for i in ids]
+            po = sum(p == q for p, q in zip(xa, xb)) / max(len(ids), 1)
+            cats = set(xa) | set(xb)
+            pe = sum((xa.count(c) / len(ids)) * (xb.count(c) / len(ids)) for c in cats) if ids else 0.0
+            res[f] = {"agreement": round(po, 4), "kappa": round((po - pe) / (1 - pe), 4) if pe < 1 else None}
+        res["all_fields_agree"] = round(sum(all(a[i][f] == b[i][f] for f in FIELDS) for i in ids) / max(len(ids), 1), 4)
+        out[window] = res
+    args.dest.write_text(json.dumps(out, indent=2))
+    print(json.dumps(out["primary"], indent=1))
+
+
 def main() -> None:
     ap = argparse.ArgumentParser()
     sub = ap.add_subparsers(dest="cmd", required=True)
@@ -220,10 +255,18 @@ def main() -> None:
         s.add_argument("--limit", type=int, default=0)
         if name == "label":
             s.add_argument("--labeler", required=True)
+            s.add_argument("--ids", type=Path, default=None, help="optional file of annotation ids, processed in order")
         else:
             s.add_argument("--labels", type=Path, nargs=2, required=True)
+    c = sub.add_parser("clean")
+    c.add_argument("--src", type=Path, required=True)
+    c.add_argument("--dest", type=Path, required=True)
+    g = sub.add_parser("agreement")
+    g.add_argument("--annotation", type=Path, required=True)
+    g.add_argument("--labels", type=Path, nargs=2, required=True)
+    g.add_argument("--dest", type=Path, required=True)
     args = ap.parse_args()
-    {"label": label, "adjudicate": adjudicate}[args.cmd](args)
+    {"label": label, "adjudicate": adjudicate, "clean": clean, "agreement": agreement}[args.cmd](args)
 
 
 if __name__ == "__main__":

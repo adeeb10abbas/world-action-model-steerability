@@ -1,6 +1,11 @@
 # RoboLab workshop paper and cluster handoff
 
-**Ready to share with execution agents; no new experiments have started.** Start with the scene/prompt catalog to understand the study, or the cluster handoff to implement it.
+**Status (September 27, 2026): confirmation complete, with 864 of 864 valid episodes; analysis done.** Results are in
+[RESULTS.md](RESULTS.md); amendments A1–A11 and the run log are in [EXECUTION_RECORD.md](EXECUTION_RECORD.md); the
+four-page draft is [PAPER_DRAFT.md](PAPER_DRAFT.md). Compact evidence is in
+[`artifacts/robolab_workshop_20260926/`](../../artifacts/robolab_workshop_20260926/).
+
+The documents below are the original pre-execution design and handoff, left unchanged.
 
 The fixed research question is: **Can a world-action model's predicted future help distinguish following the wrong goal from failing to execute the right one?**
 

@@ -5,7 +5,8 @@ files = ["states/accepted_states.json", "states/state_candidates.jsonl", "releas
          "release/analysis_freeze.json", "release/EXECUTION_RECORD.at_release.md", "release/bound_confirmation_episodes.jsonl",
          "annotation/build_receipt.json", "annotation/ANNOTATION_INSTRUCTIONS.md"]
 for pat in ["states/_scripted*/*/scripted_attempts.jsonl", "states/_candidates/*/proposals.jsonl", "dev/servers/*/server_receipt.json",
-            "runs/lanes/*.jsonl", "analysis/*.json", "analysis/*.jsonl", "results/*", "annotation/labels_vlm_*.jsonl",
+            "runs/lanes/*.jsonl", "analysis/*.json", "analysis/*.jsonl", "results/*", "results_vlm/*", "annotation/labels_vlm_*.jsonl", "annotation/vlm_agreement.json",
+            "annotation/_key/key.jsonl", "annotation/disagreements.jsonl",
             "vlm/*.json"]:
     files += sorted(glob.glob(pat))
 for d in sorted(glob.glob("runs/episodes/*")):

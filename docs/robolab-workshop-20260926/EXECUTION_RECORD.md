@@ -142,3 +142,37 @@ section were read).**
   capacity.
 - Tooling: `annotation.py build` gained `--shard/--nshards` and a `finalize` step so the 1,726 packets could be
   built on 32 processes. Packet contents and opaque IDs are unchanged.
+
+## A11 results note: automated labeling completed (September 27, 2026)
+
+**Runs**
+- Both labelers labeled all 1,726 packets: labeler A (Qwen3-VL-235B) in 973 s, labeler B (GLM-4.5V) in 980 s.
+  Neither had any residual failure.
+- Adjudication covered the 1,656 packets where the two labelers disagreed on at least one field.
+  - One packet (`Afb978a9bcc38`) repeatedly returned output that could not be parsed at temperature 0.
+  - To fix this, `vlm_label.py` now retries a failed call at temperature 0.2 with a new seed. The retry changes only
+    calls whose deterministic attempt failed; that one packet was then adjudicated.
+  - Every raw attempt, including the error record, is kept in `labels_vlm_adjudicated_raw.jsonl`.
+- Infrastructure fix: `finish_vlm.sh` was first piped to the pod on stdin. ffmpeg consumed that stdin, which
+  truncated the script after adjudication. ffmpeg now runs with `-nostdin`, and the script runs from a file. No
+  labels were affected.
+
+**Agreement**
+- Agreement between the two labelers is low. On primary windows, κ is 0.40 for moving object, 0.11 for direction
+  and 0.08 for visible final relation. All fields agree in only 5.9% of packets. Request-0 windows are lower still.
+- The adjudicator is labeler A and chose labeler A's value more often for relations (438 vs 213). For direction it
+  chose labeler B's value more often (267 vs 173). Adjudicated labels therefore lean toward A but do not simply copy
+  it.
+- The A11 decision was made before any VLM output was seen. The agreement statistics were computed after
+  labeling. No labeling prompt, schema or model was changed in response to agreement or outcomes.
+
+**Outcome**
+- E1 is null: Δ Brier = −0.0007, 95% CI [−0.0018, +0.0002], with 47 events in 864 episodes. It cannot be told
+  apart from the permuted-label control A4.
+- Given the label reliability, this is reported as "no detectable diagnostic gain from automatically labeled
+  forecasts". It is not evidence that the forecasts contain no information.
+- The event-rate split by the forecast's moving object (reference 9.3% vs mover 3.5%) was computed after the
+  results and is labeled exploratory in `RESULTS.md`.
+
+**Shutdown:** all vLLM servers on the four B200 pods were stopped by pid, and their GPUs were confirmed at 0 MiB.
+
