@@ -1,7 +1,7 @@
 {
   "date": "2026-09-27",
   "local_pages": 5,
-  "overleaf_pages": null,
+  "overleaf_pages": 5,
   "normalized_pdf_text_matches": null,
   "overleaf_project": "https://www.overleaf.com/project/6ab2bdb39b30df4bbc98a15e",
   "overleaf_main": "main.tex",
@@ -22,7 +22,7 @@
     "overleaf_download": "steering_wams (4).pdf",
     "normalized_pdf_text_matches": true
   },
-  "overleaf_sync_status": "blocked_upload_declined_again_after_chat_approval",
+  "overleaf_sync_status": "synced_compiled_and_visually_verified",
   "execution_montage_included": true,
   "montage_source_videos_verified": 4,
   "montage_source_frames": 6,
@@ -30,14 +30,15 @@
   "overleaf_cleanup": {
     "project_title": "Same Goal, Different Words",
     "archive_project": "https://www.overleaf.com/project/6ab923cb15e3037e3feebc32",
-    "remaining_file_count": 7,
+    "remaining_file_count": 9,
     "obsolete_files_removed": 16,
     "compilation_errors": 0,
     "compilation_warnings": 0,
     "visible_pdf_pages": 5,
-    "montage_present": false,
-    "proof": "output/pdf/overleaf_cleaned.png",
-    "sharing_permissions_changed": false
+    "montage_present": true,
+    "proof": "output/pdf/overleaf_draft.png",
+    "sharing_permissions_changed": false,
+    "superseded_assets_removed_after_sync": 4
   },
   "clean_package": {
     "file_count": 9,
@@ -48,5 +49,18 @@
     "reference_pages": 1,
     "normalized_pdf_text_matches_current_local": true,
     "execution_montage_included": true
+  },
+  "overleaf_verification": {
+    "method": "Live Overleaf compiler log and rendered PDF preview",
+    "compiler": "pdfLaTeX / TeX Live 2026",
+    "main_text_pages": 4,
+    "reference_pages": 1,
+    "montage_page": 4,
+    "references_start_page": 5,
+    "errors": 0,
+    "warnings": 0,
+    "build": "1a0e434ca07-1fc5ff59cdb866ac",
+    "proof": "output/pdf/overleaf_draft.png",
+    "pdf_download": "Browser download timed out; no new downloaded-PDF text comparison claimed."
   }
 }
