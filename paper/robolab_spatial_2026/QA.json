@@ -5,7 +5,7 @@
   "normalized_pdf_text_matches": null,
   "overleaf_project": "https://www.overleaf.com/project/6ab2bdb39b30df4bbc98a15e",
   "overleaf_main": "main.tex",
-  "local_pdf_sha256": "ed6580b42ac7f7a253a54503da035c31d1e51247315434650ea81aa41fd5088f",
+  "local_pdf_sha256": "3b5f2aa868f824a5954b3891e24daaca10e07969bece7d9b5fb0bf43e1345767",
   "all_local_pages_visually_checked": true,
   "raw_results_modified": false,
   "new_policy_episodes_launched": 0,
@@ -52,7 +52,7 @@
     "current_package_source_and_figures_byte_match": true
   },
   "overleaf_verification": {
-    "method": "Direct Overleaf paragraph edit, exact full-source readback, successful live compilation and page-4 preview",
+    "method": "Direct Overleaf abstract, introduction, discussion and conclusion edits; exact full-source readback; successful live compilation and PDF preview",
     "compiler": "pdfLaTeX / TeX Live 2026",
     "main_text_pages": 4,
     "reference_pages": 1,
@@ -60,9 +60,9 @@
     "references_start_page": 5,
     "errors": 0,
     "warnings": 0,
-    "proof": "output/pdf/overleaf_discussion_rewrite.png",
+    "proof": "output/pdf/overleaf_utility_revision.png",
     "pdf_download": "Not attempted; exact edited source was read back from Overleaf and compiled locally.",
-    "build": "1a0e4846150-9d12e86a3eb294d7",
+    "build": "1a0e48dde19-73ef79e2cb58cebf",
     "raw_log_notes": [
       "Nonfatal missing Hfootnote.1 destination from the author-block footnote; Overleaf UI reports zero warnings."
     ]
@@ -147,5 +147,25 @@
     "reference_pages": 1,
     "montage_page": 4,
     "raw_results_unchanged": true
+  },
+  "utility_revision": {
+    "sections": [
+      "Abstract",
+      "Introduction",
+      "Discussion",
+      "Conclusion"
+    ],
+    "abstract_opens_with_research_problem": true,
+    "benefits": [
+      "Identifying wording-sensitive relations for model testing",
+      "Checking when placement scores overstate instruction following"
+    ],
+    "overleaf_edited_directly": true,
+    "methods_results_figures_unchanged": true,
+    "main_text_pages": 4,
+    "reference_pages": 1,
+    "conclusion_page": 4,
+    "montage_page": 4,
+    "cited_source_count": 14
   }
 }

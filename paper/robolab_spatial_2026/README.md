@@ -88,3 +88,7 @@ The rates describe the existing placement score, which does not verify that the 
 ## Discussion ending
 
 The final paragraph now explains the implications of the findings: a changed goal should change behavior, while equivalent descriptions should preserve the intended object and arrangement. It motivates evaluating multiple descriptions per goal instead of ending with speculative forecast analysis and a list of exclusions. The rewrite was made directly in Overleaf; the existing Methods caveat about bowl wording, all fourteen cited sources, the montage, and the four-page main-text layout remain.
+
+## Utility and conclusion
+
+The abstract now opens with the research problem: success under one instruction can conceal sensitivity to another description of the same goal. The introduction identifies uses for model developers and benchmark designers. Discussion connects the relation-specific results to targeted testing and the execution/retention findings to better success criteria. A short Conclusion brings these uses together. These are proposed uses of the existing evidence, not claims of a tested training intervention or an internal mechanism. The revision was made directly in Overleaf; the four-page main text, all figures, the montage, and fourteen references remain.
