@@ -1,5 +1,6 @@
 """Compose revision figures from preserved simulation frames; source pixels unchanged."""
 from pathlib import Path
+import argparse
 import importlib.util
 import matplotlib
 matplotlib.use('Agg')
@@ -9,16 +10,25 @@ HERE=Path(__file__).resolve().parent
 spec=importlib.util.spec_from_file_location('original',HERE/'generate_execution_examples.py')
 m=importlib.util.module_from_spec(spec);spec.loader.exec_module(m)
 out=HERE/'revision_assets';out.mkdir(exist_ok=True)
+parser=argparse.ArgumentParser(description=__doc__)
+parser.add_argument('--only',choices=('all','cube'),default='all')
+args=parser.parse_args()
 for i,name in enumerate(('mustard','cube')):
+    if args.only == 'cube' and name != 'cube':
+        continue
     row=dict(m.ROWS[i]);row['top']=2.34
     row['title']=row['title'][4:]
     row['headings']=tuple(x.replace('Mover-first','Target-first') for x in row['headings'])
+    if name == 'cube':
+        row['outcomes']=tuple(x.replace('Relation reached; bowl moved','Reached by moving the bowl') for x in row['outcomes'])
     m.ROWS=(row,);m.HEIGHT=2.4
     # Reload the immutable original definitions before the next row.
     m.render(HERE/'figures/execution_frames',out)
     (out/'execution_examples.pdf').replace(out/f'rev_execution_{name}.pdf')
     (out/'execution_examples.png').replace(out/f'rev_execution_{name}.png')
     spec.loader.exec_module(m)
+if args.only == 'cube':
+    raise SystemExit(0)
 plt.rcParams.update({'font.family':'DejaVu Sans','font.size':10,'pdf.fonttype':42})
 fig,axs=plt.subplots(3,2,figsize=(7.2,6.5))
 for i,(key,title) in enumerate((('a','Edge: mustard right of the box'),('b','Nano: cube behind the bowl'))):
