@@ -1,0 +1,117 @@
+\documentclass{article}
+\usepackage{xcolor}
+\usepackage[preprint]{corl_2026}
+\usepackage{graphicx,booktabs,amsmath,microtype}
+\usepackage[T1]{fontenc}
+\graphicspath{{figures/}}
+\definecolor{mover}{HTML}{147D92}
+\definecolor{reference}{HTML}{C46635}
+\title{Same Goal, Different Words:\\Spatial Instruction Sensitivity in World--Action Models}
+\author{Ali-Adeeb Abbas$^{1,2}$, Esmaeil Seraj$^2$, Behrad Toghi$^2$, and Taskin Padir$^{1,3}$\thanks{$^1$RIVeR Laboratory, Northeastern University, Boston, MA, USA. $^2$General Motors Robotics, Mountain View, CA, USA. $^3$Amazon Robotics, North Reading, MA, USA. Correspondence: \texttt{abbas.a@northeastern.edu}.}}
+\hypersetup{pdftitle={Same Goal, Different Words: Spatial Instruction Sensitivity in World-Action Models},pdfsubject={Draft for Do Robots Need World Models? CoRL 2026 Workshop},pdfauthor={Ali-Adeeb Abbas, Esmaeil Seraj, Behrad Toghi, Taskin Padir}}
+
+\begin{document}
+\maketitle
+\begin{abstract}
+Success under one instruction can conceal sensitivity to the way the same goal is described. We study this problem in three state of the art world--action models by varying spatial descriptions while keeping the starting scene, requested placement, and object to move, fixed. Across 864 rollouts in four RoboLab scenes focused on spatial relations between two objects, making the reference object the subject of the relation (e.g., ``move the mustard so that the box is left of it'' instead of ``\ldots so that the mustard is right of the box'') lowers the stable-placement success rate by 12.2 percentage points on average, with the gap concentrated in particular relations. Inspecting policy rollouts and final-state checks also reveal that a placement score can pass even when the robot moves the wrong object or loses the arrangement. These analyses identify where performance depends on wording and where success checks overstate instruction following, supporting targeted model testing and better task evaluation.
+\end{abstract}
+\keywords{World--Action Models, Spatial Language, Robot Evaluation}
+
+\section{Introduction}
+World--Action Models (WAMs) generate robot actions together with predictions of future observations~\citep{kim2026cosmospolicy}. Success under one instruction leaves open the question whether the policy would succeed under an equivalent description of the task instruction. In a pick and place task, a robot must identify which object to move and where to place it, even when the relation is described from a different object's perspective. The same logic can be applied to almost all robot manipulation tasks.
+
+Prior work evaluates both responsiveness to changed goals and consistency under equivalent task instructions. TRI's LBM study tests language conditioning in visually similar scenes~\citep{tri2025lbm}. CAST improves Vision--Language--Action (VLA) instruction following by associating diverse descriptions with atomic commands and synthesizing actions as alternatives to recorded trajectories~\citep{glossop2025cast}. LIBERO-CF tests alternative goals in familiar scenes~\citep{fang2026counterfactual}, while other evaluations examine language perturbations~\citep{fei2026liberoplus}, meaning-preserving nuances from shared starts~\citep{kim2026liberopara}, and irrelevant context~\citep{moskalenko2026bring}. Within WAMs, SG-WAM studies instruction alignment and language perturbations~\citep{he2026sgwam}. We examine spatial instruction sensitivity in WAMs through reference reversal experimentation: ``mustard right of box'' and ``box left of mustard'' describe the same arrangement, while both instructions require moving the mustard (Table~\ref{tab:setup}). The same goal may be achieved through different action sequences.
+
+We evaluate three publicly available WAMs in RoboLab~\citep{yang2026robolab}, retaining the initial scene, the requested placement, and the object to move, while changing the relational description for the task. The comparison identifies wording-sensitive relations without changing the physical task. We then compare placement scores with episode-end outcomes and selected executions to examine what a reported success represents. This gives model developers concrete cases for testing language consistency and benchmark designers evidence for refining success criteria.
+
+\begin{table}[!t]
+\caption{One goal, three instructions. Separate runs use the same model, starting scene, requested placement, and model settings.}
+\label{tab:setup}
+\small
+\begin{minipage}[c]{.28\linewidth}
+\includegraphics[width=\linewidth]{scene_mustard.jpg}
+\end{minipage}\hfill
+\begin{minipage}[c]{.68\linewidth}
+\textbf{Example goal: mustard to the right of the box.}\par
+\textbf{Target:} the mustard bottle, which the robot should move.\par
+\textbf{Reference:} the raisin box, which defines the destination.
+\end{minipage}\par\medskip
+\begin{tabular}{@{}p{.21\linewidth}p{.75\linewidth}@{}}
+\toprule
+\textbf{Instruction form} & \textbf{Exact tested instruction} \\
+\midrule
+Direct (D) & Place the mustard bottle on the table to the right of the raisin box. \\
+\addlinespace
+\textcolor{mover}{Mover-first (S)} & Move the mustard bottle on the table so that \textbf{the mustard bottle} is to the right of the raisin box. \\
+\addlinespace
+\textcolor{reference}{Reference-first (I)} & Move the mustard bottle on the table so that \textbf{the raisin box} is to the left of the mustard bottle. \\
+\midrule
+\textbf{S versus I} & Does describing the same placement through the reference object change the outcome? \\
+\addlinespace
+\textbf{D versus S} & Does expanding the direct instruction change the outcome? \\
+\bottomrule
+\end{tabular}
+\end{table}
+% FOR ALI
+\section{Paired Spatial Evaluation}
+\paragraph{Change the description, hold the goal fixed.}
+We use four RoboLab scenes: cube and bowl, butter and raisin box, mustard and raisin box, and two bowls. Goals are left/right/front/behind for the cube, left/right/supported placement on top for butter and mustard, and both bowl-stacking orders. Seven of the twelve goals come from RoboLab; we add five placements using the same scenes and objects.
+
+Table~\ref{tab:setup} defines the three instruction forms. Direct (D) uses RoboLab wording where available. Mover-first (S) and reference-first (I) refer to the object named first after ``so that,'' with the relation reversed in I. All forms explicitly ask to move the same object. For supported placement, ``on top of and supported by'' becomes ``underneath and supporting.'' For bowls, the latter does not explicitly require the nesting used by the success check. We report those results separately.
+
+\paragraph{Compare models from the same starts.}
+We evaluate the DROID versions of Cosmos3 Nano~\citep{nvidia2026nano}, Cosmos3 Edge~\citep{nvidia2026edge}, and FLUX 3 Action~\citep{bfl2026fluxaction}. We choose Nano and FLUX because they perform strongly on RoboLab's leaderboard; the Edge provides a smaller Cosmos-family comparison~\citep{robolab2026leaderboard}. Inputs are one wrist and two exterior cameras plus the proprioception robot state. After small object-position and orientation changes, we retain the first eight starts per scene solvable by a scripted controller. Every model runs every goal and description from these start points: 864 episodes, with identical initial states and observations across paired runs.
+
+Policies execute 32 actions at a time at 15\,Hz, using the same inference seed and fixed settings for each model. Each episode lasts 20--40 sec., depending on the scene, and continues after the first successful placement. Full instructions and evaluation settings accompany the paper.
+
+\paragraph{Separate placement from task completion.}
+We count a \emph{stable spatial outcome} when, for at least one second, the requested arrangement holds, the target object has the required support and moves slower than 2\,cm/s, and the gripper is no longer touching it. Spatial directions are defined relative to the robot. This outcome can occur at any point in the episode. An additional analysis checks whether it holds during the final second. Neither score verifies which object was moved: moving the reference may also make the relation true.
+
+For each matched pair, we subtract the reference-first outcome (1 if reached, 0 otherwise) from the mover-first outcome: S$-$I. Positive differences favor mover-first wording. D$-$S tests expanding the direct instruction. We average over goals within each scene, then equally across scenes and models, reporting gaps in percentage points.
+
+Cube-right, butter-right, and mustard-left hold initially and pass under all instructions, contributing zero to the at-any-time differences. Goals requiring a new arrangement are shown separately. Confidence intervals resample starts within scenes, keeping models, goals, and descriptions paired. Sign-flip tests use Holm correction for the two comparisons.
+
+\clearpage
+\section{Results}
+\paragraph{Overall placement performance.}
+Averaging scenes equally, the stable-placement rate is 43.2\% during the episode and 21.8\% at the end (Figure~\ref{fig:goals}). Excluding already-satisfied goals gives 26.8\% and 15.3\%, respectively.
+
+\paragraph{Reference-first descriptions produce fewer stable outcomes.}
+Mover-first wording outperforms reference-first by 12.2 percentage points (95\% interval: 8.6--15.4; adjusted $p<0.001$), with the same direction for all three models (Figure~\ref{fig:wording}). D$-$S is smaller and inconclusive. The end-of-episode comparison gives a similar S$-$I gap.
+
+\begin{figure}[!ht]
+\centering
+\includegraphics[width=.88\linewidth]{wording_effect.pdf}
+\caption{Paired wording effects across 32 matched starts. Wider sections indicate more starts with similar effects. Dots show each start's average effect; diamonds and bars show means and 95\% confidence intervals. Model-level intervals are descriptive.}
+\label{fig:wording}
+\end{figure}
+
+\paragraph{A few relations drive the average.}
+Mustard-right has the largest gap, consistently across models. The pooled gap remains positive without bowl stacking. The cube scene has no average S/I difference, while cube-behind favors reference-first wording (Figure~\ref{fig:goals}).
+
+\begin{figure}[!htb]
+\centering
+\includegraphics[width=\linewidth]{goal_response_by_form.pdf}
+\caption{Stable-placement rates (\%). Overall columns show success at any time and at episode end, averaging goals within scenes and weighting scenes equally (96 episodes per model and wording). Goal columns show any-time rates over eight starts; hatching marks already-satisfied goals, which are included in overall rates. Scores do not verify which object moved.}
+\label{fig:goals}
+\end{figure}
+
+\clearpage
+\begin{figure}[!ht]
+\centering
+\includegraphics[width=\linewidth]{execution_examples.pdf}
+\caption{Matched executions under two descriptions of the same goal. (a) Edge reaches mustard-right only with mover-first wording. (b) Nano reaches the scored cube-behind relation while moving the bowl; the relation is lost by episode end. Snapshots use the same times within each pair. A shared crop and rotation improve visibility; directions refer to the robot. Examples were selected for their contrasting scores.}
+\label{fig:examples}
+\end{figure}
+
+\section{Discussion}
+Following controlled simulator evaluation~\citep{li2025simpler}, we compare descriptions from matched starts to keep physical conditions fixed. The per-relation results then identify where further testing would be most informative: a pooled score alone obscures the contrast between mustard-right and the cube scene. These cases provide targets for assessing whether instruction reformulations or training changes improve consistency across descriptions of the same goal.
+
+Execution inspection and episode-end checks clarify what the robot actually accomplished. In Figure~\ref{fig:examples}, Nano passes the spatial check by moving the bowl; roughly half of all episodes with a stable outcome lose it before the end. These findings motivate separate checks for the object moved, the arrangement reached, and its persistence under continued control. LIBERO-CF similarly distinguishes object contact from task success~\citep{fang2026counterfactual}.
+
+\section{Conclusion}
+A WAM's ability to complete a task under one description is only part of instruction reliability. Evaluating equivalent descriptions from shared starts exposes wording-sensitive behavior, while execution and retention checks reveal what placement scores miss. Together, these analyses provide concrete targets for improving language consistency and task evaluation.
+
+\clearpage
+\bibliography{references}
+\end{document}

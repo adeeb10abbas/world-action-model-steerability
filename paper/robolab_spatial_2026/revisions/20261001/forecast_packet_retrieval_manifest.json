@@ -1,0 +1,141 @@
+{
+  "cluster_namespace": "211247-prod",
+  "data_root": "/data/users/ali/rws-20260926",
+  "candidates": [
+    {
+      "selection_rule": "Lexicographically first primary-window episode for model; selected before media inspection",
+      "model": "E3",
+      "episode_id": "RWS-E3-S1-C01-B-D",
+      "annotation_id": "Aef9bebaab690",
+      "packet_paths": {
+        "packet.json": "/data/users/ali/rws-20260926/annotation/packets/Aef9bebaab690/packet.json",
+        "legend.png": "/data/users/ali/rws-20260926/annotation/packets/Aef9bebaab690/legend.png",
+        "contact_sheet.png": "/data/users/ali/rws-20260926/annotation/packets/Aef9bebaab690/contact_sheet.png",
+        "forecast.mkv": "/data/users/ali/rws-20260926/annotation/packets/Aef9bebaab690/forecast.mkv"
+      },
+      "attempt_dir": "/data/users/ali/rws-20260926/runs/episodes/RWS-E3-S1-C01-B-D/attempts/RWS-E3-S1-C01-B-D.20260927T045417.211247-alia40a-a40-2gpu.700205",
+      "request": {
+        "request_index": 1,
+        "fallback": false,
+        "pre_tick": 32,
+        "nearest_object": "rubiks_cube",
+        "distance_m": 0.060347243535306336
+      },
+      "recorded_execution_window": {
+        "request_index": 1,
+        "pre_tick": 32,
+        "n_executed": 32,
+        "t_start": 2.1333333333333333,
+        "t_end": 4.266666666666667,
+        "event": 0,
+        "wrong_object": [],
+        "contradictory_release": [],
+        "neutral_no_decision": false,
+        "goal_consistent_interaction": true,
+        "physical_failure": false
+      },
+      "independent_label_a": {
+        "annotation_id": "Aef9bebaab690",
+        "direction": "up_only",
+        "hallucinated_object": "no",
+        "missing_object": "no",
+        "moving_object": "3",
+        "possible_release": "no",
+        "relation_object": "none",
+        "unknown_reason": "none",
+        "visible_final_relation": "none"
+      },
+      "independent_label_b": {
+        "annotation_id": "Aef9bebaab690",
+        "direction": "up_only",
+        "hallucinated_object": "no",
+        "missing_object": "no",
+        "moving_object": "3",
+        "possible_release": "no",
+        "relation_object": "none",
+        "unknown_reason": "none",
+        "visible_final_relation": "on_top_of"
+      },
+      "derived_label": {
+        "annotation_id": "Aef9bebaab690",
+        "episode_id": "RWS-E3-S1-C01-B-D",
+        "fc_direction": "up_only",
+        "fc_hallucinated_object": "no",
+        "fc_missing_object": "no",
+        "fc_moving_object_role": "mover",
+        "fc_possible_release": "no",
+        "fc_visible_final_relation": "not_goal"
+      },
+      "mapping_status": "Recorded k/15-second convention; model-source temporal/view verification remains incomplete",
+      "media_retrieved": false
+    },
+    {
+      "selection_rule": "Lexicographically first primary-window episode for model; selected before media inspection",
+      "model": "F3",
+      "episode_id": "RWS-F3-S1-C01-B-D",
+      "annotation_id": "A5ee6df16bd49",
+      "packet_paths": {
+        "packet.json": "/data/users/ali/rws-20260926/annotation/packets/A5ee6df16bd49/packet.json",
+        "legend.png": "/data/users/ali/rws-20260926/annotation/packets/A5ee6df16bd49/legend.png",
+        "contact_sheet.png": "/data/users/ali/rws-20260926/annotation/packets/A5ee6df16bd49/contact_sheet.png",
+        "forecast.mkv": "/data/users/ali/rws-20260926/annotation/packets/A5ee6df16bd49/forecast.mkv"
+      },
+      "attempt_dir": "/data/users/ali/rws-20260926/runs/episodes/RWS-F3-S1-C01-B-D/attempts/RWS-F3-S1-C01-B-D.20260927T041238.211247-alia40d-a40-2gpu.554678",
+      "request": {
+        "request_index": 1,
+        "fallback": false,
+        "pre_tick": 32,
+        "nearest_object": "rubiks_cube",
+        "distance_m": 0.07003516781682995
+      },
+      "recorded_execution_window": {
+        "request_index": 1,
+        "pre_tick": 32,
+        "n_executed": 32,
+        "t_start": 2.1333333333333333,
+        "t_end": 4.266666666666667,
+        "event": 0,
+        "wrong_object": [],
+        "contradictory_release": [],
+        "neutral_no_decision": false,
+        "goal_consistent_interaction": true,
+        "physical_failure": false
+      },
+      "independent_label_a": {
+        "annotation_id": "A5ee6df16bd49",
+        "direction": "up_only",
+        "hallucinated_object": "no",
+        "missing_object": "no",
+        "moving_object": "3",
+        "possible_release": "no",
+        "relation_object": "none",
+        "unknown_reason": "none",
+        "visible_final_relation": "on_top_of"
+      },
+      "independent_label_b": {
+        "annotation_id": "A5ee6df16bd49",
+        "direction": "up_only",
+        "hallucinated_object": "no",
+        "missing_object": "no",
+        "moving_object": "3",
+        "possible_release": "no",
+        "relation_object": "3",
+        "unknown_reason": "none",
+        "visible_final_relation": "on_top_of"
+      },
+      "derived_label": {
+        "annotation_id": "A5ee6df16bd49",
+        "episode_id": "RWS-F3-S1-C01-B-D",
+        "fc_direction": "up_only",
+        "fc_hallucinated_object": "no",
+        "fc_missing_object": "no",
+        "fc_moving_object_role": "mover",
+        "fc_possible_release": "no",
+        "fc_visible_final_relation": "not_goal"
+      },
+      "mapping_status": "Recorded k/15-second convention; model-source temporal/view verification remains incomplete",
+      "media_retrieved": false
+    }
+  ],
+  "access_check": "Workstation SSH reachable. Data root not present as local workstation directory. Local kubectl has no usable context; workstation kubectl requests renewed authentication. Retrieval stopped without changing credentials or launching workloads."
+}

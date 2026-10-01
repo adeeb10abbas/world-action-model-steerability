@@ -1,0 +1,37 @@
+model,scene,goal,label,initially_satisfied,D_n,D_anytime,D_end,S_n,S_anytime,S_end,I_n,I_anytime,I_end
+N3,S1,L,Cube left of bowl,False,8,8,2,8,6,3,8,0,0
+N3,S1,R,Cube right of bowl,True,8,8,3,8,8,2,8,8,0
+N3,S1,F,Cube in front of bowl,False,8,1,1,8,1,1,8,0,0
+N3,S1,B,Cube behind bowl,False,8,0,0,8,0,0,8,7,6
+N3,S3,TOP,Butter box on raisin box,False,8,6,5,8,6,5,8,2,1
+N3,S3,L,Butter box left of raisin box,False,8,0,0,8,0,0,8,0,0
+N3,S3,R,Butter box right of raisin box,True,8,8,5,8,8,4,8,8,6
+N3,S4,TOP,Mustard bottle on raisin box,False,8,5,5,8,6,5,8,4,2
+N3,S4,L,Mustard bottle left of raisin box,True,8,8,5,8,8,5,8,8,0
+N3,S4,R,Mustard bottle right of raisin box,False,8,7,3,8,8,6,8,0,0
+N3,S5,LR,Left bowl onto right bowl,False,8,0,0,8,0,0,8,0,0
+N3,S5,RL,Right bowl onto left bowl,False,8,1,1,8,1,1,8,1,0
+E3,S1,L,Cube left of bowl,False,8,3,1,8,2,1,8,0,0
+E3,S1,R,Cube right of bowl,True,8,8,4,8,8,3,8,8,0
+E3,S1,F,Cube in front of bowl,False,8,0,0,8,1,0,8,0,0
+E3,S1,B,Cube behind bowl,False,8,1,0,8,0,0,8,0,0
+E3,S3,TOP,Butter box on raisin box,False,8,3,2,8,0,0,8,0,0
+E3,S3,L,Butter box left of raisin box,False,8,0,0,8,0,0,8,0,0
+E3,S3,R,Butter box right of raisin box,True,8,8,5,8,8,3,8,8,7
+E3,S4,TOP,Mustard bottle on raisin box,False,8,0,0,8,0,0,8,0,0
+E3,S4,L,Mustard bottle left of raisin box,True,8,8,3,8,8,4,8,8,3
+E3,S4,R,Mustard bottle right of raisin box,False,8,4,3,8,4,4,8,0,0
+E3,S5,LR,Left bowl onto right bowl,False,8,0,0,8,0,0,8,0,0
+E3,S5,RL,Right bowl onto left bowl,False,8,2,1,8,1,1,8,0,0
+F3,S1,L,Cube left of bowl,False,8,1,0,8,0,0,8,4,3
+F3,S1,R,Cube right of bowl,True,8,8,2,8,8,2,8,8,8
+F3,S1,F,Cube in front of bowl,False,8,0,0,8,0,0,8,0,0
+F3,S1,B,Cube behind bowl,False,8,2,0,8,1,0,8,0,0
+F3,S3,TOP,Butter box on raisin box,False,8,2,2,8,0,0,8,0,0
+F3,S3,L,Butter box left of raisin box,False,8,0,0,8,0,0,8,0,0
+F3,S3,R,Butter box right of raisin box,True,8,8,4,8,8,6,8,8,3
+F3,S4,TOP,Mustard bottle on raisin box,False,8,7,2,8,5,2,8,6,2
+F3,S4,L,Mustard bottle left of raisin box,True,8,8,6,8,8,4,8,8,0
+F3,S4,R,Mustard bottle right of raisin box,False,8,8,8,8,8,3,8,2,0
+F3,S5,LR,Left bowl onto right bowl,False,8,7,6,8,8,5,8,1,1
+F3,S5,RL,Right bowl onto left bowl,False,8,6,0,8,4,0,8,4,0

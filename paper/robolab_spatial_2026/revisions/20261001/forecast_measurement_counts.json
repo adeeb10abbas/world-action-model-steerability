@@ -1,0 +1,131 @@
+{
+  "n": 864,
+  "relation_counts": {
+    "not_goal": 608,
+    "alternative_goal": 99,
+    "unknown": 118,
+    "goal": 39
+  },
+  "direction_counts": {
+    "up_only": 673,
+    "other_direction": 58,
+    "none": 64,
+    "lateral": 49,
+    "unknown": 4,
+    "goal_direction": 16
+  },
+  "agreement_primary": {
+    "n": 864,
+    "moving_object": {
+      "agreement": 0.5914,
+      "kappa": 0.3977
+    },
+    "direction": {
+      "agreement": 0.4861,
+      "kappa": 0.108
+    },
+    "visible_final_relation": {
+      "agreement": 0.2014,
+      "kappa": 0.0769
+    },
+    "relation_object": {
+      "agreement": 0.3333,
+      "kappa": 0.1108
+    },
+    "possible_release": {
+      "agreement": 0.934,
+      "kappa": 0.0257
+    },
+    "missing_object": {
+      "agreement": 0.9769,
+      "kappa": 0.0
+    },
+    "hallucinated_object": {
+      "agreement": 0.985,
+      "kappa": 0.2308
+    },
+    "unknown_reason": {
+      "agreement": 0.9907,
+      "kappa": 0.0
+    },
+    "all_fields_agree": 0.059
+  },
+  "E1": {
+    "n": 864,
+    "events": 47,
+    "folds": [
+      "C01",
+      "C02",
+      "C03",
+      "C04",
+      "C05",
+      "C06",
+      "C07",
+      "C08"
+    ],
+    "degenerate_folds": [],
+    "brier_baseline": 0.04011929672436063,
+    "brier_augmented": 0.040850820215740095,
+    "delta": -0.0007315234913794627,
+    "ci95_conditional_bootstrap": [
+      -0.0017706358527369652,
+      0.00016263411831439822
+    ]
+  },
+  "E1_by_model": {
+    "E3": {
+      "n": 288,
+      "events": 8,
+      "folds": [
+        "C01",
+        "C02",
+        "C03",
+        "C04",
+        "C05",
+        "C06",
+        "C07",
+        "C08"
+      ],
+      "degenerate_folds": [],
+      "brier_baseline": 0.024907388558536865,
+      "brier_augmented": 0.02530258494750865,
+      "delta": -0.00039519638897178577
+    },
+    "F3": {
+      "n": 288,
+      "events": 24,
+      "folds": [
+        "C01",
+        "C02",
+        "C03",
+        "C04",
+        "C05",
+        "C06",
+        "C07",
+        "C08"
+      ],
+      "degenerate_folds": [],
+      "brier_baseline": 0.06209869069706053,
+      "brier_augmented": 0.061035201956484986,
+      "delta": 0.0010634887405755467
+    },
+    "N3": {
+      "n": 288,
+      "events": 15,
+      "folds": [
+        "C01",
+        "C02",
+        "C03",
+        "C04",
+        "C05",
+        "C06",
+        "C07",
+        "C08"
+      ],
+      "degenerate_folds": [],
+      "brier_baseline": 0.0401180425730157,
+      "brier_augmented": 0.04151003326206472,
+      "delta": -0.001391990689049022
+    }
+  }
+}

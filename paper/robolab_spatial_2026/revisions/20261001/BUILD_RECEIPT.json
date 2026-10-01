@@ -1,0 +1,87 @@
+{
+  "source_episode_csv": "paper/robolab_spatial_2026/analysis/episode_outcomes_corrected.csv",
+  "source_episode_sha256": "749e98ffe354d7398bd3944d50b7fffaeffadccac77ea811d1a1a3405a7e7753",
+  "episodes": 864,
+  "actual_prompts": 36,
+  "main_outcomes_changed": false,
+  "new_analysis": "D-I descriptive bootstrap intervals, per-relation descriptive intervals; no new policy episodes",
+  "pooled_DI": [
+    {
+      "contrast": "D-I",
+      "endpoint": "stable_ever",
+      "n_pairs": 288,
+      "n_state_clusters": 32,
+      "difference": 0.1623263888888889,
+      "ci95_state_bootstrap": [
+        0.11718749999999999,
+        0.20399305555555552
+      ],
+      "a_only": 59,
+      "b_only": 16,
+      "model": "pooled",
+      "stratum": "all",
+      "status": "exploratory_added_20261001"
+    },
+    {
+      "contrast": "D-I",
+      "endpoint": "stable_at_final",
+      "n_pairs": 288,
+      "n_state_clusters": 32,
+      "difference": 0.1440972222222222,
+      "ci95_state_bootstrap": [
+        0.09982638888888888,
+        0.1892361111111111
+      ],
+      "a_only": 66,
+      "b_only": 29,
+      "model": "pooled",
+      "stratum": "all",
+      "status": "exploratory_added_20261001"
+    },
+    {
+      "contrast": "D-I",
+      "endpoint": "stable_ever",
+      "n_pairs": 216,
+      "n_state_clusters": 32,
+      "difference": 0.2152777777777778,
+      "ci95_state_bootstrap": [
+        0.15625,
+        0.27083333333333326
+      ],
+      "a_only": 59,
+      "b_only": 16,
+      "model": "pooled",
+      "stratum": "achievement",
+      "status": "exploratory_added_20261001"
+    },
+    {
+      "contrast": "D-I",
+      "endpoint": "stable_at_final",
+      "n_pairs": 216,
+      "n_state_clusters": 32,
+      "difference": 0.14930555555555555,
+      "ci95_state_bootstrap": [
+        0.10243055555555555,
+        0.19618055555555552
+      ],
+      "a_only": 40,
+      "b_only": 13,
+      "model": "pooled",
+      "stratum": "achievement",
+      "status": "exploratory_added_20261001"
+    }
+  ],
+  "figures": [
+    "anytime_end.pdf",
+    "per_relation_effects.pdf",
+    "direct_reference_effects.pdf"
+  ],
+  "tex_requires": [
+    "longtable",
+    "array",
+    "booktabs",
+    "graphicx"
+  ],
+  "request_seed_note": "FLUX config inference_seed remains0; wrapper service.infer(obs, seed=int(seed)) supplies6100",
+  "target_first_internal_key": "S retained unchanged"
+}
