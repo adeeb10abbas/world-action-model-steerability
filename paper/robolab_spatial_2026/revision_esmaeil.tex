@@ -6,19 +6,20 @@
 \graphicspath{{revision_assets/}{figures/}}
 \definecolor{mover}{HTML}{147D92}
 \definecolor{reference}{HTML}{C46635}
-\title{Same Goal, Different Words:\\Spatial Instruction Sensitivity in World--Action Models}
+\title{Same Goal, Different Words:\\Spatial Instruction Sensitivity in World-Action Models}
 \author{Ali-Adeeb Abbas$^{1,2}$, Esmaeil Seraj$^2$, Behrad Toghi$^2$, and Taskin Padir$^{1,3}$\thanks{$^1$RIVeR Laboratory, Northeastern University, Boston, MA, USA. $^2$General Motors Robotics, Mountain View, CA, USA. $^3$Amazon Robotics, North Reading, MA, USA. Correspondence: \texttt{abbas.a@northeastern.edu}.}}
 \hypersetup{pdftitle={Same Goal, Different Words: Spatial Instruction Sensitivity in World-Action Models},pdfsubject={Coauthor revision for Do Robots Need World Models? CoRL 2026 Workshop},pdfauthor={Ali-Adeeb Abbas, Esmaeil Seraj, Behrad Toghi, Taskin Padir}}
 
 \begin{document}
 \maketitle
 \begin{abstract}
-A robot that follows one spatial instruction may fail when the same goal is described from another object's perspective. We examine this sensitivity in three world--action models through 864 rollouts in four RoboLab scenes. We keep the initial scene and intended manipulation fixed while changing ``move the mustard so that it is right of the box'' to ``move the mustard so that the box is left of it.'' Describing the relation through the reference object reduces the proportion of runs reaching a stable placement by 12.2 percentage points on average, with the effect concentrated in particular relations. Inspecting executions also shows that a spatial score can reward moving the wrong object, while final-state checks reveal that many attained arrangements are subsequently lost. These findings make instruction consistency a necessary complement to task performance: evaluation should test alternative descriptions of the same goal and verify the requested manipulation, not only the resulting spatial relation.
+A robot that follows one spatial instruction may fail when the same goal is described from another object's perspective. We examine this sensitivity in three World Action Models through 864 rollouts in four RoboLab scenes. We keep the initial scene and intended manipulation fixed while changing ``move the mustard so that it is right of the box'' to ``move the mustard so that the box is left of it.'' Describing the relation through the reference object reduces the proportion of runs reaching a stable placement by 12.2 percentage points on average, with the effect concentrated in particular relations. Inspecting executions also shows that a spatial score can reward moving the wrong object, while final-state checks reveal that many attained arrangements are subsequently lost. These findings make instruction consistency a necessary complement to task performance: evaluation should test alternative descriptions of the same goal and verify the requested manipulation, not only the resulting spatial relation.
 \end{abstract}
 \keywords{World--Action Models, Spatial Language, Robot Evaluation}
 
+\setlength{\parskip}{2.5pt}
 \section{Introduction}
-World--action models (WAMs) generate robot actions together with predictions of future observations~\citep{kim2026cosmospolicy}. Their usefulness as general-purpose policies depends on turning a user's description into the intended manipulation. For a spatial placement task, this requires identifying both the object to move and its destination. A successful rollout under one description leaves a basic question unanswered: does the policy respond to the requested goal consistently, or does success depend on how that goal is expressed?
+World-action models (WAMs) generate robot actions together with predictions of future observations~\citep{kim2026cosmospolicy}. Their usefulness as general-purpose policies depends on turning a user's description into the intended manipulation. A useful world model must predict the consequences of different actions well enough to improve decisions, not merely generate plausible-looking futures. For a spatial placement task, this requires identifying both the object to move and its destination. A successful rollout under one description leaves a basic question unanswered: does the policy respond to the requested goal consistently, or does success depend on how that goal is expressed?
 
 Language-conditioned robot policies have been examined from several complementary perspectives. TRI's LBM study tests language conditioning in visually similar scenes~\citep{tri2025lbm}. CAST connects diverse descriptions to atomic commands and uses counterfactual action supervision to improve instruction following~\citep{glossop2025cast}. LIBERO-CF tests responses to changed goals~\citep{fang2026counterfactual}, while LIBERO-Plus, LIBERO-Para, and related work examine language perturbations, equivalent paraphrases, and irrelevant context~\citep{fei2026liberoplus,kim2026liberopara,moskalenko2026bring}. Within WAMs, SG-WAM studies semantic guidance and language alignment~\citep{he2026sgwam}. These studies motivate examining whether a policy preserves a goal across descriptions, in addition to whether it responds when the goal changes.
 
@@ -51,28 +52,28 @@ Direct (D) & Place the mustard bottle on the table to the right of the raisin bo
 \section{Paired Spatial Evaluation}
 To test whether wording changes behavior without changing the task, we repeat each placement from the same physical start under three instructions. We compare how often the requested arrangement is reached, then examine whether that score captures the intended manipulation and its final outcome.
 
-We use four tabletop scenes from RoboLab, a simulation benchmark for generalist manipulation policies~\citep{yang2026robolab}. The cube scene asks the robot to place a cube left, right, in front of, or behind a bowl. The butter and mustard scenes each ask it to place that object left, right, or on top of a raisin box. The bowl scene asks it to stack either bowl on the other. Seven goals are provided by RoboLab, and five extend these same scenes without changing their objects. Appendix~\ref{app:tasks} shows the scenes and all twelve goals.
+We use four tabletop scenes from RoboLab, a simulation benchmark for generalist manipulation policies~\citep{yang2026robolab}. The \textit{cube} scene asks the robot to place a cube left, right, in front of, or behind a bowl. The \textit{butter-and-mustard} scenes each ask it to place that object left, right, or on top of a raisin box. The \textit{bowl} scene asks it to stack either bowl on the other. Seven goals are provided by RoboLab, and five extend these same scenes without changing their objects. Appendix~\ref{app:tasks} shows all twelve goals.
 
-Table~\ref{tab:setup} introduces our instruction forms. D is a concise command, using the benchmark's supplied instruction for its original goals. S expands that command while keeping the target as the subject of the spatial clause. I instead describes the arrangement through the reference object and the opposite relation, such as left instead of right. S versus I therefore tests reference reversal with the surrounding sentence held fixed. D versus S tests the expansion itself. D versus I combines both changes and is reported in Appendix~\ref{app:behavior-results}. For stacking, ``underneath and supporting'' does not explicitly require the nesting checked by the scorer. We keep these conditions visible and examine the result without them.
+Table~\ref{tab:setup} introduces our instruction forms. \textit{D} is a concise command, using the benchmark's supplied instruction for its original goals. \textit{S} expands that command while keeping the target as the subject of the spatial clause. \textit{I}, instead, describes the arrangement through the reference object and the opposite relation, such as left instead of right. \textit{S} versus \textit{I} therefore tests reference reversal with the surrounding sentence held fixed. \textit{D} versus \textit{S} tests the expansion itself. \textit{D} versus \textit{I} combines both changes and is reported in Appendix~\ref{app:behavior-results}. For stacking, ``underneath and supporting'' does not explicitly require the nesting checked by the scorer. We keep these conditions visible and examine the result without them.
 
 We evaluate the DROID versions of Cosmos3 Nano, Cosmos3 Edge, and FLUX 3 Action~\citep{nvidia2026nano,nvidia2026edge,bfl2026fluxaction}. Nano and FLUX perform strongly on RoboLab's leaderboard, while Edge offers a smaller Cosmos-family comparison~\citep{robolab2026leaderboard}. Each receives wrist and two exterior camera images plus the robot's proprioceptive state. We vary object positions and orientations on the tabletop and retain eight starts per scene that a scripted controller can solve. For every model and goal, the simulator is reset to exactly the same start before each instruction. These are our \emph{paired runs}: the robot state, object poses, and initial observations agree, while the wording changes. Three models, twelve goals, three descriptions, and eight starts give 864 episodes. Each runs for 20--40 seconds, including continued control after placement. Appendix~\ref{app:settings} gives the full settings.
 
-We measure the proportion of runs that reach a \emph{stable placement}. The requested relative arrangement must hold for at least one second while the target is supported, moves slower than 2\,cm/s, and is not touching the gripper. Directions are defined in the robot's coordinate frame. We also check the same conditions during the final second, distinguishing an arrangement reached earlier from one retained until the end. Neither check identifies which object was moved. A cube can end up behind a bowl because the robot moved the cube, or because it moved the bowl.
+\textbf{Evaluations.} We measure the proportion of runs that reach a \emph{stable placement}. The requested relative arrangement must hold for at least one second while the target is supported, moves slower than 2\,cm/s, and is not touching the gripper. Directions are defined in the robot's coordinate frame. We also check the same conditions during the final second, distinguishing an arrangement reached earlier from one retained until the end. Neither check identifies which object was moved. A cube can end up behind a bowl because the robot moved the cube, or because it moved the bowl.
 
-For each pair, we compare these binary outcomes and average first across goals within each scene, then equally across scenes and models. Thus, a positive S--I gap means more runs pass under S than under I. Uncertainty accounts for the shared physical starts rather than treating all rollouts as independent. Three goals already hold at the start. Figure~\ref{fig:goals} marks them, and we also report rates excluding them. Statistical details and all counts appear in Appendices~\ref{app:statistics} and~\ref{app:counts}.
+For each pair, we compare these binary outcomes and average first across goals within each scene, then equally across scenes and models. Thus, a positive S--I gap means more runs pass under S than under I. Uncertainty accounts for the shared physical starts rather than treating all rollouts as independent. Three goals already hold at the start. Fig.~\ref{fig:goals} marks them, and we also report rates excluding them. Statistical details and all counts appear in Appendices~\ref{app:statistics} and~\ref{app:counts}.
 
 \clearpage
 \section{Results}
-Task competence under one description does not guarantee consistency across equivalent instructions. Reference reversal reduces the stable-placement rate by 12.2 percentage points on average, with the same direction for all three models (Figure~\ref{fig:wording}, 95\% interval 8.6--15.4, adjusted $p<0.001$). Because S and I share the expanded sentence structure, this comparison tests relational reformulation without also changing from a direct to an expanded command. With the physical task unchanged, this result exposes sensitivity to its description, although argument order and relation vocabulary are not separated.
+Task competence under one description does not guarantee consistency across equivalent instructions. Reference reversal reduces the stable-placement rate by 12.2 percentage points on average, with the same direction for all three models (Fig.~\ref{fig:wording}, 95\% interval 8.6--15.4, adjusted $p<0.001$). Because \textit{S} and \textit{I} share the expanded sentence structure, this comparison tests relational reformulation without changing from a direct to an expanded command. With physical task unchanged, this result exposes sensitivity to its description, although argument order and relation vocabulary are not separated.
 
 \begin{figure}[!ht]
 \centering
 \includegraphics[width=.88\linewidth]{wording_effect.pdf}
-\caption{Wording effects across 32 physical starts. Dots show each start's average outcome difference. Diamonds and bars show means and 95\% intervals. Positive S--I favors target-first wording. Wider sections indicate more starts with similar effects.}
+\caption{Wording effects across 32 physical starts. Dots show each start's average outcome difference. Diamonds and bars show means and 95\% intervals. Positive \textit{S}-\textit{I} favors target-first wording. Wider sections indicate more starts with similar effects.}
 \label{fig:wording}
 \end{figure}
 
-The effect depends on the object--relation combination. Mustard-right succeeds in 20 of 24 target-first runs but only two reference-first runs (Figure~\ref{fig:examples}). In contrast, the cube scene's zero average masks effects with different signs across directions, including an advantage for I on cube-behind (Figure~\ref{fig:goals}). Aggregate scores can therefore conceal inconsistent responses to individual goals. The positive pooled gap persists without bowl stacking, whose descriptions have a nesting ambiguity (Appendix~\ref{app:statistics}).
+The effect depends on the object-relation combination. \textit{Mustard-right} succeeds in 20 of 24 target-first runs but only two reference-first runs (Fig.~\ref{fig:examples}). In contrast, the cube scene's zero average masks effects with different signs across directions, including an advantage for \textit{I} on cube-behind (Fig.~\ref{fig:goals}). Aggregate scores can therefore conceal inconsistent responses to individual goals. The positive pooled gap persists without bowl stacking, whose descriptions have a nesting ambiguity (Appendix~\ref{app:statistics}).
 
 \begin{figure}[!htb]
 \centering
@@ -106,6 +107,7 @@ Across three WAMs, equivalent spatial descriptions produce inconsistent placemen
 \clearpage
 \appendix
 
+\setlength{\parskip}{5.5pt}
 % Insert after references, with \appendix already issued by the parent document.
 % Requires graphicx, booktabs, longtable, array. Figure paths can be adjusted when copied.
 \section{Evaluation details and full instructions}
@@ -515,9 +517,9 @@ This was the study's original primary question. The wording comparisons in the m
 
 The run records contain 13,968 saved futures across the 864 evaluation episodes. The diagnostic analysis uses one window per episode, selected without consulting the generated video or the later outcome. We select the first request for which the gripper is within 10\,cm of the surface of a movable task object. If no such request occurs, we use the episode's first request. This fallback was needed in two Nano episodes.
 
-Each policy executes a chunk of up to 32 actions at 15\,Hz. The exported prediction comes from the same request as that action chunk. The annotation pipeline retains frames assigned to the executed part of the chunk, avoiding a comparison between an unexecuted suffix and behavior after a later replan. The implementation assigns forecast frame $k$ to $k/15$ seconds. Complete checkpoint-specific documentation establishing this temporal and camera correspondence remains to be attached. Therefore, the saved-window comparisons should not be interpreted as a fully validated frame-by-frame forecast accuracy benchmark.
+Each policy executes a chunk of up to 32 actions at 15\,Hz. The exported prediction comes from the same request as that action chunk. The annotation pipeline retains frames assigned to the executed part of the chunk, avoiding a comparison between an unexecuted suffix and behavior after a later replan. The implementation assigns forecast frame $k$ to $k/15$ seconds. For the two examples in Section~\ref{app:forecast-examples}, the model and export code establish this nominal correspondence, and the saved records verify the request, executed actions, and camera. These checks have not been extended to all 864 windows. Even a correct frame-to-action mapping does not establish that generated motion progresses at the executed pace, so this analysis is not a frame-by-frame forecast accuracy benchmark.
 
-All 864 selected forecasts decoded. We also prepared the first-request clip when it differed from the selected window, yielding 1,726 annotation packets in total. A packet contains an initial image with numbered objects and camera-orientation arrows, followed by the generated sequence. The VLM sees eight evenly spaced frames, including the last retained frame. Frames are presented in a common layout: a wrist-camera view above two exterior views. The instruction, model name, requested goal, wording condition, execution video, and task outcome are hidden. A common layout removes a simple model-identity cue, although visual rendering style may still reveal the generating model.
+All 864 selected forecasts decoded. We also prepared the first-request clip when it differed from the selected window, yielding 1,726 annotation packets in total. A packet contains the episode's first observation with numbered objects and camera-orientation arrows, followed by the generated sequence. This legend can precede the selected request by one or more action chunks. The VLM sees eight evenly spaced frames, including the last retained frame. Frames are presented in a common layout: a wrist-camera view above two exterior views. The instruction, model name, requested goal, wording condition, execution video, and task outcome are hidden. A common layout removes a simple model-identity cue, although visual rendering style may still reveal the generating model.
 
 \subsection{What the automated annotators could read}
 
@@ -584,10 +586,72 @@ A missingness-only control changes Brier error by $+0.000011$. The implemented n
 
 \subsection{What this result tells us about useful predictions}
 
-The current procedure provides no demonstrated incremental diagnostic benefit from the automatically extracted forecast features. It does not establish that generated futures are uninformative. Two explanations remain compatible with the evidence: the short forecast adds little beyond state and action, or the annotation pipeline fails to recover useful information that is present in the video. Unverified temporal correspondence and event detections introduce further uncertainty. Complete video export is therefore insufficient evidence of diagnostic usefulness.
+The current procedure provides no demonstrated incremental diagnostic benefit from the automatically extracted forecast features. It does not establish that generated futures are uninformative. Two explanations remain compatible with the evidence: the short forecast adds little beyond state and action, or the annotation pipeline fails to recover useful information that is present in the video. The annotation-interface ambiguities illustrated below, unverified alignment beyond the two inspected examples, and unchecked event detections introduce further uncertainty. Complete video export is therefore insufficient evidence of diagnostic usefulness.
 
 There is a suggestive descriptive signal in object selection. Windows labeled as moving the reference object are followed by a detected event in 23 of 247 cases (9.3\%), compared with 19 of 540 (3.5\%) when the requested object is labeled as moving. This comparison was examined after observing the results. It is unadjusted for scene, goal, and model, uses noisy labels, and does not establish incremental information over the baseline. It motivates checking object identity more carefully, not a claim that forecasts predict failure reliably.
 
-The next step is to validate measurements on existing recordings. Blinded human annotations or verified tracking can establish accuracy for object identity, motion, and destination. Agreement between VLMs is an uncertainty signal, not ground truth. Clips need verified timing and camera mappings, and release detections need checks for contact-reset artifacts. Testing windows that expose an object or destination choice, with the selection rule fixed beforehand, can then distinguish an uninformative forecast from an inadequate readout.
+The next step is to validate measurements on existing recordings. Blinded human annotations or verified tracking can establish accuracy for object identity, motion, and destination. Agreement between VLMs is an uncertainty signal, not ground truth. The request and camera checks below should be extended across the remaining clips, with generated-motion timing assessed separately. Object legends need unambiguous labels, and release detections need checks for contact-reset artifacts. Testing windows that expose an object or destination choice, with the selection rule fixed beforehand, can then distinguish an uninformative forecast from an inadequate readout.
+
+
+\clearpage
+\subsection{What the recorded predictions and annotation materials show}
+\label{app:forecast-examples}
+
+Figures~\ref{fig:forecast-example-edge} and~\ref{fig:forecast-example-flux} compare predictions with executions for two examples selected by episode identifier before their media were inspected. We use the first eligible episode for Edge and FLUX under that fixed ordering. Both episodes begin from the same restored scene and use the instruction ``Put the rubiks cube behind the bowl''. Each illustrated request follows its model's first action chunk, so the two models no longer have identical observations. Within each example, the prediction is paired with its own executed actions and the same exterior camera.
+
+The illustrated request produces 32 executed actions and 33 generated frames. Generated frame $k$ is paired with execution after $k$ actions, with columns at $k=0,8,16,24,32$. The nominal window spans 2.13 seconds. Saved input images agree exactly with the execution images at both chunk boundaries, and the recorded commands match the returned action prefix. Model and export code establish the frame indexing and camera layout. Frame 0 is a decoded reconstruction of the conditioning observation, not the original input. FLUX decodes its frames jointly, so its reconstructed first frame also depends on predicted content. Edge's decoded composite is shorter than the input image, but the displayed camera crop lies inside the valid decoded region. These checks establish which observations and actions are being compared. They do not establish that the predicted motion has the correct speed, and image-similarity comparisons did not yield a reliable lag estimate.
+
+Neither executed window shows a completed cube-behind-bowl placement. The FLUX prediction becomes blurred, making the object's motion difficult to read. The original VLM outputs agree that the cube moves upward without release, but disagree about Edge's final relation and FLUX's relation object (Table~\ref{tab:forecast-example-labels}). A short prediction centered on the grasp can therefore be difficult to interpret as evidence about the eventual destination. These examples do not establish a model-wide difference in forecast quality.
+
+\begin{figure}[!ht]
+\centering
+\includegraphics[width=\linewidth]{rev_forecast_edge_paper.pdf}
+\caption{Cosmos3 Edge's prediction and execution for its second action chunk in the cube-behind-bowl task. The contextual view locates the common crop used in both rows. Columns pair generated frame $k$ with execution after $k$ actions. Times follow the nominal 15\,Hz mapping. The first predicted frame is reconstructed. This example verifies the request, camera, and frame indexing, not the accuracy of predicted motion.}
+\label{fig:forecast-example-edge}
+\end{figure}
+
+\begin{figure}[!ht]
+\centering
+\includegraphics[width=\linewidth]{rev_forecast_flux_paper.pdf}
+\caption{FLUX 3 Action on the same task and episode starting state as Figure~\ref{fig:forecast-example-edge}. Each model has already executed its own first chunk before the request shown here. The prediction becomes blurred while the execution remains visually distinct. The layout and nominal frame correspondence follow the Edge example. FLUX jointly decodes its frames, including the reconstructed frame 0.}
+\label{fig:forecast-example-flux}
+\end{figure}
+
+\begin{table}[!ht]
+\centering
+\small
+\begin{tabular}{llll}
+\toprule
+Example & Readout & Final relation & Reference object \\
+\midrule
+Edge & Qwen & None & None \\
+     & GLM & On top of & None \\
+     & Adjudicated & None & None \\
+\midrule
+FLUX & Qwen & On top of & None \\
+     & GLM & On top of & Cube (itself) \\
+     & Adjudicated & On top of & None \\
+\bottomrule
+\end{tabular}
+\caption{Original labels for the two illustrated forecasts. All six readouts identify object 3 (the cube) as moving upward, with no release. The table retains inconsistent or incomplete relation labels rather than repairing them after inspection. ``None'' is the saved label, not an independent determination that no relation holds.}
+\label{tab:forecast-example-labels}
+\end{table}
+
+\FloatBarrier
+\subsection{Ambiguity in the annotation materials}
+\label{app:forecast-packets}
+
+The original annotation materials reveal a separate measurement problem (Figure~\ref{fig:forecast-packets}). Direction arrows obscure some object numbers, and the cube's number overlaps the banana's circle in the right view. The original numbering is banana 1, bowl 2, and cube 3. Two of the six free-text responses misidentify these numbers: one Edge response exchanges the bowl and banana, and the FLUX adjudication calls the cube object 1. The structured moving-object field still identifies the cube in all six readouts, but one FLUX relation names the cube itself as its reference. Agreement on object selection therefore does not establish reliable interpretation of the spatial relation.
+
+The contact sheets below summarize the stored forecasts for human inspection. They are not the exact input sequence shown to the VLMs, which received the numbered legend and eight generated frames at indices 0, 5, 9, 14, 18, 23, 27, and 32. No execution images were supplied. The common packet layout also stretches Edge's decoded exterior views vertically. We preserve the original materials and labels so these presentation choices remain visible.
+
+These observations do not show that the annotation layout caused the low agreement across the full study. They identify a plausible confound that should be removed before attributing an unreliable readout to the model's predictions. Diagnostic evaluation depends on three separate steps: associating a prediction with the correct actions, presenting its contents unambiguously, and checking the accuracy of the extracted labels. The two verified examples address the first step and expose weaknesses in the second. Independent annotation checks are still needed for the third.
+
+\begin{figure}[!ht]
+\centering
+\includegraphics[width=.88\linewidth]{rev_forecast_packets_paper.pdf}
+\caption{Original annotation imagery, preserved without correcting its labels. Both examples use the same episode-start legend. Some numbers overlap arrows or other objects' circles. The lower panels show the original human-review contact sheets for Edge and FLUX, with a wrist view above the two exterior views in each frame. These sheets sample every fourth generated frame, whereas the VLMs received the eight frames listed in the text. None of these images depicts execution.}
+\label{fig:forecast-packets}
+\end{figure}
 
 \end{document}

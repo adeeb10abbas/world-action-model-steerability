@@ -59,14 +59,22 @@ Times refer to Esmaeil's 28 September Overleaf comments. Repeated times distingu
 - **D:** the second montage, selection/time/crop provenance, and uncropped execution frames.
 - **E:** the original forecast question, annotation change, window selection, model inputs, VLM agreement, label coverage, diagnostic comparisons, controls, measurement limitations, and a concrete next-step analysis.
 
-The forecast result is conditional: the automatically extracted features did not improve the recorded diagnostic. Low annotator agreement is not proof of poor forecast quality, nor is agreement between two VLMs a correctness standard. Timing/camera correspondence and automated failure detections still need validation. The original question and post-outcome change in paper focus are documented in the appendix.
+The forecast result is conditional: the automatically extracted features did not improve the recorded diagnostic. Low annotator agreement is not proof of poor forecast quality, nor is agreement between two VLMs a correctness standard. Request, camera, and nominal frame-to-action correspondence are now verified for two qualitative examples. Verification of the remaining packets, generated-motion timing, and automated failure detections is still incomplete. The original question and post-outcome change in paper focus are documented in the appendix.
 
 ## Remaining material
 
-The existing execution frames and all recorded numerical analyses are included. Forecast contact sheets/videos are not available in this checkout. A read-only retrieval attempt reached a cluster-authentication requirement; no cluster jobs or new robot episodes were launched. `revisions/20261001/forecast_packet_retrieval_manifest.json` records two deterministic packets, their exact server paths, and requested files. These can be added as qualitative examples after retrieval and timing checks; they are not necessary to compile this revision.
+The cluster agent supplied both preselected forecast examples in commit `155be5a`. On 5 October, we checked the committed media against the provenance and added prediction/execution montages, the original annotation imagery, and their interpretation to Appendix E. The earlier retrieval manifest records the historical failed retrieval and original selection. Its unavailable-media status is superseded by `revisions/20261001/FORECAST_INTEGRATION_20261005.md`. No new policy episodes or VLM annotations were run.
 
 We also retain the evidence limits instead of silently resolving them: the compact FLUX receipt lacks a full executed-weight revision, the diagnostic is conditioned on fitted predictors and noisy annotations, and no WAM-versus-VLA comparison was run.
 
 ## Files and build
 
 Compile `revision_esmaeil.tex` with pdfLaTeX/BibTeX (or `latexmk -pdf revision_esmaeil.tex`). Use the existing CoRL style, bibliography and two original result plots, plus `revision_assets/`. No margin or font-size changes were made to the main manuscript. The intended layout is four main pages, references beginning on page 5, and appendices thereafter. See `revisions/20261001/FINAL_QA.json` for verified page count and synchronization status.
+
+## Forecast-media integration — 5 October 2026
+
+The live `rev1.tex` had additional coauthor changes from 3–4 October. We preserved that current source, changed only the forecast appendix in Overleaf, and mirrored the complete updated file locally. Existing comments and tracked changes remain for coauthor review. This integration does not claim to resolve the newer comment threads.
+
+The new figures show each forecast beside the action chunk actually executed, plus the original annotation materials. Both examples share the episode starting state, but the illustrated second request follows each model's own first action chunk. They are not identical-observation cross-model comparisons. Original labels are reproduced, including incomplete or inconsistent relations. Overlapping numbers in the original legend are discussed as a possible annotation confound, not a proven cause of disagreement.
+
+The latest coauthor text overflowed the main paper by three lines before integration. Reducing paragraph spacing from 5.5pt to 2.5pt in the main paper restored four pages without changing wording, font sizes, margins, or figures. Appendix paragraph spacing remains 5.5pt. All new scientific text and graphics are confined to Appendix E.
