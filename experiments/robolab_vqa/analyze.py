@@ -561,8 +561,14 @@ def main() -> None:
                              "interval": "percentile 95%", "conditional_on": "four fixed scene types and fixed prompt templates"},
                "weighting": "items within (start, goal) cell -> starts within goal -> goals equally within scene -> scenes equally",
                "lanes": lanes, "per_lane": {}}
+    results["coverage_summary"] = {}
     for lane in lanes_items:
         results["per_lane"][lane] = analyse_lane(lane, lanes_items[lane], lanes_reuse[lane], idx)
+        its = lanes_items[lane]
+        results["coverage_summary"][lane] = {"proposed": len(its), "delivered": sum(it.status == "delivered" for it in its),
+                                             "valid": sum(it.valid for it in its),
+                                             "infrastructure_missing": sum(it.status != "delivered" for it in its),
+                                             "responses_from": lanes[lane].get("responses_from", lane)}
     # checkpoint contrasts (policy - base, policy - upstream), descriptive, same resamples
     contrasts = {}
     pairs = [("N3-policy", "N3-base"), ("N3-base", "N3-upstream-qwen3vl8b"), ("N3-policy", "N3-upstream-qwen3vl8b"),

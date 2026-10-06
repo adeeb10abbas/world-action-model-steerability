@@ -105,3 +105,19 @@ The user authorized as many GPUs as needed. Five single-B200 pods owned by user 
 one CPU pod (`211247-alirqa-cpu`) were created in namespace `211247-prod`; a first pod spec inherited
 `NVIDIA_VISIBLE_DEVICES=all` from an existing template and exposed other users' GPUs, so it was deleted before any
 work and recreated with device-plugin isolation (one visible GPU). No other user's pod or GPU was used.
+
+## Amendment A1 — qualification (2026-10-06 22:13 UTC, after the six development fixtures, before any bank query)
+
+- All six lanes loaded through the native vLLM classes (with `rqa-adapter-1` for both Edge checkpoints). 36/36 fixture
+  calls were delivered; 35/36 were format-valid. The invalid one (Edge, B fixture) used natural-language object names
+  instead of the vocabulary identifiers — a preserved model failure; the prompt and parser were not changed.
+- The parity rule in `qualify.py` now compares processor JSON after dropping writer metadata (`transformers_version`
+  and the redundant nested `processor_class` copies, which are the only processor-config differences between the Edge
+  base and policy) and additionally requires byte-identical rendered prompts and token counts on all six fixtures. The
+  first grouping pass had split the Edge pair only because of those metadata keys. No payload, wrapper, label, parser
+  or decoding setting changed.
+- Identity groups (identical loaded parameters, processor, rendered prompts and fixture outputs):
+  `N3-policy ≡ N3-upstream-qwen3vl8b`, `E3-policy ≡ E3-base`, `F3-qwen3vl4b`, `N3-base`. The bank runs once per group
+  on the executed-policy member where one exists (`N3-policy`, `E3-policy`); `N3-upstream-qwen3vl8b` and `E3-base`
+  reference those results and are not independent evidence.
+- Bank inference therefore uses four B200 GPUs (one per distinct readout); the fifth pod was deleted unused.

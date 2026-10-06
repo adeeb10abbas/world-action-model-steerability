@@ -3,8 +3,9 @@
 python -m experiments.robolab_vqa.qualify --results <results-dir> --eligibility <audit.json> --output <dir>
 
 A lane joins another lane's identity group only if (1) the parameters actually loaded by the native reasoner class
-hash identically (names, dtypes, shapes, bytes), (2) tokenizer/processor/chat-template files hash identically and
-(3) all six development fixtures return byte-identical raw text. Each group is evaluated once on the bank; the
+hash identically (names, dtypes, shapes, bytes), (2) tokenizer/processor/chat-template files are identical (processor
+JSON compared after dropping writer metadata) and (3) all six development fixtures render byte-identical prompts with
+identical token counts and return byte-identical raw text. Each group is evaluated once on the bank; the
 other members reference that shared result and are never counted as independent evidence.
 """
 from __future__ import annotations
@@ -30,6 +31,15 @@ def latest_receipt(lane_dir: Path, phase: str) -> dict | None:
     return C.load_json(rs[-1]) if rs else None
 
 
+def _strip_serialization(value, depth: int = 0):
+    """Drop writer metadata that does not change preprocessing: transformers_version anywhere and the redundant
+    processor_class copies nested inside image/video processor blocks (the top-level class is kept)."""
+    if isinstance(value, dict):
+        return {k: _strip_serialization(v, depth + 1) for k, v in value.items()
+                if k != "transformers_version" and not (k == "processor_class" and depth > 0)}
+    return value
+
+
 def processor_identity(lane: str) -> dict:
     root = Path(LANES[lane]["path"])
     out = {}
@@ -39,9 +49,7 @@ def processor_identity(lane: str) -> dict:
             continue
         if rel in SEMANTIC_JSON:
             # key order and the writer's transformers_version are serialization metadata, not processor behaviour
-            value = json.loads(p.read_text())
-            value.pop("transformers_version", None)
-            out[rel] = C.canonical_sha256(value)
+            out[rel] = C.canonical_sha256(_strip_serialization(json.loads(p.read_text())))
         else:
             out[rel] = C.sha256_file(p)
     return out
@@ -72,7 +80,10 @@ def main() -> None:
             ref = lanes[g[0]]
             same_digest = digest and digest == (ref["receipt"].get("loaded_parameter_digest") or {}).get("sha256")
             same_proc = info["processor"] == ref["processor"]
-            same_out = all(info["fixtures"][q]["raw_response"] == ref["fixtures"][q]["raw_response"] for q in info["fixtures"])
+            same_out = all(info["fixtures"][q]["raw_response"] == ref["fixtures"][q]["raw_response"]
+                           and info["fixtures"][q]["rendered_prompt_sha256"] == ref["fixtures"][q]["rendered_prompt_sha256"]
+                           and info["fixtures"][q]["prompt_tokens"] == ref["fixtures"][q]["prompt_tokens"]
+                           for q in info["fixtures"])
             if same_digest and same_proc and same_out:
                 g.append(lane)
                 placed = True
