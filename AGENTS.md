@@ -2,7 +2,9 @@
 
 ## Inference-only RoboLab VQA diagnostic
 
-The current locked VQA handoff is **RQA-20261006**, in `docs/robolab-vqa-20261006/`. Read its `README.md` and `EXPERIMENT_GUIDE.md` before work on this diagnostic. It uses the executed RWS subset (S1/S3/S4/S5, 32 physical starts, 12 goals, 36 DIR/TF/RF instructions), three QA tests, and a fixed saved-rollout image bank. No training, new robot episodes, new simulator renders, or automatic manuscript edits are in scope. Do not inherit the older five-scene launch counts below.
+The final follow-up handoff is **RQA-20261006 V2**, at `docs/robolab-vqa-20261006/v2-final/README.md` and `FINAL_EXECUTION_SPEC.md` in that directory. It supersedes V1 execution instructions only for the bounded follow-up. Preserve the completed `r1-20261006` evidence. V2 is a post-V1 diagnostic repair with three existing readouts, no new training or robot runs, and a finite stop rule. Publishing the handoff does not dispatch cluster work.
+
+The original VQA handoff is **RQA-20261006 V1**, in `docs/robolab-vqa-20261006/`. Read its `README.md` and `EXPERIMENT_GUIDE.md` for source definitions, then follow the V2 specification for the final follow-up. V1 used the executed RWS subset (S1/S3/S4/S5, 32 physical starts, 12 goals, 36 DIR/TF/RF instructions), three QA tests, and a fixed saved-rollout image bank. No training, new robot episodes, new simulator renders, or automatic manuscript edits are in scope. Do not inherit the older five-scene launch counts below.
 
 Keep the complete diagnostic report separate at `reports/robolab-vqa-20261006/REPORT.md`, with versioned run reports, compact machine-readable results, all null/negative outcomes and coverage, and a candidate-findings ledger for later author selection. Save implementation, small provenance/results artifacts, and reports to the existing GitHub branch when the user dispatches this handoff; keep raw media, arrays, weights, environments, and secrets outside Git. Never fabricate completed experiments. Preparing or publishing the handoff does not launch its GPU work.
 
