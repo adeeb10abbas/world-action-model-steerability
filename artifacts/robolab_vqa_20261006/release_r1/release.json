@@ -1,0 +1,197 @@
+{
+  "content": {
+    "frames_sha256": "4f25bbc2efa4b5d61c4532cada81d7a379e2147c4274a5ef6d95de74ea299739",
+    "frozen_text": {
+      "a_answer_line": "Answer with exactly one of: yes, no, unknown. Judge the current visible scene in the robot coordinate frame.",
+      "b_wrapper": "Instruction:\n{instruction}\n\nInterpret the requested outcome, not the current arrangement. Return one JSON object:\n{{\"target\": \"...\", \"reference\": \"...\", \"relation\": \"...\"}}\nThe target is the object the instruction asks to move. The relation is the target's\nrequested final relation to the reference. Use the provided object and relation vocabulary.",
+      "c_wrapper": "Instruction:\n{instruction}\n\nDoes the current scene show the final spatial arrangement requested by this instruction?\nJudge the arrangement now, not whether the robot moved the correct object or will succeed later.\nDo not require a one-second dwell or infer an unseen action history.\nAnswer with exactly one of: yes, no, unknown.",
+      "object_vocabulary_order": "sorted (alphabetical) catalog identifiers",
+      "preamble": "Task: answer a question about a robot's tabletop workspace.\nCoordinate frame: all spatial terms use the robot's frame of reference. The robot faces the workspace; \"left\" and \"right\" are from the robot's point of view, \"in front of\" means closer to the robot, and \"behind\" means farther from the robot.",
+      "relation_vocabulary": [
+        "left_of",
+        "right_of",
+        "in_front_of",
+        "behind",
+        "on_top_supported",
+        "stacked_on",
+        "unknown"
+      ],
+      "s5_identity_note": "Bowl names that refer to left or right (such as \"the left bowl\" or \"the bowl initially on the left\") refer to the bowls' positions at the start of the episode (t = 0.0 s), not their current positions.",
+      "view_headers_start_pose": {
+        "over_shoulder_left_camera": "Left exterior camera (mounted on the robot's left side; in this image the robot's left is toward the image's lower left and farther from the robot is toward the image's upper left):",
+        "over_shoulder_right_camera": "Right exterior camera (mounted on the robot's right side; in this image the robot's left is toward the image's upper left and farther from the robot is toward the image's upper right):",
+        "wrist_cam": "Wrist camera (mounted on the robot's gripper; in this image the robot's left is toward the image's right side and farther from the robot is toward the image's bottom):"
+      },
+      "wrapper_version": "rqa-wrappers-1",
+      "wrist_header_moving": "Wrist camera (mounted on the robot's gripper; it moves with the gripper, so its image orientation is not fixed):"
+    },
+    "gold_sha256": "2f66c9ea58a0d82069b6a7759f4bcb3c7d415408624609b5a1150e6de599dc13",
+    "images_sha256": "1696badccda74ba6a58b9429cd44709950603cf06bb0811bd249947dedf82b33",
+    "payloads_sha256": "6b1ee8f196f99b169f49b051b1ccda1ab1dde8e673aa2d05d03b0695bee5d106"
+  },
+  "counts": {
+    "answerable_by_family_test_bank": {
+      "original|A|initial": {
+        "answerable": 188,
+        "excluded": 4,
+        "proposed": 192,
+        "reused": 0
+      },
+      "original|A|secondary": {
+        "answerable": 358,
+        "excluded": 26,
+        "proposed": 384,
+        "reused": 0
+      },
+      "original|B|initial": {
+        "answerable": 288,
+        "excluded": 0,
+        "proposed": 288,
+        "reused": 0
+      },
+      "original|B|no_image": {
+        "answerable": 36,
+        "excluded": 0,
+        "proposed": 36,
+        "reused": 0
+      },
+      "original|C|initial": {
+        "answerable": 282,
+        "excluded": 6,
+        "proposed": 288,
+        "reused": 0
+      },
+      "original|C|no_image": {
+        "answerable": 0,
+        "excluded": 0,
+        "proposed": 36,
+        "reused": 36
+      },
+      "original|C|secondary": {
+        "answerable": 414,
+        "excluded": 162,
+        "proposed": 576,
+        "reused": 0
+      },
+      "placement|B|initial": {
+        "answerable": 128,
+        "excluded": 0,
+        "proposed": 128,
+        "reused": 0
+      },
+      "placement|B|no_image": {
+        "answerable": 16,
+        "excluded": 0,
+        "proposed": 16,
+        "reused": 0
+      },
+      "placement|C|initial": {
+        "answerable": 124,
+        "excluded": 4,
+        "proposed": 128,
+        "reused": 0
+      }
+    },
+    "dev_fixtures": 6,
+    "frames_available": 96,
+    "images": 300,
+    "queries_by_family_test_bank": {
+      "original|A|initial": 192,
+      "original|A|secondary": 384,
+      "original|B|initial": 288,
+      "original|B|no_image": 36,
+      "original|C|initial": 288,
+      "original|C|no_image": 36,
+      "original|C|secondary": 576,
+      "placement|B|initial": 128,
+      "placement|B|no_image": 16,
+      "placement|C|initial": 128
+    },
+    "total": 2072
+  },
+  "created_utc": "2026-10-06T22:09:01.434563Z",
+  "files": {
+    "dev_fixtures.jsonl": "9fa91bab4d85306d664dd9d95a0e40fb7bd628a639fc864670dd356ff8e411fe",
+    "frames.json": "4f25bbc2efa4b5d61c4532cada81d7a379e2147c4274a5ef6d95de74ea299739",
+    "images.json": "1696badccda74ba6a58b9429cd44709950603cf06bb0811bd249947dedf82b33",
+    "payloads.jsonl": "6b1ee8f196f99b169f49b051b1ccda1ab1dde8e673aa2d05d03b0695bee5d106",
+    "query_manifest.jsonl": "ce5b6724f2a983f539b5647fc911990a87980e93a2b38105ef58fb1c02f92237"
+  },
+  "frozen_settings": {
+    "decoding": {
+      "greedy": true,
+      "max_new_tokens": 256,
+      "retries": "infrastructure only; never answer-conditioned",
+      "self_consistency": false,
+      "temperature": 0.0,
+      "thinking": "disabled via native chat template when the template supports it (Cosmos3-Edge enable_thinking=False)"
+    },
+    "label_rules": {
+      "A": "instantaneous named relation (support/nesting words included for TOP and S5)",
+      "C": "instruction-specific requested arrangement: relation + table support when the instruction says 'on the table'; TOP = centroid in reference footprint AND supported on reference; S5 DIR/TF stacked_on = pinned open-top containment AND contact; S5 RF literal on_top_supported = centroid in footprint AND supported (force cone); no dwell/speed/history",
+      "boundary_deg": 5.0,
+      "bowl_identity_move_m": 0.02,
+      "center_min_m": 0.01,
+      "cone_deg": 45.0,
+      "contact_force_n": 0.1,
+      "exclusions": "cone boundary (<5 deg) or centres <1 cm; object centre not projected in any presented view (automated pre-check, exterior views only for secondary frames); S5 secondary both bowls moved >2 cm; C secondary target/reference in gripper contact",
+      "footprint_tolerance_m": 0.01,
+      "support_cone_deg": 45.0
+    },
+    "label_version": "rqa-gold-1",
+    "order": "within each bank: sha256('6106|'+query_id); primary (initial + no_image) before secondary",
+    "presentation": {
+      "initial": "three native 720x1280 RGB views (wrist, left, right) from the cached request-0 observation",
+      "legend": "calibration-derived camera headers (wrist orientation stated only for the starting pose)",
+      "multi_image": "native multi-image chat input; no panels, crops, overlays or enhancement",
+      "s5_secondary": "start-time (t=0) reference views + current views, explicit time labels",
+      "secondary": "three views split from the lossless 540x640 executed composite stream (wrist 360x640; exterior 180x320) at the bound tick"
+    },
+    "text": {
+      "a_answer_line": "Answer with exactly one of: yes, no, unknown. Judge the current visible scene in the robot coordinate frame.",
+      "b_wrapper": "Instruction:\n{instruction}\n\nInterpret the requested outcome, not the current arrangement. Return one JSON object:\n{{\"target\": \"...\", \"reference\": \"...\", \"relation\": \"...\"}}\nThe target is the object the instruction asks to move. The relation is the target's\nrequested final relation to the reference. Use the provided object and relation vocabulary.",
+      "c_wrapper": "Instruction:\n{instruction}\n\nDoes the current scene show the final spatial arrangement requested by this instruction?\nJudge the arrangement now, not whether the robot moved the correct object or will succeed later.\nDo not require a one-second dwell or infer an unseen action history.\nAnswer with exactly one of: yes, no, unknown.",
+      "object_vocabulary_order": "sorted (alphabetical) catalog identifiers",
+      "preamble": "Task: answer a question about a robot's tabletop workspace.\nCoordinate frame: all spatial terms use the robot's frame of reference. The robot faces the workspace; \"left\" and \"right\" are from the robot's point of view, \"in front of\" means closer to the robot, and \"behind\" means farther from the robot.",
+      "relation_vocabulary": [
+        "left_of",
+        "right_of",
+        "in_front_of",
+        "behind",
+        "on_top_supported",
+        "stacked_on",
+        "unknown"
+      ],
+      "s5_identity_note": "Bowl names that refer to left or right (such as \"the left bowl\" or \"the bowl initially on the left\") refer to the bowls' positions at the start of the episode (t = 0.0 s), not their current positions.",
+      "view_headers_start_pose": {
+        "over_shoulder_left_camera": "Left exterior camera (mounted on the robot's left side; in this image the robot's left is toward the image's lower left and farther from the robot is toward the image's upper left):",
+        "over_shoulder_right_camera": "Right exterior camera (mounted on the robot's right side; in this image the robot's left is toward the image's upper left and farther from the robot is toward the image's upper right):",
+        "wrist_cam": "Wrist camera (mounted on the robot's gripper; in this image the robot's left is toward the image's right side and farther from the robot is toward the image's bottom):"
+      },
+      "wrapper_version": "rqa-wrappers-1",
+      "wrist_header_moving": "Wrist camera (mounted on the robot's gripper; it moves with the gripper, so its image orientation is not fixed):"
+    },
+    "visibility": "automated projection pre-check only; human answerability review pending"
+  },
+  "implementation_commit": "4d2605c841e76894e6f2fbae3689b01505b49339",
+  "implementation_version": "rqa-impl-1",
+  "inventory_sha256": "9a0b14e29865b15048bfc6f96520004bf9270c5e8643c358dc686a52b7e2a7eb",
+  "protocol_version": "1.0",
+  "provenance_note": "Gold labels computed from saved simulator tick records; no model answers, outcomes or forecast labels were read. Human answerability audit packets are in audit/; review not performed.",
+  "release_content_sha256": "1e691df6b85576e0d75925cc7902a1f4e303267098483a81726f6ff63cda3046",
+  "source_release_sha256": "cd0d478313e692fea6499d07aea16a67c363d02b4fcdfd3bd33fd2566d635e88",
+  "source_root": "/data/users/ali/rws-20260926",
+  "spec_files_sha256": {
+    "DECISIONS_AND_COVERAGE.md": "caeb2cf0a0e046d249c806b3c83ea6919043fea9aaf4abe13a75c2641ccc48da",
+    "EXPERIMENT_GUIDE.md": "b6fa1572a0994a92ba0a2e771701c36b267bc9c9fbdcc46ca332a616a70c164c",
+    "IMPLEMENTATION_RECORD.md": "6c7cfb0ef771b9dcb3f6baf81cb059e648e338ad5684f91773d39b564befaca0",
+    "PACKET_MANIFEST.json": "77226df57503b3735b0f48c2299b25ba7ff3e85b9b182b4191f8e34726c0eb7b",
+    "README.md": "522403ec92ac0d06bc3065cc0ea26e2afbb41642885a5aebb79d661afe97dd73",
+    "VALIDATION.json": "c270fd2f0c17dfcfbb9e255d38015992ad3afe3ce879849bff7d4d94c6136ba5",
+    "frame_selection.json": "d78359eb6d9e6e23e6a9d046aa9aeb631982cd2ab48dbae290a8d3af8b3c579d",
+    "protocol.json": "80af3161356db02aed69bfb6c8da9ac6600e11a5ab6ae07d83ca55ce4cbe87af",
+    "question_catalog.json": "dad5a0ab5d2b958b9f4579524978834ca7e328e4f712df85be274c9624615ecb"
+  },
+  "status": "frozen_provisional_human_answerability_review_pending",
+  "study_id": "RQA-20261006"
+}

@@ -1,0 +1,147 @@
+{
+  "checks": {
+    "32_initial_frames_available": true,
+    "64_secondary_frames_available": true,
+    "A_pairs_share_gold_and_exclusions": true,
+    "B_gold_from_catalog": true,
+    "camera_order_wrist_left_right": true,
+    "distinct_frame_ids": true,
+    "image_files_hash_match": true,
+    "image_ids_opaque": true,
+    "initial_views_native_720x1280": true,
+    "instruction_bytes_exact_in_wrapper": true,
+    "main_pool_C_DIR_TF_RF_labels_equivalent": true,
+    "order_keys_match": true,
+    "payload_fields_minimal": true,
+    "payloads_free_of_gold_and_model_names": true,
+    "placement_C_pairs_share_gold": true,
+    "query_counts_match_plan": true,
+    "release_file_hashes_match": true,
+    "release_status_declares_provisional_review": true,
+    "required_query_fields_present": true,
+    "s4_top_d_trailing_space_preserved": true,
+    "single_release_sha": true,
+    "three_views_single_source_per_frame": true,
+    "total_queries_2072": true,
+    "unique_query_ids": true
+  },
+  "human_answerability_review": "not performed (pending); release is provisional",
+  "notes": {
+    "exclusions": {
+      "A|initial|cone_within_5deg_of_cone_boundary": 4,
+      "A|secondary|bowl_identity_not_followable_both_bowls_moved": 12,
+      "A|secondary|cone_within_5deg_of_cone_boundary": 14,
+      "C|initial|cone_within_5deg_of_cone_boundary": 10,
+      "C|secondary|bowl_identity_not_followable_both_bowls_moved": 18,
+      "C|secondary|cone_within_5deg_of_cone_boundary": 21,
+      "C|secondary|target_or_reference_in_gripper_contact_final_arrangement_ambiguous": 129
+    },
+    "label_distribution": {
+      "original|A|initial|S1": {
+        "no|ans": 48,
+        "yes|ans": 16
+      },
+      "original|A|initial|S3": {
+        "no|ans": 32,
+        "yes|ans": 14,
+        "yes|excl": 2
+      },
+      "original|A|initial|S4": {
+        "no|ans": 32,
+        "yes|ans": 14,
+        "yes|excl": 2
+      },
+      "original|A|initial|S5": {
+        "no|ans": 32
+      },
+      "original|A|secondary|S1": {
+        "no|ans": 96,
+        "yes|ans": 32
+      },
+      "original|A|secondary|S3": {
+        "no|ans": 68,
+        "no|excl": 8,
+        "yes|ans": 18,
+        "yes|excl": 2
+      },
+      "original|A|secondary|S4": {
+        "no|ans": 66,
+        "yes|ans": 26,
+        "yes|excl": 4
+      },
+      "original|A|secondary|S5": {
+        "no|ans": 40,
+        "no|excl": 8,
+        "yes|ans": 12,
+        "yes|excl": 4
+      },
+      "original|C|initial|S1": {
+        "no|ans": 72,
+        "yes|ans": 24
+      },
+      "original|C|initial|S3": {
+        "no|ans": 48,
+        "yes|ans": 21,
+        "yes|excl": 3
+      },
+      "original|C|initial|S4": {
+        "no|ans": 48,
+        "yes|ans": 21,
+        "yes|excl": 3
+      },
+      "original|C|initial|S5": {
+        "no|ans": 48
+      },
+      "original|C|secondary|S1": {
+        "no|ans": 126,
+        "no|excl": 18,
+        "yes|ans": 42,
+        "yes|excl": 6
+      },
+      "original|C|secondary|S3": {
+        "no|ans": 84,
+        "no|excl": 30,
+        "yes|ans": 24,
+        "yes|excl": 6
+      },
+      "original|C|secondary|S4": {
+        "no|ans": 60,
+        "no|excl": 48,
+        "yes|ans": 24,
+        "yes|excl": 12
+      },
+      "original|C|secondary|S5": {
+        "no|ans": 44,
+        "no|excl": 32,
+        "yes|ans": 10,
+        "yes|excl": 10
+      },
+      "placement|C|initial|S1": {
+        "no|ans": 48,
+        "yes|ans": 16
+      },
+      "placement|C|initial|S3": {
+        "no|ans": 16,
+        "yes|ans": 14,
+        "yes|excl": 2
+      },
+      "placement|C|initial|S4": {
+        "no|ans": 16,
+        "yes|ans": 14,
+        "yes|excl": 2
+      }
+    },
+    "main_pool_C_label_mismatches": [],
+    "s5_C_TF_vs_RF_form_specific_label_differences": [
+      "C.secondary.S5-C06-secondary-50.S5-LR",
+      "C.secondary.S5-C03-secondary-100.S5-RL",
+      "C.secondary.S5-C06-secondary-100.S5-LR",
+      "C.secondary.S5-C03-secondary-50.S5-RL"
+    ]
+  },
+  "passed": true,
+  "release": "/data/users/ali/rqa-20261006/release/r1/release.json",
+  "release_content_sha256": "1e691df6b85576e0d75925cc7902a1f4e303267098483a81726f6ff63cda3046",
+  "release_json_sha256": "ccccd81eeb908b8001fa8ff70c0d28917bebc6f1df2a96d8fd335161f54cf7a9",
+  "validated_utc": "2026-10-06T22:09:02.002519Z"
+}
