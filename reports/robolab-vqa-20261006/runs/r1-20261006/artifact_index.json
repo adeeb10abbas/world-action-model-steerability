@@ -1,0 +1,1014 @@
+{
+  "created_utc": "2026-10-06T22:34:10.280526Z",
+  "items": [
+    {
+      "availability": "shared PVC 211247-prod-pvc (/data)",
+      "bytes": 11774,
+      "path": "/data/users/ali/rqa-20261006/release/r1/release.json",
+      "relative_to_work_root": "release/r1/release.json",
+      "role": "frozen release",
+      "sha256": "ccccd81eeb908b8001fa8ff70c0d28917bebc6f1df2a96d8fd335161f54cf7a9"
+    },
+    {
+      "availability": "shared PVC 211247-prod-pvc (/data)",
+      "bytes": 4282,
+      "path": "/data/users/ali/rqa-20261006/release/r1/validation.json",
+      "relative_to_work_root": "release/r1/validation.json",
+      "role": "frozen release",
+      "sha256": "ce4bfb32e0db6d2957424989456c82aea6e98888053911d8a97a849db86478c2"
+    },
+    {
+      "availability": "shared PVC 211247-prod-pvc (/data)",
+      "bytes": 4668514,
+      "path": "/data/users/ali/rqa-20261006/release/r1/payloads.jsonl",
+      "relative_to_work_root": "release/r1/payloads.jsonl",
+      "role": "frozen release",
+      "sha256": "6b1ee8f196f99b169f49b051b1ccda1ab1dde8e673aa2d05d03b0695bee5d106"
+    },
+    {
+      "availability": "shared PVC 211247-prod-pvc (/data)",
+      "bytes": 11984195,
+      "path": "/data/users/ali/rqa-20261006/release/r1/query_manifest.jsonl",
+      "relative_to_work_root": "release/r1/query_manifest.jsonl",
+      "role": "frozen release",
+      "sha256": "ce5b6724f2a983f539b5647fc911990a87980e93a2b38105ef58fb1c02f92237"
+    },
+    {
+      "availability": "shared PVC 211247-prod-pvc (/data)",
+      "bytes": 636979,
+      "path": "/data/users/ali/rqa-20261006/release/r1/frames.json",
+      "relative_to_work_root": "release/r1/frames.json",
+      "role": "frozen release",
+      "sha256": "4f25bbc2efa4b5d61c4532cada81d7a379e2147c4274a5ef6d95de74ea299739"
+    },
+    {
+      "availability": "shared PVC 211247-prod-pvc (/data)",
+      "bytes": 215208,
+      "path": "/data/users/ali/rqa-20261006/release/r1/images.json",
+      "relative_to_work_root": "release/r1/images.json",
+      "role": "frozen release",
+      "sha256": "1696badccda74ba6a58b9429cd44709950603cf06bb0811bd249947dedf82b33"
+    },
+    {
+      "availability": "shared PVC 211247-prod-pvc (/data)",
+      "bytes": 21873,
+      "path": "/data/users/ali/rqa-20261006/release/r1/dev_fixtures.jsonl",
+      "relative_to_work_root": "release/r1/dev_fixtures.jsonl",
+      "role": "frozen release",
+      "sha256": "9fa91bab4d85306d664dd9d95a0e40fb7bd628a639fc864670dd356ff8e411fe"
+    },
+    {
+      "availability": "shared PVC 211247-prod-pvc (/data)",
+      "bytes": 151006,
+      "path": "/data/users/ali/rqa-20261006/release/r1/audit/answerability_review_template.csv",
+      "relative_to_work_root": "release/r1/audit/answerability_review_template.csv",
+      "role": "human answerability audit template (not reviewed)",
+      "sha256": "2bb702d0f43e147f6e01aa0d2e89eae38e92f85aeba490b8e52a7ca739f4d883"
+    },
+    {
+      "availability": "shared PVC 211247-prod-pvc (/data)",
+      "bytes": 1621,
+      "path": "/data/users/ali/rqa-20261006/release/r1/audit/audit_manifest.json",
+      "relative_to_work_root": "release/r1/audit/audit_manifest.json",
+      "role": "human answerability audit template (not reviewed)",
+      "sha256": "7e3e762b978892ba351cf6e989793e00771096b4a2db16ffc7a2828ef2ee8de2"
+    },
+    {
+      "bytes": 150167795,
+      "files": 300,
+      "listing_sha256": "744d6cfe0af33b136813e69c77925d7d278dc5d5dcb8c783c4954143eac4bb90",
+      "path": "/data/users/ali/rqa-20261006/release/r1/images",
+      "per_file_hashes": "release images.json (png_sha256 and raw_rgb_sha256)",
+      "role": "lossless RGB model inputs (PNG)"
+    },
+    {
+      "bytes": 17767192,
+      "files": 96,
+      "listing_sha256": "7a2fcc1a3810c67a578c681db5b5fcc62a9dddb2b9df8d0550fc74121729d184",
+      "path": "/data/users/ali/rqa-20261006/release/r1/audit/sheets",
+      "role": "audit sheets with proposed labels and calibration overlays"
+    },
+    {
+      "availability": "shared PVC 211247-prod-pvc (/data)",
+      "bytes": 272221,
+      "path": "/data/users/ali/rqa-20261006/inventory/inventory.json",
+      "relative_to_work_root": "inventory/inventory.json",
+      "role": "evidence inventory / checkpoint audit",
+      "sha256": "9a0b14e29865b15048bfc6f96520004bf9270c5e8643c358dc686a52b7e2a7eb"
+    },
+    {
+      "availability": "shared PVC 211247-prod-pvc (/data)",
+      "bytes": 1168452,
+      "path": "/data/users/ali/rqa-20261006/inventory/cells.jsonl",
+      "relative_to_work_root": "inventory/cells.jsonl",
+      "role": "evidence inventory / checkpoint audit",
+      "sha256": "72a1cc954185bcfff39fb03ef8b323173cc4cdafe580c08c5f13cc3c71ef8f39"
+    },
+    {
+      "availability": "shared PVC 211247-prod-pvc (/data)",
+      "bytes": 492643,
+      "path": "/data/users/ali/rqa-20261006/inventory/secondary_ticks.json",
+      "relative_to_work_root": "inventory/secondary_ticks.json",
+      "role": "evidence inventory / checkpoint audit",
+      "sha256": "5c4f3893a9a152f537c04f3223882f16f8f977a6913964475c16b36ff4e58e83"
+    },
+    {
+      "availability": "shared PVC 211247-prod-pvc (/data)",
+      "bytes": 74401,
+      "path": "/data/users/ali/rqa-20261006/inventory/secondary_camera.json",
+      "relative_to_work_root": "inventory/secondary_camera.json",
+      "role": "evidence inventory / checkpoint audit",
+      "sha256": "0575a16685d718b2ba5e285801152e8c12227a4e681ddf0f2906568e14984ede"
+    },
+    {
+      "availability": "shared PVC 211247-prod-pvc (/data)",
+      "bytes": 297513,
+      "path": "/data/users/ali/rqa-20261006/eligibility/eligibility_audit.json",
+      "relative_to_work_root": "eligibility/eligibility_audit.json",
+      "role": "evidence inventory / checkpoint audit",
+      "sha256": "6eaee91019cc5a348384547caee08f41ed66d6b1d2b8afafd3c3f41c1d33ed08"
+    },
+    {
+      "availability": "shared PVC 211247-prod-pvc (/data)",
+      "bytes": 4071,
+      "path": "/data/users/ali/rqa-20261006/inventory/initial_ticks/S1-C01.json",
+      "relative_to_work_root": "inventory/initial_ticks/S1-C01.json",
+      "role": "initial tick record used for gold labels",
+      "sha256": "41d0da93857bfaa21c0018644f41a6e398449b2a43764d6ffe7819b19ee20d29"
+    },
+    {
+      "availability": "shared PVC 211247-prod-pvc (/data)",
+      "bytes": 4057,
+      "path": "/data/users/ali/rqa-20261006/inventory/initial_ticks/S1-C02.json",
+      "relative_to_work_root": "inventory/initial_ticks/S1-C02.json",
+      "role": "initial tick record used for gold labels",
+      "sha256": "eca150e94899585a4df0c6ddcc49c9d7abd76822ef5ac64480a3983f37e35107"
+    },
+    {
+      "availability": "shared PVC 211247-prod-pvc (/data)",
+      "bytes": 4066,
+      "path": "/data/users/ali/rqa-20261006/inventory/initial_ticks/S1-C03.json",
+      "relative_to_work_root": "inventory/initial_ticks/S1-C03.json",
+      "role": "initial tick record used for gold labels",
+      "sha256": "845df8e1fef6da912fc5ce6bd4e225308dcfde0112c39cbbb21a154016e590fb"
+    },
+    {
+      "availability": "shared PVC 211247-prod-pvc (/data)",
+      "bytes": 4064,
+      "path": "/data/users/ali/rqa-20261006/inventory/initial_ticks/S1-C04.json",
+      "relative_to_work_root": "inventory/initial_ticks/S1-C04.json",
+      "role": "initial tick record used for gold labels",
+      "sha256": "4502cef295220e0531a509549137e95df6509b04165ecc68342bf759f1f7514d"
+    },
+    {
+      "availability": "shared PVC 211247-prod-pvc (/data)",
+      "bytes": 4045,
+      "path": "/data/users/ali/rqa-20261006/inventory/initial_ticks/S1-C05.json",
+      "relative_to_work_root": "inventory/initial_ticks/S1-C05.json",
+      "role": "initial tick record used for gold labels",
+      "sha256": "ae47379aea7b56fced2416d1f2b18d52187e6164864d3f36308da9d88ee12ae0"
+    },
+    {
+      "availability": "shared PVC 211247-prod-pvc (/data)",
+      "bytes": 4071,
+      "path": "/data/users/ali/rqa-20261006/inventory/initial_ticks/S1-C06.json",
+      "relative_to_work_root": "inventory/initial_ticks/S1-C06.json",
+      "role": "initial tick record used for gold labels",
+      "sha256": "c81aa6baa649f30bc9051276e13e2ae52351718a98ea2a0c20877757209004ed"
+    },
+    {
+      "availability": "shared PVC 211247-prod-pvc (/data)",
+      "bytes": 4062,
+      "path": "/data/users/ali/rqa-20261006/inventory/initial_ticks/S1-C07.json",
+      "relative_to_work_root": "inventory/initial_ticks/S1-C07.json",
+      "role": "initial tick record used for gold labels",
+      "sha256": "a16eb4e55e944523920aaf59883914a46af52ba09ffdf21764e48582dc893bdd"
+    },
+    {
+      "availability": "shared PVC 211247-prod-pvc (/data)",
+      "bytes": 4057,
+      "path": "/data/users/ali/rqa-20261006/inventory/initial_ticks/S1-C08.json",
+      "relative_to_work_root": "inventory/initial_ticks/S1-C08.json",
+      "role": "initial tick record used for gold labels",
+      "sha256": "a210a4f4a66ee15e8b1d712f85f6c22f18c60ac605647416f2dc7ea1359d4313"
+    },
+    {
+      "availability": "shared PVC 211247-prod-pvc (/data)",
+      "bytes": 2837,
+      "path": "/data/users/ali/rqa-20261006/inventory/initial_ticks/S3-C01.json",
+      "relative_to_work_root": "inventory/initial_ticks/S3-C01.json",
+      "role": "initial tick record used for gold labels",
+      "sha256": "0319c048a8810a9f58f6dfa3c0807e8692fd9effcc660a1f39c75939f5b86a61"
+    },
+    {
+      "availability": "shared PVC 211247-prod-pvc (/data)",
+      "bytes": 2834,
+      "path": "/data/users/ali/rqa-20261006/inventory/initial_ticks/S3-C02.json",
+      "relative_to_work_root": "inventory/initial_ticks/S3-C02.json",
+      "role": "initial tick record used for gold labels",
+      "sha256": "c27bfd7f18a943711dba1cd30e843c66502ef4fbb36b8fd87bb6c82ab02b6572"
+    },
+    {
+      "availability": "shared PVC 211247-prod-pvc (/data)",
+      "bytes": 2845,
+      "path": "/data/users/ali/rqa-20261006/inventory/initial_ticks/S3-C03.json",
+      "relative_to_work_root": "inventory/initial_ticks/S3-C03.json",
+      "role": "initial tick record used for gold labels",
+      "sha256": "6f9ba1d63dcf33ebf4ea705434629c22f84f73d4dc47e4e8912771e8fc91c5c4"
+    },
+    {
+      "availability": "shared PVC 211247-prod-pvc (/data)",
+      "bytes": 2840,
+      "path": "/data/users/ali/rqa-20261006/inventory/initial_ticks/S3-C04.json",
+      "relative_to_work_root": "inventory/initial_ticks/S3-C04.json",
+      "role": "initial tick record used for gold labels",
+      "sha256": "838a190914102d8f5aae1f113b370841c10a948b8b26581930ca4becbcf53587"
+    },
+    {
+      "availability": "shared PVC 211247-prod-pvc (/data)",
+      "bytes": 2833,
+      "path": "/data/users/ali/rqa-20261006/inventory/initial_ticks/S3-C05.json",
+      "relative_to_work_root": "inventory/initial_ticks/S3-C05.json",
+      "role": "initial tick record used for gold labels",
+      "sha256": "6390f4b1c680278db37fcd33a4a550fe247a241a76d5b7b8e1a0ea0a568c6f42"
+    },
+    {
+      "availability": "shared PVC 211247-prod-pvc (/data)",
+      "bytes": 2841,
+      "path": "/data/users/ali/rqa-20261006/inventory/initial_ticks/S3-C06.json",
+      "relative_to_work_root": "inventory/initial_ticks/S3-C06.json",
+      "role": "initial tick record used for gold labels",
+      "sha256": "4f26db49a017a8bb4d04fbc5a5b7c1db4a393156eb9a9246daa03473eadb1304"
+    },
+    {
+      "availability": "shared PVC 211247-prod-pvc (/data)",
+      "bytes": 2829,
+      "path": "/data/users/ali/rqa-20261006/inventory/initial_ticks/S3-C07.json",
+      "relative_to_work_root": "inventory/initial_ticks/S3-C07.json",
+      "role": "initial tick record used for gold labels",
+      "sha256": "e390690d4bb00a8a5f7c3ae73d4ec8d41b350b7de8ee52de88b03cc85a066ca0"
+    },
+    {
+      "availability": "shared PVC 211247-prod-pvc (/data)",
+      "bytes": 2839,
+      "path": "/data/users/ali/rqa-20261006/inventory/initial_ticks/S3-C08.json",
+      "relative_to_work_root": "inventory/initial_ticks/S3-C08.json",
+      "role": "initial tick record used for gold labels",
+      "sha256": "c7754cd7840553389f8f93ee8e11223ce5305d537513cea02c54dfe3e17ac1ef"
+    },
+    {
+      "availability": "shared PVC 211247-prod-pvc (/data)",
+      "bytes": 2892,
+      "path": "/data/users/ali/rqa-20261006/inventory/initial_ticks/S4-C01.json",
+      "relative_to_work_root": "inventory/initial_ticks/S4-C01.json",
+      "role": "initial tick record used for gold labels",
+      "sha256": "51b43d687ab9e72fb50f7e06880f4df3f349ccc72eba438b58272336af1c6c46"
+    },
+    {
+      "availability": "shared PVC 211247-prod-pvc (/data)",
+      "bytes": 2890,
+      "path": "/data/users/ali/rqa-20261006/inventory/initial_ticks/S4-C02.json",
+      "relative_to_work_root": "inventory/initial_ticks/S4-C02.json",
+      "role": "initial tick record used for gold labels",
+      "sha256": "6f4b198fb00db3dda243edfba845ba3bb0ef667cd266a167c72595a35bf32fc5"
+    },
+    {
+      "availability": "shared PVC 211247-prod-pvc (/data)",
+      "bytes": 2888,
+      "path": "/data/users/ali/rqa-20261006/inventory/initial_ticks/S4-C03.json",
+      "relative_to_work_root": "inventory/initial_ticks/S4-C03.json",
+      "role": "initial tick record used for gold labels",
+      "sha256": "176e09dab99700710619a5b746d1a0faf3b22877c436719e7221acd456d47ca3"
+    },
+    {
+      "availability": "shared PVC 211247-prod-pvc (/data)",
+      "bytes": 2882,
+      "path": "/data/users/ali/rqa-20261006/inventory/initial_ticks/S4-C04.json",
+      "relative_to_work_root": "inventory/initial_ticks/S4-C04.json",
+      "role": "initial tick record used for gold labels",
+      "sha256": "6e0a533ef05f349a44a6855456e4fba6c1e3d78276d8bd581f4172df5471fa30"
+    },
+    {
+      "availability": "shared PVC 211247-prod-pvc (/data)",
+      "bytes": 2885,
+      "path": "/data/users/ali/rqa-20261006/inventory/initial_ticks/S4-C05.json",
+      "relative_to_work_root": "inventory/initial_ticks/S4-C05.json",
+      "role": "initial tick record used for gold labels",
+      "sha256": "7f748e46f7e6abec6734462a8376141b67961030d7a8bc64d42233d8bade808f"
+    },
+    {
+      "availability": "shared PVC 211247-prod-pvc (/data)",
+      "bytes": 2889,
+      "path": "/data/users/ali/rqa-20261006/inventory/initial_ticks/S4-C06.json",
+      "relative_to_work_root": "inventory/initial_ticks/S4-C06.json",
+      "role": "initial tick record used for gold labels",
+      "sha256": "edc2c8d100cc8621f8a057db8d16ed76c97ee476382f537f7f7202b24dafe5f5"
+    },
+    {
+      "availability": "shared PVC 211247-prod-pvc (/data)",
+      "bytes": 2891,
+      "path": "/data/users/ali/rqa-20261006/inventory/initial_ticks/S4-C07.json",
+      "relative_to_work_root": "inventory/initial_ticks/S4-C07.json",
+      "role": "initial tick record used for gold labels",
+      "sha256": "ea3091c973d051ea87236680796e0d95cb5d1570a85e47f0dcbc91dce58a1b9a"
+    },
+    {
+      "availability": "shared PVC 211247-prod-pvc (/data)",
+      "bytes": 2888,
+      "path": "/data/users/ali/rqa-20261006/inventory/initial_ticks/S4-C08.json",
+      "relative_to_work_root": "inventory/initial_ticks/S4-C08.json",
+      "role": "initial tick record used for gold labels",
+      "sha256": "5e06b8ba1b06d00d63085e7520c840511efd2e94be170259abceb5d1c6af2d3d"
+    },
+    {
+      "availability": "shared PVC 211247-prod-pvc (/data)",
+      "bytes": 2749,
+      "path": "/data/users/ali/rqa-20261006/inventory/initial_ticks/S5-C01.json",
+      "relative_to_work_root": "inventory/initial_ticks/S5-C01.json",
+      "role": "initial tick record used for gold labels",
+      "sha256": "b6f92e0f3828f42c636db7e1c386f6ef083c9cd060b45b57df550cecc3383bce"
+    },
+    {
+      "availability": "shared PVC 211247-prod-pvc (/data)",
+      "bytes": 2765,
+      "path": "/data/users/ali/rqa-20261006/inventory/initial_ticks/S5-C02.json",
+      "relative_to_work_root": "inventory/initial_ticks/S5-C02.json",
+      "role": "initial tick record used for gold labels",
+      "sha256": "aa7cb5d9e9004e57fef7e00c3e3e79a591e9dd18a7095f3fb83510a19462b961"
+    },
+    {
+      "availability": "shared PVC 211247-prod-pvc (/data)",
+      "bytes": 2768,
+      "path": "/data/users/ali/rqa-20261006/inventory/initial_ticks/S5-C03.json",
+      "relative_to_work_root": "inventory/initial_ticks/S5-C03.json",
+      "role": "initial tick record used for gold labels",
+      "sha256": "86d4b046d9ddbe97cdf48022ef6dd2a0afb50730585a6e365a486541cde55972"
+    },
+    {
+      "availability": "shared PVC 211247-prod-pvc (/data)",
+      "bytes": 2755,
+      "path": "/data/users/ali/rqa-20261006/inventory/initial_ticks/S5-C04.json",
+      "relative_to_work_root": "inventory/initial_ticks/S5-C04.json",
+      "role": "initial tick record used for gold labels",
+      "sha256": "cb65956fcf36b0debcad86ce4b1fad8c6481668795310d6bc6df0f77b547f96f"
+    },
+    {
+      "availability": "shared PVC 211247-prod-pvc (/data)",
+      "bytes": 2760,
+      "path": "/data/users/ali/rqa-20261006/inventory/initial_ticks/S5-C05.json",
+      "relative_to_work_root": "inventory/initial_ticks/S5-C05.json",
+      "role": "initial tick record used for gold labels",
+      "sha256": "3da88ca685ece9f3c43e15ee218660192465ad8c2fa90308663501539368446d"
+    },
+    {
+      "availability": "shared PVC 211247-prod-pvc (/data)",
+      "bytes": 2760,
+      "path": "/data/users/ali/rqa-20261006/inventory/initial_ticks/S5-C06.json",
+      "relative_to_work_root": "inventory/initial_ticks/S5-C06.json",
+      "role": "initial tick record used for gold labels",
+      "sha256": "21682f841f5fe485e0bb512b0d6a74807bc4533969ce5f25e271969a434ad99b"
+    },
+    {
+      "availability": "shared PVC 211247-prod-pvc (/data)",
+      "bytes": 2758,
+      "path": "/data/users/ali/rqa-20261006/inventory/initial_ticks/S5-C07.json",
+      "relative_to_work_root": "inventory/initial_ticks/S5-C07.json",
+      "role": "initial tick record used for gold labels",
+      "sha256": "03396ef6dbf1e3ee6832e091fc5de3575c2540f46bc5605d14d40ef5288b7f8a"
+    },
+    {
+      "availability": "shared PVC 211247-prod-pvc (/data)",
+      "bytes": 2751,
+      "path": "/data/users/ali/rqa-20261006/inventory/initial_ticks/S5-C08.json",
+      "relative_to_work_root": "inventory/initial_ticks/S5-C08.json",
+      "role": "initial tick record used for gold labels",
+      "sha256": "b36d4f837034f64cbd36e8cd46b0b30165cf14e0746d971386a3e630eb08fb4c"
+    },
+    {
+      "availability": "shared PVC 211247-prod-pvc (/data)",
+      "bytes": 208152,
+      "path": "/data/users/ali/rqa-20261006/eligibility/tensors_E3-base.json",
+      "relative_to_work_root": "eligibility/tensors_E3-base.json",
+      "role": "per-tensor sha256 map",
+      "sha256": "da804d9d0aff09fc549e1cb6b103bcaedfc626de7f413cfc296a6dbcf317e30a"
+    },
+    {
+      "availability": "shared PVC 211247-prod-pvc (/data)",
+      "bytes": 214830,
+      "path": "/data/users/ali/rqa-20261006/eligibility/tensors_E3-policy.json",
+      "relative_to_work_root": "eligibility/tensors_E3-policy.json",
+      "role": "per-tensor sha256 map",
+      "sha256": "bfac264a9367c24e4d217febeca67fd635aa632e9c715dec0d39e4a1564ae65c"
+    },
+    {
+      "availability": "shared PVC 211247-prod-pvc (/data)",
+      "bytes": 150894,
+      "path": "/data/users/ali/rqa-20261006/eligibility/tensors_F3-qwen3vl4b.json",
+      "relative_to_work_root": "eligibility/tensors_F3-qwen3vl4b.json",
+      "role": "per-tensor sha256 map",
+      "sha256": "3a7e5ad178d3e3ce2b6faafcfd25a5ad7313a47c65c7771c2ae72f5dc1cc5190"
+    },
+    {
+      "availability": "shared PVC 211247-prod-pvc (/data)",
+      "bytes": 239204,
+      "path": "/data/users/ali/rqa-20261006/eligibility/tensors_N3-base.json",
+      "relative_to_work_root": "eligibility/tensors_N3-base.json",
+      "role": "per-tensor sha256 map",
+      "sha256": "2e301eaa1de21d8db9b2f6883d1ac9097ebfbc1a54b4538fb0d8f3f01c229501"
+    },
+    {
+      "availability": "shared PVC 211247-prod-pvc (/data)",
+      "bytes": 238200,
+      "path": "/data/users/ali/rqa-20261006/eligibility/tensors_N3-policy.json",
+      "relative_to_work_root": "eligibility/tensors_N3-policy.json",
+      "role": "per-tensor sha256 map",
+      "sha256": "3d8894950832380cc7f8b117b3fde9b171302be4780ea3fe326d2b9b8486a735"
+    },
+    {
+      "availability": "shared PVC 211247-prod-pvc (/data)",
+      "bytes": 158464,
+      "path": "/data/users/ali/rqa-20261006/eligibility/tensors_N3-upstream-qwen3vl8b.json",
+      "relative_to_work_root": "eligibility/tensors_N3-upstream-qwen3vl8b.json",
+      "role": "per-tensor sha256 map",
+      "sha256": "17140350a26449dc118f8c848b9af454cd993b6552f8180e7fe3554f51c85006"
+    },
+    {
+      "availability": "shared PVC 211247-prod-pvc (/data)",
+      "bytes": 3260,
+      "lane": "E3-base",
+      "path": "/data/users/ali/rqa-20261006/runs/r1-20261006/E3-base/checkpoint_manifest.json",
+      "relative_to_work_root": "runs/r1-20261006/E3-base/checkpoint_manifest.json",
+      "role": "receipt/manifest",
+      "sha256": "cc6757d465cc7d2d8ece3360597f60c354dcefd87e6753a8d0860089d839311e"
+    },
+    {
+      "availability": "shared PVC 211247-prod-pvc (/data)",
+      "bytes": 8021,
+      "lane": "E3-base",
+      "path": "/data/users/ali/rqa-20261006/runs/r1-20261006/E3-base/dev_fixture_responses.jsonl",
+      "relative_to_work_root": "runs/r1-20261006/E3-base/dev_fixture_responses.jsonl",
+      "role": "development fixture responses",
+      "sha256": "9d158d2e24c66f57d261beb9bf87864c40c07c43d76c49935ef70752e5a1dac5"
+    },
+    {
+      "availability": "shared PVC 211247-prod-pvc (/data)",
+      "bytes": 8198,
+      "lane": "E3-base",
+      "path": "/data/users/ali/rqa-20261006/runs/r1-20261006/E3-base/rendered_prompts_dev.jsonl",
+      "relative_to_work_root": "runs/r1-20261006/E3-base/rendered_prompts_dev.jsonl",
+      "role": "rendered prompts",
+      "sha256": "a8189431936793bcec90f8b439c1dd4a873d5e4490467c8fad20df9ddba28fbd"
+    },
+    {
+      "availability": "shared PVC 211247-prod-pvc (/data)",
+      "bytes": 3012,
+      "lane": "E3-base",
+      "path": "/data/users/ali/rqa-20261006/runs/r1-20261006/E3-base/run_receipt_dev_1791324600.json",
+      "relative_to_work_root": "runs/r1-20261006/E3-base/run_receipt_dev_1791324600.json",
+      "role": "receipt/manifest",
+      "sha256": "d295281188b8f9a03717bfe2db5f9043e74e36602810b95d5debdf4d98a0058d"
+    },
+    {
+      "availability": "shared PVC 211247-prod-pvc (/data)",
+      "bytes": 3783,
+      "lane": "E3-policy",
+      "path": "/data/users/ali/rqa-20261006/runs/r1-20261006/E3-policy/checkpoint_manifest.json",
+      "relative_to_work_root": "runs/r1-20261006/E3-policy/checkpoint_manifest.json",
+      "role": "receipt/manifest",
+      "sha256": "8b826be0fb84fb865ef67e37607662872a0805a6d028f243226cb01709dead57"
+    },
+    {
+      "availability": "shared PVC 211247-prod-pvc (/data)",
+      "bytes": 8123,
+      "lane": "E3-policy",
+      "path": "/data/users/ali/rqa-20261006/runs/r1-20261006/E3-policy/dev_fixture_responses.jsonl",
+      "relative_to_work_root": "runs/r1-20261006/E3-policy/dev_fixture_responses.jsonl",
+      "role": "development fixture responses",
+      "sha256": "70e63b70e64046a6a5cba18d7672f356dad4d23ebdfdb208b3119cb200ae7ff3"
+    },
+    {
+      "availability": "shared PVC 211247-prod-pvc (/data)",
+      "bytes": 3507322,
+      "lane": "E3-policy",
+      "path": "/data/users/ali/rqa-20261006/runs/r1-20261006/E3-policy/rendered_prompts.jsonl",
+      "relative_to_work_root": "runs/r1-20261006/E3-policy/rendered_prompts.jsonl",
+      "role": "rendered prompts",
+      "sha256": "cefb82cfe616722dd33aaba482d812b9d1d57f04ccd6c0e556c5ea3518112156"
+    },
+    {
+      "availability": "shared PVC 211247-prod-pvc (/data)",
+      "bytes": 8198,
+      "lane": "E3-policy",
+      "path": "/data/users/ali/rqa-20261006/runs/r1-20261006/E3-policy/rendered_prompts_dev.jsonl",
+      "relative_to_work_root": "runs/r1-20261006/E3-policy/rendered_prompts_dev.jsonl",
+      "role": "rendered prompts",
+      "sha256": "a8189431936793bcec90f8b439c1dd4a873d5e4490467c8fad20df9ddba28fbd"
+    },
+    {
+      "availability": "shared PVC 211247-prod-pvc (/data)",
+      "bytes": 2859124,
+      "lane": "E3-policy",
+      "path": "/data/users/ali/rqa-20261006/runs/r1-20261006/E3-policy/responses.jsonl",
+      "relative_to_work_root": "runs/r1-20261006/E3-policy/responses.jsonl",
+      "role": "raw responses",
+      "sha256": "f49dd08e4de63d8ec4a5ca5f4ab82b95bf091028816ed66c87913108e552fa96"
+    },
+    {
+      "availability": "shared PVC 211247-prod-pvc (/data)",
+      "bytes": 5833,
+      "lane": "E3-policy",
+      "path": "/data/users/ali/rqa-20261006/runs/r1-20261006/E3-policy/run_receipt_all_1791324914.json",
+      "relative_to_work_root": "runs/r1-20261006/E3-policy/run_receipt_all_1791324914.json",
+      "role": "receipt/manifest",
+      "sha256": "40cb4f64f2e4d09af4d4d99794a292db7fc509fd3ea9c39398c57e7170e0e489"
+    },
+    {
+      "availability": "shared PVC 211247-prod-pvc (/data)",
+      "bytes": 5823,
+      "lane": "E3-policy",
+      "path": "/data/users/ali/rqa-20261006/runs/r1-20261006/E3-policy/run_receipt_dev_1791324696.json",
+      "relative_to_work_root": "runs/r1-20261006/E3-policy/run_receipt_dev_1791324696.json",
+      "role": "receipt/manifest",
+      "sha256": "3a9513807b52a07b7502034d8e6ec78e422c8f8c69caf76eb289befa17031c37"
+    },
+    {
+      "availability": "shared PVC 211247-prod-pvc (/data)",
+      "bytes": 2971,
+      "lane": "F3-qwen3vl4b",
+      "path": "/data/users/ali/rqa-20261006/runs/r1-20261006/F3-qwen3vl4b/checkpoint_manifest.json",
+      "relative_to_work_root": "runs/r1-20261006/F3-qwen3vl4b/checkpoint_manifest.json",
+      "role": "receipt/manifest",
+      "sha256": "dc6fbeab2e06626af52c4e4675da0ce8ab75dc5d8d20ce7a4172f486b899bc6c"
+    },
+    {
+      "availability": "shared PVC 211247-prod-pvc (/data)",
+      "bytes": 8172,
+      "lane": "F3-qwen3vl4b",
+      "path": "/data/users/ali/rqa-20261006/runs/r1-20261006/F3-qwen3vl4b/dev_fixture_responses.jsonl",
+      "relative_to_work_root": "runs/r1-20261006/F3-qwen3vl4b/dev_fixture_responses.jsonl",
+      "role": "development fixture responses",
+      "sha256": "e29bae10a845b4ec7e0843240e393ed320d0fa8cb555d14c51e7879be2dcf7ff"
+    },
+    {
+      "availability": "shared PVC 211247-prod-pvc (/data)",
+      "bytes": 3405794,
+      "lane": "F3-qwen3vl4b",
+      "path": "/data/users/ali/rqa-20261006/runs/r1-20261006/F3-qwen3vl4b/rendered_prompts.jsonl",
+      "relative_to_work_root": "runs/r1-20261006/F3-qwen3vl4b/rendered_prompts.jsonl",
+      "role": "rendered prompts",
+      "sha256": "5e2f43f7a503c12124c98b62341da57384c14f79d17ac36e5407e142c5c026c8"
+    },
+    {
+      "availability": "shared PVC 211247-prod-pvc (/data)",
+      "bytes": 7904,
+      "lane": "F3-qwen3vl4b",
+      "path": "/data/users/ali/rqa-20261006/runs/r1-20261006/F3-qwen3vl4b/rendered_prompts_dev.jsonl",
+      "relative_to_work_root": "runs/r1-20261006/F3-qwen3vl4b/rendered_prompts_dev.jsonl",
+      "role": "rendered prompts",
+      "sha256": "18af03bdeb3780d6aa5eddce1d5527b5f606ddbdb0da568c275ba4bda4281478"
+    },
+    {
+      "availability": "shared PVC 211247-prod-pvc (/data)",
+      "bytes": 2894812,
+      "lane": "F3-qwen3vl4b",
+      "path": "/data/users/ali/rqa-20261006/runs/r1-20261006/F3-qwen3vl4b/responses.jsonl",
+      "relative_to_work_root": "runs/r1-20261006/F3-qwen3vl4b/responses.jsonl",
+      "role": "raw responses",
+      "sha256": "d14fbe3002c7568997ab17244a2a60ac6fdd5d8ab7613409f4cf0cc4bcd66992"
+    },
+    {
+      "availability": "shared PVC 211247-prod-pvc (/data)",
+      "bytes": 2948,
+      "lane": "F3-qwen3vl4b",
+      "path": "/data/users/ali/rqa-20261006/runs/r1-20261006/F3-qwen3vl4b/run_receipt_all_1791324916.json",
+      "relative_to_work_root": "runs/r1-20261006/F3-qwen3vl4b/run_receipt_all_1791324916.json",
+      "role": "receipt/manifest",
+      "sha256": "71f14cf55f1701df056b7904ebbb1a130a86f3d666002ede7b2c8c55cbdc35e2"
+    },
+    {
+      "availability": "shared PVC 211247-prod-pvc (/data)",
+      "bytes": 2940,
+      "lane": "F3-qwen3vl4b",
+      "path": "/data/users/ali/rqa-20261006/runs/r1-20261006/F3-qwen3vl4b/run_receipt_dev_1791324603.json",
+      "relative_to_work_root": "runs/r1-20261006/F3-qwen3vl4b/run_receipt_dev_1791324603.json",
+      "role": "receipt/manifest",
+      "sha256": "f591dbd6b0e0f13d80552395ef0385da083f6c2021e4399c11914d2b0eb5cc29"
+    },
+    {
+      "availability": "shared PVC 211247-prod-pvc (/data)",
+      "bytes": 4772,
+      "lane": "N3-base",
+      "path": "/data/users/ali/rqa-20261006/runs/r1-20261006/N3-base/checkpoint_manifest.json",
+      "relative_to_work_root": "runs/r1-20261006/N3-base/checkpoint_manifest.json",
+      "role": "receipt/manifest",
+      "sha256": "095e7725280e11469c5aaf5915f30edc9975c149d96557af576bbf03b8500545"
+    },
+    {
+      "availability": "shared PVC 211247-prod-pvc (/data)",
+      "bytes": 7936,
+      "lane": "N3-base",
+      "path": "/data/users/ali/rqa-20261006/runs/r1-20261006/N3-base/dev_fixture_responses.jsonl",
+      "relative_to_work_root": "runs/r1-20261006/N3-base/dev_fixture_responses.jsonl",
+      "role": "development fixture responses",
+      "sha256": "b05e5ce7f2f5a5e4d5b14a66b4f1a48252a2b54552ba092609a619e5b09b1b1d"
+    },
+    {
+      "availability": "shared PVC 211247-prod-pvc (/data)",
+      "bytes": 3405794,
+      "lane": "N3-base",
+      "path": "/data/users/ali/rqa-20261006/runs/r1-20261006/N3-base/rendered_prompts.jsonl",
+      "relative_to_work_root": "runs/r1-20261006/N3-base/rendered_prompts.jsonl",
+      "role": "rendered prompts",
+      "sha256": "5e2f43f7a503c12124c98b62341da57384c14f79d17ac36e5407e142c5c026c8"
+    },
+    {
+      "availability": "shared PVC 211247-prod-pvc (/data)",
+      "bytes": 7904,
+      "lane": "N3-base",
+      "path": "/data/users/ali/rqa-20261006/runs/r1-20261006/N3-base/rendered_prompts_dev.jsonl",
+      "relative_to_work_root": "runs/r1-20261006/N3-base/rendered_prompts_dev.jsonl",
+      "role": "rendered prompts",
+      "sha256": "18af03bdeb3780d6aa5eddce1d5527b5f606ddbdb0da568c275ba4bda4281478"
+    },
+    {
+      "availability": "shared PVC 211247-prod-pvc (/data)",
+      "bytes": 2799935,
+      "lane": "N3-base",
+      "path": "/data/users/ali/rqa-20261006/runs/r1-20261006/N3-base/responses.jsonl",
+      "relative_to_work_root": "runs/r1-20261006/N3-base/responses.jsonl",
+      "role": "raw responses",
+      "sha256": "ea8898132de786838bdf2429a97e03fe925aaa62cd40194a68b32a915ef82434"
+    },
+    {
+      "availability": "shared PVC 211247-prod-pvc (/data)",
+      "bytes": 2905,
+      "lane": "N3-base",
+      "path": "/data/users/ali/rqa-20261006/runs/r1-20261006/N3-base/run_receipt_all_1791324917.json",
+      "relative_to_work_root": "runs/r1-20261006/N3-base/run_receipt_all_1791324917.json",
+      "role": "receipt/manifest",
+      "sha256": "f3111b18fcb299a899422d2e222fa0d55d37e3a51722b726fceccd6425ff1829"
+    },
+    {
+      "availability": "shared PVC 211247-prod-pvc (/data)",
+      "bytes": 2898,
+      "lane": "N3-base",
+      "path": "/data/users/ali/rqa-20261006/runs/r1-20261006/N3-base/run_receipt_dev_1791324601.json",
+      "relative_to_work_root": "runs/r1-20261006/N3-base/run_receipt_dev_1791324601.json",
+      "role": "receipt/manifest",
+      "sha256": "87c14a580a1a09512c81443284e8bba043634faf94109a7f1464d818f24ccc3d"
+    },
+    {
+      "availability": "shared PVC 211247-prod-pvc (/data)",
+      "bytes": 4798,
+      "lane": "N3-policy",
+      "path": "/data/users/ali/rqa-20261006/runs/r1-20261006/N3-policy/checkpoint_manifest.json",
+      "relative_to_work_root": "runs/r1-20261006/N3-policy/checkpoint_manifest.json",
+      "role": "receipt/manifest",
+      "sha256": "d5449cffa40c691102809413cb00c31da312ee12a1a51574df90917121140328"
+    },
+    {
+      "availability": "shared PVC 211247-prod-pvc (/data)",
+      "bytes": 8033,
+      "lane": "N3-policy",
+      "path": "/data/users/ali/rqa-20261006/runs/r1-20261006/N3-policy/dev_fixture_responses.jsonl",
+      "relative_to_work_root": "runs/r1-20261006/N3-policy/dev_fixture_responses.jsonl",
+      "role": "development fixture responses",
+      "sha256": "abf46c82333f6650d76d04ddf1cc9f76344a5d310e29bc661884a5343c529560"
+    },
+    {
+      "availability": "shared PVC 211247-prod-pvc (/data)",
+      "bytes": 3405794,
+      "lane": "N3-policy",
+      "path": "/data/users/ali/rqa-20261006/runs/r1-20261006/N3-policy/rendered_prompts.jsonl",
+      "relative_to_work_root": "runs/r1-20261006/N3-policy/rendered_prompts.jsonl",
+      "role": "rendered prompts",
+      "sha256": "5e2f43f7a503c12124c98b62341da57384c14f79d17ac36e5407e142c5c026c8"
+    },
+    {
+      "availability": "shared PVC 211247-prod-pvc (/data)",
+      "bytes": 7904,
+      "lane": "N3-policy",
+      "path": "/data/users/ali/rqa-20261006/runs/r1-20261006/N3-policy/rendered_prompts_dev.jsonl",
+      "relative_to_work_root": "runs/r1-20261006/N3-policy/rendered_prompts_dev.jsonl",
+      "role": "rendered prompts",
+      "sha256": "18af03bdeb3780d6aa5eddce1d5527b5f606ddbdb0da568c275ba4bda4281478"
+    },
+    {
+      "availability": "shared PVC 211247-prod-pvc (/data)",
+      "bytes": 2848324,
+      "lane": "N3-policy",
+      "path": "/data/users/ali/rqa-20261006/runs/r1-20261006/N3-policy/responses.jsonl",
+      "relative_to_work_root": "runs/r1-20261006/N3-policy/responses.jsonl",
+      "role": "raw responses",
+      "sha256": "19b4a7bdee276bedeec06a6241295f5e1f975beeead6ddc776ed2bd18fe42309"
+    },
+    {
+      "availability": "shared PVC 211247-prod-pvc (/data)",
+      "bytes": 2910,
+      "lane": "N3-policy",
+      "path": "/data/users/ali/rqa-20261006/runs/r1-20261006/N3-policy/run_receipt_all_1791324913.json",
+      "relative_to_work_root": "runs/r1-20261006/N3-policy/run_receipt_all_1791324913.json",
+      "role": "receipt/manifest",
+      "sha256": "39ccb2ea8749f594f5a0931c43b9405f62ff67fb9a2d03088a742dc9af257e25"
+    },
+    {
+      "availability": "shared PVC 211247-prod-pvc (/data)",
+      "bytes": 2901,
+      "lane": "N3-policy",
+      "path": "/data/users/ali/rqa-20261006/runs/r1-20261006/N3-policy/run_receipt_dev_1791324602.json",
+      "relative_to_work_root": "runs/r1-20261006/N3-policy/run_receipt_dev_1791324602.json",
+      "role": "receipt/manifest",
+      "sha256": "c427734de8f553181de58a2214767ef203e84da76eae91271f79c112f2ca3b56"
+    },
+    {
+      "availability": "shared PVC 211247-prod-pvc (/data)",
+      "bytes": 3487,
+      "lane": "N3-upstream-qwen3vl8b",
+      "path": "/data/users/ali/rqa-20261006/runs/r1-20261006/N3-upstream-qwen3vl8b/checkpoint_manifest.json",
+      "relative_to_work_root": "runs/r1-20261006/N3-upstream-qwen3vl8b/checkpoint_manifest.json",
+      "role": "receipt/manifest",
+      "sha256": "9dbb4a87be261fb79cf853be42a94d77cbf06dc71a754c8c98e3345ebb5af660"
+    },
+    {
+      "availability": "shared PVC 211247-prod-pvc (/data)",
+      "bytes": 8135,
+      "lane": "N3-upstream-qwen3vl8b",
+      "path": "/data/users/ali/rqa-20261006/runs/r1-20261006/N3-upstream-qwen3vl8b/dev_fixture_responses.jsonl",
+      "relative_to_work_root": "runs/r1-20261006/N3-upstream-qwen3vl8b/dev_fixture_responses.jsonl",
+      "role": "development fixture responses",
+      "sha256": "9c092a3821df93847cd2d946e428aeb987578049ff87a1312859b6f868f929a1"
+    },
+    {
+      "availability": "shared PVC 211247-prod-pvc (/data)",
+      "bytes": 7904,
+      "lane": "N3-upstream-qwen3vl8b",
+      "path": "/data/users/ali/rqa-20261006/runs/r1-20261006/N3-upstream-qwen3vl8b/rendered_prompts_dev.jsonl",
+      "relative_to_work_root": "runs/r1-20261006/N3-upstream-qwen3vl8b/rendered_prompts_dev.jsonl",
+      "role": "rendered prompts",
+      "sha256": "18af03bdeb3780d6aa5eddce1d5527b5f606ddbdb0da568c275ba4bda4281478"
+    },
+    {
+      "availability": "shared PVC 211247-prod-pvc (/data)",
+      "bytes": 2935,
+      "lane": "N3-upstream-qwen3vl8b",
+      "path": "/data/users/ali/rqa-20261006/runs/r1-20261006/N3-upstream-qwen3vl8b/run_receipt_dev_1791324604.json",
+      "relative_to_work_root": "runs/r1-20261006/N3-upstream-qwen3vl8b/run_receipt_dev_1791324604.json",
+      "role": "receipt/manifest",
+      "sha256": "0b32b245ff9ef6878cab5c8d4cecdb2059fdf11d5fca14ccf871042acead4e3d"
+    },
+    {
+      "availability": "shared PVC 211247-prod-pvc (/data)",
+      "bytes": 10788,
+      "lane": "analysis",
+      "path": "/data/users/ali/rqa-20261006/runs/r1-20261006/analysis/action_join_counts.csv",
+      "relative_to_work_root": "runs/r1-20261006/analysis/action_join_counts.csv",
+      "role": "receipt/manifest",
+      "sha256": "b816905503d6bbf45655bea9541dbeae966beb5ff194c712a91e984ce15677c0"
+    },
+    {
+      "availability": "shared PVC 211247-prod-pvc (/data)",
+      "bytes": 3457,
+      "lane": "analysis",
+      "path": "/data/users/ali/rqa-20261006/runs/r1-20261006/analysis/b_error_taxonomy.csv",
+      "relative_to_work_root": "runs/r1-20261006/analysis/b_error_taxonomy.csv",
+      "role": "receipt/manifest",
+      "sha256": "bd69505cad56c861595936a31a56882e27be0a60ef6860c32d00bb18b4e0773c"
+    },
+    {
+      "availability": "shared PVC 211247-prod-pvc (/data)",
+      "bytes": 54786,
+      "lane": "analysis",
+      "path": "/data/users/ali/rqa-20261006/runs/r1-20261006/analysis/breakdown.csv",
+      "relative_to_work_root": "runs/r1-20261006/analysis/breakdown.csv",
+      "role": "receipt/manifest",
+      "sha256": "f6fcb0204f91ca9bfdb2179fe273b1e700e5f32944a4681b85dab96ca1bb842a"
+    },
+    {
+      "availability": "shared PVC 211247-prod-pvc (/data)",
+      "bytes": 4562,
+      "lane": "analysis",
+      "path": "/data/users/ali/rqa-20261006/runs/r1-20261006/analysis/coverage.csv",
+      "relative_to_work_root": "runs/r1-20261006/analysis/coverage.csv",
+      "role": "receipt/manifest",
+      "sha256": "4aec0127824dc963040b5dd179319edd6f809f6b71d823202c301e513f438c4a"
+    },
+    {
+      "availability": "shared PVC 211247-prod-pvc (/data)",
+      "bytes": 5010,
+      "lane": "analysis",
+      "path": "/data/users/ali/rqa-20261006/runs/r1-20261006/analysis/label_variation.csv",
+      "relative_to_work_root": "runs/r1-20261006/analysis/label_variation.csv",
+      "role": "receipt/manifest",
+      "sha256": "8e4c1f3906e3fa29c0debb349376dcdbb7757cb3c705cd319e6c3dcb98150134"
+    },
+    {
+      "availability": "shared PVC 211247-prod-pvc (/data)",
+      "bytes": 250318,
+      "lane": "analysis",
+      "path": "/data/users/ali/rqa-20261006/runs/r1-20261006/analysis/metrics_long.csv",
+      "relative_to_work_root": "runs/r1-20261006/analysis/metrics_long.csv",
+      "role": "receipt/manifest",
+      "sha256": "8529904a26ac9ce9ab70a2b60b9440c05aba4e6ac73fefe24f9963e90aa3cf9c"
+    },
+    {
+      "availability": "shared PVC 211247-prod-pvc (/data)",
+      "bytes": 1506474,
+      "lane": "analysis",
+      "path": "/data/users/ali/rqa-20261006/runs/r1-20261006/analysis/results.json",
+      "relative_to_work_root": "runs/r1-20261006/analysis/results.json",
+      "role": "receipt/manifest",
+      "sha256": "0ee742e2ea581080c73d5f83b842011c92a4f70ce063437dd7e23f41d93efbaf"
+    },
+    {
+      "availability": "shared PVC 211247-prod-pvc (/data)",
+      "bytes": 3366100,
+      "lane": "analysis",
+      "path": "/data/users/ali/rqa-20261006/runs/r1-20261006/analysis/scored_rows.csv",
+      "relative_to_work_root": "runs/r1-20261006/analysis/scored_rows.csv",
+      "role": "receipt/manifest",
+      "sha256": "3a2a9e7d3691d6470001a91fae33505966cc1d29ccf4af3f9c8a8d7c469d9b1d"
+    },
+    {
+      "availability": "shared PVC 211247-prod-pvc (/data)",
+      "bytes": 1618,
+      "lane": "report",
+      "path": "/data/users/ali/rqa-20261006/runs/r1-20261006/report/PAPER_TABLE.md",
+      "relative_to_work_root": "runs/r1-20261006/report/PAPER_TABLE.md",
+      "role": "receipt/manifest",
+      "sha256": "f2d27fa89c7c3fa8172181c15042851dd5367cd912e86570a0026bdbaf516055"
+    },
+    {
+      "availability": "shared PVC 211247-prod-pvc (/data)",
+      "bytes": 29375,
+      "lane": "report",
+      "path": "/data/users/ali/rqa-20261006/runs/r1-20261006/report/TABLES.md",
+      "relative_to_work_root": "runs/r1-20261006/report/TABLES.md",
+      "role": "receipt/manifest",
+      "sha256": "42ebd64cb18a0af5872ad0afb351a9d7d934fdfb958ef374aaa43860fde899cf"
+    },
+    {
+      "availability": "shared PVC 211247-prod-pvc (/data)",
+      "bytes": 13125,
+      "path": "/data/users/ali/rqa-20261006/runs/r1-20261006/lanes.json",
+      "relative_to_work_root": "runs/r1-20261006/lanes.json",
+      "role": "qualification summary",
+      "sha256": "3603bbd9abb0b7fc247cce247e6a2e9687900312e1b7e1f6356fa44ea23b2623"
+    },
+    {
+      "availability": "shared PVC 211247-prod-pvc (/data)",
+      "bytes": 3144,
+      "path": "/data/users/ali/rqa-20261006/runs/r1-20261006/model_eligibility.csv",
+      "relative_to_work_root": "runs/r1-20261006/model_eligibility.csv",
+      "role": "qualification summary",
+      "sha256": "744ae3cbb1f53baa4fdcafdbed9e447d05631e60997648d031e7671264087e94"
+    },
+    {
+      "availability": "shared PVC 211247-prod-pvc (/data)",
+      "bytes": 16163,
+      "path": "/data/users/ali/rqa-20261006/runs/r1-20261006/_logs/E3-base-dev.log",
+      "relative_to_work_root": "runs/r1-20261006/_logs/E3-base-dev.log",
+      "role": "process log",
+      "sha256": "102a5cdd69516776f1bc07d25a65b1ee15f9213b72736b4cd04e072b630e7d65"
+    },
+    {
+      "availability": "shared PVC 211247-prod-pvc (/data)",
+      "bytes": 16249,
+      "path": "/data/users/ali/rqa-20261006/runs/r1-20261006/_logs/E3-policy-all.log",
+      "relative_to_work_root": "runs/r1-20261006/_logs/E3-policy-all.log",
+      "role": "process log",
+      "sha256": "571c4f3c6463448d091967ad3b81e357724680ec15b019652198e03d5467a08b"
+    },
+    {
+      "availability": "shared PVC 211247-prod-pvc (/data)",
+      "bytes": 16242,
+      "path": "/data/users/ali/rqa-20261006/runs/r1-20261006/_logs/E3-policy-dev.log",
+      "relative_to_work_root": "runs/r1-20261006/_logs/E3-policy-dev.log",
+      "role": "process log",
+      "sha256": "c1833ba51dcaae9271160a4b05c1fe5175e45d8af39bac2973fed293f36ecffb"
+    },
+    {
+      "availability": "shared PVC 211247-prod-pvc (/data)",
+      "bytes": 17166,
+      "path": "/data/users/ali/rqa-20261006/runs/r1-20261006/_logs/F3-qwen3vl4b-all.log",
+      "relative_to_work_root": "runs/r1-20261006/_logs/F3-qwen3vl4b-all.log",
+      "role": "process log",
+      "sha256": "28903107b7d54bf849c4a99538f9aef38003e0824186a866f84419f6077cd66a"
+    },
+    {
+      "availability": "shared PVC 211247-prod-pvc (/data)",
+      "bytes": 17160,
+      "path": "/data/users/ali/rqa-20261006/runs/r1-20261006/_logs/F3-qwen3vl4b-dev.log",
+      "relative_to_work_root": "runs/r1-20261006/_logs/F3-qwen3vl4b-dev.log",
+      "role": "process log",
+      "sha256": "0b1fdab5e8e3acc778bd2df7da09e1a3b6261c49435d7a85bc2d5242e49992e6"
+    },
+    {
+      "availability": "shared PVC 211247-prod-pvc (/data)",
+      "bytes": 18046,
+      "path": "/data/users/ali/rqa-20261006/runs/r1-20261006/_logs/N3-base-all.log",
+      "relative_to_work_root": "runs/r1-20261006/_logs/N3-base-all.log",
+      "role": "process log",
+      "sha256": "3e260ea19490dc00142b1ec42d452fd678ef87016da70a02281d6f0011740f31"
+    },
+    {
+      "availability": "shared PVC 211247-prod-pvc (/data)",
+      "bytes": 18043,
+      "path": "/data/users/ali/rqa-20261006/runs/r1-20261006/_logs/N3-base-dev.log",
+      "relative_to_work_root": "runs/r1-20261006/_logs/N3-base-dev.log",
+      "role": "process log",
+      "sha256": "f291f32d67b71a126a452575597b32bca2cdd8cb57e8242d955e792f6d456230"
+    },
+    {
+      "availability": "shared PVC 211247-prod-pvc (/data)",
+      "bytes": 18049,
+      "path": "/data/users/ali/rqa-20261006/runs/r1-20261006/_logs/N3-policy-all.log",
+      "relative_to_work_root": "runs/r1-20261006/_logs/N3-policy-all.log",
+      "role": "process log",
+      "sha256": "24298e73ed6ef046183c73db1257f7814e3bedd7fd10ab4a486f1b58dcabdfb5"
+    },
+    {
+      "availability": "shared PVC 211247-prod-pvc (/data)",
+      "bytes": 18043,
+      "path": "/data/users/ali/rqa-20261006/runs/r1-20261006/_logs/N3-policy-dev.log",
+      "relative_to_work_root": "runs/r1-20261006/_logs/N3-policy-dev.log",
+      "role": "process log",
+      "sha256": "f23fb3d73ffe97b08f7a0df0f1e2f754fc1093dd99b402abfad6816ea3e96925"
+    },
+    {
+      "availability": "shared PVC 211247-prod-pvc (/data)",
+      "bytes": 17416,
+      "path": "/data/users/ali/rqa-20261006/runs/r1-20261006/_logs/N3-upstream-qwen3vl8b-dev.log",
+      "relative_to_work_root": "runs/r1-20261006/_logs/N3-upstream-qwen3vl8b-dev.log",
+      "role": "process log",
+      "sha256": "78cfc6d9eee77165eaab14e111ad1fc8b4d0255e6cea7acf8a072d8414f21209"
+    },
+    {
+      "availability": "shared PVC 211247-prod-pvc (/data)",
+      "bytes": 10788,
+      "path": "/data/users/ali/rqa-20261006/runs/r1-20261006/analysis/action_join_counts.csv",
+      "relative_to_work_root": "runs/r1-20261006/analysis/action_join_counts.csv",
+      "role": "analysis output",
+      "sha256": "b816905503d6bbf45655bea9541dbeae966beb5ff194c712a91e984ce15677c0"
+    },
+    {
+      "availability": "shared PVC 211247-prod-pvc (/data)",
+      "bytes": 3457,
+      "path": "/data/users/ali/rqa-20261006/runs/r1-20261006/analysis/b_error_taxonomy.csv",
+      "relative_to_work_root": "runs/r1-20261006/analysis/b_error_taxonomy.csv",
+      "role": "analysis output",
+      "sha256": "bd69505cad56c861595936a31a56882e27be0a60ef6860c32d00bb18b4e0773c"
+    },
+    {
+      "availability": "shared PVC 211247-prod-pvc (/data)",
+      "bytes": 54786,
+      "path": "/data/users/ali/rqa-20261006/runs/r1-20261006/analysis/breakdown.csv",
+      "relative_to_work_root": "runs/r1-20261006/analysis/breakdown.csv",
+      "role": "analysis output",
+      "sha256": "f6fcb0204f91ca9bfdb2179fe273b1e700e5f32944a4681b85dab96ca1bb842a"
+    },
+    {
+      "availability": "shared PVC 211247-prod-pvc (/data)",
+      "bytes": 4562,
+      "path": "/data/users/ali/rqa-20261006/runs/r1-20261006/analysis/coverage.csv",
+      "relative_to_work_root": "runs/r1-20261006/analysis/coverage.csv",
+      "role": "analysis output",
+      "sha256": "4aec0127824dc963040b5dd179319edd6f809f6b71d823202c301e513f438c4a"
+    },
+    {
+      "availability": "shared PVC 211247-prod-pvc (/data)",
+      "bytes": 5010,
+      "path": "/data/users/ali/rqa-20261006/runs/r1-20261006/analysis/label_variation.csv",
+      "relative_to_work_root": "runs/r1-20261006/analysis/label_variation.csv",
+      "role": "analysis output",
+      "sha256": "8e4c1f3906e3fa29c0debb349376dcdbb7757cb3c705cd319e6c3dcb98150134"
+    },
+    {
+      "availability": "shared PVC 211247-prod-pvc (/data)",
+      "bytes": 250318,
+      "path": "/data/users/ali/rqa-20261006/runs/r1-20261006/analysis/metrics_long.csv",
+      "relative_to_work_root": "runs/r1-20261006/analysis/metrics_long.csv",
+      "role": "analysis output",
+      "sha256": "8529904a26ac9ce9ab70a2b60b9440c05aba4e6ac73fefe24f9963e90aa3cf9c"
+    },
+    {
+      "availability": "shared PVC 211247-prod-pvc (/data)",
+      "bytes": 1506474,
+      "path": "/data/users/ali/rqa-20261006/runs/r1-20261006/analysis/results.json",
+      "relative_to_work_root": "runs/r1-20261006/analysis/results.json",
+      "role": "analysis output",
+      "sha256": "0ee742e2ea581080c73d5f83b842011c92a4f70ce063437dd7e23f41d93efbaf"
+    },
+    {
+      "availability": "shared PVC 211247-prod-pvc (/data)",
+      "bytes": 3366100,
+      "path": "/data/users/ali/rqa-20261006/runs/r1-20261006/analysis/scored_rows.csv",
+      "relative_to_work_root": "runs/r1-20261006/analysis/scored_rows.csv",
+      "role": "analysis output",
+      "sha256": "3a2a9e7d3691d6470001a91fae33505966cc1d29ccf4af3f9c8a8d7c469d9b1d"
+    }
+  ],
+  "run_id": "r1-20261006",
+  "storage": "Kubernetes namespace 211247-prod, PVC 211247-prod-pvc mounted at /data (NFS); not in Git",
+  "study_id": "RQA-20261006",
+  "work_root": "/data/users/ali/rqa-20261006"
+}

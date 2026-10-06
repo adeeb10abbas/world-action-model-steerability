@@ -1,0 +1,61 @@
+lane,family,test,bank,proposed,answerable,excluded,queried,delivered,valid_format,unknown,invalid,infrastructure_missing,truncated_or_other_invalid_reasons
+E3-base,original,A,initial,192,188,4,192,192,187,0,5,0,"{""not_exactly_yes_no_unknown"": 5}"
+E3-base,original,A,secondary,384,358,26,384,384,382,0,2,0,"{""not_exactly_yes_no_unknown"": 2}"
+E3-base,original,B,initial,288,288,0,288,288,24,0,264,0,"{""json_not_object"": 91, ""object_not_in_vocabulary"": 167, ""not_exactly_one_json_object"": 6}"
+E3-base,original,B,no_image,36,36,0,36,36,20,0,16,0,"{""object_not_in_vocabulary"": 16}"
+E3-base,original,C,initial,288,282,6,288,288,288,0,0,0,{}
+E3-base,original,C,no_image,36,reused,0,36,36,36,4,0,0,{}
+E3-base,original,C,secondary,576,414,162,576,576,576,1,0,0,{}
+E3-base,placement,B,initial,128,128,0,128,128,0,0,128,0,"{""json_not_object"": 127, ""object_not_in_vocabulary"": 1}"
+E3-base,placement,B,no_image,16,16,0,16,16,9,0,7,0,"{""object_not_in_vocabulary"": 7}"
+E3-base,placement,C,initial,128,124,4,128,128,128,0,0,0,{}
+E3-policy,original,A,initial,192,188,4,192,192,187,0,5,0,"{""not_exactly_yes_no_unknown"": 5}"
+E3-policy,original,A,secondary,384,358,26,384,384,382,0,2,0,"{""not_exactly_yes_no_unknown"": 2}"
+E3-policy,original,B,initial,288,288,0,288,288,24,0,264,0,"{""json_not_object"": 91, ""object_not_in_vocabulary"": 167, ""not_exactly_one_json_object"": 6}"
+E3-policy,original,B,no_image,36,36,0,36,36,20,0,16,0,"{""object_not_in_vocabulary"": 16}"
+E3-policy,original,C,initial,288,282,6,288,288,288,0,0,0,{}
+E3-policy,original,C,no_image,36,reused,0,36,36,36,4,0,0,{}
+E3-policy,original,C,secondary,576,414,162,576,576,576,1,0,0,{}
+E3-policy,placement,B,initial,128,128,0,128,128,0,0,128,0,"{""json_not_object"": 127, ""object_not_in_vocabulary"": 1}"
+E3-policy,placement,B,no_image,16,16,0,16,16,9,0,7,0,"{""object_not_in_vocabulary"": 7}"
+E3-policy,placement,C,initial,128,124,4,128,128,128,0,0,0,{}
+F3-qwen3vl4b,original,A,initial,192,188,4,192,192,192,0,0,0,{}
+F3-qwen3vl4b,original,A,secondary,384,358,26,384,384,384,0,0,0,{}
+F3-qwen3vl4b,original,B,initial,288,288,0,288,288,268,0,20,0,"{""relation_not_in_vocabulary"": 20}"
+F3-qwen3vl4b,original,B,no_image,36,36,0,36,36,36,0,0,0,{}
+F3-qwen3vl4b,original,C,initial,288,282,6,288,288,288,0,0,0,{}
+F3-qwen3vl4b,original,C,no_image,36,reused,0,36,36,36,0,0,0,{}
+F3-qwen3vl4b,original,C,secondary,576,414,162,576,576,576,0,0,0,{}
+F3-qwen3vl4b,placement,B,initial,128,128,0,128,128,128,0,0,0,{}
+F3-qwen3vl4b,placement,B,no_image,16,16,0,16,16,16,0,0,0,{}
+F3-qwen3vl4b,placement,C,initial,128,124,4,128,128,128,0,0,0,{}
+N3-base,original,A,initial,192,188,4,192,192,192,0,0,0,{}
+N3-base,original,A,secondary,384,358,26,384,384,384,0,0,0,{}
+N3-base,original,B,initial,288,288,0,288,288,288,0,0,0,{}
+N3-base,original,B,no_image,36,36,0,36,36,36,0,0,0,{}
+N3-base,original,C,initial,288,282,6,288,288,288,0,0,0,{}
+N3-base,original,C,no_image,36,reused,0,36,36,36,5,0,0,{}
+N3-base,original,C,secondary,576,414,162,576,576,576,0,0,0,{}
+N3-base,placement,B,initial,128,128,0,128,128,128,0,0,0,{}
+N3-base,placement,B,no_image,16,16,0,16,16,16,0,0,0,{}
+N3-base,placement,C,initial,128,124,4,128,128,128,0,0,0,{}
+N3-policy,original,A,initial,192,188,4,192,192,192,0,0,0,{}
+N3-policy,original,A,secondary,384,358,26,384,384,384,0,0,0,{}
+N3-policy,original,B,initial,288,288,0,288,288,288,0,0,0,{}
+N3-policy,original,B,no_image,36,36,0,36,36,36,0,0,0,{}
+N3-policy,original,C,initial,288,282,6,288,288,288,0,0,0,{}
+N3-policy,original,C,no_image,36,reused,0,36,36,36,0,0,0,{}
+N3-policy,original,C,secondary,576,414,162,576,576,576,0,0,0,{}
+N3-policy,placement,B,initial,128,128,0,128,128,128,0,0,0,{}
+N3-policy,placement,B,no_image,16,16,0,16,16,16,0,0,0,{}
+N3-policy,placement,C,initial,128,124,4,128,128,128,0,0,0,{}
+N3-upstream-qwen3vl8b,original,A,initial,192,188,4,192,192,192,0,0,0,{}
+N3-upstream-qwen3vl8b,original,A,secondary,384,358,26,384,384,384,0,0,0,{}
+N3-upstream-qwen3vl8b,original,B,initial,288,288,0,288,288,288,0,0,0,{}
+N3-upstream-qwen3vl8b,original,B,no_image,36,36,0,36,36,36,0,0,0,{}
+N3-upstream-qwen3vl8b,original,C,initial,288,282,6,288,288,288,0,0,0,{}
+N3-upstream-qwen3vl8b,original,C,no_image,36,reused,0,36,36,36,0,0,0,{}
+N3-upstream-qwen3vl8b,original,C,secondary,576,414,162,576,576,576,0,0,0,{}
+N3-upstream-qwen3vl8b,placement,B,initial,128,128,0,128,128,128,0,0,0,{}
+N3-upstream-qwen3vl8b,placement,B,no_image,16,16,0,16,16,16,0,0,0,{}
+N3-upstream-qwen3vl8b,placement,C,initial,128,124,4,128,128,128,0,0,0,{}

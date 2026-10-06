@@ -1,9 +1,39 @@
 {
   "study_id": "RQA-20261006",
   "protocol_version": "1.0",
-  "status": "not_run",
-  "latest_validated_run_id": null,
-  "runs": [],
+  "status": "complete_provisional_answerability",
+  "latest_validated_run_id": "r1-20261006",
+  "runs": [
+    {
+      "run_id": "r1-20261006",
+      "started_at_utc": "2026-10-06T22:09:00Z",
+      "ended_at_utc": "2026-10-06T22:27:00Z",
+      "status": "complete_provisional_answerability",
+      "release_sha256": "1e691df6b85576e0d75925cc7902a1f4e303267098483a81726f6ff63cda3046",
+      "release_json_sha256": "ccccd81eeb908b8001fa8ff70c0d28917bebc6f1df2a96d8fd335161f54cf7a9",
+      "implementation_commit": "4d2605c841e76894e6f2fbae3689b01505b49339",
+      "inference_code_and_release_freeze_commit": "5d7ef7b64e96fb34789c5aa1132fce97080f95bf",
+      "analysis_commit": "6d4babf",
+      "report_path": "reports/robolab-vqa-20261006/runs/r1-20261006/REPORT.md",
+      "compact_results_path": "reports/robolab-vqa-20261006/runs/r1-20261006/results/",
+      "artifact_index_path": "reports/robolab-vqa-20261006/runs/r1-20261006/artifact_index.json",
+      "answerability_review_status": "not_performed_provisional",
+      "deviations_path": "docs/robolab-vqa-20261006/IMPLEMENTATION_RECORD.md",
+      "github_commit": "pending: set to the results commit in the following commit",
+      "readouts_evaluated": [
+        "N3-policy",
+        "N3-base",
+        "E3-policy",
+        "F3-qwen3vl4b"
+      ],
+      "readouts_shared": {
+        "N3-upstream-qwen3vl8b": "N3-policy",
+        "E3-base": "E3-policy"
+      },
+      "evaluation_calls_delivered": 8288,
+      "infrastructure_missing": 0
+    }
+  ],
   "required_run_fields": [
     "run_id",
     "started_at_utc",

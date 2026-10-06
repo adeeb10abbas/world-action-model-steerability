@@ -121,3 +121,14 @@ work and recreated with device-plugin isolation (one visible GPU). No other user
   on the executed-policy member where one exists (`N3-policy`, `E3-policy`); `N3-upstream-qwen3vl8b` and `E3-base`
   reference those results and are not independent evidence.
 - Bank inference therefore uses four B200 GPUs (one per distinct readout); the fifth pod was deleted unused.
+
+## Post-run note (2026-10-06, after analysis)
+
+- Run `r1-20261006` completed: 8,288/8,288 evaluation calls delivered, no infrastructure faults, no stop rule
+  triggered. Results and the populated report are under `reports/robolab-vqa-20261006/`.
+- `PACKET_MANIFEST.json` hashes for `REPORT.md`, `RUN_INDEX.json` and `CANDIDATE_FINDINGS.csv` describe their
+  initialized versions (commit `60bf9eb`); those files were populated as the packet instructs. The locked design files
+  (`EXPERIMENT_GUIDE.md`, `protocol.json`, `question_catalog.json`, `frame_selection.json`) are unchanged.
+- Descriptive additions made after reading results (labelled exploratory in the report): the B error taxonomy, the
+  constant-“no” baseline drawn in Fig. 1, and the image-dependence observation for the N3 policy reasoner. No parser,
+  label, exclusion or scoring rule was changed after inference.

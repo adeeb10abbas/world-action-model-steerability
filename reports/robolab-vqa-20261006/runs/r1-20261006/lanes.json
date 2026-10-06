@@ -1,0 +1,305 @@
+{
+  "created_utc": "2026-10-06T22:15:02.317646Z",
+  "identity_groups": [
+    [
+      "N3-policy",
+      "N3-upstream-qwen3vl8b"
+    ],
+    [
+      "E3-policy",
+      "E3-base"
+    ],
+    [
+      "F3-qwen3vl4b"
+    ],
+    [
+      "N3-base"
+    ]
+  ],
+  "lanes": {
+    "E3-base": {
+      "adapter_version": "rqa-adapter-1",
+      "dev_fixtures_delivered": 6,
+      "dev_fixtures_valid_format": 5,
+      "dev_mean_latency_s": 5.497967799504598,
+      "dev_prompt_tokens": {
+        "DEV.F1": 2901,
+        "DEV.F2": 202,
+        "DEV.F3": 2981,
+        "DEV.F4": 2938,
+        "DEV.F5": 156,
+        "DEV.F6": 605
+      },
+      "dev_status": "complete",
+      "family": "E3",
+      "identity_group": [
+        "E3-policy",
+        "E3-base"
+      ],
+      "loaded_parameter_digest": {
+        "n_buffers": 113,
+        "n_parameters": 506,
+        "names_sha256": "f9716e5a1c286392af285a208b956c3a52d7b94556dc69ddfa6f26361c867107",
+        "numel": 2435616496,
+        "sha256": "d5a618633fb5ae1cb794257ed9b2db7ea1725c9a4d439d08bceaf0f4fb291fe6"
+      },
+      "loader_patches": [
+        "Cosmos3EdgeForConditionalGeneration.hf_to_vllm_mapper.orig_to_new_substr['.k_norm_und_for_gen.']=None"
+      ],
+      "native_class": "Cosmos3EdgeForConditionalGeneration",
+      "path": "/data/users/ali/vla_wam/checkpoints/cosmos3_edge_base_ff48d221",
+      "processor_identity": {
+        "chat_template.jinja": "7120ee6666468d4e9b2dc11e133ac5c2fa765fa5907706bf0f906270aa5510c8",
+        "generation_config.json": "abb9f979ef7c9ac81668139b5078bb14eff76a9100b35a030ac36dd449c42b02",
+        "preprocessor_config.json": "456f89c0390e59248ed2ab8af07589d65b2cd7052e95c48c2451418923af3607",
+        "processor_config.json": "99e58b2972fcb7fb2778fa6a3138b9d155746c1c1ab38ca0a6155ad1d730faea",
+        "special_tokens_map.json": "e9435fefd6d838fd9fcbbc44b97a8e3ff322be7f6dfb7e4fd2468586574bb52b",
+        "tokenizer.json": "4dc692a99dca6d92a44e9529ffb53541eb79bb260eec7281bc51268c05d7311c",
+        "tokenizer_config.json": "85577f01be64ea03ee9aacc0536088e47b96971e4aff21e0aa604900b1410386",
+        "video_preprocessor_config.json": "eeaea159e9add974a420c6690365fe574b905448ff8907dc13236ad7f6441704"
+      },
+      "reasoner_view": null,
+      "repo": "nvidia/Cosmos3-Edge",
+      "responses_from": "E3-policy",
+      "revision": "ff48d22144de52de296a7b4d3a78914831007212",
+      "role": "base_reasoner",
+      "status": "shared_tensor_identical"
+    },
+    "E3-policy": {
+      "adapter_version": "rqa-adapter-1",
+      "dev_fixtures_delivered": 6,
+      "dev_fixtures_valid_format": 5,
+      "dev_mean_latency_s": 5.347037116686503,
+      "dev_prompt_tokens": {
+        "DEV.F1": 2901,
+        "DEV.F2": 202,
+        "DEV.F3": 2981,
+        "DEV.F4": 2938,
+        "DEV.F5": 156,
+        "DEV.F6": 605
+      },
+      "dev_status": "complete",
+      "family": "E3",
+      "identity_group": [
+        "E3-policy",
+        "E3-base"
+      ],
+      "loaded_parameter_digest": {
+        "n_buffers": 113,
+        "n_parameters": 506,
+        "names_sha256": "f9716e5a1c286392af285a208b956c3a52d7b94556dc69ddfa6f26361c867107",
+        "numel": 2435616496,
+        "sha256": "d5a618633fb5ae1cb794257ed9b2db7ea1725c9a4d439d08bceaf0f4fb291fe6"
+      },
+      "loader_patches": [
+        "Cosmos3EdgeForConditionalGeneration.hf_to_vllm_mapper.orig_to_new_substr['.k_norm_und_for_gen.']=None"
+      ],
+      "native_class": "Cosmos3EdgeForConditionalGeneration",
+      "path": "/data/users/ali/sgw-01/current-20260924a/checkpoints/cosmos3-edge-a7c7288",
+      "processor_identity": {
+        "chat_template.jinja": "7120ee6666468d4e9b2dc11e133ac5c2fa765fa5907706bf0f906270aa5510c8",
+        "generation_config.json": "abb9f979ef7c9ac81668139b5078bb14eff76a9100b35a030ac36dd449c42b02",
+        "preprocessor_config.json": "456f89c0390e59248ed2ab8af07589d65b2cd7052e95c48c2451418923af3607",
+        "processor_config.json": "99e58b2972fcb7fb2778fa6a3138b9d155746c1c1ab38ca0a6155ad1d730faea",
+        "special_tokens_map.json": "e9435fefd6d838fd9fcbbc44b97a8e3ff322be7f6dfb7e4fd2468586574bb52b",
+        "tokenizer.json": "4dc692a99dca6d92a44e9529ffb53541eb79bb260eec7281bc51268c05d7311c",
+        "tokenizer_config.json": "85577f01be64ea03ee9aacc0536088e47b96971e4aff21e0aa604900b1410386",
+        "video_preprocessor_config.json": "eeaea159e9add974a420c6690365fe574b905448ff8907dc13236ad7f6441704"
+      },
+      "reasoner_view": {
+        "architectures": [
+          "Cosmos3EdgeForConditionalGeneration"
+        ],
+        "model_type": "cosmos3_edge"
+      },
+      "repo": "nvidia/Cosmos3-Edge-Policy-DROID",
+      "responses_from": "E3-policy",
+      "revision": "a7c7288f9b6ac1684e993007b0f9703dd26e58ef",
+      "role": "executed_policy_reasoner",
+      "status": "evaluated"
+    },
+    "F3-qwen3vl4b": {
+      "adapter_version": "rqa-adapter-1",
+      "dev_fixtures_delivered": 6,
+      "dev_fixtures_valid_format": 6,
+      "dev_mean_latency_s": 4.114094456036885,
+      "dev_prompt_tokens": {
+        "DEV.F1": 2891,
+        "DEV.F2": 188,
+        "DEV.F3": 2968,
+        "DEV.F4": 2926,
+        "DEV.F5": 145,
+        "DEV.F6": 595
+      },
+      "dev_status": "complete",
+      "family": "F3",
+      "identity_group": [
+        "F3-qwen3vl4b"
+      ],
+      "loaded_parameter_digest": {
+        "n_buffers": 146,
+        "n_parameters": 605,
+        "names_sha256": "8d54ef5bc75525696c227fb765faa0c6f91982cb453c90f895c0e18885985328",
+        "numel": 4437815808,
+        "sha256": "866dddcec41c1fd6c4521081fb89aa8a61041c4eefdfe0bade7c35df8d5cccdb"
+      },
+      "loader_patches": [],
+      "native_class": "Qwen3VLForConditionalGeneration",
+      "path": "/data/users/ali/sgw-01/current-20260924a/checkpoints/flux-3-action-base-62878e2/text_encoder",
+      "processor_identity": {
+        "chat_template.json": "6f8a6a55027e3da5160105556cda5dd69f6423f1c32645f6730d32de7773d0c4",
+        "generation_config.json": "3666966b59c7dc1390f785db0bbf1eed92972a2eeaf2b694a30424fede4eb6c9",
+        "merges.txt": "599bab54075088774b1733fde865d5bd747cbcc7a547c5bc12610e874e26f5e3",
+        "preprocessor_config.json": "465b9430ca4263c89a347330c0e245a9ec82ce635575f823a40fc0ec17bc5d77",
+        "tokenizer.json": "a5d85b6dcc535e6b93115a9ef287e6132fdbf30270da6218194ba742261173c7",
+        "tokenizer_config.json": "c2da771801886ad9ae98181793ffd3dfb7f1af30f6f7c6a4e15d7dbba52e2399",
+        "video_preprocessor_config.json": "5c864f27124ca2e2fb4be738e3fa297e1a5d5cfaf77a45b2916e84b7a9921877",
+        "vocab.json": "ca10d7e9fb3ed18575dd1e277a2579c16d108e32f27439684afa0e10b1440910"
+      },
+      "reasoner_view": null,
+      "repo": "black-forest-labs/flux-3-action-base",
+      "responses_from": "F3-qwen3vl4b",
+      "revision": "62878e2925e59b7a89ec14463ce89932624c490d",
+      "role": "released_shared_text_encoder_component_auxiliary",
+      "status": "evaluated"
+    },
+    "N3-base": {
+      "adapter_version": "rqa-adapter-1",
+      "dev_fixtures_delivered": 6,
+      "dev_fixtures_valid_format": 6,
+      "dev_mean_latency_s": 4.153935035069783,
+      "dev_prompt_tokens": {
+        "DEV.F1": 2891,
+        "DEV.F2": 188,
+        "DEV.F3": 2968,
+        "DEV.F4": 2926,
+        "DEV.F5": 145,
+        "DEV.F6": 595
+      },
+      "dev_status": "complete",
+      "family": "N3",
+      "identity_group": [
+        "N3-base"
+      ],
+      "loaded_parameter_digest": {
+        "n_buffers": 146,
+        "n_parameters": 642,
+        "names_sha256": "bf5bbed973b9bd8d1f7d77d8e334272ecda178a0f12d006ad213e019019a949d",
+        "numel": 8767123696,
+        "sha256": "dc5f5653859647156a4a6f8eaf0f664497e7ff5ffdfaf1a54f9de3fe4aa35665"
+      },
+      "loader_patches": [],
+      "native_class": "Cosmos3ForConditionalGeneration",
+      "path": "/data/users/ali/rqa-20261006/checkpoints/Cosmos3-Nano-e59a53c",
+      "processor_identity": {
+        "chat_template.json": "5c72a170d2a4a1a3bc5adad2e689ae28138a9700e5b8c96c0266331e86c0acce",
+        "generation_config.json": "3666966b59c7dc1390f785db0bbf1eed92972a2eeaf2b694a30424fede4eb6c9",
+        "merges.txt": "599bab54075088774b1733fde865d5bd747cbcc7a547c5bc12610e874e26f5e3",
+        "preprocessor_config.json": "465b9430ca4263c89a347330c0e245a9ec82ce635575f823a40fc0ec17bc5d77",
+        "tokenizer.json": "a5d85b6dcc535e6b93115a9ef287e6132fdbf30270da6218194ba742261173c7",
+        "tokenizer_config.json": "c2da771801886ad9ae98181793ffd3dfb7f1af30f6f7c6a4e15d7dbba52e2399",
+        "video_preprocessor_config.json": "5c864f27124ca2e2fb4be738e3fa297e1a5d5cfaf77a45b2916e84b7a9921877",
+        "vocab.json": "ca10d7e9fb3ed18575dd1e277a2579c16d108e32f27439684afa0e10b1440910"
+      },
+      "reasoner_view": null,
+      "repo": "nvidia/Cosmos3-Nano",
+      "responses_from": "N3-base",
+      "revision": "e59a53c25979a090fa8706c9acc0c254a6e89b92",
+      "role": "base_reasoner",
+      "status": "evaluated"
+    },
+    "N3-policy": {
+      "adapter_version": "rqa-adapter-1",
+      "dev_fixtures_delivered": 6,
+      "dev_fixtures_valid_format": 6,
+      "dev_mean_latency_s": 4.150314927101135,
+      "dev_prompt_tokens": {
+        "DEV.F1": 2891,
+        "DEV.F2": 188,
+        "DEV.F3": 2968,
+        "DEV.F4": 2926,
+        "DEV.F5": 145,
+        "DEV.F6": 595
+      },
+      "dev_status": "complete",
+      "family": "N3",
+      "identity_group": [
+        "N3-policy",
+        "N3-upstream-qwen3vl8b"
+      ],
+      "loaded_parameter_digest": {
+        "n_buffers": 146,
+        "n_parameters": 642,
+        "names_sha256": "bf5bbed973b9bd8d1f7d77d8e334272ecda178a0f12d006ad213e019019a949d",
+        "numel": 8767123696,
+        "sha256": "eb00cb168c30728df7c7e33601f251cbd115b39eb181ac46949264d5724c731b"
+      },
+      "loader_patches": [],
+      "native_class": "Cosmos3ForConditionalGeneration",
+      "path": "/data/users/ali/vla_wam/checkpoints/cosmos3_nano_policy_droid",
+      "processor_identity": {
+        "chat_template.json": "5c72a170d2a4a1a3bc5adad2e689ae28138a9700e5b8c96c0266331e86c0acce",
+        "generation_config.json": "3666966b59c7dc1390f785db0bbf1eed92972a2eeaf2b694a30424fede4eb6c9",
+        "merges.txt": "599bab54075088774b1733fde865d5bd747cbcc7a547c5bc12610e874e26f5e3",
+        "preprocessor_config.json": "465b9430ca4263c89a347330c0e245a9ec82ce635575f823a40fc0ec17bc5d77",
+        "tokenizer.json": "a5d85b6dcc535e6b93115a9ef287e6132fdbf30270da6218194ba742261173c7",
+        "tokenizer_config.json": "c2da771801886ad9ae98181793ffd3dfb7f1af30f6f7c6a4e15d7dbba52e2399",
+        "video_preprocessor_config.json": "5c864f27124ca2e2fb4be738e3fa297e1a5d5cfaf77a45b2916e84b7a9921877",
+        "vocab.json": "ca10d7e9fb3ed18575dd1e277a2579c16d108e32f27439684afa0e10b1440910"
+      },
+      "reasoner_view": null,
+      "repo": "nvidia/Cosmos3-Nano-Policy-DROID",
+      "responses_from": "N3-policy",
+      "revision": "6706d7680581c255ff61e0f3bb49d90eac55c79e",
+      "role": "executed_policy_reasoner",
+      "status": "evaluated"
+    },
+    "N3-upstream-qwen3vl8b": {
+      "adapter_version": "rqa-adapter-1",
+      "dev_fixtures_delivered": 6,
+      "dev_fixtures_valid_format": 6,
+      "dev_mean_latency_s": 4.123721162478129,
+      "dev_prompt_tokens": {
+        "DEV.F1": 2891,
+        "DEV.F2": 188,
+        "DEV.F3": 2968,
+        "DEV.F4": 2926,
+        "DEV.F5": 145,
+        "DEV.F6": 595
+      },
+      "dev_status": "complete",
+      "family": "N3",
+      "identity_group": [
+        "N3-policy",
+        "N3-upstream-qwen3vl8b"
+      ],
+      "loaded_parameter_digest": {
+        "n_buffers": 146,
+        "n_parameters": 642,
+        "names_sha256": "bf5bbed973b9bd8d1f7d77d8e334272ecda178a0f12d006ad213e019019a949d",
+        "numel": 8767123696,
+        "sha256": "eb00cb168c30728df7c7e33601f251cbd115b39eb181ac46949264d5724c731b"
+      },
+      "loader_patches": [],
+      "native_class": "Qwen3VLForConditionalGeneration",
+      "path": "/data/users/ali/rqa-20261006/checkpoints/Qwen3-VL-8B-Instruct-0c351dd",
+      "processor_identity": {
+        "chat_template.json": "5c72a170d2a4a1a3bc5adad2e689ae28138a9700e5b8c96c0266331e86c0acce",
+        "generation_config.json": "3666966b59c7dc1390f785db0bbf1eed92972a2eeaf2b694a30424fede4eb6c9",
+        "merges.txt": "599bab54075088774b1733fde865d5bd747cbcc7a547c5bc12610e874e26f5e3",
+        "preprocessor_config.json": "465b9430ca4263c89a347330c0e245a9ec82ce635575f823a40fc0ec17bc5d77",
+        "tokenizer.json": "a5d85b6dcc535e6b93115a9ef287e6132fdbf30270da6218194ba742261173c7",
+        "tokenizer_config.json": "c2da771801886ad9ae98181793ffd3dfb7f1af30f6f7c6a4e15d7dbba52e2399",
+        "video_preprocessor_config.json": "5c864f27124ca2e2fb4be738e3fa297e1a5d5cfaf77a45b2916e84b7a9921877",
+        "vocab.json": "ca10d7e9fb3ed18575dd1e277a2579c16d108e32f27439684afa0e10b1440910"
+      },
+      "reasoner_view": null,
+      "repo": "Qwen/Qwen3-VL-8B-Instruct",
+      "responses_from": "N3-policy",
+      "revision": "0c351dd01ed87e9c1b53cbc748cba10e6187ff3b",
+      "role": "upstream_ancestor_spans_more_than_robot_adaptation",
+      "status": "shared_tensor_identical"
+    }
+  },
+  "rule": "identical loaded parameters + identical tokenizer/processor/template + identical raw text on all six fixtures"
+}

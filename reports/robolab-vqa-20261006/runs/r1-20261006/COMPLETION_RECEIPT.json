@@ -1,0 +1,75 @@
+{
+  "study_id": "RQA-20261006",
+  "protocol_version": "1.0",
+  "run_id": "r1-20261006",
+  "status": "complete_provisional_answerability",
+  "release": {
+    "release_content_sha256": "1e691df6b85576e0d75925cc7902a1f4e303267098483a81726f6ff63cda3046",
+    "release_json_sha256": "ccccd81eeb908b8001fa8ff70c0d28917bebc6f1df2a96d8fd335161f54cf7a9",
+    "frozen_and_pushed_before_inference": "5d7ef7b64e96fb34789c5aa1132fce97080f95bf",
+    "validation": "passed (artifacts/robolab_vqa_20261006/release_r1/validation.json)"
+  },
+  "commits": {
+    "implementation": "4d2605c841e76894e6f2fbae3689b01505b49339",
+    "release_freeze_and_runner_code_used_for_inference": "5d7ef7b64e96fb34789c5aa1132fce97080f95bf",
+    "qualification_amendment_and_analysis_code": "6d4babf",
+    "report_and_figures": "recorded in RUN_INDEX.json after push"
+  },
+  "queries": {
+    "planned_per_distinct_lane": 2072,
+    "planned_lanes": 6,
+    "distinct_readouts_evaluated": 4,
+    "shared_tensor_identical_lanes": {"N3-upstream-qwen3vl8b": "N3-policy", "E3-base": "E3-policy"},
+    "evaluation_calls_issued": 8288,
+    "evaluation_calls_delivered": 8288,
+    "infrastructure_missing": 0,
+    "development_fixture_calls": 36,
+    "smoke_load_checks": "6 lanes, one non-study text prompt each (loading only)",
+    "per_lane": {
+      "N3-policy": {"delivered": 2072, "valid_format": 2072, "invalid": 0, "truncated": 0},
+      "N3-base": {"delivered": 2072, "valid_format": 2072, "invalid": 0, "truncated": 0},
+      "E3-policy": {"delivered": 2072, "valid_format": 1650, "invalid": 422, "truncated": 0},
+      "F3-qwen3vl4b": {"delivered": 2072, "valid_format": 2052, "invalid": 20, "truncated": 0}
+    }
+  },
+  "commands": {
+    "inventory": "python -m experiments.robolab_vqa.inventory --output /data/users/ali/rqa-20261006/inventory --workers 24",
+    "eligibility": "python -m experiments.robolab_vqa.eligibility --output /data/users/ali/rqa-20261006/eligibility --workers 24",
+    "prepare": "python -m experiments.robolab_vqa.prepare --inventory /data/users/ali/rqa-20261006/inventory --output /data/users/ali/rqa-20261006/release/r1 --implementation-commit 4d2605c841e76894e6f2fbae3689b01505b49339",
+    "validate": "python -m experiments.robolab_vqa.validate --release /data/users/ali/rqa-20261006/release/r1/release.json",
+    "qualify_fixtures": "python -m experiments.robolab_vqa.run --release /data/users/ali/rqa-20261006/release/r1/release.json --checkpoint <lane> --output /data/users/ali/rqa-20261006/runs/r1-20261006 --phase dev --adapter-commit 5d7ef7b64e96fb34789c5aa1132fce97080f95bf --eligibility /data/users/ali/rqa-20261006/eligibility/eligibility_audit.json --gpu-memory-utilization 0.85",
+    "qualify_summary": "python -m experiments.robolab_vqa.qualify --results /data/users/ali/rqa-20261006/runs/r1-20261006 --eligibility /data/users/ali/rqa-20261006/eligibility/eligibility_audit.json --output /data/users/ali/rqa-20261006/runs/r1-20261006",
+    "infer": "python -m experiments.robolab_vqa.run --release /data/users/ali/rqa-20261006/release/r1/release.json --checkpoint <N3-policy|N3-base|E3-policy|F3-qwen3vl4b> --output /data/users/ali/rqa-20261006/runs/r1-20261006 --phase all --adapter-commit 5d7ef7b64e96fb34789c5aa1132fce97080f95bf --eligibility /data/users/ali/rqa-20261006/eligibility/eligibility_audit.json --gpu-memory-utilization 0.85",
+    "analyze": "python -m experiments.robolab_vqa.analyze --release /data/users/ali/rqa-20261006/release/r1/release.json --responses /data/users/ali/rqa-20261006/runs/r1-20261006 --lanes /data/users/ali/rqa-20261006/runs/r1-20261006/lanes.json --output /data/users/ali/rqa-20261006/runs/r1-20261006/analysis",
+    "report": "python -m experiments.robolab_vqa.report --analysis /data/users/ali/rqa-20261006/runs/r1-20261006/analysis --run-id r1-20261006 --output /data/users/ali/rqa-20261006/runs/r1-20261006/report",
+    "artifact_index": "python -m experiments.robolab_vqa.artifact_index --run-id r1-20261006 --output /data/users/ali/rqa-20261006/runs/r1-20261006/artifact_index.json",
+    "cpu_python": "/data/users/ali/vla_wam/envs/robolab-v2-isaac50/bin/python",
+    "gpu_python": "/data/users/ali/vla_wam/envs/cosmos3-edge-vllm-omni-900a7f08-py313/bin/python (vLLM 0.26.0, torch 2.11.0+cu130, transformers 5.14.1)",
+    "pytest": "python -m pytest -q tests/robolab_vqa (13 passed)"
+  },
+  "timing_utc": {
+    "development_fixtures": "2026-10-06T22:09Z to 22:13Z",
+    "bank_inference_start": "2026-10-06T22:15:13Z",
+    "bank_inference_end": "2026-10-06T22:24:42Z",
+    "analysis": "2026-10-06T22:27Z"
+  },
+  "gpu_time": {
+    "hardware": "NVIDIA B200 (one GPU per lane, device-plugin isolated)",
+    "bank_process_seconds": {"N3-policy": 569.5, "E3-policy": 431.5, "F3-qwen3vl4b": 524.3, "N3-base": 539.5},
+    "bank_gpu_hours": 0.573,
+    "fixture_process_seconds_total": 696.3,
+    "summed_model_latency_seconds_bank": {"N3-policy": 435, "E3-policy": 354, "F3-qwen3vl4b": 429, "N3-base": 408},
+    "allocated_gpu_pod_time_note": "five single-B200 pods existed for about 25-35 minutes each (smoke checks, fixtures, banks); all deleted after inference with GPUs at 0 MiB"
+  },
+  "failures": {
+    "infrastructure": "none during evaluation; pre-evaluation engineering fixes documented as rqa-adapter-1 (Edge loader patch, Edge policy config view) and engine settings (FLASH_ATTN, non-JIT sampler)",
+    "model_format_failures": "E3-policy 422 invalid (B: 415 natural-language names / JSON arrays / malformed; A: 7 'yes, no'); F3-qwen3vl4b 20 invalid (B relation 'on_top_of'); preserved, never regenerated",
+    "stop_rules_triggered": "none"
+  },
+  "labels_human_audited": false,
+  "answerability": "automated geometry and projection pre-check only; audit sheets and review template prepared (release_r1/audit); results provisional",
+  "storage": {
+    "raw_outputs": "/data/users/ali/rqa-20261006 on PVC 211247-prod-pvc (namespace 211247-prod); hashes in artifact_index.json",
+    "git": "code, frozen release manifests, compact results, figures and reports only"
+  }
+}
