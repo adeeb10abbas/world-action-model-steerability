@@ -249,7 +249,7 @@ Supported pattern (guide §12):
 | Checkpoint/readout parity | Native vLLM readouts. Tensor-identical groups confirmed by loaded-parameter digests, processor identity, rendered prompts and six fixtures each |
 | Completed inference | 8,288/8,288 evaluation calls delivered; 0 infrastructure-missing; 0 truncated |
 | Statistical checks | Bootstrap clustering and paired example unit-tested; same resamples across readouts |
-| GitHub push | Recorded in [RUN_INDEX.json](RUN_INDEX.json) after push |
+| GitHub push | Results commit `98f85cf` pushed to `codex/nano-stock-workstation-20260926` and verified on the remote; see [RUN_INDEX.json](RUN_INDEX.json) |
 
 ## 9. Candidate findings for later manuscript inclusion
 
