@@ -34,17 +34,17 @@ We test this consistency by rephrasing spatial instructions while keeping the re
 \end{minipage}\hfill
 \begin{minipage}[c]{.69\linewidth}
 \textbf{Goal:} mustard to the right of the box.\par
-All three instructions identify the mustard as the object to move. TF and RF differ in which object is the subject of the spatial clause.
+All three instructions identify the mustard as the object to move. S and I differ in which object is the subject of the spatial clause.
 \end{minipage}\par\medskip
 \begin{tabular}{@{}p{.20\linewidth}p{.76\linewidth}@{}}
 \toprule
 \textbf{Form} & \textbf{Exact instruction} \\
 \midrule
-Direct (DIR) & Place the mustard bottle on the table to the right of the raisin box. \\
+Direct (D) & Place the mustard bottle on the table to the right of the raisin box. \\
 \addlinespace
-\textcolor{mover}{Target-first (TF)} & Move the mustard bottle on the table so that \textbf{the mustard bottle} is to the right of the raisin box. \\
+\textcolor{mover}{Target-first (S)} & Move the mustard bottle on the table so that \textbf{the mustard bottle} is to the right of the raisin box. \\
 \addlinespace
-\textcolor{reference}{Reference-first (RF)} & Move the mustard bottle on the table so that \textbf{the raisin box} is to the left of the mustard bottle. \\
+\textcolor{reference}{Reference-first (I)} & Move the mustard bottle on the table so that \textbf{the raisin box} is to the left of the mustard bottle. \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -54,30 +54,30 @@ To test whether wording changes behavior without changing the task, we repeat ea
 
 We use four tabletop scenes from RoboLab, a simulation benchmark for generalist manipulation policies~\citep{yang2026robolab}. The \textit{cube} scene asks the robot to place a cube left, right, in front of, or behind a bowl. The \textit{butter-and-mustard} scenes each ask it to place that object left, right, or on top of a raisin box. The \textit{bowl} scene asks it to stack either bowl on the other. Seven goals are provided by RoboLab, and five extend these same scenes without changing their objects. Appendix~\ref{app:tasks} shows all twelve goals.
 
-Table~\ref{tab:setup} introduces our instruction forms. \textit{DIR} is a concise command, using the benchmark's supplied instruction for its original goals. \textit{TF} expands that command while keeping the target as the subject of the spatial clause. \textit{RF}, instead, describes the arrangement through the reference object and the opposite relation, such as left instead of right. \textit{TF} versus \textit{RF} therefore tests reference reversal with the surrounding sentence held fixed. \textit{DIR} versus \textit{TF} tests the expansion itself. \textit{DIR} versus \textit{RF} combines both changes and is reported in Appendix~\ref{app:behavior-results}. For stacking, ``underneath and supporting'' does not explicitly require the nesting checked by the scorer. We keep these conditions visible and examine the result without them.
+Table~\ref{tab:setup} introduces our instruction forms. \textit{D} is a concise command, using the benchmark's supplied instruction for its original goals. \textit{S} expands that command while keeping the target as the subject of the spatial clause. \textit{I}, instead, describes the arrangement through the reference object and the opposite relation, such as left instead of right. \textit{S} versus \textit{I} therefore tests reference reversal with the surrounding sentence held fixed. \textit{D} versus \textit{S} tests the expansion itself. \textit{D} versus \textit{I} combines both changes and is reported in Appendix~\ref{app:behavior-results}. For stacking, ``underneath and supporting'' does not explicitly require the nesting checked by the scorer. We keep these conditions visible and examine the result without them.
 
 We evaluate the DROID versions of Cosmos3 Nano, Cosmos3 Edge, and FLUX 3 Action~\citep{nvidia2026nano,nvidia2026edge,bfl2026fluxaction}. Nano and FLUX perform strongly on RoboLab's leaderboard, while Edge offers a smaller Cosmos-family comparison~\citep{robolab2026leaderboard}. Each receives wrist and two exterior camera images plus the robot's proprioceptive state. We vary object positions and orientations on the tabletop and retain eight starts per scene that a scripted controller can solve. For every model and goal, the simulator is reset to exactly the same start before each instruction. These are our \emph{paired runs}: the robot state, object poses, and initial observations agree, while the wording changes. Three models, twelve goals, three descriptions, and eight starts give 864 episodes. Each runs for 20--40 seconds, including continued control after placement. Appendix~\ref{app:settings} gives the full settings.
 
 \textbf{Evaluations.} We measure the proportion of runs that reach a \emph{stable placement}. The requested relative arrangement must hold for at least one second while the target is supported, moves slower than 2\,cm/s, and is not touching the gripper. Directions are defined in the robot's coordinate frame. We also check the same conditions during the final second, distinguishing an arrangement reached earlier from one retained until the end. Neither check identifies which object was moved. A cube can end up behind a bowl because the robot moved the cube, or because it moved the bowl.
 
-For each pair, we compare these binary outcomes and average first across goals within each scene, then equally across scenes and models. Thus, a positive TF--RF gap means more runs pass under TF than under RF. Uncertainty accounts for the shared physical starts rather than treating all rollouts as independent. Three goals already hold at the start. Fig.~\ref{fig:goals} marks them, and we also report rates excluding them. Statistical details and all counts appear in Appendices~\ref{app:statistics} and~\ref{app:counts}.
+For each pair, we compare these binary outcomes and average first across goals within each scene, then equally across scenes and models. Thus, a positive S--I gap means more runs pass under S than under I. Uncertainty accounts for the shared physical starts rather than treating all rollouts as independent. Three goals already hold at the start. Fig.~\ref{fig:goals} marks them, and we also report rates excluding them. Statistical details and all counts appear in Appendices~\ref{app:statistics} and~\ref{app:counts}.
 
 \clearpage
 \section{Results}
-Task competence under one description does not guarantee consistency across equivalent instructions. Reference reversal reduces the stable-placement rate by 12.2 percentage points on average, with the same direction for all three models (Fig.~\ref{fig:wording}, 95\% interval 8.6--15.4, adjusted $p<0.001$). Because \textit{TF} and \textit{RF} share the expanded sentence structure, this comparison tests relational reformulation without changing from a direct to an expanded command. With physical task unchanged, this result exposes sensitivity to its description, although argument order and relation vocabulary are not separated.
+Task competence under one description does not guarantee consistency across equivalent instructions. Reference reversal reduces the stable-placement rate by 12.2 percentage points on average, with the same direction for all three models (Fig.~\ref{fig:wording}, 95\% interval 8.6--15.4, adjusted $p<0.001$). Because \textit{S} and \textit{I} share the expanded sentence structure, this comparison tests relational reformulation without changing from a direct to an expanded command. With physical task unchanged, this result exposes sensitivity to its description, although argument order and relation vocabulary are not separated.
 
 \begin{figure}[!ht]
 \centering
-\includegraphics[width=.88\linewidth]{rev_wording_effect.pdf}
-\caption{Wording effects across 32 physical starts. Dots show each start's average outcome difference. Diamonds and bars show means and 95\% intervals. Positive \textit{TF}-\textit{RF} favors target-first wording. Wider sections indicate more starts with similar effects.}
+\includegraphics[width=.88\linewidth]{wording_effect.pdf}
+\caption{Wording effects across 32 physical starts. Dots show each start's average outcome difference. Diamonds and bars show means and 95\% intervals. Positive \textit{S}-\textit{I} favors target-first wording. Wider sections indicate more starts with similar effects.}
 \label{fig:wording}
 \end{figure}
 
-The effect depends on the object-relation combination. \textit{Mustard-right} succeeds in 20 of 24 target-first runs but only two reference-first runs (Fig.~\ref{fig:examples}). In contrast, the cube scene's zero average masks effects with different signs across directions, including an advantage for \textit{RF} on cube-behind (Fig.~\ref{fig:goals}). Aggregate scores can therefore conceal inconsistent responses to individual goals. The positive pooled gap persists without bowl stacking, whose descriptions have a nesting ambiguity (Appendix~\ref{app:statistics}).
+The effect depends on the object-relation combination. \textit{Mustard-right} succeeds in 20 of 24 target-first runs but only two reference-first runs (Fig.~\ref{fig:examples}). In contrast, the cube scene's zero average masks effects with different signs across directions, including an advantage for \textit{I} on cube-behind (Fig.~\ref{fig:goals}). Aggregate scores can therefore conceal inconsistent responses to individual goals. The positive pooled gap persists without bowl stacking, whose descriptions have a nesting ambiguity (Appendix~\ref{app:statistics}).
 
 \begin{figure}[!htb]
 \centering
-\includegraphics[width=\linewidth]{rev_goal_response_by_form.pdf}
+\includegraphics[width=\linewidth]{goal_response_by_form.pdf}
 \caption{Stable-placement rates (\%). Overall columns average goals within scenes and weight scenes equally. Each row contains 96 episodes. Individual goals use eight starts. Hatched goals already hold initially and remain included in the overall rates. These scores check the arrangement, not which object moved.}
 \label{fig:goals}
 \end{figure}
@@ -86,18 +86,16 @@ The effect depends on the object-relation combination. \textit{Mustard-right} su
 \begin{figure}[!t]
 \centering
 \includegraphics[width=.94\linewidth]{rev_execution_mustard.pdf}
-\caption{Edge succeeds under target-first (TF) wording but fails under reference-first (RF), despite the same initial scene and requested mustard placement. This pair was selected for its contrasting outcomes. Additional views appear in Appendix~\ref{app:executions}.}
+\caption{Edge succeeds under target-first (S) wording but fails under reference-first (I), despite the same initial scene and requested mustard placement. This pair was selected for its contrasting outcomes. Additional views appear in Appendix~\ref{app:executions}.}
 \label{fig:examples}
 \end{figure}
 
 Reaching a scored relation is weaker than completing the intended manipulation. The overall placement rate falls from 43.2\% during execution to 21.8\% at episode end. Excluding initially satisfied goals gives 26.8\% and 15.3\%. In raw counts, 192 of 383 runs that attain a stable placement lose it before the end. Separately, a Nano cube-behind rollout passes by moving the bowl rather than the requested cube (Appendix~\ref{app:executions}). Spatial success can therefore overstate instruction following. Evaluation must distinguish the arrangement reached, the object manipulated, and persistence under the chosen stopping rule.
 
 \section{Discussion}
-Instruction consistency should be measured alongside task performance. A policy can achieve a placement under one description yet fail under an equivalent description. These behavioral differences do not establish whether the failure originates in language interpretation, visual grounding, or the mapping from the interpreted goal to actions. Following SIMPLER's controlled-simulation approach~\citep{li2025simpler}, our comparison keeps the physical start fixed and reveals this behavioral sensitivity directly. Testing several descriptions per goal would reduce dependence on favorable phrasing and identify failures to target during training.
+Instruction consistency should be measured alongside task performance. A policy can perform a placement under one description yet fail to recover the same goal from another. Following SIMPLER's controlled-simulation approach~\citep{li2025simpler}, our comparison keeps the physical start fixed and reveals this distinction directly. Testing several descriptions per goal would reduce dependence on favorable phrasing and identify failures to target during training.
 
-The relation-specific pattern cautions against a universal prompting rule. Target-first wording performs better on average, but opposing effects within the cube scene show why the average cannot guide every task. One possible explanation is that policies rely on familiar object--relation combinations more than their logical equivalence. Separately varying vocabulary and argument order would test this interpretation. For WAMs, generating a future observation does not itself demonstrate reliable goal interpretation. Appendix~\ref{app:forecasts} reports why our forecast analysis did not resolve the source of the behavioral failures.\par Distinguishing these possibilities requires a matched evaluation of instruction understanding and policy behavior. The understanding test should use the same scene observations and direct, target-first, and reference-first instructions as the policy evaluation, and separately assess the requested target object, reference object, and final spatial relation. Additional controls should vary reference placement without simultaneously changing relation vocabulary. Where compatible checkpoints are available, comparing the same backbone before and after robot training would help localize changes in these abilities. Such comparisons must account for frozen components, co-training objectives, and differences in the visual input pathway. Our present results do not establish that robot training degrades pretrained language or vision-language capabilities.
-
-
+The relation-specific pattern cautions against a universal prompting rule. Target-first wording performs better on average, but opposing effects within the cube scene show why the average cannot guide every task. One possible explanation is that policies rely on familiar object--relation combinations more than their logical equivalence. Separately varying vocabulary and argument order would test this interpretation. For WAMs, generating a future observation does not itself demonstrate reliable goal interpretation. Appendix~\ref{app:forecasts} reports why our forecast analysis did not resolve the source of the behavioral failures.
 
 Evaluation must also preserve the requested action's semantics. As with LIBERO-CF's separation of object contact and task success~\citep{fang2026counterfactual}, a geometric relation captures only part of instruction following. Checking which object moved and whether the arrangement remains at the end addresses two concrete gaps exposed here. Broader scenes and descriptions are needed to establish their prevalence, and this study does not compare WAMs against action-only policies.
 
@@ -114,7 +112,7 @@ Across three WAMs, equivalent spatial descriptions produce inconsistent placemen
 % Requires graphicx, booktabs, longtable, array. Figure paths can be adjusted when copied.
 \section{Evaluation details and full instructions}
 \label{app:tasks}
-The comparison changes the instruction while fixing the requested placement and the object the robot should move. For each physical starting state, the same model is run separately under the direct (DIR), target-first (TF), and reference-first (RF) instructions. ``Target-first'' describes the order of objects in the relational clause after ``so that''. Every instruction still names the same target object as the object to move. The control sequence is not fixed: each policy generates a new sequence from its instruction, so later observations may differ.
+The comparison changes the instruction while fixing the requested placement and the object the robot should move. For each physical starting state, the same model is run separately under the direct (D), target-first (S), and reference-first (I) instructions. ``Target-first'' describes the order of objects in the relational clause after ``so that''. Every instruction still names the same target object as the object to move. The control sequence is not fixed: each policy generates a new sequence from its instruction, so later observations may differ.
 
 \subsection{Scenes and starting states}
 The study includes eight starting states in each of four native RoboLab scenes. Small changes to object positions and orientations produce different starts, and a scripted controller checks the requested placements before learned-policy evaluation. The cube scene has four goals, each box scene has three, and the two-bowl scene has two, giving twelve goals and 36 instructions. With three models and eight starts for every goal, this yields 864 episodes. The planned two-bin scene did not produce a qualifying start with the scripted controller and was excluded before the learned-policy outcomes were collected. It contributes no observations to these results.
@@ -144,7 +142,7 @@ Directions are defined in the robot's coordinate frame. The left and right bowl 
 \end{figure}
 \FloatBarrier
 \subsection{Exact instructions}
-Tables below reproduce all tested instructions. DIR retains the benchmark task's original wording where that goal exists on the scene. It is a baseline instruction, not evidence that wording came from a diverse human annotation process. TF describes the relation starting with the target object, whereas RF starts with the reference object and reverses the relation. The source file preserves a trailing space in the native mustard-on-box instruction. That whitespace is omitted from this typeset table.
+Tables below reproduce all tested instructions. D retains the benchmark task's original wording where that goal exists on the scene. It is a baseline instruction, not evidence that wording came from a diverse human annotation process. S describes the relation starting with the target object, whereas I starts with the reference object and reverses the relation. The source file preserves a trailing space in the native mustard-on-box instruction. That whitespace is omitted from this typeset table.
 
 \subsubsection{Cube and bowl}
 
@@ -153,41 +151,41 @@ Tables below reproduce all tested instructions. DIR retains the benchmark task's
 
 \multicolumn{2}{@{}l}{\textbf{Cube left of bowl}}\\
 
-DIR & Put the rubiks cube to the left of the bowl\\[3pt]
+D & Put the rubiks cube to the left of the bowl\\[3pt]
 
-TF & Place the Rubik's cube so that the Rubik's cube is to the left of the bowl.\\[3pt]
+S & Place the Rubik's cube so that the Rubik's cube is to the left of the bowl.\\[3pt]
 
-RF & Place the Rubik's cube so that the bowl is to the right of the Rubik's cube.\\[3pt]
+I & Place the Rubik's cube so that the bowl is to the right of the Rubik's cube.\\[3pt]
 
 \addlinespace
 
 \multicolumn{2}{@{}l}{\textbf{Cube right of bowl}}\\
 
-DIR & Put the rubiks cube to the right of the bowl\\[3pt]
+D & Put the rubiks cube to the right of the bowl\\[3pt]
 
-TF & Place the Rubik's cube so that the Rubik's cube is to the right of the bowl.\\[3pt]
+S & Place the Rubik's cube so that the Rubik's cube is to the right of the bowl.\\[3pt]
 
-RF & Place the Rubik's cube so that the bowl is to the left of the Rubik's cube.\\[3pt]
+I & Place the Rubik's cube so that the bowl is to the left of the Rubik's cube.\\[3pt]
 
 \addlinespace
 
 \multicolumn{2}{@{}l}{\textbf{Cube in front of bowl}}\\
 
-DIR & Put the rubiks cube in front of the bowl\\[3pt]
+D & Put the rubiks cube in front of the bowl\\[3pt]
 
-TF & Place the Rubik's cube so that the Rubik's cube is in front of the bowl.\\[3pt]
+S & Place the Rubik's cube so that the Rubik's cube is in front of the bowl.\\[3pt]
 
-RF & Place the Rubik's cube so that the bowl is behind the Rubik's cube.\\[3pt]
+I & Place the Rubik's cube so that the bowl is behind the Rubik's cube.\\[3pt]
 
 \addlinespace
 
 \multicolumn{2}{@{}l}{\textbf{Cube behind bowl}}\\
 
-DIR & Put the rubiks cube behind the bowl\\[3pt]
+D & Put the rubiks cube behind the bowl\\[3pt]
 
-TF & Place the Rubik's cube so that the Rubik's cube is behind the bowl.\\[3pt]
+S & Place the Rubik's cube so that the Rubik's cube is behind the bowl.\\[3pt]
 
-RF & Place the Rubik's cube so that the bowl is in front of the Rubik's cube.\\[3pt]
+I & Place the Rubik's cube so that the bowl is in front of the Rubik's cube.\\[3pt]
 
 \addlinespace
 
@@ -200,31 +198,31 @@ RF & Place the Rubik's cube so that the bowl is in front of the Rubik's cube.\\[
 
 \multicolumn{2}{@{}l}{\textbf{Butter box on raisin box}}\\
 
-DIR & Pick up the butter box and place it on top of the raisin box\\[3pt]
+D & Pick up the butter box and place it on top of the raisin box\\[3pt]
 
-TF & Place the butter box so that the butter box is on top of and supported by the raisin box.\\[3pt]
+S & Place the butter box so that the butter box is on top of and supported by the raisin box.\\[3pt]
 
-RF & Place the butter box so that the raisin box is underneath and supporting the butter box.\\[3pt]
+I & Place the butter box so that the raisin box is underneath and supporting the butter box.\\[3pt]
 
 \addlinespace
 
 \multicolumn{2}{@{}l}{\textbf{Butter box left of raisin box}}\\
 
-DIR & Place the butter box on the table to the left of the raisin box.\\[3pt]
+D & Place the butter box on the table to the left of the raisin box.\\[3pt]
 
-TF & Move the butter box on the table so that the butter box is to the left of the raisin box.\\[3pt]
+S & Move the butter box on the table so that the butter box is to the left of the raisin box.\\[3pt]
 
-RF & Move the butter box on the table so that the raisin box is to the right of the butter box.\\[3pt]
+I & Move the butter box on the table so that the raisin box is to the right of the butter box.\\[3pt]
 
 \addlinespace
 
 \multicolumn{2}{@{}l}{\textbf{Butter box right of raisin box}}\\
 
-DIR & Place the butter box on the table to the right of the raisin box.\\[3pt]
+D & Place the butter box on the table to the right of the raisin box.\\[3pt]
 
-TF & Move the butter box on the table so that the butter box is to the right of the raisin box.\\[3pt]
+S & Move the butter box on the table so that the butter box is to the right of the raisin box.\\[3pt]
 
-RF & Move the butter box on the table so that the raisin box is to the left of the butter box.\\[3pt]
+I & Move the butter box on the table so that the raisin box is to the left of the butter box.\\[3pt]
 
 \addlinespace
 
@@ -237,31 +235,31 @@ RF & Move the butter box on the table so that the raisin box is to the left of t
 
 \multicolumn{2}{@{}l}{\textbf{Mustard bottle on raisin box}}\\
 
-DIR & Place the mustard on the raisin box.\\[3pt]
+D & Place the mustard on the raisin box.\\[3pt]
 
-TF & Place the mustard bottle so that the mustard bottle is on top of and supported by the raisin box.\\[3pt]
+S & Place the mustard bottle so that the mustard bottle is on top of and supported by the raisin box.\\[3pt]
 
-RF & Place the mustard bottle so that the raisin box is underneath and supporting the mustard bottle.\\[3pt]
+I & Place the mustard bottle so that the raisin box is underneath and supporting the mustard bottle.\\[3pt]
 
 \addlinespace
 
 \multicolumn{2}{@{}l}{\textbf{Mustard bottle left of raisin box}}\\
 
-DIR & Place the mustard bottle on the table to the left of the raisin box.\\[3pt]
+D & Place the mustard bottle on the table to the left of the raisin box.\\[3pt]
 
-TF & Move the mustard bottle on the table so that the mustard bottle is to the left of the raisin box.\\[3pt]
+S & Move the mustard bottle on the table so that the mustard bottle is to the left of the raisin box.\\[3pt]
 
-RF & Move the mustard bottle on the table so that the raisin box is to the right of the mustard bottle.\\[3pt]
+I & Move the mustard bottle on the table so that the raisin box is to the right of the mustard bottle.\\[3pt]
 
 \addlinespace
 
 \multicolumn{2}{@{}l}{\textbf{Mustard bottle right of raisin box}}\\
 
-DIR & Place the mustard bottle on the table to the right of the raisin box.\\[3pt]
+D & Place the mustard bottle on the table to the right of the raisin box.\\[3pt]
 
-TF & Move the mustard bottle on the table so that the mustard bottle is to the right of the raisin box.\\[3pt]
+S & Move the mustard bottle on the table so that the mustard bottle is to the right of the raisin box.\\[3pt]
 
-RF & Move the mustard bottle on the table so that the raisin box is to the left of the mustard bottle.\\[3pt]
+I & Move the mustard bottle on the table so that the raisin box is to the left of the mustard bottle.\\[3pt]
 
 \addlinespace
 
@@ -275,28 +273,28 @@ RF & Move the mustard bottle on the table so that the raisin box is to the left 
 
 \multicolumn{2}{@{}l}{\textbf{Left bowl onto right bowl}}\\
 
-DIR & Stack the left bowl on the right bowl\\[3pt]
+D & Stack the left bowl on the right bowl\\[3pt]
 
-TF & Move the left bowl so that the left bowl is stacked on the right bowl.\\[3pt]
+S & Move the left bowl so that the left bowl is stacked on the right bowl.\\[3pt]
 
-RF & Move the left bowl so that the right bowl is underneath and supporting the left bowl.\\[3pt]
+I & Move the left bowl so that the right bowl is underneath and supporting the left bowl.\\[3pt]
 
 \addlinespace
 
 \multicolumn{2}{@{}l}{\textbf{Right bowl onto left bowl}}\\
 
-DIR & Stack the right bowl on the left bowl\\[3pt]
+D & Stack the right bowl on the left bowl\\[3pt]
 
-TF & Move the right bowl so that the right bowl is stacked on the left bowl.\\[3pt]
+S & Move the right bowl so that the right bowl is stacked on the left bowl.\\[3pt]
 
-RF & Move the right bowl so that the left bowl is underneath and supporting the right bowl.\\[3pt]
+I & Move the right bowl so that the left bowl is underneath and supporting the right bowl.\\[3pt]
 
 \addlinespace
 
 \bottomrule\end{longtable}
 
 
-The bowl task deserves separate interpretation. Its DIR instruction requests stacking, and its TF instruction likewise specifies that the target is stacked on the other bowl. RF describes the lower bowl as underneath and supporting the target bowl. That wording does not explicitly require the nesting checked by the benchmark predicate. The bowl results are therefore reported separately and the pooled wording contrast is also examined without them.
+The bowl task deserves separate interpretation. Its D instruction requests stacking, and its S instruction likewise specifies that the target is stacked on the other bowl. I describes the lower bowl as underneath and supporting the target bowl. That wording does not explicitly require the nesting checked by the benchmark predicate. The bowl results are therefore reported separately and the pooled wording contrast is also examined without them.
 
 \section{Policy settings and evaluation criteria}\label{app:settings}
 The policies receive one camera view attached to the wrist, two fixed exterior views overlooking the workspace, and robot state. We retain RoboLab's native camera configuration across all wording conditions. No camera is repositioned for a particular instruction. Each request returns 32 actions, executed at 15\,Hz before the next observation and request. The final chunk is truncated at the episode horizon. The same request seed (6100) is used for the paired instructions. Episodes run for the complete duration in Table~\ref{tab:appendix-scenes}, even after a placement first passes the check. There are no automatic request retries. The policy implementation and camera preprocessing remain specific to each released checkpoint.
@@ -330,19 +328,19 @@ For left/right/front/behind, the spatial predicate uses the native 45-degree rel
 
 The any-time outcome asks whether this condition holds anywhere in the episode. The episode-end outcome requires it throughout the final second. Neither condition proves that the intended object was manipulated. For example, moving the reference can make the requested relative arrangement true while leaving the target untouched. They are placement outcomes rather than a complete instruction-following score.
 
-The saved initial states determine whether a requested arrangement holds before any policy action. Cube-right, butter-right, and mustard-left are initially satisfied in all eight starts. Those three goals account for 216 episodes, and the other nine account for 648 episodes. Every initially-satisfied episode passes the any-time criterion, so including these episodes increases absolute any-time rates without changing their TF--RF contribution, which is zero. Earlier per-episode labels disagreed with the saved-state classification for 44 episodes. The supplementary table uses the common saved-state labels consistently across forms and models. Original any-time and episode-end outcomes are unchanged.
+The saved initial states determine whether a requested arrangement holds before any policy action. Cube-right, butter-right, and mustard-left are initially satisfied in all eight starts. Those three goals account for 216 episodes, and the other nine account for 648 episodes. Every initially-satisfied episode passes the any-time criterion, so including these episodes increases absolute any-time rates without changing their S--I contribution, which is zero. Earlier per-episode labels disagreed with the saved-state classification for 44 episodes. The supplementary table uses the common saved-state labels consistently across forms and models. Original any-time and episode-end outcomes are unchanged.
 
-For a wording comparison, the two binary placement outcomes are subtracted for the same model, starting state, and goal. For example, if TF reaches the placement and RF does not, the paired difference is +1. The reverse gives $-1$, and agreement gives 0. Differences are averaged over goals within each scene, then equally over scenes and models. This prevents scenes with more goals from dominating the pooled result. Confidence intervals use 10,000 bootstrap draws of the eight physical starts within each scene. All associated goals, models, and instruction forms remain together. The original pooled TF--RF and DIR--TF tests use paired sign flips and Holm correction across those two tests. Per-model, subgroup, per-relation, terminal-outcome, and newly added DIR--RF summaries are descriptive. They do not expand that original test family.
+For a wording comparison, the two binary placement outcomes are subtracted for the same model, starting state, and goal. For example, if S reaches the placement and I does not, the paired difference is +1. The reverse gives $-1$, and agreement gives 0. Differences are averaged over goals within each scene, then equally over scenes and models. This prevents scenes with more goals from dominating the pooled result. Confidence intervals use 10,000 bootstrap draws of the eight physical starts within each scene. All associated goals, models, and instruction forms remain together. The original pooled S--I and D--S tests use paired sign flips and Holm correction across those two tests. Per-model, subgroup, per-relation, terminal-outcome, and newly added D--I summaries are descriptive. They do not expand that original test family.
 
-The pooled TF--RF estimate is 12.15 percentage points for any-time placement and 11.20 points for episode-end placement. Removing the bowl scene and giving each remaining scene equal weight leaves an any-time estimate of 10.65 points. This descriptive sensitivity check shows that the main direction does not depend on the bowl-language ambiguity. It does not establish equivalence of the bowl prompts. DIR--TF is 4.08 points, with a 95\% interval of $[-0.2,8.4]$ and an adjusted $p=0.089$. Failure to detect that difference is not evidence that instruction expansion has no effect.
+The pooled S--I estimate is 12.15 percentage points for any-time placement and 11.20 points for episode-end placement. Removing the bowl scene and giving each remaining scene equal weight leaves an any-time estimate of 10.65 points. This descriptive sensitivity check shows that the main direction does not depend on the bowl-language ambiguity. It does not establish equivalence of the bowl prompts. D--S is 4.08 points, with a 95\% interval of $[-0.2,8.4]$ and an adjusted $p=0.089$. Failure to detect that difference is not evidence that instruction expansion has no effect.
 
 \section{Additional behavioral results}
 \label{app:behavior-results}
 \subsection{Direct versus reference-first wording}
-The direct baseline can also be compared with reference-first wording. This added comparison is useful for connecting the controlled TF--RF intervention to the short instruction normally supplied with a task, but DIR and RF also differ in length and sentence construction. It therefore does not isolate reference reversal as closely as TF versus RF. Table~\ref{tab:appendix-di} and Figure~\ref{fig:appendix-di} report it descriptively.
+The direct baseline can also be compared with reference-first wording. This added comparison is useful for connecting the controlled S--I intervention to the short instruction normally supplied with a task, but D and I also differ in length and sentence construction. It therefore does not isolate reference reversal as closely as S versus I. Table~\ref{tab:appendix-di} and Figure~\ref{fig:appendix-di} report it descriptively.
 \begin{table}[htbp]
 \centering\small
-\caption{Exploratory DIR--RF gaps in percentage points, with 95\% intervals obtained by resampling paired physical starts. Positive values favor the direct instruction. No new multiplicity-adjusted significance claims are made.}
+\caption{Exploratory D--I gaps in percentage points, with 95\% intervals obtained by resampling paired physical starts. Positive values favor the direct instruction. No new multiplicity-adjusted significance claims are made.}
 \label{tab:appendix-di}
 \begin{tabular}{@{}lcc@{}}\toprule Model & At any time & At episode end\\\midrule
 
@@ -358,15 +356,15 @@ FLUX & 21.1 [10.4, 30.7] & 18.5 [9.1, 27.6]\\
 
 \begin{figure}[htbp]\centering
 \includegraphics[width=.90\linewidth]{rev_direct_reference_effects.pdf}
-\caption{The short direct instruction also outperforms reference-first descriptions on average. Intervals are descriptive paired-start bootstrap intervals. DIR--RF was added after the original analyses.}
+\caption{The short direct instruction also outperforms reference-first descriptions on average. Intervals are descriptive paired-start bootstrap intervals. D--I was added after the original analyses.}
 \label{fig:appendix-di}\end{figure}
 
 \subsection{Relation-specific effects}
-Figure~\ref{fig:appendix-relation} shows that the average wording effect does not represent a uniform drop across relations. Mustard-right exhibits the largest contrast: 20 of 24 target-first episodes reach the placement, compared with 2 of 24 reference-first episodes. These counts pool the three models over eight starts each. The corresponding target-first/reference-first counts are 8/0 for Nano, 4/0 for Edge, and 8/2 for FLUX. By contrast, cube-behind has a negative TF--RF gap, and the cube scene has no net TF--RF gap after averaging its four relations. This pattern motivates testing equivalent descriptions within each relation rather than expecting one prompt form to be uniformly preferable. Per-relation estimates involve only eight physical starts and should be read as descriptive localization of the observed effect.
+Figure~\ref{fig:appendix-relation} shows that the average wording effect does not represent a uniform drop across relations. Mustard-right exhibits the largest contrast: 20 of 24 target-first episodes reach the placement, compared with 2 of 24 reference-first episodes. These counts pool the three models over eight starts each. The corresponding target-first/reference-first counts are 8/0 for Nano, 4/0 for Edge, and 8/2 for FLUX. By contrast, cube-behind has a negative S--I gap, and the cube scene has no net S--I gap after averaging its four relations. This pattern motivates testing equivalent descriptions within each relation rather than expecting one prompt form to be uniformly preferable. Per-relation estimates involve only eight physical starts and should be read as descriptive localization of the observed effect.
 
 \begin{figure}[htbp]\centering
 \includegraphics[width=\linewidth]{rev_per_relation_effects.pdf}
-\caption{Per-relation TF--RF differences pooled over models, with descriptive 95\% intervals from the eight physical starts for that scene. Positive values favor target-first wording. Initially-satisfied goals contribute zero to this any-time contrast.}
+\caption{Per-relation S--I differences pooled over models, with descriptive 95\% intervals from the eight physical starts for that scene. Positive values favor target-first wording. Initially-satisfied goals contribute zero to this any-time contrast.}
 \label{fig:appendix-relation}\end{figure}
 
 \subsection{Reaching an arrangement and keeping it}
@@ -481,7 +479,7 @@ Both Nano instructions ask the robot to move the cube behind the bowl. In the re
 \begin{figure}[!ht]
 \centering
 \includegraphics[width=\linewidth]{rev_execution_cube.pdf}
-\caption{Nano's cube-behind example, moved from Figure 3 in the original draft. Both outcome snapshots are at 25.4 seconds, when the reference-first run first completes the stable-placement interval. The robot holds the bowl in RF while the cube is visible on the table. This arrangement no longer satisfies the episode-end check. The labels describe recorded spatial outcomes, not complete instruction success.}
+\caption{Nano's cube-behind example, moved from Figure 3 in the original draft. Both outcome snapshots are at 25.4 seconds, when the reference-first run first completes the stable-placement interval. The robot holds the bowl in I while the cube is visible on the table. This arrangement no longer satisfies the episode-end check. The labels describe recorded spatial outcomes, not complete instruction success.}
 \label{fig:wrong-object}
 \end{figure}
 
@@ -493,7 +491,7 @@ All main-paper and cropped appendix panels use the same image rectangle, taken f
 \begin{figure}[p]
 \centering
 \includegraphics[width=\linewidth]{rev_full_execution_views.pdf}
-\caption{Full exterior-camera frames for the two execution examples. Columns correspond to Edge mustard-right and Nano cube-behind. Rows show the shared initial scene, TF, and RF. The camera image is shown in its native orientation, so image left/right should not be interpreted as the robot-frame relation. These are executed observations, not model-generated predictions.}
+\caption{Full exterior-camera frames for the two execution examples. Columns correspond to Edge mustard-right and Nano cube-behind. Rows show the shared initial scene, S, and I. The camera image is shown in its native orientation, so image left/right should not be interpreted as the robot-frame relation. These are executed observations, not model-generated predictions.}
 \label{fig:full-views}
 \end{figure}
 

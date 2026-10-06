@@ -18,7 +18,7 @@ for i,name in enumerate(('mustard','cube')):
         continue
     row=dict(m.ROWS[i]);row['top']=2.34
     row['title']=row['title'][4:]
-    row['headings']=tuple(x.replace('Mover-first','Target-first') for x in row['headings'])
+    row['headings']=tuple(x.replace('Mover-first','Target-first').replace('(S)', '(TF)').replace('(I)', '(RF)') for x in row['headings'])
     if name == 'cube':
         row['outcomes']=tuple(x.replace('Relation reached; bowl moved','Reached by moving the bowl') for x in row['outcomes'])
     m.ROWS=(row,);m.HEIGHT=2.4
@@ -32,7 +32,7 @@ if args.only == 'cube':
 plt.rcParams.update({'font.family':'DejaVu Sans','font.size':10,'pdf.fonttype':42})
 fig,axs=plt.subplots(3,2,figsize=(7.2,6.5))
 for i,(key,title) in enumerate((('a','Edge: mustard right of the box'),('b','Nano: cube behind the bowl'))):
- for j,(suffix,heading) in enumerate((('start','Initial scene'),('s','Target-first (S)'),('i','Reference-first (I)'))):
+ for j,(suffix,heading) in enumerate((('start','Initial scene'),('s','Target-first (TF)'),('i','Reference-first (RF)'))):
   ax=axs[j,i]
   ax.imshow(Image.open(HERE/f'figures/execution_frames/{key}_{suffix}.png'))
   ax.axis('off');ax.set_title(heading,fontsize=10,pad=5)
