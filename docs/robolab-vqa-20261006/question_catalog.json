@@ -1,0 +1,1331 @@
+{
+  "study_id": "RQA-20261006",
+  "version": "1.0",
+  "status": "locked_query_design_not_frame_bound",
+  "source": "paper/robolab_spatial_2026/revisions/20261001/exact_tested_prompts.json",
+  "source_sha256": "c118941589cbd1be0e46a11deb465f77cfb810b1b423d9e820de4b12785709d3",
+  "legacy_form_map": {
+    "D": "DIR",
+    "S": "TF",
+    "I": "RF"
+  },
+  "relation_vocabulary": [
+    "left_of",
+    "right_of",
+    "in_front_of",
+    "behind",
+    "on_top_supported",
+    "stacked_on",
+    "unknown"
+  ],
+  "goals": [
+    {
+      "scene_id": "S1",
+      "goal_id": "L",
+      "label": "Cube left of bowl",
+      "target": "rubiks_cube",
+      "reference": "bowl",
+      "relation": "left_of",
+      "scene_questions": [
+        {
+          "form": "target_subject",
+          "question": "Is the Rubik's cube to the left of the bowl?"
+        },
+        {
+          "form": "reference_subject",
+          "question": "Is the bowl to the right of the Rubik's cube?"
+        }
+      ],
+      "main_equivalent_wording_stratum": true,
+      "semantic_note": null
+    },
+    {
+      "scene_id": "S1",
+      "goal_id": "R",
+      "label": "Cube right of bowl",
+      "target": "rubiks_cube",
+      "reference": "bowl",
+      "relation": "right_of",
+      "scene_questions": [
+        {
+          "form": "target_subject",
+          "question": "Is the Rubik's cube to the right of the bowl?"
+        },
+        {
+          "form": "reference_subject",
+          "question": "Is the bowl to the left of the Rubik's cube?"
+        }
+      ],
+      "main_equivalent_wording_stratum": true,
+      "semantic_note": null
+    },
+    {
+      "scene_id": "S1",
+      "goal_id": "F",
+      "label": "Cube in front of bowl",
+      "target": "rubiks_cube",
+      "reference": "bowl",
+      "relation": "in_front_of",
+      "scene_questions": [
+        {
+          "form": "target_subject",
+          "question": "Is the Rubik's cube in front of the bowl?"
+        },
+        {
+          "form": "reference_subject",
+          "question": "Is the bowl behind the Rubik's cube?"
+        }
+      ],
+      "main_equivalent_wording_stratum": true,
+      "semantic_note": null
+    },
+    {
+      "scene_id": "S1",
+      "goal_id": "B",
+      "label": "Cube behind bowl",
+      "target": "rubiks_cube",
+      "reference": "bowl",
+      "relation": "behind",
+      "scene_questions": [
+        {
+          "form": "target_subject",
+          "question": "Is the Rubik's cube behind the bowl?"
+        },
+        {
+          "form": "reference_subject",
+          "question": "Is the bowl in front of the Rubik's cube?"
+        }
+      ],
+      "main_equivalent_wording_stratum": true,
+      "semantic_note": null
+    },
+    {
+      "scene_id": "S3",
+      "goal_id": "TOP",
+      "label": "Butter box on raisin box",
+      "target": "butter",
+      "reference": "raisin_box",
+      "relation": "on_top_supported",
+      "scene_questions": [
+        {
+          "form": "target_subject",
+          "question": "Is the butter box on top of and supported by the raisin box?"
+        },
+        {
+          "form": "reference_subject",
+          "question": "Is the raisin box underneath and supporting the butter box?"
+        }
+      ],
+      "main_equivalent_wording_stratum": true,
+      "semantic_note": null
+    },
+    {
+      "scene_id": "S3",
+      "goal_id": "L",
+      "label": "Butter box left of raisin box",
+      "target": "butter",
+      "reference": "raisin_box",
+      "relation": "left_of",
+      "scene_questions": [
+        {
+          "form": "target_subject",
+          "question": "Is the butter box to the left of the raisin box?"
+        },
+        {
+          "form": "reference_subject",
+          "question": "Is the raisin box to the right of the butter box?"
+        }
+      ],
+      "main_equivalent_wording_stratum": true,
+      "semantic_note": null
+    },
+    {
+      "scene_id": "S3",
+      "goal_id": "R",
+      "label": "Butter box right of raisin box",
+      "target": "butter",
+      "reference": "raisin_box",
+      "relation": "right_of",
+      "scene_questions": [
+        {
+          "form": "target_subject",
+          "question": "Is the butter box to the right of the raisin box?"
+        },
+        {
+          "form": "reference_subject",
+          "question": "Is the raisin box to the left of the butter box?"
+        }
+      ],
+      "main_equivalent_wording_stratum": true,
+      "semantic_note": null
+    },
+    {
+      "scene_id": "S4",
+      "goal_id": "TOP",
+      "label": "Mustard bottle on raisin box",
+      "target": "mustard_bottle",
+      "reference": "raisin_box",
+      "relation": "on_top_supported",
+      "scene_questions": [
+        {
+          "form": "target_subject",
+          "question": "Is the mustard bottle on top of and supported by the raisin box?"
+        },
+        {
+          "form": "reference_subject",
+          "question": "Is the raisin box underneath and supporting the mustard bottle?"
+        }
+      ],
+      "main_equivalent_wording_stratum": true,
+      "semantic_note": null
+    },
+    {
+      "scene_id": "S4",
+      "goal_id": "L",
+      "label": "Mustard bottle left of raisin box",
+      "target": "mustard_bottle",
+      "reference": "raisin_box",
+      "relation": "left_of",
+      "scene_questions": [
+        {
+          "form": "target_subject",
+          "question": "Is the mustard bottle to the left of the raisin box?"
+        },
+        {
+          "form": "reference_subject",
+          "question": "Is the raisin box to the right of the mustard bottle?"
+        }
+      ],
+      "main_equivalent_wording_stratum": true,
+      "semantic_note": null
+    },
+    {
+      "scene_id": "S4",
+      "goal_id": "R",
+      "label": "Mustard bottle right of raisin box",
+      "target": "mustard_bottle",
+      "reference": "raisin_box",
+      "relation": "right_of",
+      "scene_questions": [
+        {
+          "form": "target_subject",
+          "question": "Is the mustard bottle to the right of the raisin box?"
+        },
+        {
+          "form": "reference_subject",
+          "question": "Is the raisin box to the left of the mustard bottle?"
+        }
+      ],
+      "main_equivalent_wording_stratum": true,
+      "semantic_note": null
+    },
+    {
+      "scene_id": "S5",
+      "goal_id": "LR",
+      "label": "Left bowl onto right bowl",
+      "target": "left_bowl_at_reset",
+      "reference": "right_bowl_at_reset",
+      "relation": "stacked_on",
+      "scene_questions": [
+        {
+          "form": "target_subject",
+          "question": "Is the bowl initially on the left nested in and supported by the bowl initially on the right?"
+        },
+        {
+          "form": "reference_subject",
+          "question": "Is the bowl initially on the right containing and supporting the bowl initially on the left?"
+        }
+      ],
+      "main_equivalent_wording_stratum": false,
+      "semantic_note": "Original RF only specifies underneath/supporting; do not force literal relation equality with stacked_on."
+    },
+    {
+      "scene_id": "S5",
+      "goal_id": "RL",
+      "label": "Right bowl onto left bowl",
+      "target": "right_bowl_at_reset",
+      "reference": "left_bowl_at_reset",
+      "relation": "stacked_on",
+      "scene_questions": [
+        {
+          "form": "target_subject",
+          "question": "Is the bowl initially on the right nested in and supported by the bowl initially on the left?"
+        },
+        {
+          "form": "reference_subject",
+          "question": "Is the bowl initially on the left containing and supporting the bowl initially on the right?"
+        }
+      ],
+      "main_equivalent_wording_stratum": false,
+      "semantic_note": "Original RF only specifies underneath/supporting; do not force literal relation equality with stacked_on."
+    }
+  ],
+  "original_instructions": [
+    {
+      "scene": "S1",
+      "goal": "L",
+      "label": "Cube left of bowl",
+      "form": "D",
+      "prompt": "Put the rubiks cube to the left of the bowl",
+      "prompt_id": "S1-L-D",
+      "display_form": "DIR",
+      "prompt_sha256": "c6a96e34a4df741c35c48f1c86c8d6db3ab5e50afbcd7cb553b2ff59cc816e29",
+      "object_vocabulary": [
+        "rubiks_cube",
+        "banana",
+        "bowl"
+      ],
+      "gold_B": {
+        "target": "rubiks_cube",
+        "reference": "bowl",
+        "relation": "left_of"
+      },
+      "equivalence_status": "intended_equivalent",
+      "historical_intended_goal": "Cube left of bowl"
+    },
+    {
+      "scene": "S1",
+      "goal": "L",
+      "label": "Cube left of bowl",
+      "form": "S",
+      "prompt": "Place the Rubik's cube so that the Rubik's cube is to the left of the bowl.",
+      "prompt_id": "S1-L-S",
+      "display_form": "TF",
+      "prompt_sha256": "0627baa29ac138ba59a7f8a9e19b78a31258b525c26545131047e39619e3215c",
+      "object_vocabulary": [
+        "rubiks_cube",
+        "banana",
+        "bowl"
+      ],
+      "gold_B": {
+        "target": "rubiks_cube",
+        "reference": "bowl",
+        "relation": "left_of"
+      },
+      "equivalence_status": "intended_equivalent",
+      "historical_intended_goal": "Cube left of bowl"
+    },
+    {
+      "scene": "S1",
+      "goal": "L",
+      "label": "Cube left of bowl",
+      "form": "I",
+      "prompt": "Place the Rubik's cube so that the bowl is to the right of the Rubik's cube.",
+      "prompt_id": "S1-L-I",
+      "display_form": "RF",
+      "prompt_sha256": "6ed00a80ed714a034daa682371ddf42c2e576e40ccc4345fa73053833b4e2d39",
+      "object_vocabulary": [
+        "rubiks_cube",
+        "banana",
+        "bowl"
+      ],
+      "gold_B": {
+        "target": "rubiks_cube",
+        "reference": "bowl",
+        "relation": "left_of"
+      },
+      "equivalence_status": "intended_equivalent",
+      "historical_intended_goal": "Cube left of bowl"
+    },
+    {
+      "scene": "S1",
+      "goal": "R",
+      "label": "Cube right of bowl",
+      "form": "D",
+      "prompt": "Put the rubiks cube to the right of the bowl",
+      "prompt_id": "S1-R-D",
+      "display_form": "DIR",
+      "prompt_sha256": "38257024baaf0435c5571370f3fa5e0ac17499abca5ea6ab18340d04a5db4cf2",
+      "object_vocabulary": [
+        "rubiks_cube",
+        "banana",
+        "bowl"
+      ],
+      "gold_B": {
+        "target": "rubiks_cube",
+        "reference": "bowl",
+        "relation": "right_of"
+      },
+      "equivalence_status": "intended_equivalent",
+      "historical_intended_goal": "Cube right of bowl"
+    },
+    {
+      "scene": "S1",
+      "goal": "R",
+      "label": "Cube right of bowl",
+      "form": "S",
+      "prompt": "Place the Rubik's cube so that the Rubik's cube is to the right of the bowl.",
+      "prompt_id": "S1-R-S",
+      "display_form": "TF",
+      "prompt_sha256": "7b8582cd1340a540266f361902a3790fdd972ad704cfc3140ec6948f33b8f301",
+      "object_vocabulary": [
+        "rubiks_cube",
+        "banana",
+        "bowl"
+      ],
+      "gold_B": {
+        "target": "rubiks_cube",
+        "reference": "bowl",
+        "relation": "right_of"
+      },
+      "equivalence_status": "intended_equivalent",
+      "historical_intended_goal": "Cube right of bowl"
+    },
+    {
+      "scene": "S1",
+      "goal": "R",
+      "label": "Cube right of bowl",
+      "form": "I",
+      "prompt": "Place the Rubik's cube so that the bowl is to the left of the Rubik's cube.",
+      "prompt_id": "S1-R-I",
+      "display_form": "RF",
+      "prompt_sha256": "3c36eb09d55cf3875d3d5e49abd4571bdedddb069b328fcb62abd08fc6a515b0",
+      "object_vocabulary": [
+        "rubiks_cube",
+        "banana",
+        "bowl"
+      ],
+      "gold_B": {
+        "target": "rubiks_cube",
+        "reference": "bowl",
+        "relation": "right_of"
+      },
+      "equivalence_status": "intended_equivalent",
+      "historical_intended_goal": "Cube right of bowl"
+    },
+    {
+      "scene": "S1",
+      "goal": "F",
+      "label": "Cube in front of bowl",
+      "form": "D",
+      "prompt": "Put the rubiks cube in front of the bowl",
+      "prompt_id": "S1-F-D",
+      "display_form": "DIR",
+      "prompt_sha256": "01b8c6863318ecf09933fb71189b04eee04e76c7680a55f18a4c508156458274",
+      "object_vocabulary": [
+        "rubiks_cube",
+        "banana",
+        "bowl"
+      ],
+      "gold_B": {
+        "target": "rubiks_cube",
+        "reference": "bowl",
+        "relation": "in_front_of"
+      },
+      "equivalence_status": "intended_equivalent",
+      "historical_intended_goal": "Cube in front of bowl"
+    },
+    {
+      "scene": "S1",
+      "goal": "F",
+      "label": "Cube in front of bowl",
+      "form": "S",
+      "prompt": "Place the Rubik's cube so that the Rubik's cube is in front of the bowl.",
+      "prompt_id": "S1-F-S",
+      "display_form": "TF",
+      "prompt_sha256": "309dac515f1bdbe4c363d9ea65115525f08de5364c0251c43c78435dc7e2e56f",
+      "object_vocabulary": [
+        "rubiks_cube",
+        "banana",
+        "bowl"
+      ],
+      "gold_B": {
+        "target": "rubiks_cube",
+        "reference": "bowl",
+        "relation": "in_front_of"
+      },
+      "equivalence_status": "intended_equivalent",
+      "historical_intended_goal": "Cube in front of bowl"
+    },
+    {
+      "scene": "S1",
+      "goal": "F",
+      "label": "Cube in front of bowl",
+      "form": "I",
+      "prompt": "Place the Rubik's cube so that the bowl is behind the Rubik's cube.",
+      "prompt_id": "S1-F-I",
+      "display_form": "RF",
+      "prompt_sha256": "3f7335291e5894308ff9c5c6d18047c599624f7aa68ce20faa17a28e5841077a",
+      "object_vocabulary": [
+        "rubiks_cube",
+        "banana",
+        "bowl"
+      ],
+      "gold_B": {
+        "target": "rubiks_cube",
+        "reference": "bowl",
+        "relation": "in_front_of"
+      },
+      "equivalence_status": "intended_equivalent",
+      "historical_intended_goal": "Cube in front of bowl"
+    },
+    {
+      "scene": "S1",
+      "goal": "B",
+      "label": "Cube behind bowl",
+      "form": "D",
+      "prompt": "Put the rubiks cube behind the bowl",
+      "prompt_id": "S1-B-D",
+      "display_form": "DIR",
+      "prompt_sha256": "59666020741b52d3c57e1714b25d911ae84267104715c5f7d98c8df9245c181e",
+      "object_vocabulary": [
+        "rubiks_cube",
+        "banana",
+        "bowl"
+      ],
+      "gold_B": {
+        "target": "rubiks_cube",
+        "reference": "bowl",
+        "relation": "behind"
+      },
+      "equivalence_status": "intended_equivalent",
+      "historical_intended_goal": "Cube behind bowl"
+    },
+    {
+      "scene": "S1",
+      "goal": "B",
+      "label": "Cube behind bowl",
+      "form": "S",
+      "prompt": "Place the Rubik's cube so that the Rubik's cube is behind the bowl.",
+      "prompt_id": "S1-B-S",
+      "display_form": "TF",
+      "prompt_sha256": "4b2ad2845e2b86b6a1aeea0634d6c04b9cd6815fff9101a5f627f13e77fae2ba",
+      "object_vocabulary": [
+        "rubiks_cube",
+        "banana",
+        "bowl"
+      ],
+      "gold_B": {
+        "target": "rubiks_cube",
+        "reference": "bowl",
+        "relation": "behind"
+      },
+      "equivalence_status": "intended_equivalent",
+      "historical_intended_goal": "Cube behind bowl"
+    },
+    {
+      "scene": "S1",
+      "goal": "B",
+      "label": "Cube behind bowl",
+      "form": "I",
+      "prompt": "Place the Rubik's cube so that the bowl is in front of the Rubik's cube.",
+      "prompt_id": "S1-B-I",
+      "display_form": "RF",
+      "prompt_sha256": "7152abbd06fbe43c26443a33579a3183e907788b692088831b8d39cbfb00df83",
+      "object_vocabulary": [
+        "rubiks_cube",
+        "banana",
+        "bowl"
+      ],
+      "gold_B": {
+        "target": "rubiks_cube",
+        "reference": "bowl",
+        "relation": "behind"
+      },
+      "equivalence_status": "intended_equivalent",
+      "historical_intended_goal": "Cube behind bowl"
+    },
+    {
+      "scene": "S3",
+      "goal": "TOP",
+      "label": "Butter box on raisin box",
+      "form": "D",
+      "prompt": "Pick up the butter box and place it on top of the raisin box",
+      "prompt_id": "S3-TOP-D",
+      "display_form": "DIR",
+      "prompt_sha256": "b48bed2e3a245cf5a6fc50500d5ae4ed6f178716d2dfdc0c4c9e1cabd3d575c5",
+      "object_vocabulary": [
+        "butter",
+        "raisin_box"
+      ],
+      "gold_B": {
+        "target": "butter",
+        "reference": "raisin_box",
+        "relation": "on_top_supported"
+      },
+      "equivalence_status": "intended_equivalent",
+      "historical_intended_goal": "Butter box on raisin box"
+    },
+    {
+      "scene": "S3",
+      "goal": "TOP",
+      "label": "Butter box on raisin box",
+      "form": "S",
+      "prompt": "Place the butter box so that the butter box is on top of and supported by the raisin box.",
+      "prompt_id": "S3-TOP-S",
+      "display_form": "TF",
+      "prompt_sha256": "76b7aaaf97cc41880d8e42dcd56c2d0784882de49268e86d9acceaa290f537dd",
+      "object_vocabulary": [
+        "butter",
+        "raisin_box"
+      ],
+      "gold_B": {
+        "target": "butter",
+        "reference": "raisin_box",
+        "relation": "on_top_supported"
+      },
+      "equivalence_status": "intended_equivalent",
+      "historical_intended_goal": "Butter box on raisin box"
+    },
+    {
+      "scene": "S3",
+      "goal": "TOP",
+      "label": "Butter box on raisin box",
+      "form": "I",
+      "prompt": "Place the butter box so that the raisin box is underneath and supporting the butter box.",
+      "prompt_id": "S3-TOP-I",
+      "display_form": "RF",
+      "prompt_sha256": "f1c87c56f337ad242eb10ca21b81791712e3dddad6d82236003c41fc9d265727",
+      "object_vocabulary": [
+        "butter",
+        "raisin_box"
+      ],
+      "gold_B": {
+        "target": "butter",
+        "reference": "raisin_box",
+        "relation": "on_top_supported"
+      },
+      "equivalence_status": "intended_equivalent",
+      "historical_intended_goal": "Butter box on raisin box"
+    },
+    {
+      "scene": "S3",
+      "goal": "L",
+      "label": "Butter box left of raisin box",
+      "form": "D",
+      "prompt": "Place the butter box on the table to the left of the raisin box.",
+      "prompt_id": "S3-L-D",
+      "display_form": "DIR",
+      "prompt_sha256": "4f276c1ca0989bf71da3cce128d181be5d8787e6bdaff6ed5c32a78a29ab52e5",
+      "object_vocabulary": [
+        "butter",
+        "raisin_box"
+      ],
+      "gold_B": {
+        "target": "butter",
+        "reference": "raisin_box",
+        "relation": "left_of"
+      },
+      "equivalence_status": "intended_equivalent",
+      "historical_intended_goal": "Butter box left of raisin box"
+    },
+    {
+      "scene": "S3",
+      "goal": "L",
+      "label": "Butter box left of raisin box",
+      "form": "S",
+      "prompt": "Move the butter box on the table so that the butter box is to the left of the raisin box.",
+      "prompt_id": "S3-L-S",
+      "display_form": "TF",
+      "prompt_sha256": "d00edcb26ac1f629e9607d632acd9a5a639e231059b5331feb3091b9b1f90255",
+      "object_vocabulary": [
+        "butter",
+        "raisin_box"
+      ],
+      "gold_B": {
+        "target": "butter",
+        "reference": "raisin_box",
+        "relation": "left_of"
+      },
+      "equivalence_status": "intended_equivalent",
+      "historical_intended_goal": "Butter box left of raisin box"
+    },
+    {
+      "scene": "S3",
+      "goal": "L",
+      "label": "Butter box left of raisin box",
+      "form": "I",
+      "prompt": "Move the butter box on the table so that the raisin box is to the right of the butter box.",
+      "prompt_id": "S3-L-I",
+      "display_form": "RF",
+      "prompt_sha256": "c8b17b137f3e2510c12d5a0211259aaef998f5325f91e20e75600a9807b159b7",
+      "object_vocabulary": [
+        "butter",
+        "raisin_box"
+      ],
+      "gold_B": {
+        "target": "butter",
+        "reference": "raisin_box",
+        "relation": "left_of"
+      },
+      "equivalence_status": "intended_equivalent",
+      "historical_intended_goal": "Butter box left of raisin box"
+    },
+    {
+      "scene": "S3",
+      "goal": "R",
+      "label": "Butter box right of raisin box",
+      "form": "D",
+      "prompt": "Place the butter box on the table to the right of the raisin box.",
+      "prompt_id": "S3-R-D",
+      "display_form": "DIR",
+      "prompt_sha256": "6f34a3070256218f3b21ad8a8e4dc4d27c0885e693cc5adfbee35df07fe352e9",
+      "object_vocabulary": [
+        "butter",
+        "raisin_box"
+      ],
+      "gold_B": {
+        "target": "butter",
+        "reference": "raisin_box",
+        "relation": "right_of"
+      },
+      "equivalence_status": "intended_equivalent",
+      "historical_intended_goal": "Butter box right of raisin box"
+    },
+    {
+      "scene": "S3",
+      "goal": "R",
+      "label": "Butter box right of raisin box",
+      "form": "S",
+      "prompt": "Move the butter box on the table so that the butter box is to the right of the raisin box.",
+      "prompt_id": "S3-R-S",
+      "display_form": "TF",
+      "prompt_sha256": "067a2fb41fba1bab3e929a5d16b10a9e4b943ecae076d8bdeeb9bebfcc383cab",
+      "object_vocabulary": [
+        "butter",
+        "raisin_box"
+      ],
+      "gold_B": {
+        "target": "butter",
+        "reference": "raisin_box",
+        "relation": "right_of"
+      },
+      "equivalence_status": "intended_equivalent",
+      "historical_intended_goal": "Butter box right of raisin box"
+    },
+    {
+      "scene": "S3",
+      "goal": "R",
+      "label": "Butter box right of raisin box",
+      "form": "I",
+      "prompt": "Move the butter box on the table so that the raisin box is to the left of the butter box.",
+      "prompt_id": "S3-R-I",
+      "display_form": "RF",
+      "prompt_sha256": "40e8ece7cc4f53cef9e8834765577e832c7bd5ede30f051c7fc0bc5886bb14a6",
+      "object_vocabulary": [
+        "butter",
+        "raisin_box"
+      ],
+      "gold_B": {
+        "target": "butter",
+        "reference": "raisin_box",
+        "relation": "right_of"
+      },
+      "equivalence_status": "intended_equivalent",
+      "historical_intended_goal": "Butter box right of raisin box"
+    },
+    {
+      "scene": "S4",
+      "goal": "TOP",
+      "label": "Mustard bottle on raisin box",
+      "form": "D",
+      "prompt": "Place the mustard on the raisin box. ",
+      "prompt_id": "S4-TOP-D",
+      "display_form": "DIR",
+      "prompt_sha256": "821f226c67f532a7445546203fa11416d7b6ac47fabaff8b7aab2dc8db73e442",
+      "object_vocabulary": [
+        "mustard_bottle",
+        "raisin_box"
+      ],
+      "gold_B": {
+        "target": "mustard_bottle",
+        "reference": "raisin_box",
+        "relation": "on_top_supported"
+      },
+      "equivalence_status": "intended_equivalent",
+      "historical_intended_goal": "Mustard bottle on raisin box"
+    },
+    {
+      "scene": "S4",
+      "goal": "TOP",
+      "label": "Mustard bottle on raisin box",
+      "form": "S",
+      "prompt": "Place the mustard bottle so that the mustard bottle is on top of and supported by the raisin box.",
+      "prompt_id": "S4-TOP-S",
+      "display_form": "TF",
+      "prompt_sha256": "798e5a9a6bbd5e990a01d1fcd2144636ae31087b0e48ee1bbd1b00de377daa7b",
+      "object_vocabulary": [
+        "mustard_bottle",
+        "raisin_box"
+      ],
+      "gold_B": {
+        "target": "mustard_bottle",
+        "reference": "raisin_box",
+        "relation": "on_top_supported"
+      },
+      "equivalence_status": "intended_equivalent",
+      "historical_intended_goal": "Mustard bottle on raisin box"
+    },
+    {
+      "scene": "S4",
+      "goal": "TOP",
+      "label": "Mustard bottle on raisin box",
+      "form": "I",
+      "prompt": "Place the mustard bottle so that the raisin box is underneath and supporting the mustard bottle.",
+      "prompt_id": "S4-TOP-I",
+      "display_form": "RF",
+      "prompt_sha256": "e55f64afe52b0663583b16201aabfabc8a8eb9e4330d1735737d14957d15c70e",
+      "object_vocabulary": [
+        "mustard_bottle",
+        "raisin_box"
+      ],
+      "gold_B": {
+        "target": "mustard_bottle",
+        "reference": "raisin_box",
+        "relation": "on_top_supported"
+      },
+      "equivalence_status": "intended_equivalent",
+      "historical_intended_goal": "Mustard bottle on raisin box"
+    },
+    {
+      "scene": "S4",
+      "goal": "L",
+      "label": "Mustard bottle left of raisin box",
+      "form": "D",
+      "prompt": "Place the mustard bottle on the table to the left of the raisin box.",
+      "prompt_id": "S4-L-D",
+      "display_form": "DIR",
+      "prompt_sha256": "686b8a4ebeb04f9e83e1d8c63918251f4db50ba34bae9b1bad78e67abb8cef75",
+      "object_vocabulary": [
+        "mustard_bottle",
+        "raisin_box"
+      ],
+      "gold_B": {
+        "target": "mustard_bottle",
+        "reference": "raisin_box",
+        "relation": "left_of"
+      },
+      "equivalence_status": "intended_equivalent",
+      "historical_intended_goal": "Mustard bottle left of raisin box"
+    },
+    {
+      "scene": "S4",
+      "goal": "L",
+      "label": "Mustard bottle left of raisin box",
+      "form": "S",
+      "prompt": "Move the mustard bottle on the table so that the mustard bottle is to the left of the raisin box.",
+      "prompt_id": "S4-L-S",
+      "display_form": "TF",
+      "prompt_sha256": "fd5d82328c8668b75e0f924604b1d8e8918c45b75b5470411f85b242d69b5df1",
+      "object_vocabulary": [
+        "mustard_bottle",
+        "raisin_box"
+      ],
+      "gold_B": {
+        "target": "mustard_bottle",
+        "reference": "raisin_box",
+        "relation": "left_of"
+      },
+      "equivalence_status": "intended_equivalent",
+      "historical_intended_goal": "Mustard bottle left of raisin box"
+    },
+    {
+      "scene": "S4",
+      "goal": "L",
+      "label": "Mustard bottle left of raisin box",
+      "form": "I",
+      "prompt": "Move the mustard bottle on the table so that the raisin box is to the right of the mustard bottle.",
+      "prompt_id": "S4-L-I",
+      "display_form": "RF",
+      "prompt_sha256": "53ab031d814e2c2fc7d4bf1c66c19a34deef6be79cf30dba752c3f8942dc48bf",
+      "object_vocabulary": [
+        "mustard_bottle",
+        "raisin_box"
+      ],
+      "gold_B": {
+        "target": "mustard_bottle",
+        "reference": "raisin_box",
+        "relation": "left_of"
+      },
+      "equivalence_status": "intended_equivalent",
+      "historical_intended_goal": "Mustard bottle left of raisin box"
+    },
+    {
+      "scene": "S4",
+      "goal": "R",
+      "label": "Mustard bottle right of raisin box",
+      "form": "D",
+      "prompt": "Place the mustard bottle on the table to the right of the raisin box.",
+      "prompt_id": "S4-R-D",
+      "display_form": "DIR",
+      "prompt_sha256": "a2832f632908da5a6cc43eeabfc8bbec9c2cf3f329d49019e4585d7517732f66",
+      "object_vocabulary": [
+        "mustard_bottle",
+        "raisin_box"
+      ],
+      "gold_B": {
+        "target": "mustard_bottle",
+        "reference": "raisin_box",
+        "relation": "right_of"
+      },
+      "equivalence_status": "intended_equivalent",
+      "historical_intended_goal": "Mustard bottle right of raisin box"
+    },
+    {
+      "scene": "S4",
+      "goal": "R",
+      "label": "Mustard bottle right of raisin box",
+      "form": "S",
+      "prompt": "Move the mustard bottle on the table so that the mustard bottle is to the right of the raisin box.",
+      "prompt_id": "S4-R-S",
+      "display_form": "TF",
+      "prompt_sha256": "6dd52f11bb64179b042c78b9f81aa69b611d64c87a313a008a755bbb076d3719",
+      "object_vocabulary": [
+        "mustard_bottle",
+        "raisin_box"
+      ],
+      "gold_B": {
+        "target": "mustard_bottle",
+        "reference": "raisin_box",
+        "relation": "right_of"
+      },
+      "equivalence_status": "intended_equivalent",
+      "historical_intended_goal": "Mustard bottle right of raisin box"
+    },
+    {
+      "scene": "S4",
+      "goal": "R",
+      "label": "Mustard bottle right of raisin box",
+      "form": "I",
+      "prompt": "Move the mustard bottle on the table so that the raisin box is to the left of the mustard bottle.",
+      "prompt_id": "S4-R-I",
+      "display_form": "RF",
+      "prompt_sha256": "79d4084e473a2d0e178879b53181d33f3600e626feea579815762cedf4808fb6",
+      "object_vocabulary": [
+        "mustard_bottle",
+        "raisin_box"
+      ],
+      "gold_B": {
+        "target": "mustard_bottle",
+        "reference": "raisin_box",
+        "relation": "right_of"
+      },
+      "equivalence_status": "intended_equivalent",
+      "historical_intended_goal": "Mustard bottle right of raisin box"
+    },
+    {
+      "scene": "S5",
+      "goal": "LR",
+      "label": "Left bowl onto right bowl",
+      "form": "D",
+      "prompt": "Stack the left bowl on the right bowl",
+      "prompt_id": "S5-LR-D",
+      "display_form": "DIR",
+      "prompt_sha256": "2033027a5dd8c0d0a54362071a565e06304a8f2c999a81b2ac4cb55fc8662408",
+      "object_vocabulary": [
+        "left_bowl_at_reset",
+        "right_bowl_at_reset"
+      ],
+      "gold_B": {
+        "target": "left_bowl_at_reset",
+        "reference": "right_bowl_at_reset",
+        "relation": "stacked_on"
+      },
+      "equivalence_status": "semantic_caveat_separate_reporting",
+      "historical_intended_goal": "Left bowl onto right bowl"
+    },
+    {
+      "scene": "S5",
+      "goal": "LR",
+      "label": "Left bowl onto right bowl",
+      "form": "S",
+      "prompt": "Move the left bowl so that the left bowl is stacked on the right bowl.",
+      "prompt_id": "S5-LR-S",
+      "display_form": "TF",
+      "prompt_sha256": "389a581765d2828403cac9a0a1379e6cb5195ba9cbda9b8347129178e41c6d47",
+      "object_vocabulary": [
+        "left_bowl_at_reset",
+        "right_bowl_at_reset"
+      ],
+      "gold_B": {
+        "target": "left_bowl_at_reset",
+        "reference": "right_bowl_at_reset",
+        "relation": "stacked_on"
+      },
+      "equivalence_status": "semantic_caveat_separate_reporting",
+      "historical_intended_goal": "Left bowl onto right bowl"
+    },
+    {
+      "scene": "S5",
+      "goal": "LR",
+      "label": "Left bowl onto right bowl",
+      "form": "I",
+      "prompt": "Move the left bowl so that the right bowl is underneath and supporting the left bowl.",
+      "prompt_id": "S5-LR-I",
+      "display_form": "RF",
+      "prompt_sha256": "61d8d0158fb50670c15ee129b4058f12e92ca7b36bd6a6bc4178d72a9c83a2a2",
+      "object_vocabulary": [
+        "left_bowl_at_reset",
+        "right_bowl_at_reset"
+      ],
+      "gold_B": {
+        "target": "left_bowl_at_reset",
+        "reference": "right_bowl_at_reset",
+        "relation": "on_top_supported"
+      },
+      "equivalence_status": "semantic_caveat_separate_reporting",
+      "historical_intended_goal": "Left bowl onto right bowl"
+    },
+    {
+      "scene": "S5",
+      "goal": "RL",
+      "label": "Right bowl onto left bowl",
+      "form": "D",
+      "prompt": "Stack the right bowl on the left bowl",
+      "prompt_id": "S5-RL-D",
+      "display_form": "DIR",
+      "prompt_sha256": "56b7172869c79a7bfc761d84caf52ef8855e3c9618192a199b50882773e0f062",
+      "object_vocabulary": [
+        "left_bowl_at_reset",
+        "right_bowl_at_reset"
+      ],
+      "gold_B": {
+        "target": "right_bowl_at_reset",
+        "reference": "left_bowl_at_reset",
+        "relation": "stacked_on"
+      },
+      "equivalence_status": "semantic_caveat_separate_reporting",
+      "historical_intended_goal": "Right bowl onto left bowl"
+    },
+    {
+      "scene": "S5",
+      "goal": "RL",
+      "label": "Right bowl onto left bowl",
+      "form": "S",
+      "prompt": "Move the right bowl so that the right bowl is stacked on the left bowl.",
+      "prompt_id": "S5-RL-S",
+      "display_form": "TF",
+      "prompt_sha256": "7873e78a4e494a02d114945b42be7d1601dc57d61896aed144eb8ec37545ef2a",
+      "object_vocabulary": [
+        "left_bowl_at_reset",
+        "right_bowl_at_reset"
+      ],
+      "gold_B": {
+        "target": "right_bowl_at_reset",
+        "reference": "left_bowl_at_reset",
+        "relation": "stacked_on"
+      },
+      "equivalence_status": "semantic_caveat_separate_reporting",
+      "historical_intended_goal": "Right bowl onto left bowl"
+    },
+    {
+      "scene": "S5",
+      "goal": "RL",
+      "label": "Right bowl onto left bowl",
+      "form": "I",
+      "prompt": "Move the right bowl so that the left bowl is underneath and supporting the right bowl.",
+      "prompt_id": "S5-RL-I",
+      "display_form": "RF",
+      "prompt_sha256": "fb2afbd0fa6259c277198ac9e949aa30b287571426ae2c1dd5fb6fbf15338773",
+      "object_vocabulary": [
+        "left_bowl_at_reset",
+        "right_bowl_at_reset"
+      ],
+      "gold_B": {
+        "target": "right_bowl_at_reset",
+        "reference": "left_bowl_at_reset",
+        "relation": "on_top_supported"
+      },
+      "equivalence_status": "semantic_caveat_separate_reporting",
+      "historical_intended_goal": "Right bowl onto left bowl"
+    }
+  ],
+  "placement_controls": [
+    {
+      "prompt_id": "S1-L-reference_early",
+      "scene_id": "S1",
+      "goal_id": "L",
+      "display_form": "reference_early",
+      "prompt": "Relative to the bowl, place the Rubik's cube to the left.",
+      "prompt_sha256": "c5eacb76a942878968d610dece7c826ab82bb9bfa3a6c90b9e71d5976f845d5b",
+      "object_vocabulary": [
+        "rubiks_cube",
+        "banana",
+        "bowl"
+      ],
+      "gold_B": {
+        "target": "rubiks_cube",
+        "reference": "bowl",
+        "relation": "left_of"
+      },
+      "policy_outcome_available": false
+    },
+    {
+      "prompt_id": "S1-L-reference_late",
+      "scene_id": "S1",
+      "goal_id": "L",
+      "display_form": "reference_late",
+      "prompt": "Place the Rubik's cube to the left, relative to the bowl.",
+      "prompt_sha256": "34009730ef274516374df3cb8d4c9fefeb8ff398d97d74ff6bb3f90519eb2861",
+      "object_vocabulary": [
+        "rubiks_cube",
+        "banana",
+        "bowl"
+      ],
+      "gold_B": {
+        "target": "rubiks_cube",
+        "reference": "bowl",
+        "relation": "left_of"
+      },
+      "policy_outcome_available": false
+    },
+    {
+      "prompt_id": "S1-R-reference_early",
+      "scene_id": "S1",
+      "goal_id": "R",
+      "display_form": "reference_early",
+      "prompt": "Relative to the bowl, place the Rubik's cube to the right.",
+      "prompt_sha256": "2b8bcfc37203790db139cf3b6d9386cf7af14138cd57cb896781becf481f052e",
+      "object_vocabulary": [
+        "rubiks_cube",
+        "banana",
+        "bowl"
+      ],
+      "gold_B": {
+        "target": "rubiks_cube",
+        "reference": "bowl",
+        "relation": "right_of"
+      },
+      "policy_outcome_available": false
+    },
+    {
+      "prompt_id": "S1-R-reference_late",
+      "scene_id": "S1",
+      "goal_id": "R",
+      "display_form": "reference_late",
+      "prompt": "Place the Rubik's cube to the right, relative to the bowl.",
+      "prompt_sha256": "93f2c92969ca978388466592a1b109c4261f73c4b0974f6973095e63db562959",
+      "object_vocabulary": [
+        "rubiks_cube",
+        "banana",
+        "bowl"
+      ],
+      "gold_B": {
+        "target": "rubiks_cube",
+        "reference": "bowl",
+        "relation": "right_of"
+      },
+      "policy_outcome_available": false
+    },
+    {
+      "prompt_id": "S1-F-reference_early",
+      "scene_id": "S1",
+      "goal_id": "F",
+      "display_form": "reference_early",
+      "prompt": "Relative to the bowl, place the Rubik's cube in front.",
+      "prompt_sha256": "224eb3d80fc61e8234ed2307727548fd8e07a46d1c65a8984f38b3cb999d2305",
+      "object_vocabulary": [
+        "rubiks_cube",
+        "banana",
+        "bowl"
+      ],
+      "gold_B": {
+        "target": "rubiks_cube",
+        "reference": "bowl",
+        "relation": "in_front_of"
+      },
+      "policy_outcome_available": false
+    },
+    {
+      "prompt_id": "S1-F-reference_late",
+      "scene_id": "S1",
+      "goal_id": "F",
+      "display_form": "reference_late",
+      "prompt": "Place the Rubik's cube in front, relative to the bowl.",
+      "prompt_sha256": "f67ad6c88569be5a1370b73e18304bea628ecafaf3aeed2a30a1b248d2b535fe",
+      "object_vocabulary": [
+        "rubiks_cube",
+        "banana",
+        "bowl"
+      ],
+      "gold_B": {
+        "target": "rubiks_cube",
+        "reference": "bowl",
+        "relation": "in_front_of"
+      },
+      "policy_outcome_available": false
+    },
+    {
+      "prompt_id": "S1-B-reference_early",
+      "scene_id": "S1",
+      "goal_id": "B",
+      "display_form": "reference_early",
+      "prompt": "Relative to the bowl, place the Rubik's cube behind.",
+      "prompt_sha256": "8cc83507dc1cd0114edce0d7fda86a6dec6a723f05cc5f4a33cc57377d3428ea",
+      "object_vocabulary": [
+        "rubiks_cube",
+        "banana",
+        "bowl"
+      ],
+      "gold_B": {
+        "target": "rubiks_cube",
+        "reference": "bowl",
+        "relation": "behind"
+      },
+      "policy_outcome_available": false
+    },
+    {
+      "prompt_id": "S1-B-reference_late",
+      "scene_id": "S1",
+      "goal_id": "B",
+      "display_form": "reference_late",
+      "prompt": "Place the Rubik's cube behind, relative to the bowl.",
+      "prompt_sha256": "48d2fea7b3ec45fcd66ed51273a36af6eb2e78dc9638dc5e97f165e7ac1588be",
+      "object_vocabulary": [
+        "rubiks_cube",
+        "banana",
+        "bowl"
+      ],
+      "gold_B": {
+        "target": "rubiks_cube",
+        "reference": "bowl",
+        "relation": "behind"
+      },
+      "policy_outcome_available": false
+    },
+    {
+      "prompt_id": "S3-L-reference_early",
+      "scene_id": "S3",
+      "goal_id": "L",
+      "display_form": "reference_early",
+      "prompt": "Relative to the raisin box, place the butter box to the left.",
+      "prompt_sha256": "d72b100fb969364fc688464e4cf62c94d1b35e0820fa5b66169fb537e79a8246",
+      "object_vocabulary": [
+        "butter",
+        "raisin_box"
+      ],
+      "gold_B": {
+        "target": "butter",
+        "reference": "raisin_box",
+        "relation": "left_of"
+      },
+      "policy_outcome_available": false
+    },
+    {
+      "prompt_id": "S3-L-reference_late",
+      "scene_id": "S3",
+      "goal_id": "L",
+      "display_form": "reference_late",
+      "prompt": "Place the butter box to the left, relative to the raisin box.",
+      "prompt_sha256": "5544c6edd136a0c30540f2595c91da32ab28f2f9301711034af368b37b113160",
+      "object_vocabulary": [
+        "butter",
+        "raisin_box"
+      ],
+      "gold_B": {
+        "target": "butter",
+        "reference": "raisin_box",
+        "relation": "left_of"
+      },
+      "policy_outcome_available": false
+    },
+    {
+      "prompt_id": "S3-R-reference_early",
+      "scene_id": "S3",
+      "goal_id": "R",
+      "display_form": "reference_early",
+      "prompt": "Relative to the raisin box, place the butter box to the right.",
+      "prompt_sha256": "fb2c15b4f01fd2088e8a830198c2bfb0b75c30b5a12bd3f92bab501d5b502739",
+      "object_vocabulary": [
+        "butter",
+        "raisin_box"
+      ],
+      "gold_B": {
+        "target": "butter",
+        "reference": "raisin_box",
+        "relation": "right_of"
+      },
+      "policy_outcome_available": false
+    },
+    {
+      "prompt_id": "S3-R-reference_late",
+      "scene_id": "S3",
+      "goal_id": "R",
+      "display_form": "reference_late",
+      "prompt": "Place the butter box to the right, relative to the raisin box.",
+      "prompt_sha256": "187d20654e66647887f71f32c247257668450898c8c24e4ab45a54b2a264aaef",
+      "object_vocabulary": [
+        "butter",
+        "raisin_box"
+      ],
+      "gold_B": {
+        "target": "butter",
+        "reference": "raisin_box",
+        "relation": "right_of"
+      },
+      "policy_outcome_available": false
+    },
+    {
+      "prompt_id": "S4-L-reference_early",
+      "scene_id": "S4",
+      "goal_id": "L",
+      "display_form": "reference_early",
+      "prompt": "Relative to the raisin box, place the mustard bottle to the left.",
+      "prompt_sha256": "92a5f39a53e6183d3b9d5ccfd5242eaf73a48faba27de7c1065441774fac4bf8",
+      "object_vocabulary": [
+        "mustard_bottle",
+        "raisin_box"
+      ],
+      "gold_B": {
+        "target": "mustard_bottle",
+        "reference": "raisin_box",
+        "relation": "left_of"
+      },
+      "policy_outcome_available": false
+    },
+    {
+      "prompt_id": "S4-L-reference_late",
+      "scene_id": "S4",
+      "goal_id": "L",
+      "display_form": "reference_late",
+      "prompt": "Place the mustard bottle to the left, relative to the raisin box.",
+      "prompt_sha256": "60d11ec3eda5b8b55c9cbf6b0186730355f0b445b60a7c99de56a5d80f8d67d8",
+      "object_vocabulary": [
+        "mustard_bottle",
+        "raisin_box"
+      ],
+      "gold_B": {
+        "target": "mustard_bottle",
+        "reference": "raisin_box",
+        "relation": "left_of"
+      },
+      "policy_outcome_available": false
+    },
+    {
+      "prompt_id": "S4-R-reference_early",
+      "scene_id": "S4",
+      "goal_id": "R",
+      "display_form": "reference_early",
+      "prompt": "Relative to the raisin box, place the mustard bottle to the right.",
+      "prompt_sha256": "9323227646caa51d76913cc27229185e411f9cb9d9c344085804c0a65252116e",
+      "object_vocabulary": [
+        "mustard_bottle",
+        "raisin_box"
+      ],
+      "gold_B": {
+        "target": "mustard_bottle",
+        "reference": "raisin_box",
+        "relation": "right_of"
+      },
+      "policy_outcome_available": false
+    },
+    {
+      "prompt_id": "S4-R-reference_late",
+      "scene_id": "S4",
+      "goal_id": "R",
+      "display_form": "reference_late",
+      "prompt": "Place the mustard bottle to the right, relative to the raisin box.",
+      "prompt_sha256": "7b45f2be85a27df2c5cc3468fa4463c0327177c81c4c57e907a9f2123e24637f",
+      "object_vocabulary": [
+        "mustard_bottle",
+        "raisin_box"
+      ],
+      "gold_B": {
+        "target": "mustard_bottle",
+        "reference": "raisin_box",
+        "relation": "right_of"
+      },
+      "policy_outcome_available": false
+    }
+  ]
+}

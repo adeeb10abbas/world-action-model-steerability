@@ -1,5 +1,11 @@
 # Repository scope
 
+## Inference-only RoboLab VQA diagnostic
+
+The current locked VQA handoff is **RQA-20261006**, in `docs/robolab-vqa-20261006/`. Read its `README.md` and `EXPERIMENT_GUIDE.md` before work on this diagnostic. It uses the executed RWS subset (S1/S3/S4/S5, 32 physical starts, 12 goals, 36 DIR/TF/RF instructions), three QA tests, and a fixed saved-rollout image bank. No training, new robot episodes, new simulator renders, or automatic manuscript edits are in scope. Do not inherit the older five-scene launch counts below.
+
+Keep the complete diagnostic report separate at `reports/robolab-vqa-20261006/REPORT.md`, with versioned run reports, compact machine-readable results, all null/negative outcomes and coverage, and a candidate-findings ledger for later author selection. Save implementation, small provenance/results artifacts, and reports to the existing GitHub branch when the user dispatches this handoff; keep raw media, arrays, weights, environments, and secrets outside Git. Never fabricate completed experiments. Preparing or publishing the handoff does not launch its GPU work.
+
 ## New native RoboLab workshop study
 
 The user's current experiment-specification handoff is **RWS-20260926**, under `docs/robolab-workshop-20260926/`. Read `CLUSTER_EXECUTION_SPEC.md` and `IMPLEMENTATION_PLAN.md` for that task. It uses five native assets, 42 prompts and up to 1,008 confirmation cells across N3/E3/F3, separate from SGW-01 below. Its planned rows are not yet bound to physical states or qualified runtimes. Writing the handoff does not launch experiments; execution agents require the user's dispatch. Do not apply SGW's 18-prompt freeze, 87-layout registry or custom camera overrides to RWS. Preserve historical SGW records and workers.

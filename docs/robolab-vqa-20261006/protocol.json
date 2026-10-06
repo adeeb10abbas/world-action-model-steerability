@@ -1,0 +1,105 @@
+{
+  "study_id": "RQA-20261006",
+  "version": "1.0",
+  "design_locked_date": "2026-10-06",
+  "status": "design_locked_execution_not_started",
+  "question": "Does policy wording sensitivity also appear in matched scene, instruction, and instruction-plus-scene QA?",
+  "training_allowed": false,
+  "new_robot_episodes_allowed": false,
+  "new_simulator_renders_allowed": false,
+  "manuscript_edits_allowed": false,
+  "public_benchmark_runs_in_scope": false,
+  "scenes": [
+    "S1",
+    "S3",
+    "S4",
+    "S5"
+  ],
+  "physical_starts": 32,
+  "unique_goals": 12,
+  "unique_original_instructions": 36,
+  "initial_start_goal_form_cells": 288,
+  "primary_endpoint": {
+    "test": "C",
+    "bank": "initial",
+    "contrast": "TF_minus_RF_accuracy",
+    "semantic_pool": [
+      "S1",
+      "S3",
+      "S4"
+    ],
+    "pool_physical_starts": 24,
+    "S5": "separate semantic diagnostic; all-scene intended-goal sensitivity only"
+  },
+  "secondary_frames_max": 64,
+  "initial_image_sets": 32,
+  "max_distinct_checkpoint_lanes": 6,
+  "max_evaluation_calls_per_lane": 2072,
+  "max_development_calls_per_lane": 6,
+  "max_total_evaluation_calls": 12432,
+  "bootstrap": {
+    "replicates": 10000,
+    "seed": 6106,
+    "unit": "physical_start_within_scene",
+    "retain": "all goals forms frames and checkpoints",
+    "text_only_B": "finite-set counts; no physical-start bootstrap"
+  },
+  "inference": {
+    "precision_preference": "BF16",
+    "decoding": "native deterministic; greedy if supported",
+    "max_new_tokens_instruct": 256,
+    "max_new_tokens_required_thinking_mode": 2048,
+    "heldout_prompt_tuning": false,
+    "self_consistency": false
+  },
+  "source_files": [
+    {
+      "path": "paper/robolab_spatial_2026/revisions/20261001/exact_tested_prompts.json",
+      "sha256": "c118941589cbd1be0e46a11deb465f77cfb810b1b423d9e820de4b12785709d3"
+    },
+    {
+      "path": "artifacts/robolab_workshop_20260926/release/release.json",
+      "sha256": "cd0d478313e692fea6499d07aea16a67c363d02b4fcdfd3bd33fd2566d635e88"
+    },
+    {
+      "path": "paper/robolab_spatial_2026/analysis/episode_outcomes_corrected.csv",
+      "sha256": "749e98ffe354d7398bd3944d50b7fffaeffadccac77ea811d1a1a3405a7e7753"
+    },
+    {
+      "path": "paper/robolab_spatial_2026/revisions/20261001/runtime_settings.json",
+      "sha256": "50c5c01940ad645325cf15e2104203d09ecb8aae0b1c79989a2871a8165b8145"
+    },
+    {
+      "path": "experiments/robolab_workshop/catalog.py",
+      "sha256": "a847c86db5efc610539247c1f8dece75fdd2eb015bde3f158e13a704b3ad0154"
+    },
+    {
+      "path": "experiments/robolab_workshop/scoring.py",
+      "sha256": "20bd66a53fee6ded8e38311393328631c36d77c114ad3ddafd698eb6900fadf6"
+    },
+    {
+      "path": "docs/robolab-workshop-20260926/EXECUTION_RECORD.md",
+      "sha256": "23834bcabc9f16b0d3941f85cdff144e0274ae7f99f6772d2f5bcf9293591697"
+    }
+  ],
+  "packet_data_files": [
+    {
+      "path": "question_catalog.json",
+      "sha256": "dad5a0ab5d2b958b9f4579524978834ca7e328e4f712df85be274c9624615ecb"
+    },
+    {
+      "path": "frame_selection.json",
+      "sha256": "d78359eb6d9e6e23e6a9d046aa9aeb631982cd2ab48dbae290a8d3af8b3c579d"
+    }
+  ],
+  "reporting_revision": 1,
+  "delivery": {
+    "github_repository": "adeeb10abbas/world-action-model-steerability",
+    "github_branch": "codex/nano-stock-workstation-20260926",
+    "full_report": "reports/robolab-vqa-20261006/REPORT.md",
+    "run_index": "reports/robolab-vqa-20261006/RUN_INDEX.json",
+    "candidate_findings": "reports/robolab-vqa-20261006/CANDIDATE_FINDINGS.csv",
+    "save_complete_results_including_nulls": true,
+    "automatic_manuscript_edits": false
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "status": "specification_checks_passed_not_runtime_qualified",
+  "checked_date": "2026-10-06",
+  "checks": [
+    "36 source instruction strings and UTF-8 hashes match exactly, including trailing space",
+    "32 original starts and 64 secondary frame selections; all selected episode IDs exist",
+    "16 clause-placement prompts preserve paired word multisets and gold roles",
+    "source hashes and packet data hashes verified",
+    "query ceilings reconcile to 2072 per distinct readout",
+    "relative document links resolve",
+    "Separate report, empty run index, candidate ledger and GitHub delivery paths exist",
+    "Report declares no experiment results and preserves null/negative reporting requirements"
+  ],
+  "not_verified": [
+    "cluster paths and media availability",
+    "frame/tick alignment and visibility",
+    "human answerability review",
+    "VQA checkpoint/head compatibility",
+    "inference adapters or proposed commands",
+    "any VQA experiment result"
+  ],
+  "reporting_revision": 1
+}
