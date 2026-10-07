@@ -354,6 +354,7 @@ def review_stats(ledger_csv: Path) -> tuple[dict, list[dict]]:
         items.append(rec)
     out = {"ledger_rows": len(rows), "items": len(items), "frames": len({i["frame_id"] for i in items}),
            "reviewers_per_item": dict(Counter(i["reviewers"] for i in items)),
+           "reviewers_per_frame": dict(Counter(len({r["reviewer_id"] for r in rows if r["frame_id"] == fr}) for fr in {i["frame_id"] for i in items})),
            "reviewer_ids": sorted({r["reviewer_id"] for r in rows}), "reviewer_types": sorted({r["reviewer_type"] for r in rows}),
            "relation_agreement_items": sum(i["relation_agreement"] for i in items),
            "proposed_relation_counts": dict(Counter(r["proposed_visible_relation"] for r in rows)),
@@ -639,6 +640,11 @@ def main() -> None:
     ap.add_argument("--analysis-machine", type=Path, default=None)
     ap.add_argument("--review-ledger", type=Path, default=None)
     ap.add_argument("--review-forms", type=Path, default=None)
+    ap.add_argument("--analysis-sensitivity", type=Path, default=None,
+                    help="analysis with a sensitivity review mask (e.g. including a form excluded from the primary mask)")
+    ap.add_argument("--review-ledger-sensitivity", type=Path, default=None)
+    ap.add_argument("--sensitivity-label", default="sensitivity mask")
+    ap.add_argument("--reviewer-methods", type=Path, default=None, help="JSON of reviewer self-reported methods and form-inclusion decisions")
     ap.add_argument("--edge-audit", type=Path, required=True)
     ap.add_argument("--r1-metrics", type=Path, default=None)
     ap.add_argument("--commits", default="{}")
@@ -654,6 +660,7 @@ def main() -> None:
 
     res = C.load_json(args.analysis / "results_v2.json")
     res_m = C.load_json(args.analysis_machine / "results_v2.json") if args.analysis_machine else None
+    res_s = C.load_json(args.analysis_sensitivity / "results_v2.json") if args.analysis_sensitivity else None
     edge_summary = C.load_json(args.edge_audit / "edge_format_audit_summary.json")
     ingest = C.load_json(args.review_ledger / "ingest_summary.json") if args.review_ledger else None
     mask = C.load_json(args.review_ledger / "mask.json") if args.review_ledger else None
@@ -667,6 +674,9 @@ def main() -> None:
         copies += [(args.analysis_machine, "results_v2.json", "results_v2_machine_mask.json"),
                    (args.analysis_machine, "metrics_long_v2.csv", "metrics_long_v2_machine_mask.csv"),
                    (args.analysis_machine, "c2_truth_pairs.csv", "c2_truth_pairs_machine_mask.csv")]
+    if args.analysis_sensitivity:
+        copies += [(args.analysis_sensitivity, "results_v2.json", "results_v2_machine_mask_sensitivity.json"),
+                   (args.analysis_sensitivity, "metrics_long_v2.csv", "metrics_long_v2_machine_mask_sensitivity.csv")]
     for src_dir, name, dest in copies:
         shutil.copy2(src_dir / name, out / "results" / dest)
     gz = [(args.analysis, "b2_items.csv", "b2_items.csv.gz"), (args.analysis, "c2_items.csv", "c2_items_original_mask.csv.gz")]
@@ -692,6 +702,16 @@ def main() -> None:
             w = csv.DictWriter(f, fieldnames=list(ritems[0]))
             w.writeheader()
             w.writerows(ritems)
+        if args.reviewer_methods and args.reviewer_methods.exists():
+            shutil.copy2(args.reviewer_methods, rdir / "machine_reviewer_methods.json")
+    sstats = None
+    if args.review_ledger_sensitivity:
+        rdir = out / "review"
+        rdir.mkdir(exist_ok=True)
+        for name in ("review_ledger.csv", "mask.json", "ingest_summary.json"):
+            shutil.copy2(args.review_ledger_sensitivity / name, rdir / f"sensitivity_{name}")
+        sstats, _ = review_stats(args.review_ledger_sensitivity / "review_ledger.csv")
+        C.write_json_atomic(rdir / "sensitivity_review_summary.json", sstats)
 
     # coverage per lane
     hdr, cov_rows = coverage_rows(args.analysis / "coverage_v2.csv")
@@ -701,8 +721,15 @@ def main() -> None:
         c = cov.setdefault(d["lane"], Counter())
         for k in ("planned", "delivered", "valid", "invalid", "truncated", "infrastructure_missing", "unknown_code"):
             c[k] += int(d[k])
-    audit_status = ("machine review (2 independent blinded agents per sheet); no human review — visual results provisional"
-                    if ingest else "no review ingested — visual results provisional")
+    if rstats:
+        rpf = rstats["reviewers_per_frame"]
+        per = "; ".join(f"{k} reviewer{'s' if int(k) != 1 else ''} on {n_f} of {rstats['frames']} sheets"
+                        for k, n_f in sorted(rpf.items(), key=lambda kv: -int(kv[0])))
+        audit_status = f"machine review only (blinded agents; {per}); no human review — visual results provisional"
+    elif ingest:
+        audit_status = "machine review only; no human review — visual results provisional"
+    else:
+        audit_status = "no review ingested — visual results provisional"
     pt = ["# RQA V2 candidate compact table (not inserted into any manuscript)", "",
           f"Run `{args.run_id}`; S1/S3/S4 only (24 physical starts, 10 goals, 30 exact DIR/TF/RF instructions). Image metrics are "
           "macro-weighted (items within start × goal cell → starts → goals → scenes) with 95% percentile intervals from 10,000 "
@@ -741,6 +768,9 @@ def main() -> None:
                  "strict": "machine-strict mask (revised AND no reviewer/geometry discrepancy)"}[mask_name]
         src = res if mask_name == "original" else res_m
         t += [f"### C2 — {label}", "", c2_md(src, mask_name) if src else "Not available (no review mask ingested).", ""]
+    if res_s:
+        for mask_name in ("revised", "strict"):
+            t += [f"### C2 — {args.sensitivity_label}, {mask_name}", "", c2_md(res_s, mask_name), ""]
     t += ["### C2 by wording form (original mask)", "", c2_forms_md(res), "",
           "### C2 answer distributions and order check (original mask)", "", c2_answers_md(res), "",
           "### C2 no-image control (camera text retained; expected evidential answer U)", "", c2_no_image_md(res), "",
@@ -752,8 +782,10 @@ def main() -> None:
           "Accuracy and the converse-question gap reproduce R1 exactly under the original mask. Balanced accuracy uses the V2 "
           "class-weight normalization (protocol §7: declared item weights normalized within each gold class), so it can differ "
           "slightly from R1's within-class hierarchical recall.", "",
-          a_rescore_md(res_m or res), "",
-          "## 9. Edge R1 B format audit (existing responses; no parser repair; original strict scores unchanged)", "",
+          a_rescore_md(res_m or res), ""]
+    if res_s:
+        t += [f"### A rescore — {args.sensitivity_label}", "", a_rescore_md(res_s), ""]
+    t += ["## 9. Edge R1 B format audit (existing responses; no parser repair; original strict scores unchanged)", "",
           edge_md(edge_summary, args.edge_audit / "edge_format_audit.csv"), "", f"Note: {edge_summary.get('note', '')}", "",
           "## 10. Answerability review (machine)", "", review_md(ingest, mask), ""]
     if rstats:
@@ -761,9 +793,14 @@ def main() -> None:
               "An item is in the revised mask when the R1 mask kept it and every machine reviewer marked it answerable; the "
               "strict mask additionally drops any item where a reviewer's proposed label differs from the simulator geometry "
               "(any inter-reviewer disagreement on an answerable item implies such a difference).", "", review_stats_md(rstats), ""]
+    if sstats:
+        t += [f"### {args.sensitivity_label}: item-level summary", "", review_stats_md(sstats), ""]
     mc = mask_counts(res_m)
     if mc:
         t += ["C2 answerable items per mask (identical across lanes):", "", table(["Bank", "Mask", "Answerable / proposed items"], mc), ""]
+    if res_s:
+        ms = mask_counts(res_s)
+        t += [f"C2 answerable items per mask, {args.sensitivity_label}:", "", table(["Bank", "Mask", "Answerable / proposed items"], ms), ""]
     (out / "TABLES.md").write_text("\n".join(t) + "\n")
 
     made = figures(res, args.analysis, args.edge_audit / "edge_format_audit.csv", r1, out / "figures")
@@ -773,8 +810,12 @@ def main() -> None:
     extra = [(args.analysis, "analysis output (original mask)"), (args.edge_audit, "Edge R1 B format audit output")]
     if args.analysis_machine:
         extra.append((args.analysis_machine, "analysis output (machine-review masks)"))
+    if args.analysis_sensitivity:
+        extra.append((args.analysis_sensitivity, f"analysis output ({args.sensitivity_label})"))
     if args.review_ledger:
         extra.append((args.review_ledger, "machine review ledger and mask"))
+    if args.review_ledger_sensitivity:
+        extra.append((args.review_ledger_sensitivity, f"review ledger and mask ({args.sensitivity_label})"))
     if args.review_forms:
         extra.append((args.review_forms, "machine review forms (blinded agents)"))
     idx = artifact_index(root, run, release, packet, extra)
@@ -815,10 +856,14 @@ def main() -> None:
             "inference": [" ".join(["python"] + r["command"]) for lane in V.LANES for r in rec[lane]],
             "edge_audit": f"python -m experiments.robolab_vqa.v2.edge_audit --output {args.edge_audit}",
             "analysis_original": f"python -m experiments.robolab_vqa.v2.analyze --release {release}/release.json --run {run} --output {args.analysis}",
-            "review_ingest": (f"python -m experiments.robolab_vqa.v2.review ingest --packet {packet} --forms <machine_form_1..12.csv> --output {args.review_ledger}"
+            "review_ingest": (f"python -m experiments.robolab_vqa.v2.review ingest --packet {packet} --forms <primary machine forms, comma-separated> --output {args.review_ledger}"
                               if args.review_ledger else None),
             "analysis_machine_mask": (f"python -m experiments.robolab_vqa.v2.analyze --release {release}/release.json --run {run} --output {args.analysis_machine} --mask {args.review_ledger}/mask.json"
                                       if args.analysis_machine else None),
+            "review_ingest_sensitivity": (f"python -m experiments.robolab_vqa.v2.review ingest --packet {packet} --forms <all machine forms, comma-separated> --output {args.review_ledger_sensitivity}"
+                                          if args.review_ledger_sensitivity else None),
+            "analysis_sensitivity_mask": (f"python -m experiments.robolab_vqa.v2.analyze --release {release}/release.json --run {run} --output {args.analysis_sensitivity} --mask {args.review_ledger_sensitivity}/mask.json"
+                                          if args.analysis_sensitivity else None),
             "human_rescore_cpu_only": (f"python -m experiments.robolab_vqa.v2.review ingest --packet {packet} --forms <human_form.csv>[,<second_human_form.csv>] --output <ledger dir> && "
                                        f"python -m experiments.robolab_vqa.v2.analyze --release {release}/release.json --run {run} --output <dir> --mask <ledger dir>/mask.json"),
             "report": " ".join(["python -m experiments.robolab_vqa.v2.report"] + sys.argv[1:])},
@@ -827,7 +872,10 @@ def main() -> None:
                      "enable_thinking": False, "completions": 1},
         "commits": commits,
         "review": {"human": "not performed (packet and CPU-only rescore path delivered)",
-                   "machine": ({"reviewers": "12 blinded agent forms (two independent reviewers per sheet)", "frames": mask["machine_coverage"] if mask else None,
+                   "machine": ({"primary_mask_reviewers": rstats["reviewer_ids"] if rstats else None,
+                                "reviewers_per_sheet": rstats["reviewers_per_frame"] if rstats else None,
+                                "sensitivity_mask_reviewers": sstats["reviewer_ids"] if sstats else None,
+                                "frames": mask["machine_coverage"] if mask else None,
                                 "complete": mask.get("complete") if mask else None, "mask_sha256": ingest["mask_sha256"],
                                 "ledger_sha256": ingest["ledger_sha256"],
                                 "item_summary": {k: rstats[k] for k in ("items", "reviewers_per_item", "relation_agreement_items", "tests")} if rstats else None}
