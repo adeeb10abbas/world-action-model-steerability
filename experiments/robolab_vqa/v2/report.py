@@ -215,7 +215,7 @@ def c2_md(res: dict, mask: str) -> str:
                          f"{m['semantic_agreement_across_orders']['agree']}/{m['semantic_agreement_across_orders']['items']}"])
     return table(["Readout", "Bank", "Items scored / proposed", "Balanced acc. [95% CI]", "Recall match", "Recall nonmatch",
                   "Accuracy", "Always-nonmatch acc.", "TF−RF gap, pp", "Both-correct TF/RF", "Order 0 BA", "Order 1 BA",
-                  "Same semantic answer across orders"], rows)
+                  "Same semantic answer across orders (all delivered items, unmasked)"], rows)
 
 
 def c2_forms_md(res: dict, mask: str = "original") -> str:
@@ -723,9 +723,11 @@ def main() -> None:
             c[k] += int(d[k])
     if rstats:
         rpf = rstats["reviewers_per_frame"]
-        per = "; ".join(f"{k} reviewer{'s' if int(k) != 1 else ''} on {n_f} of {rstats['frames']} sheets"
+        per = ", ".join(f"{k} reviewer{'s' if int(k) != 1 else ''} on {n_f}"
                         for k, n_f in sorted(rpf.items(), key=lambda kv: -int(kv[0])))
-        audit_status = f"machine review only (blinded agents; {per}); no human review — visual results provisional"
+        total = (mask or {}).get("machine_coverage", {}).get("of", rstats["frames"])
+        audit_status = (f"machine review only (blinded agents; {rstats['frames']} of {total} sheets reviewed: {per}); "
+                        "no human review — visual results provisional")
     elif ingest:
         audit_status = "machine review only; no human review — visual results provisional"
     else:
