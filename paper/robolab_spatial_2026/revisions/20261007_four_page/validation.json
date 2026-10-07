@@ -1,0 +1,36 @@
+{
+  "artifacts": [
+    {
+      "source": "paper/robolab_spatial_2026/revision_esmaeil.tex",
+      "source_sha256": "10a91094c3280b062872dc49c6a81fc5cec18e3ad358235c011e31b32d74861d",
+      "pdf": "output/pdf/same_goal_different_words_revision.pdf",
+      "pdf_sha256": "c211057ff495cf0fa5a195fc2df9f7740403bf827eee02b799177cd891c8d99d",
+      "main_pages": 4,
+      "references_start": 5,
+      "total_pages": 22,
+      "compiler": "latexmk/pdflatex",
+      "compile_issues": []
+    },
+    {
+      "source": "paper/robolab_spatial_2026/rev_with_vqa.tex",
+      "source_sha256": "f3e3d6d0e5c67d0b8a2d2ddb0e022d55fe7f484bec9a6fba3146d22ee130e9d4",
+      "pdf": "output/pdf/same_goal_different_words_with_vqa.pdf",
+      "pdf_sha256": "51f31bf590e3a9d5246c0a4a6401effe0a2acd4b2a124292d131391d904ef221",
+      "main_pages": 4,
+      "references_start": 5,
+      "total_pages": 24,
+      "compiler": "latexmk/pdflatex",
+      "compile_issues": []
+    }
+  ],
+  "base_references_and_appendices_unchanged": true,
+  "canonical_main_untouched": true,
+  "overleaf": {
+    "project": "https://www.overleaf.com/project/6ab2bdb39b30df4bbc98a15e",
+    "sources_read_back_match": true,
+    "rev1_source_fnv1a32": "d8f9ea48",
+    "rev_with_vqa_source_fnv1a32": "1f16aa72",
+    "both_compiled": true,
+    "references_start_page_both": 5
+  }
+}

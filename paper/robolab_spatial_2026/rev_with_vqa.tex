@@ -13,7 +13,7 @@
 \begin{document}
 \maketitle
 \begin{abstract}
-A robot that follows one spatial instruction may fail when the same goal is described from another object's perspective. We test this sensitivity in three world-action models through 864 rollouts in four RoboLab scenes. From fixed starts, we compare requests such as moving mustard right of a box or moving it so the box is to its left. Describing the relation through the reference object reduces the proportion of runs reaching a stable placement by 12.2 percentage points on average. Effects depend on the relation. Executions also show that spatial scores can reward moving the wrong object. Final-state checks reveal that many attained arrangements are subsequently lost. Evaluation should therefore test alternative descriptions of the same goal and verify the requested manipulation, not only the resulting relation.
+A robot that follows one spatial instruction may fail when the same goal is described from another object's perspective. We test this sensitivity in three world-action models through 864 rollouts in four RoboLab scenes. From fixed starts, we compare requests such as moving mustard right of a box or moving it so the box is to its left. Describing the relation through the reference object reduces the proportion of runs reaching a stable placement by 12.2 percentage points on average. Effects depend on the relation. Executions also show that spatial scores can reward moving the wrong object. Final-state checks reveal that many attained arrangements are subsequently lost. Matched instruction readouts also expose reference-language errors in the policies' released language components. Evaluation should therefore test alternative descriptions of the same goal and verify the requested manipulation, not only the resulting relation.
 \end{abstract}
 \keywords{World--Action Models, Spatial Language, Robot Evaluation}
 
@@ -23,7 +23,7 @@ World-action models (WAMs) generate robot actions together with predictions of f
 
 Language-conditioned robot policies have been examined from several complementary perspectives. TRI's LBM study tests language conditioning in visually similar scenes~\citep{tri2025lbm}. CAST connects diverse descriptions to atomic commands and uses counterfactual action supervision to improve instruction following~\citep{glossop2025cast}. LIBERO-CF tests responses to changed goals~\citep{fang2026counterfactual}. LIBERO-Plus, LIBERO-Para, and related work examine language perturbations, equivalent paraphrases, and irrelevant context~\citep{fei2026liberoplus,kim2026liberopara,moskalenko2026bring}. Within WAMs, SG-WAM studies semantic guidance and language alignment~\citep{he2026sgwam}. These studies motivate testing whether a policy preserves a goal across descriptions, as well as whether it responds when the goal changes.
 
-We test consistency across three released WAMs by rephrasing spatial instructions from identical physical starts. The object to move and requested placement remain fixed (Table~\ref{tab:setup}). Outcomes vary across equivalent descriptions, with effects that depend on the relation. Spatial scores can also reward moving the wrong object or an arrangement later lost under continued control. Evaluation should test both consistency across descriptions and completion of the requested manipulation.
+We test consistency across three released WAMs by rephrasing spatial instructions from identical physical starts. The object to move and requested placement remain fixed (Table~\ref{tab:setup}). Outcomes vary across equivalent descriptions, with effects that depend on the relation. Spatial scores can also reward moving the wrong object or an arrangement later lost under continued control. We also query the policies' language components to test instruction interpretation separately from action generation.
 
 \begin{table}[!t]
 \caption{One goal described three ways. The mustard is the \emph{target} to move; the raisin box is the \emph{reference}. Only the instruction changes between runs.}
@@ -60,7 +60,8 @@ A \emph{stable placement} requires the requested relation to hold for one second
 
 We compare binary outcomes within each paired start. We then average over goals within scenes and equally over scenes and models. A positive TF--RF gap favors target-first wording. Uncertainty accounts for shared physical starts. Three goals already hold initially; Fig.~\ref{fig:goals} marks them, and we also report rates excluding them. Appendices~\ref{app:statistics} and~\ref{app:counts} give statistical details and counts.
 
-\clearpage
+We also queried each policy's language component with the exact DIR, TF, and RF instructions for ten goals in the cube, butter, and mustard scenes. The constrained readout selected the requested target, reference, and target-relative relation from fixed vocabularies. Correctness required all three fields to match. We tested each instruction once from text alone and with views from eight saved starts per scene. Controls varied camera-orientation text and reference-clause placement separately. These labels follow from the instruction, so scoring does not depend on visual answerability (Appendix~\ref{app:vqa}).
+
 \section{Results}
 Task competence under one description does not guarantee consistency across equivalent instructions. Reference reversal reduces the stable-placement rate by 12.2 percentage points on average (95\% interval 8.6--15.4, adjusted $p<0.001$). The gap has the same sign for all three models (Fig.~\ref{fig:wording}). TF and RF share the expanded sentence structure and intended placement. Their difference isolates relational reformulation from command expansion, but does not separate argument order from relation vocabulary.
 
@@ -70,6 +71,7 @@ Task competence under one description does not guarantee consistency across equi
 \caption{Wording effects across 32 physical starts. Dots show start-level average differences; diamonds and bars show means and 95\% intervals. Positive TF--RF favors target-first wording. Wider sections indicate more starts with similar effects.}
 \label{fig:wording}
 \end{figure}
+\FloatBarrier
 
 The effect depends on the object and relation. Mustard-right succeeds in 20 of 24 TF runs but only two RF runs (Fig.~\ref{fig:examples}). The cube scene's zero average instead masks opposing effects, including an RF advantage for cube-behind (Fig.~\ref{fig:goals}). Aggregate scores can therefore conceal inconsistent responses to individual goals. The positive pooled gap persists without bowl stacking (Appendix~\ref{app:statistics}).
 
@@ -80,7 +82,6 @@ The effect depends on the object and relation. Mustard-right succeeds in 20 of 2
 \label{fig:goals}
 \end{figure}
 
-\clearpage
 \begin{figure}[!t]
 \centering
 \includegraphics[width=.94\linewidth]{rev_execution_mustard.pdf}
@@ -90,12 +91,32 @@ The effect depends on the object and relation. Mustard-right succeeds in 20 of 2
 
 Reaching a scored relation is weaker than completing the intended manipulation. The overall placement rate falls from 43.2\% during execution to 21.8\% at episode end. Excluding initially satisfied goals gives 26.8\% and 15.3\%. In raw counts, 192 of 383 runs that attain a stable placement lose it before the end. A Nano cube-behind rollout also passes by moving the bowl rather than the requested cube (Appendix~\ref{app:executions}). Evaluation must distinguish the arrangement reached, the object manipulated, and persistence under continued control.
 
+\FloatBarrier
+\section{Instruction Understanding}
+\begin{table}[!ht]
+\centering\small
+\caption{Instruction interpretation with constrained decoding. Text entries count correct tuples out of ten instructions per form. Image accuracies weight scenes equally and include camera-orientation text. FLUX uses this encoder for text only; auxiliary image results are in Appendix~\ref{app:vqa}.}
+\label{tab:vqa}
+\begin{tabular}{@{}lcc@{\qquad}cc@{}}
+\toprule
+& \multicolumn{2}{c}{Text only} & \multicolumn{2}{c}{With images (\%)}\\
+Component & TF & RF & TF & RF\\
+\midrule
+Nano reasoner & 10/10 & 10/10 & 100.0 & 89.9\\
+Edge reasoner & 8/10 & 4/10 & 48.3 & 23.3\\
+FLUX encoder & 10/10 & 4/10 & --- & ---\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Edge and FLUX already make RF errors from text alone (Table~\ref{tab:vqa}). All six FLUX RF errors substitute the converse relation. Nano recovers every text-only instruction. Adding images with camera text reduces its RF accuracy to 89.9\%, versus 100\% for TF. The eight errors concern two RF instructions. Holding camera text fixed, images reduce RF accuracy by 10.1 percentage points (95\% interval 5.2--14.6), resampling starts within the three fixed scenes. Camera text alone changes no Nano answers. These asymmetries share the policies' TF advantage, but a constrained QA readout does not establish that its errors cause action failures.
+
 \section{Discussion and Conclusion}
-Across three WAMs, equivalent spatial descriptions produce inconsistent placement outcomes. Instruction consistency should therefore accompany task performance. Paired physical starts expose this sensitivity directly, following SIMPLER's controlled-simulation principle~\citep{li2025simpler}. Target-first wording helps on average, but opposing effects within the cube scene rule out a universal prompting recommendation.
+Instruction consistency should accompany task performance. Paired starts expose wording sensitivity, following SIMPLER's controlled-simulation principle~\citep{li2025simpler}. Target-first wording helps on average, but opposing effects across goals rule out a universal prompting recommendation. The component diagnostic reveals reference-language errors outside action generation. The tested weights match released upstream or base checkpoints (Appendix~\ref{app:vqa}). These findings do not support degradation of those weights during robot adaptation.
 
-Behavior alone cannot locate the failure in language interpretation, visual grounding, or action generation. Matched understanding tests should assess the requested target, reference, and relation under the exact policy instructions and scene observations. Controls that vary reference placement alone would separate it from relation vocabulary. Comparisons between compatible backbones must account for frozen components, co-training, and visual input pathways. We do not establish that robot training degrades pretrained capabilities. The forecast analysis in Appendix~\ref{app:forecasts} likewise does not resolve the source of failure.
+The QA interface does not reveal how the action policy uses language. The prespecified primary QA test of arrangement matching and its bounded follow-up remained inconclusive, with nearly constant nonmatch answers. Their visual labels lack human review. The forecast analysis likewise does not locate the behavioral failure (Appendix~\ref{app:forecasts}).
 
-Evaluation must also verify the intended manipulation. As with LIBERO-CF's separation of object contact and task success~\citep{fang2026counterfactual}, geometry captures only part of instruction following. Checking which object moved and whether the arrangement persists addresses two failures observed here. Broader scenes are needed to establish their prevalence, and we do not compare WAMs with action-only policies. Testing several descriptions per goal, alongside object identity and the final arrangement, distinguishes placement success from reliable instruction following.
+Geometric success captures only part of instruction following, as LIBERO-CF also distinguishes object contact from task success~\citep{fang2026counterfactual}. Broader scenes are needed to establish how often the observed failures occur, and we do not compare WAMs with action-only policies. Evaluating several descriptions per goal, the manipulated object, and the final arrangement distinguishes placement success from reliable instruction following.
 
 \clearpage
 \bibliography{references}
@@ -316,7 +337,7 @@ Input/canvas setting & $540\!\times\!640$ & $540\!\times\!640$ & $544\!\times\!7
 \end{tabular}
 \end{table}
 
-The Cosmos models use joint-position actions and a \texttt{480} resolution setting. Edge records a guidance interval of [960,1001]. FLUX uses its DROID camera layout and absolute action parameterization with the released action scale of 2.0. FLUX's immutable configuration retains an inference-seed value of 0, while each inference call explicitly supplies the study seed 6100. This overrides the configuration value. Canvas dimensions are model-specific preprocessing settings, not different simulated camera placements. Full recorded configurations and release identities are preserved in the accompanying reproducibility files. The compact FLUX receipt does not contain a revision identifier, so a complete executed-weight manifest remains unavailable.
+The Cosmos models use joint-position actions and a \texttt{480} resolution setting. Edge records a guidance interval of [960,1001]. FLUX uses its DROID camera layout and absolute action parameterization with the released action scale of 2.0. FLUX's immutable configuration retains an inference-seed value of 0, while each inference call explicitly supplies the study seed 6100. This overrides the configuration value. Canvas dimensions are model-specific preprocessing settings, not different simulated camera placements. Full recorded configurations and release identities are preserved in the accompanying reproducibility files. The original compact FLUX receipt lacks a revision identifier, so a complete executed-policy manifest remains unavailable. The later component audit verifies the narrower shared-encoder identity (Appendix~\ref{app:vqa}).
 
 \subsection{Placement criteria and statistical comparison}\label{app:statistics}
 For left/right/front/behind, the spatial predicate uses the native 45-degree relation cone in the robot frame and requires the target to be supported by the table. For on-top placement, the native support predicate checks upward support and the target centroid within the reference footprint, with a 1\,cm tolerance. Bowl stacking combines the native open-top containment predicate with contact between the bowls. In every case the gripper must be detached from the target. A stable placement requires the full predicate and target speed below 2\,cm/s for one continuous second. Speed is computed by a backward difference of successive recorded positions at 15\,Hz, which avoids treating solver velocity jitter at an unchanged position as motion.
@@ -648,5 +669,69 @@ These observations do not show that the annotation layout caused the low agreeme
 \caption{Original annotation imagery, preserved without correcting its labels. Both examples use the same episode-start legend. Some numbers overlap arrows or other objects' circles. The lower panels show the original human-review contact sheets for Edge and FLUX, with a wrist view above the two exterior views in each frame. These sheets sample every fourth generated frame, whereas the VLMs received the eight frames listed in the text. None of these images depicts execution.}
 \label{fig:forecast-packets}
 \end{figure}
+
+\clearpage
+\section{Matched instruction-understanding diagnostic}
+\label{app:vqa}
+
+\paragraph{Scope and protocol history.}
+We conducted an inference-only diagnostic using the language components of the three evaluated policies. The diagnostic separates interpreting an instruction from judging a visible arrangement and generating actions. Version 1 (V1) tested scene relations (A), instruction interpretation (B), and whether an image matched an instruction (C). C was the prespecified primary diagnostic. Its near-constant negative answers made it inconclusive. We retain that result. After inspecting V1, we specified a bounded follow-up (V2) that enforced answer syntax, separated images from camera descriptions, and revised C's question. V2 is a diagnostic repair, not an independent replication or a replacement confirmatory primary test. Its specification and queries were frozen before evaluation. V1 remains unchanged.
+
+V2 covers ten goals in the cube, butter, and mustard scenes: 30 exact DIR/TF/RF instructions and 24 physical starts. Bowl stacking is excluded because of the support/nesting ambiguity. We reuse 24 initial view sets and 48 fixed saved-rollout view sets, each with three synchronized camera views. No training, new robot episodes, or new scenes were added. All 6,552 evaluation queries completed without missing, truncated, or invalid-format answers.
+
+\paragraph{Components and checkpoint lineage.}
+The executed Nano reasoner matches Qwen3-VL-8B-Instruct. The executed Edge reasoner matches the released Edge base reasoner. Hashes of the loaded parameters, input processing, rendered prompts, and six development outputs established parity; identical pairs were evaluated once. FLUX's frozen shared encoder has the same weight files as Qwen3-VL-4B-Instruct. FLUX uses this component for text; standalone image QA is auxiliary and does not reproduce its policy's visual pathway. A separate Cosmos3-Nano base reasoner tested in V1 differs from the executed reasoner and is not treated as a matched pre-adaptation parent. These identities do not support degradation of the tested component weights during robot adaptation. Matched training data were unavailable, so this audit does not isolate training-recipe or co-training effects on the full policies.
+
+\paragraph{Instruction interpretation and scoring.}
+B2 returns the requested target object, reference object, and target-relative relation. Schema-constrained decoding fixes the JSON structure and available vocabulary without pruning to the correct answer. This is an assisted readout: format validity is guaranteed, while exact tuple accuracy requires all three fields to be correct. We use the existing language heads, BF16 inference, greedy decoding, and at most 256 new tokens. There is no trained probe.
+
+The four input conditions are text alone (T), text with camera-orientation descriptions (H), text with initial images (I), and both images and descriptions (IH). Each image contrast holds the surrounding text fixed. B2's correct answer is defined by the instruction, not by the arrangement visible in the image. Its scoring therefore does not require visual-answerability labels, even when images are present.
+
+Text-only answers are generated once per unique instruction and reported as finite counts. They are not independent observations for each physical start. Image accuracy averages starts within goals, goals within scenes, and scenes equally. Intervals use 10,000 physical-start bootstrap samples within scene (seed 6106). They condition on the three fixed scenes and wording templates. Image-versus-text contrasts reuse the same text-only answer and paired bootstrap samples; their uncertainty does not include variation over new language templates.
+
+\begin{table}[htbp]
+\centering\small
+\caption{B2 exact tuple scores. Text-only columns count correct answers out of ten instructions per form. IH columns show equal-scene accuracy with images and camera descriptions. A dagger marks FLUX image results as auxiliary.}
+\label{tab:vqa-full}
+\begin{tabular}{@{}lrrr@{\qquad}rrr@{}}
+\toprule
+& \multicolumn{3}{c}{Text only: correct / 10}
+& \multicolumn{3}{c}{Images + descriptions: \%}\\
+Component & DIR & TF & RF & DIR & TF & RF\\
+\midrule
+Nano reasoner & 10 & 10 & 10 & 100.0 & 100.0 & 89.9\\
+Edge reasoner & 6 & 8 & 4 & 30.6 & 48.3 & 23.3\\
+FLUX encoder & 10 & 10 & 4 & $100.0^\dagger$ & $100.0^\dagger$ & $41.7^\dagger$\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\paragraph{Interpretation errors and controls.}
+Table~\ref{tab:vqa-full} shows RF disadvantages for Edge and FLUX from text alone. All six FLUX RF errors are converse relations. Edge also errs on DIR and TF. V1 rejected 375 of 414 Edge B responses for format, whereas V2 enforces syntax. The protocols differ in decoding, so their score difference is not a model improvement.
+
+Nano is correct on all 30 instructions in T and H. IH produces eight converse errors: five butter-right and three cube-behind starts. RF accuracy decreases by 10.1 percentage points relative to H (95\% interval 5.2--14.6). I produces four butter-right converse errors and one butter-on-top support-label swap. Its RF decrease relative to T is 6.9 points (1.4--12.5). Camera descriptions alone change no Nano answers. Their additional effect with images is unresolved (IH minus I: $-3.1$ points, interval $-8.0$ to $+1.7$). These effects are concentrated in specific instructions.
+
+\begin{table}[htbp]
+\centering\small
+\caption{Additional B2 controls. H and I entries follow DIR/TF/RF order. H gives counts out of ten; I gives equal-scene accuracy. Placement controls move the reference clause without changing converse vocabulary. FLUX image entries are auxiliary.}
+\label{tab:vqa-controls}
+\begin{tabular}{@{}lcccc@{}}
+\toprule
+& H: correct / 10 & I: accuracy (\%) & \multicolumn{2}{c}{Placement controls}\\
+Component & DIR / TF / RF & DIR / TF / RF & T: correct / 16 & IH: \%\\
+\midrule
+Nano & 10 / 10 / 10 & 100.0 / 100.0 / 93.1 & 16 & 100.0\\
+Edge & 5 / 10 / 4 & 38.9 / 46.2 / 23.3 & 13 & 50.5\\
+FLUX & 10 / 10 / 3 & $97.2 / 100.0 / 41.7^\dagger$ & 16 & $100.0^\dagger$\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Nano and FLUX answer every placement-control item correctly. Edge scores 5/8 reference-early and 8/8 reference-late instructions in T. Its IH reference-early deficit is 17.7 points (10.4--25.0). These controls use a different sentence construction from RF and do not rule out general noun-order effects.
+
+\paragraph{Inconclusive current-state judgments and visual review.}
+C2 asks whether the current image shows the requested arrangement. It counterbalances the codes for match and nonmatch and permits an insufficient-evidence response. Answers remain nearly constant nonmatch under both code orders. Balanced accuracy is 48.5--50.1\% across readouts and image banks; always answering nonmatch yields 50\%. At most one of eleven matched truth-changing frame pairs is classified correctly on both frames. These outcomes cannot establish wording robustness or general spatial incompetence. The bounded pass stops without further prompt repair.
+
+Unlike B2, A and C depend on whether the relation is visible. No human reviewed their images. Blinded machine review covered 36 of 72 view sets, or 120 of 240 frame--goal items. Only twelve sets received two reviewers. Some agents failed to return forms; one primary reviewer used programmatic pixel analysis after image-display failure. A further form that used the evaluated Nano backbone was excluded from the primary mask. All 39 reviewed initial items were judged answerable, but only 27 of 81 secondary items were answerable to every reviewer. These partial machine judgments remain provisional. Reviewed-mask rescoring leaves C2 near chance, but does not substitute for human validation. The QA results characterize component behavior; they neither observe the policies' internal goal representation nor establish that a QA error causes an action failure.
 
 \end{document}
