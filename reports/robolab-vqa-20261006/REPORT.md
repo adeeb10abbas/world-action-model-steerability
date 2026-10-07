@@ -1,8 +1,52 @@
 # RoboLab VQA diagnostic — separate results report
 
-**Study:** RQA-20261006, design v1.0 · **Latest run:** [`r1-20261006`](runs/r1-20261006/REPORT.md) (October 6, 2026)
+**Study:** RQA-20261006 · **Runs:** V1 [`r1-20261006`](runs/r1-20261006/REPORT.md) (design v1.0, October 6, 2026) and
+V2 [`r2-final-20261007`](runs/r2-final-20261007/REPORT.md) (design v2.0, the final bounded follow-up, executed
+2026-10-07 UTC)
 
-**Status: COMPLETE, PROVISIONAL ANSWERABILITY.** All 8,288 evaluation calls of the four distinct readouts were
+**Status: V1 COMPLETE, PROVISIONAL ANSWERABILITY · V2 COMPLETE, PARTIALLY MACHINE-REVIEWED, PROVISIONAL VISUAL CONCLUSIONS.**
+The study is closed after V2; no V3 is authorized. Nothing here has been inserted into any manuscript.
+
+## V2 update: V1 → V2 comparison (added 2026-10-07)
+
+V2 re-queried the three distinct readouts on the same saved S1/S3/S4 observations and exact instructions:
+
+- N3-policy: Nano reasoner, equal to Qwen3-VL-8B-Instruct.
+- E3-policy: Edge reasoner, equal to the Edge base reasoner.
+- F3-qwen3vl4b: FLUX's shared encoder, equal to Qwen3-VL-4B-Instruct. Its image tests are auxiliary.
+
+It ran 6,552 of 6,552 evaluation queries, all delivered and valid, with 0 retries. V2 was designed after reading V1
+results. It is a follow-up diagnostic, not an independent replication, and it does not replace V1's primary
+endpoint.
+
+| Measurement | V1 (`r1-20261006`) | V2 (`r2-final-20261007`) | What the change supports |
+|---|---|---|---|
+| Instruction-readout protocol | B: free generation, strict JSON parser | B2: schema-constrained JSON (xgrammar) on the same payload, plus a text/header/image factorial (T/H/I/IH) | Differences between rows are decoding-protocol comparisons |
+| Edge reasoner (E3) | Text TF 6/10, RF 0/10; image tuple 2.4%; 39 of 414 S1/S3/S4 responses strict-valid | Text 18/30 (DIR 6, TF 8, RF 4); image + header 34.0% [31.7, 36.5]; images lower accuracy (I − T −26.9 pp) | Format was a large barrier, but instruction difficulty remains under the assisted readout |
+| Nano reasoner (N3) | Text 10/10 TF and RF; image RF 61.1% vs TF 100%; images and camera text always presented together | Text 30/30 (T and H). Image RF 93.1% (I) and 89.9% (IH). IH − H RF −10.1 pp [−14.6, −5.2]; H − T 0 discordant; IH − I RF −3.1 [−8.0, +1.7] | RF converse errors are associated with adding images, not camera text, and sit in 2 of 10 RF instructions |
+| FLUX encoder (F3) | Text RF 3/10, TF 10/10; image RF 36.1% | Text RF 4/10 (T, all converse), TF 10/10; image RF 41.7% (auxiliary) | Language-path RF misreading persists under constrained decoding |
+| Combined / current-state question (C → C2) | Uninformative: constant "no"; balanced accuracy 50.0–50.7% (53.1% N3-base) | Uninformative: constant "does not match" under both answer-code orders; balanced accuracy 48.5–50.1%; truth-changing pairs ≤ 1/11 | The null persists after fixing codes and wording, and the bias is semantic. V1's primary diagnostic remains uninformative |
+| Visual answerability | Automated visibility pre-check; no review | Blinded machine review of 36 of 72 view sets (120 of 240 items). 7 of 12 reviewer agents failed without forms, and 1 form was excluded for evaluated-model use. Reviewed initial items: all answerable. Reviewed secondary items: 27 of 81 answerable. No answerable item contradicted geometry. Reviewed-mask C2 balanced accuracy 48.3–50.0% | Still provisional and partial, with no human review |
+| Scene question (A) | Accuracy 50.5–71.4% on the initial bank across four readouts; converse-question gaps of mixed sign | No new inference. R1 answers were rescored on the machine-reviewed masks ([V2 TABLES §8](runs/r2-final-20261007/TABLES.md)) | Mask-only change |
+
+The robot wording effect remains the central result: TF − RF stable-ever +14.6 pp (N3), +8.1 (E3) and +13.8 (F3).
+V2's component-level asymmetries share its direction in a QA interface only. They are no evidence about the
+policies' internal computation or about causes of action failures.
+
+V2 documents:
+
+- [V2 report](runs/r2-final-20261007/REPORT.md)
+- [V2 interpretation](runs/r2-final-20261007/INTERPRETATION.md)
+- [V2 paper table](runs/r2-final-20261007/PAPER_TABLE.md)
+- [V2 tables](runs/r2-final-20261007/TABLES.md)
+- [V2 specification](../../docs/robolab-vqa-20261006/v2-final/FINAL_EXECUTION_SPEC.md)
+- [V2 implementation record](../../docs/robolab-vqa-20261006/v2-final/IMPLEMENTATION_RECORD_V2.md)
+
+The V1 report text below is unchanged.
+
+---
+
+**V1 (`r1-20261006`) status: COMPLETE, PROVISIONAL ANSWERABILITY.** All 8,288 evaluation calls of the four distinct readouts were
 delivered (0 infrastructure-missing). Gold labels come from saved simulator geometry with an automated visibility
 pre-check; **no human answerability review was performed**, so every result below is provisional. Nothing here has been
 inserted into any manuscript.

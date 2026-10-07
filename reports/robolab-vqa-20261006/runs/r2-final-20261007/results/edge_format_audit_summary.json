@@ -1,0 +1,55 @@
+{
+  "alias_mappable_failures": 360,
+  "alias_mapped_by_form": {
+    "DIR": {
+      "mapped": 74,
+      "matches_gold": 41
+    },
+    "RF": {
+      "mapped": 76,
+      "matches_gold": 17
+    },
+    "TF": {
+      "mapped": 76,
+      "matches_gold": 54
+    }
+  },
+  "alias_mapped_matches_gold_descriptive": 195,
+  "by_family_bank": {
+    "original|initial": 240,
+    "original|no_image": 30,
+    "placement|initial": 128,
+    "placement|no_image": 16
+  },
+  "failure_classes": {
+    "json_structure_malformed": 6,
+    "json_structure_single_item_array": 217,
+    "multiple_or_conflicting_answers": 1,
+    "object_and_relation_vocabulary": 87,
+    "object_vocabulary": 64
+  },
+  "failure_classes_by_family_bank": {
+    "original|initial": {
+      "json_structure_malformed": 6,
+      "json_structure_single_item_array": 90,
+      "multiple_or_conflicting_answers": 1,
+      "object_and_relation_vocabulary": 84,
+      "object_vocabulary": 43
+    },
+    "original|no_image": {
+      "object_and_relation_vocabulary": 2,
+      "object_vocabulary": 14
+    },
+    "placement|initial": {
+      "json_structure_single_item_array": 127,
+      "object_and_relation_vocabulary": 1
+    },
+    "placement|no_image": {
+      "object_vocabulary": 7
+    }
+  },
+  "note": "Descriptive alias mapping uses names/relations from the instruction wording; it is not a parser repair and does not change R1 strict scores. A mapped-and-matching answer is not evidence that every format failure was semantically correct.",
+  "requests": 414,
+  "strict_tuple_correct": 25,
+  "strict_valid": 39
+}

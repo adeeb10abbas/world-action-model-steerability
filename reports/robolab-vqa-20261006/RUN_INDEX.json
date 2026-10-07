@@ -1,8 +1,8 @@
 {
   "study_id": "RQA-20261006",
   "protocol_version": "1.0",
-  "status": "complete_provisional_answerability",
-  "latest_validated_run_id": "r1-20261006",
+  "status": "v2_complete_partial_machine_review_provisional",
+  "latest_validated_run_id": "r2-final-20261007",
   "runs": [
     {
       "run_id": "r1-20261006",
@@ -33,6 +33,44 @@
       "evaluation_calls_delivered": 8288,
       "infrastructure_missing": 0,
       "github_commit_note": "results/report commit; this RUN_INDEX update is the following commit"
+    },
+    {
+      "run_id": "r2-final-20261007",
+      "design_version": "2.0",
+      "spec_path": "docs/robolab-vqa-20261006/v2-final/FINAL_EXECUTION_SPEC.md",
+      "started_at_utc": "2026-10-07T01:40:31Z",
+      "ended_at_utc": "2026-10-07T16:16:29Z",
+      "inference_window_utc": "2026-10-07T01:40:31Z/2026-10-07T01:51:56Z",
+      "status": "complete_partial_machine_review_provisional",
+      "release_sha256": "2a3d5d69aca622519dbf67fd8a7931741bdad1c3483197013ad3ea662f8cf4f6",
+      "release_json_sha256": "297f8a77e2d781a74e4b4d23e60ff300fedbd7b907dc2a266ecf9f34e3b9cdc0",
+      "source_r1_release_sha256": "1e691df6b85576e0d75925cc7902a1f4e303267098483a81726f6ff63cda3046",
+      "implementation_commit": "515bab82d222595c458f52bbd345eca1a5b75815",
+      "inference_code_and_release_freeze_commit": "30d833f38789c2b8bd7a19ec3fc2b3abe3f4c1c3",
+      "runner_commit_used_for_all_generations": "b63a93fbe10315e97d71ef268445b63d112c2ed0",
+      "analysis_commit": "66fac90f63e161f2b8f3f2714e676b1080dda441",
+      "report_generator_commit": "6802beac5053d406ef956e5d08e491ef00a094c5",
+      "report_path": "reports/robolab-vqa-20261006/runs/r2-final-20261007/REPORT.md",
+      "compact_results_path": "reports/robolab-vqa-20261006/runs/r2-final-20261007/results/",
+      "artifact_index_path": "reports/robolab-vqa-20261006/runs/r2-final-20261007/artifact_index.json",
+      "completion_receipt_path": "reports/robolab-vqa-20261006/runs/r2-final-20261007/COMPLETION_RECEIPT.json",
+      "answerability_review_status": "machine_review_partial_36_of_72_sheets_no_human_provisional",
+      "deviations_path": "docs/robolab-vqa-20261006/v2-final/IMPLEMENTATION_RECORD_V2.md",
+      "github_commit": "PENDING",
+      "readouts_evaluated": [
+        "N3-policy",
+        "E3-policy",
+        "F3-qwen3vl4b"
+      ],
+      "evaluation_calls_planned": 6552,
+      "evaluation_calls_delivered": 6552,
+      "evaluation_calls_valid": 6552,
+      "infrastructure_missing": 0,
+      "attempt_ledger_entries": 6573,
+      "model_generation_calls": 6570,
+      "attempt_hard_cap": 6600,
+      "active_gpu_hours": 0.523,
+      "github_commit_note": "results/report commit; this RUN_INDEX update is the following commit"
     }
   ],
   "required_run_fields": [
@@ -49,5 +87,6 @@
     "answerability_review_status",
     "deviations_path",
     "github_commit"
-  ]
+  ],
+  "study_closed": "Final bounded V2 pass complete; no V3 authorized."
 }

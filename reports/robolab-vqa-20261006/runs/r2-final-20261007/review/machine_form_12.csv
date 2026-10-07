@@ -1,0 +1,13 @@
+review_id,reviewer_id,reviewer_type,objects_identifiable,lateral_relation,on_top_supported,target_on_table,transit_or_gripper,occlusion_or_other_ambiguity,confidence,notes
+RV-1e22f64bce,machine-agent-12,machine,yes,cannot_tell,na,na,cannot_tell,other,medium,Cube rests inside red bowl near its center so no dominant horizontal direction; gripper fingertips at bowl rim right above cube and contact unclear
+RV-30ed2b5d2d,machine-agent-12,machine,yes,right,no,yes,no,none,high,Start frame; butter box lies flat on table right of raisin box with small behind component; both exterior views and wrist legend view agree
+RV-3e9659bf72,machine-agent-12,machine,yes,left,na,na,yes,none,medium,Gripper is holding the cube (moved from its start spot) to the left of the red bowl; both exterior views agree
+RV-484665973b,machine-agent-12,machine,yes,behind,no,cannot_tell,yes,occlusion,medium,Gripper holds upright mustard bottle directly behind raisin box; bottle base hidden behind box but geometry puts it near table level and not on the box
+RV-6d33d4e252,machine-agent-12,machine,yes,cannot_tell,na,na,no,other,medium,Cube rests inside red bowl near its center so no dominant horizontal direction; gripper is raised and moved away to the left of the bowl
+RV-760de6bf58,machine-agent-12,machine,yes,right,no,yes,no,none,high,Start frame; butter box on table immediately right of raisin box (adjacent but separate); all three views agree
+RV-81d4bbe4b8,machine-agent-12,machine,yes,diagonal_ambiguous,no,cannot_tell,yes,none,medium,Gripper is grasping butter box which sits behind-right of raisin box at about 55 deg (behind only about 1.5x right) in both views
+RV-9c2b672d61,machine-agent-12,machine,yes,left,no,yes,no,none,high,Start frame; upright mustard bottle stands on table left of raisin box; all three views agree
+RV-b902896e39,machine-agent-12,machine,yes,right,na,na,no,none,high,Start frame; cube is right of red bowl with a smaller in-front component; all three views agree
+RV-d235f1dafd,machine-agent-12,machine,yes,right,no,yes,cannot_tell,none,medium,Butter box lies on table right of raisin box (slightly behind); gripper tip is right at the butter box far edge and contact is unclear
+RV-e8be917c3a,machine-agent-12,machine,yes,right,no,cannot_tell,yes,none,medium,Gripper holds the mustard bottle horizontally well to the right of raisin box; objects clearly separate; table contact not verifiable
+RV-f9b34ce860,machine-agent-12,machine,yes,behind,no,cannot_tell,cannot_tell,occlusion,medium,Butter box almost directly behind raisin box; open gripper fingers straddle and partly occlude the butter box; contact unclear

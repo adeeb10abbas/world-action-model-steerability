@@ -1,0 +1,132 @@
+{
+  "confidence_counts": {
+    "high": 100,
+    "low": 9,
+    "medium": 90
+  },
+  "frames": 36,
+  "items": 120,
+  "ledger_rows": 199,
+  "proposed_relation_counts": {
+    "behind": 12,
+    "cannot_tell": 26,
+    "diagonal_ambiguous": 10,
+    "left": 30,
+    "not_on_top": 39,
+    "on_top_supported": 2,
+    "right": 80
+  },
+  "relation_agreement_items": 116,
+  "reviewer_ids": [
+    "machine-agent-11",
+    "machine-agent-12",
+    "machine-agent-5",
+    "machine-agent-6",
+    "machine-agent-9"
+  ],
+  "reviewer_types": [
+    "machine"
+  ],
+  "reviewers_per_frame": {
+    "1": 12,
+    "2": 24
+  },
+  "reviewers_per_item": {
+    "1": 41,
+    "2": 79
+  },
+  "tests": {
+    "A": {
+      "all": {
+        "items": 120,
+        "r1_answerable": 118,
+        "review_answerable_all_reviewers": 66,
+        "review_answerable_disagreement": 18,
+        "reviewer_row_exclusion_reasons": {
+          "ambiguity:boundary": 14,
+          "ambiguity:occlusion": 22,
+          "ambiguity:other": 48,
+          "low_confidence": 9,
+          "relation_not_discernible": 36
+        },
+        "revised_answerable": 65,
+        "revised_with_any_discrepancy": 0,
+        "strict_answerable": 65
+      },
+      "initial": {
+        "items": 39,
+        "r1_answerable": 39,
+        "review_answerable_all_reviewers": 39,
+        "review_answerable_disagreement": 0,
+        "reviewer_row_exclusion_reasons": {},
+        "revised_answerable": 39,
+        "revised_with_any_discrepancy": 0,
+        "strict_answerable": 39
+      },
+      "secondary": {
+        "items": 81,
+        "r1_answerable": 79,
+        "review_answerable_all_reviewers": 27,
+        "review_answerable_disagreement": 18,
+        "reviewer_row_exclusion_reasons": {
+          "ambiguity:boundary": 14,
+          "ambiguity:occlusion": 22,
+          "ambiguity:other": 48,
+          "low_confidence": 9,
+          "relation_not_discernible": 36
+        },
+        "revised_answerable": 26,
+        "revised_with_any_discrepancy": 0,
+        "strict_answerable": 26
+      }
+    },
+    "C": {
+      "all": {
+        "items": 120,
+        "r1_answerable": 101,
+        "review_answerable_all_reviewers": 66,
+        "review_answerable_disagreement": 6,
+        "reviewer_row_exclusion_reasons": {
+          "ambiguity:boundary": 14,
+          "ambiguity:occlusion": 22,
+          "ambiguity:other": 48,
+          "low_confidence": 9,
+          "relation_not_discernible": 36,
+          "required_table_support_not_visible": 14,
+          "transit_or_gripper_contact": 42
+        },
+        "revised_answerable": 62,
+        "revised_with_any_discrepancy": 0,
+        "strict_answerable": 62
+      },
+      "initial": {
+        "items": 39,
+        "r1_answerable": 39,
+        "review_answerable_all_reviewers": 39,
+        "review_answerable_disagreement": 0,
+        "reviewer_row_exclusion_reasons": {},
+        "revised_answerable": 39,
+        "revised_with_any_discrepancy": 0,
+        "strict_answerable": 39
+      },
+      "secondary": {
+        "items": 81,
+        "r1_answerable": 62,
+        "review_answerable_all_reviewers": 27,
+        "review_answerable_disagreement": 6,
+        "reviewer_row_exclusion_reasons": {
+          "ambiguity:boundary": 14,
+          "ambiguity:occlusion": 22,
+          "ambiguity:other": 48,
+          "low_confidence": 9,
+          "relation_not_discernible": 36,
+          "required_table_support_not_visible": 14,
+          "transit_or_gripper_contact": 42
+        },
+        "revised_answerable": 23,
+        "revised_with_any_discrepancy": 0,
+        "strict_answerable": 23
+      }
+    }
+  }
+}

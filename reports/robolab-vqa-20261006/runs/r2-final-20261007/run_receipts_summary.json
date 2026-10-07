@@ -1,0 +1,854 @@
+{
+  "E3-policy": [
+    {
+      "adapter_commit": "b63a93fbe10315e97d71ef268445b63d112c2ed0",
+      "attempts_this_run": 6,
+      "checkpoint_manifest_sha256": "eb8cff147b120cd0ac870df051aa249910713c34f64a8075401f7984e9192923",
+      "command": [
+        "/data/users/ali/rqa-20261006/code/experiments/robolab_vqa/v2/run.py",
+        "--release",
+        "/data/users/ali/rqa-20261006/release/r2-final/release.json",
+        "--checkpoint",
+        "E3-policy",
+        "--output",
+        "/data/users/ali/rqa-20261006/runs/r2-final-20261007",
+        "--phase",
+        "qualify",
+        "--adapter-commit",
+        "b63a93fbe10315e97d71ef268445b63d112c2ed0"
+      ],
+      "delivered_total": 6,
+      "elapsed_s": 90.7422993183136,
+      "ended_utc": "2026-10-07T01:42:03.153095Z",
+      "engine_kwargs": {
+        "attention_backend": "FLASH_ATTN",
+        "dtype": "bfloat16",
+        "enable_prefix_caching": false,
+        "enforce_eager": true,
+        "gpu_memory_utilization": 0.85,
+        "limit_mm_per_prompt": {
+          "image": 6,
+          "video": 0
+        },
+        "max_model_len": 16384,
+        "max_num_seqs": 1,
+        "seed": 6106,
+        "structured_outputs_config": {
+          "backend": "xgrammar",
+          "disable_any_whitespace": true
+        },
+        "trust_remote_code": false
+      },
+      "environment": {
+        "PIL": "12.3.0",
+        "cuda": "13.0",
+        "env": {
+          "CUDA_VISIBLE_DEVICES": null,
+          "HF_HUB_OFFLINE": "1",
+          "NVIDIA_VISIBLE_DEVICES": "GPU-5d1ef479-5dee-6e80-10dc-9174e5a71a0c",
+          "VLLM_BATCH_INVARIANT": null,
+          "VLLM_ENABLE_V1_MULTIPROCESSING": "0"
+        },
+        "gpu": "NVIDIA B200",
+        "host": "211247-alirqa2-b200-e3",
+        "numpy": "2.4.6",
+        "nvidia_smi": "NVIDIA B200, GPU-5d1ef479-5dee-6e80-10dc-9174e5a71a0c, 580.95.05, 183359 MiB",
+        "python": "3.13.6",
+        "torch": "2.11.0+cu130",
+        "transformers": "5.14.1",
+        "vllm": "0.26.0"
+      },
+      "file": "run_receipt_qualify_1791337232.json",
+      "grammars": {
+        "32615665842107794ecf26086d026a63e7765d4fc1f9dcbcfd1d319458cecada": {
+          "compiled_with_tokenizer": true,
+          "grammar_sha256": "6e6111c41eb2ab1e8b1555642ca18db65a5445542d38c3164699d7cf5ca9f650",
+          "stop_token_ids": [
+            11
+          ],
+          "vocab_size": 131072,
+          "xgrammar_version": null
+        },
+        "91b2d92da9b5df7c3ac0117a50202016e2e8dc55afae5c53d0625d0dc062da9e": {
+          "compiled_with_tokenizer": true,
+          "grammar_sha256": "de95407679da96fd65718e6897a75431dbba1e1776f756d29acf5e13a94aa42d",
+          "stop_token_ids": [
+            11
+          ],
+          "vocab_size": 131072,
+          "xgrammar_version": null
+        },
+        "f6572b7566e0fbc64915198fd5b0c93be202a4f4fb4af8b5c464d724c83d5047": {
+          "compiled_with_tokenizer": true,
+          "grammar_sha256": "4d15921ae2193b60969fe52b361b5e9f7c8acdf994167616dfec652e6997ce69",
+          "stop_token_ids": [
+            11
+          ],
+          "vocab_size": 131072,
+          "xgrammar_version": null
+        },
+        "fa62bffb8dac6f9eea9b3b1f8331dc2aa17c96141fde1b731eb5e2d721fc1763": {
+          "compiled_with_tokenizer": true,
+          "grammar_sha256": "d321fc4fd590a8fd1dc83020787b7009d5ee77b3f21001097341060b5ff3a3ac",
+          "stop_token_ids": [
+            11
+          ],
+          "vocab_size": 131072,
+          "xgrammar_version": null
+        }
+      },
+      "infrastructure_missing_total": 0,
+      "lane_attempts_by_phase": {
+        "evaluation": 0,
+        "qualification": 7,
+        "retry": 0
+      },
+      "lane_attempts_total": 7,
+      "latency_s_sum": 33.780725955963135,
+      "load_s": 28.865999937057495,
+      "loaded_parameter_digest": {
+        "n_buffers": 113,
+        "n_parameters": 506,
+        "names_sha256": "f9716e5a1c286392af285a208b956c3a52d7b94556dc69ddfa6f26361c867107",
+        "numel": 2435616496,
+        "sha256": "d5a618633fb5ae1cb794257ed9b2db7ea1725c9a4d439d08bceaf0f4fb291fe6"
+      },
+      "loader_patches": [
+        "Cosmos3EdgeForConditionalGeneration.hf_to_vllm_mapper.orig_to_new_substr['.k_norm_und_for_gen.']=None"
+      ],
+      "model_path_loaded": "/data/users/ali/rqa-20261006/views/E3-policy-reasoner-a7c7288",
+      "phase": "qualify",
+      "reasoner_view": {
+        "config_edits": {
+          "architectures": [
+            "Cosmos3EdgeForConditionalGeneration"
+          ],
+          "model_type": "cosmos3_edge"
+        },
+        "config_sha256": "1ab5cc71898f940860702f3836a115311620fc018ce1bead161a1b5504c782c5",
+        "path": "/data/users/ali/rqa-20261006/views/E3-policy-reasoner-a7c7288",
+        "source_config_sha256": "da6a23cbf4477aafda3e773874bf2c98d6869156e8a450d944e2f28c94eee00b",
+        "symlinks": {
+          ".gitattributes": "/data/users/ali/sgw-01/current-20260924a/checkpoints/cosmos3-edge-a7c7288/.gitattributes",
+          "chat_template.jinja": "/data/users/ali/sgw-01/current-20260924a/checkpoints/cosmos3-edge-a7c7288/chat_template.jinja",
+          "checkpoint.json": "/data/users/ali/sgw-01/current-20260924a/checkpoints/cosmos3-edge-a7c7288/checkpoint.json",
+          "convert_cosmos3_to_diffusers.py": "/data/users/ali/sgw-01/current-20260924a/checkpoints/cosmos3-edge-a7c7288/convert_cosmos3_to_diffusers.py",
+          "generation_config.json": "/data/users/ali/sgw-01/current-20260924a/checkpoints/cosmos3-edge-a7c7288/generation_config.json",
+          "model.safetensors.index.json": "/data/users/ali/sgw-01/current-20260924a/checkpoints/cosmos3-edge-a7c7288/model.safetensors.index.json",
+          "model_index.json": "/data/users/ali/sgw-01/current-20260924a/checkpoints/cosmos3-edge-a7c7288/model_index.json",
+          "modular_model_index.json": "/data/users/ali/sgw-01/current-20260924a/checkpoints/cosmos3-edge-a7c7288/modular_model_index.json",
+          "preprocessor_config.json": "/data/users/ali/sgw-01/current-20260924a/checkpoints/cosmos3-edge-a7c7288/preprocessor_config.json",
+          "processor_config.json": "/data/users/ali/sgw-01/current-20260924a/checkpoints/cosmos3-edge-a7c7288/processor_config.json",
+          "scheduler": "/data/users/ali/sgw-01/current-20260924a/checkpoints/cosmos3-edge-a7c7288/scheduler",
+          "special_tokens_map.json": "/data/users/ali/sgw-01/current-20260924a/checkpoints/cosmos3-edge-a7c7288/special_tokens_map.json",
+          "text_tokenizer": "/data/users/ali/sgw-01/current-20260924a/checkpoints/cosmos3-edge-a7c7288/text_tokenizer",
+          "tokenizer.json": "/data/users/ali/sgw-01/current-20260924a/checkpoints/cosmos3-edge-a7c7288/tokenizer.json",
+          "tokenizer_config.json": "/data/users/ali/sgw-01/current-20260924a/checkpoints/cosmos3-edge-a7c7288/tokenizer_config.json",
+          "transformer": "/data/users/ali/sgw-01/current-20260924a/checkpoints/cosmos3-edge-a7c7288/transformer",
+          "vae": "/data/users/ali/sgw-01/current-20260924a/checkpoints/cosmos3-edge-a7c7288/vae",
+          "video_preprocessor_config.json": "/data/users/ali/sgw-01/current-20260924a/checkpoints/cosmos3-edge-a7c7288/video_preprocessor_config.json",
+          "vision_encoder": "/data/users/ali/sgw-01/current-20260924a/checkpoints/cosmos3-edge-a7c7288/vision_encoder"
+        }
+      },
+      "release_content_sha256": "2a3d5d69aca622519dbf67fd8a7931741bdad1c3483197013ad3ea662f8cf4f6",
+      "release_json_sha256": "297f8a77e2d781a74e4b4d23e60ff300fedbd7b907dc2a266ecf9f34e3b9cdc0",
+      "sha256": "ea1e9ba4ba1e55a78ab82ff5581f142112f1af06d74fb57aefea10f6351e0621",
+      "started_utc": "2026-10-07T01:40:32.411383Z",
+      "status": "complete",
+      "stopped": null,
+      "structured_backends": [
+        "xgrammar"
+      ],
+      "tokenizer_chat_template_sha256": "7120ee6666468d4e9b2dc11e133ac5c2fa765fa5907706bf0f906270aa5510c8",
+      "truncated_total": 0,
+      "valid_total": 6
+    },
+    {
+      "adapter_commit": "b63a93fbe10315e97d71ef268445b63d112c2ed0",
+      "attempts_this_run": 2184,
+      "checkpoint_manifest_sha256": "eb8cff147b120cd0ac870df051aa249910713c34f64a8075401f7984e9192923",
+      "command": [
+        "/data/users/ali/rqa-20261006/code/experiments/robolab_vqa/v2/run.py",
+        "--release",
+        "/data/users/ali/rqa-20261006/release/r2-final/release.json",
+        "--checkpoint",
+        "E3-policy",
+        "--output",
+        "/data/users/ali/rqa-20261006/runs/r2-final-20261007",
+        "--phase",
+        "eval",
+        "--adapter-commit",
+        "b63a93fbe10315e97d71ef268445b63d112c2ed0"
+      ],
+      "delivered_total": 2184,
+      "elapsed_s": 467.23155879974365,
+      "ended_utc": "2026-10-07T01:49:52.179865Z",
+      "engine_kwargs": {
+        "attention_backend": "FLASH_ATTN",
+        "dtype": "bfloat16",
+        "enable_prefix_caching": false,
+        "enforce_eager": true,
+        "gpu_memory_utilization": 0.85,
+        "limit_mm_per_prompt": {
+          "image": 6,
+          "video": 0
+        },
+        "max_model_len": 16384,
+        "max_num_seqs": 1,
+        "seed": 6106,
+        "structured_outputs_config": {
+          "backend": "xgrammar",
+          "disable_any_whitespace": true
+        },
+        "trust_remote_code": false
+      },
+      "environment": {
+        "PIL": "12.3.0",
+        "cuda": "13.0",
+        "env": {
+          "CUDA_VISIBLE_DEVICES": null,
+          "HF_HUB_OFFLINE": "1",
+          "NVIDIA_VISIBLE_DEVICES": "GPU-5d1ef479-5dee-6e80-10dc-9174e5a71a0c",
+          "VLLM_BATCH_INVARIANT": null,
+          "VLLM_ENABLE_V1_MULTIPROCESSING": "0"
+        },
+        "gpu": "NVIDIA B200",
+        "host": "211247-alirqa2-b200-e3",
+        "numpy": "2.4.6",
+        "nvidia_smi": "NVIDIA B200, GPU-5d1ef479-5dee-6e80-10dc-9174e5a71a0c, 580.95.05, 183359 MiB",
+        "python": "3.13.6",
+        "torch": "2.11.0+cu130",
+        "transformers": "5.14.1",
+        "vllm": "0.26.0"
+      },
+      "file": "run_receipt_eval_1791337324.json",
+      "grammars": {
+        "32615665842107794ecf26086d026a63e7765d4fc1f9dcbcfd1d319458cecada": {
+          "compiled_with_tokenizer": true,
+          "grammar_sha256": "6e6111c41eb2ab1e8b1555642ca18db65a5445542d38c3164699d7cf5ca9f650",
+          "stop_token_ids": [
+            11
+          ],
+          "vocab_size": 131072,
+          "xgrammar_version": null
+        },
+        "91b2d92da9b5df7c3ac0117a50202016e2e8dc55afae5c53d0625d0dc062da9e": {
+          "compiled_with_tokenizer": true,
+          "grammar_sha256": "de95407679da96fd65718e6897a75431dbba1e1776f756d29acf5e13a94aa42d",
+          "stop_token_ids": [
+            11
+          ],
+          "vocab_size": 131072,
+          "xgrammar_version": null
+        },
+        "f6572b7566e0fbc64915198fd5b0c93be202a4f4fb4af8b5c464d724c83d5047": {
+          "compiled_with_tokenizer": true,
+          "grammar_sha256": "4d15921ae2193b60969fe52b361b5e9f7c8acdf994167616dfec652e6997ce69",
+          "stop_token_ids": [
+            11
+          ],
+          "vocab_size": 131072,
+          "xgrammar_version": null
+        },
+        "fa62bffb8dac6f9eea9b3b1f8331dc2aa17c96141fde1b731eb5e2d721fc1763": {
+          "compiled_with_tokenizer": true,
+          "grammar_sha256": "d321fc4fd590a8fd1dc83020787b7009d5ee77b3f21001097341060b5ff3a3ac",
+          "stop_token_ids": [
+            11
+          ],
+          "vocab_size": 131072,
+          "xgrammar_version": null
+        }
+      },
+      "infrastructure_missing_total": 0,
+      "lane_attempts_by_phase": {
+        "evaluation": 2184,
+        "qualification": 7,
+        "retry": 0
+      },
+      "lane_attempts_total": 2191,
+      "latency_s_sum": 383.96876525878906,
+      "load_s": 28.882974863052368,
+      "loaded_parameter_digest": {
+        "n_buffers": 113,
+        "n_parameters": 506,
+        "names_sha256": "f9716e5a1c286392af285a208b956c3a52d7b94556dc69ddfa6f26361c867107",
+        "numel": 2435616496,
+        "sha256": "d5a618633fb5ae1cb794257ed9b2db7ea1725c9a4d439d08bceaf0f4fb291fe6"
+      },
+      "loader_patches": [
+        "Cosmos3EdgeForConditionalGeneration.hf_to_vllm_mapper.orig_to_new_substr['.k_norm_und_for_gen.']=None"
+      ],
+      "model_path_loaded": "/data/users/ali/rqa-20261006/views/E3-policy-reasoner-a7c7288",
+      "phase": "eval",
+      "reasoner_view": {
+        "config_edits": {
+          "architectures": [
+            "Cosmos3EdgeForConditionalGeneration"
+          ],
+          "model_type": "cosmos3_edge"
+        },
+        "config_sha256": "1ab5cc71898f940860702f3836a115311620fc018ce1bead161a1b5504c782c5",
+        "path": "/data/users/ali/rqa-20261006/views/E3-policy-reasoner-a7c7288",
+        "source_config_sha256": "da6a23cbf4477aafda3e773874bf2c98d6869156e8a450d944e2f28c94eee00b",
+        "symlinks": {
+          ".gitattributes": "/data/users/ali/sgw-01/current-20260924a/checkpoints/cosmos3-edge-a7c7288/.gitattributes",
+          "chat_template.jinja": "/data/users/ali/sgw-01/current-20260924a/checkpoints/cosmos3-edge-a7c7288/chat_template.jinja",
+          "checkpoint.json": "/data/users/ali/sgw-01/current-20260924a/checkpoints/cosmos3-edge-a7c7288/checkpoint.json",
+          "convert_cosmos3_to_diffusers.py": "/data/users/ali/sgw-01/current-20260924a/checkpoints/cosmos3-edge-a7c7288/convert_cosmos3_to_diffusers.py",
+          "generation_config.json": "/data/users/ali/sgw-01/current-20260924a/checkpoints/cosmos3-edge-a7c7288/generation_config.json",
+          "model.safetensors.index.json": "/data/users/ali/sgw-01/current-20260924a/checkpoints/cosmos3-edge-a7c7288/model.safetensors.index.json",
+          "model_index.json": "/data/users/ali/sgw-01/current-20260924a/checkpoints/cosmos3-edge-a7c7288/model_index.json",
+          "modular_model_index.json": "/data/users/ali/sgw-01/current-20260924a/checkpoints/cosmos3-edge-a7c7288/modular_model_index.json",
+          "preprocessor_config.json": "/data/users/ali/sgw-01/current-20260924a/checkpoints/cosmos3-edge-a7c7288/preprocessor_config.json",
+          "processor_config.json": "/data/users/ali/sgw-01/current-20260924a/checkpoints/cosmos3-edge-a7c7288/processor_config.json",
+          "scheduler": "/data/users/ali/sgw-01/current-20260924a/checkpoints/cosmos3-edge-a7c7288/scheduler",
+          "special_tokens_map.json": "/data/users/ali/sgw-01/current-20260924a/checkpoints/cosmos3-edge-a7c7288/special_tokens_map.json",
+          "text_tokenizer": "/data/users/ali/sgw-01/current-20260924a/checkpoints/cosmos3-edge-a7c7288/text_tokenizer",
+          "tokenizer.json": "/data/users/ali/sgw-01/current-20260924a/checkpoints/cosmos3-edge-a7c7288/tokenizer.json",
+          "tokenizer_config.json": "/data/users/ali/sgw-01/current-20260924a/checkpoints/cosmos3-edge-a7c7288/tokenizer_config.json",
+          "transformer": "/data/users/ali/sgw-01/current-20260924a/checkpoints/cosmos3-edge-a7c7288/transformer",
+          "vae": "/data/users/ali/sgw-01/current-20260924a/checkpoints/cosmos3-edge-a7c7288/vae",
+          "video_preprocessor_config.json": "/data/users/ali/sgw-01/current-20260924a/checkpoints/cosmos3-edge-a7c7288/video_preprocessor_config.json",
+          "vision_encoder": "/data/users/ali/sgw-01/current-20260924a/checkpoints/cosmos3-edge-a7c7288/vision_encoder"
+        }
+      },
+      "release_content_sha256": "2a3d5d69aca622519dbf67fd8a7931741bdad1c3483197013ad3ea662f8cf4f6",
+      "release_json_sha256": "297f8a77e2d781a74e4b4d23e60ff300fedbd7b907dc2a266ecf9f34e3b9cdc0",
+      "sha256": "e7b11f125a70d817ff88f8b4371cbd130bb1d3206c09149aa45c217641a48f14",
+      "started_utc": "2026-10-07T01:42:04.948825Z",
+      "status": "complete",
+      "stopped": null,
+      "structured_backends": [
+        "xgrammar"
+      ],
+      "tokenizer_chat_template_sha256": "7120ee6666468d4e9b2dc11e133ac5c2fa765fa5907706bf0f906270aa5510c8",
+      "truncated_total": 0,
+      "valid_total": 2184
+    }
+  ],
+  "F3-qwen3vl4b": [
+    {
+      "adapter_commit": "b63a93fbe10315e97d71ef268445b63d112c2ed0",
+      "attempts_this_run": 6,
+      "checkpoint_manifest_sha256": "7c67feda6045bf5e5252c2be816dbc2badcd39244f3ba765b9003a39f74223ce",
+      "command": [
+        "/data/users/ali/rqa-20261006/code/experiments/robolab_vqa/v2/run.py",
+        "--release",
+        "/data/users/ali/rqa-20261006/release/r2-final/release.json",
+        "--checkpoint",
+        "F3-qwen3vl4b",
+        "--output",
+        "/data/users/ali/rqa-20261006/runs/r2-final-20261007",
+        "--phase",
+        "qualify",
+        "--adapter-commit",
+        "b63a93fbe10315e97d71ef268445b63d112c2ed0"
+      ],
+      "delivered_total": 6,
+      "elapsed_s": 89.37045526504517,
+      "ended_utc": "2026-10-07T01:42:03.147005Z",
+      "engine_kwargs": {
+        "attention_backend": "FLASH_ATTN",
+        "dtype": "bfloat16",
+        "enable_prefix_caching": false,
+        "enforce_eager": true,
+        "gpu_memory_utilization": 0.85,
+        "limit_mm_per_prompt": {
+          "image": 6,
+          "video": 0
+        },
+        "max_model_len": 16384,
+        "max_num_seqs": 1,
+        "seed": 6106,
+        "structured_outputs_config": {
+          "backend": "xgrammar",
+          "disable_any_whitespace": true
+        },
+        "trust_remote_code": false
+      },
+      "environment": {
+        "PIL": "12.3.0",
+        "cuda": "13.0",
+        "env": {
+          "CUDA_VISIBLE_DEVICES": null,
+          "HF_HUB_OFFLINE": "1",
+          "NVIDIA_VISIBLE_DEVICES": "GPU-f3e5709a-fbbe-55e2-e604-678aaa4c5640",
+          "VLLM_BATCH_INVARIANT": null,
+          "VLLM_ENABLE_V1_MULTIPROCESSING": "0"
+        },
+        "gpu": "NVIDIA B200",
+        "host": "211247-alirqa2-b200-f3",
+        "numpy": "2.4.6",
+        "nvidia_smi": "NVIDIA B200, GPU-f3e5709a-fbbe-55e2-e604-678aaa4c5640, 580.95.05, 183359 MiB",
+        "python": "3.13.6",
+        "torch": "2.11.0+cu130",
+        "transformers": "5.14.1",
+        "vllm": "0.26.0"
+      },
+      "file": "run_receipt_qualify_1791337233.json",
+      "grammars": {
+        "32615665842107794ecf26086d026a63e7765d4fc1f9dcbcfd1d319458cecada": {
+          "compiled_with_tokenizer": true,
+          "grammar_sha256": "6e6111c41eb2ab1e8b1555642ca18db65a5445542d38c3164699d7cf5ca9f650",
+          "stop_token_ids": [
+            151645
+          ],
+          "vocab_size": 151936,
+          "xgrammar_version": null
+        },
+        "91b2d92da9b5df7c3ac0117a50202016e2e8dc55afae5c53d0625d0dc062da9e": {
+          "compiled_with_tokenizer": true,
+          "grammar_sha256": "de95407679da96fd65718e6897a75431dbba1e1776f756d29acf5e13a94aa42d",
+          "stop_token_ids": [
+            151645
+          ],
+          "vocab_size": 151936,
+          "xgrammar_version": null
+        },
+        "f6572b7566e0fbc64915198fd5b0c93be202a4f4fb4af8b5c464d724c83d5047": {
+          "compiled_with_tokenizer": true,
+          "grammar_sha256": "4d15921ae2193b60969fe52b361b5e9f7c8acdf994167616dfec652e6997ce69",
+          "stop_token_ids": [
+            151645
+          ],
+          "vocab_size": 151936,
+          "xgrammar_version": null
+        },
+        "fa62bffb8dac6f9eea9b3b1f8331dc2aa17c96141fde1b731eb5e2d721fc1763": {
+          "compiled_with_tokenizer": true,
+          "grammar_sha256": "d321fc4fd590a8fd1dc83020787b7009d5ee77b3f21001097341060b5ff3a3ac",
+          "stop_token_ids": [
+            151645
+          ],
+          "vocab_size": 151936,
+          "xgrammar_version": null
+        }
+      },
+      "infrastructure_missing_total": 0,
+      "lane_attempts_by_phase": {
+        "evaluation": 0,
+        "qualification": 7,
+        "retry": 0
+      },
+      "lane_attempts_total": 7,
+      "latency_s_sum": 25.835139513015747,
+      "load_s": 28.78645133972168,
+      "loaded_parameter_digest": {
+        "n_buffers": 146,
+        "n_parameters": 605,
+        "names_sha256": "8d54ef5bc75525696c227fb765faa0c6f91982cb453c90f895c0e18885985328",
+        "numel": 4437815808,
+        "sha256": "866dddcec41c1fd6c4521081fb89aa8a61041c4eefdfe0bade7c35df8d5cccdb"
+      },
+      "loader_patches": [],
+      "model_path_loaded": "/data/users/ali/sgw-01/current-20260924a/checkpoints/flux-3-action-base-62878e2/text_encoder",
+      "phase": "qualify",
+      "reasoner_view": null,
+      "release_content_sha256": "2a3d5d69aca622519dbf67fd8a7931741bdad1c3483197013ad3ea662f8cf4f6",
+      "release_json_sha256": "297f8a77e2d781a74e4b4d23e60ff300fedbd7b907dc2a266ecf9f34e3b9cdc0",
+      "sha256": "91672ed61c281c806df6bfcdcbcba7165cf8966db0b60e5d50d11163849df98d",
+      "started_utc": "2026-10-07T01:40:33.777265Z",
+      "status": "complete",
+      "stopped": null,
+      "structured_backends": [
+        "xgrammar"
+      ],
+      "tokenizer_chat_template_sha256": "3636d0f0bd6bef02654cdffdc447b79cb2cef8ab02cc75267345946291a489e4",
+      "truncated_total": 0,
+      "valid_total": 6
+    },
+    {
+      "adapter_commit": "b63a93fbe10315e97d71ef268445b63d112c2ed0",
+      "attempts_this_run": 2184,
+      "checkpoint_manifest_sha256": "7c67feda6045bf5e5252c2be816dbc2badcd39244f3ba765b9003a39f74223ce",
+      "command": [
+        "/data/users/ali/rqa-20261006/code/experiments/robolab_vqa/v2/run.py",
+        "--release",
+        "/data/users/ali/rqa-20261006/release/r2-final/release.json",
+        "--checkpoint",
+        "F3-qwen3vl4b",
+        "--output",
+        "/data/users/ali/rqa-20261006/runs/r2-final-20261007",
+        "--phase",
+        "eval",
+        "--adapter-commit",
+        "b63a93fbe10315e97d71ef268445b63d112c2ed0"
+      ],
+      "delivered_total": 2184,
+      "elapsed_s": 550.1505165100098,
+      "ended_utc": "2026-10-07T01:51:15.054396Z",
+      "engine_kwargs": {
+        "attention_backend": "FLASH_ATTN",
+        "dtype": "bfloat16",
+        "enable_prefix_caching": false,
+        "enforce_eager": true,
+        "gpu_memory_utilization": 0.85,
+        "limit_mm_per_prompt": {
+          "image": 6,
+          "video": 0
+        },
+        "max_model_len": 16384,
+        "max_num_seqs": 1,
+        "seed": 6106,
+        "structured_outputs_config": {
+          "backend": "xgrammar",
+          "disable_any_whitespace": true
+        },
+        "trust_remote_code": false
+      },
+      "environment": {
+        "PIL": "12.3.0",
+        "cuda": "13.0",
+        "env": {
+          "CUDA_VISIBLE_DEVICES": null,
+          "HF_HUB_OFFLINE": "1",
+          "NVIDIA_VISIBLE_DEVICES": "GPU-f3e5709a-fbbe-55e2-e604-678aaa4c5640",
+          "VLLM_BATCH_INVARIANT": null,
+          "VLLM_ENABLE_V1_MULTIPROCESSING": "0"
+        },
+        "gpu": "NVIDIA B200",
+        "host": "211247-alirqa2-b200-f3",
+        "numpy": "2.4.6",
+        "nvidia_smi": "NVIDIA B200, GPU-f3e5709a-fbbe-55e2-e604-678aaa4c5640, 580.95.05, 183359 MiB",
+        "python": "3.13.6",
+        "torch": "2.11.0+cu130",
+        "transformers": "5.14.1",
+        "vllm": "0.26.0"
+      },
+      "file": "run_receipt_eval_1791337324.json",
+      "grammars": {
+        "32615665842107794ecf26086d026a63e7765d4fc1f9dcbcfd1d319458cecada": {
+          "compiled_with_tokenizer": true,
+          "grammar_sha256": "6e6111c41eb2ab1e8b1555642ca18db65a5445542d38c3164699d7cf5ca9f650",
+          "stop_token_ids": [
+            151645
+          ],
+          "vocab_size": 151936,
+          "xgrammar_version": null
+        },
+        "91b2d92da9b5df7c3ac0117a50202016e2e8dc55afae5c53d0625d0dc062da9e": {
+          "compiled_with_tokenizer": true,
+          "grammar_sha256": "de95407679da96fd65718e6897a75431dbba1e1776f756d29acf5e13a94aa42d",
+          "stop_token_ids": [
+            151645
+          ],
+          "vocab_size": 151936,
+          "xgrammar_version": null
+        },
+        "f6572b7566e0fbc64915198fd5b0c93be202a4f4fb4af8b5c464d724c83d5047": {
+          "compiled_with_tokenizer": true,
+          "grammar_sha256": "4d15921ae2193b60969fe52b361b5e9f7c8acdf994167616dfec652e6997ce69",
+          "stop_token_ids": [
+            151645
+          ],
+          "vocab_size": 151936,
+          "xgrammar_version": null
+        },
+        "fa62bffb8dac6f9eea9b3b1f8331dc2aa17c96141fde1b731eb5e2d721fc1763": {
+          "compiled_with_tokenizer": true,
+          "grammar_sha256": "d321fc4fd590a8fd1dc83020787b7009d5ee77b3f21001097341060b5ff3a3ac",
+          "stop_token_ids": [
+            151645
+          ],
+          "vocab_size": 151936,
+          "xgrammar_version": null
+        }
+      },
+      "infrastructure_missing_total": 0,
+      "lane_attempts_by_phase": {
+        "evaluation": 2184,
+        "qualification": 7,
+        "retry": 0
+      },
+      "lane_attempts_total": 2191,
+      "latency_s_sum": 464.25953698158264,
+      "load_s": 28.964078664779663,
+      "loaded_parameter_digest": {
+        "n_buffers": 146,
+        "n_parameters": 605,
+        "names_sha256": "8d54ef5bc75525696c227fb765faa0c6f91982cb453c90f895c0e18885985328",
+        "numel": 4437815808,
+        "sha256": "866dddcec41c1fd6c4521081fb89aa8a61041c4eefdfe0bade7c35df8d5cccdb"
+      },
+      "loader_patches": [],
+      "model_path_loaded": "/data/users/ali/sgw-01/current-20260924a/checkpoints/flux-3-action-base-62878e2/text_encoder",
+      "phase": "eval",
+      "reasoner_view": null,
+      "release_content_sha256": "2a3d5d69aca622519dbf67fd8a7931741bdad1c3483197013ad3ea662f8cf4f6",
+      "release_json_sha256": "297f8a77e2d781a74e4b4d23e60ff300fedbd7b907dc2a266ecf9f34e3b9cdc0",
+      "sha256": "9b743680f142d405ffb36d0bafdb50e327fc7c00c80f1af3936f409fc7f0918d",
+      "started_utc": "2026-10-07T01:42:04.904322Z",
+      "status": "complete",
+      "stopped": null,
+      "structured_backends": [
+        "xgrammar"
+      ],
+      "tokenizer_chat_template_sha256": "3636d0f0bd6bef02654cdffdc447b79cb2cef8ab02cc75267345946291a489e4",
+      "truncated_total": 0,
+      "valid_total": 2184
+    }
+  ],
+  "N3-policy": [
+    {
+      "adapter_commit": "b63a93fbe10315e97d71ef268445b63d112c2ed0",
+      "attempts_this_run": 6,
+      "checkpoint_manifest_sha256": "e0c887edbf47abcc60d23c198ca282f2d2d3a2f0f363d6d714eae90f567b977e",
+      "command": [
+        "/data/users/ali/rqa-20261006/code/experiments/robolab_vqa/v2/run.py",
+        "--release",
+        "/data/users/ali/rqa-20261006/release/r2-final/release.json",
+        "--checkpoint",
+        "N3-policy",
+        "--output",
+        "/data/users/ali/rqa-20261006/runs/r2-final-20261007",
+        "--phase",
+        "qualify",
+        "--adapter-commit",
+        "b63a93fbe10315e97d71ef268445b63d112c2ed0"
+      ],
+      "delivered_total": 6,
+      "elapsed_s": 104.39119505882263,
+      "ended_utc": "2026-10-07T01:42:15.673487Z",
+      "engine_kwargs": {
+        "attention_backend": "FLASH_ATTN",
+        "dtype": "bfloat16",
+        "enable_prefix_caching": false,
+        "enforce_eager": true,
+        "gpu_memory_utilization": 0.85,
+        "limit_mm_per_prompt": {
+          "image": 6,
+          "video": 0
+        },
+        "max_model_len": 16384,
+        "max_num_seqs": 1,
+        "seed": 6106,
+        "structured_outputs_config": {
+          "backend": "xgrammar",
+          "disable_any_whitespace": true
+        },
+        "trust_remote_code": false
+      },
+      "environment": {
+        "PIL": "12.3.0",
+        "cuda": "13.0",
+        "env": {
+          "CUDA_VISIBLE_DEVICES": null,
+          "HF_HUB_OFFLINE": "1",
+          "NVIDIA_VISIBLE_DEVICES": "GPU-937f79e0-f27f-f049-5f9d-ed8ea1d5472a",
+          "VLLM_BATCH_INVARIANT": null,
+          "VLLM_ENABLE_V1_MULTIPROCESSING": "0"
+        },
+        "gpu": "NVIDIA B200",
+        "host": "211247-alirqa2-b200-n3",
+        "numpy": "2.4.6",
+        "nvidia_smi": "NVIDIA B200, GPU-937f79e0-f27f-f049-5f9d-ed8ea1d5472a, 580.95.05, 183359 MiB",
+        "python": "3.13.6",
+        "torch": "2.11.0+cu130",
+        "transformers": "5.14.1",
+        "vllm": "0.26.0"
+      },
+      "file": "run_receipt_qualify_1791337231.json",
+      "grammars": {
+        "32615665842107794ecf26086d026a63e7765d4fc1f9dcbcfd1d319458cecada": {
+          "compiled_with_tokenizer": true,
+          "grammar_sha256": "6e6111c41eb2ab1e8b1555642ca18db65a5445542d38c3164699d7cf5ca9f650",
+          "stop_token_ids": [
+            151645
+          ],
+          "vocab_size": 151936,
+          "xgrammar_version": null
+        },
+        "91b2d92da9b5df7c3ac0117a50202016e2e8dc55afae5c53d0625d0dc062da9e": {
+          "compiled_with_tokenizer": true,
+          "grammar_sha256": "de95407679da96fd65718e6897a75431dbba1e1776f756d29acf5e13a94aa42d",
+          "stop_token_ids": [
+            151645
+          ],
+          "vocab_size": 151936,
+          "xgrammar_version": null
+        },
+        "f6572b7566e0fbc64915198fd5b0c93be202a4f4fb4af8b5c464d724c83d5047": {
+          "compiled_with_tokenizer": true,
+          "grammar_sha256": "4d15921ae2193b60969fe52b361b5e9f7c8acdf994167616dfec652e6997ce69",
+          "stop_token_ids": [
+            151645
+          ],
+          "vocab_size": 151936,
+          "xgrammar_version": null
+        },
+        "fa62bffb8dac6f9eea9b3b1f8331dc2aa17c96141fde1b731eb5e2d721fc1763": {
+          "compiled_with_tokenizer": true,
+          "grammar_sha256": "d321fc4fd590a8fd1dc83020787b7009d5ee77b3f21001097341060b5ff3a3ac",
+          "stop_token_ids": [
+            151645
+          ],
+          "vocab_size": 151936,
+          "xgrammar_version": null
+        }
+      },
+      "infrastructure_missing_total": 0,
+      "lane_attempts_by_phase": {
+        "evaluation": 0,
+        "qualification": 7,
+        "retry": 0
+      },
+      "lane_attempts_total": 7,
+      "latency_s_sum": 25.6028048992157,
+      "load_s": 30.726900339126587,
+      "loaded_parameter_digest": {
+        "n_buffers": 146,
+        "n_parameters": 642,
+        "names_sha256": "bf5bbed973b9bd8d1f7d77d8e334272ecda178a0f12d006ad213e019019a949d",
+        "numel": 8767123696,
+        "sha256": "eb00cb168c30728df7c7e33601f251cbd115b39eb181ac46949264d5724c731b"
+      },
+      "loader_patches": [],
+      "model_path_loaded": "/data/users/ali/vla_wam/checkpoints/cosmos3_nano_policy_droid",
+      "phase": "qualify",
+      "reasoner_view": null,
+      "release_content_sha256": "2a3d5d69aca622519dbf67fd8a7931741bdad1c3483197013ad3ea662f8cf4f6",
+      "release_json_sha256": "297f8a77e2d781a74e4b4d23e60ff300fedbd7b907dc2a266ecf9f34e3b9cdc0",
+      "sha256": "249e3e2f6cfd8bd8de23cbce0c30c910dec130ee2b2d0510b31dfb49a4440166",
+      "started_utc": "2026-10-07T01:40:31.282647Z",
+      "status": "complete",
+      "stopped": null,
+      "structured_backends": [
+        "xgrammar"
+      ],
+      "tokenizer_chat_template_sha256": "3636d0f0bd6bef02654cdffdc447b79cb2cef8ab02cc75267345946291a489e4",
+      "truncated_total": 0,
+      "valid_total": 6
+    },
+    {
+      "adapter_commit": "b63a93fbe10315e97d71ef268445b63d112c2ed0",
+      "attempts_this_run": 2184,
+      "checkpoint_manifest_sha256": "e0c887edbf47abcc60d23c198ca282f2d2d3a2f0f363d6d714eae90f567b977e",
+      "command": [
+        "/data/users/ali/rqa-20261006/code/experiments/robolab_vqa/v2/run.py",
+        "--release",
+        "/data/users/ali/rqa-20261006/release/r2-final/release.json",
+        "--checkpoint",
+        "N3-policy",
+        "--output",
+        "/data/users/ali/rqa-20261006/runs/r2-final-20261007",
+        "--phase",
+        "eval",
+        "--adapter-commit",
+        "b63a93fbe10315e97d71ef268445b63d112c2ed0"
+      ],
+      "delivered_total": 2184,
+      "elapsed_s": 579.1655814647675,
+      "ended_utc": "2026-10-07T01:51:56.530672Z",
+      "engine_kwargs": {
+        "attention_backend": "FLASH_ATTN",
+        "dtype": "bfloat16",
+        "enable_prefix_caching": false,
+        "enforce_eager": true,
+        "gpu_memory_utilization": 0.85,
+        "limit_mm_per_prompt": {
+          "image": 6,
+          "video": 0
+        },
+        "max_model_len": 16384,
+        "max_num_seqs": 1,
+        "seed": 6106,
+        "structured_outputs_config": {
+          "backend": "xgrammar",
+          "disable_any_whitespace": true
+        },
+        "trust_remote_code": false
+      },
+      "environment": {
+        "PIL": "12.3.0",
+        "cuda": "13.0",
+        "env": {
+          "CUDA_VISIBLE_DEVICES": null,
+          "HF_HUB_OFFLINE": "1",
+          "NVIDIA_VISIBLE_DEVICES": "GPU-937f79e0-f27f-f049-5f9d-ed8ea1d5472a",
+          "VLLM_BATCH_INVARIANT": null,
+          "VLLM_ENABLE_V1_MULTIPROCESSING": "0"
+        },
+        "gpu": "NVIDIA B200",
+        "host": "211247-alirqa2-b200-n3",
+        "numpy": "2.4.6",
+        "nvidia_smi": "NVIDIA B200, GPU-937f79e0-f27f-f049-5f9d-ed8ea1d5472a, 580.95.05, 183359 MiB",
+        "python": "3.13.6",
+        "torch": "2.11.0+cu130",
+        "transformers": "5.14.1",
+        "vllm": "0.26.0"
+      },
+      "file": "run_receipt_eval_1791337337.json",
+      "grammars": {
+        "32615665842107794ecf26086d026a63e7765d4fc1f9dcbcfd1d319458cecada": {
+          "compiled_with_tokenizer": true,
+          "grammar_sha256": "6e6111c41eb2ab1e8b1555642ca18db65a5445542d38c3164699d7cf5ca9f650",
+          "stop_token_ids": [
+            151645
+          ],
+          "vocab_size": 151936,
+          "xgrammar_version": null
+        },
+        "91b2d92da9b5df7c3ac0117a50202016e2e8dc55afae5c53d0625d0dc062da9e": {
+          "compiled_with_tokenizer": true,
+          "grammar_sha256": "de95407679da96fd65718e6897a75431dbba1e1776f756d29acf5e13a94aa42d",
+          "stop_token_ids": [
+            151645
+          ],
+          "vocab_size": 151936,
+          "xgrammar_version": null
+        },
+        "f6572b7566e0fbc64915198fd5b0c93be202a4f4fb4af8b5c464d724c83d5047": {
+          "compiled_with_tokenizer": true,
+          "grammar_sha256": "4d15921ae2193b60969fe52b361b5e9f7c8acdf994167616dfec652e6997ce69",
+          "stop_token_ids": [
+            151645
+          ],
+          "vocab_size": 151936,
+          "xgrammar_version": null
+        },
+        "fa62bffb8dac6f9eea9b3b1f8331dc2aa17c96141fde1b731eb5e2d721fc1763": {
+          "compiled_with_tokenizer": true,
+          "grammar_sha256": "d321fc4fd590a8fd1dc83020787b7009d5ee77b3f21001097341060b5ff3a3ac",
+          "stop_token_ids": [
+            151645
+          ],
+          "vocab_size": 151936,
+          "xgrammar_version": null
+        }
+      },
+      "infrastructure_missing_total": 0,
+      "lane_attempts_by_phase": {
+        "evaluation": 2184,
+        "qualification": 7,
+        "retry": 0
+      },
+      "lane_attempts_total": 2191,
+      "latency_s_sum": 472.189466714859,
+      "load_s": 30.430569171905518,
+      "loaded_parameter_digest": {
+        "n_buffers": 146,
+        "n_parameters": 642,
+        "names_sha256": "bf5bbed973b9bd8d1f7d77d8e334272ecda178a0f12d006ad213e019019a949d",
+        "numel": 8767123696,
+        "sha256": "eb00cb168c30728df7c7e33601f251cbd115b39eb181ac46949264d5724c731b"
+      },
+      "loader_patches": [],
+      "model_path_loaded": "/data/users/ali/vla_wam/checkpoints/cosmos3_nano_policy_droid",
+      "phase": "eval",
+      "reasoner_view": null,
+      "release_content_sha256": "2a3d5d69aca622519dbf67fd8a7931741bdad1c3483197013ad3ea662f8cf4f6",
+      "release_json_sha256": "297f8a77e2d781a74e4b4d23e60ff300fedbd7b907dc2a266ecf9f34e3b9cdc0",
+      "sha256": "3fdf903a8904a8554bd1ed6d2e0c8d17e4ba6d5c96725bb091cad80d2b29a204",
+      "started_utc": "2026-10-07T01:42:17.365658Z",
+      "status": "complete",
+      "stopped": null,
+      "structured_backends": [
+        "xgrammar"
+      ],
+      "tokenizer_chat_template_sha256": "3636d0f0bd6bef02654cdffdc447b79cb2cef8ab02cc75267345946291a489e4",
+      "truncated_total": 0,
+      "valid_total": 2184
+    }
+  ]
+}

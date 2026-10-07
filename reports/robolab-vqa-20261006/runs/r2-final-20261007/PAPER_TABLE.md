@@ -1,0 +1,13 @@
+# RQA V2 candidate compact table (not inserted into any manuscript)
+
+Run `r2-final-20261007`; S1/S3/S4 only (24 physical starts, 10 goals, 30 exact DIR/TF/RF instructions). Image metrics are macro-weighted (items within start × goal cell → starts → goals → scenes) with 95% percentile intervals from 10,000 physical-start bootstrap replicates within scene (seed 6106), conditional on the three fixed scenes and wording templates. Text-only B2 is a finite set of 10 instructions per form (counts, no interval). B2 uses schema-constrained JSON decoding (an assisted readout; format validity is guaranteed by construction). C2 uses one fixed wrapper and counterbalanced A/B codes, averaged over both orders within each item.
+
+| Readout (distinct weights) | B2 text-only tuple correct, T (DIR / TF / RF of 10; finite) | B2 image + header (IH) tuple acc., TF / RF | B2 IH TF−RF gap, pp [95% CI] | C2 balanced acc., initial / secondary (original mask) | C2 TF−RF gap, pp, initial / secondary | Coverage: delivered / valid of planned | Audit status |
+|---|---|---|---|---|---|---|---|
+| N3-policy (executed Nano reasoner = Qwen3-VL-8B-Instruct) | 10 / 10 / 10 | 100.0% / 89.9% | +10.1 [+5.2, +14.6] | 49.4% / 49.8% (machine-revised mask: 49.7% / 50.0%) | -0.5 [-1.6, +0.0] / +0.0 [+0.0, +0.0] | 2184/2184 of 2184 | machine review only (blinded agents; 36 of 72 sheets reviewed: 2 reviewers on 12, 1 reviewer on 24); no human review — visual results provisional |
+| E3-policy (executed Edge reasoner = Edge base reasoner) | 6 / 8 / 4 | 48.3% / 23.3% | +25.0 [+18.8, +31.9] | 48.5% / 50.1% (machine-revised mask: 48.3% / 48.7%) | +0.0 [+0.0, +0.0] / +1.3 [-0.9, +3.8] | 2184/2184 of 2184 | machine review only (blinded agents; 36 of 72 sheets reviewed: 2 reviewers on 12, 1 reviewer on 24); no human review — visual results provisional |
+| F3-qwen3vl4b (FLUX frozen shared encoder = Qwen3-VL-4B-Instruct) | 10 / 10 / 4 | 100.0% / 41.7% *(aux.)* | +58.3 [+58.3, +58.3] *(aux.)* | 50.0% / 50.0% (machine-revised mask: 50.0% / 50.0%) *(aux.)* | +0.0 [+0.0, +0.0] / +0.0 [+0.0, +0.0] *(aux.)* | 2184/2184 of 2184 | machine review only (blinded agents; 36 of 72 sheets reviewed: 2 reviewers on 12, 1 reviewer on 24); no human review — visual results provisional |
+
+*(aux.)* Per the protocol, F3's text-only B2 counts test the language path of FLUX's frozen shared Qwen3-VL-4B component; its image-conditioned results are auxiliary (standalone image QA is not FLUX policy VQA).
+Read C2 against its label prior: the always-nonmatch rule scores balanced accuracy 50%; always-nonmatch accuracy is 69.4% (initial) and 74.4% (secondary).
+Detailed header/pixel contrasts, option-order checks, no-image controls and the Edge format audit: TABLES.md.

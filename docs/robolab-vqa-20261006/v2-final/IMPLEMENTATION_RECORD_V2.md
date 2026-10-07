@@ -147,3 +147,57 @@ nonmatching frame among initial/50%/100% (frame ID breaks ties), scored by form 
     discrepancy.
   - The forms were completed after V2 responses existed but without access to them. The audit is therefore a
     machine audit, not a human one, and is reported as provisional.
+
+## Execution note E2 (2026-10-07 16:20 UTC) — machine-review coverage, a method-based form exclusion, and reporting
+
+**Analysis on the original mask.** `analyze.py` and `edge_audit.py` ran unchanged at 13:15 UTC from commit `66fac90`.
+No crash fix was needed.
+
+**Machine-review outcome.** Twelve blinded agents ran: two per sheet set, six sets of 12 sheets. All prompts were fixed
+at 01:36 UTC and relaunched unchanged at 13:10 UTC.
+
+- Five forms were delivered (agents 5, 6, 9, 11 and 12). Each was validated for exact header, assigned IDs, allowed
+  values and `reviewer_type=machine`.
+- Seven agents (1, 2, 3, 4, 7, 8, 10) failed on model-API DNS or timeout errors between 15:15 and 16:10 UTC, without
+  forms.
+- Sheet sets 1, 2 and 4 (36 of 72 sheets) therefore have no review.
+- Given repeated outages and the user's request for speed, the pass finished with partial machine coverage instead of
+  a third launch. Under the frozen rule, unreviewed items are unanswerable in the revised and strict masks; the
+  original R1 mask remains primary.
+
+**Reviewer methods (self-reported; `review/machine_reviewer_methods.json`).**
+
+- Agents 5 and 11 viewed the sheets.
+- Agent 9 viewed per-sheet composites after image-delivery failures. It retracted earlier unsupported claims, which
+  were not used.
+- Agents 6 and 12 could not view pixels through their image tool and judged by programmatic pixel analysis.
+
+**Method-based exclusion of form 12.** Agent 12 used a local Qwen3-VL-8B model to suggest object locations. Those
+weights are identical to the evaluated N3-policy readout, and §3 forbids evaluated models as judges.
+
+- At 15:08 UTC, before the form's content was examined, a method-only rule was recorded: forms produced with help from
+  any evaluated model are excluded from the primary mask and reported as a sensitivity analysis.
+- Primary mask: forms 5, 6, 9 and 11. Ledger `4fd5d828…`, mask `aa4f12d1…`.
+- Sensitivity mask, adding form 12: mask `0785cafb…`. Its revised and strict item sets are identical to the primary
+  mask.
+
+**Crash test.** The ingest → masked analysis → report path was crash-tested on the first two completed forms in a
+scratch directory (`/data/users/ali/rqa-20261006/scratch/review_test`). That directory was deleted. Its metrics were
+neither inspected nor used.
+
+**Reporting code.** Added after results existed; presentation only. It loads no model and changes no scoring rule.
+
+- `experiments/robolab_vqa/v2/report.py`: `85df14a`, `a3511fb`, `6802bea`.
+- The final assets were generated with `6802bea`.
+- The reviewed-mask analyses (`analysis_machine_mask` and `analysis_machine_mask_sensitivity`) ran on the frozen
+  `analyze.py` from `66fac90`.
+
+**Recorded nuance.** The A rescore's balanced accuracy uses V2's class-weight normalization (protocol §7), so it
+differs slightly from R1's reported value. For example, N3 initial is 60.5% versus R1's 61.6%. Accuracy and gaps
+reproduce R1 exactly.
+
+**Final state.**
+
+- 6,552 of 6,552 evaluation queries delivered and valid; 6,573 ledger entries against the 6,600 cap; 0 retries.
+- Reports are in `reports/robolab-vqa-20261006/runs/r2-final-20261007/`.
+- The bounded pass ends here, with no V3.

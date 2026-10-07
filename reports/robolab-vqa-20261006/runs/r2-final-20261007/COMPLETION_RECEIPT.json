@@ -1,0 +1,356 @@
+{
+  "attempt_budget": {
+    "aborted_before_generation_entries": 3,
+    "evaluation_ceiling": 6552,
+    "hard_cap": 6600,
+    "infrastructure_retries": 0,
+    "ledger_by_phase": {
+      "E3-policy": {
+        "evaluation": 2184,
+        "qualification": 7,
+        "retry": 0
+      },
+      "F3-qwen3vl4b": {
+        "evaluation": 2184,
+        "qualification": 7,
+        "retry": 0
+      },
+      "N3-policy": {
+        "evaluation": 2184,
+        "qualification": 7,
+        "retry": 0
+      }
+    },
+    "ledger_entries": 6573,
+    "model_generation_calls": 6570,
+    "note": "qualification ledger count per lane is 7 = 1 aborted-before-generation entry (Amendment V2-A1) + 6 fixture generations",
+    "qualification_generation_calls": 18,
+    "shared_retry_slots_charged_by_amendment_V2_A1": 3,
+    "shared_retry_slots_unused": 27
+  },
+  "commands": {
+    "analysis_machine_mask": "python -m experiments.robolab_vqa.v2.analyze --release /data/users/ali/rqa-20261006/release/r2-final/release.json --run /data/users/ali/rqa-20261006/runs/r2-final-20261007 --output /data/users/ali/rqa-20261006/runs/r2-final-20261007/analysis_machine_mask --mask /data/users/ali/rqa-20261006/review/v2-machine-ledger/mask.json",
+    "analysis_original": "python -m experiments.robolab_vqa.v2.analyze --release /data/users/ali/rqa-20261006/release/r2-final/release.json --run /data/users/ali/rqa-20261006/runs/r2-final-20261007 --output /data/users/ali/rqa-20261006/runs/r2-final-20261007/analysis_original",
+    "analysis_sensitivity_mask": "python -m experiments.robolab_vqa.v2.analyze --release /data/users/ali/rqa-20261006/release/r2-final/release.json --run /data/users/ali/rqa-20261006/runs/r2-final-20261007 --output /data/users/ali/rqa-20261006/runs/r2-final-20261007/analysis_machine_mask_sensitivity --mask /data/users/ali/rqa-20261006/review/v2-machine-ledger-sensitivity/mask.json",
+    "edge_audit": "python -m experiments.robolab_vqa.v2.edge_audit --output /data/users/ali/rqa-20261006/runs/r2-final-20261007/edge_audit",
+    "human_rescore_cpu_only": "python -m experiments.robolab_vqa.v2.review ingest --packet /data/users/ali/rqa-20261006/review/v2-packet --forms <human_form.csv>[,<second_human_form.csv>] --output <ledger dir> && python -m experiments.robolab_vqa.v2.analyze --release /data/users/ali/rqa-20261006/release/r2-final/release.json --run /data/users/ali/rqa-20261006/runs/r2-final-20261007 --output <dir> --mask <ledger dir>/mask.json",
+    "inference": [
+      "python /data/users/ali/rqa-20261006/code/experiments/robolab_vqa/v2/run.py --release /data/users/ali/rqa-20261006/release/r2-final/release.json --checkpoint N3-policy --output /data/users/ali/rqa-20261006/runs/r2-final-20261007 --phase qualify --adapter-commit b63a93fbe10315e97d71ef268445b63d112c2ed0",
+      "python /data/users/ali/rqa-20261006/code/experiments/robolab_vqa/v2/run.py --release /data/users/ali/rqa-20261006/release/r2-final/release.json --checkpoint N3-policy --output /data/users/ali/rqa-20261006/runs/r2-final-20261007 --phase eval --adapter-commit b63a93fbe10315e97d71ef268445b63d112c2ed0",
+      "python /data/users/ali/rqa-20261006/code/experiments/robolab_vqa/v2/run.py --release /data/users/ali/rqa-20261006/release/r2-final/release.json --checkpoint E3-policy --output /data/users/ali/rqa-20261006/runs/r2-final-20261007 --phase qualify --adapter-commit b63a93fbe10315e97d71ef268445b63d112c2ed0",
+      "python /data/users/ali/rqa-20261006/code/experiments/robolab_vqa/v2/run.py --release /data/users/ali/rqa-20261006/release/r2-final/release.json --checkpoint E3-policy --output /data/users/ali/rqa-20261006/runs/r2-final-20261007 --phase eval --adapter-commit b63a93fbe10315e97d71ef268445b63d112c2ed0",
+      "python /data/users/ali/rqa-20261006/code/experiments/robolab_vqa/v2/run.py --release /data/users/ali/rqa-20261006/release/r2-final/release.json --checkpoint F3-qwen3vl4b --output /data/users/ali/rqa-20261006/runs/r2-final-20261007 --phase qualify --adapter-commit b63a93fbe10315e97d71ef268445b63d112c2ed0",
+      "python /data/users/ali/rqa-20261006/code/experiments/robolab_vqa/v2/run.py --release /data/users/ali/rqa-20261006/release/r2-final/release.json --checkpoint F3-qwen3vl4b --output /data/users/ali/rqa-20261006/runs/r2-final-20261007 --phase eval --adapter-commit b63a93fbe10315e97d71ef268445b63d112c2ed0"
+    ],
+    "report": "python -m experiments.robolab_vqa.v2.report --run-id r2-final-20261007 --analysis /data/users/ali/rqa-20261006/runs/r2-final-20261007/analysis_original --analysis-machine /data/users/ali/rqa-20261006/runs/r2-final-20261007/analysis_machine_mask --review-ledger /data/users/ali/rqa-20261006/review/v2-machine-ledger --review-forms /data/users/ali/rqa-20261006/review/v2-machine-forms --analysis-sensitivity /data/users/ali/rqa-20261006/runs/r2-final-20261007/analysis_machine_mask_sensitivity --review-ledger-sensitivity /data/users/ali/rqa-20261006/review/v2-machine-ledger-sensitivity --sensitivity-label sensitivity mask including excluded form 12 (evaluated-model-assisted) --reviewer-methods /data/users/ali/rqa-20261006/review/v2-machine-forms/reviewer_methods.json --edge-audit /data/users/ali/rqa-20261006/runs/r2-final-20261007/edge_audit --r1-metrics reports/robolab-vqa-20261006/runs/r1-20261006/results/metrics_long.csv --commits {\"start_handoff\": \"871bfe5126812693cacf4dfc7fdfec9e10dca444\", \"r1_results\": \"acbe7ce13947f43b52ac0585bf9e6929579e8c83\", \"implementation\": \"515bab82d222595c458f52bbd345eca1a5b75815\", \"freeze_release_queries_schemas_packet_pushed_before_evaluation\": \"30d833f38789c2b8bd7a19ec3fc2b3abe3f4c1c3\", \"amendment_V2_A1_runner_used_for_all_generations\": \"b63a93fbe10315e97d71ef268445b63d112c2ed0\", \"analysis_driver_and_edge_audit_committed_before_first_analysis\": \"66fac90f63e161f2b8f3f2714e676b1080dda441\", \"report_generator_used\": \"6802beac5053d406ef956e5d08e491ef00a094c5\", \"results_and_report\": \"recorded in reports/robolab-vqa-20261006/RUN_INDEX.json (following commit)\"} --output /data/users/ali/rqa-20261006/report_build/r2-final-20261007",
+    "review_ingest": "python -m experiments.robolab_vqa.v2.review ingest --packet /data/users/ali/rqa-20261006/review/v2-packet --forms <primary machine forms, comma-separated> --output /data/users/ali/rqa-20261006/review/v2-machine-ledger",
+    "review_ingest_sensitivity": "python -m experiments.robolab_vqa.v2.review ingest --packet /data/users/ali/rqa-20261006/review/v2-packet --forms <all machine forms, comma-separated> --output /data/users/ali/rqa-20261006/review/v2-machine-ledger-sensitivity"
+  },
+  "commits": {
+    "amendment_V2_A1_runner_used_for_all_generations": "b63a93fbe10315e97d71ef268445b63d112c2ed0",
+    "analysis_driver_and_edge_audit_committed_before_first_analysis": "66fac90f63e161f2b8f3f2714e676b1080dda441",
+    "freeze_release_queries_schemas_packet_pushed_before_evaluation": "30d833f38789c2b8bd7a19ec3fc2b3abe3f4c1c3",
+    "implementation": "515bab82d222595c458f52bbd345eca1a5b75815",
+    "r1_results": "acbe7ce13947f43b52ac0585bf9e6929579e8c83",
+    "report_generator_used": "6802beac5053d406ef956e5d08e491ef00a094c5",
+    "results_and_report": "recorded in reports/robolab-vqa-20261006/RUN_INDEX.json (following commit)",
+    "start_handoff": "871bfe5126812693cacf4dfc7fdfec9e10dca444"
+  },
+  "counts": {
+    "c2_unknown_code_answers": 73,
+    "delivered": 6552,
+    "invalid": 0,
+    "missing": 0,
+    "per_lane": {
+      "E3-policy": {
+        "delivered": 2184,
+        "infrastructure_missing": 0,
+        "invalid": 0,
+        "planned": 2184,
+        "truncated": 0,
+        "unknown_code": 25,
+        "valid": 2184
+      },
+      "F3-qwen3vl4b": {
+        "delivered": 2184,
+        "infrastructure_missing": 0,
+        "invalid": 0,
+        "planned": 2184,
+        "truncated": 0,
+        "unknown_code": 0,
+        "valid": 2184
+      },
+      "N3-policy": {
+        "delivered": 2184,
+        "infrastructure_missing": 0,
+        "invalid": 0,
+        "planned": 2184,
+        "truncated": 0,
+        "unknown_code": 48,
+        "valid": 2184
+      }
+    },
+    "planned_evaluation": 6552,
+    "truncated": 0,
+    "valid": 6552
+  },
+  "created_utc": "2026-10-07T16:16:29.343596Z",
+  "decoding": {
+    "completions": 1,
+    "enable_thinking": false,
+    "engine_kwargs": {
+      "attention_backend": "FLASH_ATTN",
+      "dtype": "bfloat16",
+      "enable_prefix_caching": false,
+      "enforce_eager": true,
+      "gpu_memory_utilization": 0.85,
+      "limit_mm_per_prompt": {
+        "image": 6,
+        "video": 0
+      },
+      "max_model_len": 16384,
+      "max_num_seqs": 1,
+      "seed": 6106,
+      "structured_outputs_config": {
+        "backend": "xgrammar",
+        "disable_any_whitespace": true
+      },
+      "trust_remote_code": false
+    },
+    "greedy": true,
+    "max_new_tokens": 256
+  },
+  "design_version": "2.0",
+  "environment": {
+    "PIL": "12.3.0",
+    "cuda": "13.0",
+    "env": {
+      "CUDA_VISIBLE_DEVICES": null,
+      "HF_HUB_OFFLINE": "1",
+      "NVIDIA_VISIBLE_DEVICES": "GPU-937f79e0-f27f-f049-5f9d-ed8ea1d5472a",
+      "VLLM_BATCH_INVARIANT": null,
+      "VLLM_ENABLE_V1_MULTIPROCESSING": "0"
+    },
+    "gpu": "NVIDIA B200",
+    "host": "211247-alirqa2-b200-n3",
+    "numpy": "2.4.6",
+    "nvidia_smi": "NVIDIA B200, GPU-937f79e0-f27f-f049-5f9d-ed8ea1d5472a, 580.95.05, 183359 MiB",
+    "python": "3.13.6",
+    "torch": "2.11.0+cu130",
+    "transformers": "5.14.1",
+    "vllm": "0.26.0",
+    "xgrammar": "0.2.3 (installed dist-info; receipt grammar field null)"
+  },
+  "figures": [
+    "fig1_b2_conditions.png",
+    "fig1_b2_conditions.pdf",
+    "fig2_c2_answers.png",
+    "fig2_c2_answers.pdf",
+    "fig3_edge_format_audit.png",
+    "fig3_edge_format_audit.pdf"
+  ],
+  "gpu_time": {
+    "aborted_first_launch": "01:36–01:39 UTC, model load then KeyError before any generation; no receipt (Amendment V2-A1)",
+    "active_gpu_hours": 0.523,
+    "active_process_seconds_total": 1881.1,
+    "allocation_note": "GPU pods were created about 01:10–01:20 UTC and deleted at 13:12 UTC on 2026-10-07; after 01:52 UTC they were idle (no generation; attempt ledgers end at 01:51:56) while machine review was blocked by a workstation network outage",
+    "hardware": "3 × NVIDIA B200 (one per lane, separate pods, run in parallel)",
+    "per_lane_seconds": {
+      "E3-policy": {
+        "eval": 467.2,
+        "qualify": 90.7
+      },
+      "F3-qwen3vl4b": {
+        "eval": 550.2,
+        "qualify": 89.4
+      },
+      "N3-policy": {
+        "eval": 579.2,
+        "qualify": 104.4
+      }
+    }
+  },
+  "release": {
+    "content_sha256": "2a3d5d69aca622519dbf67fd8a7931741bdad1c3483197013ad3ea662f8cf4f6",
+    "release_json_sha256": "297f8a77e2d781a74e4b4d23e60ff300fedbd7b907dc2a266ecf9f34e3b9cdc0"
+  },
+  "review": {
+    "human": "not performed (packet and CPU-only rescore path delivered)",
+    "machine": {
+      "complete": false,
+      "frames": {
+        "frames": 36,
+        "of": 72
+      },
+      "item_summary": {
+        "items": 120,
+        "relation_agreement_items": 116,
+        "reviewers_per_item": {
+          "1": 81,
+          "2": 39
+        },
+        "tests": {
+          "A": {
+            "all": {
+              "items": 120,
+              "r1_answerable": 118,
+              "review_answerable_all_reviewers": 66,
+              "review_answerable_disagreement": 10,
+              "reviewer_row_exclusion_reasons": {
+                "ambiguity:boundary": 12,
+                "ambiguity:occlusion": 16,
+                "ambiguity:other": 40,
+                "low_confidence": 9,
+                "relation_not_discernible": 26
+              },
+              "revised_answerable": 65,
+              "revised_with_any_discrepancy": 0,
+              "strict_answerable": 65
+            },
+            "initial": {
+              "items": 39,
+              "r1_answerable": 39,
+              "review_answerable_all_reviewers": 39,
+              "review_answerable_disagreement": 0,
+              "reviewer_row_exclusion_reasons": {},
+              "revised_answerable": 39,
+              "revised_with_any_discrepancy": 0,
+              "strict_answerable": 39
+            },
+            "secondary": {
+              "items": 81,
+              "r1_answerable": 79,
+              "review_answerable_all_reviewers": 27,
+              "review_answerable_disagreement": 10,
+              "reviewer_row_exclusion_reasons": {
+                "ambiguity:boundary": 12,
+                "ambiguity:occlusion": 16,
+                "ambiguity:other": 40,
+                "low_confidence": 9,
+                "relation_not_discernible": 26
+              },
+              "revised_answerable": 26,
+              "revised_with_any_discrepancy": 0,
+              "strict_answerable": 26
+            }
+          },
+          "C": {
+            "all": {
+              "items": 120,
+              "r1_answerable": 101,
+              "review_answerable_all_reviewers": 66,
+              "review_answerable_disagreement": 6,
+              "reviewer_row_exclusion_reasons": {
+                "ambiguity:boundary": 12,
+                "ambiguity:occlusion": 16,
+                "ambiguity:other": 40,
+                "low_confidence": 9,
+                "relation_not_discernible": 26,
+                "required_table_support_not_visible": 6,
+                "transit_or_gripper_contact": 29
+              },
+              "revised_answerable": 62,
+              "revised_with_any_discrepancy": 0,
+              "strict_answerable": 62
+            },
+            "initial": {
+              "items": 39,
+              "r1_answerable": 39,
+              "review_answerable_all_reviewers": 39,
+              "review_answerable_disagreement": 0,
+              "reviewer_row_exclusion_reasons": {},
+              "revised_answerable": 39,
+              "revised_with_any_discrepancy": 0,
+              "strict_answerable": 39
+            },
+            "secondary": {
+              "items": 81,
+              "r1_answerable": 62,
+              "review_answerable_all_reviewers": 27,
+              "review_answerable_disagreement": 6,
+              "reviewer_row_exclusion_reasons": {
+                "ambiguity:boundary": 12,
+                "ambiguity:occlusion": 16,
+                "ambiguity:other": 40,
+                "low_confidence": 9,
+                "relation_not_discernible": 26,
+                "required_table_support_not_visible": 6,
+                "transit_or_gripper_contact": 29
+              },
+              "revised_answerable": 23,
+              "revised_with_any_discrepancy": 0,
+              "strict_answerable": 23
+            }
+          }
+        }
+      },
+      "ledger_sha256": "4fd5d82838a02e14774e46dc24294be9574a9feffc5036f4c8cd0a3c44ed764a",
+      "mask_sha256": "aa4f12d17289ff2651f6a52275ed0679b2d69f343ab2525f3468af40edd25614",
+      "primary_mask_reviewers": [
+        "machine-agent-11",
+        "machine-agent-5",
+        "machine-agent-6",
+        "machine-agent-9"
+      ],
+      "reviewers_per_sheet": {
+        "1": 24,
+        "2": 12
+      },
+      "sensitivity_mask_reviewers": [
+        "machine-agent-11",
+        "machine-agent-12",
+        "machine-agent-5",
+        "machine-agent-6",
+        "machine-agent-9"
+      ]
+    }
+  },
+  "run_id": "r2-final-20261007",
+  "status": "complete_machine_reviewed_provisional",
+  "stop": "Bounded V2 pass complete; no V3, no additional inference.",
+  "study_id": "RQA-20261006",
+  "timing_utc": {
+    "E3-policy": {
+      "eval": {
+        "elapsed_s": 467.2,
+        "ended": "2026-10-07T01:49:52.179865Z",
+        "model_load_s": 28.9,
+        "started": "2026-10-07T01:42:04.948825Z"
+      },
+      "qualify": {
+        "elapsed_s": 90.7,
+        "ended": "2026-10-07T01:42:03.153095Z",
+        "model_load_s": 28.9,
+        "started": "2026-10-07T01:40:32.411383Z"
+      }
+    },
+    "F3-qwen3vl4b": {
+      "eval": {
+        "elapsed_s": 550.2,
+        "ended": "2026-10-07T01:51:15.054396Z",
+        "model_load_s": 29.0,
+        "started": "2026-10-07T01:42:04.904322Z"
+      },
+      "qualify": {
+        "elapsed_s": 89.4,
+        "ended": "2026-10-07T01:42:03.147005Z",
+        "model_load_s": 28.8,
+        "started": "2026-10-07T01:40:33.777265Z"
+      }
+    },
+    "N3-policy": {
+      "eval": {
+        "elapsed_s": 579.2,
+        "ended": "2026-10-07T01:51:56.530672Z",
+        "model_load_s": 30.4,
+        "started": "2026-10-07T01:42:17.365658Z"
+      },
+      "qualify": {
+        "elapsed_s": 104.4,
+        "ended": "2026-10-07T01:42:15.673487Z",
+        "model_load_s": 30.7,
+        "started": "2026-10-07T01:40:31.282647Z"
+      }
+    }
+  }
+}

@@ -1,0 +1,13 @@
+review_id,reviewer_id,reviewer_type,objects_identifiable,lateral_relation,on_top_supported,target_on_table,transit_or_gripper,occlusion_or_other_ambiguity,confidence,notes
+RV-068c39ec07,machine-agent-9,machine,yes,left,no,yes,cannot_tell,none,high,upright bottle on table left of raisin box in both views (3D est left 0.12 vs front 0.05-0.08 table widths); closed gripper fingertips at raisin box top height so contact unclear
+RV-262f5bbda5,machine-agent-9,machine,yes,right,no,yes,cannot_tell,boundary,medium,bottle right-behind of raisin box about 30 deg off the right axis (3D est right 0.15 vs behind 0.08-0.10); screen views look near-diagonal; open gripper around bottle top with cap at right finger
+RV-3b613791e4,machine-agent-9,machine,yes,right,na,na,no,none,high,start frame; cube right of bowl in all 3 views (3D est right 0.22 vs front 0.03); gripper clear; banana beside cube
+RV-46c6a21335,machine-agent-9,machine,yes,right,na,na,no,none,high,start frame; cube right of bowl in all 3 views (3D est right 0.21 vs front 0.06); gripper clear
+RV-65222d3503,machine-agent-9,machine,yes,right,na,na,cannot_tell,none,high,cube inside open gripper just right of bowl in both views (3D est right 0.15 vs front 0.02-0.07); banana adjacent to cube
+RV-6fb8e0b2fc,machine-agent-9,machine,yes,right,na,na,cannot_tell,none,high,cube inside open gripper far right of bowl in both views (3D est right 0.43 vs front under 0.07); banana distractor
+RV-7a3df03ccc,machine-agent-9,machine,yes,right,no,yes,no,none,high,start frame; butter box right of raisin box in all 3 views (3D est right 0.18 vs behind 0.02); both boxes flat on table
+RV-8a66d7d9ad,machine-agent-9,machine,yes,left,na,na,cannot_tell,none,high,cube under open gripper left of bowl in both views (3D est left 0.19 vs front-back under 0.03)
+RV-a124c9c362,machine-agent-9,machine,yes,left,no,yes,no,none,high,start frame; upright bottle left of raisin box in all 3 views (3D est left 0.11 vs front 0.04-0.07); slight overlap in left view
+RV-c0118af5cd,machine-agent-9,machine,yes,behind,no,yes,cannot_tell,occlusion,medium,butter box inside open gripper and partly hidden by fingers; behind raisin box in both views (3D est behind 0.15-0.19 vs left 0.02-0.03); table contact inferred from open fingers
+RV-e068e99341,machine-agent-9,machine,yes,right,no,yes,no,none,high,start frame; butter box right of raisin box in all 3 views (3D est right 0.19 vs front 0.03)
+RV-ee9bc76360,machine-agent-9,machine,yes,left,no,yes,cannot_tell,none,medium,bottle standing inside open gripper left of raisin box (3D est left 0.15 vs behind 0.03-0.05); left camera alone looks near-diagonal because of bottle height

@@ -1,0 +1,102 @@
+{
+ "machine-agent-5": {
+  "assignment": "assign_5",
+  "method": "viewed sheets; enlarged crops",
+  "rows": 12,
+  "notes": "1 lateral cannot_tell (cube inside bowl); 3 transit cannot_tell; 1 low confidence (occlusion)"
+ },
+ "machine-agent-6": {
+  "assignment": "assign_6",
+  "method": "image viewer returned no pixels (image limit); judged by programmatic pixel analysis: on-device OCR of sheet text, colour segmentation of objects, arrow-glyph measurement, positions triangulated from both exterior cameras",
+  "rows": 12,
+  "notes": "7 rows with at least one cannot_tell; 1 low confidence (diagonal)"
+ },
+ "machine-agent-11": {
+  "assignment": "assign_5",
+  "method": "viewed sheets; enlarged crops plus measured arrow directions and object positions",
+  "rows": 12,
+  "notes": "2 lateral cannot_tell; 4 rows with any cannot_tell; 1 low confidence (occlusion)"
+ },
+ "machine-agent-9": {
+  "assignment": "assign_3",
+  "method": "viewed per-sheet composites (after full-size images initially failed and a 50-image limit); numeric check by fitting the table outline in both exterior cameras and triangulating object positions (cameras agreed; arrows within 5 degrees)",
+  "rows": 12,
+  "notes": "retracted earlier unsupported visual claims made before images were visible (not used in the form); transit cannot_tell for all 7 rollout frames; 0 low confidence"
+ },
+ "machine-agent-12": {
+  "assignment": "assign_6",
+  "method": "image tool did not display sheets; judged by code on pixels: font-matched reading of sheet text, arrow measurement, colour-based object localization with a local Qwen3-VL-8B model suggesting where to look (colour measurements decided); wrist view cross-check on 4 initial frames",
+  "rows": 12,
+  "notes": "2 lateral cannot_tell; 9 cannot_tell cells over 7 rows; 0 low confidence",
+  "used_evaluated_model": "Qwen3-VL-8B (weights identical to evaluated N3-policy readout)"
+ },
+ "_decision_rule": {
+  "decided_utc": "2026-10-07T15:08:46Z",
+  "content_of_form_12_inspected_before_decision": false,
+  "rule": "Forms produced with assistance from an evaluated model (Qwen3-VL-8B-Instruct = N3-policy, Qwen3-VL-4B-Instruct = F3, Cosmos3-Edge reasoner = E3) are excluded from the primary machine mask and reported as a sensitivity analysis; protocol section 3 forbids evaluated models as judges. Applies to every form, decided on method only.",
+  "excluded_from_primary": [
+   "machine-agent-12"
+  ]
+ },
+ "machine-agent-4": {
+  "assignment": "assign_4",
+  "status": "failed_no_form",
+  "error": "model API 408 'Timed out reading request body' after 5 retries at about 7,469 s (likely oversized image context); no form written",
+  "rows": 0
+ },
+ "machine-agent-1": {
+  "assignment": "assign_1",
+  "status": "failed_no_form",
+  "error": "agent terminated during a workstation DNS/network outage (model API unreachable); no form written",
+  "rows": 0
+ },
+ "machine-agent-2": {
+  "assignment": "assign_2",
+  "status": "failed_no_form",
+  "error": "agent terminated during a workstation DNS/network outage (model API unreachable); no form written",
+  "rows": 0
+ },
+ "machine-agent-3": {
+  "assignment": "assign_3",
+  "status": "failed_no_form",
+  "error": "agent terminated during a workstation DNS/network outage (model API unreachable); no form written",
+  "rows": 0
+ },
+ "machine-agent-7": {
+  "assignment": "assign_1",
+  "status": "failed_no_form",
+  "error": "agent terminated during a workstation DNS/network outage (model API unreachable); no form written",
+  "rows": 0
+ },
+ "machine-agent-10": {
+  "assignment": "assign_4",
+  "status": "failed_no_form",
+  "error": "agent terminated during a workstation DNS/network outage (model API unreachable); no form written",
+  "rows": 0
+ },
+ "machine-agent-8": {
+  "assignment": "assign_2",
+  "status": "failed_no_form",
+  "error": "model API DNS error ENOTFOUND (api.business.githubcopilot.com) after 5 retries at 9,146 s; no form written",
+  "rows": 0
+ },
+ "_coverage": {
+  "decided_utc": "2026-10-07T16:15:00Z",
+  "primary_forms": [
+   "machine-agent-5",
+   "machine-agent-6",
+   "machine-agent-9",
+   "machine-agent-11"
+  ],
+  "sensitivity_forms": [
+   "machine-agent-5",
+   "machine-agent-6",
+   "machine-agent-9",
+   "machine-agent-11",
+   "machine-agent-12"
+  ],
+  "sheets_with_primary_review": "36 of 72 (assign_3, assign_5, assign_6); assign_5 double-reviewed",
+  "sheets_without_review": "36 of 72 (assign_1, assign_2, assign_4)",
+  "decision": "finish with partial machine coverage rather than relaunch (user requested speed; repeated outages); unreviewed items are unanswerable under the frozen revised/strict rule; the original R1 mask remains primary; the packet and CPU-only rescore path allow later completion without new inference"
+ }
+}

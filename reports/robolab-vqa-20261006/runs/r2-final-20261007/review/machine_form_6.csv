@@ -1,0 +1,13 @@
+review_id,reviewer_id,reviewer_type,objects_identifiable,lateral_relation,on_top_supported,target_on_table,transit_or_gripper,occlusion_or_other_ambiguity,confidence,notes
+RV-1e22f64bce,machine-agent-6,machine,yes,cannot_tell,na,na,cannot_tell,other,medium,cube sits inside bowl near its center in both exterior views and wrist view; no dominant lateral offset; gripper tip at bowl rim above cube
+RV-30ed2b5d2d,machine-agent-6,machine,yes,right,no,yes,no,none,high,start frame; butter box clearly right of raisin box in both views; small behind component; both on table
+RV-3e9659bf72,machine-agent-6,machine,yes,left,na,na,yes,occlusion,medium,cube held between gripper fingers beside bowl; left of bowl in both views; fingers partly occlude cube
+RV-484665973b,machine-agent-6,machine,yes,behind,no,cannot_tell,yes,other,medium,mustard held upright by gripper roughly 10 cm behind raisin box with little lateral offset; not on box top; base near table but contact unclear
+RV-6d33d4e252,machine-agent-6,machine,yes,cannot_tell,na,na,no,other,medium,cube sits inside bowl near its center in both exterior views and wrist view; no dominant lateral offset; gripper raised away from bowl
+RV-760de6bf58,machine-agent-6,machine,yes,right,no,yes,no,none,high,start frame; butter box clearly right of raisin box in both views; both on table
+RV-81d4bbe4b8,machine-agent-6,machine,yes,diagonal_ambiguous,no,yes,cannot_tell,boundary,low,butter box behind-right of raisin box at about 54 deg from right axis (behind about 1.35x right); gripper fingertips at butter top; box at table level
+RV-9c2b672d61,machine-agent-6,machine,yes,left,no,yes,no,none,high,start frame; mustard stands on table clearly left of raisin box in both views
+RV-b902896e39,machine-agent-6,machine,yes,right,na,na,no,none,medium,start frame; cube right of bowl in both views with smaller in-front component (about 2:1)
+RV-d235f1dafd,machine-agent-6,machine,yes,right,no,yes,cannot_tell,none,medium,butter box right of raisin box with small behind component; box at table level; gripper finger right next to butter box
+RV-e8be917c3a,machine-agent-6,machine,yes,right,no,cannot_tell,yes,other,medium,mustard grasped and tilted by gripper; clearly right of raisin box in both views; table contact unclear
+RV-f9b34ce860,machine-agent-6,machine,yes,behind,no,cannot_tell,yes,occlusion,medium,butter box held edge-on by gripper roughly 20 cm behind raisin box with little lateral offset; largely occluded by fingers

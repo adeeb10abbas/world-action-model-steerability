@@ -1,0 +1,2081 @@
+query_id,family,bank,scene,goal,form,status,finish_reason,strict_valid,strict_tuple_correct,failure_class,strict_class,alias_mapped,alias_tuple_matches_gold_descriptive,raw_excerpt
+B.initial.S4-C05-initial.S4-TOP-I,original,initial,S4,TOP,RF,delivered,stop,False,False,json_structure_single_item_array,json_structure_single_item_array,"{""target"": ""mustard_bottle"", ""reference"": ""raisin_box"", ""relation"": ""left_of""}",False,"```json
+[
+  {""target"": ""mustard bottle"", ""reference"": ""raisin box"", ""relation"": ""left_of""}
+]
+```"
+B.initial.S3-C06-initial.S3-TOP-S,original,initial,S3,TOP,TF,delivered,stop,False,False,object_and_relation_vocabulary,object_and_relation_vocabulary,"{""target"": ""butter"", ""reference"": ""raisin_box"", ""relation"": ""in_front_of""}",False,"```json
+{""target"": ""butter box"", ""reference"": ""raisin box"", ""relation"": ""in front of""}
+```"
+B.initial.S3-C05-initial.S3-L-D,original,initial,S3,L,DIR,delivered,stop,False,False,object_vocabulary,object_vocabulary,"{""target"": ""butter"", ""reference"": ""raisin_box"", ""relation"": ""left_of""}",True,"```json
+{
+  ""target"": ""butter box"",
+  ""reference"": ""raisin box"",
+  ""relation"": ""left_of""
+}
+```"
+B.no_image.S1-R-D,original,no_image,S1,R,DIR,delivered,stop,True,True,,strict_valid_correct,,,"```json
+{""target"": ""rubiks_cube"", ""reference"": ""bowl"", ""relation"": ""right_of""}
+```"
+B.no_image.S4-TOP-S,original,no_image,S4,TOP,TF,delivered,stop,False,False,object_and_relation_vocabulary,object_and_relation_vocabulary,"{""target"": ""mustard_bottle"", ""reference"": ""raisin_box"", ""relation"": ""on_top_supported""}",True,"```json
+{""target"": ""mustard bottle"", ""reference"": ""raisin box"", ""relation"": ""on top of and supported by""}
+```"
+B.initial.S4-C08-initial.S4-TOP-I,original,initial,S4,TOP,RF,delivered,stop,False,False,json_structure_single_item_array,json_structure_single_item_array,"{""target"": ""mustard_bottle"", ""reference"": ""raisin_box"", ""relation"": ""in_front_of""}",False,"```json
+[
+  {""target"": ""mustard bottle"", ""reference"": ""raisin box"", ""relation"": ""in front of""}
+]
+```"
+PB.initial.S4-C08-initial.S4-L-reference_early,placement,initial,S4,L,reference_early,delivered,stop,False,False,json_structure_single_item_array,json_structure_single_item_array,"{""target"": ""mustard_bottle"", ""reference"": ""raisin_box"", ""relation"": ""left_of""}",True,"```json
+[
+  {""target"": ""mustard bottle"", ""reference"": ""raisin box"", ""relation"": ""left of""}
+]
+```"
+PB.initial.S1-C06-initial.S1-F-reference_early,placement,initial,S1,F,reference_early,delivered,stop,False,False,json_structure_single_item_array,json_structure_single_item_array,"{""target"": ""rubiks_cube"", ""reference"": ""bowl"", ""relation"": ""left_of""}",False,"```json
+[
+  {""target"": ""rubiks_cube"", ""reference"": ""bowl"", ""relation"": ""left_of""}
+]
+```"
+B.no_image.S4-R-S,original,no_image,S4,R,TF,delivered,stop,True,True,,strict_valid_correct,,,"```json
+{""target"": ""mustard_bottle"", ""reference"": ""raisin_box"", ""relation"": ""right_of""}
+```"
+PB.initial.S4-C01-initial.S4-L-reference_late,placement,initial,S4,L,reference_late,delivered,stop,False,False,json_structure_single_item_array,json_structure_single_item_array,"{""target"": ""mustard_bottle"", ""reference"": ""raisin_box"", ""relation"": ""left_of""}",True,"```json
+[
+  {""target"": ""mustard bottle"", ""reference"": ""raisin box"", ""relation"": ""left of""}
+]
+```"
+B.initial.S1-C03-initial.S1-F-S,original,initial,S1,F,TF,delivered,stop,False,False,json_structure_single_item_array,json_structure_single_item_array,"{""target"": ""rubiks_cube"", ""reference"": ""bowl"", ""relation"": ""in_front_of""}",True,"```json
+[
+  {""target"": ""rubiks_cube"", ""reference"": ""bowl"", ""relation"": ""in_front_of""}
+]
+```"
+B.initial.S1-C05-initial.S1-B-I,original,initial,S1,B,RF,delivered,stop,False,False,object_vocabulary,object_vocabulary,"{""target"": ""bowl"", ""reference"": ""rubiks_cube"", ""relation"": ""left_of""}",False,"```json
+{""target"": ""bowl"", ""reference"": ""rubiks cube"", ""relation"": ""left_of""}
+```"
+PB.initial.S4-C03-initial.S4-L-reference_late,placement,initial,S4,L,reference_late,delivered,stop,False,False,json_structure_single_item_array,json_structure_single_item_array,"{""target"": ""mustard_bottle"", ""reference"": ""raisin_box"", ""relation"": ""left_of""}",True,"```json
+[
+  {""target"": ""mustard bottle"", ""reference"": ""raisin box"", ""relation"": ""left_of""}
+]
+```"
+PB.initial.S1-C04-initial.S1-B-reference_late,placement,initial,S1,B,reference_late,delivered,stop,False,False,json_structure_single_item_array,json_structure_single_item_array,"{""target"": ""rubiks_cube"", ""reference"": ""bowl"", ""relation"": ""behind""}",True,"```json
+[
+  {""target"": ""rubiks_cube"", ""reference"": ""bowl"", ""relation"": ""behind""}
+]
+```"
+B.initial.S4-C02-initial.S4-TOP-S,original,initial,S4,TOP,TF,delivered,stop,False,False,json_structure_single_item_array,json_structure_single_item_array,"{""target"": ""mustard_bottle"", ""reference"": ""raisin_box"", ""relation"": ""on_top_supported""}",True,"```json
+[
+  {""target"": ""mustard bottle"", ""reference"": ""raisin box"", ""relation"": ""on top of""}
+]
+```"
+PB.initial.S1-C01-initial.S1-B-reference_early,placement,initial,S1,B,reference_early,delivered,stop,False,False,json_structure_single_item_array,json_structure_single_item_array,"{""target"": ""rubiks_cube"", ""reference"": ""bowl"", ""relation"": ""behind""}",True,"```json
+[
+  {""target"": ""rubiks_cube"", ""reference"": ""bowl"", ""relation"": ""behind""}
+]
+```"
+B.no_image.S3-R-I,original,no_image,S3,R,RF,delivered,stop,False,False,object_vocabulary,object_vocabulary,,,"```json
+{
+  ""target"": ""butter_box"",
+  ""reference"": ""raisin_box"",
+  ""relation"": ""left_of""
+}
+```"
+PB.initial.S1-C03-initial.S1-F-reference_late,placement,initial,S1,F,reference_late,delivered,stop,False,False,json_structure_single_item_array,json_structure_single_item_array,"{""target"": ""rubiks_cube"", ""reference"": ""bowl"", ""relation"": ""left_of""}",False,"```json
+[
+  {""target"": ""rubiks_cube"", ""reference"": ""bowl"", ""relation"": ""left_of""}
+]
+```"
+B.initial.S1-C01-initial.S1-R-I,original,initial,S1,R,RF,delivered,stop,False,False,json_structure_single_item_array,json_structure_single_item_array,"{""target"": ""rubiks_cube"", ""reference"": ""bowl"", ""relation"": ""left_of""}",False,"```json
+[
+  {""target"": ""rubiks_cube"", ""reference"": ""bowl"", ""relation"": ""left_of""}
+]
+```"
+B.initial.S3-C07-initial.S3-R-D,original,initial,S3,R,DIR,delivered,stop,False,False,object_vocabulary,object_vocabulary,"{""target"": ""butter"", ""reference"": ""raisin_box"", ""relation"": ""left_of""}",False,"```json
+{
+  ""target"": ""butter box"",
+  ""reference"": ""raisin box"",
+  ""relation"": ""left_of""
+}
+```"
+PB.initial.S3-C06-initial.S3-L-reference_late,placement,initial,S3,L,reference_late,delivered,stop,False,False,json_structure_single_item_array,json_structure_single_item_array,"{""target"": ""butter"", ""reference"": ""raisin_box"", ""relation"": ""left_of""}",True,"```json
+[
+  {""target"": ""butter box"", ""reference"": ""raisin box"", ""relation"": ""left_of""}
+]
+```"
+B.initial.S3-C08-initial.S3-TOP-D,original,initial,S3,TOP,DIR,delivered,stop,False,False,json_structure_malformed,json_structure_malformed,,,"```json
+[
+  {""target"": ""butter box"", ""reference"": ""raisin box""), ""relation"": ""left_of""
+]
+```"
+B.initial.S1-C08-initial.S1-F-D,original,initial,S1,F,DIR,delivered,stop,False,False,object_and_relation_vocabulary,object_and_relation_vocabulary,"{""target"": ""rubiks_cube"", ""reference"": ""bowl"", ""relation"": ""in_front_of""}",True,"```json
+{""target"": ""rubiks cube"", ""reference"": ""bowl"", ""relation"": ""in front of""}
+```"
+PB.initial.S1-C01-initial.S1-B-reference_late,placement,initial,S1,B,reference_late,delivered,stop,False,False,json_structure_single_item_array,json_structure_single_item_array,"{""target"": ""rubiks_cube"", ""reference"": ""bowl"", ""relation"": ""behind""}",True,"```json
+[
+  {""target"": ""rubiks_cube"", ""reference"": ""bowl"", ""relation"": ""behind""}
+]
+```"
+PB.initial.S3-C07-initial.S3-L-reference_early,placement,initial,S3,L,reference_early,delivered,stop,False,False,json_structure_single_item_array,json_structure_single_item_array,"{""target"": ""butter"", ""reference"": ""raisin_box"", ""relation"": ""left_of""}",True,"```json
+[
+  {""target"": ""butter box"", ""reference"": ""raisin box"", ""relation"": ""left_of""}
+]
+```"
+B.initial.S4-C02-initial.S4-TOP-D,original,initial,S4,TOP,DIR,delivered,stop,True,False,,strict_valid_incorrect,,,"```json
+{""target"": ""mustard_bottle"", ""reference"": ""raisin_box"", ""relation"": ""left_of""}
+```"
+B.initial.S4-C06-initial.S4-L-D,original,initial,S4,L,DIR,delivered,stop,False,False,object_and_relation_vocabulary,object_and_relation_vocabulary,"{""target"": ""mustard_bottle"", ""reference"": ""raisin_box"", ""relation"": ""left_of""}",True,"```json
+{
+  ""target"": ""mustard bottle"",
+  ""reference"": ""raisin box"",
+  ""relation"": ""left of""
+}
+```"
+PB.initial.S3-C03-initial.S3-R-reference_early,placement,initial,S3,R,reference_early,delivered,stop,False,False,json_structure_single_item_array,json_structure_single_item_array,"{""target"": ""butter"", ""reference"": ""raisin_box"", ""relation"": ""left_of""}",False,"```json
+[
+  {""target"": ""butter box"", ""reference"": ""raisin box"", ""relation"": ""left_of""}
+]
+```"
+PB.initial.S4-C08-initial.S4-R-reference_late,placement,initial,S4,R,reference_late,delivered,stop,False,False,json_structure_single_item_array,json_structure_single_item_array,"{""target"": ""mustard_bottle"", ""reference"": ""raisin_box"", ""relation"": ""left_of""}",False,"```json
+[
+  {""target"": ""mustard bottle"", ""reference"": ""raisin box"", ""relation"": ""left of""}
+]
+```"
+PB.initial.S4-C03-initial.S4-R-reference_late,placement,initial,S4,R,reference_late,delivered,stop,False,False,json_structure_single_item_array,json_structure_single_item_array,"{""target"": ""mustard_bottle"", ""reference"": ""raisin_box"", ""relation"": ""left_of""}",False,"```json
+[
+  {""target"": ""mustard bottle"", ""reference"": ""raisin box"", ""relation"": ""left of""}
+]
+```"
+B.initial.S1-C01-initial.S1-L-D,original,initial,S1,L,DIR,delivered,stop,False,False,object_vocabulary,object_vocabulary,"{""target"": ""rubiks_cube"", ""reference"": ""bowl"", ""relation"": ""left_of""}",True,"```json
+{""target"": ""rubiks cube"", ""reference"": ""bowl"", ""relation"": ""left_of""}
+```"
+PB.initial.S3-C06-initial.S3-R-reference_early,placement,initial,S3,R,reference_early,delivered,stop,False,False,json_structure_single_item_array,json_structure_single_item_array,"{""target"": ""butter"", ""reference"": ""raisin_box"", ""relation"": ""left_of""}",False,"```json
+[
+  {""target"": ""butter box"", ""reference"": ""raisin box"", ""relation"": ""left_of""}
+]
+```"
+B.initial.S3-C07-initial.S3-L-D,original,initial,S3,L,DIR,delivered,stop,False,False,object_vocabulary,object_vocabulary,"{""target"": ""butter"", ""reference"": ""raisin_box"", ""relation"": ""left_of""}",True,"```json
+{
+  ""target"": ""butter box"",
+  ""reference"": ""raisin box"",
+  ""relation"": ""left_of""
+}
+```"
+B.initial.S4-C08-initial.S4-L-I,original,initial,S4,L,RF,delivered,stop,False,False,object_and_relation_vocabulary,object_and_relation_vocabulary,"{""target"": ""mustard_bottle"", ""reference"": ""raisin_box"", ""relation"": ""left_of""}",True,"```json
+{
+  ""target"": ""mustard bottle"",
+  ""reference"": ""raisin box"",
+  ""relation"": ""left of""
+}
+```"
+B.initial.S3-C08-initial.S3-R-D,original,initial,S3,R,DIR,delivered,stop,False,False,object_vocabulary,object_vocabulary,"{""target"": ""butter"", ""reference"": ""raisin_box"", ""relation"": ""left_of""}",False,"```json
+{
+  ""target"": ""butter box"",
+  ""reference"": ""raisin box"",
+  ""relation"": ""left_of""
+}
+```"
+PB.initial.S1-C03-initial.S1-R-reference_early,placement,initial,S1,R,reference_early,delivered,stop,False,False,json_structure_single_item_array,json_structure_single_item_array,"{""target"": ""rubiks_cube"", ""reference"": ""bowl"", ""relation"": ""right_of""}",True,"```json
+[
+  {""target"": ""rubiks_cube"", ""reference"": ""bowl"", ""relation"": ""right_of""}
+]
+```"
+B.initial.S1-C02-initial.S1-R-I,original,initial,S1,R,RF,delivered,stop,False,False,json_structure_single_item_array,json_structure_single_item_array,"{""target"": ""bowl"", ""reference"": ""rubiks_cube"", ""relation"": ""left_of""}",False,"```json
+[
+  {""target"": ""bowl"", ""reference"": ""rubiks cube"", ""relation"": ""left_of""}
+]
+```"
+PB.initial.S4-C04-initial.S4-L-reference_early,placement,initial,S4,L,reference_early,delivered,stop,False,False,json_structure_single_item_array,json_structure_single_item_array,"{""target"": ""mustard_bottle"", ""reference"": ""raisin_box"", ""relation"": ""left_of""}",True,"```json
+[
+  {""target"": ""mustard bottle"", ""reference"": ""raisin box"", ""relation"": ""left of""}
+]
+```"
+B.initial.S1-C01-initial.S1-R-D,original,initial,S1,R,DIR,delivered,stop,False,False,json_structure_single_item_array,json_structure_single_item_array,"{""target"": ""rubiks_cube"", ""reference"": ""bowl"", ""relation"": ""right_of""}",True,"```json
+[
+  {""target"": ""rubiks cube"", ""reference"": ""bowl"", ""relation"": ""right_of""}
+]
+```"
+B.no_image.S1-R-I,original,no_image,S1,R,RF,delivered,stop,True,False,,strict_valid_incorrect,,,"```json
+{""target"": ""rubiks_cube"", ""reference"": ""bowl"", ""relation"": ""left_of""}
+```"
+B.no_image.S1-L-D,original,no_image,S1,L,DIR,delivered,stop,True,True,,strict_valid_correct,,,"{""target"": ""rubiks_cube"", ""reference"": ""bowl"", ""relation"": ""left_of""}"
+B.initial.S3-C01-initial.S3-TOP-D,original,initial,S3,TOP,DIR,delivered,stop,False,False,object_vocabulary,object_vocabulary,"{""target"": ""butter"", ""reference"": ""raisin_box"", ""relation"": ""left_of""}",False,"```json
+{
+  ""target"": ""butter box"",
+  ""reference"": ""raisin box"",
+  ""relation"": ""left_of""
+}
+```"
+B.initial.S1-C04-initial.S1-B-I,original,initial,S1,B,RF,delivered,stop,False,False,json_structure_single_item_array,json_structure_single_item_array,"{""target"": ""rubiks_cube"", ""reference"": ""bowl"", ""relation"": ""left_of""}",False,"```json
+[
+  {""target"": ""rubiks_cube"", ""reference"": ""bowl"", ""relation"": ""left_of""}
+]
+```"
+PB.initial.S1-C08-initial.S1-B-reference_late,placement,initial,S1,B,reference_late,delivered,stop,False,False,json_structure_single_item_array,json_structure_single_item_array,"{""target"": ""rubiks_cube"", ""reference"": ""bowl"", ""relation"": ""behind""}",True,"```json
+[
+  {""target"": ""rubiks_cube"", ""reference"": ""bowl"", ""relation"": ""behind""}
+]
+```"
+B.initial.S1-C06-initial.S1-F-S,original,initial,S1,F,TF,delivered,stop,False,False,json_structure_single_item_array,json_structure_single_item_array,"{""target"": ""rubiks_cube"", ""reference"": ""bowl"", ""relation"": ""in_front_of""}",True,"```json
+[
+  {""target"": ""rubiks_cube"", ""reference"": ""bowl"", ""relation"": ""in_front_of""}
+]
+```"
+PB.initial.S1-C05-initial.S1-B-reference_early,placement,initial,S1,B,reference_early,delivered,stop,False,False,json_structure_single_item_array,json_structure_single_item_array,"{""target"": ""rubiks_cube"", ""reference"": ""bowl"", ""relation"": ""behind""}",True,"```json
+[
+  {""target"": ""rubiks_cube"", ""reference"": ""bowl"", ""relation"": ""behind""}
+]
+```"
+PB.initial.S1-C04-initial.S1-R-reference_late,placement,initial,S1,R,reference_late,delivered,stop,False,False,json_structure_single_item_array,json_structure_single_item_array,"{""target"": ""rubiks_cube"", ""reference"": ""bowl"", ""relation"": ""right_of""}",True,"```json
+[
+  {""target"": ""rubiks_cube"", ""reference"": ""bowl"", ""relation"": ""right_of""}
+]
+```"
+B.initial.S3-C08-initial.S3-L-I,original,initial,S3,L,RF,delivered,stop,False,False,json_structure_single_item_array,json_structure_single_item_array,"{""target"": ""butter"", ""reference"": ""raisin_box"", ""relation"": ""left_of""}",True,"```json
+[
+  {""target"": ""butter box"", ""reference"": ""raisin box"", ""relation"": ""left of""}
+]
+```"
+B.initial.S3-C05-initial.S3-L-S,original,initial,S3,L,TF,delivered,stop,False,False,object_and_relation_vocabulary,object_and_relation_vocabulary,"{""target"": ""butter"", ""reference"": ""raisin_box"", ""relation"": ""left_of""}",True,"```json
+{
+  ""target"": ""butter box"",
+  ""reference"": ""raisin box"",
+  ""relation"": ""left of""
+}
+```"
+B.initial.S3-C05-initial.S3-L-I,original,initial,S3,L,RF,delivered,stop,False,False,object_and_relation_vocabulary,object_and_relation_vocabulary,"{""target"": ""butter"", ""reference"": ""raisin_box"", ""relation"": ""left_of""}",True,"```json
+{
+  ""target"": ""butter box"",
+  ""reference"": ""raisin box"",
+  ""relation"": ""left of""
+}
+```"
+PB.initial.S3-C08-initial.S3-R-reference_early,placement,initial,S3,R,reference_early,delivered,stop,False,False,json_structure_single_item_array,json_structure_single_item_array,"{""target"": ""butter"", ""reference"": ""raisin_box"", ""relation"": ""left_of""}",False,"```json
+[
+  {""target"": ""butter box"", ""reference"": ""raisin box"", ""relation"": ""left_of""}
+]
+```"
+PB.initial.S1-C05-initial.S1-B-reference_late,placement,initial,S1,B,reference_late,delivered,stop,False,False,json_structure_single_item_array,json_structure_single_item_array,"{""target"": ""rubiks_cube"", ""reference"": ""bowl"", ""relation"": ""behind""}",True,"```json
+[
+  {""target"": ""rubiks_cube"", ""reference"": ""bowl"", ""relation"": ""behind""}
+]
+```"
+B.initial.S1-C08-initial.S1-R-S,original,initial,S1,R,TF,delivered,stop,False,False,json_structure_single_item_array,json_structure_single_item_array,"{""target"": ""rubiks_cube"", ""reference"": ""bowl"", ""relation"": ""right_of""}",True,"```json
+[
+  {""target"": ""rubiks_cube"", ""reference"": ""bowl"", ""relation"": ""right_of""}
+]
+```"
+B.initial.S3-C02-initial.S3-R-I,original,initial,S3,R,RF,delivered,stop,False,False,json_structure_malformed,json_structure_malformed,,,"```json
+[
+  {""target"": ""butter box"", ""reference"": ""raisin box""), ""relation"": ""left of""
+]
+```"
+B.initial.S4-C03-initial.S4-TOP-D,original,initial,S4,TOP,DIR,delivered,stop,True,False,,strict_valid_incorrect,,,"```json
+{""target"": ""mustard_bottle"", ""reference"": ""raisin_box"", ""relation"": ""left_of""}
+```"
+B.initial.S4-C08-initial.S4-TOP-S,original,initial,S4,TOP,TF,delivered,stop,False,False,json_structure_single_item_array,json_structure_single_item_array,"{""target"": ""mustard_bottle"", ""reference"": ""raisin_box"", ""relation"": ""on_top_supported""}",True,"```json
+[
+  {""target"": ""mustard bottle"", ""reference"": ""raisin box"", ""relation"": ""on top of""}
+]
+```"
+B.initial.S1-C04-initial.S1-B-S,original,initial,S1,B,TF,delivered,stop,False,False,json_structure_single_item_array,json_structure_single_item_array,"{""target"": ""rubiks_cube"", ""reference"": ""bowl"", ""relation"": ""behind""}",True,"```json
+[
+  {""target"": ""rubiks_cube"", ""reference"": ""bowl"", ""relation"": ""behind""}
+]
+```"
+PB.no_image.S4-L-reference_late,placement,no_image,S4,L,reference_late,delivered,stop,True,True,,strict_valid_correct,,,"```json
+{""target"": ""mustard_bottle"", ""reference"": ""raisin_box"", ""relation"": ""left_of""}
+```"
+B.initial.S4-C08-initial.S4-R-D,original,initial,S4,R,DIR,delivered,stop,False,False,json_structure_single_item_array,json_structure_single_item_array,"{""target"": ""mustard_bottle"", ""reference"": ""raisin_box"", ""relation"": ""left_of""}",False,"```json
+[
+  {""target"": ""mustard bottle"", ""reference"": ""raisin box"", ""relation"": ""left_of""}
+]
+```"
+B.initial.S4-C05-initial.S4-R-I,original,initial,S4,R,RF,delivered,stop,False,False,object_and_relation_vocabulary,object_and_relation_vocabulary,"{""target"": ""mustard_bottle"", ""reference"": ""raisin_box"", ""relation"": ""left_of""}",False,"```json
+{
+  ""target"": ""mustard bottle"",
+  ""reference"": ""raisin box"",
+  ""relation"": ""left of""
+}
+```"
+B.initial.S3-C01-initial.S3-L-D,original,initial,S3,L,DIR,delivered,stop,False,False,object_vocabulary,object_vocabulary,"{""target"": ""butter"", ""reference"": ""raisin_box"", ""relation"": ""left_of""}",True,"```json
+{
+  ""target"": ""butter box"",
+  ""reference"": ""raisin box"",
+  ""relation"": ""left_of""
+}
+```"
+B.initial.S1-C05-initial.S1-L-S,original,initial,S1,L,TF,delivered,stop,False,False,json_structure_single_item_array,json_structure_single_item_array,"{""target"": ""rubiks_cube"", ""reference"": ""bowl"", ""relation"": ""left_of""}",True,"```json
+[
+  {""target"": ""rubiks_cube"", ""reference"": ""bowl"", ""relation"": ""left_of""}
+]
+```"
+PB.initial.S1-C06-initial.S1-B-reference_early,placement,initial,S1,B,reference_early,delivered,stop,False,False,json_structure_single_item_array,json_structure_single_item_array,"{""target"": ""rubiks_cube"", ""reference"": ""bowl"", ""relation"": ""behind""}",True,"```json
+[
+  {""target"": ""rubiks_cube"", ""reference"": ""bowl"", ""relation"": ""behind""}
+]
+```"
+PB.initial.S3-C07-initial.S3-R-reference_early,placement,initial,S3,R,reference_early,delivered,stop,False,False,json_structure_single_item_array,json_structure_single_item_array,"{""target"": ""butter"", ""reference"": ""raisin_box"", ""relation"": ""left_of""}",False,"```json
+[
+  {""target"": ""butter box"", ""reference"": ""raisin box"", ""relation"": ""left_of""}
+]
+```"
+B.initial.S3-C05-initial.S3-TOP-I,original,initial,S3,TOP,RF,delivered,stop,False,False,object_and_relation_vocabulary,object_and_relation_vocabulary,"{""target"": ""butter"", ""reference"": ""raisin_box"", ""relation"": ""in_front_of""}",False,"```json
+{""target"": ""butter box"", ""reference"": ""raisin box"", ""relation"": ""in front of""}
+```"
+B.initial.S1-C05-initial.S1-R-I,original,initial,S1,R,RF,delivered,stop,False,False,json_structure_single_item_array,json_structure_single_item_array,"{""target"": ""rubiks_cube"", ""reference"": ""bowl"", ""relation"": ""left_of""}",False,"```json
+[
+  {""target"": ""rubiks_cube"", ""reference"": ""bowl"", ""relation"": ""left_of""}
+]
+```"
+B.initial.S1-C03-initial.S1-B-S,original,initial,S1,B,TF,delivered,stop,False,False,json_structure_single_item_array,json_structure_single_item_array,"{""target"": ""rubiks_cube"", ""reference"": ""bowl"", ""relation"": ""behind""}",True,"```json
+[
+  {""target"": ""rubiks_cube"", ""reference"": ""bowl"", ""relation"": ""behind""}
+]
+```"
+B.initial.S1-C04-initial.S1-B-D,original,initial,S1,B,DIR,delivered,stop,False,False,object_vocabulary,object_vocabulary,"{""target"": ""rubiks_cube"", ""reference"": ""bowl"", ""relation"": ""left_of""}",False,"```json
+{
+  ""target"": ""rubiks cube"",
+  ""reference"": ""bowl"",
+  ""relation"": ""left_of""
+}
+```"
+PB.initial.S3-C05-initial.S3-R-reference_late,placement,initial,S3,R,reference_late,delivered,stop,False,False,json_structure_single_item_array,json_structure_single_item_array,"{""target"": ""butter"", ""reference"": ""raisin_box"", ""relation"": ""left_of""}",False,"```json
+[
+  {""target"": ""butter box"", ""reference"": ""raisin box"", ""relation"": ""left_of""}
+]
+```"
+B.initial.S3-C07-initial.S3-TOP-D,original,initial,S3,TOP,DIR,delivered,stop,False,False,json_structure_single_item_array,json_structure_single_item_array,"{""target"": ""butter"", ""reference"": ""raisin_box"", ""relation"": ""left_of""}",False,"```json
+[
+  {""target"": ""butter box"", ""reference"": ""raisin box"", ""relation"": ""left_of""}
+]
+```"
+B.initial.S3-C07-initial.S3-TOP-I,original,initial,S3,TOP,RF,delivered,stop,False,False,object_and_relation_vocabulary,object_and_relation_vocabulary,,,"```json
+{""target"": ""butter box"", ""reference"": ""raisin box"", ""relation"": ""underneath and supporting""}
+```"
+B.initial.S4-C08-initial.S4-R-I,original,initial,S4,R,RF,delivered,stop,False,False,object_and_relation_vocabulary,object_and_relation_vocabulary,"{""target"": ""mustard_bottle"", ""reference"": ""raisin_box"", ""relation"": ""left_of""}",False,"```json
+{
+  ""target"": ""mustard bottle"",
+  ""reference"": ""raisin box"",
+  ""relation"": ""left of""
+}
+```"
+B.initial.S4-C01-initial.S4-R-I,original,initial,S4,R,RF,delivered,stop,False,False,object_and_relation_vocabulary,object_and_relation_vocabulary,"{""target"": ""mustard_bottle"", ""reference"": ""raisin_box"", ""relation"": ""left_of""}",False,"```json
+{
+  ""target"": ""mustard bottle"",
+  ""reference"": ""raisin box"",
+  ""relation"": ""left of""
+}
+```"
+PB.initial.S3-C06-initial.S3-R-reference_late,placement,initial,S3,R,reference_late,delivered,stop,False,False,json_structure_single_item_array,json_structure_single_item_array,"{""target"": ""butter"", ""reference"": ""raisin_box"", ""relation"": ""left_of""}",False,"```json
+[
+  {""target"": ""butter box"", ""reference"": ""raisin box"", ""relation"": ""left_of""}
+]
+```"
+B.initial.S4-C03-initial.S4-L-S,original,initial,S4,L,TF,delivered,stop,False,False,object_and_relation_vocabulary,object_and_relation_vocabulary,"{""target"": ""mustard_bottle"", ""reference"": ""raisin_box"", ""relation"": ""left_of""}",True,"```json
+{
+  ""target"": ""mustard bottle"",
+  ""reference"": ""raisin box"",
+  ""relation"": ""left of""
+}
+```"
+B.initial.S4-C07-initial.S4-R-I,original,initial,S4,R,RF,delivered,stop,False,False,object_and_relation_vocabulary,object_and_relation_vocabulary,"{""target"": ""mustard_bottle"", ""reference"": ""raisin_box"", ""relation"": ""left_of""}",False,"```json
+{
+  ""target"": ""mustard bottle"",
+  ""reference"": ""raisin box"",
+  ""relation"": ""left of""
+}
+```"
+PB.initial.S4-C05-initial.S4-L-reference_late,placement,initial,S4,L,reference_late,delivered,stop,False,False,json_structure_single_item_array,json_structure_single_item_array,"{""target"": ""mustard_bottle"", ""reference"": ""raisin_box"", ""relation"": ""left_of""}",True,"```json
+[
+  {""target"": ""mustard bottle"", ""reference"": ""raisin box"", ""relation"": ""left_of""}
+]
+```"
+B.initial.S1-C07-initial.S1-F-D,original,initial,S1,F,DIR,delivered,stop,False,False,object_and_relation_vocabulary,object_and_relation_vocabulary,"{""target"": ""rubiks_cube"", ""reference"": ""bowl"", ""relation"": ""in_front_of""}",True,"```json
+{""target"": ""rubiks cube"", ""reference"": ""bowl"", ""relation"": ""in front of""}
+```"
+PB.initial.S3-C05-initial.S3-L-reference_late,placement,initial,S3,L,reference_late,delivered,stop,False,False,json_structure_single_item_array,json_structure_single_item_array,"{""target"": ""butter"", ""reference"": ""raisin_box"", ""relation"": ""left_of""}",True,"```json
+[
+  {""target"": ""butter box"", ""reference"": ""raisin box"", ""relation"": ""left_of""}
+]
+```"
+B.initial.S1-C05-initial.S1-R-S,original,initial,S1,R,TF,delivered,stop,False,False,json_structure_single_item_array,json_structure_single_item_array,"{""target"": ""rubiks_cube"", ""reference"": ""bowl"", ""relation"": ""right_of""}",True,"```json
+[
+  {""target"": ""rubiks_cube"", ""reference"": ""bowl"", ""relation"": ""right_of""}
+]
+```"
+PB.initial.S1-C05-initial.S1-F-reference_late,placement,initial,S1,F,reference_late,delivered,stop,False,False,json_structure_single_item_array,json_structure_single_item_array,"{""target"": ""rubiks_cube"", ""reference"": ""bowl"", ""relation"": ""left_of""}",False,"```json
+[
+  {""target"": ""rubiks_cube"", ""reference"": ""bowl"", ""relation"": ""left_of""}
+]
+```"
+B.initial.S4-C02-initial.S4-L-S,original,initial,S4,L,TF,delivered,stop,False,False,object_and_relation_vocabulary,object_and_relation_vocabulary,"{""target"": ""mustard_bottle"", ""reference"": ""raisin_box"", ""relation"": ""left_of""}",True,"```json
+{
+  ""target"": ""mustard bottle"",
+  ""reference"": ""raisin box"",
+  ""relation"": ""left of""
+}
+```"
+B.initial.S4-C05-initial.S4-TOP-S,original,initial,S4,TOP,TF,delivered,stop,False,False,json_structure_single_item_array,json_structure_single_item_array,"{""target"": ""mustard_bottle"", ""reference"": ""raisin_box"", ""relation"": ""on_top_supported""}",True,"```json
+[
+  {""target"": ""mustard bottle"", ""reference"": ""raisin box"", ""relation"": ""on top of""}
+]
+```"
+PB.initial.S4-C07-initial.S4-L-reference_early,placement,initial,S4,L,reference_early,delivered,stop,False,False,json_structure_single_item_array,json_structure_single_item_array,"{""target"": ""mustard_bottle"", ""reference"": ""raisin_box"", ""relation"": ""left_of""}",True,"```json
+[
+  {""target"": ""mustard bottle"", ""reference"": ""raisin box"", ""relation"": ""left of""}
+]
+```"
+B.initial.S1-C07-initial.S1-B-S,original,initial,S1,B,TF,delivered,stop,True,True,,strict_valid_correct,,,"```json
+{
+  ""target"": ""rubiks_cube"",
+  ""reference"": ""bowl"",
+  ""relation"": ""behind""
+}
+```"
+B.initial.S1-C07-initial.S1-R-D,original,initial,S1,R,DIR,delivered,stop,False,False,object_vocabulary,object_vocabulary,"{""target"": ""rubiks_cube"", ""reference"": ""bowl"", ""relation"": ""left_of""}",False,"```json
+{
+  ""target"": ""rubiks cube"",
+  ""reference"": ""bowl"",
+  ""relation"": ""left_of""
+}
+```"
+PB.initial.S1-C01-initial.S1-R-reference_early,placement,initial,S1,R,reference_early,delivered,stop,False,False,json_structure_single_item_array,json_structure_single_item_array,"{""target"": ""rubiks_cube"", ""reference"": ""bowl"", ""relation"": ""right_of""}",True,"```json
+[
+  {""target"": ""rubiks_cube"", ""reference"": ""bowl"", ""relation"": ""right_of""}
+]
+```"
+PB.initial.S4-C01-initial.S4-R-reference_early,placement,initial,S4,R,reference_early,delivered,stop,False,False,json_structure_single_item_array,json_structure_single_item_array,"{""target"": ""mustard_bottle"", ""reference"": ""raisin_box"", ""relation"": ""left_of""}",False,"```json
+[
+  {""target"": ""mustard bottle"", ""reference"": ""raisin box"", ""relation"": ""left of""}
+]
+```"
+B.initial.S1-C08-initial.S1-F-I,original,initial,S1,F,RF,delivered,stop,True,False,,strict_valid_incorrect,,,"```json
+{
+  ""target"": ""bowl"",
+  ""reference"": ""rubiks_cube"",
+  ""relation"": ""behind""
+}
+```"
+PB.initial.S1-C08-initial.S1-L-reference_late,placement,initial,S1,L,reference_late,delivered,stop,False,False,json_structure_single_item_array,json_structure_single_item_array,"{""target"": ""rubiks_cube"", ""reference"": ""bowl"", ""relation"": ""left_of""}",True,"```json
+[
+  {""target"": ""rubiks_cube"", ""reference"": ""bowl"", ""relation"": ""left_of""}
+]
+```"
+PB.initial.S1-C08-initial.S1-L-reference_early,placement,initial,S1,L,reference_early,delivered,stop,False,False,json_structure_single_item_array,json_structure_single_item_array,"{""target"": ""rubiks_cube"", ""reference"": ""bowl"", ""relation"": ""left_of""}",True,"```json
+[
+  {""target"": ""rubiks_cube"", ""reference"": ""bowl"", ""relation"": ""left_of""}
+]
+```"
+B.initial.S3-C06-initial.S3-L-I,original,initial,S3,L,RF,delivered,stop,False,False,object_and_relation_vocabulary,object_and_relation_vocabulary,"{""target"": ""butter"", ""reference"": ""raisin_box"", ""relation"": ""left_of""}",True,"```json
+{""target"": ""butter box"", ""reference"": ""raisin box"", ""relation"": ""left of""}
+```"
+B.initial.S1-C05-initial.S1-F-I,original,initial,S1,F,RF,delivered,stop,False,False,json_structure_single_item_array,json_structure_single_item_array,"{""target"": ""rubiks_cube"", ""reference"": ""bowl"", ""relation"": ""left_of""}",False,"```json
+[
+  {""target"": ""rubiks_cube"", ""reference"": ""bowl"", ""relation"": ""left_of""}
+]
+```"
+B.initial.S4-C02-initial.S4-L-D,original,initial,S4,L,DIR,delivered,stop,False,False,object_and_relation_vocabulary,object_and_relation_vocabulary,"{""target"": ""mustard_bottle"", ""reference"": ""raisin_box"", ""relation"": ""left_of""}",True,"```json
+{
+  ""target"": ""mustard bottle"",
+  ""reference"": ""raisin box"",
+  ""relation"": ""left of""
+}
+```"
+B.initial.S3-C08-initial.S3-TOP-I,original,initial,S3,TOP,RF,delivered,stop,False,False,object_and_relation_vocabulary,object_and_relation_vocabulary,"{""target"": ""butter"", ""reference"": ""raisin_box"", ""relation"": ""in_front_of""}",False,"```json
+{""target"": ""butter box"", ""reference"": ""raisin box"", ""relation"": ""in front of""}
+```"
+PB.initial.S1-C01-initial.S1-L-reference_late,placement,initial,S1,L,reference_late,delivered,stop,False,False,json_structure_single_item_array,json_structure_single_item_array,"{""target"": ""rubiks_cube"", ""reference"": ""bowl"", ""relation"": ""left_of""}",True,"```json
+[
+  {""target"": ""rubiks_cube"", ""reference"": ""bowl"", ""relation"": ""left_of""}
+]
+```"
+B.initial.S1-C01-initial.S1-B-D,original,initial,S1,B,DIR,delivered,stop,True,True,,strict_valid_correct,,,"```json
+{
+  ""target"": ""rubiks_cube"",
+  ""reference"": ""bowl"",
+  ""relation"": ""behind""
+}
+```"
+B.initial.S1-C02-initial.S1-L-D,original,initial,S1,L,DIR,delivered,stop,False,False,object_vocabulary,object_vocabulary,"{""target"": ""rubiks_cube"", ""reference"": ""bowl"", ""relation"": ""left_of""}",True,"```json
+{
+  ""target"": ""rubiks cube"",
+  ""reference"": ""bowl"",
+  ""relation"": ""left_of""
+}
+```"
+B.initial.S4-C08-initial.S4-TOP-D,original,initial,S4,TOP,DIR,delivered,stop,False,False,json_structure_single_item_array,json_structure_single_item_array,"{""target"": ""mustard_bottle"", ""reference"": ""raisin_box"", ""relation"": ""left_of""}",False,"```json
+[
+  {""target"": ""mustard bottle"", ""reference"": ""raisin box"", ""relation"": ""left of""}
+]
+```"
+PB.initial.S1-C05-initial.S1-L-reference_early,placement,initial,S1,L,reference_early,delivered,stop,False,False,json_structure_single_item_array,json_structure_single_item_array,"{""target"": ""rubiks_cube"", ""reference"": ""bowl"", ""relation"": ""left_of""}",True,"```json
+[
+  {""target"": ""rubiks_cube"", ""reference"": ""bowl"", ""relation"": ""left_of""}
+]
+```"
+B.initial.S3-C07-initial.S3-TOP-S,original,initial,S3,TOP,TF,delivered,stop,False,False,object_and_relation_vocabulary,object_and_relation_vocabulary,"{""target"": ""butter"", ""reference"": ""raisin_box"", ""relation"": ""stacked_on""}",False,"```json
+{""target"": ""butter box"", ""reference"": ""raisin box"", ""relation"": ""stacked on""}
+```"
+PB.initial.S1-C08-initial.S1-R-reference_early,placement,initial,S1,R,reference_early,delivered,stop,False,False,json_structure_single_item_array,json_structure_single_item_array,"{""target"": ""rubiks_cube"", ""reference"": ""bowl"", ""relation"": ""right_of""}",True,"```json
+[
+  {""target"": ""rubiks_cube"", ""reference"": ""bowl"", ""relation"": ""right_of""}
+]
+```"
+B.initial.S4-C03-initial.S4-TOP-I,original,initial,S4,TOP,RF,delivered,stop,False,False,json_structure_single_item_array,json_structure_single_item_array,"{""target"": ""mustard_bottle"", ""reference"": ""raisin_box"", ""relation"": ""left_of""}",False,"```json
+[
+  {""target"": ""mustard bottle"", ""reference"": ""raisin box"", ""relation"": ""left_of""}
+]
+```"
+PB.initial.S1-C02-initial.S1-L-reference_early,placement,initial,S1,L,reference_early,delivered,stop,False,False,json_structure_single_item_array,json_structure_single_item_array,"{""target"": ""rubiks_cube"", ""reference"": ""bowl"", ""relation"": ""left_of""}",True,"```json
+[
+  {""target"": ""rubiks_cube"", ""reference"": ""bowl"", ""relation"": ""left_of""}
+]
+```"
+B.initial.S3-C08-initial.S3-L-D,original,initial,S3,L,DIR,delivered,stop,False,False,object_vocabulary,object_vocabulary,"{""target"": ""butter"", ""reference"": ""raisin_box"", ""relation"": ""left_of""}",True,"```json
+{
+  ""target"": ""butter box"",
+  ""reference"": ""raisin box"",
+  ""relation"": ""left_of""
+}
+```"
+PB.initial.S1-C08-initial.S1-F-reference_late,placement,initial,S1,F,reference_late,delivered,stop,False,False,json_structure_single_item_array,json_structure_single_item_array,"{""target"": ""rubiks_cube"", ""reference"": ""bowl"", ""relation"": ""left_of""}",False,"```json
+[
+  {""target"": ""rubiks_cube"", ""reference"": ""bowl"", ""relation"": ""left_of""}
+]
+```"
+B.initial.S3-C07-initial.S3-R-I,original,initial,S3,R,RF,delivered,stop,False,False,object_and_relation_vocabulary,object_and_relation_vocabulary,"{""target"": ""butter"", ""reference"": ""raisin_box"", ""relation"": ""left_of""}",False,"```json
+{""target"": ""butter box"", ""reference"": ""raisin box"", ""relation"": ""left of""}
+```"
+B.initial.S3-C06-initial.S3-TOP-D,original,initial,S3,TOP,DIR,delivered,stop,False,False,object_vocabulary,object_vocabulary,"{""target"": ""butter"", ""reference"": ""raisin_box"", ""relation"": ""left_of""}",False,"```json
+{
+  ""target"": ""butter box"",
+  ""reference"": ""raisin box"",
+  ""relation"": ""left_of""
+}
+```"
+B.initial.S1-C02-initial.S1-B-I,original,initial,S1,B,RF,delivered,stop,False,False,json_structure_single_item_array,json_structure_single_item_array,"{""target"": ""bowl"", ""reference"": ""rubiks_cube"", ""relation"": ""left_of""}",False,"```json
+[
+  {""target"": ""bowl"", ""reference"": ""Rubik's cube"", ""relation"": ""left_of""}
+]
+```"
+B.initial.S3-C03-initial.S3-L-S,original,initial,S3,L,TF,delivered,stop,False,False,object_and_relation_vocabulary,object_and_relation_vocabulary,"{""target"": ""butter"", ""reference"": ""raisin_box"", ""relation"": ""left_of""}",True,"```json
+{""target"": ""butter box"", ""reference"": ""raisin box"", ""relation"": ""left of""}
+```"
+PB.initial.S1-C03-initial.S1-B-reference_early,placement,initial,S1,B,reference_early,delivered,stop,False,False,json_structure_single_item_array,json_structure_single_item_array,"{""target"": ""rubiks_cube"", ""reference"": ""bowl"", ""relation"": ""behind""}",True,"```json
+[
+  {""target"": ""rubiks_cube"", ""reference"": ""bowl"", ""relation"": ""behind""}
+]
+```"
+PB.initial.S1-C05-initial.S1-F-reference_early,placement,initial,S1,F,reference_early,delivered,stop,False,False,json_structure_single_item_array,json_structure_single_item_array,"{""target"": ""rubiks_cube"", ""reference"": ""bowl"", ""relation"": ""left_of""}",False,"```json
+[
+  {""target"": ""rubiks_cube"", ""reference"": ""bowl"", ""relation"": ""left_of""}
+]
+```"
+PB.initial.S1-C02-initial.S1-R-reference_late,placement,initial,S1,R,reference_late,delivered,stop,False,False,json_structure_single_item_array,json_structure_single_item_array,"{""target"": ""rubiks_cube"", ""reference"": ""bowl"", ""relation"": ""left_of""}",False,"```json
+[
+  {""target"": ""rubiks_cube"", ""reference"": ""bowl"", ""relation"": ""left_of""}
+]
+```"
+B.initial.S3-C04-initial.S3-R-D,original,initial,S3,R,DIR,delivered,stop,False,False,object_vocabulary,object_vocabulary,"{""target"": ""butter"", ""reference"": ""raisin_box"", ""relation"": ""left_of""}",False,"```json
+{
+  ""target"": ""butter box"",
+  ""reference"": ""raisin box"",
+  ""relation"": ""left_of""
+}
+```"
+B.no_image.S4-TOP-I,original,no_image,S4,TOP,RF,delivered,stop,False,False,object_vocabulary,object_vocabulary,"{""target"": ""mustard_bottle"", ""reference"": ""raisin_box"", ""relation"": ""on_top_supported""}",True,"```json
+{""target"": ""mustard bottle"", ""reference"": ""raisin box"", ""relation"": ""on_top_supported""}
+```"
+PB.initial.S1-C07-initial.S1-R-reference_late,placement,initial,S1,R,reference_late,delivered,stop,False,False,json_structure_single_item_array,json_structure_single_item_array,"{""target"": ""rubiks_cube"", ""reference"": ""bowl"", ""relation"": ""right_of""}",True,"```json
+[
+  {""target"": ""rubiks_cube"", ""reference"": ""bowl"", ""relation"": ""right_of""}
+]
+```"
+B.initial.S1-C04-initial.S1-L-I,original,initial,S1,L,RF,delivered,stop,False,False,json_structure_single_item_array,json_structure_single_item_array,"{""target"": ""bowl"", ""reference"": ""rubiks_cube"", ""relation"": ""left_of""}",False,"```json
+[
+  {""target"": ""bowl"", ""reference"": ""rubiks cube"", ""relation"": ""left_of""}
+]
+```"
+PB.no_image.S3-R-reference_early,placement,no_image,S3,R,reference_early,delivered,stop,False,False,object_vocabulary,object_vocabulary,"{""target"": ""butter"", ""reference"": ""raisin_box"", ""relation"": ""right_of""}",True,"```json
+{""target"": ""butter box"", ""reference"": ""raisin box"", ""relation"": ""right_of""}
+```"
+B.initial.S1-C08-initial.S1-B-I,original,initial,S1,B,RF,delivered,stop,True,False,,strict_valid_incorrect,,,"```json
+{""target"": ""rubiks_cube"", ""reference"": ""bowl"", ""relation"": ""left_of""}
+```"
+PB.initial.S3-C05-initial.S3-R-reference_early,placement,initial,S3,R,reference_early,delivered,stop,False,False,json_structure_single_item_array,json_structure_single_item_array,"{""target"": ""butter"", ""reference"": ""raisin_box"", ""relation"": ""left_of""}",False,"```json
+[
+  {""target"": ""butter box"", ""reference"": ""raisin box"", ""relation"": ""left_of""}
+]
+```"
+B.initial.S4-C02-initial.S4-R-I,original,initial,S4,R,RF,delivered,stop,False,False,object_and_relation_vocabulary,object_and_relation_vocabulary,"{""target"": ""mustard_bottle"", ""reference"": ""raisin_box"", ""relation"": ""left_of""}",False,"```json
+{
+  ""target"": ""mustard bottle"",
+  ""reference"": ""raisin box"",
+  ""relation"": ""left of""
+}
+```"
+PB.initial.S1-C01-initial.S1-L-reference_early,placement,initial,S1,L,reference_early,delivered,stop,False,False,json_structure_single_item_array,json_structure_single_item_array,"{""target"": ""rubiks_cube"", ""reference"": ""bowl"", ""relation"": ""left_of""}",True,"```json
+[
+  {""target"": ""rubiks_cube"", ""reference"": ""bowl"", ""relation"": ""left_of""}
+]
+```"
+PB.initial.S4-C03-initial.S4-R-reference_early,placement,initial,S4,R,reference_early,delivered,stop,False,False,json_structure_single_item_array,json_structure_single_item_array,"{""target"": ""mustard_bottle"", ""reference"": ""raisin_box"", ""relation"": ""left_of""}",False,"```json
+[
+  {""target"": ""mustard bottle"", ""reference"": ""raisin box"", ""relation"": ""left of""}
+]
+```"
+B.no_image.S4-TOP-D,original,no_image,S4,TOP,DIR,delivered,stop,False,False,object_vocabulary,object_vocabulary,"{""target"": ""mustard_bottle"", ""reference"": ""mustard_bottle"", ""relation"": ""left_of""}",False,"{""target"": ""mustard"", ""reference"": ""mustard_bottle"", ""relation"": ""left_of""}"
+B.initial.S3-C04-initial.S3-L-I,original,initial,S3,L,RF,delivered,stop,False,False,object_and_relation_vocabulary,object_and_relation_vocabulary,"{""target"": ""butter"", ""reference"": ""raisin_box"", ""relation"": ""left_of""}",True,"```json
+{""target"": ""butter box"", ""reference"": ""raisin box"", ""relation"": ""left of""}
+```"
+PB.initial.S1-C05-initial.S1-R-reference_early,placement,initial,S1,R,reference_early,delivered,stop,False,False,json_structure_single_item_array,json_structure_single_item_array,"{""target"": ""rubiks_cube"", ""reference"": ""bowl"", ""relation"": ""right_of""}",True,"```json
+[
+  {""target"": ""rubiks_cube"", ""reference"": ""bowl"", ""relation"": ""right_of""}
+]
+```"
+B.no_image.S3-TOP-D,original,no_image,S3,TOP,DIR,delivered,stop,False,False,object_vocabulary,object_vocabulary,"{""target"": ""butter"", ""reference"": ""raisin_box"", ""relation"": ""left_of""}",False,"{""target"": ""butter box"", ""reference"": ""raisin box"", ""relation"": ""left_of""}"
+B.initial.S1-C02-initial.S1-R-S,original,initial,S1,R,TF,delivered,stop,False,False,json_structure_single_item_array,json_structure_single_item_array,"{""target"": ""rubiks_cube"", ""reference"": ""bowl"", ""relation"": ""right_of""}",True,"```json
+[
+  {""target"": ""rubiks_cube"", ""reference"": ""bowl"", ""relation"": ""right_of""}
+]
+```"
+B.initial.S4-C07-initial.S4-L-S,original,initial,S4,L,TF,delivered,stop,False,False,object_and_relation_vocabulary,object_and_relation_vocabulary,"{""target"": ""mustard_bottle"", ""reference"": ""raisin_box"", ""relation"": ""left_of""}",True,"```json
+{
+  ""target"": ""mustard bottle"",
+  ""reference"": ""raisin box"",
+  ""relation"": ""left of""
+}
+```"
+B.initial.S3-C05-initial.S3-R-S,original,initial,S3,R,TF,delivered,stop,False,False,object_and_relation_vocabulary,object_and_relation_vocabulary,"{""target"": ""butter"", ""reference"": ""raisin_box"", ""relation"": ""left_of""}",False,"```json
+{
+  ""target"": ""butter box"",
+  ""reference"": ""raisin box"",
+  ""relation"": ""left of""
+}
+```"
+B.initial.S4-C03-initial.S4-L-I,original,initial,S4,L,RF,delivered,stop,False,False,object_and_relation_vocabulary,object_and_relation_vocabulary,"{""target"": ""mustard_bottle"", ""reference"": ""raisin_box"", ""relation"": ""left_of""}",True,"```json
+{
+  ""target"": ""mustard bottle"",
+  ""reference"": ""raisin box"",
+  ""relation"": ""left of""
+}
+```"
+B.initial.S4-C07-initial.S4-R-S,original,initial,S4,R,TF,delivered,stop,False,False,object_and_relation_vocabulary,object_and_relation_vocabulary,"{""target"": ""mustard_bottle"", ""reference"": ""raisin_box"", ""relation"": ""left_of""}",False,"```json
+{
+  ""target"": ""mustard bottle"",
+  ""reference"": ""raisin box"",
+  ""relation"": ""left of""
+}
+```"
+B.initial.S4-C04-initial.S4-TOP-D,original,initial,S4,TOP,DIR,delivered,stop,True,False,,strict_valid_incorrect,,,"```json
+{""target"": ""mustard_bottle"", ""reference"": ""raisin_box"", ""relation"": ""left_of""}
+```"
+PB.initial.S1-C07-initial.S1-L-reference_late,placement,initial,S1,L,reference_late,delivered,stop,False,False,json_structure_single_item_array,json_structure_single_item_array,"{""target"": ""rubiks_cube"", ""reference"": ""bowl"", ""relation"": ""left_of""}",True,"```json
+[
+  {""target"": ""rubiks_cube"", ""reference"": ""bowl"", ""relation"": ""left_of""}
+]
+```"
+B.initial.S3-C06-initial.S3-TOP-I,original,initial,S3,TOP,RF,delivered,stop,False,False,object_and_relation_vocabulary,object_and_relation_vocabulary,"{""target"": ""butter"", ""reference"": ""raisin_box"", ""relation"": ""in_front_of""}",False,"```json
+{""target"": ""butter box"", ""reference"": ""raisin box"", ""relation"": ""in front of""}
+```"
+B.initial.S1-C07-initial.S1-F-S,original,initial,S1,F,TF,delivered,stop,False,False,json_structure_single_item_array,json_structure_single_item_array,"{""target"": ""rubiks_cube"", ""reference"": ""bowl"", ""relation"": ""in_front_of""}",True,"```json
+[
+  {""target"": ""rubiks_cube"", ""reference"": ""bowl"", ""relation"": ""in_front_of""}
+]
+```"
+B.initial.S3-C03-initial.S3-R-I,original,initial,S3,R,RF,delivered,stop,False,False,object_and_relation_vocabulary,object_and_relation_vocabulary,"{""target"": ""butter"", ""reference"": ""raisin_box"", ""relation"": ""left_of""}",False,"```json
+{""target"": ""butter box"", ""reference"": ""raisin box"", ""relation"": ""left of""}
+```"
+PB.initial.S3-C07-initial.S3-L-reference_late,placement,initial,S3,L,reference_late,delivered,stop,False,False,json_structure_single_item_array,json_structure_single_item_array,"{""target"": ""butter"", ""reference"": ""raisin_box"", ""relation"": ""right_of""}",False,"```json
+[
+  {""target"": ""butter box"", ""reference"": ""raisin box"", ""relation"": ""right of""}
+]
+```"
+B.no_image.S4-L-D,original,no_image,S4,L,DIR,delivered,stop,True,True,,strict_valid_correct,,,"```json
+{
+  ""target"": ""mustard_bottle"",
+  ""reference"": ""raisin_box"",
+  ""relation"": ""left_of""
+}
+```"
+B.no_image.S1-B-S,original,no_image,S1,B,TF,delivered,stop,True,True,,strict_valid_correct,,,"```json
+{""target"": ""rubiks_cube"", ""reference"": ""bowl"", ""relation"": ""behind""}
+```"
+B.initial.S4-C04-initial.S4-TOP-S,original,initial,S4,TOP,TF,delivered,stop,False,False,json_structure_single_item_array,json_structure_single_item_array,"{""target"": ""mustard_bottle"", ""reference"": ""raisin_box"", ""relation"": ""on_top_supported""}",True,"```json
+[
+  {""target"": ""mustard bottle"", ""reference"": ""raisin box"", ""relation"": ""on top of""}
+]
+```"
+B.initial.S1-C01-initial.S1-B-S,original,initial,S1,B,TF,delivered,stop,True,True,,strict_valid_correct,,,"```json
+{
+  ""target"": ""rubiks_cube"",
+  ""reference"": ""bowl"",
+  ""relation"": ""behind""
+}
+```"
+B.initial.S3-C08-initial.S3-R-I,original,initial,S3,R,RF,delivered,stop,False,False,json_structure_single_item_array,json_structure_single_item_array,"{""target"": ""butter"", ""reference"": ""raisin_box"", ""relation"": ""left_of""}",False,"```json
+[
+  {""target"": ""butter box"", ""reference"": ""raisin box"", ""relation"": ""left of""}
+]
+```"
+B.initial.S1-C06-initial.S1-B-S,original,initial,S1,B,TF,delivered,stop,False,False,json_structure_single_item_array,json_structure_single_item_array,"{""target"": ""rubiks_cube"", ""reference"": ""bowl"", ""relation"": ""behind""}",True,"```json
+[
+  {""target"": ""rubiks_cube"", ""reference"": ""bowl"", ""relation"": ""behind""}
+]
+```"
+B.initial.S4-C04-initial.S4-L-S,original,initial,S4,L,TF,delivered,stop,False,False,object_and_relation_vocabulary,object_and_relation_vocabulary,"{""target"": ""mustard_bottle"", ""reference"": ""raisin_box"", ""relation"": ""left_of""}",True,"```json
+{
+  ""target"": ""mustard bottle"",
+  ""reference"": ""raisin box"",
+  ""relation"": ""left of""
+}
+```"
+B.no_image.S3-R-D,original,no_image,S3,R,DIR,delivered,stop,False,False,object_vocabulary,object_vocabulary,"{""target"": ""butter"", ""reference"": ""raisin_box"", ""relation"": ""right_of""}",True,"```json
+{""target"": ""butter box"", ""reference"": ""raisin box"", ""relation"": ""right_of""}
+```"
+B.initial.S4-C04-initial.S4-R-I,original,initial,S4,R,RF,delivered,stop,False,False,object_and_relation_vocabulary,object_and_relation_vocabulary,"{""target"": ""mustard_bottle"", ""reference"": ""raisin_box"", ""relation"": ""left_of""}",False,"```json
+{
+  ""target"": ""mustard bottle"",
+  ""reference"": ""raisin box"",
+  ""relation"": ""left of""
+}
+```"
+B.initial.S1-C03-initial.S1-L-D,original,initial,S1,L,DIR,delivered,stop,False,False,object_vocabulary,object_vocabulary,"{""target"": ""rubiks_cube"", ""reference"": ""bowl"", ""relation"": ""left_of""}",True,"```json
+{""target"": ""rubiks cube"", ""reference"": ""bowl"", ""relation"": ""left_of""}
+```"
+B.initial.S4-C06-initial.S4-L-I,original,initial,S4,L,RF,delivered,stop,False,False,object_and_relation_vocabulary,object_and_relation_vocabulary,"{""target"": ""mustard_bottle"", ""reference"": ""raisin_box"", ""relation"": ""left_of""}",True,"```json
+{
+  ""target"": ""mustard bottle"",
+  ""reference"": ""raisin box"",
+  ""relation"": ""left of""
+}
+```"
+B.initial.S3-C03-initial.S3-TOP-D,original,initial,S3,TOP,DIR,delivered,stop,False,False,json_structure_single_item_array,json_structure_single_item_array,"{""target"": ""butter"", ""reference"": ""raisin_box"", ""relation"": ""left_of""}",False,"```json
+[
+  {""target"": ""butter box"", ""reference"": ""raisin box"", ""relation"": ""left_of""}
+]
+```"
+B.initial.S3-C07-initial.S3-L-S,original,initial,S3,L,TF,delivered,stop,False,False,object_and_relation_vocabulary,object_and_relation_vocabulary,"{""target"": ""butter"", ""reference"": ""raisin_box"", ""relation"": ""left_of""}",True,"```json
+{""target"": ""butter box"", ""reference"": ""raisin box"", ""relation"": ""left of""}
+```"
+B.no_image.S1-F-I,original,no_image,S1,F,RF,delivered,stop,False,False,object_vocabulary,object_vocabulary,"{""target"": ""bowl"", ""reference"": ""rubiks_cube"", ""relation"": ""left_of""}",False,"```json
+{""target"": ""bowl"", ""reference"": ""Rubik's cube"", ""relation"": ""left_of""}
+```"
+PB.no_image.S3-L-reference_late,placement,no_image,S3,L,reference_late,delivered,stop,False,False,object_vocabulary,object_vocabulary,"{""target"": ""butter"", ""reference"": ""raisin_box"", ""relation"": ""left_of""}",True,"```json
+{""target"": ""butter box"", ""reference"": ""raisin box"", ""relation"": ""left_of""}
+```"
+B.initial.S4-C08-initial.S4-L-D,original,initial,S4,L,DIR,delivered,stop,False,False,object_and_relation_vocabulary,object_and_relation_vocabulary,"{""target"": ""mustard_bottle"", ""reference"": ""raisin_box"", ""relation"": ""left_of""}",True,"```json
+{
+  ""target"": ""mustard bottle"",
+  ""reference"": ""raisin box"",
+  ""relation"": ""left of""
+}
+```"
+B.initial.S1-C06-initial.S1-R-S,original,initial,S1,R,TF,delivered,stop,False,False,json_structure_single_item_array,json_structure_single_item_array,"{""target"": ""rubiks_cube"", ""reference"": ""bowl"", ""relation"": ""right_of""}",True,"```json
+[
+  {""target"": ""rubiks_cube"", ""reference"": ""bowl"", ""relation"": ""right_of""}
+]
+```"
+PB.initial.S3-C02-initial.S3-L-reference_late,placement,initial,S3,L,reference_late,delivered,stop,False,False,json_structure_single_item_array,json_structure_single_item_array,"{""target"": ""butter"", ""reference"": ""raisin_box"", ""relation"": ""left_of""}",True,"```json
+[
+  {""target"": ""butter box"", ""reference"": ""raisin box"", ""relation"": ""left_of""}
+]
+```"
+B.initial.S3-C05-initial.S3-TOP-S,original,initial,S3,TOP,TF,delivered,stop,False,False,object_and_relation_vocabulary,object_and_relation_vocabulary,"{""target"": ""butter"", ""reference"": ""raisin_box"", ""relation"": ""on_top_supported""}",True,"```json
+{
+  ""target"": ""butter box"",
+  ""reference"": ""raisin box"",
+  ""relation"": ""on top of""
+}
+```"
+PB.initial.S4-C06-initial.S4-R-reference_early,placement,initial,S4,R,reference_early,delivered,stop,False,False,json_structure_single_item_array,json_structure_single_item_array,"{""target"": ""mustard_bottle"", ""reference"": ""raisin_box"", ""relation"": ""left_of""}",False,"```json
+[
+  {""target"": ""mustard_bottle"", ""reference"": ""raisin_box"", ""relation"": ""left_of""}
+]
+```"
+PB.initial.S1-C04-initial.S1-F-reference_late,placement,initial,S1,F,reference_late,delivered,stop,False,False,json_structure_single_item_array,json_structure_single_item_array,"{""target"": ""rubiks_cube"", ""reference"": ""bowl"", ""relation"": ""in_front_of""}",True,"```json
+[
+  {""target"": ""rubiks_cube"", ""reference"": ""bowl"", ""relation"": ""in_front_of""}
+]
+```"
+B.initial.S4-C06-initial.S4-R-I,original,initial,S4,R,RF,delivered,stop,False,False,object_and_relation_vocabulary,object_and_relation_vocabulary,"{""target"": ""mustard_bottle"", ""reference"": ""raisin_box"", ""relation"": ""left_of""}",False,"```json
+{
+  ""target"": ""mustard bottle"",
+  ""reference"": ""raisin box"",
+  ""relation"": ""left of""
+}
+```"
+B.initial.S1-C06-initial.S1-B-D,original,initial,S1,B,DIR,delivered,stop,False,False,object_vocabulary,object_vocabulary,"{""target"": ""rubiks_cube"", ""reference"": ""bowl"", ""relation"": ""left_of""}",False,"```json
+{
+  ""target"": ""rubiks cube"",
+  ""reference"": ""bowl"",
+  ""relation"": ""left_of""
+}
+```"
+PB.no_image.S4-R-reference_late,placement,no_image,S4,R,reference_late,delivered,stop,True,False,,strict_valid_incorrect,,,"```json
+{""target"": ""mustard_bottle"", ""reference"": ""raisin_box"", ""relation"": ""left_of""}
+```"
+B.initial.S1-C06-initial.S1-B-I,original,initial,S1,B,RF,delivered,stop,False,False,json_structure_single_item_array,json_structure_single_item_array,"{""target"": ""bowl"", ""reference"": ""rubiks_cube"", ""relation"": ""left_of""}",False,"```json
+[
+  {""target"": ""bowl"", ""reference"": ""rubiks cube"", ""relation"": ""left of""}
+]
+```"
+PB.initial.S1-C06-initial.S1-F-reference_late,placement,initial,S1,F,reference_late,delivered,stop,False,False,json_structure_single_item_array,json_structure_single_item_array,"{""target"": ""rubiks_cube"", ""reference"": ""bowl"", ""relation"": ""left_of""}",False,"```json
+[
+  {""target"": ""rubiks_cube"", ""reference"": ""bowl"", ""relation"": ""left_of""}
+]
+```"
+B.initial.S1-C04-initial.S1-L-D,original,initial,S1,L,DIR,delivered,stop,False,False,object_vocabulary,object_vocabulary,"{""target"": ""rubiks_cube"", ""reference"": ""bowl"", ""relation"": ""left_of""}",True,"```json
+{
+  ""target"": ""rubiks cube"",
+  ""reference"": ""bowl"",
+  ""relation"": ""left_of""
+}
+```"
+PB.initial.S1-C01-initial.S1-R-reference_late,placement,initial,S1,R,reference_late,delivered,stop,False,False,json_structure_single_item_array,json_structure_single_item_array,"{""target"": ""rubiks_cube"", ""reference"": ""bowl"", ""relation"": ""right_of""}",True,"```json
+[
+  {""target"": ""rubiks_cube"", ""reference"": ""bowl"", ""relation"": ""right_of""}
+]
+```"
+PB.initial.S3-C01-initial.S3-R-reference_late,placement,initial,S3,R,reference_late,delivered,stop,False,False,json_structure_single_item_array,json_structure_single_item_array,"{""target"": ""butter"", ""reference"": ""raisin_box"", ""relation"": ""left_of""}",False,"```json
+[
+  {""target"": ""butter box"", ""reference"": ""raisin box"", ""relation"": ""left_of""}
+]
+```"
+PB.initial.S1-C02-initial.S1-F-reference_late,placement,initial,S1,F,reference_late,delivered,stop,False,False,json_structure_single_item_array,json_structure_single_item_array,"{""target"": ""rubiks_cube"", ""reference"": ""bowl"", ""relation"": ""left_of""}",False,"```json
+[
+  {""target"": ""rubiks_cube"", ""reference"": ""bowl"", ""relation"": ""left_of""}
+]
+```"
+PB.no_image.S1-B-reference_early,placement,no_image,S1,B,reference_early,delivered,stop,False,False,object_vocabulary,object_vocabulary,"{""target"": ""rubiks_cube"", ""reference"": ""bowl"", ""relation"": ""left_of""}",False,"```json
+{""target"": ""Rubik's cube"", ""reference"": ""bowl"", ""relation"": ""left_of""}
+```"
+B.initial.S3-C02-initial.S3-L-S,original,initial,S3,L,TF,delivered,stop,False,False,object_and_relation_vocabulary,object_and_relation_vocabulary,"{""target"": ""butter"", ""reference"": ""raisin_box"", ""relation"": ""left_of""}",True,"```json
+{
+  ""target"": ""butter box"",
+  ""reference"": ""raisin box"",
+  ""relation"": ""left of""
+}
+```"
+PB.initial.S3-C03-initial.S3-L-reference_early,placement,initial,S3,L,reference_early,delivered,stop,False,False,json_structure_single_item_array,json_structure_single_item_array,"{""target"": ""butter"", ""reference"": ""raisin_box"", ""relation"": ""left_of""}",True,"```json
+[
+  {""target"": ""butter box"", ""reference"": ""raisin box"", ""relation"": ""left_of""}
+]
+```"
+PB.no_image.S4-R-reference_early,placement,no_image,S4,R,reference_early,delivered,stop,True,True,,strict_valid_correct,,,"```json
+{""target"": ""mustard_bottle"", ""reference"": ""raisin_box"", ""relation"": ""right_of""}
+```"
+B.initial.S1-C02-initial.S1-F-I,original,initial,S1,F,RF,delivered,stop,False,False,json_structure_single_item_array,json_structure_single_item_array,"{""target"": ""bowl"", ""reference"": ""rubiks_cube"", ""relation"": ""left_of""}",False,"```json
+[
+  {""target"": ""bowl"", ""reference"": ""rubiks cube"", ""relation"": ""left_of""}
+]
+```"
+B.initial.S1-C02-initial.S1-B-D,original,initial,S1,B,DIR,delivered,stop,False,False,object_vocabulary,object_vocabulary,"{""target"": ""rubiks_cube"", ""reference"": ""bowl"", ""relation"": ""left_of""}",False,"```json
+{
+  ""target"": ""rubiks cube"",
+  ""reference"": ""bowl"",
+  ""relation"": ""left_of""
+}
+```"
+PB.initial.S4-C02-initial.S4-L-reference_late,placement,initial,S4,L,reference_late,delivered,stop,False,False,json_structure_single_item_array,json_structure_single_item_array,"{""target"": ""mustard_bottle"", ""reference"": ""raisin_box"", ""relation"": ""left_of""}",True,"```json
+[
+  {""target"": ""mustard bottle"", ""reference"": ""raisin box"", ""relation"": ""left_of""}
+]
+```"
+B.initial.S1-C04-initial.S1-L-S,original,initial,S1,L,TF,delivered,stop,False,False,json_structure_single_item_array,json_structure_single_item_array,"{""target"": ""rubiks_cube"", ""reference"": ""bowl"", ""relation"": ""left_of""}",True,"```json
+[
+  {""target"": ""rubiks_cube"", ""reference"": ""bowl"", ""relation"": ""left_of""}
+]
+```"
+B.initial.S1-C02-initial.S1-L-I,original,initial,S1,L,RF,delivered,stop,False,False,json_structure_single_item_array,json_structure_single_item_array,"{""target"": ""bowl"", ""reference"": ""rubiks_cube"", ""relation"": ""left_of""}",False,"```json
+[
+  {""target"": ""bowl"", ""reference"": ""rubiks cube"", ""relation"": ""left_of""}
+]
+```"
+B.initial.S3-C03-initial.S3-L-D,original,initial,S3,L,DIR,delivered,stop,False,False,object_vocabulary,object_vocabulary,"{""target"": ""butter"", ""reference"": ""raisin_box"", ""relation"": ""left_of""}",True,"```json
+{
+  ""target"": ""butter box"",
+  ""reference"": ""raisin box"",
+  ""relation"": ""left_of""
+}
+```"
+PB.initial.S4-C04-initial.S4-R-reference_early,placement,initial,S4,R,reference_early,delivered,stop,False,False,json_structure_single_item_array,json_structure_single_item_array,"{""target"": ""mustard_bottle"", ""reference"": ""raisin_box"", ""relation"": ""left_of""}",False,"```json
+[
+  {""target"": ""mustard bottle"", ""reference"": ""raisin box"", ""relation"": ""left of""}
+]
+```"
+PB.initial.S4-C06-initial.S4-R-reference_late,placement,initial,S4,R,reference_late,delivered,stop,False,False,json_structure_single_item_array,json_structure_single_item_array,"{""target"": ""mustard_bottle"", ""reference"": ""raisin_box"", ""relation"": ""left_of""}",False,"```json
+[
+  {""target"": ""mustard bottle"", ""reference"": ""raisin box"", ""relation"": ""left of""}
+]
+```"
+B.initial.S1-C05-initial.S1-R-D,original,initial,S1,R,DIR,delivered,stop,False,False,object_vocabulary,object_vocabulary,"{""target"": ""rubiks_cube"", ""reference"": ""bowl"", ""relation"": ""left_of""}",False,"```json
+{""target"": ""rubiks cube"", ""reference"": ""bowl"", ""relation"": ""left_of""}
+```"
+B.initial.S3-C03-initial.S3-L-I,original,initial,S3,L,RF,delivered,stop,False,False,object_and_relation_vocabulary,object_and_relation_vocabulary,"{""target"": ""butter"", ""reference"": ""raisin_box"", ""relation"": ""left_of""}",True,"```json
+{""target"": ""butter box"", ""reference"": ""raisin box"", ""relation"": ""left of""}
+```"
+B.initial.S1-C08-initial.S1-R-D,original,initial,S1,R,DIR,delivered,stop,False,False,object_vocabulary,object_vocabulary,"{""target"": ""rubiks_cube"", ""reference"": ""bowl"", ""relation"": ""right_of""}",True,"```json
+{""target"": ""rubiks cube"", ""reference"": ""bowl"", ""relation"": ""right_of""}
+```"
+PB.no_image.S3-R-reference_late,placement,no_image,S3,R,reference_late,delivered,stop,False,False,object_vocabulary,object_vocabulary,"{""target"": ""butter"", ""reference"": ""raisin_box"", ""relation"": ""right_of""}",True,"```json
+{""target"": ""butter box"", ""reference"": ""raisin box"", ""relation"": ""right_of""}
+```"
+PB.initial.S4-C05-initial.S4-R-reference_early,placement,initial,S4,R,reference_early,delivered,stop,False,False,json_structure_single_item_array,json_structure_single_item_array,"{""target"": ""mustard_bottle"", ""reference"": ""raisin_box"", ""relation"": ""left_of""}",False,"```json
+[
+  {""target"": ""mustard bottle"", ""reference"": ""raisin box"", ""relation"": ""left of""}
+]
+```"
+B.initial.S3-C03-initial.S3-TOP-I,original,initial,S3,TOP,RF,delivered,stop,False,False,object_and_relation_vocabulary,object_and_relation_vocabulary,"{""target"": ""butter"", ""reference"": ""raisin_box"", ""relation"": ""in_front_of""}",False,"```json
+{""target"": ""butter box"", ""reference"": ""raisin box"", ""relation"": ""in front of""}
+```"
+B.no_image.S3-TOP-I,original,no_image,S3,TOP,RF,delivered,stop,False,False,object_vocabulary,object_vocabulary,,,"```json
+{
+  ""target"": ""butter_box"",
+  ""reference"": ""raisin_box"",
+  ""relation"": ""left_of""
+}
+```"
+B.initial.S1-C05-initial.S1-L-I,original,initial,S1,L,RF,delivered,stop,False,False,json_structure_single_item_array,json_structure_single_item_array,"{""target"": ""rubiks_cube"", ""reference"": ""bowl"", ""relation"": ""left_of""}",True,"```json
+[
+  {""target"": ""rubiks_cube"", ""reference"": ""bowl"", ""relation"": ""left_of""}
+]
+```"
+B.initial.S1-C07-initial.S1-B-I,original,initial,S1,B,RF,delivered,stop,False,False,json_structure_single_item_array,json_structure_single_item_array,"{""target"": ""rubiks_cube"", ""reference"": ""bowl"", ""relation"": ""left_of""}",False,"```json
+[
+  {""target"": ""rubiks_cube"", ""reference"": ""bowl"", ""relation"": ""left_of""}
+]
+```"
+B.no_image.S3-TOP-S,original,no_image,S3,TOP,TF,delivered,stop,False,False,object_vocabulary,object_vocabulary,"{""target"": ""butter"", ""reference"": ""raisin_box"", ""relation"": ""on_top_supported""}",True,"```json
+{""target"": ""butter box"", ""reference"": ""raisin box"", ""relation"": ""on_top_supported""}
+```"
+PB.initial.S1-C04-initial.S1-F-reference_early,placement,initial,S1,F,reference_early,delivered,stop,False,False,json_structure_single_item_array,json_structure_single_item_array,"{""target"": ""rubiks_cube"", ""reference"": ""bowl"", ""relation"": ""right_of""}",False,"```json
+[
+  {""target"": ""rubiks_cube"", ""reference"": ""bowl"", ""relation"": ""right_of""}
+]
+```"
+PB.initial.S1-C01-initial.S1-F-reference_early,placement,initial,S1,F,reference_early,delivered,stop,False,False,json_structure_single_item_array,json_structure_single_item_array,"{""target"": ""rubiks_cube"", ""reference"": ""bowl"", ""relation"": ""left_of""}",False,"```json
+[
+  {""target"": ""rubiks_cube"", ""reference"": ""bowl"", ""relation"": ""left_of""}
+]
+```"
+PB.no_image.S4-L-reference_early,placement,no_image,S4,L,reference_early,delivered,stop,True,True,,strict_valid_correct,,,"```json
+{""target"": ""mustard_bottle"", ""reference"": ""raisin_box"", ""relation"": ""left_of""}
+```"
+PB.initial.S1-C02-initial.S1-F-reference_early,placement,initial,S1,F,reference_early,delivered,stop,False,False,json_structure_single_item_array,json_structure_single_item_array,"{""target"": ""rubiks_cube"", ""reference"": ""bowl"", ""relation"": ""right_of""}",False,"```json
+[
+  {""target"": ""rubiks_cube"", ""reference"": ""bowl"", ""relation"": ""right_of""}
+]
+```"
+B.initial.S1-C03-initial.S1-L-I,original,initial,S1,L,RF,delivered,stop,False,False,json_structure_single_item_array,json_structure_single_item_array,"{""target"": ""bowl"", ""reference"": ""rubiks_cube"", ""relation"": ""left_of""}",False,"```json
+[
+  {""target"": ""bowl"", ""reference"": ""rubiks cube"", ""relation"": ""left_of""}
+]
+```"
+B.initial.S3-C04-initial.S3-L-S,original,initial,S3,L,TF,delivered,stop,False,False,object_and_relation_vocabulary,object_and_relation_vocabulary,"{""target"": ""butter"", ""reference"": ""raisin_box"", ""relation"": ""left_of""}",True,"```json
+{""target"": ""butter box"", ""reference"": ""raisin box"", ""relation"": ""left of""}
+```"
+PB.initial.S3-C06-initial.S3-L-reference_early,placement,initial,S3,L,reference_early,delivered,stop,False,False,json_structure_single_item_array,json_structure_single_item_array,"{""target"": ""butter"", ""reference"": ""raisin_box"", ""relation"": ""left_of""}",True,"```json
+[
+  {""target"": ""butter box"", ""reference"": ""raisin box"", ""relation"": ""left_of""}
+]
+```"
+B.initial.S1-C07-initial.S1-B-D,original,initial,S1,B,DIR,delivered,stop,False,False,object_vocabulary,object_vocabulary,"{""target"": ""rubiks_cube"", ""reference"": ""bowl"", ""relation"": ""behind""}",True,"```json
+{
+  ""target"": ""rubiks cube"",
+  ""reference"": ""bowl"",
+  ""relation"": ""behind""
+}
+```"
+B.initial.S1-C01-initial.S1-F-I,original,initial,S1,F,RF,delivered,stop,False,False,json_structure_single_item_array,json_structure_single_item_array,"{""target"": ""bowl"", ""reference"": ""rubiks_cube"", ""relation"": ""behind""}",False,"```json
+[
+  {""target"": ""bowl"", ""reference"": ""rubiks cube"", ""relation"": ""behind""}
+]
+```"
+B.initial.S1-C06-initial.S1-L-I,original,initial,S1,L,RF,delivered,stop,False,False,json_structure_single_item_array,json_structure_single_item_array,"{""target"": ""bowl"", ""reference"": ""rubiks_cube"", ""relation"": ""right_of""}",False,"```json
+[
+  {""target"": ""bowl"", ""reference"": ""rubiks cube"", ""relation"": ""right_of""}
+]
+```"
+PB.initial.S1-C06-initial.S1-B-reference_late,placement,initial,S1,B,reference_late,delivered,stop,False,False,json_structure_single_item_array,json_structure_single_item_array,,,"```json
+[
+  {""target"": ""rubiks_cube"", ""reference"": ""red bowl"", ""relation"": ""behind""}
+]
+```"
+B.no_image.S4-L-I,original,no_image,S4,L,RF,delivered,stop,False,False,object_and_relation_vocabulary,object_and_relation_vocabulary,"{""target"": ""mustard_bottle"", ""reference"": ""raisin_box"", ""relation"": ""left_of""}",True,"```json
+{
+  ""target"": ""mustard bottle"",
+  ""reference"": ""raisin box"",
+  ""relation"": ""left of""
+}
+```"
+B.initial.S4-C03-initial.S4-R-D,original,initial,S4,R,DIR,delivered,stop,False,False,object_and_relation_vocabulary,object_and_relation_vocabulary,"{""target"": ""mustard_bottle"", ""reference"": ""raisin_box"", ""relation"": ""left_of""}",False,"```json
+{
+  ""target"": ""mustard bottle"",
+  ""reference"": ""raisin box"",
+  ""relation"": ""left of""
+}
+```"
+PB.initial.S1-C06-initial.S1-L-reference_early,placement,initial,S1,L,reference_early,delivered,stop,False,False,json_structure_single_item_array,json_structure_single_item_array,"{""target"": ""rubiks_cube"", ""reference"": ""bowl"", ""relation"": ""left_of""}",True,"```json
+[
+  {""target"": ""rubiks_cube"", ""reference"": ""bowl"", ""relation"": ""left_of""}
+]
+```"
+B.initial.S1-C08-initial.S1-L-I,original,initial,S1,L,RF,delivered,stop,False,False,json_structure_single_item_array,json_structure_single_item_array,"{""target"": ""rubiks_cube"", ""reference"": ""bowl"", ""relation"": ""left_of""}",True,"```json
+[
+  {""target"": ""rubiks_cube"", ""reference"": ""bowl"", ""relation"": ""left_of""}
+]
+```"
+B.initial.S1-C07-initial.S1-F-I,original,initial,S1,F,RF,delivered,stop,False,False,json_structure_single_item_array,json_structure_single_item_array,"{""target"": ""rubiks_cube"", ""reference"": ""bowl"", ""relation"": ""behind""}",False,"```json
+[
+  {""target"": ""rubiks_cube"", ""reference"": ""bowl"", ""relation"": ""behind""}
+]
+```"
+B.initial.S4-C03-initial.S4-R-I,original,initial,S4,R,RF,delivered,stop,False,False,object_and_relation_vocabulary,object_and_relation_vocabulary,"{""target"": ""mustard_bottle"", ""reference"": ""raisin_box"", ""relation"": ""left_of""}",False,"```json
+{
+  ""target"": ""mustard bottle"",
+  ""reference"": ""raisin box"",
+  ""relation"": ""left of""
+}
+```"
+B.no_image.S3-R-S,original,no_image,S3,R,TF,delivered,stop,False,False,object_vocabulary,object_vocabulary,,,"```json
+{
+  ""target"": ""butter_box"",
+  ""reference"": ""raisin_box"",
+  ""relation"": ""right_of""
+}
+```"
+B.initial.S4-C06-initial.S4-R-D,original,initial,S4,R,DIR,delivered,stop,False,False,json_structure_single_item_array,json_structure_single_item_array,"{""target"": ""mustard_bottle"", ""reference"": ""raisin_box"", ""relation"": ""left_of""}",False,"```json
+[
+  {""target"": ""mustard bottle"", ""reference"": ""raisin box"", ""relation"": ""left_of""}
+]
+```"
+B.initial.S4-C01-initial.S4-L-D,original,initial,S4,L,DIR,delivered,stop,False,False,object_and_relation_vocabulary,object_and_relation_vocabulary,"{""target"": ""mustard_bottle"", ""reference"": ""raisin_box"", ""relation"": ""left_of""}",True,"```json
+{
+  ""target"": ""mustard bottle"",
+  ""reference"": ""raisin box"",
+  ""relation"": ""left of""
+}
+```"
+PB.initial.S4-C05-initial.S4-L-reference_early,placement,initial,S4,L,reference_early,delivered,stop,False,False,json_structure_single_item_array,json_structure_single_item_array,"{""target"": ""mustard_bottle"", ""reference"": ""raisin_box"", ""relation"": ""left_of""}",True,"```json
+[
+  {""target"": ""mustard bottle"", ""reference"": ""raisin box"", ""relation"": ""left of""}
+]
+```"
+B.initial.S3-C02-initial.S3-TOP-I,original,initial,S3,TOP,RF,delivered,stop,False,False,object_and_relation_vocabulary,object_and_relation_vocabulary,"{""target"": ""butter"", ""reference"": ""raisin_box"", ""relation"": ""in_front_of""}",False,"```json
+{""target"": ""butter box"", ""reference"": ""raisin box"", ""relation"": ""in front of""}
+```"
+B.initial.S1-C03-initial.S1-R-S,original,initial,S1,R,TF,delivered,stop,False,False,json_structure_single_item_array,json_structure_single_item_array,"{""target"": ""rubiks_cube"", ""reference"": ""bowl"", ""relation"": ""right_of""}",True,"```json
+[
+  {""target"": ""rubiks_cube"", ""reference"": ""bowl"", ""relation"": ""right_of""}
+]
+```"
+PB.initial.S1-C04-initial.S1-R-reference_early,placement,initial,S1,R,reference_early,delivered,stop,False,False,json_structure_single_item_array,json_structure_single_item_array,"{""target"": ""rubiks_cube"", ""reference"": ""bowl"", ""relation"": ""right_of""}",True,"```json
+[
+  {""target"": ""rubiks_cube"", ""reference"": ""bowl"", ""relation"": ""right_of""}
+]
+```"
+B.initial.S3-C06-initial.S3-L-S,original,initial,S3,L,TF,delivered,stop,False,False,object_and_relation_vocabulary,object_and_relation_vocabulary,"{""target"": ""butter"", ""reference"": ""raisin_box"", ""relation"": ""left_of""}",True,"```json
+{
+  ""target"": ""butter box"",
+  ""reference"": ""raisin box"",
+  ""relation"": ""left of""
+}
+```"
+B.initial.S3-C01-initial.S3-R-I,original,initial,S3,R,RF,delivered,stop,False,False,object_and_relation_vocabulary,object_and_relation_vocabulary,"{""target"": ""butter"", ""reference"": ""raisin_box"", ""relation"": ""left_of""}",False,"```json
+{
+  ""target"": ""butter box"",
+  ""reference"": ""raisin box"",
+  ""relation"": ""left of""
+}
+```"
+B.initial.S1-C03-initial.S1-F-I,original,initial,S1,F,RF,delivered,stop,False,False,json_structure_single_item_array,json_structure_single_item_array,"{""target"": ""bowl"", ""reference"": ""rubiks_cube"", ""relation"": ""behind""}",False,"```json
+[
+  {""target"": ""bowl"", ""reference"": ""rubiks cube"", ""relation"": ""behind""}
+]
+```"
+B.initial.S1-C06-initial.S1-F-I,original,initial,S1,F,RF,delivered,stop,False,False,json_structure_single_item_array,json_structure_single_item_array,"{""target"": ""bowl"", ""reference"": ""rubiks_cube"", ""relation"": ""behind""}",False,"```json
+[
+  {""target"": ""bowl"", ""reference"": ""rubiks cube"", ""relation"": ""behind""}
+]
+```"
+B.initial.S4-C01-initial.S4-R-D,original,initial,S4,R,DIR,delivered,stop,False,False,json_structure_single_item_array,json_structure_single_item_array,"{""target"": ""mustard_bottle"", ""reference"": ""raisin_box"", ""relation"": ""left_of""}",False,"```json
+[
+  {""target"": ""mustard bottle"", ""reference"": ""raisin box"", ""relation"": ""left_of""}
+]
+```"
+PB.initial.S3-C01-initial.S3-L-reference_late,placement,initial,S3,L,reference_late,delivered,stop,False,False,json_structure_single_item_array,json_structure_single_item_array,"{""target"": ""butter"", ""reference"": ""raisin_box"", ""relation"": ""left_of""}",True,"```json
+[
+  {""target"": ""butter box"", ""reference"": ""raisin box"", ""relation"": ""left_of""}
+]
+```"
+B.initial.S3-C05-initial.S3-R-D,original,initial,S3,R,DIR,delivered,stop,False,False,object_vocabulary,object_vocabulary,"{""target"": ""butter"", ""reference"": ""raisin_box"", ""relation"": ""left_of""}",False,"```json
+{
+  ""target"": ""butter box"",
+  ""reference"": ""raisin box"",
+  ""relation"": ""left_of""
+}
+```"
+PB.no_image.S1-R-reference_late,placement,no_image,S1,R,reference_late,delivered,stop,True,True,,strict_valid_correct,,,"```json
+{
+  ""target"": ""rubiks_cube"",
+  ""reference"": ""bowl"",
+  ""relation"": ""right_of""
+}
+```"
+PB.no_image.S1-F-reference_early,placement,no_image,S1,F,reference_early,delivered,stop,False,False,object_vocabulary,object_vocabulary,"{""target"": ""rubiks_cube"", ""reference"": ""bowl"", ""relation"": ""in_front_of""}",True,"```json
+{""target"": ""Rubik's cube"", ""reference"": ""bowl"", ""relation"": ""in_front_of""}
+```"
+B.initial.S1-C03-initial.S1-L-S,original,initial,S1,L,TF,delivered,stop,False,False,json_structure_single_item_array,json_structure_single_item_array,"{""target"": ""rubiks_cube"", ""reference"": ""bowl"", ""relation"": ""left_of""}",True,"```json
+[
+  {""target"": ""rubiks_cube"", ""reference"": ""bowl"", ""relation"": ""left_of""}
+]
+```"
+PB.initial.S3-C02-initial.S3-R-reference_early,placement,initial,S3,R,reference_early,delivered,stop,False,False,json_structure_single_item_array,json_structure_single_item_array,"{""target"": ""butter"", ""reference"": ""raisin_box"", ""relation"": ""left_of""}",False,"```json
+[
+  {""target"": ""butter box"", ""reference"": ""raisin box"", ""relation"": ""left_of""}
+]
+```"
+PB.initial.S3-C04-initial.S3-R-reference_early,placement,initial,S3,R,reference_early,delivered,stop,False,False,json_structure_single_item_array,json_structure_single_item_array,"{""target"": ""butter"", ""reference"": ""raisin_box"", ""relation"": ""left_of""}",False,"```json
+[
+  {""target"": ""butter box"", ""reference"": ""raisin box"", ""relation"": ""left_of""}
+]
+```"
+B.initial.S4-C02-initial.S4-R-D,original,initial,S4,R,DIR,delivered,stop,False,False,json_structure_single_item_array,json_structure_single_item_array,"{""target"": ""mustard_bottle"", ""reference"": ""raisin_box"", ""relation"": ""left_of""}",False,"```json
+[
+  {""target"": ""mustard bottle"", ""reference"": ""raisin box"", ""relation"": ""left_of""}
+]
+```"
+PB.initial.S1-C06-initial.S1-L-reference_late,placement,initial,S1,L,reference_late,delivered,stop,False,False,json_structure_single_item_array,json_structure_single_item_array,"{""target"": ""rubiks_cube"", ""reference"": ""bowl"", ""relation"": ""left_of""}",True,"```json
+[
+  {""target"": ""rubiks_cube"", ""reference"": ""bowl"", ""relation"": ""left_of""}
+]
+```"
+B.initial.S1-C01-initial.S1-R-S,original,initial,S1,R,TF,delivered,stop,False,False,json_structure_single_item_array,json_structure_single_item_array,"{""target"": ""rubiks_cube"", ""reference"": ""bowl"", ""relation"": ""right_of""}",True,"```json
+[
+  {""target"": ""rubiks_cube"", ""reference"": ""bowl"", ""relation"": ""right_of""}
+]
+```"
+B.initial.S3-C01-initial.S3-L-S,original,initial,S3,L,TF,delivered,stop,False,False,object_and_relation_vocabulary,object_and_relation_vocabulary,"{""target"": ""butter"", ""reference"": ""raisin_box"", ""relation"": ""left_of""}",True,"```json
+{
+  ""target"": ""butter box"",
+  ""reference"": ""raisin box"",
+  ""relation"": ""left of""
+}
+```"
+PB.initial.S3-C02-initial.S3-R-reference_late,placement,initial,S3,R,reference_late,delivered,stop,False,False,json_structure_single_item_array,json_structure_single_item_array,"{""target"": ""butter"", ""reference"": ""raisin_box"", ""relation"": ""left_of""}",False,"```json
+[
+  {""target"": ""butter box"", ""reference"": ""raisin box"", ""relation"": ""left_of""}
+]
+```"
+B.initial.S1-C02-initial.S1-R-D,original,initial,S1,R,DIR,delivered,stop,False,False,json_structure_single_item_array,json_structure_single_item_array,"{""target"": ""rubiks_cube"", ""reference"": ""bowl"", ""relation"": ""right_of""}",True,"```json
+[
+  {""target"": ""rubiks cube"", ""reference"": ""bowl"", ""relation"": ""right_of""}
+]
+```"
+B.initial.S4-C08-initial.S4-R-S,original,initial,S4,R,TF,delivered,stop,False,False,object_and_relation_vocabulary,object_and_relation_vocabulary,"{""target"": ""mustard_bottle"", ""reference"": ""raisin_box"", ""relation"": ""left_of""}",False,"```json
+{
+  ""target"": ""mustard bottle"",
+  ""reference"": ""raisin box"",
+  ""relation"": ""left of""
+}
+```"
+B.initial.S3-C06-initial.S3-L-D,original,initial,S3,L,DIR,delivered,stop,False,False,object_vocabulary,object_vocabulary,"{""target"": ""butter"", ""reference"": ""raisin_box"", ""relation"": ""left_of""}",True,"```json
+{
+  ""target"": ""butter box"",
+  ""reference"": ""raisin box"",
+  ""relation"": ""left_of""
+}
+```"
+B.initial.S4-C03-initial.S4-R-S,original,initial,S4,R,TF,delivered,stop,False,False,object_and_relation_vocabulary,object_and_relation_vocabulary,"{""target"": ""mustard_bottle"", ""reference"": ""raisin_box"", ""relation"": ""left_of""}",False,"```json
+{
+  ""target"": ""mustard bottle"",
+  ""reference"": ""raisin box"",
+  ""relation"": ""left of""
+}
+```"
+B.initial.S4-C03-initial.S4-L-D,original,initial,S4,L,DIR,delivered,stop,False,False,object_and_relation_vocabulary,object_and_relation_vocabulary,"{""target"": ""mustard_bottle"", ""reference"": ""raisin_box"", ""relation"": ""left_of""}",True,"```json
+{
+  ""target"": ""mustard bottle"",
+  ""reference"": ""raisin box"",
+  ""relation"": ""left of""
+}
+```"
+PB.initial.S1-C07-initial.S1-B-reference_late,placement,initial,S1,B,reference_late,delivered,stop,False,False,json_structure_single_item_array,json_structure_single_item_array,"{""target"": ""rubiks_cube"", ""reference"": ""bowl"", ""relation"": ""behind""}",True,"```json
+[
+  {""target"": ""rubiks_cube"", ""reference"": ""bowl"", ""relation"": ""behind""}
+]
+```"
+B.initial.S1-C02-initial.S1-B-S,original,initial,S1,B,TF,delivered,stop,True,True,,strict_valid_correct,,,"```json
+{
+  ""target"": ""rubiks_cube"",
+  ""reference"": ""bowl"",
+  ""relation"": ""behind""
+}
+```"
+PB.initial.S1-C02-initial.S1-B-reference_late,placement,initial,S1,B,reference_late,delivered,stop,False,False,json_structure_single_item_array,json_structure_single_item_array,"{""target"": ""rubiks_cube"", ""reference"": ""bowl"", ""relation"": ""behind""}",True,"```json
+[
+  {""target"": ""rubiks_cube"", ""reference"": ""bowl"", ""relation"": ""behind""}
+]
+```"
+B.initial.S3-C01-initial.S3-TOP-I,original,initial,S3,TOP,RF,delivered,stop,False,False,object_and_relation_vocabulary,object_and_relation_vocabulary,,,"```json
+{""target"": ""butter box"", ""reference"": ""raisin box"", ""relation"": ""underneath""}
+```"
+PB.initial.S3-C05-initial.S3-L-reference_early,placement,initial,S3,L,reference_early,delivered,stop,False,False,json_structure_single_item_array,json_structure_single_item_array,"{""target"": ""butter"", ""reference"": ""raisin_box"", ""relation"": ""left_of""}",True,"```json
+[
+  {""target"": ""butter box"", ""reference"": ""raisin box"", ""relation"": ""left_of""}
+]
+```"
+PB.initial.S1-C02-initial.S1-B-reference_early,placement,initial,S1,B,reference_early,delivered,stop,False,False,json_structure_single_item_array,json_structure_single_item_array,"{""target"": ""rubiks_cube"", ""reference"": ""bowl"", ""relation"": ""behind""}",True,"```json
+[
+  {""target"": ""rubiks_cube"", ""reference"": ""bowl"", ""relation"": ""behind""}
+]
+```"
+B.initial.S4-C07-initial.S4-TOP-D,original,initial,S4,TOP,DIR,delivered,stop,True,False,,strict_valid_incorrect,,,"```json
+{""target"": ""mustard_bottle"", ""reference"": ""raisin_box"", ""relation"": ""left_of""}
+```"
+B.initial.S4-C05-initial.S4-L-I,original,initial,S4,L,RF,delivered,stop,False,False,json_structure_malformed,json_structure_malformed,,,"```json
+[
+  {""target"": ""mustard bottle"", ""reference"": ""raisin box"", ""relation"": ""left of""), 
+  {""target"": ""mustard bottle"", ""reference"": ""raisin box"", ""relation"
+PB.initial.S1-C07-initial.S1-F-reference_early,placement,initial,S1,F,reference_early,delivered,stop,False,False,json_structure_single_item_array,json_structure_single_item_array,"{""target"": ""rubiks_cube"", ""reference"": ""bowl"", ""relation"": ""left_of""}",False,"```json
+[
+  {""target"": ""rubiks_cube"", ""reference"": ""bowl"", ""relation"": ""left_of""}
+]
+```"
+B.initial.S3-C08-initial.S3-L-S,original,initial,S3,L,TF,delivered,stop,False,False,object_and_relation_vocabulary,object_and_relation_vocabulary,"{""target"": ""butter"", ""reference"": ""raisin_box"", ""relation"": ""left_of""}",True,"```json
+{
+  ""target"": ""butter box"",
+  ""reference"": ""raisin box"",
+  ""relation"": ""left of""
+}
+```"
+B.initial.S1-C05-initial.S1-B-D,original,initial,S1,B,DIR,delivered,stop,False,False,object_vocabulary,object_vocabulary,"{""target"": ""rubiks_cube"", ""reference"": ""bowl"", ""relation"": ""behind""}",True,"```json
+{
+  ""target"": ""rubiks cube"",
+  ""reference"": ""bowl"",
+  ""relation"": ""behind""
+}
+```"
+PB.initial.S1-C03-initial.S1-L-reference_late,placement,initial,S1,L,reference_late,delivered,stop,False,False,json_structure_single_item_array,json_structure_single_item_array,"{""target"": ""rubiks_cube"", ""reference"": ""bowl"", ""relation"": ""left_of""}",True,"```json
+[
+  {""target"": ""rubiks_cube"", ""reference"": ""bowl"", ""relation"": ""left_of""}
+]
+```"
+PB.initial.S4-C04-initial.S4-R-reference_late,placement,initial,S4,R,reference_late,delivered,stop,False,False,json_structure_single_item_array,json_structure_single_item_array,"{""target"": ""mustard_bottle"", ""reference"": ""raisin_box"", ""relation"": ""left_of""}",False,"```json
+[
+  {""target"": ""mustard bottle"", ""reference"": ""raisin box"", ""relation"": ""left_of""}
+]
+```"
+B.initial.S1-C07-initial.S1-R-I,original,initial,S1,R,RF,delivered,stop,False,False,json_structure_single_item_array,json_structure_single_item_array,"{""target"": ""rubiks_cube"", ""reference"": ""bowl"", ""relation"": ""left_of""}",False,"```json
+[
+  {""target"": ""rubiks_cube"", ""reference"": ""bowl"", ""relation"": ""left_of""}
+]
+```"
+B.no_image.S1-F-D,original,no_image,S1,F,DIR,delivered,stop,True,False,,strict_valid_incorrect,,,"{""target"": ""rubiks_cube"", ""reference"": ""bowl"", ""relation"": ""left_of""}"
+PB.initial.S1-C07-initial.S1-L-reference_early,placement,initial,S1,L,reference_early,delivered,stop,False,False,json_structure_single_item_array,json_structure_single_item_array,"{""target"": ""rubiks_cube"", ""reference"": ""bowl"", ""relation"": ""left_of""}",True,"```json
+[
+  {""target"": ""rubiks_cube"", ""reference"": ""bowl"", ""relation"": ""left_of""}
+]
+```"
+B.initial.S4-C03-initial.S4-TOP-S,original,initial,S4,TOP,TF,delivered,stop,False,False,json_structure_single_item_array,json_structure_single_item_array,"{""target"": ""mustard_bottle"", ""reference"": ""raisin_box"", ""relation"": ""on_top_supported""}",True,"```json
+[
+  {""target"": ""mustard bottle"", ""reference"": ""raisin box"", ""relation"": ""on top of""}
+]
+```"
+PB.initial.S4-C07-initial.S4-R-reference_early,placement,initial,S4,R,reference_early,delivered,stop,False,False,json_structure_single_item_array,json_structure_single_item_array,"{""target"": ""mustard_bottle"", ""reference"": ""raisin_box"", ""relation"": ""left_of""}",False,"```json
+[
+  {""target"": ""mustard bottle"", ""reference"": ""raisin box"", ""relation"": ""left of""}
+]
+```"
+PB.initial.S1-C07-initial.S1-B-reference_early,placement,initial,S1,B,reference_early,delivered,stop,False,False,json_structure_single_item_array,json_structure_single_item_array,"{""target"": ""rubiks_cube"", ""reference"": ""bowl"", ""relation"": ""behind""}",True,"```json
+[
+  {""target"": ""rubiks_cube"", ""reference"": ""bowl"", ""relation"": ""behind""}
+]
+```"
+B.initial.S4-C07-initial.S4-TOP-S,original,initial,S4,TOP,TF,delivered,stop,False,False,json_structure_single_item_array,json_structure_single_item_array,"{""target"": ""mustard_bottle"", ""reference"": ""raisin_box"", ""relation"": ""on_top_supported""}",True,"```json
+[
+  {""target"": ""mustard bottle"", ""reference"": ""raisin box"", ""relation"": ""on top of""}
+]
+```"
+B.no_image.S4-R-D,original,no_image,S4,R,DIR,delivered,stop,True,True,,strict_valid_correct,,,"```json
+{""target"": ""mustard_bottle"", ""reference"": ""raisin_box"", ""relation"": ""right_of""}
+```"
+B.initial.S1-C02-initial.S1-F-S,original,initial,S1,F,TF,delivered,stop,False,False,json_structure_single_item_array,json_structure_single_item_array,"{""target"": ""rubiks_cube"", ""reference"": ""bowl"", ""relation"": ""in_front_of""}",True,"```json
+[
+  {""target"": ""rubiks_cube"", ""reference"": ""bowl"", ""relation"": ""in_front_of""}
+]
+```"
+PB.initial.S4-C04-initial.S4-L-reference_late,placement,initial,S4,L,reference_late,delivered,stop,False,False,json_structure_single_item_array,json_structure_single_item_array,"{""target"": ""mustard_bottle"", ""reference"": ""raisin_box"", ""relation"": ""left_of""}",True,"```json
+[
+  {""target"": ""mustard bottle"", ""reference"": ""raisin box"", ""relation"": ""left_of""}
+]
+```"
+B.initial.S3-C02-initial.S3-TOP-D,original,initial,S3,TOP,DIR,delivered,stop,False,False,json_structure_malformed,json_structure_malformed,,,"```json
+[
+  {""target"": ""butter box"", ""reference"": ""raisin box""), ""relation"": ""left_of""
+]
+```"
+B.initial.S4-C07-initial.S4-TOP-I,original,initial,S4,TOP,RF,delivered,stop,False,False,json_structure_single_item_array,json_structure_single_item_array,"{""target"": ""mustard_bottle"", ""reference"": ""raisin_box"", ""relation"": ""left_of""}",False,"```json
+[
+  {""target"": ""mustard bottle"", ""reference"": ""raisin box"", ""relation"": ""left_of""}
+]
+```"
+B.initial.S3-C04-initial.S3-R-S,original,initial,S3,R,TF,delivered,stop,False,False,object_and_relation_vocabulary,object_and_relation_vocabulary,"{""target"": ""butter"", ""reference"": ""raisin_box"", ""relation"": ""left_of""}",False,"```json
+{
+  ""target"": ""butter box"",
+  ""reference"": ""raisin box"",
+  ""relation"": ""left of""
+}
+```"
+PB.initial.S1-C04-initial.S1-B-reference_early,placement,initial,S1,B,reference_early,delivered,stop,False,False,json_structure_single_item_array,json_structure_single_item_array,"{""target"": ""rubiks_cube"", ""reference"": ""bowl"", ""relation"": ""behind""}",True,"```json
+[
+  {""target"": ""rubiks_cube"", ""reference"": ""bowl"", ""relation"": ""behind""}
+]
+```"
+PB.initial.S4-C02-initial.S4-L-reference_early,placement,initial,S4,L,reference_early,delivered,stop,False,False,json_structure_single_item_array,json_structure_single_item_array,"{""target"": ""mustard_bottle"", ""reference"": ""raisin_box"", ""relation"": ""left_of""}",True,"```json
+[
+  {""target"": ""mustard bottle"", ""reference"": ""raisin box"", ""relation"": ""left of""}
+]
+```"
+B.initial.S4-C02-initial.S4-R-S,original,initial,S4,R,TF,delivered,stop,False,False,object_and_relation_vocabulary,object_and_relation_vocabulary,"{""target"": ""mustard_bottle"", ""reference"": ""raisin_box"", ""relation"": ""left_of""}",False,"```json
+{
+  ""target"": ""mustard bottle"",
+  ""reference"": ""raisin box"",
+  ""relation"": ""left of""
+}
+```"
+B.initial.S1-C02-initial.S1-L-S,original,initial,S1,L,TF,delivered,stop,False,False,json_structure_single_item_array,json_structure_single_item_array,"{""target"": ""rubiks_cube"", ""reference"": ""bowl"", ""relation"": ""left_of""}",True,"```json
+[
+  {""target"": ""rubiks_cube"", ""reference"": ""bowl"", ""relation"": ""left_of""}
+]
+```"
+B.initial.S1-C04-initial.S1-R-I,original,initial,S1,R,RF,delivered,stop,False,False,json_structure_single_item_array,json_structure_single_item_array,"{""target"": ""rubiks_cube"", ""reference"": ""bowl"", ""relation"": ""left_of""}",False,"```json
+[
+  {""target"": ""rubiks_cube"", ""reference"": ""bowl"", ""relation"": ""left_of""}
+]
+```"
+B.initial.S4-C05-initial.S4-L-D,original,initial,S4,L,DIR,delivered,stop,False,False,object_and_relation_vocabulary,object_and_relation_vocabulary,"{""target"": ""mustard_bottle"", ""reference"": ""raisin_box"", ""relation"": ""left_of""}",True,"```json
+{
+  ""target"": ""mustard bottle"",
+  ""reference"": ""raisin box"",
+  ""relation"": ""left of""
+}
+```"
+B.initial.S4-C07-initial.S4-L-D,original,initial,S4,L,DIR,delivered,stop,False,False,json_structure_single_item_array,json_structure_single_item_array,"{""target"": ""mustard_bottle"", ""reference"": ""raisin_box"", ""relation"": ""left_of""}",True,"```json
+[
+  {""target"": ""mustard bottle"", ""reference"": ""raisin box"", ""relation"": ""left_of""}
+]
+```"
+B.no_image.S1-L-I,original,no_image,S1,L,RF,delivered,stop,False,False,object_vocabulary,object_vocabulary,"{""target"": ""bowl"", ""reference"": ""rubiks_cube"", ""relation"": ""right_of""}",False,"```json
+{""target"": ""bowl"", ""reference"": ""Rubik's cube"", ""relation"": ""right_of""}
+```"
+PB.initial.S4-C08-initial.S4-R-reference_early,placement,initial,S4,R,reference_early,delivered,stop,False,False,json_structure_single_item_array,json_structure_single_item_array,"{""target"": ""mustard_bottle"", ""reference"": ""raisin_box"", ""relation"": ""left_of""}",False,"```json
+[
+  {""target"": ""mustard bottle"", ""reference"": ""raisin box"", ""relation"": ""left of""}
+]
+```"
+B.initial.S1-C01-initial.S1-F-D,original,initial,S1,F,DIR,delivered,stop,False,False,object_and_relation_vocabulary,object_and_relation_vocabulary,"{""target"": ""rubiks_cube"", ""reference"": ""bowl"", ""relation"": ""in_front_of""}",True,"```json
+{""target"": ""rubiks cube"", ""reference"": ""bowl"", ""relation"": ""in front of""}
+```"
+PB.initial.S1-C06-initial.S1-R-reference_late,placement,initial,S1,R,reference_late,delivered,stop,False,False,json_structure_single_item_array,json_structure_single_item_array,"{""target"": ""rubiks_cube"", ""reference"": ""bowl"", ""relation"": ""right_of""}",True,"```json
+[
+  {""target"": ""rubiks_cube"", ""reference"": ""bowl"", ""relation"": ""right_of""}
+]
+```"
+B.initial.S1-C05-initial.S1-L-D,original,initial,S1,L,DIR,delivered,stop,False,False,object_vocabulary,object_vocabulary,"{""target"": ""rubiks_cube"", ""reference"": ""bowl"", ""relation"": ""left_of""}",True,"```json
+{""target"": ""rubiks cube"", ""reference"": ""bowl"", ""relation"": ""left_of""}
+```"
+B.initial.S4-C06-initial.S4-TOP-S,original,initial,S4,TOP,TF,delivered,stop,False,False,json_structure_single_item_array,json_structure_single_item_array,"{""target"": ""mustard_bottle"", ""reference"": ""raisin_box"", ""relation"": ""on_top_supported""}",True,"```json
+[
+  {""target"": ""mustard bottle"", ""reference"": ""raisin box"", ""relation"": ""on top of""}
+]
+```"
+PB.initial.S1-C04-initial.S1-L-reference_late,placement,initial,S1,L,reference_late,delivered,stop,False,False,json_structure_single_item_array,json_structure_single_item_array,"{""target"": ""rubiks_cube"", ""reference"": ""bowl"", ""relation"": ""left_of""}",True,"```json
+[
+  {""target"": ""rubiks_cube"", ""reference"": ""bowl"", ""relation"": ""left_of""}
+]
+```"
+B.initial.S1-C04-initial.S1-F-S,original,initial,S1,F,TF,delivered,stop,False,False,json_structure_single_item_array,json_structure_single_item_array,"{""target"": ""rubiks_cube"", ""reference"": ""bowl"", ""relation"": ""in_front_of""}",True,"```json
+[
+  {""target"": ""rubiks_cube"", ""reference"": ""bowl"", ""relation"": ""in_front_of""}
+]
+```"
+B.initial.S4-C01-initial.S4-L-S,original,initial,S4,L,TF,delivered,stop,False,False,object_and_relation_vocabulary,object_and_relation_vocabulary,"{""target"": ""mustard_bottle"", ""reference"": ""raisin_box"", ""relation"": ""left_of""}",True,"```json
+{
+  ""target"": ""mustard bottle"",
+  ""reference"": ""raisin box"",
+  ""relation"": ""left of""
+}
+```"
+B.initial.S3-C01-initial.S3-TOP-S,original,initial,S3,TOP,TF,delivered,stop,False,False,object_and_relation_vocabulary,object_and_relation_vocabulary,"{""target"": ""butter"", ""reference"": ""raisin_box"", ""relation"": ""in_front_of""}",False,"```json
+{""target"": ""butter box"", ""reference"": ""raisin box"", ""relation"": ""in front of""}
+```"
+B.initial.S1-C03-initial.S1-R-I,original,initial,S1,R,RF,delivered,stop,False,False,json_structure_single_item_array,json_structure_single_item_array,"{""target"": ""rubiks_cube"", ""reference"": ""bowl"", ""relation"": ""left_of""}",False,"```json
+[
+  {""target"": ""rubiks_cube"", ""reference"": ""bowl"", ""relation"": ""left_of""}
+]
+```"
+B.no_image.S4-L-S,original,no_image,S4,L,TF,delivered,stop,True,True,,strict_valid_correct,,,"```json
+{""target"": ""mustard_bottle"", ""reference"": ""raisin_box"", ""relation"": ""left_of""}
+```"
+PB.initial.S1-C03-initial.S1-B-reference_late,placement,initial,S1,B,reference_late,delivered,stop,False,False,json_structure_single_item_array,json_structure_single_item_array,"{""target"": ""rubiks_cube"", ""reference"": ""bowl"", ""relation"": ""behind""}",True,"```json
+[
+  {""target"": ""rubiks_cube"", ""reference"": ""bowl"", ""relation"": ""behind""}
+]
+```"
+PB.initial.S3-C02-initial.S3-L-reference_early,placement,initial,S3,L,reference_early,delivered,stop,False,False,json_structure_single_item_array,json_structure_single_item_array,"{""target"": ""butter"", ""reference"": ""raisin_box"", ""relation"": ""left_of""}",True,"```json
+[
+  {""target"": ""butter box"", ""reference"": ""raisin box"", ""relation"": ""left_of""}
+]
+```"
+B.initial.S4-C05-initial.S4-R-D,original,initial,S4,R,DIR,delivered,stop,False,False,json_structure_single_item_array,json_structure_single_item_array,"{""target"": ""mustard_bottle"", ""reference"": ""raisin_box"", ""relation"": ""left_of""}",False,"```json
+[
+  {""target"": ""mustard bottle"", ""reference"": ""raisin box"", ""relation"": ""left_of""}
+]
+```"
+B.initial.S1-C05-initial.S1-F-S,original,initial,S1,F,TF,delivered,stop,False,False,json_structure_single_item_array,json_structure_single_item_array,"{""target"": ""rubiks_cube"", ""reference"": ""bowl"", ""relation"": ""in_front_of""}",True,"```json
+[
+  {""target"": ""rubiks_cube"", ""reference"": ""bowl"", ""relation"": ""in_front_of""}
+]
+```"
+B.initial.S1-C05-initial.S1-B-S,original,initial,S1,B,TF,delivered,stop,True,True,,strict_valid_correct,,,"```json
+{
+  ""target"": ""rubiks_cube"",
+  ""reference"": ""bowl"",
+  ""relation"": ""behind""
+}
+```"
+PB.no_image.S1-L-reference_late,placement,no_image,S1,L,reference_late,delivered,stop,True,True,,strict_valid_correct,,,"```json
+{""target"": ""rubiks_cube"", ""reference"": ""bowl"", ""relation"": ""left_of""}
+```"
+PB.initial.S4-C02-initial.S4-R-reference_late,placement,initial,S4,R,reference_late,delivered,stop,False,False,json_structure_single_item_array,json_structure_single_item_array,"{""target"": ""mustard_bottle"", ""reference"": ""raisin_box"", ""relation"": ""left_of""}",False,"```json
+[
+  {""target"": ""mustard bottle"", ""reference"": ""raisin box"", ""relation"": ""left of""}
+]
+```"
+B.initial.S3-C05-initial.S3-TOP-D,original,initial,S3,TOP,DIR,delivered,stop,False,False,object_vocabulary,object_vocabulary,"{""target"": ""butter"", ""reference"": ""raisin_box"", ""relation"": ""left_of""}",False,"```json
+{
+  ""target"": ""butter box"",
+  ""reference"": ""raisin box"",
+  ""relation"": ""left_of""
+}
+```"
+B.no_image.S1-R-S,original,no_image,S1,R,TF,delivered,stop,True,True,,strict_valid_correct,,,"```json
+{""target"": ""rubiks_cube"", ""reference"": ""bowl"", ""relation"": ""right_of""}
+```"
+B.initial.S1-C08-initial.S1-L-S,original,initial,S1,L,TF,delivered,stop,False,False,json_structure_single_item_array,json_structure_single_item_array,"{""target"": ""rubiks_cube"", ""reference"": ""bowl"", ""relation"": ""left_of""}",True,"```json
+[
+  {""target"": ""rubiks_cube"", ""reference"": ""bowl"", ""relation"": ""left_of""}
+]
+```"
+B.initial.S3-C01-initial.S3-R-S,original,initial,S3,R,TF,delivered,stop,False,False,object_and_relation_vocabulary,object_and_relation_vocabulary,"{""target"": ""butter"", ""reference"": ""raisin_box"", ""relation"": ""left_of""}",False,"```json
+{
+  ""target"": ""butter box"",
+  ""reference"": ""raisin box"",
+  ""relation"": ""left of""
+}
+```"
+PB.initial.S4-C07-initial.S4-R-reference_late,placement,initial,S4,R,reference_late,delivered,stop,False,False,json_structure_single_item_array,json_structure_single_item_array,"{""target"": ""mustard_bottle"", ""reference"": ""raisin_box"", ""relation"": ""left_of""}",False,"```json
+[
+  {""target"": ""mustard bottle"", ""reference"": ""raisin box"", ""relation"": ""left of""}
+]
+```"
+B.initial.S4-C04-initial.S4-R-S,original,initial,S4,R,TF,delivered,stop,False,False,object_and_relation_vocabulary,object_and_relation_vocabulary,"{""target"": ""mustard_bottle"", ""reference"": ""raisin_box"", ""relation"": ""left_of""}",False,"```json
+{
+  ""target"": ""mustard bottle"",
+  ""reference"": ""raisin box"",
+  ""relation"": ""left of""
+}
+```"
+B.initial.S3-C04-initial.S3-TOP-D,original,initial,S3,TOP,DIR,delivered,stop,False,False,json_structure_single_item_array,json_structure_single_item_array,"{""target"": ""butter"", ""reference"": ""raisin_box"", ""relation"": ""left_of""}",False,"```json
+[
+  {""target"": ""butter box"", ""reference"": ""raisin box"", ""relation"": ""left_of""}
+]
+```"
+B.initial.S3-C02-initial.S3-TOP-S,original,initial,S3,TOP,TF,delivered,stop,False,False,object_and_relation_vocabulary,object_and_relation_vocabulary,"{""target"": ""butter"", ""reference"": ""raisin_box"", ""relation"": ""on_top_supported""}",True,"```json
+{
+  ""target"": ""butter box"",
+  ""reference"": ""raisin box"",
+  ""relation"": ""on top of""
+}
+```"
+B.initial.S3-C04-initial.S3-R-I,original,initial,S3,R,RF,delivered,stop,False,False,object_and_relation_vocabulary,object_and_relation_vocabulary,"{""target"": ""butter"", ""reference"": ""raisin_box"", ""relation"": ""left_of""}",False,"```json
+{""target"": ""butter box"", ""reference"": ""raisin box"", ""relation"": ""left of""}
+```"
+B.no_image.S3-L-D,original,no_image,S3,L,DIR,delivered,stop,False,False,object_vocabulary,object_vocabulary,"{""target"": ""butter"", ""reference"": ""raisin_box"", ""relation"": ""left_of""}",True,"```json
+{""target"": ""butter box"", ""reference"": ""raisin box"", ""relation"": ""left_of""}
+```"
+PB.initial.S4-C06-initial.S4-L-reference_late,placement,initial,S4,L,reference_late,delivered,stop,False,False,json_structure_single_item_array,json_structure_single_item_array,"{""target"": ""mustard_bottle"", ""reference"": ""raisin_box"", ""relation"": ""left_of""}",True,"```json
+[
+  {""target"": ""mustard bottle"", ""reference"": ""raisin box"", ""relation"": ""left_of""}
+]
+```"
+PB.initial.S1-C07-initial.S1-R-reference_early,placement,initial,S1,R,reference_early,delivered,stop,False,False,json_structure_single_item_array,json_structure_single_item_array,"{""target"": ""rubiks_cube"", ""reference"": ""bowl"", ""relation"": ""right_of""}",True,"```json
+[
+  {""target"": ""rubiks_cube"", ""reference"": ""bowl"", ""relation"": ""right_of""}
+]
+```"
+B.initial.S3-C02-initial.S3-R-D,original,initial,S3,R,DIR,delivered,stop,False,False,object_vocabulary,object_vocabulary,"{""target"": ""butter"", ""reference"": ""raisin_box"", ""relation"": ""left_of""}",False,"```json
+{
+  ""target"": ""butter box"",
+  ""reference"": ""raisin box"",
+  ""relation"": ""left_of""
+}
+```"
+PB.no_image.S3-L-reference_early,placement,no_image,S3,L,reference_early,delivered,stop,False,False,object_vocabulary,object_vocabulary,"{""target"": ""butter"", ""reference"": ""raisin_box"", ""relation"": ""left_of""}",True,"```json
+{""target"": ""butter box"", ""reference"": ""raisin box"", ""relation"": ""left_of""}
+```"
+PB.initial.S1-C06-initial.S1-R-reference_early,placement,initial,S1,R,reference_early,delivered,stop,False,False,json_structure_single_item_array,json_structure_single_item_array,"{""target"": ""rubiks_cube"", ""reference"": ""bowl"", ""relation"": ""left_of""}",False,"```json
+[
+  {""target"": ""rubiks_cube"", ""reference"": ""bowl"", ""relation"": ""left_of""}
+]
+```"
+B.initial.S4-C06-initial.S4-L-S,original,initial,S4,L,TF,delivered,stop,False,False,object_and_relation_vocabulary,object_and_relation_vocabulary,"{""target"": ""mustard_bottle"", ""reference"": ""raisin_box"", ""relation"": ""left_of""}",True,"```json
+{
+  ""target"": ""mustard bottle"",
+  ""reference"": ""raisin box"",
+  ""relation"": ""left of""
+}
+```"
+B.initial.S1-C03-initial.S1-F-D,original,initial,S1,F,DIR,delivered,stop,False,False,object_and_relation_vocabulary,object_and_relation_vocabulary,"{""target"": ""rubiks_cube"", ""reference"": ""bowl"", ""relation"": ""in_front_of""}",True,"```json
+{""target"": ""rubiks cube"", ""reference"": ""bowl"", ""relation"": ""in front of""}
+```"
+B.initial.S1-C04-initial.S1-R-S,original,initial,S1,R,TF,delivered,stop,False,False,json_structure_single_item_array,json_structure_single_item_array,"{""target"": ""rubiks_cube"", ""reference"": ""bowl"", ""relation"": ""right_of""}",True,"```json
+[
+  {""target"": ""rubiks_cube"", ""reference"": ""bowl"", ""relation"": ""right_of""}
+]
+```"
+PB.initial.S1-C08-initial.S1-F-reference_early,placement,initial,S1,F,reference_early,delivered,stop,False,False,json_structure_single_item_array,json_structure_single_item_array,"{""target"": ""rubiks_cube"", ""reference"": ""bowl"", ""relation"": ""left_of""}",False,"```json
+[
+  {""target"": ""rubiks_cube"", ""reference"": ""bowl"", ""relation"": ""left_of""}
+]
+```"
+B.initial.S3-C01-initial.S3-L-I,original,initial,S3,L,RF,delivered,stop,False,False,object_and_relation_vocabulary,object_and_relation_vocabulary,"{""target"": ""butter"", ""reference"": ""raisin_box"", ""relation"": ""left_of""}",True,"```json
+{
+  ""target"": ""butter box"",
+  ""reference"": ""raisin box"",
+  ""relation"": ""left of""
+}
+```"
+PB.initial.S4-C06-initial.S4-L-reference_early,placement,initial,S4,L,reference_early,delivered,stop,False,False,json_structure_single_item_array,json_structure_single_item_array,"{""target"": ""mustard_bottle"", ""reference"": ""raisin_box"", ""relation"": ""left_of""}",True,"```json
+[
+  {""target"": ""mustard bottle"", ""reference"": ""raisin box"", ""relation"": ""left of""}
+]
+```"
+B.initial.S1-C06-initial.S1-L-D,original,initial,S1,L,DIR,delivered,stop,False,False,object_vocabulary,object_vocabulary,"{""target"": ""rubiks_cube"", ""reference"": ""bowl"", ""relation"": ""left_of""}",True,"```json
+{
+  ""target"": ""rubiks cube"",
+  ""reference"": ""bowl"",
+  ""relation"": ""left_of""
+}
+```"
+B.initial.S1-C04-initial.S1-F-I,original,initial,S1,F,RF,delivered,stop,False,False,json_structure_single_item_array,json_structure_single_item_array,"{""target"": ""bowl"", ""reference"": ""rubiks_cube"", ""relation"": ""behind""}",False,"```json
+[
+  {""target"": ""bowl"", ""reference"": ""rubiks cube"", ""relation"": ""behind""}
+]
+```"
+B.initial.S3-C08-initial.S3-TOP-S,original,initial,S3,TOP,TF,delivered,stop,False,False,object_and_relation_vocabulary,object_and_relation_vocabulary,"{""target"": ""butter"", ""reference"": ""raisin_box"", ""relation"": ""in_front_of""}",False,"```json
+{""target"": ""butter box"", ""reference"": ""raisin box"", ""relation"": ""in front of""}
+```"
+B.initial.S3-C07-initial.S3-R-S,original,initial,S3,R,TF,delivered,stop,False,False,object_and_relation_vocabulary,object_and_relation_vocabulary,"{""target"": ""butter"", ""reference"": ""raisin_box"", ""relation"": ""left_of""}",False,"```json
+{""target"": ""butter box"", ""reference"": ""raisin box"", ""relation"": ""left of""}
+```"
+B.initial.S4-C01-initial.S4-R-S,original,initial,S4,R,TF,delivered,stop,False,False,object_and_relation_vocabulary,object_and_relation_vocabulary,"{""target"": ""mustard_bottle"", ""reference"": ""raisin_box"", ""relation"": ""left_of""}",False,"```json
+{
+  ""target"": ""mustard bottle"",
+  ""reference"": ""raisin box"",
+  ""relation"": ""left of""
+}
+```"
+B.initial.S1-C04-initial.S1-F-D,original,initial,S1,F,DIR,delivered,stop,False,False,object_and_relation_vocabulary,object_and_relation_vocabulary,"{""target"": ""rubiks_cube"", ""reference"": ""bowl"", ""relation"": ""in_front_of""}",True,"```json
+{""target"": ""rubiks cube"", ""reference"": ""bowl"", ""relation"": ""in front of""}
+```"
+PB.initial.S3-C08-initial.S3-L-reference_early,placement,initial,S3,L,reference_early,delivered,stop,False,False,json_structure_single_item_array,json_structure_single_item_array,"{""target"": ""butter"", ""reference"": ""raisin_box"", ""relation"": ""left_of""}",True,"```json
+[
+  {""target"": ""butter box"", ""reference"": ""raisin box"", ""relation"": ""left_of""}
+]
+```"
+PB.initial.S1-C05-initial.S1-L-reference_late,placement,initial,S1,L,reference_late,delivered,stop,False,False,json_structure_single_item_array,json_structure_single_item_array,"{""target"": ""rubiks_cube"", ""reference"": ""bowl"", ""relation"": ""left_of""}",True,"```json
+[
+  {""target"": ""rubiks_cube"", ""reference"": ""bowl"", ""relation"": ""left_of""}
+]
+```"
+PB.initial.S3-C04-initial.S3-R-reference_late,placement,initial,S3,R,reference_late,delivered,stop,False,False,object_and_relation_vocabulary,object_and_relation_vocabulary,"{""target"": ""butter"", ""reference"": ""raisin_box"", ""relation"": ""left_of""}",False,"```json
+{
+  ""target"": ""butter box"",
+  ""reference"": ""raisin box"",
+  ""relation"": ""left of""
+}
+```"
+PB.no_image.S1-B-reference_late,placement,no_image,S1,B,reference_late,delivered,stop,False,False,object_vocabulary,object_vocabulary,"{""target"": ""rubiks_cube"", ""reference"": ""bowl"", ""relation"": ""behind""}",True,"```json
+{""target"": ""Rubik's cube"", ""reference"": ""bowl"", ""relation"": ""behind""}
+```"
+PB.initial.S3-C03-initial.S3-L-reference_late,placement,initial,S3,L,reference_late,delivered,stop,False,False,json_structure_single_item_array,json_structure_single_item_array,"{""target"": ""butter"", ""reference"": ""raisin_box"", ""relation"": ""left_of""}",True,"```json
+[
+  {""target"": ""butter box"", ""reference"": ""raisin box"", ""relation"": ""left_of""}
+]
+```"
+B.initial.S1-C02-initial.S1-F-D,original,initial,S1,F,DIR,delivered,stop,False,False,object_and_relation_vocabulary,object_and_relation_vocabulary,"{""target"": ""rubiks_cube"", ""reference"": ""bowl"", ""relation"": ""in_front_of""}",True,"```json
+{""target"": ""rubiks cube"", ""reference"": ""bowl"", ""relation"": ""in front of""}
+```"
+B.initial.S4-C04-initial.S4-L-D,original,initial,S4,L,DIR,delivered,stop,False,False,object_vocabulary,object_vocabulary,"{""target"": ""mustard_bottle"", ""reference"": ""raisin_box"", ""relation"": ""left_of""}",True,"```json
+{
+  ""target"": ""mustard bottle"",
+  ""reference"": ""raisin box"",
+  ""relation"": ""left_of""
+}
+```"
+PB.initial.S3-C04-initial.S3-L-reference_late,placement,initial,S3,L,reference_late,delivered,stop,False,False,json_structure_single_item_array,json_structure_single_item_array,"{""target"": ""butter"", ""reference"": ""raisin_box"", ""relation"": ""left_of""}",True,"```json
+[
+  {""target"": ""butter box"", ""reference"": ""raisin box"", ""relation"": ""left_of""}
+]
+```"
+PB.initial.S3-C03-initial.S3-R-reference_late,placement,initial,S3,R,reference_late,delivered,stop,False,False,json_structure_single_item_array,json_structure_single_item_array,"{""target"": ""butter"", ""reference"": ""raisin_box"", ""relation"": ""left_of""}",False,"```json
+[
+  {""target"": ""butter box"", ""reference"": ""raisin box"", ""relation"": ""left_of""}
+]
+```"
+B.initial.S1-C04-initial.S1-R-D,original,initial,S1,R,DIR,delivered,stop,False,False,json_structure_single_item_array,json_structure_single_item_array,"{""target"": ""rubiks_cube"", ""reference"": ""bowl"", ""relation"": ""right_of""}",True,"```json
+[
+  {""target"": ""rubiks cube"", ""reference"": ""bowl"", ""relation"": ""right_of""}
+]
+```"
+B.initial.S3-C04-initial.S3-TOP-S,original,initial,S3,TOP,TF,delivered,stop,False,False,object_and_relation_vocabulary,object_and_relation_vocabulary,"{""target"": ""butter"", ""reference"": ""raisin_box"", ""relation"": ""in_front_of""}",False,"```json
+{""target"": ""butter box"", ""reference"": ""raisin box"", ""relation"": ""in front of""}
+```"
+B.initial.S1-C08-initial.S1-F-S,original,initial,S1,F,TF,delivered,stop,False,False,json_structure_single_item_array,json_structure_single_item_array,"{""target"": ""rubiks_cube"", ""reference"": ""bowl"", ""relation"": ""in_front_of""}",True,"```json
+[
+  {""target"": ""rubiks_cube"", ""reference"": ""bowl"", ""relation"": ""in_front_of""}
+]
+```"
+B.initial.S4-C01-initial.S4-TOP-I,original,initial,S4,TOP,RF,delivered,stop,False,False,json_structure_single_item_array,json_structure_single_item_array,"{""target"": ""mustard_bottle"", ""reference"": ""raisin_box"", ""relation"": ""in_front_of""}",False,"```json
+[
+  {""target"": ""mustard bottle"", ""reference"": ""raisin box"", ""relation"": ""in front of""}
+]
+```"
+PB.initial.S1-C02-initial.S1-R-reference_early,placement,initial,S1,R,reference_early,delivered,stop,False,False,json_structure_single_item_array,json_structure_single_item_array,"{""target"": ""rubiks_cube"", ""reference"": ""bowl"", ""relation"": ""right_of""}",True,"```json
+[
+  {""target"": ""rubiks_cube"", ""reference"": ""bowl"", ""relation"": ""right_of""}
+]
+```"
+PB.initial.S3-C07-initial.S3-R-reference_late,placement,initial,S3,R,reference_late,delivered,stop,False,False,json_structure_single_item_array,json_structure_single_item_array,"{""target"": ""butter"", ""reference"": ""raisin_box"", ""relation"": ""left_of""}",False,"```json
+[
+  {""target"": ""butter box"", ""reference"": ""raisin box"", ""relation"": ""left_of""}
+]
+```"
+B.initial.S1-C03-initial.S1-R-D,original,initial,S1,R,DIR,delivered,stop,False,False,json_structure_single_item_array,json_structure_single_item_array,"{""target"": ""rubiks_cube"", ""reference"": ""bowl"", ""relation"": ""right_of""}",True,"```json
+[
+  {""target"": ""rubiks cube"", ""reference"": ""bowl"", ""relation"": ""right_of""}
+]
+```"
+B.initial.S4-C01-initial.S4-L-I,original,initial,S4,L,RF,delivered,stop,False,False,object_and_relation_vocabulary,object_and_relation_vocabulary,"{""target"": ""mustard_bottle"", ""reference"": ""raisin_box"", ""relation"": ""left_of""}",True,"```json
+{
+  ""target"": ""mustard bottle"",
+  ""reference"": ""raisin box"",
+  ""relation"": ""left of""
+}
+```"
+B.initial.S3-C03-initial.S3-R-S,original,initial,S3,R,TF,delivered,stop,False,False,object_and_relation_vocabulary,object_and_relation_vocabulary,"{""target"": ""butter"", ""reference"": ""raisin_box"", ""relation"": ""left_of""}",False,"```json
+{""target"": ""butter box"", ""reference"": ""raisin box"", ""relation"": ""left of""}
+```"
+B.initial.S4-C06-initial.S4-TOP-I,original,initial,S4,TOP,RF,delivered,stop,False,False,json_structure_single_item_array,json_structure_single_item_array,"{""target"": ""mustard_bottle"", ""reference"": ""raisin_box"", ""relation"": ""left_of""}",False,"```json
+[
+  {""target"": ""mustard bottle"", ""reference"": ""raisin box"", ""relation"": ""left_of""}
+]
+```"
+PB.initial.S1-C03-initial.S1-R-reference_late,placement,initial,S1,R,reference_late,delivered,stop,False,False,json_structure_single_item_array,json_structure_single_item_array,"{""target"": ""rubiks_cube"", ""reference"": ""bowl"", ""relation"": ""right_of""}",True,"```json
+[
+  {""target"": ""rubiks_cube"", ""reference"": ""bowl"", ""relation"": ""right_of""}
+]
+```"
+B.no_image.S1-L-S,original,no_image,S1,L,TF,delivered,stop,True,True,,strict_valid_correct,,,"```json
+{""target"": ""rubiks_cube"", ""reference"": ""bowl"", ""relation"": ""left_of""}
+```"
+B.initial.S4-C04-initial.S4-TOP-I,original,initial,S4,TOP,RF,delivered,stop,False,False,json_structure_single_item_array,json_structure_single_item_array,"{""target"": ""mustard_bottle"", ""reference"": ""raisin_box"", ""relation"": ""left_of""}",False,"```json
+[
+  {""target"": ""mustard bottle"", ""reference"": ""raisin box"", ""relation"": ""left_of""}
+]
+```"
+B.initial.S3-C05-initial.S3-R-I,original,initial,S3,R,RF,delivered,stop,False,False,object_and_relation_vocabulary,object_and_relation_vocabulary,"{""target"": ""butter"", ""reference"": ""raisin_box"", ""relation"": ""left_of""}",False,"```json
+{
+  ""target"": ""butter box"",
+  ""reference"": ""raisin box"",
+  ""relation"": ""left of""
+}
+```"
+B.initial.S1-C07-initial.S1-L-S,original,initial,S1,L,TF,delivered,stop,False,False,json_structure_single_item_array,json_structure_single_item_array,"{""target"": ""rubiks_cube"", ""reference"": ""bowl"", ""relation"": ""left_of""}",True,"```json
+[
+  {""target"": ""rubiks_cube"", ""reference"": ""bowl"", ""relation"": ""left_of""}
+]
+```"
+B.initial.S3-C07-initial.S3-L-I,original,initial,S3,L,RF,delivered,stop,False,False,json_structure_single_item_array,json_structure_single_item_array,"{""target"": ""butter"", ""reference"": ""raisin_box"", ""relation"": ""left_of""}",True,"```json
+[
+  {""target"": ""butter box"", ""reference"": ""raisin box"", ""relation"": ""left of""}
+]
+```"
+PB.initial.S1-C04-initial.S1-L-reference_early,placement,initial,S1,L,reference_early,delivered,stop,False,False,json_structure_single_item_array,json_structure_single_item_array,"{""target"": ""rubiks_cube"", ""reference"": ""bowl"", ""relation"": ""left_of""}",True,"```json
+[
+  {""target"": ""rubiks_cube"", ""reference"": ""bowl"", ""relation"": ""left_of""}
+]
+```"
+B.initial.S1-C01-initial.S1-L-S,original,initial,S1,L,TF,delivered,stop,False,False,json_structure_single_item_array,json_structure_single_item_array,"{""target"": ""rubiks_cube"", ""reference"": ""bowl"", ""relation"": ""left_of""}",True,"```json
+[
+  {""target"": ""rubiks_cube"", ""reference"": ""bowl"", ""relation"": ""left_of""}
+]
+```"
+B.initial.S1-C03-initial.S1-B-I,original,initial,S1,B,RF,delivered,stop,False,False,json_structure_single_item_array,json_structure_single_item_array,"{""target"": ""bowl"", ""reference"": ""rubiks_cube"", ""relation"": ""left_of""}",False,"```json
+[
+  {""target"": ""bowl"", ""reference"": ""rubiks cube"", ""relation"": ""left_of""}
+]
+```"
+B.initial.S1-C05-initial.S1-F-D,original,initial,S1,F,DIR,delivered,stop,False,False,object_vocabulary,object_vocabulary,"{""target"": ""rubiks_cube"", ""reference"": ""bowl"", ""relation"": ""left_of""}",False,"```json
+{""target"": ""rubiks cube"", ""reference"": ""bowl"", ""relation"": ""left_of""}
+```"
+B.initial.S1-C06-initial.S1-R-I,original,initial,S1,R,RF,delivered,stop,False,False,json_structure_single_item_array,json_structure_single_item_array,"{""target"": ""rubiks_cube"", ""reference"": ""bowl"", ""relation"": ""left_of""}",False,"```json
+[
+  {""target"": ""rubiks_cube"", ""reference"": ""bowl"", ""relation"": ""left_of""}
+]
+```"
+B.initial.S4-C02-initial.S4-L-I,original,initial,S4,L,RF,delivered,stop,False,False,json_structure_malformed,json_structure_malformed,,,"```json
+[
+  {""target"": ""mustard bottle"", ""reference"": ""raisin box"", ""relation"": ""left of""), 
+  {""target"": ""mustard bottle"", ""reference"": ""raisin box"", ""relation"
+B.initial.S4-C06-initial.S4-TOP-D,original,initial,S4,TOP,DIR,delivered,stop,True,False,,strict_valid_incorrect,,,"```json
+{""target"": ""mustard_bottle"", ""reference"": ""raisin_box"", ""relation"": ""left_of""}
+```"
+B.initial.S3-C04-initial.S3-L-D,original,initial,S3,L,DIR,delivered,stop,False,False,object_vocabulary,object_vocabulary,"{""target"": ""butter"", ""reference"": ""raisin_box"", ""relation"": ""left_of""}",True,"```json
+{
+  ""target"": ""butter box"",
+  ""reference"": ""raisin box"",
+  ""relation"": ""left_of""
+}
+```"
+B.initial.S1-C07-initial.S1-L-D,original,initial,S1,L,DIR,delivered,stop,False,False,object_vocabulary,object_vocabulary,"{""target"": ""rubiks_cube"", ""reference"": ""bowl"", ""relation"": ""left_of""}",True,"```json
+{
+  ""target"": ""rubiks cube"",
+  ""reference"": ""bowl"",
+  ""relation"": ""left_of""
+}
+```"
+PB.no_image.S1-F-reference_late,placement,no_image,S1,F,reference_late,delivered,stop,True,True,,strict_valid_correct,,,"```json
+{
+  ""target"": ""rubiks_cube"",
+  ""reference"": ""bowl"",
+  ""relation"": ""in_front_of""
+}
+```"
+PB.initial.S1-C05-initial.S1-R-reference_late,placement,initial,S1,R,reference_late,delivered,stop,False,False,json_structure_single_item_array,json_structure_single_item_array,"{""target"": ""rubiks_cube"", ""reference"": ""bowl"", ""relation"": ""right_of""}",True,"```json
+[
+  {""target"": ""rubiks_cube"", ""reference"": ""bowl"", ""relation"": ""right_of""}
+]
+```"
+B.initial.S4-C01-initial.S4-TOP-D,original,initial,S4,TOP,DIR,delivered,stop,True,False,,strict_valid_incorrect,,,"```json
+{""target"": ""mustard_bottle"", ""reference"": ""raisin_box"", ""relation"": ""left_of""}
+```"
+B.no_image.S4-R-I,original,no_image,S4,R,RF,delivered,stop,True,False,,strict_valid_incorrect,,,"```json
+{""target"": ""mustard_bottle"", ""reference"": ""raisin_box"", ""relation"": ""left_of""}
+```"
+B.initial.S4-C01-initial.S4-TOP-S,original,initial,S4,TOP,TF,delivered,stop,False,False,json_structure_single_item_array,json_structure_single_item_array,"{""target"": ""mustard_bottle"", ""reference"": ""raisin_box"", ""relation"": ""on_top_supported""}",True,"```json
+[
+  {""target"": ""mustard bottle"", ""reference"": ""raisin box"", ""relation"": ""on top of""}
+]
+```"
+B.initial.S3-C02-initial.S3-R-S,original,initial,S3,R,TF,delivered,stop,False,False,object_and_relation_vocabulary,object_and_relation_vocabulary,"{""target"": ""butter"", ""reference"": ""raisin_box"", ""relation"": ""left_of""}",False,"```json
+{
+  ""target"": ""butter box"",
+  ""reference"": ""raisin box"",
+  ""relation"": ""left of""
+}
+```"
+PB.no_image.S1-R-reference_early,placement,no_image,S1,R,reference_early,delivered,stop,True,True,,strict_valid_correct,,,"```json
+{""target"": ""rubiks_cube"", ""reference"": ""bowl"", ""relation"": ""right_of""}
+```"
+B.initial.S1-C06-initial.S1-R-D,original,initial,S1,R,DIR,delivered,stop,False,False,json_structure_single_item_array,json_structure_single_item_array,"{""target"": ""rubiks_cube"", ""reference"": ""bowl"", ""relation"": ""left_of""}",False,"```json
+[
+  {""target"": ""rubiks cube"", ""reference"": ""bowl"", ""relation"": ""left_of""}
+]
+```"
+B.initial.S4-C06-initial.S4-R-S,original,initial,S4,R,TF,delivered,stop,False,False,object_and_relation_vocabulary,object_and_relation_vocabulary,"{""target"": ""mustard_bottle"", ""reference"": ""raisin_box"", ""relation"": ""left_of""}",False,"```json
+{
+  ""target"": ""mustard bottle"",
+  ""reference"": ""raisin box"",
+  ""relation"": ""left of""
+}
+```"
+B.initial.S4-C04-initial.S4-L-I,original,initial,S4,L,RF,delivered,stop,False,False,object_and_relation_vocabulary,object_and_relation_vocabulary,"{""target"": ""mustard_bottle"", ""reference"": ""raisin_box"", ""relation"": ""left_of""}",True,"```json
+{
+  ""target"": ""mustard bottle"",
+  ""reference"": ""raisin box"",
+  ""relation"": ""left of""
+}
+```"
+B.initial.S3-C01-initial.S3-R-D,original,initial,S3,R,DIR,delivered,stop,False,False,object_vocabulary,object_vocabulary,"{""target"": ""butter"", ""reference"": ""raisin_box"", ""relation"": ""left_of""}",False,"```json
+{
+  ""target"": ""butter box"",
+  ""reference"": ""raisin box"",
+  ""relation"": ""left_of""
+}
+```"
+B.initial.S1-C01-initial.S1-F-S,original,initial,S1,F,TF,delivered,stop,True,True,,strict_valid_correct,,,"```json
+{""target"": ""rubiks_cube"", ""reference"": ""bowl"", ""relation"": ""in_front_of""}
+```"
+PB.initial.S3-C01-initial.S3-R-reference_early,placement,initial,S3,R,reference_early,delivered,stop,False,False,json_structure_single_item_array,json_structure_single_item_array,"{""target"": ""butter"", ""reference"": ""raisin_box"", ""relation"": ""left_of""}",False,"```json
+[
+  {""target"": ""butter box"", ""reference"": ""raisin box"", ""relation"": ""left_of""}
+]
+```"
+B.initial.S1-C01-initial.S1-B-I,original,initial,S1,B,RF,delivered,stop,False,False,object_vocabulary,object_vocabulary,"{""target"": ""bowl"", ""reference"": ""rubiks_cube"", ""relation"": ""left_of""}",False,"```json
+{""target"": ""bowl"", ""reference"": ""rubiks cube"", ""relation"": ""left_of""}
+```"
+B.no_image.S1-F-S,original,no_image,S1,F,TF,delivered,stop,True,True,,strict_valid_correct,,,"```json
+{""target"": ""rubiks_cube"", ""reference"": ""bowl"", ""relation"": ""in_front_of""}
+```"
+PB.initial.S1-C02-initial.S1-L-reference_late,placement,initial,S1,L,reference_late,delivered,stop,False,False,json_structure_single_item_array,json_structure_single_item_array,"{""target"": ""rubiks_cube"", ""reference"": ""bowl"", ""relation"": ""left_of""}",True,"```json
+[
+  {""target"": ""rubiks_cube"", ""reference"": ""bowl"", ""relation"": ""left_of""}
+]
+```"
+B.initial.S3-C02-initial.S3-L-D,original,initial,S3,L,DIR,delivered,stop,False,False,object_vocabulary,object_vocabulary,"{""target"": ""butter"", ""reference"": ""raisin_box"", ""relation"": ""left_of""}",True,"```json
+{
+  ""target"": ""butter box"",
+  ""reference"": ""raisin box"",
+  ""relation"": ""left_of""
+}
+```"
+B.initial.S4-C08-initial.S4-L-S,original,initial,S4,L,TF,delivered,stop,False,False,object_and_relation_vocabulary,object_and_relation_vocabulary,"{""target"": ""mustard_bottle"", ""reference"": ""raisin_box"", ""relation"": ""left_of""}",True,"```json
+{
+  ""target"": ""mustard bottle"",
+  ""reference"": ""raisin box"",
+  ""relation"": ""left of""
+}
+```"
+PB.no_image.S1-L-reference_early,placement,no_image,S1,L,reference_early,delivered,stop,True,True,,strict_valid_correct,,,"```json
+{""target"": ""rubiks_cube"", ""reference"": ""bowl"", ""relation"": ""left_of""}
+```"
+B.initial.S4-C05-initial.S4-L-S,original,initial,S4,L,TF,delivered,stop,False,False,object_and_relation_vocabulary,object_and_relation_vocabulary,"{""target"": ""mustard_bottle"", ""reference"": ""raisin_box"", ""relation"": ""left_of""}",True,"```json
+{
+  ""target"": ""mustard bottle"",
+  ""reference"": ""raisin box"",
+  ""relation"": ""left of""
+}
+```"
+B.initial.S3-C06-initial.S3-R-S,original,initial,S3,R,TF,delivered,stop,False,False,object_and_relation_vocabulary,object_and_relation_vocabulary,"{""target"": ""butter"", ""reference"": ""raisin_box"", ""relation"": ""left_of""}",False,"```json
+{
+  ""target"": ""butter box"",
+  ""reference"": ""raisin box"",
+  ""relation"": ""left of""
+}
+```"
+PB.initial.S4-C01-initial.S4-L-reference_early,placement,initial,S4,L,reference_early,delivered,stop,False,False,json_structure_single_item_array,json_structure_single_item_array,"{""target"": ""mustard_bottle"", ""reference"": ""raisin_box"", ""relation"": ""left_of""}",True,"```json
+[
+  {""target"": ""mustard bottle"", ""reference"": ""raisin box"", ""relation"": ""left of""}
+]
+```"
+PB.initial.S3-C04-initial.S3-L-reference_early,placement,initial,S3,L,reference_early,delivered,stop,False,False,json_structure_single_item_array,json_structure_single_item_array,"{""target"": ""butter"", ""reference"": ""raisin_box"", ""relation"": ""left_of""}",True,"```json
+[
+  {""target"": ""butter box"", ""reference"": ""raisin box"", ""relation"": ""left_of""}
+]
+```"
+B.initial.S1-C07-initial.S1-L-I,original,initial,S1,L,RF,delivered,stop,False,False,json_structure_single_item_array,json_structure_single_item_array,"{""target"": ""rubiks_cube"", ""reference"": ""bowl"", ""relation"": ""left_of""}",True,"```json
+[
+  {""target"": ""rubiks_cube"", ""reference"": ""bowl"", ""relation"": ""left_of""}
+]
+```"
+B.initial.S3-C06-initial.S3-R-I,original,initial,S3,R,RF,delivered,stop,False,False,object_and_relation_vocabulary,object_and_relation_vocabulary,"{""target"": ""butter"", ""reference"": ""raisin_box"", ""relation"": ""left_of""}",False,"```json
+{""target"": ""butter box"", ""reference"": ""raisin box"", ""relation"": ""left of""}
+```"
+PB.initial.S4-C05-initial.S4-R-reference_late,placement,initial,S4,R,reference_late,delivered,stop,False,False,json_structure_single_item_array,json_structure_single_item_array,"{""target"": ""mustard_bottle"", ""reference"": ""raisin_box"", ""relation"": ""left_of""}",False,"```json
+[
+  {""target"": ""mustard bottle"", ""reference"": ""raisin box"", ""relation"": ""left of""}
+]
+```"
+PB.initial.S1-C07-initial.S1-F-reference_late,placement,initial,S1,F,reference_late,delivered,stop,False,False,json_structure_single_item_array,json_structure_single_item_array,"{""target"": ""rubiks_cube"", ""reference"": ""bowl"", ""relation"": ""left_of""}",False,"```json
+[
+  {""target"": ""rubiks_cube"", ""reference"": ""bowl"", ""relation"": ""left_of""}
+]
+```"
+B.initial.S1-C08-initial.S1-L-D,original,initial,S1,L,DIR,delivered,stop,False,False,object_vocabulary,object_vocabulary,"{""target"": ""rubiks_cube"", ""reference"": ""bowl"", ""relation"": ""left_of""}",True,"```json
+{""target"": ""rubiks cube"", ""reference"": ""bowl"", ""relation"": ""left_of""}
+```"
+B.no_image.S1-B-I,original,no_image,S1,B,RF,delivered,stop,False,False,object_vocabulary,object_vocabulary,"{""target"": ""bowl"", ""reference"": ""rubiks_cube"", ""relation"": ""in_front_of""}",False,"```json
+{""target"": ""bowl"", ""reference"": ""Rubik's cube"", ""relation"": ""in_front_of""}
+```"
+PB.initial.S4-C03-initial.S4-L-reference_early,placement,initial,S4,L,reference_early,delivered,stop,False,False,json_structure_single_item_array,json_structure_single_item_array,"{""target"": ""mustard_bottle"", ""reference"": ""raisin_box"", ""relation"": ""left_of""}",True,"```json
+[
+  {""target"": ""mustard bottle"", ""reference"": ""raisin box"", ""relation"": ""left of""}
+]
+```"
+B.initial.S3-C03-initial.S3-R-D,original,initial,S3,R,DIR,delivered,stop,False,False,object_vocabulary,object_vocabulary,"{""target"": ""butter"", ""reference"": ""raisin_box"", ""relation"": ""left_of""}",False,"```json
+{
+  ""target"": ""butter box"",
+  ""reference"": ""raisin box"",
+  ""relation"": ""left_of""
+}
+```"
+B.initial.S1-C08-initial.S1-B-S,original,initial,S1,B,TF,delivered,stop,True,True,,strict_valid_correct,,,"```json
+{
+  ""target"": ""rubiks_cube"",
+  ""reference"": ""bowl"",
+  ""relation"": ""behind""
+}
+```"
+B.initial.S3-C04-initial.S3-TOP-I,original,initial,S3,TOP,RF,delivered,stop,False,False,object_and_relation_vocabulary,object_and_relation_vocabulary,"{""target"": ""butter"", ""reference"": ""raisin_box"", ""relation"": ""in_front_of""}",False,"```json
+{""target"": ""butter box"", ""reference"": ""raisin box"", ""relation"": ""in front of""}
+```"
+PB.initial.S4-C02-initial.S4-R-reference_early,placement,initial,S4,R,reference_early,delivered,stop,False,False,json_structure_single_item_array,json_structure_single_item_array,"{""target"": ""mustard_bottle"", ""reference"": ""raisin_box"", ""relation"": ""left_of""}",False,"```json
+[
+  {""target"": ""mustard bottle"", ""reference"": ""raisin box"", ""relation"": ""left of""}
+]
+```"
+PB.initial.S4-C01-initial.S4-R-reference_late,placement,initial,S4,R,reference_late,delivered,stop,False,False,json_structure_single_item_array,json_structure_single_item_array,"{""target"": ""mustard_bottle"", ""reference"": ""raisin_box"", ""relation"": ""left_of""}",False,"```json
+[
+  {""target"": ""mustard bottle"", ""reference"": ""raisin box"", ""relation"": ""left of""}
+]
+```"
+PB.initial.S1-C01-initial.S1-F-reference_late,placement,initial,S1,F,reference_late,delivered,stop,False,False,json_structure_single_item_array,json_structure_single_item_array,"{""target"": ""rubiks_cube"", ""reference"": ""bowl"", ""relation"": ""in_front_of""}",True,"```json
+[
+  {""target"": ""rubiks_cube"", ""reference"": ""bowl"", ""relation"": ""in front of""}
+]
+```"
+B.initial.S1-C06-initial.S1-L-S,original,initial,S1,L,TF,delivered,stop,False,False,json_structure_single_item_array,json_structure_single_item_array,"{""target"": ""rubiks_cube"", ""reference"": ""bowl"", ""relation"": ""left_of""}",True,"```json
+[
+  {""target"": ""rubiks_cube"", ""reference"": ""bowl"", ""relation"": ""left_of""}
+]
+```"
+PB.initial.S3-C01-initial.S3-L-reference_early,placement,initial,S3,L,reference_early,delivered,stop,False,False,json_structure_single_item_array,json_structure_single_item_array,"{""target"": ""butter"", ""reference"": ""raisin_box"", ""relation"": ""left_of""}",True,"```json
+[
+  {""target"": ""butter box"", ""reference"": ""raisin box"", ""relation"": ""left_of""}
+]
+```"
+PB.initial.S1-C08-initial.S1-B-reference_early,placement,initial,S1,B,reference_early,delivered,stop,False,False,json_structure_single_item_array,json_structure_single_item_array,"{""target"": ""rubiks_cube"", ""reference"": ""bowl"", ""relation"": ""behind""}",True,"```json
+[
+  {""target"": ""rubiks_cube"", ""reference"": ""bowl"", ""relation"": ""behind""}
+]
+```"
+B.initial.S4-C02-initial.S4-TOP-I,original,initial,S4,TOP,RF,delivered,stop,False,False,json_structure_single_item_array,json_structure_single_item_array,"{""target"": ""mustard_bottle"", ""reference"": ""raisin_box"", ""relation"": ""left_of""}",False,"```json
+[
+  {""target"": ""mustard bottle"", ""reference"": ""raisin box"", ""relation"": ""left_of""}
+]
+```"
+B.initial.S1-C06-initial.S1-F-D,original,initial,S1,F,DIR,delivered,stop,False,False,object_vocabulary,object_vocabulary,"{""target"": ""rubiks_cube"", ""reference"": ""bowl"", ""relation"": ""left_of""}",False,"```json
+{""target"": ""rubiks cube"", ""reference"": ""bowl"", ""relation"": ""left_of""}
+```"
+B.initial.S3-C03-initial.S3-TOP-S,original,initial,S3,TOP,TF,delivered,stop,False,False,object_and_relation_vocabulary,object_and_relation_vocabulary,"{""target"": ""butter"", ""reference"": ""raisin_box"", ""relation"": ""in_front_of""}",False,"```json
+{""target"": ""butter box"", ""reference"": ""raisin box"", ""relation"": ""in front of""}
+```"
+B.initial.S1-C08-initial.S1-R-I,original,initial,S1,R,RF,delivered,stop,False,False,json_structure_single_item_array,json_structure_single_item_array,"{""target"": ""rubiks_cube"", ""reference"": ""bowl"", ""relation"": ""left_of""}",False,"```json
+[
+  {""target"": ""rubiks_cube"", ""reference"": ""bowl"", ""relation"": ""left_of""}
+]
+```"
+B.initial.S4-C05-initial.S4-R-S,original,initial,S4,R,TF,delivered,stop,False,False,object_and_relation_vocabulary,object_and_relation_vocabulary,"{""target"": ""mustard_bottle"", ""reference"": ""raisin_box"", ""relation"": ""left_of""}",False,"```json
+{
+  ""target"": ""mustard bottle"",
+  ""reference"": ""raisin box"",
+  ""relation"": ""left of""
+}
+```"
+PB.initial.S3-C08-initial.S3-L-reference_late,placement,initial,S3,L,reference_late,delivered,stop,False,False,json_structure_single_item_array,json_structure_single_item_array,"{""target"": ""butter"", ""reference"": ""raisin_box"", ""relation"": ""right_of""}",False,"```json
+[
+  {""target"": ""butter box"", ""reference"": ""raisin box"", ""relation"": ""right_of""}
+]
+```"
+PB.initial.S4-C08-initial.S4-L-reference_late,placement,initial,S4,L,reference_late,delivered,stop,False,False,json_structure_single_item_array,json_structure_single_item_array,"{""target"": ""mustard_bottle"", ""reference"": ""raisin_box"", ""relation"": ""left_of""}",True,"```json
+[
+  {""target"": ""mustard bottle"", ""reference"": ""raisin box"", ""relation"": ""left_of""}
+]
+```"
+B.initial.S4-C05-initial.S4-TOP-D,original,initial,S4,TOP,DIR,delivered,stop,True,False,,strict_valid_incorrect,,,"```json
+{""target"": ""mustard_bottle"", ""reference"": ""raisin_box"", ""relation"": ""left_of""}
+```"
+B.initial.S4-C04-initial.S4-R-D,original,initial,S4,R,DIR,delivered,stop,False,False,json_structure_single_item_array,json_structure_single_item_array,"{""target"": ""mustard_bottle"", ""reference"": ""raisin_box"", ""relation"": ""left_of""}",False,"```json
+[
+  {""target"": ""mustard bottle"", ""reference"": ""raisin box"", ""relation"": ""left_of""}
+]
+```"
+B.initial.S1-C07-initial.S1-R-S,original,initial,S1,R,TF,delivered,stop,False,False,json_structure_single_item_array,json_structure_single_item_array,"{""target"": ""rubiks_cube"", ""reference"": ""bowl"", ""relation"": ""right_of""}",True,"```json
+[
+  {""target"": ""rubiks_cube"", ""reference"": ""bowl"", ""relation"": ""right_of""}
+]
+```"
+PB.initial.S4-C07-initial.S4-L-reference_late,placement,initial,S4,L,reference_late,delivered,stop,False,False,json_structure_single_item_array,json_structure_single_item_array,"{""target"": ""mustard_bottle"", ""reference"": ""raisin_box"", ""relation"": ""left_of""}",True,"```json
+[
+  {""target"": ""mustard bottle"", ""reference"": ""raisin box"", ""relation"": ""left_of""}
+]
+```"
+B.initial.S1-C01-initial.S1-L-I,original,initial,S1,L,RF,delivered,stop,False,False,json_structure_single_item_array,json_structure_single_item_array,"{""target"": ""bowl"", ""reference"": ""rubiks_cube"", ""relation"": ""left_of""}",False,"```json
+[
+  {""target"": ""bowl"", ""reference"": ""rubiks cube"", ""relation"": ""left_of""}
+]
+```"
+PB.initial.S1-C03-initial.S1-L-reference_early,placement,initial,S1,L,reference_early,delivered,stop,False,False,json_structure_single_item_array,json_structure_single_item_array,"{""target"": ""rubiks_cube"", ""reference"": ""bowl"", ""relation"": ""left_of""}",True,"```json
+[
+  {""target"": ""rubiks_cube"", ""reference"": ""bowl"", ""relation"": ""left_of""}
+]
+```"
+PB.initial.S1-C08-initial.S1-R-reference_late,placement,initial,S1,R,reference_late,delivered,stop,False,False,json_structure_single_item_array,json_structure_single_item_array,"{""target"": ""rubiks_cube"", ""reference"": ""bowl"", ""relation"": ""right_of""}",True,"```json
+[
+  {""target"": ""rubiks_cube"", ""reference"": ""bowl"", ""relation"": ""right_of""}
+]
+```"
+B.initial.S4-C07-initial.S4-L-I,original,initial,S4,L,RF,delivered,stop,False,False,json_structure_malformed,json_structure_malformed,,,"```json
+[
+  {""target"": ""mustard bottle"", ""reference"": ""raisin box"", ""relation"": ""left of""), 
+  {""target"": ""mustard bottle"", ""reference"": ""raisin box"", ""relation"
+B.initial.S3-C02-initial.S3-L-I,original,initial,S3,L,RF,delivered,stop,False,False,multiple_or_conflicting_answers,multiple_or_conflicting_answers,,,"```json
+[
+  {""target"": ""butter box"", ""reference"": ""raisin box"", ""relation"": ""left of""},
+  {""target"": ""butter box"", ""reference"": ""raisin box"", ""relation"": ""right"
+B.initial.S3-C06-initial.S3-R-D,original,initial,S3,R,DIR,delivered,stop,False,False,object_vocabulary,object_vocabulary,"{""target"": ""butter"", ""reference"": ""raisin_box"", ""relation"": ""left_of""}",False,"```json
+{
+  ""target"": ""butter box"",
+  ""reference"": ""raisin box"",
+  ""relation"": ""left_of""
+}
+```"
+PB.initial.S1-C03-initial.S1-F-reference_early,placement,initial,S1,F,reference_early,delivered,stop,False,False,json_structure_single_item_array,json_structure_single_item_array,"{""target"": ""rubiks_cube"", ""reference"": ""bowl"", ""relation"": ""right_of""}",False,"```json
+[
+  {""target"": ""rubiks_cube"", ""reference"": ""bowl"", ""relation"": ""right_of""}
+]
+```"
+PB.initial.S3-C08-initial.S3-R-reference_late,placement,initial,S3,R,reference_late,delivered,stop,False,False,json_structure_single_item_array,json_structure_single_item_array,"{""target"": ""butter"", ""reference"": ""raisin_box"", ""relation"": ""left_of""}",False,"```json
+[
+  {""target"": ""butter box"", ""reference"": ""raisin box"", ""relation"": ""left_of""}
+]
+```"
+B.no_image.S3-L-I,original,no_image,S3,L,RF,delivered,stop,False,False,object_vocabulary,object_vocabulary,,,"```json
+{
+  ""target"": ""butter_box"",
+  ""reference"": ""raisin_box"",
+  ""relation"": ""left_of""
+}
+```"
+B.initial.S4-C07-initial.S4-R-D,original,initial,S4,R,DIR,delivered,stop,False,False,json_structure_single_item_array,json_structure_single_item_array,"{""target"": ""mustard_bottle"", ""reference"": ""raisin_box"", ""relation"": ""left_of""}",False,"```json
+[
+  {""target"": ""mustard bottle"", ""reference"": ""raisin box"", ""relation"": ""left_of""}
+]
+```"
+B.no_image.S1-B-D,original,no_image,S1,B,DIR,delivered,stop,True,False,,strict_valid_incorrect,,,"{""target"": ""rubiks_cube"", ""reference"": ""bowl"", ""relation"": ""left_of""}"
+B.no_image.S3-L-S,original,no_image,S3,L,TF,delivered,stop,False,False,object_vocabulary,object_vocabulary,,,"```json
+{
+  ""target"": ""butter_box"",
+  ""reference"": ""raisin_box"",
+  ""relation"": ""left_of""
+}
+```"
+B.initial.S3-C08-initial.S3-R-S,original,initial,S3,R,TF,delivered,stop,False,False,object_vocabulary,object_vocabulary,"{""target"": ""butter"", ""reference"": ""raisin_box"", ""relation"": ""left_of""}",False,"```json
+{""target"": ""butter box"", ""reference"": ""raisin box"", ""relation"": ""left_of""}
+```"
+B.initial.S1-C03-initial.S1-B-D,original,initial,S1,B,DIR,delivered,stop,False,False,object_vocabulary,object_vocabulary,"{""target"": ""rubiks_cube"", ""reference"": ""bowl"", ""relation"": ""behind""}",True,"```json
+{
+  ""target"": ""rubiks cube"",
+  ""reference"": ""bowl"",
+  ""relation"": ""behind""
+}
+```"
+B.initial.S1-C08-initial.S1-B-D,original,initial,S1,B,DIR,delivered,stop,False,False,object_vocabulary,object_vocabulary,"{""target"": ""rubiks_cube"", ""reference"": ""bowl"", ""relation"": ""behind""}",True,"```json
+{
+  ""target"": ""rubiks cube"",
+  ""reference"": ""bowl"",
+  ""relation"": ""behind""
+}
+```"
