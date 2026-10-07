@@ -434,6 +434,7 @@ adaptation degraded the weights, or that co-training helped.
 | Compact results | [results/](results/): `results_v2_original_mask.json`, `results_v2_machine_mask.json`, `coverage_v2.csv`, `metrics_long_v2_*.csv`, `b2_items.csv.gz`, `c2_items_*.csv.gz`, `c2_truth_pairs_*.csv`, `edge_format_audit.csv`, `edge_format_audit_summary.json` |
 | Review ledger (machine) | [review/](review/): 5 blinded machine forms (4 primary, 1 sensitivity-only), `machine_review_ledger.csv`, `machine_review_items.csv`, `machine_mask.json`, `machine_ingest_summary.json`, `machine_review_summary.json`, `machine_reviewer_methods.json`, and the `sensitivity_*` ledger and mask including form 12 |
 | Full planned-query manifest | [query_manifest.jsonl.gz](../../../../artifacts/robolab_vqa_20261006/release_r2_final/query_manifest.jsonl.gz): every row, including excluded items, with gold and eligibility kept outside model payloads. Also [release.json](../../../../artifacts/robolab_vqa_20261006/release_r2_final/release.json) and [tuple_verification.json](../../../../artifacts/robolab_vqa_20261006/release_r2_final/tuple_verification.json) (46 tuples verified). |
+| Exact model-input images | [model_input_images/](../../../../artifacts/robolab_vqa_20261006/model_input_images/): all 300 lossless PNGs (150 MB) sent to the models in V1 and V2. They are byte-identical to the PVC release (SHA256-verified; `SHA256SUMS` included), and the manifest image paths resolve there. A browsable index covers all 100 view sets. |
 | Durable raw-artifact index | [artifact_index.json](artifact_index.json) (82 items, 428 MB): hashes of raw responses, attempt ledgers, rendered prompts, receipts, logs, release payloads, packet media and key, review forms and ledgers, all on PVC `211247-prod-pvc` under `/data/users/ali/rqa-20261006` |
 | Completion receipt and run receipts | [COMPLETION_RECEIPT.json](COMPLETION_RECEIPT.json), [run_receipts_summary.json](run_receipts_summary.json) |
 | Reproduce the tables and figures (CPU) | `python -m experiments.robolab_vqa.v2.report …` (exact command in the completion receipt) |
@@ -512,3 +513,5 @@ author decisions are blank.
 ## 12. Change log
 
 - 2026-10-07: First and final V2 report. V1 artifacts are unchanged. The bounded pass ends here.
+- 2026-10-07: At the author's request, added the exact model-input images to Git
+  ([model_input_images/](../../../../artifacts/robolab_vqa_20261006/model_input_images/)). No result changed.

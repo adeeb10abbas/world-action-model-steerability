@@ -41,6 +41,7 @@ V2 documents:
 - [V2 tables](runs/r2-final-20261007/TABLES.md)
 - [V2 specification](../../docs/robolab-vqa-20261006/v2-final/FINAL_EXECUTION_SPEC.md)
 - [V2 implementation record](../../docs/robolab-vqa-20261006/v2-final/IMPLEMENTATION_RECORD_V2.md)
+- [Exact model-input images used by V1 and V2](../../artifacts/robolab_vqa_20261006/model_input_images/README.md) (300 PNG files, SHA256-verified)
 
 The V1 report text below is unchanged.
 
