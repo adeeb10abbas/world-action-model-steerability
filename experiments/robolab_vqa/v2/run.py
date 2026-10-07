@@ -154,7 +154,9 @@ def main() -> None:
     attempts_path = lane_dir / "attempts.jsonl"
     prior_attempts = C.read_jsonl(attempts_path)
     if args.phase == "qualify":
-        if any(a["phase"] == "qualification" for a in prior_attempts):
+        # A qualification call counts as made once it produced a response record (delivered or infrastructure error).
+        # Ledger entries without a response record are aborted-before-generation entries (Amendment V2-A1).
+        if C.read_jsonl(lane_dir / "qualification_responses.jsonl"):
             raise SystemExit("qualification already attempted for this lane; repeats are not permitted")
         payloads = C.read_jsonl(rel_dir / "dev_fixtures.jsonl")
         out_path = lane_dir / "qualification_responses.jsonl"
@@ -207,12 +209,9 @@ def main() -> None:
     def attempt(payload: dict, phase: str, retry_slot: str | None = None) -> str:
         nonlocal consecutive, done
         qid = payload["query_id"]
-        attempts_by_q[qid] = attempts_by_q.get(qid, 0) + 1
-        aid = f"{lane}.{qid}.a{attempts_by_q[qid]}"
-        C.append_jsonl(attempts_path, {"attempt_id": aid, "query_id": qid, "phase": phase, "retry_slot": retry_slot,
-                                       "t_start_utc": C.utc_now()})
-        constraint = payload["output_constraint"]
-        rec = {"query_id": qid, "kind": payload["kind"], "bank": payload["bank"], "condition": payload.get("condition"),
+        n_prev = attempts_by_q.get(qid, 0)
+        aid = f"{lane}.{qid}.a{n_prev + 1}"
+        rec = {"query_id": qid, "kind": payload["kind"], "bank": payload.get("bank"), "condition": payload.get("condition"),
                "option_order": payload.get("option_order"),
                "option_mapping": V.C2_ORDERS[payload["option_order"]] if payload["kind"] == "C2" else None,
                "checkpoint_id": lane, "checkpoint_manifest_sha256": manifest["checkpoint_manifest_sha256"],
@@ -223,6 +222,10 @@ def main() -> None:
                "grammar_sha256": readout.compiled[payload["output_constraint_sha256"]]["grammar_sha256"],
                "input_payload_sha256": A.payload_sha256(payload, images),
                "release_content_sha256": release["release_content_sha256"]}
+        # Amendment V2-A1: the ledger entry is written only after the record is built, immediately before the engine call.
+        attempts_by_q[qid] = n_prev + 1
+        C.append_jsonl(attempts_path, {"attempt_id": aid, "query_id": qid, "phase": phase, "retry_slot": retry_slot,
+                                       "t_start_utc": C.utc_now()})
         try:
             gen = readout.generate_constrained(payload, image_root, images)
             parsed = parse_payload(payload, gen["raw_response"])

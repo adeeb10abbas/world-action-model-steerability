@@ -103,3 +103,17 @@ declared item weights normalized within each class. Balanced accuracy is undefin
 uses 10,000 replicates, seed 6106, with starts resampled within each of S1/S3/S4 and shared across lanes and conditions.
 Text-only B2 results are finite counts. Truth-changing frame pairs: per start–goal, the earliest matching and earliest
 nonmatching frame among initial/50%/100% (frame ID breaks ties), scored by form with orders averaged.
+
+## Amendment V2-A1 — qualification runner fault before any generation (2026-10-07 01:39 UTC)
+
+- **What happened.** The first qualification call on each lane (`V2DEV.Q1`, 01:38 UTC) raised `KeyError: 'bank'` while
+  the runner built the response record. Development fixtures carry `condition` but no `bank` key. The runner had
+  already written one ledger entry per lane (`<lane>.V2DEV.Q1.a1`).
+- **No generation occurred.** The exception came before the engine call; the logs show only weight loading. No model
+  output exists for these entries, and the processes exited.
+- **Fix (runner only).** The record now uses `payload.get("bank")`. The ledger entry is written after the record is
+  built, immediately before the engine call. Qualification counts as already made only if it produced a response
+  record. Queries, payloads, constraints, parsers, scoring and the release are unchanged (release content `2a3d5d69…`).
+- **Accounting.** The three aborted ledger entries are retained. They are counted conservatively against the 6,600
+  ceiling by pre-consuming 3 of the 30 shared retry slots, so the remaining retry capacity is 27 and ledgered attempts
+  cannot exceed 6,600. Qualification is rerun once with fresh attempt IDs (`.a2`).
