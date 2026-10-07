@@ -117,3 +117,33 @@ nonmatching frame among initial/50%/100% (frame ID breaks ties), scored by form 
 - **Accounting.** The three aborted ledger entries are retained. They are counted conservatively against the 6,600
   ceiling by pre-consuming 3 of the 30 shared retry slots, so the remaining retry capacity is 27 and ledgered attempts
   cannot exceed 6,600. Qualification is rerun once with fresh attempt IDs (`.a2`).
+
+## Execution note E1 (2026-10-07 13:15 UTC) — evaluation complete; analysis driver committed before results were read
+
+- **Evaluation.** All three lanes passed the mechanical qualification gate. Six fixtures each delivered schema-valid
+  output through the xgrammar backend, with image receipt confirmed by prompt-token counts. Evaluation ran from 01:42
+  to 01:52 UTC: 2,184 of 2,184 queries delivered and format-valid per lane, with 0 infrastructure errors, 0 retries and
+  0 truncations.
+- **Attempt ledger.**
+
+  | Ledger entries | Count |
+  |---|---:|
+  | Aborted-before-generation (Amendment V2-A1) | 3 |
+  | Qualification generations | 18 |
+  | Evaluation generations | 6,552 |
+  | **Total ledger entries** | **6,573** |
+  | Model generations | 6,570 |
+
+  The hard cap is 6,600. The three GPU pods were deleted at 13:12 UTC after their GPUs were verified at 0 MiB.
+- **Analysis code timing.** `experiments/robolab_vqa/v2/analyze.py` and `edge_audit.py` were written during evaluation
+  (after the freeze, before any evaluation response was opened) and are committed here before the first analysis run.
+  They use only the frozen scoring functions (`scoring.py`, committed at `515bab8`) and the frozen release.
+- **Machine review.** The first machine-review attempt (six blinded agents launched 01:36 UTC) produced no forms: every
+  agent failed on a network/DNS outage on the orchestrating workstation. The review was relaunched at 13:10 UTC with the
+  same blinded prompts, adding a second independent machine reviewer for every sheet (agents 7–12).
+  - Reviewers see only the packet sheets and instructions, never model responses or simulator labels.
+  - The mask rule is frozen in code. The revised mask excludes an item if any reviewer marks it unanswerable; the
+    strict mask additionally excludes any geometry discrepancy. Any inter-reviewer disagreement implies such a
+    discrepancy.
+  - The forms were completed after V2 responses existed but without access to them. The audit is therefore a
+    machine audit, not a human one, and is reported as provisional.
