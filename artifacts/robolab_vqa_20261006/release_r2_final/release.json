@@ -1,0 +1,163 @@
+{
+  "content": {
+    "constraints": {
+      "32615665842107794ecf26086d026a63e7765d4fc1f9dcbcfd1d319458cecada": {
+        "schema_json": "{\"type\":\"object\",\"properties\":{\"target\":{\"type\":\"string\",\"enum\":[\"banana\",\"bowl\",\"rubiks_cube\"]},\"reference\":{\"type\":\"string\",\"enum\":[\"banana\",\"bowl\",\"rubiks_cube\"]},\"relation\":{\"type\":\"string\",\"enum\":[\"left_of\",\"right_of\",\"in_front_of\",\"behind\",\"on_top_supported\",\"stacked_on\",\"unknown\"]}},\"required\":[\"target\",\"reference\",\"relation\"],\"additionalProperties\":false}",
+        "type": "json_schema"
+      },
+      "91b2d92da9b5df7c3ac0117a50202016e2e8dc55afae5c53d0625d0dc062da9e": {
+        "schema_json": "{\"type\":\"object\",\"properties\":{\"target\":{\"type\":\"string\",\"enum\":[\"butter\",\"raisin_box\"]},\"reference\":{\"type\":\"string\",\"enum\":[\"butter\",\"raisin_box\"]},\"relation\":{\"type\":\"string\",\"enum\":[\"left_of\",\"right_of\",\"in_front_of\",\"behind\",\"on_top_supported\",\"stacked_on\",\"unknown\"]}},\"required\":[\"target\",\"reference\",\"relation\"],\"additionalProperties\":false}",
+        "type": "json_schema"
+      },
+      "f6572b7566e0fbc64915198fd5b0c93be202a4f4fb4af8b5c464d724c83d5047": {
+        "schema_json": "{\"type\":\"object\",\"properties\":{\"target\":{\"type\":\"string\",\"enum\":[\"mustard_bottle\",\"raisin_box\"]},\"reference\":{\"type\":\"string\",\"enum\":[\"mustard_bottle\",\"raisin_box\"]},\"relation\":{\"type\":\"string\",\"enum\":[\"left_of\",\"right_of\",\"in_front_of\",\"behind\",\"on_top_supported\",\"stacked_on\",\"unknown\"]}},\"required\":[\"target\",\"reference\",\"relation\"],\"additionalProperties\":false}",
+        "type": "json_schema"
+      },
+      "fa62bffb8dac6f9eea9b3b1f8331dc2aa17c96141fde1b731eb5e2d721fc1763": {
+        "choices": [
+          "A",
+          "B",
+          "U"
+        ],
+        "type": "choice"
+      }
+    },
+    "dev_fixtures_sha256": "ba869f731799490849ad62ead0a1db7d0ab057c77d86a29fbe70196f90a377ec",
+    "frozen_text": {
+      "b2_wrapper": "Instruction:\n{instruction}\n\nInterpret the requested outcome, not the current arrangement. Return one JSON object:\n{{\"target\": \"...\", \"reference\": \"...\", \"relation\": \"...\"}}\nThe target is the object the instruction asks to move. The relation is the target's\nrequested final relation to the reference. Use the provided object and relation vocabulary.",
+      "c2_body": "Instruction:\n{instruction}\n\nTreat the instruction as a description of a desired spatial relation between the named objects.\nEvaluate only their arrangement in the supplied current camera views. Whether anyone moved an object,\nwhether a robot action occurred, and whether the arrangement was held over time are irrelevant.\n\nWhich statement is supported by the current views?\n{options}\nReturn exactly one code: A, B, or U.",
+      "c2_options": {
+        "0": "A: The current arrangement matches the spatial relation requested by the instruction.\nB: The current arrangement does not match the spatial relation requested by the instruction.\nU: The supplied visual evidence is insufficient to determine whether it matches.",
+        "1": "A: The current arrangement does not match the spatial relation requested by the instruction.\nB: The current arrangement matches the spatial relation requested by the instruction.\nU: The supplied visual evidence is insufficient to determine whether it matches."
+      },
+      "c2_orders": {
+        "0": {
+          "A": "match",
+          "B": "nonmatch",
+          "U": "unknown"
+        },
+        "1": {
+          "A": "nonmatch",
+          "B": "match",
+          "U": "unknown"
+        }
+      },
+      "header_strings_removed_in_I_and_T": [
+        "Wrist camera (mounted on the robot's gripper; in this image the robot's left is toward the image's right side and farther from the robot is toward the image's bottom):",
+        "Left exterior camera (mounted on the robot's left side; in this image the robot's left is toward the image's lower left and farther from the robot is toward the image's upper left):",
+        "Right exterior camera (mounted on the robot's right side; in this image the robot's left is toward the image's upper left and farther from the robot is toward the image's upper right):"
+      ],
+      "preamble": "Task: answer a question about a robot's tabletop workspace.\nCoordinate frame: all spatial terms use the robot's frame of reference. The robot faces the workspace; \"left\" and \"right\" are from the robot's point of view, \"in front of\" means closer to the robot, and \"behind\" means farther from the robot.",
+      "relation_vocabulary": [
+        "left_of",
+        "right_of",
+        "in_front_of",
+        "behind",
+        "on_top_supported",
+        "stacked_on",
+        "unknown"
+      ]
+    },
+    "gold_sha256": "bde6703a3be2c681d8df69b8ab2851125be5d527ff4710742d377e3e47d85572",
+    "payloads_sha256": "43862a7a46c05a563a69c29261c6ea9a5e8d75d0131cda7727ef1706b4b71539",
+    "source_r1_release_content_sha256": "1e691df6b85576e0d75925cc7902a1f4e303267098483a81726f6ff63cda3046",
+    "tuple_verification_sha256": "9c7410b688690a7c2771672844c1d2170dbe226d527e2e484969d4267041fc12"
+  },
+  "counts": {
+    "answerable_c2": 1188,
+    "by_kind_family_bank_condition": {
+      "B2|original|initial|I": 240,
+      "B2|original|initial|IH": 240,
+      "B2|original|no_image|H": 30,
+      "B2|original|no_image|T": 30,
+      "B2|placement|initial|IH": 128,
+      "B2|placement|no_image|T": 16,
+      "C2|original|initial|R1-presentation": 480,
+      "C2|original|no_image|no_image_camera_text_retained": 60,
+      "C2|original|secondary|R1-presentation": 960
+    },
+    "excluded_c2": 252,
+    "lanes": [
+      "N3-policy",
+      "E3-policy",
+      "F3-qwen3vl4b"
+    ],
+    "per_lane": 2184,
+    "qualification_fixtures_per_lane": 6,
+    "total_planned": 6552
+  },
+  "created_utc": "2026-10-07T01:34:02.456898Z",
+  "design_version": "2.0",
+  "files": {
+    "dev_fixtures.jsonl": "ba869f731799490849ad62ead0a1db7d0ab057c77d86a29fbe70196f90a377ec",
+    "payloads.jsonl": "43862a7a46c05a563a69c29261c6ea9a5e8d75d0131cda7727ef1706b4b71539",
+    "query_manifest.jsonl": "bf1c51cbfe444b25ecc0882bd2117a01f7c75d3f4c4517d0782bf156bcc5e7cd",
+    "tuple_verification.json": "9c7410b688690a7c2771672844c1d2170dbe226d527e2e484969d4267041fc12"
+  },
+  "frozen_settings": {
+    "answerability": "original mask = R1 geometry/boundary/visibility/transit exclusions; review mask applied at analysis by CPU rescoring",
+    "b2": "IH = R1 B payload; H = IH minus image segments; I = IH minus the three camera header strings; T = both removed; H/T and placement T deduplicated across starts (one generation per instruction, reused for paired contrasts)",
+    "budgets": {
+      "max_attempts_total": 6600,
+      "max_consecutive_infra": 3,
+      "max_eval_per_lane": 2184,
+      "max_eval_total": 6552,
+      "max_qual_per_lane": 6,
+      "max_retries_per_query": 1,
+      "max_retries_total": 30
+    },
+    "c2": "R1 C payload (same views/headers/presentation) with the R1 C wrapper replaced by the fixed V2 wrapper; orders 0/1 swap the complete A/B meanings; U unchanged; no-image = initial payload minus image segments (camera text kept), deduplicated across starts",
+    "decoding": {
+      "chat_template_kwargs": {
+        "enable_thinking": false
+      },
+      "greedy": true,
+      "max_new_tokens": 256,
+      "n": 1,
+      "seed": 6106,
+      "temperature": 0.0
+    },
+    "lanes": [
+      "N3-policy",
+      "E3-policy",
+      "F3-qwen3vl4b"
+    ],
+    "loaded_parameter_digests_expected": {
+      "E3-policy": "d5a618633fb5ae1cb794257ed9b2db7ea1725c9a4d439d08bceaf0f4fb291fe6",
+      "F3-qwen3vl4b": "866dddcec41c1fd6c4521081fb89aa8a61041c4eefdfe0bade7c35df8d5cccdb",
+      "N3-policy": "eb00cb168c30728df7c7e33601f251cbd115b39eb181ac46949264d5724c731b"
+    },
+    "order": "primary (B2 all, C2 initial, C2 no-image) by sha256('6106|'+query_id), then C2 secondary by the same key",
+    "structured_outputs": {
+      "b2": "JSON schema: object with required target/reference/relation; enums = full sorted scene object vocabulary (including distractors) for target and reference, full relation vocabulary; additionalProperties false; xgrammar strict schema order; compact separators",
+      "backend": "xgrammar",
+      "c2": "choice A|B|U (vLLM choice -> EBNF root ::= \"A\" | \"B\" | \"U\")",
+      "disable_any_whitespace": true
+    }
+  },
+  "image_root": "/data/users/ali/rqa-20261006/release/r1",
+  "implementation_commit": "515bab82d222595c458f52bbd345eca1a5b75815",
+  "implementation_version": "rqa-v2-impl-1",
+  "release_content_sha256": "2a3d5d69aca622519dbf67fd8a7931741bdad1c3483197013ad3ea662f8cf4f6",
+  "source_r1": {
+    "checks": {
+      "r1_files_match": true,
+      "r1_release_content_sha256": true,
+      "r1_release_json_sha256": true
+    },
+    "release_content_sha256": "1e691df6b85576e0d75925cc7902a1f4e303267098483a81726f6ff63cda3046",
+    "release_dir": "/data/users/ali/rqa-20261006/release/r1",
+    "release_json_sha256": "ccccd81eeb908b8001fa8ff70c0d28917bebc6f1df2a96d8fd335161f54cf7a9",
+    "source_commit": "acbe7ce13947f43b52ac0585bf9e6929579e8c83"
+  },
+  "status": "frozen_provisional_answerability_original_mask",
+  "study_id": "RQA-20261006",
+  "v2_spec_files_sha256": {
+    "FINAL_EXECUTION_SPEC.md": "7d3f0edffacf923688b00c483c00f3642c98cdd25d7d46599b0afbd6a1f9f45a",
+    "IMPLEMENTATION_RECORD_V2.md": "205050e34041634f213260ac716f84786187b7dcc3d43695c2e6042d08a06342",
+    "PACKET_MANIFEST.json": "16b3f700a1db54f47aa0d097c8cb1f571296996c3464aac8c52b38954065d52e",
+    "README.md": "97329e873c175f3022161be0cc4e6100e30f3a376fe1ede318772d9c5e2b6540",
+    "VALIDATION.json": "6df7df4c4732c70825369b81356439e285d88d64e723d670e37394019993695f",
+    "protocol.json": "0750a1f8bb027b94cf20287ca797c5581a15b5f64b852e1677d5fdb0b39a42a4"
+  }
+}

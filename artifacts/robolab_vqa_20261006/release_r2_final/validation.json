@@ -1,0 +1,60 @@
+{
+  "checks": {
+    "b2_IH_equals_R1_B_payload": true,
+    "b2_header_only_differences_IH_I_and_H_T": true,
+    "b2_no_image_deduplicated_8_starts": true,
+    "b2_text_equal_IH_H_and_I_T_after_removing_images": true,
+    "c2_every_item_has_both_orders": true,
+    "c2_option_orders_map_identical_semantics": true,
+    "c2_same_views_headers_as_R1_only_wrapper_replaced": true,
+    "c2_source_frame_gold_and_mask_alignment": true,
+    "camera_order_wrist_left_right": true,
+    "counts_match_plan": true,
+    "fixtures_use_non_catalog_wording": true,
+    "image_hashes_in_r1_release": true,
+    "instruction_bytes_exact": true,
+    "order_keys": true,
+    "output_constraints_full_vocab_no_gold_pruning": true,
+    "payload_fields_minimal": true,
+    "payloads_free_of_gold_and_model_names": true,
+    "per_lane_2184_total_6552": true,
+    "r1_release_unchanged": true,
+    "release_file_hashes_match": true,
+    "s4_top_d_trailing_space": true,
+    "scenes_S1_S3_S4_only": true,
+    "single_release_sha": true,
+    "six_qualification_fixtures": true,
+    "tuples_verified_46": true,
+    "unique_query_ids": true,
+    "v2_release_not_in_r1_paths": true
+  },
+  "human_answerability_review": "not performed; original R1 mask frozen; review mask applied later by CPU rescoring",
+  "notes": {
+    "c2_gold": {
+      "initial": {
+        "match": 132,
+        "nonmatch": 336
+      },
+      "secondary": {
+        "match": 180,
+        "nonmatch": 540
+      }
+    },
+    "c2_mask": {
+      "initial": {
+        "answerable": 468,
+        "excluded": 12
+      },
+      "secondary": {
+        "answerable": 720,
+        "excluded": 240
+      }
+    },
+    "distinct_constraints": 4
+  },
+  "passed": true,
+  "release": "/data/users/ali/rqa-20261006/release/r2-final/release.json",
+  "release_content_sha256": "2a3d5d69aca622519dbf67fd8a7931741bdad1c3483197013ad3ea662f8cf4f6",
+  "release_json_sha256": "297f8a77e2d781a74e4b4d23e60ff300fedbd7b907dc2a266ecf9f34e3b9cdc0",
+  "validated_utc": "2026-10-07T01:34:03.122521Z"
+}
