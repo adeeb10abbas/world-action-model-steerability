@@ -13,6 +13,8 @@ latexmk -pdf -interaction=nonstopmode -halt-on-error rev_with_vqa.tex
 cp rev_with_vqa.pdf ../../output/pdf/same_goal_different_words_submission_ready.pdf
 ```
 
+Current plot sources and numeric checks are in [revisions/20261008_figure_readability](revisions/20261008_figure_readability/README.md). Use these two builders to reproduce the compact submission figures; the older general label builder preserves earlier layouts.
+
 ## Files
 
 - `main.tex`: canonical manuscript. The cleaned Overleaf project uses `main.tex`. Legacy scene-design and cluster files are preserved in a separate archive project and in repository history.
