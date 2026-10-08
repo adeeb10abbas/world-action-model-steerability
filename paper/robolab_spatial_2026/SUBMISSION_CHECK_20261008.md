@@ -2,19 +2,25 @@
 
 The workshop is **Do Robots Need World Models?**, CoRL 2026.
 
-## Verified workshop rules
+## Organizer instructions confirmed by the author
+
+On 8 October 2026, the author reported direct confirmation from the organizer that the limit is **four pages excluding references**, that the paper and appendix should be **submitted together**, and that review is **double blind**. These instructions resolve the earlier uncertainty recorded in the archived public-form check.
+
+## Submission artifact
+
+Use `output/pdf/same_goal_different_words_with_vqa.pdf` from the repository root. It is a single combined PDF: four pages of main text, one page of references, and the cleaned appendix. Its editable source is `paper/robolab_spatial_2026/rev_with_vqa.tex`.
+
+The active revision uses the CoRL anonymous review mode with line numbers. The named author block, affiliations, correspondence address, and identifying PDF metadata have been removed. Dummy affiliation and contact placeholders in the anonymous title block are also omitted. The official style file, margins, and type sizes are unchanged. The previously reviewed scientific text, figures, tables, and references are preserved.
+
+Upload this combined PDF to the paper field. Do not upload the named archive, repository, source bundle, revision notes, or an older coauthor PDF as supplementary material.
+
+## Public submission-form details
 
 - The [workshop call for papers](https://do-robots-need-world-models.github.io/#call-for-papers) specifies up to four pages in the CoRL template and a non-archival track.
-- The [OpenReview submission form](https://openreview.net/group?id=robot-learning.org/CoRL/2026/Workshop/do-robots-need-world-models) includes an **optional** supplementary-material field. It accepts one self-contained PDF or ZIP, up to 100 MB, and explicitly requires supplementary materials to be anonymized.
-- The paper upload is a separate PDF field, up to 50 MB.
-- The exact field definitions retrieved from OpenReview's public API are saved in `revisions/20261008_final_proof/submission_rules.json`.
+- The [OpenReview submission page](https://openreview.net/group?id=robot-learning.org/CoRL/2026/Workshop/do-robots-need-world-models) provides a PDF paper field with a 50 MB maximum.
+- A separate supplementary-material field is optional; its existence does not override the organizer's instruction to combine this paper and appendix.
+- Exact public field definitions previously retrieved from OpenReview are preserved in `revisions/20261008_final_proof/submission_rules.json`.
 
-## What remains unspecified
+## Final checks
 
-The workshop CFP and upload descriptions do not explicitly say whether references are excluded from the four-page limit. CoRL's main-conference rules exclude references and appendices, but that is not an explicit workshop confirmation. Do not treat the current four-page body plus one-page bibliography as verified workshop compliance until this point is confirmed with the organizers (the public contact is bduister@cmu.edu).
-
-## Recommended packaging
-
-Keep the four-page scientific argument self-contained. Supply the cleaned appendix as the optional, separately uploaded, anonymous supplement. The current combined PDF is an author review copy with names and affiliations, not an anonymous upload artifact. No paper was submitted and no organizer was contacted during this review.
-
-Internal experiment versions, implementation records, full forecast inspection imagery, and operational provenance remain in the repository and the archived pre-proofread source. They need not appear in the reader-facing appendix. The appendix retains the exploratory status of follow-up tests, null outcomes, and limitations required to interpret the findings.
+The anonymity, compilation, page-count, and layout checks for the current artifact are recorded in `revisions/20261008_anonymous_submission/validation.json`. The named source is preserved privately in the revision archive and Git history for later restoration. No submission, license acceptance, or organizer communication has been performed.

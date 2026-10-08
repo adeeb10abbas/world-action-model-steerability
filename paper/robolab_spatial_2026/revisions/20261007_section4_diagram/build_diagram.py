@@ -11,7 +11,7 @@ OUT = ROOT / 'revision_assets/rev_vqa_protocol.pdf'
 W, H = 600, 174
 c = canvas.Canvas(str(OUT), pagesize=(W, H))
 c.setTitle('Instruction interpretation: inputs, question, and scoring')
-c.setAuthor('Ali-Adeeb Abbas et al.')
+c.setAuthor('Anonymous Authors')
 ink = HexColor('#17232B')
 muted = HexColor('#53616B')
 line = HexColor('#CBD3D8')
