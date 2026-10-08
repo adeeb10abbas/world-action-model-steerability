@@ -1,0 +1,37 @@
+{
+  "checked_date": "2026-10-08",
+  "workshop_url": "https://do-robots-need-world-models.github.io/",
+  "submission_schema_url": "https://api2.openreview.net/invitations?id=robot-learning.org%2FCoRL%2F2026%2FWorkshop%2Fdo-robots-need-world-models%2F-%2FSubmission",
+  "invitation_id": "robot-learning.org/CoRL/2026/Workshop/do-robots-need-world-models/-/Submission",
+  "supplementary_material": {
+    "order": 8,
+    "description": "All supplementary material must be within a single and self-contained file (.pdf or .zip). Note that supplementary material will be visible to reviewers so ensure all material is anonymized. The maximum file size is 100MB.",
+    "value": {
+      "param": {
+        "type": "file",
+        "extensions": [
+          "zip",
+          "pdf"
+        ],
+        "maxSize": 100,
+        "optional": true,
+        "deletable": true
+      }
+    }
+  },
+  "pdf": {
+    "order": 7,
+    "description": "Upload a PDF file that ends with .pdf.",
+    "value": {
+      "param": {
+        "type": "file",
+        "maxSize": 50,
+        "extensions": [
+          "pdf"
+        ]
+      }
+    }
+  },
+  "deadline_epoch_ms": 1791788400000,
+  "workshop_reference_page_rule": "Not specified in public workshop CFP or submission field descriptions."
+}
