@@ -19,8 +19,6 @@ A robot that follows one spatial instruction may fail when the same goal is desc
 \keywords{World--Action Models, Spatial Language, Robot Evaluation}
 
 \setlength{\parskip}{2.5pt}
-\setlength{\intextsep}{8pt plus 2pt minus 2pt}
-\setlength{\textfloatsep}{12pt plus 2pt minus 2pt}
 \section{Introduction}
 World-action models (WAMs) generate robot actions together with predictions of future observations~\citep{kim2026cosmospolicy}. Their usefulness as general-purpose policies depends on turning a user's description into the intended manipulation. For a spatial placement task, this requires identifying both the object to move and its destination. A successful rollout under one description leaves a basic question unanswered: does the policy respond to the requested goal consistently, or does success depend on how that goal is expressed?
 
@@ -29,16 +27,15 @@ Prior work tests whether policies respond to language in visually similar scenes
 We compare three released WAMs under alternative instructions from identical initial scenes. The results show that success under one description does not imply consistency across equivalent descriptions, and that opposite effects across relations can cancel in an overall score. Examining the policy rollouts also reveals a limitation of spatial evaluation: the requested relation can become true because the wrong object moved, or disappear under continued control. We also test the policies' language models independently to determine whether the same descriptions lead to different interpretations.
 
 \begin{table}[!t]
-\caption{One goal described three ways. The mustard is the \emph{target} to move; the raisin box is the \emph{reference}. Only the instruction changes between runs.}
+\caption{Exact input images and three instructions for moving the mustard (target) to the right of the raisin box (reference). The language-test question asks for the intended outcome, not the visible arrangement.}
 \label{tab:setup}
-\small
-\begin{minipage}[c]{.27\linewidth}
-\includegraphics[width=\linewidth]{rev_scene_mustard.jpg}
-\end{minipage}\hfill
-\begin{minipage}[c]{.69\linewidth}
-\textbf{Goal:} mustard to the right of the box.\par
-TF and RF differ in the subject of the spatial clause. Both still ask the robot to move the mustard.
-\end{minipage}\par\medskip
+\centering\small
+\begin{tabular}{@{}c@{\hspace{.02\linewidth}}c@{\hspace{.02\linewidth}}c@{}}
+Wrist & Left exterior & Right exterior\\
+\includegraphics[width=.32\linewidth]{rev_vqa_mustard_wrist.png} &
+\includegraphics[width=.32\linewidth]{rev_vqa_mustard_left.png} &
+\includegraphics[width=.32\linewidth]{rev_vqa_mustard_right.png}
+\end{tabular}\par\smallskip
 \begin{tabular}{@{}p{.20\linewidth}p{.76\linewidth}@{}}
 \toprule
 \textbf{Form} & \textbf{Exact instruction} \\
@@ -49,7 +46,12 @@ Direct (DIR) & Place the mustard bottle on the table to the right of the raisin 
 \addlinespace
 \textcolor{reference}{Reference-first (RF)} & Move the mustard bottle on the table so that \textbf{the raisin box} is to the left of the mustard bottle. \\
 \bottomrule
-\end{tabular}
+\end{tabular}\par\smallskip
+\begin{minipage}{.97\linewidth}
+\textit{Question used in the language test (verbatim excerpt):}\par
+Interpret the requested outcome, not the current arrangement. Return one JSON object:\par
+\texttt{\{"target": "...", "reference": "...", "relation": "..."\}}
+\end{minipage}
 \end{table}
 
 \section{Paired Spatial Evaluation}
@@ -91,18 +93,11 @@ The policy rollouts also show why reaching a scored arrangement is not equivalen
 
 \FloatBarrier
 \section{Interpreting the Requested Goal}
-To separate instruction interpretation from action generation, we tested each policy's language model on the same ten cube, butter, and mustard goals (Fig.~\ref{fig:vqa-protocol}). We compare text alone with initial images from eight starts per scene; Appendix~\ref{app:vqa} details the protocol and controls.
-
-\begin{figure}[!ht]
-\centering
-\includegraphics[width=\linewidth]{rev_vqa_protocol.pdf}
-\caption{Instruction-understanding test with an exact RF example and question excerpt. Answers must describe the requested outcome. Text-only queries omit images; camera descriptions and vocabulary lists are omitted here.}
-\label{fig:vqa-protocol}
-\end{figure}
+To separate instruction interpretation from action generation, we tested each policy's language model on the same ten cube, butter, and mustard goals. We asked it to identify the target, reference, and requested relation, first from text alone and then with initial images from eight starts per scene (Table~\ref{tab:setup}). Answers used a fixed format and vocabulary, and were correct only when all three entries matched the goal. Appendix~\ref{app:vqa} details the protocol and reference-placement controls.
 
 \begin{table}[!ht]
 \centering\small
-\caption{Instruction accuracy under constrained decoding: correct out of ten (text) or equal-scene percentage (images + camera descriptions). $\dagger$ FLUX's image scores test standalone Qwen; the policy uses Qwen for text only.}
+\caption{Accuracy in identifying the requested goal. Text scores are out of ten instructions; image scores weight scenes equally and include camera descriptions. $\dagger$ FLUX uses Qwen for text only; its image scores test standalone Qwen, not the policy's visual pathway.}
 \label{tab:vqa}
 \begin{tabular}{@{}llcc@{\quad}cc@{}}
 \toprule
@@ -116,14 +111,14 @@ FLUX & Qwen3-VL-4B-Instruct & 10 & 4 & $100.0^\dagger$ & $41.7^\dagger$\\
 \end{tabular}
 \end{table}
 
-Reference-first instructions can be misinterpreted even when the language model is evaluated on its own. For example, FLUX correctly identifies the mustard and box but interprets the RF instruction in Table~\ref{tab:setup} as requiring the mustard to be \emph{left} of the box. It reverses the relation in all six text-only RF errors. Edge also interprets fewer RF than TF instructions correctly (Table~\ref{tab:vqa}).
+Reference-first instructions can be misinterpreted even when the language model is evaluated on its own. For example, FLUX correctly identifies the mustard and box but interprets the RF instruction in Table~\ref{tab:setup} as requiring the mustard to be \emph{left} of the box. It reverses the relation in all six text-only RF errors. Edge also interprets fewer RF than TF instructions correctly (Table~\ref{tab:vqa}). Reference-language errors are therefore observable in the policies' language models independently of robot motion.
 
-Understanding the text alone does not guarantee the same interpretation with images. Nano answers every text-only instruction correctly, but adding images and camera descriptions introduces errors on two RF instructions: RF accuracy falls to 89.9\% while TF remains correct. Camera descriptions alone change no answers. Testing interpretation with the policy's observations can therefore reveal errors that text-only tests miss.
+Understanding the text alone does not guarantee the same interpretation when images are present. Nano interprets every text-only instruction correctly, but adding the initial images and camera descriptions introduces RF errors on two instructions while TF remains correct. Its RF accuracy falls to 89.9\%, whereas camera descriptions without images leave its answers unchanged. This dependence on visual context motivates testing instruction interpretation with the observations supplied to the policy.
 
 \section{Discussion and Conclusion}
 Our results make instruction consistency a necessary complement to task performance. Following SIMPLER's controlled-simulation approach~\citep{li2025simpler}, repeating a task from the same physical start reveals failures that favorable wording can conceal. Opposing effects across relations also caution against treating TF as a universal prompting solution.
 
-Language interpretation errors do not establish the cause of a robot failure. The tested language-model weights match upstream or base checkpoints, so these errors cannot be attributed to changes in those weights during robot adaptation. Unavailable matched training data prevent a controlled comparison of training recipes or co-training. Visual arrangement judgments remain inconclusive, and their labels still require human review (Appendix~\ref{app:vqa}).
+Language interpretation errors do not establish the cause of a robot failure. The tested language-model weights match upstream or base checkpoints, so these errors cannot be attributed to changes in those weights during robot adaptation. Unavailable matched training data prevent a controlled comparison of training recipes or co-training. Tests of whether an image showed the requested arrangement also remained inconclusive, producing nearly constant negative answers with visual labels still awaiting human review (Appendix~\ref{app:vqa}).
 
 A correct spatial relation captures only part of instruction following, just as LIBERO-CF distinguishes object contact from task success~\citep{fang2026counterfactual}. Broader scenes are needed to establish how common these failures are. Evaluation can nevertheless address them by testing several descriptions per goal, checking which object moved, and verifying the final arrangement.
 
@@ -688,7 +683,7 @@ We conducted an inference-only diagnostic using the language components of the t
 
 V2 covers ten goals in the cube, butter, and mustard scenes: 30 exact DIR/TF/RF instructions and 24 physical starts. Bowl stacking is excluded because of the support/nesting ambiguity. We reuse 24 initial view sets and 48 fixed saved-rollout view sets, each with three synchronized camera views. No training, new robot episodes, or new scenes were added. All 6,552 evaluation queries completed without missing, truncated, or invalid-format answers.
 
-Figure~\ref{fig:vqa-protocol} uses the three initial camera images from start \texttt{S4-C04}, verified byte-for-byte against the evaluated inputs. The full question, camera descriptions, image hashes, and example answers are archived with the paper revision.
+Table~\ref{tab:setup} uses the three initial camera images from start \texttt{S4-C04}, verified byte-for-byte against the evaluated inputs. The full question, camera descriptions, image hashes, and example answers are archived with the paper revision.
 
 \paragraph{Components and checkpoint lineage.}
 The executed Nano reasoner matches Qwen3-VL-8B-Instruct. The executed Edge reasoner matches the released Edge base reasoner. Hashes of the loaded parameters, input processing, rendered prompts, and six development outputs established parity; identical pairs were evaluated once. FLUX's frozen shared encoder has the same weight files as Qwen3-VL-4B-Instruct. FLUX uses this component for text; standalone image QA is auxiliary and does not reproduce its policy's visual pathway. A separate Cosmos3-Nano base reasoner tested in V1 differs from the executed reasoner and is not treated as a matched pre-adaptation parent. These identities do not support degradation of the tested component weights during robot adaptation. Matched training data were unavailable, so this audit does not isolate training-recipe or co-training effects on the full policies.
