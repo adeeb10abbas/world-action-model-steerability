@@ -22,7 +22,7 @@ A robot that follows one spatial instruction may fail when the same goal is desc
 \setlength{\intextsep}{8pt plus 2pt minus 2pt}
 \setlength{\textfloatsep}{12pt plus 2pt minus 2pt}
 \section{Introduction}
-World-action models (WAMs) generate robot actions together with predictions of future observations~\citep{kim2026cosmospolicy}. Their usefulness as general-purpose policies depends on turning a user's description into the intended manipulation. For a spatial placement task, this requires identifying both the object to move and its destination. Does the policy respond consistently to equivalent instructions?
+World-action models (WAMs) generate robot actions together with predictions of future observations~\citep{kim2026cosmospolicy}. Their usefulness as general-purpose policies depends on turning a user's description into the intended manipulation. For a spatial placement task, this requires identifying both the object to move and its destination. A successful rollout under one description leaves a basic question unanswered: does the policy respond to the requested goal consistently, or does success depend on how that goal is expressed?
 
 Prior work tests whether policies respond to language in visually similar scenes~\citep{tri2025lbm}, follow changed goals~\citep{fang2026counterfactual}, or withstand paraphrases and irrelevant context~\citep{fei2026liberoplus,kim2026liberopara,moskalenko2026bring}. CAST and SG-WAM seek to improve instruction following through counterfactual supervision and semantic guidance~\citep{glossop2025cast,he2026sgwam}. We focus on a specific consistency requirement: preserving the intended manipulation when the same spatial goal is described from another object's perspective.
 
@@ -55,10 +55,7 @@ Direct (DIR) & Place the mustard bottle on the table to the right of the raisin 
 \section{Paired Spatial Evaluation}
 To test whether wording changes behavior without changing the task, we repeat each placement from the same physical start under three instructions. We compare how often the requested arrangement is reached, then examine whether that score captures the intended manipulation and its final outcome.
 
-\begin{samepage}
 We use four tabletop scenes from RoboLab, a simulation benchmark for generalist manipulation policies~\citep{yang2026robolab}. The cube scene asks the robot to place a cube left, right, in front of, or behind a bowl. The butter and mustard scenes each ask it to place that object left, right, or on top of a raisin box. The bowl scene asks it to stack either bowl on the other. Seven goals are provided by RoboLab, and five extend the same scenes without changing their objects (Appendix~\ref{app:tasks}).
-\par
-\end{samepage}
 
 Table~\ref{tab:setup} illustrates the three instruction forms using the same mustard-placement goal. The direct form (DIR) is a concise command that retains RoboLab's original wording where available. Target-first (TF) expands the command by describing the mustard as right of the box. Reference-first (RF) instead describes the box as left of the mustard, while still asking the robot to move the mustard. Comparing TF with RF tests this change in perspective; comparing DIR with TF tests the expansion itself. The DIR--RF comparison combines both changes and appears in Appendix~\ref{app:behavior-results}. For bowl stacking, ``underneath and supporting'' is less specific than the nesting required by the scorer, so we also analyze the results without these goals.
 
