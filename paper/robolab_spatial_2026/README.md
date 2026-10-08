@@ -2,7 +2,7 @@
 
 **Same Goal, Different Words: Spatial Instruction Sensitivity in World–Action Models**
 
-Target: [Do Robots Need World Models? at CoRL 2026](https://do-robots-need-world-models.github.io/). The author confirmed the organizer's instructions on October 8: four main-text pages excluding references, paper and appendix together, and double-blind review. The current anonymous submission revision is `rev_with_vqa.tex`; the combined PDF is `../../output/pdf/same_goal_different_words_with_vqa.pdf`. It contains four main-text pages, one reference page, and thirteen appendix pages. It uses CoRL review mode with line numbers and anonymous PDF metadata. It is prepared for submission but has not been submitted. See [SUBMISSION_CHECK_20261008.md](SUBMISSION_CHECK_20261008.md).
+Target: [Do Robots Need World Models? at CoRL 2026](https://do-robots-need-world-models.github.io/). The author confirmed the organizer's instructions on October 8: four main-text pages excluding references, paper and appendix together, and double-blind review. The current anonymous submission revision is `rev_with_vqa.tex`; the combined PDF is `../../output/pdf/same_goal_different_words_submission_ready.pdf`. It contains four main-text pages, one reference page, and thirteen appendix pages. It uses CoRL review mode with line numbers and anonymous PDF metadata. It is prepared for submission but has not been submitted. See [SUBMISSION_CHECK_20261008.md](SUBMISSION_CHECK_20261008.md).
 
 The file list and dated entries below preserve earlier development history. `main.tex` and the older PDFs/bundles are not the current submission artifact.
 
@@ -10,7 +10,7 @@ The file list and dated entries below preserve earlier development history. `mai
 
 ```sh
 latexmk -pdf -interaction=nonstopmode -halt-on-error rev_with_vqa.tex
-cp rev_with_vqa.pdf ../../output/pdf/same_goal_different_words_with_vqa.pdf
+cp rev_with_vqa.pdf ../../output/pdf/same_goal_different_words_submission_ready.pdf
 ```
 
 ## Files
