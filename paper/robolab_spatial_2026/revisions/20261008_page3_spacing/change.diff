@@ -1,0 +1,11 @@
+--- overleaf_before.tex
++++ rev_with_vqa.tex
+@@ -70,7 +70,7 @@
+ 
+ \begin{figure}[!ht]
+ \centering
+-\includegraphics[width=.88\linewidth]{rev_wording_effect.pdf}
++\includegraphics[width=\linewidth]{rev_wording_effect.pdf}
+ \caption{Wording effects across 32 physical starts. Dots show start-level average differences; diamonds and bars show means and 95\% intervals. Positive TF--RF favors target-first wording. Wider sections indicate more starts with similar effects.}
+ \label{fig:wording}
+ \end{figure}
