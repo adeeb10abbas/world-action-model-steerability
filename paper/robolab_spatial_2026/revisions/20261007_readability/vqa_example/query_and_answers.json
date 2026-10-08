@@ -1,0 +1,166 @@
+{
+  "query": {
+    "annotation_version": "rqa-gold-1",
+    "answerable": true,
+    "bank": "initial",
+    "condition": "IH",
+    "display_form": "RF",
+    "exclusion_reason": null,
+    "family": "original",
+    "frame_id": "S4-C04-initial",
+    "full_prompt": "Task: answer a question about a robot's tabletop workspace.\nCoordinate frame: all spatial terms use the robot's frame of reference. The robot faces the workspace; \"left\" and \"right\" are from the robot's point of view, \"in front of\" means closer to the robot, and \"behind\" means farther from the robot.\n\nCamera views of the current scene, captured at the same moment:\nWrist camera (mounted on the robot's gripper; in this image the robot's left is toward the image's right side and farther from the robot is toward the image's bottom):\n<image:img-073172bdf689c3690f319a59>\nLeft exterior camera (mounted on the robot's left side; in this image the robot's left is toward the image's lower left and farther from the robot is toward the image's upper left):\n<image:img-34a3be7837992dc4af8f352f>\nRight exterior camera (mounted on the robot's right side; in this image the robot's left is toward the image's upper left and farther from the robot is toward the image's upper right):\n<image:img-59c1b516c5fbe5083fee5763>\n\nObject vocabulary: mustard_bottle, raisin_box\nRelation vocabulary: left_of, right_of, in_front_of, behind, on_top_supported, stacked_on, unknown\n\nInstruction:\nMove the mustard bottle on the table so that the raisin box is to the left of the mustard bottle.\n\nInterpret the requested outcome, not the current arrangement. Return one JSON object:\n{\"target\": \"...\", \"reference\": \"...\", \"relation\": \"...\"}\nThe target is the object the instruction asks to move. The relation is the target's\nrequested final relation to the reference. Use the provided object and relation vocabulary.",
+    "full_prompt_sha256": "efd27248caf82d6fa19ea5070d9c489b30baf1970e881adfc1c2c666a38ae850",
+    "goal_id": "R",
+    "gold_answer": {
+      "reference": "raisin_box",
+      "relation": "right_of",
+      "target": "mustard_bottle"
+    },
+    "instruction_utf8": "Move the mustard bottle on the table so that the raisin box is to the left of the mustard bottle.",
+    "instruction_utf8_sha256": "79d4084e473a2d0e178879b53181d33f3600e626feea579815762cedf4808fb6",
+    "item_key": null,
+    "kind": "B2",
+    "observed_time_s": 0.0,
+    "option_mapping": null,
+    "option_order": null,
+    "order_key": "29f8ff8070cd44cb0307963d81f1b945006041fd099e1156b2b30ccd5a50c27a",
+    "original_prompt_id": "S4-R-I",
+    "output_constraint": {
+      "schema_json": "{\"type\":\"object\",\"properties\":{\"target\":{\"type\":\"string\",\"enum\":[\"mustard_bottle\",\"raisin_box\"]},\"reference\":{\"type\":\"string\",\"enum\":[\"mustard_bottle\",\"raisin_box\"]},\"relation\":{\"type\":\"string\",\"enum\":[\"left_of\",\"right_of\",\"in_front_of\",\"behind\",\"on_top_supported\",\"stacked_on\",\"unknown\"]}},\"required\":[\"target\",\"reference\",\"relation\"],\"additionalProperties\":false}",
+      "type": "json_schema"
+    },
+    "output_constraint_sha256": "f6572b7566e0fbc64915198fd5b0c93be202a4f4fb4af8b5c464d724c83d5047",
+    "pair_id": "B2.IH.S4-C04-initial.S4-R",
+    "physical_start_id": "S4-C04",
+    "query_id": "B2.IH.S4-C04-initial.S4-R-I",
+    "release_sha256": "2a3d5d69aca622519dbf67fd8a7931741bdad1c3483197013ad3ea662f8cf4f6",
+    "requested_time_s": 0.0,
+    "scene_id": "S4",
+    "segments": [
+      {
+        "text": "Task: answer a question about a robot's tabletop workspace.\nCoordinate frame: all spatial terms use the robot's frame of reference. The robot faces the workspace; \"left\" and \"right\" are from the robot's point of view, \"in front of\" means closer to the robot, and \"behind\" means farther from the robot.\n\nCamera views of the current scene, captured at the same moment:\nWrist camera (mounted on the robot's gripper; in this image the robot's left is toward the image's right side and farther from the robot is toward the image's bottom):\n",
+        "type": "text"
+      },
+      {
+        "image_id": "img-073172bdf689c3690f319a59",
+        "type": "image",
+        "view": "wrist_cam"
+      },
+      {
+        "text": "\nLeft exterior camera (mounted on the robot's left side; in this image the robot's left is toward the image's lower left and farther from the robot is toward the image's upper left):\n",
+        "type": "text"
+      },
+      {
+        "image_id": "img-34a3be7837992dc4af8f352f",
+        "type": "image",
+        "view": "over_shoulder_left_camera"
+      },
+      {
+        "text": "\nRight exterior camera (mounted on the robot's right side; in this image the robot's left is toward the image's upper left and farther from the robot is toward the image's upper right):\n",
+        "type": "text"
+      },
+      {
+        "image_id": "img-59c1b516c5fbe5083fee5763",
+        "type": "image",
+        "view": "over_shoulder_right_camera"
+      },
+      {
+        "text": "\n\nObject vocabulary: mustard_bottle, raisin_box\nRelation vocabulary: left_of, right_of, in_front_of, behind, on_top_supported, stacked_on, unknown\n\nInstruction:\nMove the mustard bottle on the table so that the raisin box is to the left of the mustard bottle.\n\nInterpret the requested outcome, not the current arrangement. Return one JSON object:\n{\"target\": \"...\", \"reference\": \"...\", \"relation\": \"...\"}\nThe target is the object the instruction asks to move. The relation is the target's\nrequested final relation to the reference. Use the provided object and relation vocabulary.",
+        "type": "text"
+      }
+    ],
+    "source_episode_id": null,
+    "source_r1_query_id": "B.initial.S4-C04-initial.S4-R-I",
+    "view_paths_and_sha256": [
+      {
+        "image_id": "img-073172bdf689c3690f319a59",
+        "path": "images/img-073172bdf689c3690f319a59.png",
+        "png_sha256": "75a6d5280714dea33f41c221e42ff7b4506ec361818ae3bb665ae79774b299e4",
+        "raw_rgb_sha256": "073172bdf689c3690f319a59b33db1c9cb8d9287fc6fd2709a0c694380fa82e0",
+        "view": "wrist_cam"
+      },
+      {
+        "image_id": "img-34a3be7837992dc4af8f352f",
+        "path": "images/img-34a3be7837992dc4af8f352f.png",
+        "png_sha256": "d797c7f782ed9ef7f8cf50049b0ca3c9373c3acbb41a21949c7d62c68de8a96f",
+        "raw_rgb_sha256": "34a3be7837992dc4af8f352f6f36a13e039bdd5cec04bfb29cc3f8dfd32b711e",
+        "view": "over_shoulder_left_camera"
+      },
+      {
+        "image_id": "img-59c1b516c5fbe5083fee5763",
+        "path": "images/img-59c1b516c5fbe5083fee5763.png",
+        "png_sha256": "94b88d77ea647f9dbfae5683f5fe683f92d332de028dde48bee4f2215aa84f41",
+        "raw_rgb_sha256": "59c1b516c5fbe5083fee5763b65561975ca4576e9e838617746b894694b37d86",
+        "view": "over_shoulder_right_camera"
+      }
+    ]
+  },
+  "scored_answers": [
+    {
+      "lane": "N3-policy",
+      "query_id": "B2.IH.S4-C04-initial.S4-R-I",
+      "family": "original",
+      "condition": "IH",
+      "scene": "S4",
+      "goal": "R",
+      "form": "RF",
+      "prompt_id": "S4-R-I",
+      "start": "S4-C04",
+      "frame": "S4-C04-initial",
+      "delivered": "True",
+      "valid": "True",
+      "invalid_reason": "",
+      "answer": "{\"target\": \"mustard_bottle\", \"reference\": \"raisin_box\", \"relation\": \"right_of\"}",
+      "truncated": "False",
+      "error_class": "correct",
+      "target": "1.0",
+      "reference": "1.0",
+      "relation": "1.0",
+      "tuple": "1.0"
+    },
+    {
+      "lane": "E3-policy",
+      "query_id": "B2.IH.S4-C04-initial.S4-R-I",
+      "family": "original",
+      "condition": "IH",
+      "scene": "S4",
+      "goal": "R",
+      "form": "RF",
+      "prompt_id": "S4-R-I",
+      "start": "S4-C04",
+      "frame": "S4-C04-initial",
+      "delivered": "True",
+      "valid": "True",
+      "invalid_reason": "",
+      "answer": "{\"target\": \"mustard_bottle\", \"reference\": \"raisin_box\", \"relation\": \"left_of\"}",
+      "truncated": "False",
+      "error_class": "converse_relation",
+      "target": "1.0",
+      "reference": "1.0",
+      "relation": "0.0",
+      "tuple": "0.0"
+    },
+    {
+      "lane": "F3-qwen3vl4b",
+      "query_id": "B2.IH.S4-C04-initial.S4-R-I",
+      "family": "original",
+      "condition": "IH",
+      "scene": "S4",
+      "goal": "R",
+      "form": "RF",
+      "prompt_id": "S4-R-I",
+      "start": "S4-C04",
+      "frame": "S4-C04-initial",
+      "delivered": "True",
+      "valid": "True",
+      "invalid_reason": "",
+      "answer": "{\"target\": \"mustard_bottle\", \"reference\": \"raisin_box\", \"relation\": \"left_of\"}",
+      "truncated": "False",
+      "error_class": "converse_relation",
+      "target": "1.0",
+      "reference": "1.0",
+      "relation": "0.0",
+      "tuple": "0.0"
+    }
+  ]
+}

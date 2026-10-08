@@ -1,0 +1,65 @@
+{
+  "query_id": "B2.IH.S4-C04-initial.S4-R-I",
+  "physical_start_id": "S4-C04",
+  "frame_id": "S4-C04-initial",
+  "full_prompt_sha256_verified": "efd27248caf82d6fa19ea5070d9c489b30baf1970e881adfc1c2c666a38ae850",
+  "query_manifest": "artifacts/robolab_vqa_20261006/release_r2_final/query_manifest.jsonl.gz",
+  "query_manifest_sha256": "22c3ea95fa75c3a383b5fbda7b2d5ea37da2410a25b97bdb28c0c4ff27d70388",
+  "answers_file": "reports/robolab-vqa-20261006/runs/r2-final-20261007/results/b2_items.csv.gz",
+  "answers_file_sha256": "3a9978c807e9085bd5ae75f4f3f64c670b2794ad8fe4aacf759ebbf0d3f19570",
+  "image_root": "/data/users/ali/rqa-20261006/release/r1",
+  "images": [
+    {
+      "array_sha256": "810fe8ab40a89d9c310cf6221d29ed42cf8b612bfaade1681e29039a41409357",
+      "height": 720,
+      "image_id": "img-073172bdf689c3690f319a59",
+      "path": "images/img-073172bdf689c3690f319a59.png",
+      "png_sha256": "75a6d5280714dea33f41c221e42ff7b4506ec361818ae3bb665ae79774b299e4",
+      "provenance": [
+        {
+          "frame_id": "S4-C04-initial",
+          "source": "states/S4-C04/first_obs.npz",
+          "view": "wrist_cam"
+        }
+      ],
+      "raw_rgb_sha256": "073172bdf689c3690f319a59b33db1c9cb8d9287fc6fd2709a0c694380fa82e0",
+      "width": 1280,
+      "paper_asset": "paper/robolab_spatial_2026/revision_assets/rev_vqa_mustard_wrist.png"
+    },
+    {
+      "array_sha256": "df16b63d715db57feed9003e90da8e6c8f8cff9deb67815ce4229b8382b30a60",
+      "height": 720,
+      "image_id": "img-34a3be7837992dc4af8f352f",
+      "path": "images/img-34a3be7837992dc4af8f352f.png",
+      "png_sha256": "d797c7f782ed9ef7f8cf50049b0ca3c9373c3acbb41a21949c7d62c68de8a96f",
+      "provenance": [
+        {
+          "frame_id": "S4-C04-initial",
+          "source": "states/S4-C04/first_obs.npz",
+          "view": "over_shoulder_left_camera"
+        }
+      ],
+      "raw_rgb_sha256": "34a3be7837992dc4af8f352f6f36a13e039bdd5cec04bfb29cc3f8dfd32b711e",
+      "width": 1280,
+      "paper_asset": "paper/robolab_spatial_2026/revision_assets/rev_vqa_mustard_left.png"
+    },
+    {
+      "array_sha256": "3c5c18668460c810c62d4bce2e4bd3e6bdf8f2a35adcc447cb897355352c16f8",
+      "height": 720,
+      "image_id": "img-59c1b516c5fbe5083fee5763",
+      "path": "images/img-59c1b516c5fbe5083fee5763.png",
+      "png_sha256": "94b88d77ea647f9dbfae5683f5fe683f92d332de028dde48bee4f2215aa84f41",
+      "provenance": [
+        {
+          "frame_id": "S4-C04-initial",
+          "source": "states/S4-C04/first_obs.npz",
+          "view": "over_shoulder_right_camera"
+        }
+      ],
+      "raw_rgb_sha256": "59c1b516c5fbe5083fee5763b65561975ca4576e9e838617746b894694b37d86",
+      "width": 1280,
+      "paper_asset": "paper/robolab_spatial_2026/revision_assets/rev_vqa_mustard_right.png"
+    }
+  ],
+  "availability": "Exact PNGs retrieved in Git commit 630ded5 and verified byte-for-byte against the released query manifest."
+}

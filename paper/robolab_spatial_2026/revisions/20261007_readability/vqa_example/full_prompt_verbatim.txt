@@ -1,0 +1,21 @@
+Task: answer a question about a robot's tabletop workspace.
+Coordinate frame: all spatial terms use the robot's frame of reference. The robot faces the workspace; "left" and "right" are from the robot's point of view, "in front of" means closer to the robot, and "behind" means farther from the robot.
+
+Camera views of the current scene, captured at the same moment:
+Wrist camera (mounted on the robot's gripper; in this image the robot's left is toward the image's right side and farther from the robot is toward the image's bottom):
+<image:img-073172bdf689c3690f319a59>
+Left exterior camera (mounted on the robot's left side; in this image the robot's left is toward the image's lower left and farther from the robot is toward the image's upper left):
+<image:img-34a3be7837992dc4af8f352f>
+Right exterior camera (mounted on the robot's right side; in this image the robot's left is toward the image's upper left and farther from the robot is toward the image's upper right):
+<image:img-59c1b516c5fbe5083fee5763>
+
+Object vocabulary: mustard_bottle, raisin_box
+Relation vocabulary: left_of, right_of, in_front_of, behind, on_top_supported, stacked_on, unknown
+
+Instruction:
+Move the mustard bottle on the table so that the raisin box is to the left of the mustard bottle.
+
+Interpret the requested outcome, not the current arrangement. Return one JSON object:
+{"target": "...", "reference": "...", "relation": "..."}
+The target is the object the instruction asks to move. The relation is the target's
+requested final relation to the reference. Use the provided object and relation vocabulary.

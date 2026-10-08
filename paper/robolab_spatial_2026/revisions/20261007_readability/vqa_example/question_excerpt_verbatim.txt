@@ -1,0 +1,10 @@
+Object vocabulary: mustard_bottle, raisin_box
+Relation vocabulary: left_of, right_of, in_front_of, behind, on_top_supported, stacked_on, unknown
+
+Instruction:
+Move the mustard bottle on the table so that the raisin box is to the left of the mustard bottle.
+
+Interpret the requested outcome, not the current arrangement. Return one JSON object:
+{"target": "...", "reference": "...", "relation": "..."}
+The target is the object the instruction asks to move. The relation is the target's
+requested final relation to the reference. Use the provided object and relation vocabulary.
