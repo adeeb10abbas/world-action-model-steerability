@@ -1,0 +1,67 @@
+{
+  "source": "paper/robolab_spatial_2026/analysis/wording_contrasts.csv",
+  "source_sha256": "f2da333ae1d354b3c3c05a9ad5ee4da3479f51dc18546d677c21d67eb05e16ab",
+  "endpoint": "all episodes, stable placement at any time",
+  "plotted_values": [
+    {
+      "model": "Nano",
+      "comparison": "TF-RF",
+      "mean_pp": 14.583333333333332,
+      "ci95_low_pp": 8.072916666666666,
+      "ci95_high_pp": 21.09375
+    },
+    {
+      "model": "Edge",
+      "comparison": "TF-RF",
+      "mean_pp": 8.072916666666666,
+      "ci95_low_pp": 3.645833333333333,
+      "ci95_high_pp": 12.760416666666666
+    },
+    {
+      "model": "FLUX",
+      "comparison": "TF-RF",
+      "mean_pp": 13.802083333333332,
+      "ci95_low_pp": 7.552083333333333,
+      "ci95_high_pp": 20.052083333333332
+    },
+    {
+      "model": "Pooled",
+      "comparison": "TF-RF",
+      "mean_pp": 12.152777777777777,
+      "ci95_low_pp": 8.59375,
+      "ci95_high_pp": 15.364583333333334
+    },
+    {
+      "model": "Nano",
+      "comparison": "DIR-TF",
+      "mean_pp": -0.520833333333333,
+      "ci95_low_pp": -8.072916666666666,
+      "ci95_high_pp": 7.291666666666666
+    },
+    {
+      "model": "Edge",
+      "comparison": "DIR-TF",
+      "mean_pp": 5.468749999999999,
+      "ci95_low_pp": -0.2604166666666668,
+      "ci95_high_pp": 11.458333333333332
+    },
+    {
+      "model": "FLUX",
+      "comparison": "DIR-TF",
+      "mean_pp": 7.291666666666666,
+      "ci95_low_pp": -1.0416666666666667,
+      "ci95_high_pp": 15.364583333333332
+    },
+    {
+      "model": "Pooled",
+      "comparison": "DIR-TF",
+      "mean_pp": 4.079861111111111,
+      "ci95_low_pp": -0.17361111111111127,
+      "ci95_high_pp": 8.420138888888888
+    }
+  ],
+  "uncertainty": "Existing 95% intervals from resampling physical starts within scenes",
+  "manuscript_replaced": false,
+  "plot_png": "output/figures/wording_effect_simple_preview.png",
+  "plot_pdf": "output/pdf/wording_effect_simple_preview.pdf"
+}
