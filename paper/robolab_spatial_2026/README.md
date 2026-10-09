@@ -13,7 +13,7 @@ latexmk -pdf -interaction=nonstopmode -halt-on-error rev_with_vqa.tex
 cp rev_with_vqa.pdf ../../output/pdf/same_goal_different_words_submission_ready.pdf
 ```
 
-Current plot sources and numeric checks are in [revisions/20261008_figure_readability](revisions/20261008_figure_readability/README.md). Use these two builders to reproduce the compact submission figures; the older general label builder preserves earlier layouts.
+Current plot sources and numeric checks are in [revisions/20261009_caption_simplification](revisions/20261009_caption_simplification/README.md). Use these two builders to reproduce the submission figures with shorter captions and explicit starting-condition labels; earlier builders preserve older layouts.
 
 ## Files
 

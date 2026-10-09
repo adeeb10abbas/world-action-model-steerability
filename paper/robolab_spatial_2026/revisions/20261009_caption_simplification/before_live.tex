@@ -74,7 +74,7 @@ We evaluate the DROID versions of Cosmos3 Nano, Cosmos3 Edge, and FLUX 3 Action~
 
 We measure the proportion of runs that reach a \emph{stable placement}: the requested relation must hold for one second while the target is supported, moves slower than 2\,cm/s, and does not touch the gripper. Directions use the robot's coordinate frame. Checking these conditions at any time and again during the final second distinguishes reaching an arrangement from retaining it. Neither check identifies which object moved, however. A cube can end up behind a bowl because the robot moves the cube backward or the bowl forward.
 
-For each model and goal, we compare the outcomes under different wordings from the same starts. We average over goals within scenes, then give each scene and model equal weight. A positive TF--RF difference therefore means that more runs reach the placement under TF. Uncertainty reflects the shared starts rather than treating all rollouts as independent. Three goals already hold initially; Fig.~\ref{fig:goals} labels them ``True at start'', and we also report rates excluding them (Appendices~\ref{app:statistics} and~\ref{app:counts}).
+For each model and goal, we compare the outcomes under different wordings from the same starts. We average over goals within scenes, then give each scene and model equal weight. A positive TF--RF difference therefore means that more runs reach the placement under TF. Uncertainty reflects the shared starts rather than treating all rollouts as independent. Three goals already hold initially; they are hatched in Fig.~\ref{fig:goals}, and we also report rates excluding them (Appendices~\ref{app:statistics} and~\ref{app:counts}).
 
 \section{Results}
 Task competence under one description does not guarantee consistency across equivalent instructions. Across the three models, the proportion of runs reaching a stable placement is 12.2 percentage points higher under TF than RF (95\% interval 8.6--15.4, adjusted $p<0.001$; Fig.~\ref{fig:wording}). This advantage appears in all three models even though each wording requests the same manipulation from the same physical start. TF and RF do change both object order and relation vocabulary, so this comparison does not identify which aspect drives the effect.
@@ -82,7 +82,7 @@ Task competence under one description does not guarantee consistency across equi
 \begin{figure}[!ht]
 \centering
 \includegraphics[width=\linewidth]{rev_wording_effect.pdf}
-\caption{Wording effects across 32 starts per row. Each dot's horizontal position shows that start's average placement-rate difference; vertical offsets only separate dots. Wider shading indicates more starts with similar effects. Diamonds and bars show means and 95\% confidence intervals. Positive values favor TF in (a) and DIR in (b).}
+\caption{Wording effects on stable placement: the requested arrangement holds for at least one second. Each row shows 32 physical starts. Dots show each start's difference in stable-placement rate, averaged over goals (and models for Pooled). Horizontal positions are percentage-point differences; vertical offsets only prevent overlap. Shading is thicker where more starts have similar effects. Diamonds and bars show means and 95\% confidence intervals. Positive values favor TF in (a) and DIR in (b).}
 \label{fig:wording}
 \end{figure}
 \FloatBarrier
@@ -92,7 +92,7 @@ The average advantage does not provide a reliable prompting rule for every task.
 \begin{figure}[!htb]
 \centering
 \includegraphics[width=\linewidth]{rev_goal_response_by_form.pdf}
-\caption{Goal cells show the percentage of eight runs reaching a stable placement at any time (100 means all eight). Gray columns mark goals already true at the start. Overall includes these runs and compares rates at any time and at episode end.}
+\caption{Goal columns show the percentage of eight runs reaching a stable placement at any time: 0 means 0/8; 100 means 8/8. Hatched cells mark goals already satisfied at reset in all eight starts; their 100s do not represent new placements achieved by the robot. Columns group goals by target/reference objects; rows compare wordings within each model. Overall columns include these goals and compare any-time and episode-end rates over 96 runs per row, averaging goals within scenes and then scenes equally. Scores do not identify which object moved.}
 \label{fig:goals}
 \end{figure}
 

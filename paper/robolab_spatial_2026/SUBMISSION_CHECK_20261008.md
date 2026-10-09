@@ -23,4 +23,4 @@ Upload this combined PDF to the paper field. Do not upload the named archive, re
 
 ## Final checks
 
-The latest figure, caption, anonymity, page-count, and layout checks are recorded in `revisions/20261008_figure_readability/validation.json`. The full anonymous-submission review is preserved in `revisions/20261008_anonymous_submission/validation.json`. The named source is preserved privately in the revision archive and Git history for later restoration. No submission, license acceptance, or organizer communication has been performed.
+The latest figure, caption, anonymity, page-count, and layout checks are recorded in `revisions/20261009_caption_simplification/validation.json`. The full anonymous-submission review is preserved in `revisions/20261008_anonymous_submission/validation.json`. The named source is preserved privately in the revision archive and Git history for later restoration. No submission, license acceptance, or organizer communication has been performed.
